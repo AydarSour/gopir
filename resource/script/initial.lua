@@ -1,0 +1,1 @@
+dofile(GetResPath("script\\extension\\init.lua"))
