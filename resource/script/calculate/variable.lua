@@ -1,55 +1,29 @@
 -----------------------------------------
-print( "‡ Јаг§Є  variable.lua" )
-
-if (SONGWAR_VARIABLE == nil) then
-	SONGWAR_VARIABLE = 1
-	dofile(".\\resource\\script\\calculate\\variable_global.lua")--загрузка захвата флага
-end
-dofile(".\\resource\\script\\calculate\\variable_change.lua")--Загрузка торговли
-dofile(".\\resource\\script\\calculate\\variable_scroll.lua")--Загрузка свитков
-
+print( "Loading Variable.lua" )
 -----------------------------------------
-EXP_RAID				=	1		-- Рейты соло, GM - &lua EXP_RAID=...
-MF_RAID					=	1		-- Рейты на дроп, GM - &lua MF_RAID=...
-Raid_EXP_FUN			= 	3.33	-- рейт для повышения дропа
-STAR_RAID				=	1		-- Рейты на опыт для звезды единства
-EXP_BOAT_RAID			=	5		-- Рейты коробля
-EXP_QUEST_RAID			=	4		-- Рейты на квесты
-MONEY_RAID_QUEST		=	5		-- Рейты на золото(квест)
-Resource_RAID_ADJUST	=	2		-- Рейт на ресурсы
-LIFE_EXP				=	2		-- Рейты на лайф
-ELEEXP_GETRAD			=	65		-- Рейты на кач феи
-REP_RATE 				=	2 		-- Рейт на репутацию за убийство боссов
-AUTO_RAID_MF_START		=	1		-- Авто рейты на выходные(1 вкл\0 выкл)
-BOGEXP_GETRAD			=	10		-- Рейты на кач феи бога
-TeamExp_RAID			=	1		-- Рейты на кач в отряде
-MENTOR_ITEMID			=	0		-- Дополнительный итем ученику к мини-усилителям натиска
-RAID_REP_MENTOR			=	2		--Рейт на репутацию от менторства
-Raid_Money				=	6		--рейт на ежедневный квест
-Raid_Exp_Ev				=	6		--рейт на ежедневные квесты
-RAID_SVIT 				=	1.66	--рейт на характеристики свитков
-RAID_Skill_for_boss		=	2		--рейт на скиллы мобов
-Raid_Money_Location		=	4		--рейт на золото с мобов
 
-Minus_toplovo			=	3		-- плюс топлива в секунду
-RAID_KNIGA_OTDIH		=	5		--рейт на книгу отдыха
-RAID_MONI_NP			=	5		--рейт на золото с НП
+EXP_RAID = 				 1		--Рейты соло, GM - &lua EXP_RAID=...
+MF_RAID = 				 3		--Рейты на дроп, GM - &lua MF_RAID=...
+STAR_RAID = 			 2		--Рейты на опыт для звезды единства
+EXP_BOAT_RAID = 		10		--Рейты коробля
+EXP_QUEST_RAID = 		 2		--Рейты на квесты
+AUTO_RAID_MF_START = 	 0		--Авто рейты на выходные(1 вкл\0 выкл)
+ELEEXP_GETRAD = 		10		--Рейты на кач феи
+BOGEXP_GETRAD = 		10		--Рейты на кач феи бога
+TeamExp_RAID =			 1		--Рейты на кач в отряде
+MENTOR_ITEMID =			 0 		--Дополнительный итем ученику к мини-усилителям натиска
 
-RAID_GUILD_ITEM 		= 	77		--рейт на книгу отдыха(чем выше тем меньше шанс)
-RAID_TICKET_MAP			=	25		--Рейт на бидеты с ОБ (чем выше тем меньше шанс)
-RAID_WINTER				=	500		--Рейт на благ свитки на зиме (чем выше тем меньше шанс)
-
-RAID_MX_HP=2.75
-RAID_MX_SP=1.25
+--Рейт на хп мп и деф
+RAID_MX_HP=1
+RAID_MX_SP=1
 RAID_MX_DEF=1
 
---Лимит уровня
-LV_LIMIT = 95
-
 --Урон по людям 
-Damage_for_players=0.48 -- Урон по героям
-Damage_for_mobs =1.56 -- Урон по Мобам
+Damage_for_players = 1 -- Урон по героям
+Damage_for_mobs = 1 -- Урон по Мобам
 
+--Лимит уровня
+LV_LIMIT = 100
 --Уровень феи
 JLMAXLV = 51
 JLMINLV = 1
@@ -59,150 +33,48 @@ JLMAXLV_UP_3_GEN = 51
 JLMAXLV_UP_4_GEN = 25
 JLMAXLV_UP_5_GEN = 12
 
+
+
+
+--Массив с подарками за онлайн
+RAZMER_PRIZE = 19
+Prize = {}
+ Prize[1] =1847
+ Prize[2] =1848
+ Prize[3] =1849
+ Prize[4] =8290  
+ Prize[5] =8291
+ Prize[6] =8292
+ Prize[7] =8294
+ Prize[8] =8295 
+ Prize[9] =8296
+ Prize[10] =8297
+ Prize[11] =8298
+ Prize[12] =1151
+ Prize[13] =1150
+ Prize[14] =1136
+ Prize[15] =1138
+ Prize[16] =1139
+ Prize[17] =1147
+ Prize[18] =1144
+ Prize[19] =0855
+ 
+ 
+ 
+ 
+--Реклама
+RAZMER_NOTICE = 5
+notices = {}
+notices[1] = "Сайт нашего проекта - https://go-piratia.ru/ "
+notices[2] = "Посетите нашу группу - vk.com/go_piratia  "
+notices[3] = "Приятной игры, хорошего фарма и быстрой прокачки! "
+notices[4] = "Проблемы с игрой? Обратитесь в нашу техподдержку! "
+notices[5] = "Не играй слишком много, следи за своим здоровьем! "
+
+
 ModuleMentorSystem = 1
-
-MFRADIX=100
-CRTRADIX=100
-
-TestGuildLv = 0
-ReadyToFight = 0
-
-ATTR_RADIX = 1000
-AREA_SAFE = 2
-
-
-
-
-Leaders = {}
-t_transmonst = {}
-
-
-
- Every_5_minute_bounty  = 0
-
-
---Значения для повышения
-SCORE_PL_1 = 1000
-SCORE_PL_2 = 10000
-SCORE_PL_3 = 100000
-SCORE_PL_4 = 1000000
-SCORE_PL_5 = 10000000
-SCORE_PL_6 = 20000000
-SCORE_PL_7 = 30000000
-SCORE_PL_8 = 60000000
-SCORE_PL_9 = 80000000
-SCORE_PL_10 = 10000000
-SCORE_PL_11 = 20000000
-
-SCORE_MB_1 = 1000
-SCORE_MB_2 = 10000
-SCORE_MB_3 = 100000
-SCORE_MB_4 = 1000000
-SCORE_MB_5 = 10000000
-SCORE_MB_6 = 20000000
-SCORE_MB_7 = 30000000
-SCORE_MB_8 = 60000000
-SCORE_MB_9 = 80000000
-SCORE_MB_10 = 10000000
-SCORE_MB_11 = 20000000
-
-SCORE_QUEST_1 = 1000
-SCORE_QUEST_2 = 10000
-SCORE_QUEST_3 = 100000
-SCORE_QUEST_4 = 1000000
-SCORE_QUEST_5 = 10000000
-SCORE_QUEST_6 = 20000000
-SCORE_QUEST_7 = 30000000
-SCORE_QUEST_8 = 60000000
-SCORE_QUEST_9 = 80000000
-SCORE_QUEST_10 = 10000000
-SCORE_QUEST_11 = 20000000
-
-
-
-
 StateTimeHPPOTS = {}
-
-EXPparty = {}
-LocalChat = {}
-
-DropEXP1 = {}
-DropEXP2 = {}
-DropEXP3 = {}
-DropEXP4 = {}
-DropEXP5 = {}
-DropEXP6 = {}
-DropEXP7 = {}
-
-Drop1 = {}
-Drop2 = {}
-Drop3 = {}
-Drop4 = {}
-Drop5 = {}
-Drop6 = {}
-Drop7 = {}
-Mana = {}
-Kovka = {}
-Sochet = {}
-Vstavka = {}
-Apparel = {}
-
-Skolz1 = {}
-Skolz2 = {}
-
-leg1 = {}
-leg2 = {}
-
-stroi1 = {}
-stroi2 = {} 
-
-dosp1 = {} 
-dosp2 = {}
-
-bik1 = {}
-bik2 = {}
-
-bers1 = {}
-bers2 = {}
-
-energ1 = {}
-energ2 = {}
-
-ukrep1 = {}
-ukrep2 = {}
-effff = {}
-acc1 = {}
-acc2 = {}
-gr = {}
-
---Трансформатор идентификатор, соответствующий скорости, название должно быть следующей целью
-Car = {}
-Car["DHF"] = { CarID = 1072 , CarSpeed = 1000}
-Car["QTZ"] = { CarID = 1071 , CarSpeed = 1000}
-Car["DHFOLD"] = { CarID = 1073 , CarSpeed = 750}
-Car["NGC"] = { CarID = 1198 , CarSpeed = 1200}
----------------------------------------------------------------
---         Переменные для плаща адмиралп     --
----------------------------------------------------------------
-STATE_CAPE1			=	234				
-STATE_CAPE2			=	235				
-STATE_CAPE3			=	236				
-STATE_CAPE4			=	237
--------------------------------
-
-Shadow = {} --переменная для отката теневого меча
-
---
-CAKE = {} --переменная для отката амулета
-
-
-STATE_atkShadow			=	232
-STATE_YX			=	233 --переменная для клеймора
-STATE_claymore			=	238 --переменная для клеймора
-STATE_amulet			=	239 --переменная для амулета теней
-STATE_shadow			=	231 --переменная для теневого меча
-Amulet = {} --переменная для отката амулета
-
+----КҐµ®BOSSјЗКэ
 CheckBoss1Dead = 1
 XmasMonsterNum1 = 0
 CheckBoss2Dead = 1
@@ -213,122 +85,29 @@ CheckBoss4Dead = 1
 XmasMonsterNum4 = 0
 CheckBoss5Dead = 1
 XmasMonsterNum5 = 0
-
 TestOnDrop = 0
 monster1 = 0
 monster2 = 0
 monster3 = 0
 monster4 = 0
 monster5 = 0
---GiveItemPlayerName = ""
---GiveItemPlayerID = 0
---GiveItemPlayerNumber = 0
---GiveItemPlayerParametr = 0
 PlayUseBox1 = {}
 PlayUseBox2 = {}
 PlayUseBox3 = {}
 Every_Check_minute = 0
 Every_Check_07xmas = 0
-OnlineEvent = true
+
 BBBB = {}
---Анти дюп
-PLAYERS_DIR = "players/"
 
+MFRADIX=100
+CRTRADIX=100
 
+TestGuildLv = 0
+ReadyToFight = 0
 
+ATTR_RADIX = 1000
+AREA_SAFE = 2
 
-
-
---Реклама
-notices = {}
-notices[1] = "Сайт нашего проекта - https://morfeos.ru/ "
-notices[2] = "Посетите нашу группу - vk.com/morfeos  "
-notices[3] = "Приятной игры, хорошего фарма и быстрой прокачки! "
-notices[4] = "Проблемы с игрой? Обратитесь в нашу техподдержку! "
-notices[5] = "Не играй слишком много, следи за своим здоровьем! "
-notices[6] = "Приятной игры, хорошего фарма и быстрой прокачки!"
-notices[7] = "Какие-то проблемы? Обратись в тех раздел форума http://morfeos.ru/talk/! "
-notices[8] = "Приятной игры, хорошего фарма и быстрой прокачки! "
-notices[9] = "Сайт нашего проекта - http://morfeos.ru/!"
-notices[10] = "Следите за новостями в группе и участвуйте в конкурсах! "
---[[Рейты Premium системы]]--
-EXP_SOLO				= 	1		-- Коэффициент умножения эффекта опыта для 1 уровня Premium
-EXP_SOLO2				= 	2		-- Коэффициент умножения эффекта опыта для 2 уровня Premium
-EXP_SOLO3				= 	3		-- Коэффициент умножения эффекта опыта для 3 уровня Premium
-DROP					= 	1		-- Коэффициент умножения эффекта дропа для 1 уровня Premium
-DROP2					= 	2		-- Коэффициент умножения эффекта дропа для 2 уровня Premium
-DROP3					= 	3		-- Коэффициент умножения эффекта дропа для 3 уровня Premium
---[[Переменные Premium системы]]--
-NEED_ITEM_PREMIUM		=	885		--Требуемый предмет для Premium аккаунта 1 уровня
-NEED_ITEM_PREMIUM2		=	886		--Требуемый предмет для Premium аккаунта 2 уровня
-NEED_ITEM_PREMIUM3		=	887		--Требуемый предмет для Premium аккаунта 3 уровня
-VIPNECKY				=	255     --Эффект Premium(Значок)
-STATE_PREMIUM			=   254		--Эффект Premium(Характеристики)
-TIME_ACTIVE_PREMIUM		=	432000	--Время действия Premium аккаунта в секундах(5 дней)
-TIME_ACTIVE 			= 	0		--Показывает сколько времени осталось до окончания аккаунта
-
-
-PET_EFFECT_ID 			= 	236		--Эффект питомца
-
---Массив: ID питомца;ID монстра
-PET_TYPE = 	{}
-PET_TYPE	[8612] = 1475
-PET_TYPE	[8642] = 929
-PET_TYPE	[8643] = 930
-PET_TYPE	[8644] = 931
-PET_TYPE	[8645] = 932
-
-PET_BONUS = { }
-PET_BONUS [1475] = { {ATTR_STATEV_STR, 5},{ATTR_STATEV_CON, 2},{ATTR_STATEV_AGI, 2},{ATTR_STATEV_DEX, 2},{ATTR_STATEV_STA, 2} }
-PET_BONUS [929] = { {ATTR_STATEV_STR, 2},{ATTR_STATEV_CON, 5},{ATTR_STATEV_AGI, 2},{ATTR_STATEV_DEX, 2},{ATTR_STATEV_STA, 2} }
-PET_BONUS [930] = { {ATTR_STATEV_STR, 2},{ATTR_STATEV_CON, 2},{ATTR_STATEV_AGI, 5},{ATTR_STATEV_DEX, 2},{ATTR_STATEV_STA, 2} }
-PET_BONUS [931] = { {ATTR_STATEV_STR, 2},{ATTR_STATEV_CON, 2},{ATTR_STATEV_AGI, 2},{ATTR_STATEV_DEX, 5},{ATTR_STATEV_STA, 2} }
-PET_BONUS [932] = { {ATTR_STATEV_STR, 2},{ATTR_STATEV_CON, 2},{ATTR_STATEV_AGI, 2},{ATTR_STATEV_DEX, 2},{ATTR_STATEV_STA, 5} }
-
-
---[[Массив бонусов Захвата флага Барбароссы]]--
-BONUS_ID = { }
-BONUS_ID [0]  =		STATE_HP
-BONUS_ID [1]  =		STATE_HP_REM	
-BONUS_ID [2]  =		STATE_GO	
-BONUS_ID [3]  =		STATE_GO_REM
-BONUS_ID [4]  =		STATE_PARAM	
-BONUS_ID [5]  =		STATE_PR	
-BONUS_ID [6]  =		STATE_PR_REM	
-BONUS_ID [7]  =		STATE_STAN		
-
-BONUS_NAME = { }
-BONUS_NAME [0]  =		" +1500 к здоровью "
-BONUS_NAME [1]  =		" -1500 к здоровью "	
-BONUS_NAME [2]  =		" +100 к бегу "	
-BONUS_NAME [3]  =		" -100 к бегу "
-BONUS_NAME [4]  =		" +10 к характеристикам "	
-BONUS_NAME [5]  =		" +3 к физ. сопротивлению "	
-BONUS_NAME [6]  =		" -3 к физ. сопротивлению "	
-BONUS_NAME [7]  =		" Оглушение "
---[[Конец]]--
-
-
---[[Переменные захвата флага]]--
-STATE_HP				=	240
-STATE_HP_REM			=	241
-STATE_GO				=	242
-STATE_GO_REM			=	243
-STATE_PARAM				=	244
-STATE_PR				=	245
-STATE_PR_REM			=	246
-STATE_STAN				=	45
-
-STATE_WEDDING			=	230 	--свадьба
-STATE_BBRING1			=	247		--Бонус крыльев	
-STATE_BBRING2			=	248		--Бонус крыльев
-STATE_BBRING3			=	249		--Бонус крыльев
-STATE_BBRING4			=	250		--Бонус крыльев
-STATE_BBRING5			=	251		--Бонус крыльев	
-STATE_BBRING6			=	252		--Бонус крыльев
-
-
---Свадьба
 WD_GOLD = 10000000			--Золото, которое требуется для получения Свадебного сертификата
 WD_FIREWORK_COUNT = 5		--Количество видов фейерверков
 WD_FIREWORK = {}			--Массив с ID фейерверков
@@ -349,9 +128,9 @@ ITEM_BILET = {}
 	ITEM_BILET[7] = 2447
 	ITEM_BILET[8] = 2491
 	ITEM_BILET[9] = 2844
-	--ITEM_BILET[10] = 2883
-	--ITEM_BILET[11] = 2941
-	--ITEM_BILET[12] = 2986
+	ITEM_BILET[10] = 2883
+	ITEM_BILET[11] = 2941
+	ITEM_BILET[12] = 2986
 	ITEM_BILET[13] = 3048
 	ITEM_BILET[14] = 3049
 	ITEM_BILET[15] = 3050
@@ -391,7 +170,6 @@ ITEM_BILET = {}
 	ITEM_BILET[49] = 4602
 	ITEM_BILET[50] = 4603
 	ITEM_BILET[51] = 4604
-	
 	ITEM_BILET[52] = 6205
 	ITEM_BILET[53] = 6329
 	ITEM_BILET[54] = 6336
@@ -403,20 +181,19 @@ ITEM_BILET = {}
 	ITEM_BILET[60] = 7706
 	ITEM_BILET[61] = 3941
 
+EXP_RAID = 1--1.5	--1			--Рейты соло, GM - &lua EXP_RAID=...
+MF_RAID = 3--3		--2			--Рейты на дроп, GM - &lua MF_RAID=...
+STAR_RAID = 2				--Рейты на опыт для звезды единства
+EXP_BOAT_RAID = 20			--Рейты коробля
+EXP_QUEST_RAID = 2--4	--2		--Рейты на квесты
+AUTO_RAID_MF_START = 0		--Авто рейты на выходные(1 вкл\0 выкл)
+ELEEXP_GETRAD = 30			--Рейты на кач феи
+BOGEXP_GETRAD = 10			--Рейты на кач феи бога
+TeamExp_RAID = 1--0.5	--1		--Рейты на кач в отряде
+MENTOR_ITEMID = 0 -- Дополнительный итем ученику к мини-усилителям натиска
 
---Мульти рейты
-RAID_STANDART	=	1
-RAID_1_TO_50	=	RAID_STANDART
-RAID_51_TO_60	=	RAID_STANDART
-RAID_61_TO_70	=	RAID_STANDART
-RAID_71_TO_80	=	RAID_STANDART
-RAID_81_TO_90	=	RAID_STANDART
-RAID_91_TO_95	=	RAID_STANDART
-RAID_96_TO_98	=	RAID_STANDART
-RAID_99_TO_100	=	RAID_STANDART
+Resource_RAID_ADJUST=2
 
-
---Антибот\Антибаг
 AntiBot = {}
 AntiBotLine = {}
 VilkaBarb = {}
@@ -433,20 +210,20 @@ NOWTIME_YI=0
 NOWTIME_HEI=0
 JINISI_TIME=2100
 CHURCHSTAR_FLAG=0
---Обюменник
+
 ChangeItemList = {}
 ChangeItemList[	1	]=	{	2608	,	100	,	2682	,	1	}
 ChangeItemList[	2	]=	{	2609	,	100	,	2683	,	1	}
-ChangeItemList[	3	]=	{	2609	,	100	,	2684	,	1	}
+ChangeItemList[	3	]=	{	2609	,	1000	,	2684	,	1	}
 ChangeItemList[	4	]=	{	2608	,	100	,	2692	,	1	}
 ChangeItemList[	5	]=	{	2609	,	100	,	2693	,	1	}
-ChangeItemList[	6	]=	{	2609	,	100	,	2694	,	1	}
+ChangeItemList[	6	]=	{	2609	,	1000	,	2694	,	1	}
 ChangeItemList[	7	]=	{	2608	,	100	,	2702	,	1	}
 ChangeItemList[	8	]=	{	2609	,	100	,	2703	,	1	}
-ChangeItemList[	9	]=	{	2609	,	100	,	2704	,	1	}
+ChangeItemList[	9	]=	{	2609	,	1000	,	2704	,	1	}
 ChangeItemList[	10	]=	{	2608	,	100	,	2712	,	1	}
 ChangeItemList[	11	]=	{	2609	,	100	,	2713	,	1	}
-ChangeItemList[	12	]=	{	2609	,	100	,	2714	,	1	}
+ChangeItemList[	12	]=	{	2609	,	1000	,	2714	,	1	}
 ChangeItemList[	13	]=	{	3989	,	99	,	3999	,	20	}
 ChangeItemList[	14	]=	{	3990	,	99	,	4000	,	20	}
 ChangeItemList[	15	]=	{	3991	,	99	,	4001	,	20	}
@@ -606,149 +383,80 @@ ChangeItemList[ 164	]=	{	855	,	300	,	789	,	1	}--
 ChangeItemList[ 165	]=	{	855	,	300	,	799	,	1	}--
 ChangeItemList[ 166	]=	{	855	,	300	,	803	,	1	}--
 
---Обмен меди
-ChangeItemList[167]=	{	8141	,	170	,	8548	,	1	}--Умения
-ChangeItemList[168]=	{	8141	,	25	,	8549	,	1	}--Фрукты
-ChangeItemList[169]=	{	8141	,	80	,	8574	,	1	}--Украшения
-ChangeItemList[170]=	{	8141	,	10	,	578	,	1	}	 --Фрукт роста фей
-ChangeItemList[171]=	{	8141	,	25	,	3152	,	10	}--Пища фей
-ChangeItemList[172]=	{	8141	,	10	,	453	,	1	}--Свиток плавки
-ChangeItemList[173]=	{	8141	,	10	,	455	,	1	}--Свиток Усиления
-ChangeItemList[174]=	{	8141	,	70	,	454	,	1	}--Катализатор
-ChangeItemList[175]=	{	8141	,	70	,	456	,	1	}--Кристалл
-ChangeItemList[176]=	{	8141	,	70	,	890	,	1	}--Стабилизатор
-ChangeItemList[177]=	{	8141	,	70	,	891	,	1	}--Катализатор
+ChangeItemList[167]=	{	8141	,	1	,	3107	,	1	}--лампа
+ChangeItemList[168]=	{	8141	,	1	,	3105	,	1	}--скользилка
+ChangeItemList[169]=	{	8141	,	4	,	849	,	1	}
+ChangeItemList[170]=	{	8141	,	5	,	3097	,	1	}
+ChangeItemList[171]=	{	8141	,	5	,	3095	,	1	}
+ChangeItemList[172]=	{	8141	,	20	,	854	,	1	}
+ChangeItemList[173]=	{	8141	,	99	,	8142	,	1	}
+ChangeItemList[174]=	{	8141	,	20	,	3097	,	5	}
+ChangeItemList[175]=	{	8141	,	20	,	3095	,	5	}
 
-ChangeItemList[178]=	{	8141	,	70	,	1001	,	10	}--Чертежи
-ChangeItemList[179]=	{	8141	,	60	,	1002	,	5	}
-ChangeItemList[180]=	{	8141	,	90	,	1003	,	1	}
+ChangeItemList[176]=	{	8142	,	1	,	1854	,	1	}
+ChangeItemList[177]=	{	8142	,	1	,	1857	,	1	}
+ChangeItemList[178]=	{	8142	,	2	,	1859	,	1	}
+ChangeItemList[179]=	{	8142	,	2	,	1856	,	1	}
+ChangeItemList[180]=	{	8142	,	3	,	5694	,	1	}
+ChangeItemList[181]=	{	8142	,	99	,	8143	,	1	}
+ChangeItemList[182]=	{	8142	,	4	,	850	,	1	}
+ChangeItemList[183]=	{	8142	,	1	,	1855	,	1	}
 
-ChangeItemList[181]=	{	8141	,	120	,	1807	,	1	}--Парикм расп
-ChangeItemList[182]=	{	8141	,	10	,	3389	,	1	}--Искрящийся камень
-ChangeItemList[183]=	{	8141	,	10	,	3135	,	1	}--Чудомазь
+ChangeItemList[184]=	{	8143	,	1	,	1082	,	1	}
+ChangeItemList[185]=	{	8143	,	1	,	4023	,	1	}
+ChangeItemList[186]=	{	8143	,	2	,	1860	,	1	}
+ChangeItemList[187]=	{	8143	,	1	,	5695	,	1	}
+ChangeItemList[188]=	{	8143	,	99	,	8144	,	1	}
+ChangeItemList[189]=	{	8143	,	99	,	7422	,	1	}
+ChangeItemList[190]=	{	8143	,	10	,	7420	,	1	}
 
---Ланга
-ChangeItemList[184]=	{	1762	,	1	,	262	,	1	}	--Каробочка фей
-ChangeItemList[185]=	{	8143	,	1	,	8272	,	1	}--Скиллы фей
+ChangeItemList[191]=	{	8144	,	1	,	5708	,	1	}
+ChangeItemList[192]=	{	8144	,	2	,	8145	,	1	}
+--кристаллы из дв на честы +3,+4
+ChangeItemList[193]=	{	3820	,	99	,	8148	,	1	}
+ChangeItemList[194]=	{	3821	,	99	,	8147	,	1	}
+--крылья
+ChangeItemList[195]=	{	8142	,	5	,	8012	,	1	}
+ChangeItemList[196]=	{	8142	,	5	,	8013	,	1	}
+ChangeItemList[197]=	{	8142	,	5	,	8014	,	1	}
+ChangeItemList[198]=	{	8142	,	5	,	8015	,	1	}
+ChangeItemList[199]=	{	8142	,	5	,	8016	,	1	}
+ChangeItemList[200]=	{	8142	,	5	,	8017	,	1	}
+ChangeItemList[201]=	{	8142	,	5	,	8018	,	1	}
+ChangeItemList[202]=	{	8142	,	5	,	8019	,	1	}
+--[[
+ChangeItemList[191]=	{	8144	,	2	,	2835	,	1	}
+ChangeItemList[194]=	{	8143	,	1	,	4976	,	10	}
+ChangeItemList[195]=	{	8143	,	1	,	4957	,	10	}
+ChangeItemList[196]=	{	8143	,	1	,	4938	,	10	}
+ChangeItemList[197]=	{	8143	,	1	,	4974	,	10	}
+ChangeItemList[182]=	{	8143	,	1	,	1087	,	1	}
+ChangeItemList[183]=	{	8143	,	1	,	1088	,	1	}
+ChangeItemList[184]=	{	8143	,	1	,	1089	,	1	}
+ChangeItemList[175]=	{	8142	,	3	,	1858	,	1	}
+--]]
+--фрукты х2 за серебро-- убранно с жетонов
+ChangeItemList[203]=	{	8142	,	1	,	276	,	1	}
+ChangeItemList[204]=	{	8142	,	1	,	277	,	1	}
+ChangeItemList[205]=	{	8142	,	1	,	278	,	1	}
+ChangeItemList[206]=	{	8142	,	1	,	279	,	1	}
+ChangeItemList[207]=	{	8142	,	1	,	280	,	1	}
+--скилы--урезанно с жетонов
+ChangeItemList[208]=	{	8142	,	10	,	3301	,	1	}--Кристальное благословение
+ChangeItemList[209]=	{	8142	,	10	,	3300	,	1	}--Сильная магия
+ChangeItemList[210]=	{	8141	,	10	,	3462	,	1	}
+ChangeItemList[211]=	{	8141	,	10	,	3463	,	1	}
+--сбросы--убраны с торговли за жетоны(введены в ашота)
+ChangeItemList[212]=	{	8141	,	10	,	3109	,	1	}--силы
+ChangeItemList[213]=	{	8141	,	10	,	3110	,	1	}--тела
+ChangeItemList[214]=	{	8141	,	10	,	3111	,	1	}--точность
+ChangeItemList[215]=	{	8141	,	10	,	3112	,	1	}--ловкость
+ChangeItemList[216]=	{	8141	,	10	,	3113	,	1	}--дух
+--дыракол-- убрано с жетонов
+ChangeItemList[217]=	{	8142	,	5	,	890	,	1	}--
+ChangeItemList[218]=	{	8142	,	5	,	891	,	1	}--
 
-ChangeItemList[186]=	{	8141	,	99	,	8142	,	1	}--Медью->Серебро
-ChangeItemList[187]=	{	8142	,	1	,	8141	,	99	}--Серебро->Медь
-ChangeItemList[188]=	{	8142	,	99	,	8143	,	1	}--Серебро->Золото
-ChangeItemList[189]=	{	8143	,	1	,	8142	,	99	}--Золото->Серебро
-ChangeItemList[190]=	{	8143	,	99	,	8144	,	1	}--Золото->Платина
-ChangeItemList[191]=	{	8144	,	1	,	8143	,	99	}----Платина->Золото
---Мечи 
-ChangeItemList[192]=	{	8142	,	15	,	5001	,	1	}
-ChangeItemList[193]=	{	8142	,	15	,	5008	,	1	}
-ChangeItemList[194]=	{	8142	,	20	,	5002	,	1	}
-ChangeItemList[195]=	{	8142	,	20	,	5007	,	1	}
---Молот
-ChangeItemList[196]=	{	8142	,	30	,	5003	,	1	}
-ChangeItemList[197]=	{	8142	,	40	,	5009	,	1	}
---Пистолеты\Луки
-ChangeItemList[198]=	{	8142	,	30	,	5005	,	1	}
-ChangeItemList[199]=	{	8142	,	40	,	5011	,	1	}
-ChangeItemList[200]=	{	8142	,	30	,	5448	,	1	}
-ChangeItemList[201]=	{	8142	,	40	,	5612	,	1	}
---Посохи
-ChangeItemList[202]=	{	8142	,	30	,	5006	,	1	}
-ChangeItemList[203]=	{	8142	,	40	,	5012	,	1	}
-ChangeItemList[204]=	{	8142	,	30	,	5004	,	1	}
-ChangeItemList[205]=	{	8142	,	40	,	5010	,	1	}
-
---Аппы Ланса за медь
-ChangeItemList[206]=	{	8141	,	20	,	8823	,	1	}
-ChangeItemList[207]=	{	8141	,	30	,	8821	,	1	}
-ChangeItemList[208]=	{	8141	,	40	,	8822	,	1	}
-ChangeItemList[209]=	{	8141	,	50	,	8824	,	1	}
-ChangeItemList[210]=	{	8141	,	60	,	8825	,	1	}
-ChangeItemList[211]=	{	8141	,	70	,	8826	,	1	}
---Аппа Карциза
-ChangeItemList[212]=	{	8141	,	20	,	8829	,	1	}
-ChangeItemList[213]=	{	8141	,	30	,	8827	,	1	}
-ChangeItemList[214]=	{	8141	,	40	,	8828	,	1	}
-ChangeItemList[215]=	{	8141	,	50	,	8830	,	1	}
-ChangeItemList[216]=	{	8141	,	60	,	8831	,	1	}
-ChangeItemList[217]=	{	8141	,	70	,	8832	,	1	}
---Аппы Филис
-ChangeItemList[218]=	{	8141	,	20	,	8835	,	1	}
-ChangeItemList[219]=	{	8141	,	30	,	8833	,	1	}
-ChangeItemList[220]=	{	8141	,	40	,	8834	,	1	}
-ChangeItemList[221]=	{	8141	,	50	,	8836	,	1	}
-ChangeItemList[222]=	{	8141	,	60	,	8837	,	1	}
-ChangeItemList[223]=	{	8141	,	70	,	8838	,	1	}
---Аппы Ами
-ChangeItemList[224]=	{	8141	,	20	,	8841	,	1	}
-ChangeItemList[225]=	{	8141	,	30	,	8839	,	1	}
-ChangeItemList[226]=	{	8141	,	40	,	8840	,	1	}
-ChangeItemList[227]=	{	8141	,	50	,	8842	,	1	}
-ChangeItemList[228]=	{	8141	,	60	,	8843	,	1	}
---ChangeItemList[229]=	{	8141	,	70	,	8844	,	1	}
-
-ChangeItemList[230]=	{	855	,	99	,	8141	,	5	}--МФ->Медь
---Обмен Серебра
-ChangeItemList[231]=	{	8142	,	10	,	3910	,	1	}--Хекс
-ChangeItemList[232]=	{	8142	,	5	,	3094	,	1	}--УС
-ChangeItemList[233]=	{	8142	,	5	,	3096	,	1	}--УУ
-ChangeItemList[234]=	{	8142	,	3	,	3879	,	1	}--ОТ
-ChangeItemList[235]=	{	8142	,	7	,	3883	,	1	}--ССФ
-ChangeItemList[236]=	{	8142	,	7	,	3884	,	1	}--КОФ
-ChangeItemList[237]=	{	8142	,	7	,	8551	,	1	}--
-ChangeItemList[238]=	{	8142	,	1	,	227	,	10	}--Питание фей
---ChangeItemList[239]=	{	8142	,	1	,	8844	,	1	}
-ChangeItemList[240]=	{	8142	,	5	,	3075	,	1	}--Комп катализатор
-ChangeItemList[241]=	{	8142	,	3	,	3462	,	20	}--Клевер
-ChangeItemList[242]=	{	8142	,	3	,	3463	,	20	}--Кристалл
-ChangeItemList[243]=	{	8142	,	5	,	3074	,	1	}--Очищ самоцвет
---Монеты за задание
-ChangeItemList[244]=	{	8288	,	3	,	8548	,	1	}--Монета за задание - книга
-ChangeItemList[245]=	{	8288	,	5	,	8142	,	3	}--Монета за задание жетон
-ChangeItemList[246]=	{	8288	,	2	,	7792	,	1	}--Туман
-ChangeItemList[247]=	{	8288	,	25	,	7793	,	1	}--Волнолом
-
-ChangeItemList[248]=	{	8141	,	90	,	885	,	1	}--реф
-ChangeItemList[249]=	{	8141	,	90	,	8613	,	1	}--
-ChangeItemList[250]=	{	8142	,	2	,	8614	,	1	}--
-ChangeItemList[251]=	{	8142	,	4	,	8615	,	1	}--
-ChangeItemList[252]=	{	8142	,	6	,	8616	,	1	}--
-
---начинать с 2701
-ChangeItemList[2701]=	{	8142	,	5	,	8865	,	1	}--свиток морских умений
-ChangeItemList[2702]=	{	8142	,	5	,	8866	,	1	}--
-ChangeItemList[2703]=	{	8142	,	5	,	8867	,	1	}--
-ChangeItemList[2704]=	{	8142	,	5	,	8868	,	1	}--
-ChangeItemList[2705]=	{	8142	,	5	,	8869	,	1	}--
-
-ChangeItemList[2706]=	{	8143	,	8	,	3088	,	1	}--Расширения
-ChangeItemList[2707]=	{	8143	,	8	,	3090	,	1	}--
-ChangeItemList[2708]=	{	8143	,	8	,	3091	,	1	}--
-ChangeItemList[2709]=	{	8143	,	8	,	3093	,	1	}--Расширения
-ChangeItemList[2710]=	{	8143	,	35	,	3000	,	1	}--Свадьба
-
-
-
-ChangeItemList[2711]=	{	8143	,	5	,	8620	,	1	}--Свиток
-ChangeItemList[2712]=	{	8143	,	75	,	136	,	1	}--Фрукт
-ChangeItemList[2713]=	{	8143	,	75	,	137	,	1	}--Фрукт
-ChangeItemList[2714]=	{	8143	,	75	,	138	,	1	}--Фрукт
-ChangeItemList[2715]=	{	8143	,	75	,	139	,	1	}--Фрукт
-ChangeItemList[2716]=	{	8143	,	75	,	140	,	1	}--Фрукт
-ChangeItemList[2717]=	{	8143	,	75	,	141	,	1	}--Фрукт
-
-ChangeItemList[2718]=	{	8142	,	20	,	8617	,	1	}--Самоцвет +5
-ChangeItemList[2719]=	{	8142	,	2	,	854	,	1	}--Самоцвет +5
-
-ChangeItemList[2720]=	{	8141	,	90	,	8577	,	1	}--Ансы 35
-ChangeItemList[2721]=	{	8142	,	5	,	3422	,	1	}--Ансы +45
-ChangeItemList[2722]=	{	8142	,	90	,	3423	,	1	}--Ансы 55
-ChangeItemList[2723]=	{	8143	,	25	,	4288	,	1	}--Ансы 65
-ChangeItemList[2724]=	{	8143	,	100	,	2842	,	1	}--Ансы 75
-ChangeItemList[2724]=	{	8142	,	5	,	1033	,	1	}--ЗЕ
-
-
-
-
---Починка предметов
+--їЙТФ±»РЮАнµДµАѕЯАаРН
 Item_CanRepair_Num = 11
 Item_CanRepair_ID = { }
 Item_CanRepair_ID [0]  =		1	--ЅЈ
@@ -766,10 +474,27 @@ Item_CanRepair_ID [11] =		9	--·ЁХИ
 
 
 
+--їЙТФ±»ѕ«Б¶µДµАѕЯАаРН
 
--------------------------------------
--- Используется для квеста "Бытие" --
--------------------------------------
+Item_CanJinglian_Num = 13
+Item_CanJinglian_ID = { }
+
+Item_CanJinglian_ID [0]  =		1	--ЅЈ
+Item_CanJinglian_ID [1]  =		2	--ѕЮЅЈ
+Item_CanJinglian_ID [2]  =		3	--№­
+Item_CanJinglian_ID [3]  =		4	--»рЗ№
+Item_CanJinglian_ID [4]  =		7	--Ш°КЧ
+Item_CanJinglian_ID [5]  =		11	--¶ЬЕЖ
+Item_CanJinglian_ID [6]  =		20	--Г±ЧУ
+Item_CanJinglian_ID [7]  =		22	--ТВ·ю
+Item_CanJinglian_ID [8]  =		23	--КЦМЧ
+Item_CanJinglian_ID [9]  =		24	--Р¬ЧУ
+Item_CanJinglian_ID [10] =		27	--Татуировка
+Item_CanJinglian_ID [11] =		9	--·ЁХИ
+Item_CanJinglian_ID [12] =		25	--Бижутерия
+Item_CanJinglian_ID [13] =		26	--Кольцо
+
+-------------------------------------------------------------------
 JNSTime_Flag_Num=13
 JNSTime_Flag={}
 JNSTime_Flag[1]				=0
@@ -785,10 +510,7 @@ JNSTime_Flag[10]			=273
 JNSTime_Flag[11]			=304
 JNSTime_Flag[12]			=334
 JNSTime_Flag[13]			=365
-
------------------------------------------
--- Массив с опытом для игровых уровней --
------------------------------------------
+--------------------------------------------------------------------ј¶±рУл¶ФУ¦ЧЬѕ­Сй
 DEXP_Num = 100
 DEXP	={}
 DEXP[1]=2
@@ -893,60 +615,58 @@ DEXP[99]=1962163016
 DEXP[100]=2088354770
 
 
-	-------------------------------
-	-- Массив с характеристиками --
-	-------------------------------
-STAR_ATTR_Num	= 47 -- Кол-во характеристик
-STAR_ATTR		= {}
-STAR_ATTR[1]	= "Бонус Силы "
-STAR_ATTR[2]	= "Бонус Ловкости "
-STAR_ATTR[3]	= "Бонус Точности "
-STAR_ATTR[4]	= "Бонус Телосложения "
-STAR_ATTR[5]	= "Бонус Духа "
-STAR_ATTR[6]	= "Бонус Удачи "
-STAR_ATTR[7]	= "Добавление частоты коэффициента атаки "
-STAR_ATTR[8]	= "Добавление коэффициента расстояния атаки "
-STAR_ATTR[9]	= "Минимальный коэффициент бонуса атаки "
-STAR_ATTR[10]	= "Максимальный коэффициент бонуса атаки "
-STAR_ATTR[11]	= "Бонус Защиты "
-STAR_ATTR[12]	= "Бонус Макс. Здоровья"
-STAR_ATTR[13]	= "Бонус макс. Маны "
-STAR_ATTR[14]	= "Бонус Уклонения "
-STAR_ATTR[15]	= "Бонус Попадания "
-STAR_ATTR[16]	= "Бонус Скорости атаки "
-STAR_ATTR[17]	= "Бонус Выпадения % вещей "
-STAR_ATTR[18]	= "Бонус востановления Здоровья "
-STAR_ATTR[19]	= "Бонус востановления Маны "
-STAR_ATTR[20]	= "Бонус Скорость передвежения "
-STAR_ATTR[21]	= "Бонус Скорости сбора "
-STAR_ATTR[22]	= "Бонус Физического сопративления "
-STAR_ATTR[23]	= "Бонуса нет "
-STAR_ATTR[24]	= "Бонуса нет "
-STAR_ATTR[25]	= "Бонуса нет "
-STAR_ATTR[26]	= "Бонус постояной Силы "
-STAR_ATTR[27]	= "Бонус постояной Ловкости "
-STAR_ATTR[28]	= "Бонус посотяной Точности "
-STAR_ATTR[29]	= "Бонус постояного Телосложения "
-STAR_ATTR[30]	= "Бонус постояного Духа "
-STAR_ATTR[31]	= "Бонус постояной Удачи "
-STAR_ATTR[32]	= "Бонус постояного Попадания "
-STAR_ATTR[33]	= "Бонус постояного нападения с добавлением атаки "
-STAR_ATTR[34]	= "Бонус минимальной Силы атаки "
-STAR_ATTR[35]	= "Бонус максимальной Силы атаки "
-STAR_ATTR[36]	= "Бонус постояной Защиты "
-STAR_ATTR[37]	= "Бонус постояно максимального Здоровья "
-STAR_ATTR[38]	= "Бонус постояно максимальной Маны "
-STAR_ATTR[39]	= "Бонус постояного Уклонения "
-STAR_ATTR[40]	= "Бонус постояного Попадания "
-STAR_ATTR[41]	= "Бонус постояной Скорости атаки "
-STAR_ATTR[42]	= "Бонус постояного выпадения % вещей "
-STAR_ATTR[43]	= "Бонус постояного востановления Здоровья "
-STAR_ATTR[44]	= "Бонус постояного востановления Маны "
-STAR_ATTR[45]	= "Бонус постояной Скорости передвежения "
-STAR_ATTR[46]	= "Бонус постояной Скорости сбор "
-STAR_ATTR[47]	= "Бонус постояного Физического Сопротивления "
 
-
+--------------------КфРФ±аєЕ
+STAR_ATTR_Num = 47
+STAR_ATTR={}
+STAR_ATTR[1]				=	"Strength modulus bonus   "	--Б¦БїПµКэјУіЙ             
+STAR_ATTR[2]				=	"Agility modulus bonus            "	--ГфЅЭПµКэјУіЙ             
+STAR_ATTR[3]				=	"Accuracy modulus bonus   "	--ЧЁЧўПµКэјУіЙ             
+STAR_ATTR[4]				=	"Constitution modulus bonus   "	--МеЦКПµКэјУіЙ             
+STAR_ATTR[5]				=	"Spirit modulus bonus   "	--ѕ«Б¦ПµКэјУіЙ             
+STAR_ATTR[6]				=	"Luck modulus bonus   "	--РТФЛПµКэјУіЙ             
+STAR_ATTR[7]				=	"№Ґ»чЖµВКПµКэјУіЙ      "	--№Ґ»чЖµВКПµКэјУіЙ       
+STAR_ATTR[8]				=	"Attack Range modulus bonus"	--№Ґ»чѕаАлПµКэјУіЙ       
+STAR_ATTR[9]				=	"ЧоРЎ№Ґ»чБ¦ПµКэјУіЙ   "	--ЧоРЎ№Ґ»чБ¦ПµКэјУіЙ    
+STAR_ATTR[10]				=	"Чоґу№Ґ»чБ¦ПµКэјУіЙ   "	--Чоґу№Ґ»чБ¦ПµКэјУіЙ    
+STAR_ATTR[11]				=	"·АУщПµКэјУіЙ            "	--·АУщПµКэјУіЙ             
+STAR_ATTR[12]				=	"Max HP modulus bonus  "	--ЧоґуHpПµКэјУіЙ         
+STAR_ATTR[13]				=	"Max SP modulus bonus  "	--ЧоґуSpПµКэјУіЙ         
+STAR_ATTR[14]				=	"Dodge modulus bonus  "	--ЙБ±ЬВКПµКэјУіЙ          
+STAR_ATTR[15]				=	"Hit Rate modulus bonus  "	--ГьЦРВКПµКэјУіЙ          
+STAR_ATTR[16]				=	"Berserk Rate modulus bonus  "	--±¬»чВКПµКэјУіЙ          
+STAR_ATTR[17]				=	"Treasure drop rate modulus bonus  "	--С°±¦ВКПµКэјУіЙ          
+STAR_ATTR[18]				=	"HP Recovery Rate modulus bonus "	--hp»ЦёґЛЩ¶ИПµКэјУіЙ   
+STAR_ATTR[19]				=	"SP Recovery rate modulus bonus "	--sp»ЦёґЛЩ¶ИПµКэјУіЙ    
+STAR_ATTR[20]				=	"Movement speed modulus bonus  "	--ТЖ¶ЇЛЩ¶ИПµКэјУіЙ       
+STAR_ATTR[21]				=	"Resource gathering rate modulus bonus"	--ЧКФґІЙјЇЛЩ¶ИПµКэјУіЙ 
+STAR_ATTR[22]				=	"Physical resist modulus bonus      "	--ОпАнµЦї№ПµКэјУіЙ       
+STAR_ATTR[23]				=	"ОЮ                           "	--ОЮ                            
+STAR_ATTR[24]				=	"ОЮ                           "	--ОЮ                            
+STAR_ATTR[25]				=	"ОЮ                           "	--ОЮ                            
+STAR_ATTR[26]				=	"Strength constant bonus   "	--Б¦БїіЈКэјУіЙ             
+STAR_ATTR[27]				=	"Agility constant bonus   "	--ГфЅЭіЈКэјУіЙ             
+STAR_ATTR[28]				=	"Accuracy constant bonus   "	--ЧЁЧўіЈКэјУіЙ             
+STAR_ATTR[29]				=	"Constitution constant bonus   "	--МеЦКіЈКэјУіЙ             
+STAR_ATTR[30]				=	"Spirit constant bonus   "	--ѕ«Б¦іЈКэјУіЙ             
+STAR_ATTR[31]				=	"Luck constant bonus            "	--РТФЛіЈКэјУіЙ             
+STAR_ATTR[32]				=	"Hit Rate constant bonus"	--№Ґ»чЖµВКіЈКэјУіЙ       
+STAR_ATTR[33]				=	"№Ґ»чѕаАліЈКэјУіЙ      "	--№Ґ»чѕаАліЈКэјУіЙ       
+STAR_ATTR[34]				=	"ЧоРЎ№Ґ»чБ¦іЈКэјУіЙ   "	--ЧоРЎ№Ґ»чБ¦іЈКэјУіЙ    
+STAR_ATTR[35]				=	"Чоґу№Ґ»чБ¦іЈКэјУіЙ   "	--Чоґу№Ґ»чБ¦іЈКэјУіЙ    
+STAR_ATTR[36]				=	"Defense constant bonus"	--·АУщіЈКэјУіЙ             
+STAR_ATTR[37]				=	"Max HP constant bonus   "	--ЧоґуHpіЈКэјУіЙ         
+STAR_ATTR[38]				=	"Max SP constant bonus   "	--ЧоґуSpіЈКэјУіЙ         
+STAR_ATTR[39]				=	"Dodge constant bonus   "	--ЙБ±ЬВКіЈКэјУіЙ          
+STAR_ATTR[40]				=	"Hit Rate constant bonus   "	--ГьЦРВКіЈКэјУіЙ          
+STAR_ATTR[41]				=	"Berserk rate constant bonus   "	--±¬»чВКіЈКэјУіЙ          
+STAR_ATTR[42]				=	"Treasure drop rate constant bonus   "	--С°±¦ВКіЈКэјУіЙ          
+STAR_ATTR[43]				=	"HP Recovery Rate constant bonus "	--hp»ЦёґЛЩ¶ИіЈКэјУіЙ   
+STAR_ATTR[44]				=	"SP Recovery Rate constant bonus "	--sp»ЦёґЛЩ¶ИіЈКэјУіЙ    
+STAR_ATTR[45]				=	"Movement speed constant bonus  "	--ТЖ¶ЇЛЩ¶ИіЈКэјУіЙ       
+STAR_ATTR[46]				=	"Resource gathering rate constant bonus"	--ЧКФґІЙјЇЛЩ¶ИіЈКэјУіЙ 
+STAR_ATTR[47]				=	"Physical Resist constant bonus  "	--ОпАнµЦї№іЈКэјУіЙ       
+--------------------------------------------------------------------ЧЦДё¶јЛыВиКЗЧЦДё
 WORD_Num = 52
 WORD={}
 WORD[1]="A"
@@ -1001,9 +721,8 @@ WORD[49]="w"
 WORD[50]="x"
 WORD[51]="y"
 WORD[52]="z"
---------------------------------------------------
--- Массив с предметами для НПС Джекпот/Лохотрон --
---------------------------------------------------
+-------------------------
+	-------АП»ў»ъПЮЦЖID
 	LHJ_ID_Num = 252					
 	LHJ_ID	=	{}			
 	LHJ_ID	[	1	]	=	387
@@ -1259,12 +978,8 @@ WORD[52]="z"
 	LHJ_ID	[	251	]	=	2833
 	LHJ_ID	[	252	]	=	2834
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---                                                                 Массив с предметами для анализа (Начало)                                                           --
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------
--- Каменный Катализатор --
---------------------------
+
+--	КЇІД		
 	STONE1_ID_Num = 143
 	STONE1_ID	=	{}			
 	STONE1_ID	[	1	]	=	3387
@@ -1410,9 +1125,8 @@ WORD[52]="z"
 	STONE1_ID	[	141	]	=	4832
 	STONE1_ID	[	142	]	=	4038
 	STONE1_ID	[	143	]	=	4048
-------------------------
--- Жидкий катализатор --
-------------------------
+-------------------------------------
+--	ТєМе					
 	WATER_ID_Num = 37
 	WATER_ID	=	{}			
 	WATER_ID	[	1	]	=	1585
@@ -1453,10 +1167,8 @@ WORD[52]="z"
 	WATER_ID	[	36	]	=	1332
 	WATER_ID	[	37	]	=	1351
 
-
------------------------
--- Катализатор кости --
------------------------
+------------------------------------------------
+--	№ЗН·		
 	BONE_ID_Num = 176
 	BONE_ID	=	{}			
 	BONE_ID	[	1	]	=	1583
@@ -1636,9 +1348,8 @@ WORD[52]="z"
 	BONE_ID	[	175	]	=	1758
 	BONE_ID	[	176	]	=	1626
 
---------------------------
--- Катализатор для шкур --
---------------------------
+------------------------------------------
+--	Г«Ж¤		
 	SKIP_ID_Num = 95
 	SKIP_ID	=	{}			
 	SKIP_ID	[	1	]	=	4317
@@ -1740,9 +1451,8 @@ WORD[52]="z"
 	SKIP_ID	[	95	]	=	1703	--Магическая одежда(1000000)
 
 
-------------------------------
--- Растительный катализатор --
-------------------------------
+-------------------------------------------------
+--	ЦІОп			
 	TREE_ID_Num = 72
 	TREE_ID	=	{}			
 	TREE_ID	[	1	]	=	1576
@@ -1820,7 +1530,7 @@ WORD[52]="z"
 	TREE_ID	[	72	]	=	1768	--Трава кошачьей души(1000000)
 
 --------------------------------------------
---Кук	
+--	КіБП	
 	FOOD_ID_Num = 151
 	FOOD_ID	=	{}			
 	FOOD_ID	[	1	]	=	1690
@@ -1975,9 +1685,8 @@ WORD[52]="z"
 	FOOD_ID	[	150	]	=	4017
 	FOOD_ID	[	151	]	=	4018
 
------------------------------
--- Специальный катализатор --
------------------------------
+-------------------------------------
+--	МШКв	
 	SPECIL_ID_Num = 346
 	SPECIL_ID	=	{}			
 	SPECIL_ID	[	1	]	=	1573
@@ -2326,13 +2035,8 @@ WORD[52]="z"
 	SPECIL_ID	[	344	]	=	3065
 	SPECIL_ID	[	345	]	=	1797
 	SPECIL_ID	[	346	]	=	1797
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---                                                                 Массив с предметами для анализа (Конец)                                                            --
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
----------------------------------------------
--- Массив с предметами для Чертежа Пачкули --
----------------------------------------------
+-----------------------МШКвID
 	TESHU_ID_Num = 54
 	TESHU_ID	=	{}
 	TESHU_ID	[	1	]	=	2650
@@ -2390,22 +2094,11 @@ WORD[52]="z"
 	TESHU_ID	[	53	]	=	2665
 	TESHU_ID	[	54	]	=	2665
 
---------------------------------------------------------
---          Массив с предметами производства          --
---------------------------------------------------------
---                   Структура:                       --
--- 1 - ID пердмета;                                   --
--- 2 - Уровень предмета при использовании чертежа;    --
--- 3 - ID ингридиента для приготовления;              --
--- 4 - ID ингридиента для приготовления;              --
--- 5 - ID ингридиента для приготовления;              --
--- 6 - Кол-во предметов при использовании чертежа     --
---------------------------------------------------------
---              Количество строк: 281                 --
---------------------------------------------------------
+--	ЦЖФм																																							
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ																																
 	ZHIZAO_Qua	=	5	 			ZHIZAO_Mxcount	=	280																															
 	ZHIZAO_ID	=	{}					ZHIZAO_LV	=	{}					ZHIZAO_ID1	=	{}					ZHIZAO_ID2	=	{}					ZHIZAO_ID3	=	{}				ZHIZAO__Rad	=	{}			
-	ZHIZAO_ID	[	1	]	=	8864		ZHIZAO_LV	[	1	]	=	10		ZHIZAO_ID1	[	1	]	=	4418		ZHIZAO_ID2	[	1	]	=	3999		ZHIZAO_ID3	[1	]	=	1677		ZHIZAO__Rad	[	1	]	=	5
+	ZHIZAO_ID	[	1	]	=	1067		ZHIZAO_LV	[	1	]	=	10		ZHIZAO_ID1	[	1	]	=	4418		ZHIZAO_ID2	[	1	]	=	3999		ZHIZAO_ID3	[1	]	=	1677		ZHIZAO__Rad	[	1	]	=	5
 	ZHIZAO_ID	[	2	]	=	1068		ZHIZAO_LV	[	2	]	=	10		ZHIZAO_ID1	[	2	]	=	4418		ZHIZAO_ID2	[	2	]	=	3999		ZHIZAO_ID3	[2	]	=	1677		ZHIZAO__Rad	[	2	]	=	5
 	ZHIZAO_ID	[	3	]	=	1069		ZHIZAO_LV	[	3	]	=	10		ZHIZAO_ID1	[	3	]	=	1708		ZHIZAO_ID2	[	3	]	=	3999		ZHIZAO_ID3	[3	]	=	1677		ZHIZAO__Rad	[	3	]	=	5
 	ZHIZAO_ID	[	4	]	=	1070		ZHIZAO_LV	[	4	]	=	10		ZHIZAO_ID1	[	4	]	=	1708		ZHIZAO_ID2	[	4	]	=	3999		ZHIZAO_ID3	[4	]	=	1677		ZHIZAO__Rad	[	4	]	=	5
@@ -2687,19 +2380,9 @@ WORD[52]="z"
 	ZHIZAO_ID	[	280	]	=	2794		ZHIZAO_LV	[	280	]	=	100		ZHIZAO_ID1	[	280	]	=	1626		ZHIZAO_ID2	[	280	]	=	4008		ZHIZAO_ID3	[280	]	=	2610		ZHIZAO__Rad	[	280	]	=	1
 
 
---------------------------------------------------------
---            Массив с предметами ремесла             --
---------------------------------------------------------
---                   Структура:                       --
--- 1 - ID пердмета;                                   --
--- 2 - Уровень предмета при использовании чертежа;    --
--- 3 - ID ингридиента для приготовления;              --
--- 4 - ID ингридиента для приготовления;              --
--- 5 - ID ингридиента для приготовления;              --
--- 6 - Кол-во предметов при использовании чертежа     --
---------------------------------------------------------
---              Количество строк: 903                 --
---------------------------------------------------------
+																																									
+--	ЦэФм																																								
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ																																	
 	ZHUZAO_Qua	=	5	 				ZHUZAO_Mxcount	=	902																															
 	ZHUZAO_ID	=	{}					ZHUZAO_LV	=	{}					ZHUZAO_ID1	=	{}					ZHUZAO_ID2	=	{}					ZHUZAO_ID3	=	{}					ZHUZAO__Rad	=	{}			
 	ZHUZAO_ID	[	1	]	=	635		ZHUZAO_LV	[	1	]	=	10		ZHUZAO_ID1	[	1	]	=	4427		ZHUZAO_ID2	[	1	]	=	4415		ZHUZAO_ID3	[	1	]	=	2611		ZHUZAO__Rad	[	1	]	=	1
@@ -3605,23 +3288,9 @@ WORD[52]="z"
 	ZHUZAO_ID	[	901	]	=	43		ZHUZAO_LV	[	901	]	=	80		ZHUZAO_ID1	[	901	]	=	2490		ZHUZAO_ID2	[	901	]	=	3379		ZHUZAO_ID3	[	901	]	=	2595		ZHUZAO__Rad	[	901	]	=	1
 	ZHUZAO_ID	[	902	]	=	1412		ZHUZAO_LV	[	902	]	=	80		ZHUZAO_ID1	[	902	]	=	2490		ZHUZAO_ID2	[	902	]	=	4036		ZHUZAO_ID3	[	902	]	=	2595		ZHUZAO__Rad	[	902	]	=	1																																	
 																																									
-
-
---------------------------------------------------------
---           Массив с предметами кулинарии            --
---------------------------------------------------------
---                   Структура:                       --
--- 1 - ID пердмета;                                   --
--- 2 - Уровень предмета при использовании чертежа;    --
--- 3 - ID ингридиента для приготовления;              --
--- 4 - ID ингридиента для приготовления;              --
--- 5 - ID ингридиента для приготовления;              --
--- 6 - Кол-во предметов при использовании чертежа     --
---------------------------------------------------------
---              Количество строк: 41                  --
---------------------------------------------------------
-
-																																									PENGREN_Qua	=	5	 				PENGREN_Mxcount	=	40																															
+--	Елвї																																								
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ																																	
+	PENGREN_Qua	=	5	 				PENGREN_Mxcount	=	40																															
 	PENGREN_ID	=	{}					PENGREN_LV	=	{}					PENGREN_ID1	=	{}					PENGREN_ID2	=	{}					PENGREN_ID3	=	{}					PENGREN__Rad	=	{}			
 	PENGREN_ID	[	1	]	=	1848		PENGREN_LV	[	1	]	=	0		PENGREN_ID1	[	1	]	=	1576		PENGREN_ID2	[	1	]	=	4411		PENGREN_ID3	[	1	]	=	3116		PENGREN__Rad	[	1	]	=	1
 	PENGREN_ID	[	2	]	=	3133		PENGREN_LV	[	2	]	=	0		PENGREN_ID1	[	2	]	=	1576		PENGREN_ID2	[	2	]	=	1704		PENGREN_ID3	[	2	]	=	3116		PENGREN__Rad	[	2	]	=	1
@@ -3664,10 +3333,7 @@ WORD[52]="z"
 	PENGREN_ID	[	39	]	=	4027		PENGREN_LV	[	39	]	=	90		PENGREN_ID1	[	39	]	=	1768		PENGREN_ID2	[	39	]	=	4017		PENGREN_ID3	[	39	]	=	2624		PENGREN__Rad	[	39	]	=	1
 	PENGREN_ID	[	40	]	=	4028		PENGREN_LV	[	40	]	=	100		PENGREN_ID1	[	40	]	=	1768		PENGREN_ID2	[	40	]	=	4018		PENGREN_ID3	[	40	]	=	2624		PENGREN__Rad	[	40	]	=	1
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---                                                    Массивы для предмета Кровожадный Сундук (ID 0459) (Начало)                                                       --
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+--------------------ІвКФ±¦ПдїЄіэµАѕЯµДID
 A1	=	1849
 A2 	=	1849
 A3 	=	1849
@@ -3756,127 +3422,24 @@ SE=15			-----ВМЙ«
 STONE_ID				=		0878
 STONE_LV				=		2
 
-------------------------------------------
-	-- Типы предметов, которые можно ковать --
-	------------------------------------------
-Item_CanJinglian_Num = 13
-Item_CanJinglian_ID = { } -- Кол-во типов предметов
-Item_CanJinglian_ID [0]  =		1	-- Одноручный меч
-Item_CanJinglian_ID [1]  =		2	-- Двуручный меч
-Item_CanJinglian_ID [2]  =		3	-- Лук
-Item_CanJinglian_ID [3]  =		4	-- Пистолет
-Item_CanJinglian_ID [4]  =		7	-- Клинок покорителя морей
-Item_CanJinglian_ID [5]  =		11	-- Щит
-Item_CanJinglian_ID [6]  =		20	-- Шапка
-Item_CanJinglian_ID [7]  =		22	-- Доспехи
-Item_CanJinglian_ID [8]  =		23	-- Перчатки
-Item_CanJinglian_ID [9]  =		24	-- Ботинки
-Item_CanJinglian_ID [10] =		27	-- Тату
-Item_CanJinglian_ID [11] =		9	-- Посох
-Item_CanJinglian_ID [12] =		26	-- Кольцо
-Item_CanJinglian_ID [13] =		25	-- Бижа
 
-	--------------------------------
-	-- Массив с типами самоцветов --
-	--------------------------------
-StoneAttrType_Num = 70 --Количество самоцветов
---Массив с типами самоцветов
-StoneAttrType = {}
-StoneAttrType [0]		=		0
-StoneAttrType [1]		=		ITEMATTR_VAL_MNATK	--Огненный самоцвет
-StoneAttrType [2]		=		ITEMATTR_VAL_MNATK	--Самоцвет Ярости
-StoneAttrType [3]		=		ITEMATTR_VAL_MNATK	--Взрывной самоцвет
-StoneAttrType [4]		=		ITEMATTR_VAL_HIT	--Люстриновый самоцвет	
-StoneAttrType [5]		=		ITEMATTR_VAL_DEF	--Сияющий самоцвет	
-StoneAttrType [6]		=		ITEMATTR_VAL_MXHP	--Блестящий самоцвет
-StoneAttrType [7]		=		ITEMATTR_VAL_FLEE	--Теневой самоцвет
-StoneAttrType [8]		=		ITEMATTR_VAL_STA	--Самоцвет Духа
-StoneAttrType [9]		=		ITEMATTR_VAL_AGI	--Самоцвет Ветра
-StoneAttrType [10]		=		ITEMATTR_VAL_DEX	--Самоцвет удара
-StoneAttrType [11]		=		ITEMATTR_VAL_CON	--Самоцвет колосса
-StoneAttrType [12]		=		ITEMATTR_VAL_STR	--Самоцвет Ярости
-StoneAttrType [13]		=		ITEMATTR_VAL_MNATK	--Глаз черного дракона
-StoneAttrType [14]		=		ITEMATTR_VAL_PDEF	--Душа Черного дракона
-StoneAttrType [15]		=		ITEMATTR_VAL_MXHP	--Сердце черного дракона
-StoneAttrType [16]		=		ITEMATTR_VAL_STA	--Самоцвет души
-StoneAttrType [17]		=		ITEMATTR_VAL_DEF	--Желтый нефрит
-StoneAttrType [18]		=		ITEMATTR_VAL_MXHP	--Красный нефрит
-StoneAttrType [19]		=		ITEMATTR_VAL_MXSP	--Зеленый нефрит
-StoneAttrType [20]		=		ITEMATTR_VAL_CRT	--Аура Чиатана
-StoneAttrType [21]		=		ITEMATTR_VAL_HIT	--Удар Лока
-StoneAttrType [22]		=		ITEMATTR_VAL_FLEE	--Уклонение Бинга
-StoneAttrType [23]		=		ITEMATTR_VAL_DEF	--Защита Фенга
-StoneAttrType [24]		=		ITEMATTR_VAL_MXHP	--Усиление Акулы
-StoneAttrType [25]		=		ITEMATTR_VAL_STR	--Сияние Азраила
-StoneAttrType [26]		=		ITEMATTR_VAL_CON	--Неупокоенный Азраил
-StoneAttrType [27]		=		ITEMATTR_VAL_STA	--Свет Азраила
-StoneAttrType [28]		=		ITEMATTR_VAL_DEX	--Соединение Азраила
-StoneAttrType [29]		=		ITEMATTR_VAL_AGI	--Танец Азраила
-StoneAttrType [30]		=		ITEMATTR_VAL_AGI	--Сломанный Самоцвет Ветра
-StoneAttrType [31]		=		ITEMATTR_VAL_AGI	--Треснутый Самоцвет Ветра
-StoneAttrType [32]		=		ITEMATTR_VAL_AGI	--Неограненный Самоцвет Ветра
-StoneAttrType [33]		=		ITEMATTR_VAL_DEX	--Сломанный Самоцвет Удара
-StoneAttrType [34]		=		ITEMATTR_VAL_DEX	--Треснутый Самоцвет Удара
-StoneAttrType [35]		=		ITEMATTR_VAL_DEX	--Неограненный Самоцвет Удара
-StoneAttrType [36]		=		ITEMATTR_VAL_CON	--Сломанный Самоцвет Колосса
-StoneAttrType [37]		=		ITEMATTR_VAL_CON	--Треснутый Самоцвет Колосса
-StoneAttrType [38]		=		ITEMATTR_VAL_CON	--Неограненный Самоцвет Колосса
-StoneAttrType [39]		=		ITEMATTR_VAL_STR	--Сломанный Самоцвет Ярости
-StoneAttrType [40]		=		ITEMATTR_VAL_STR	--Треснутый Самоцвет Ярости
-StoneAttrType [41]		=		ITEMATTR_VAL_STR	--Неограненный Самоцвет Ярости
-StoneAttrType [42]		=		ITEMATTR_VAL_STA	--Сломанный Самоцвет Души
-StoneAttrType [43]		=		ITEMATTR_VAL_STA	--Треснутый Самоцвет Души
-StoneAttrType [44]		=		ITEMATTR_VAL_STA	--Неограненный Самоцвет Души
-StoneAttrType [45]		=		ITEMATTR_VAL_STR	--Великий Самоцвет Ярости
-StoneAttrType [46]		=		ITEMATTR_VAL_STA	--Великий Самоцвет Души
-StoneAttrType [47]		=		ITEMATTR_VAL_DEX	--Великий Самоцвет Удара
-StoneAttrType [48]		=		ITEMATTR_VAL_CON	--Великий Самоцвет Колосса
-StoneAttrType [49]		=		ITEMATTR_VAL_AGI	--Великий Самоцвет Ветра
-StoneAttrType [50]		=		ITEMATTR_VAL_MSPD	--Великий Самоцвет Хардина
-StoneAttrType [51]		=		ITEMATTR_VAL_ASPD	--Великий Самоцвет Фантома
-StoneAttrType [52]		=		ITEMATTR_VAL_SREC	--Великий Самоцвет Богини
-StoneAttrType [53]		=		ITEMATTR_VAL_HREC	--Великий Самоцвет Лиса
-StoneAttrType [54]		= 		ITEMATTR_VAL_MNATK --Самоцветы боссов
-StoneAttrType [55]		= 		ITEMATTR_VAL_HIT
-StoneAttrType [56]		= 		ITEMATTR_VAL_ASPD
-StoneAttrType [57]		= 		ITEMATTR_VAL_MXHP
-StoneAttrType [58]		= 		ITEMATTR_VAL_PDEF
-StoneAttrType [59]		= 		ITEMATTR_VAL_MSPD
-StoneAttrType [60]		= 		ITEMATTR_VAL_FLEE
-StoneAttrType [61]		= 		ITEMATTR_VAL_DEF
-StoneAttrType [62]		= 		ITEMATTR_VAL_MXSP
-StoneAttrType [63]		=		ITEMATTR_VAL_MXSP	--Дух Черного дракона
-StoneAttrType [64]		=		ITEMATTR_VAL_MSPD	--Самоцвет Скорости
-StoneAttrType [65]		=		ITEMATTR_VAL_PDEF	--Самоцвет Сопротивления
---Самоцветы в кольца
-StoneAttrType [66]		=		ITEMATTR_VAL_AGI	--Рубин
-StoneAttrType [67]		=		ITEMATTR_VAL_DEX	--Аметист
-StoneAttrType [68]		=		ITEMATTR_VAL_CON	--Изумруд
-StoneAttrType [69]		=		ITEMATTR_VAL_STR	--Сапфир
-StoneAttrType [70]		=		ITEMATTR_VAL_STA	--Янтарь
-
-
-
-------------------------------------------
--- Массив с характеристиками самоцветов --
-------------------------------------------
-StoneEff_Num = 70 --Количество самоцветов
+StoneEff_Num = 52
 StoneEff = {}
 StoneEff [0]			=		0
-StoneEff [1]			=		10	--Огненный самоцвет
-StoneEff [2]			=		13 	--Самоцвет Ярости
-StoneEff [3]			=		15	--Взрывной самоцвет
+StoneEff [1]			=		4	--Огненный самоцвет
+StoneEff [2]			=		6 	--Самоцвет Ярости
+StoneEff [3]			=		10	--Взрывной самоцвет
 StoneEff [4]			=		5	--Люстриновый самоцвет
-StoneEff [5]			=		8	--Сияющий самоцвет 
-StoneEff [6]			=		150	--Блестящий самоцвет
-StoneEff [7]			=		5	--Теневой самоцвет 
+StoneEff [5]			=		5	--Сияющий самоцвет 
+StoneEff [6]			=		100	--Блестящий самоцвет
+StoneEff [7]			=		2	--Теневой самоцвет 
 StoneEff [8]			=		1	--Самоцвет Духа
 StoneEff [9]			=		5	--Самоцвет Ветра
 StoneEff [10]			=		5	--Самоцвет удара
 StoneEff [11]			=		5	--Самоцвет колосса 
 StoneEff [12]			=		5	--Самоцвет Ярости
-StoneEff [13]			=		65	--Глаз черного дракона
-StoneEff [14]			=		2	--Душа Черного дракона
+StoneEff [13]			=		50	--Глаз черного дракона
+StoneEff [14]			=		3	--Душа Черного дракона
 StoneEff [15]			=		500	--Сердце черного дракона
 StoneEff [16]			=		5	--Самоцвет души
 StoneEff [17]			=		10	--Желтый нефрит
@@ -3892,19 +3455,19 @@ StoneEff [26]			=		8	--Неупокоенный Азраил
 StoneEff [27]			=		8	--Свет Азраила
 StoneEff [28]			=		8	--Соединение Азраила
 StoneEff [29]			=		8	--Танец Азраила
-StoneEff [30]			=		2	--Сломанный Самоцвет Ветра
+StoneEff [30]			=		2	--Сапфир
 StoneEff [31]			=		3	--Треснутый Самоцвет Ветра
 StoneEff [32]			=		4	--Неограненный Самоцвет Ветра
-StoneEff [33]			=		2	--Сломанный Самоцвет Удара
+StoneEff [33]			=		2	--Изумруд
 StoneEff [34]			=		3	--Треснутый Самоцвет Удара
 StoneEff [35]			=		4	--Неограненный Самоцвет Удара
-StoneEff [36]			=		2	--Сломанный Самоцвет Колосса
+StoneEff [36]			=		2	--Аметист
 StoneEff [37]			=		3	--Треснутый Самоцвет Колосса
 StoneEff [38]			=		4	--Неограненный Самоцвет Колосса
-StoneEff [39]			=		2	--Сломанный Самоцвет Ярости
+StoneEff [39]			=		2	--Рубин
 StoneEff [40]			=		3	--Треснутый Самоцвет Ярости
 StoneEff [41]			=		4	--Неограненный Самоцвет Ярости
-StoneEff [42]			=		2	--Сломанный Самоцвет Души
+StoneEff [42]			=		2	--Янтарь
 StoneEff [43]			=		3	--Треснутый Самоцвет Души
 StoneEff [44]			=		4	--Неограненный Самоцвет Души
 StoneEff [45]			=		6	--Великий Самоцвет Ярости
@@ -3912,32 +3475,11 @@ StoneEff [46]			=		6	--Великий Самоцвет Души
 StoneEff [47]			=		6	--Великий Самоцвет Удара
 StoneEff [48]			=		6	--Великий Самоцвет Колосса
 StoneEff [49]			=		6	--Великий Самоцвет Ветра
-StoneEff [50]			=		15	--Великий Самоцвет Хардина
-StoneEff [51]			=		12	--Великий Самоцвет Фантома
-StoneEff [52]			=		7	--Великий Самоцвет Богини
-StoneEff [53]			=		7	--Великий Самоцвет Лиса
-StoneEff [54] 			= 		65 -- Атака
-StoneEff [55] 			= 		15 -- Хит
-StoneEff [56] 			= 		15 -- Скорость атаки
-StoneEff [57] 			= 		400 -- Здоровье
-StoneEff [58] 			= 		4 -- Пр
-StoneEff [59] 			= 		15 -- Скорость перемещения
-StoneEff [60] 			= 		15 -- Уклон
-StoneEff [61] 			= 		15 -- Деф
-StoneEff [62] 			= 		250 -- МН	
-StoneEff [63]			=		500	--Дух Черного дракона
-StoneEff [64]			=		5	--Самоцвет Скорости
-StoneEff [65]			=		1	--Самоцвет Сопротивления
-StoneEff [66]			=		2	--Сапфир	
-StoneEff [67]			=		2	--Изумруд	
-StoneEff [68]			=		2	--Аметист	
-StoneEff [69]			=		2	--Рубин	
-StoneEff [70]			=		2	--Янтарь	
+StoneEff [50]			=		500	--Дух Черного дракона
+StoneEff [51]			=		5	--Самоцвет Скорости
+StoneEff [52]			=		1	--Самоцвет Сопротивления
 
--------------------------------------------
--- Массив с ID самоцветов в ItemInfo.txt --
--------------------------------------------
-StoneTpye_ID_Num = 70	--Количество самоцветов
+StoneTpye_ID_Num = 52
 StoneTpye_ID = {}
 StoneTpye_ID [0]	=		0
 StoneTpye_ID [1]	=		0878	--Огненный самоцвет
@@ -3964,24 +3506,24 @@ StoneTpye_ID [21]	=		5772	--Удар Лока
 StoneTpye_ID [22]	=		5773	--Уклонение Бинга
 StoneTpye_ID [23]	=		5774	--Защита Фенга
 StoneTpye_ID [24]	=		5775	--Усиление Акулы
-StoneTpye_ID [25]	=		5845	--Сияние Азраила						
+StoneTpye_ID [25]	=		5845	--Сияние Азраила
 StoneTpye_ID [26]	=		5846	--Неупокоенный Азраил
 StoneTpye_ID [27]	=		5847	--Свет Азраила
 StoneTpye_ID [28]	=		5848	--Соединение Азраила
 StoneTpye_ID [29]	=		5849	--Танец Азраила
-StoneTpye_ID [30]	=		6817	--Сломанный Самоцвет Ветра
+StoneTpye_ID [30]	=		8248	--Сапфир
 StoneTpye_ID [31]	=		6818	--Треснутый Самоцвет Ветра
 StoneTpye_ID [32]	=		6819	--Неограненный Самоцвет Ветра
-StoneTpye_ID [33]	=		6820	--Сломанный Самоцвет Удара
+StoneTpye_ID [33]	=		8247	--Изумруд
 StoneTpye_ID [34]	=		6821	--Треснутый Самоцвет Удара
 StoneTpye_ID [35]	=		6822	--Неограненный Самоцвет Удара
-StoneTpye_ID [36]	=		6823	--Сломанный Самоцвет Колосса
+StoneTpye_ID [36]	=		8246	--Аметист
 StoneTpye_ID [37]	=		6824	--Треснутый Самоцвет Колосса
 StoneTpye_ID [38]	=		6825	--Неограненный Самоцвет Колосса
-StoneTpye_ID [39]	=		6826	--Сломанный Самоцвет Ярости
+StoneTpye_ID [39]	=		8245	--Рубин
 StoneTpye_ID [40]	=		6827	--Треснутый Самоцвет Ярости
 StoneTpye_ID [41]	=		6828	--Неограненный Самоцвет Ярости
-StoneTpye_ID [42]	=		6829	--Сломанный Самоцвет Души
+StoneTpye_ID [42]	=		8249	--Янтарь
 StoneTpye_ID [43]	=		6830	--Треснутый Самоцвет Души
 StoneTpye_ID [44]	=		6831	--Неограненный Самоцвет Души
 StoneTpye_ID [45]	=		7108	--Великий Самоцвет Ярости
@@ -3989,31 +3531,11 @@ StoneTpye_ID [46]	=		7109	--Великий Самоцвет Души
 StoneTpye_ID [47]	=		7110	--Великий Самоцвет Удара
 StoneTpye_ID [48]	=		7111	--Великий Самоцвет Колосса
 StoneTpye_ID [49]	=		7112	--Великий Самоцвет Ветра
-StoneTpye_ID [50]	=		7701	--Великий Самоцвет Хардина
-StoneTpye_ID [51]	=		7702	--Великий Самоцвет Фантома
-StoneTpye_ID [52]	=		7703	--Великий Самоцвет Богини
-StoneTpye_ID [53]	=		7704	--Великий Самоцвет Лиса
-StoneTpye_ID [54]	=		8800
-StoneTpye_ID [55]	=		8801
-StoneTpye_ID [56]	=		8802
-StoneTpye_ID [57]	=		8803
-StoneTpye_ID [58]	=		8804
-StoneTpye_ID [59]	=		8805
-StoneTpye_ID [60]	=		8806
-StoneTpye_ID [61]	=		8807
-StoneTpye_ID [62]	=		8808
-StoneTpye_ID [63]	=		8809
-StoneTpye_ID [64]	=		8810
-StoneTpye_ID [65]	=		8811
-StoneTpye_ID [66]	=		8812
-StoneTpye_ID [67]	=		8813
-StoneTpye_ID [68]	=		8814
-StoneTpye_ID [69]	=		8815
-StoneTpye_ID [70]	=		8816
+StoneTpye_ID [50]	=		7710	--Дух Черного дракона
+StoneTpye_ID [51]	=		8243	--Самоцвет Скорости
+StoneTpye_ID [52]	=		8244	--Самоцвет Сопротивления
 
--------------------------------------------------------------------------------------------------
--- Массив с типами самоцветов (1 - на атаку, 2 - на защиту, 4 - другое (статы, защита и т.д.)) --
--------------------------------------------------------------------------------------------------
+--- Effect of the type of Gems
 StoneEffType = {}
 StoneEffType[0] =		0	
 StoneEffType[1] =		1	--Огненный самоцвет
@@ -4035,7 +3557,7 @@ StoneEffType[16] =		4	--Самоцвет души
 StoneEffType[17] =		2	--Желтый нефрит
 StoneEffType[18] =		2	--Красный нефрит
 StoneEffType[19] =		2	--Зеленый нефрит
-StoneEffType[20] =		1	--Аура Чиатана	
+StoneEffType[20] =		1	--Аура Чиатана
 StoneEffType[21] =		1	--Удар Лока
 StoneEffType[22] =		2	--Уклонение Бинга
 StoneEffType[23] =		2	--Защита Фенга
@@ -4045,19 +3567,19 @@ StoneEffType[26] =		4	--Неупокоенный Азраил
 StoneEffType[27] =		4	--Свет Азраила
 StoneEffType[28] =		4	--Соединение Азраила
 StoneEffType[29] =		4	--Танец Азраила
-StoneEffType[30] =		4	--Сломанный Самоцвет Ветра
+StoneEffType[30] =		4	--Сапфир
 StoneEffType[31] =		4	--Треснутый Самоцвет Ветра
 StoneEffType[32] =		4	--Неограненный Самоцвет Ветра
-StoneEffType[33] =		4	--Сломанный Самоцвет Удара
+StoneEffType[33] =		4	--Изумруд
 StoneEffType[34] =		4	--Треснутый Самоцвет Удара
 StoneEffType[35] =		4	--Неограненный Самоцвет Удара
-StoneEffType[36] =		4	--Сломанный Самоцвет Колосса
+StoneEffType[36] =		4	--Аметист
 StoneEffType[37] =		4	--Треснутый Самоцвет Колосса
 StoneEffType[38] =		4	--Неограненный Самоцвет Колосса
-StoneEffType[39] =		4	--Сломанный Самоцвет Ярости
+StoneEffType[39] =		4	--Рубин
 StoneEffType[40] =		4	--Треснутый Самоцвет Ярости
 StoneEffType[41] =		4	--Неограненный Самоцвет Ярости
-StoneEffType[42] =		4	--Сломанный Самоцвет Души
+StoneEffType[42] =		4	--Янтарь
 StoneEffType[43] =		4	--Треснутый Самоцвет Души
 StoneEffType[44] =		4	--Неограненный Самоцвет Души
 StoneEffType[45] =		4	--Великий Самоцвет Ярости
@@ -4065,129 +3587,127 @@ StoneEffType[46] =		4	--Великий Самоцвет Души
 StoneEffType[47] =		4	--Великий Самоцвет Удара
 StoneEffType[48] =		4	--Великий Самоцвет Колосса
 StoneEffType[49] =		4	--Великий Самоцвет Ветра
-StoneEffType[50] =		4	--Великий Самоцвет Хардина
-StoneEffType[51] =		4	--Великий Самоцвет Фантома
-StoneEffType[52] =		4	--Великий Самоцвет Богини
-StoneEffType[53] =		4	--Великий Самоцвет Лиса
+StoneEffType[50] =		4	--Дух Черного дракона
+StoneEffType[51] =		4	--Самоцвет Скорости
+StoneEffType[52] =		4	--Самоцвет Сопротивления
 
-StoneEffType[54] =		1
-StoneEffType[55] =		1
-StoneEffType[56] =		4
-
-StoneEffType[57] =		4
-StoneEffType[58] =		4
-StoneEffType[59] =		4
-
-StoneEffType[60] =		4
-StoneEffType[61] =		2
-StoneEffType[62] =		4
-
-StoneEffType[63] =		4	--Дух Черного дракона
-StoneEffType[64] =		4	--Самоцвет Скорости
-StoneEffType[65] =		2	--Самоцвет Сопротивления	
---Самоцветы в кольца
-StoneEffType[66] =		4	--
-StoneEffType[67] =		4	--
-StoneEffType[68] =		4	--
-StoneEffType[69] =		4	--
-StoneEffType[70] =		4	--
-------------------------------------------------------------------
--- Массив с типами предметов, куда может быть вставлен самоцвет --
-------------------------------------------------------------------
---                         Типы предметов                       --
--- 1 -  Одноручный меч                                          --
--- 2 -  Двуручный меч                                           --
--- 3 -  Лук                                                     --
--- 4 -  Пистолет                                                --
--- 7 -  Клинок покорителей морей                                --
--- 9 -  Посох                                                   --
--- 11 - Щит                                                     --
--- 20 - Шапка                                                   --
--- 22 - Доспехи                                                 --
--- 23 - Перчатки                                                --
--- 24 - Ботинки                                                 --
--- 27 - Тату                                                    --
-------------------------------------------------------------------
+--Куда куется Самоцвет
 StoneItemType ={}
-StoneItemType[0] = { 0 }	
-StoneItemType[1] = { 1,0 }	--Огненный самоцвет (вставляется в одноручные мечи)
-StoneItemType[2] = { 2,3,7,9,0  }	--Самоцвет Ярости (вставляется в двуручные мечи, луки, клинки покорителей морей, посохи)
-StoneItemType[3] = { 4,0 }	--Взрывной самоцвет (вставляется в пистолеты)
-StoneItemType[4] = { 1,2,3,4,7,9,23,0 }	--Люстриновый самоцвет (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи, тату)
-StoneItemType[5] = { 11,22,27,0 }	--Сияющий самоцвет (вставляется в щиты, доспехи, тату)
-StoneItemType[6] = { 11,22,27,0 }	--Блестящий самоцвет (вставляется в щиты, доспехи, тату)
-StoneItemType[7] = { 1,2,3,4,7,9,24,0 }	--Теневой самоцвет (вставляется в мечи, двуручные мечи, луки, клинки покорителей морей, посохи, ботинки)
-StoneItemType[8] = { 1,2,3,4,7,9,24,0 }	--Самоцвет Духа (вставляется в мечи, двуручные мечи, луки, клинки покорителей морей, посохи, ботинки)
-StoneItemType[9] = { 24,0 }	--Самоцвет Ветра (вставляется в ботинки)     
-StoneItemType[10] = { 4,23,0 }	--Самоцвет удара (вставляется в перчатки)	      
-StoneItemType[11] = { 11,22,27,0 }	--Самоцвет колосса (вставляется в щиты, доспехи, тату)
-StoneItemType[12] = { 1,2,3,4,7,9,0 }	--Самоцвет Ярости (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[13] = { 1,2,3,4,7,9,0 }	--Глаз черного дракона (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[14] = { 11,22,27,0 }	--Душа Черного дракона (вставляется в щиты, доспехи и тату)
-StoneItemType[15] = { 23,24,0 }	--Сердце черного дракона (вставляется в перчатки и ботинки)
-StoneItemType[16] =  { 1,2,3,4,7,9,23,0 }	--Самоцвет души (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей и посохи,перчи)
-StoneItemType[17] = { 20,0 }	--Желтый нефрит (вставляется в шапки для Ами)
-StoneItemType[18] = { 20,0 }	--Красный нефрит (вставляется в шапки для Ами)
-StoneItemType[19] = { 20,0 }	--Зеленый нефрит (вставляется в шапки для Ами)
-StoneItemType[20] = { 20,0 }	--Аура Чиатана (вставляется в шапки для Ами)
-StoneItemType[21] = { 23,0 }	--Удар Лока (вставляется в перчатки)
-StoneItemType[22] = { 24,0 }	--Уклонение Бинга (вставляется в ботинки)
-StoneItemType[23] = { 22,11,27,0 }	--Защита Фенга (вставляется в доспехи и тату)
-StoneItemType[24] = { 22,11,27,0 }	--Усиление Акулы (вставляется в доспехи, щиты и тату)
-StoneItemType[25] = { 1,2,3,4,7,9,0 } --Сияние Азраила (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[26] = { 22,27,0 }	--Неупокоенный Азраил (вставляется в доспехи и тату)
-StoneItemType[27] = { 1,2,3,4,7,9,22,27,0 }	--Свет Азраила (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи доспехи и тату)
-StoneItemType[28] = { 1,2,3,4,7,9,23,0 }	--Соединение Азраила (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи и перчатки)
-StoneItemType[29] = { 24,0 }	--Танец Азраила (вставляется в ботинки)
-StoneItemType[30] = { 24,26,0 }	--Сломанный Самоцвет Ветра (вставляется в ботинки)    
-StoneItemType[31] = { 24,0 }	--Треснутый Самоцвет Ветра (вставляется в ботинки)   
-StoneItemType[32] = { 24,0 }	--Неограненный Самоцвет Ветра (вставляется в ботинки)  
-StoneItemType[33] = { 23,3,4,26,0 }    --Сломанный Самоцвет Удара (вставляется в перчатки, лук, пистолет)   
-StoneItemType[34] = { 23,3,4,26,0 }    --Треснутый Самоцвет Удара (вставляется в перчатки)   
-StoneItemType[35] = { 23,3,4,26,0 }    --Неограненный Самоцвет Удара (вставляется в перчатки)   
-StoneItemType[36] = { 11,22,27,26,0 }	--Сломанный Самоцвет Колосса (вставляется в щиты, доспехи и тату)
-StoneItemType[37] = { 11,22,27,0 }	--Треснутый Самоцвет Колосса (вставляется в щиты, доспехи и тату)
-StoneItemType[38] = { 11,22,27,0 }	--Неограненный Самоцвет Колосса (вставляется в щиты, доспехи и тату)
-StoneItemType[39] = { 1,2,3,4,7,9,26,0 }	--Сломанный Самоцвет Ярости (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[40] = { 1,2,3,4,7,9,0 }	--Треснутый Самоцвет Ярости (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[41] = { 1,2,3,4,7,9,0 }	--Неограненный Самоцвет Ярости (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[42] =  { 1,2,3,4,7,9,26,0 }	--Сломанный Самоцвет Души (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[43] =  { 1,2,3,4,7,9,0 }	--Треснутый Самоцвет Души (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[44] =  { 1,2,3,4,7,9,0 }	--Неограненный Самоцвет Души (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[45] = { 1,2,3,4,7,9,0 } 	--Великий Самоцвет Ярости (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[46] =  { 1,2,3,4,7,9,0 }	--Великий Самоцвет Души (вставляется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
-StoneItemType[47] = { 23,3,4,26,0 }	--Великий Самоцвет Удара (вставляется в перчатки)
-StoneItemType[48] = { 11,22,27,0 } --Великий Самоцвет Колосса (вставляется в щиты, доспехи и тату)
-StoneItemType[49] = { 24,0 } --Великий Самоцвет Ветра (вставляется в ботинки)
-StoneItemType[50] = { 20,0 } --Великий Самоцвет Хардина (вставляется в шапку)
-StoneItemType[51] = { 20,0 } --Самоцвет Фантома (вставляется в шапку)
-StoneItemType[52] = { 20,0 } --Великий Самоцвет Богини (вставляется в шапку)
-StoneItemType[53] = { 20,0 } --Великий Самоцвет Лиса (вставляется в шапку)
-StoneItemType[54] = { 1,2,3,4,7,9,0 }				--Сила мертвого (куется в любое оружие)
-StoneItemType[55] = { 23,0 }				--Точность Мертвого (куется в перчатки)
-StoneItemType[56] = { 24,0 }				--Скорость Мертвого (куется в ботинки)
-StoneItemType[57] = { 22,11,27,0 }			--Божественная выносливость (в щит и доспех)
-StoneItemType[58] = { 22,11,27,0 }					--Божественная защита (в щит и доспех)
-StoneItemType[59] = { 24,0 }				--Божественная скорость (в ботинки)
-StoneItemType[60] = { 24,0 }				--Морская сноровка (в ботинки)
-StoneItemType[61] = { 22,11,27,0 }				--Морской доспех (в доспех и щит)
-StoneItemType[62] = { 7,9,0 }					--Морская душа (в посох, клинок)
-StoneItemType[63] = { 23,24,0 }    --Разум черного дракона
-StoneItemType[64] = { 25,0 }			--Самоцвет Скорости
-StoneItemType[65] = { 25,0 }				--Самоцвет Сопротивления
-StoneItemType[66] = { 26,0 }				--Рубин (куется в кольцо)
-StoneItemType[67] = { 26,0 }				--Аметист (куется в кольцо)
-StoneItemType[68] = { 26,0 }				--Изумруд (куется в кольцо)	
-StoneItemType[69] = { 26,0 }				--Сапфир (куется в кольцо)	
-StoneItemType[70] = { 26,0 }				--Янтарь (куется в кольцо)
+StoneItemType[0] = { 0 }
+StoneItemType[1] = { 1,0 }					--Огненный самоцвет (куется в одноручные мечи)
+StoneItemType[2] = { 2,3,7,9,0  }			--Самоцвет Ярости (куется в двуручные мечи, луки, клинки покорителей морей, посохи)
+StoneItemType[3] = { 4,0 }					--Взрывной самоцвет (куется в пистолеты)
+StoneItemType[4] = { 1,2,3,4,7,9,23,0 }		--Люстриновый самоцвет (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи, перчатки)
+StoneItemType[5] = { 11,22,27,0 }			--Сияющий самоцвет (куется в щиты, доспехи, тату)
+StoneItemType[6] = { 11,22,27,0 }			--Блестящий самоцвет (куется в щиты, доспехи, тату)
+StoneItemType[7] = { 1,2,3,4,7,9,24,0 }		--Теневой самоцвет (куется в мечи, двуручные мечи, луки, клинки покорителей морей, посохи, ботинки)
+StoneItemType[8] = { 1,2,3,4,7,9,24,0 }		--Самоцвет Духа (куется в мечи, двуручные мечи, луки, клинки покорителей морей, посохи, перчатки)
+StoneItemType[9] = { 24,0 }					--Самоцвет Ветра (куется в ботинки)
+StoneItemType[10] = { 23,0 }				--Самоцвет удара (куется в перчатки)
+StoneItemType[11] = { 11,22,27,0 }			--Самоцвет колосса (куется в щиты, доспехи, тату)
+StoneItemType[12] = { 1,2,3,4,7,9,0 }		--Самоцвет Ярости (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
+StoneItemType[13] = { 1,2,3,4,7,9,0 }		--Глаз черного дракона (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
+StoneItemType[14] = { 11,22,27,0 }			--Душа Черного дракона (куется в щиты, доспехи и тату)
+StoneItemType[15] = { 23,24,0 }				--Сердце черного дракона (куется в перчатки и ботинки)
+StoneItemType[16] = { 1,2,3,4,7,9,23,0 }	--Самоцвет души (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи, перчатки)
+StoneItemType[17] = { 20,0 }				--Желтый нефрит (куется в шапки)
+StoneItemType[18] = { 20,0 }				--Красный нефрит (куется в шапки)
+StoneItemType[19] = { 20,0 }				--Зеленый нефрит (куется в шапки)
+StoneItemType[20] = { 20,0 }				--Аура Чиатана (куется в шапки)
+StoneItemType[21] = { 23,0 }				--Удар Лока (куется в перчатки)
+StoneItemType[22] = { 24,0 }				--Уклонение Бинга (куется в ботинки)
+StoneItemType[23] = { 11,22,27,0 }			--Защита Фенга (куется в щиты, доспехи и тату)
+StoneItemType[24] = { 22,11,27,0 }			--Усиление Акулы (куется в доспехи, щиты и тату)
+StoneItemType[25] = { 1,2,3,4,7,9,0 }		--Сияние Азраила (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
+StoneItemType[26] = { 11,22,27,0 }			--Неупокоенный Азраил (куется в доспехи и тату)
+StoneItemType[27] = { 1,2,3,4,7,9,23,0 }	--Свет Азраила (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи, перчатки)
+StoneItemType[28] = { 1,2,3,4,7,9,23,0 }	--Соединение Азраила (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи и перчатки)
+StoneItemType[29] = { 24,0 }				--Танец Азраила (куется в ботинки)
+StoneItemType[30] = { 26,0 }				--Сапфир  (куется в кольцо)
+StoneItemType[31] = { 24,0 }				--Треснутый Самоцвет Ветра (куется в ботинки)
+StoneItemType[32] = { 24,0 }				--Неограненный Самоцвет Ветра (куется в ботинки)
+StoneItemType[33] = { 26,0 }				--Изумруд  (куется в кольцо)
+StoneItemType[34] = { 23,3,4,0 }			--Треснутый Самоцвет Удара (куется в перчатки, луки и пухи)
+StoneItemType[35] = { 23,3,4,0 }			--Неограненный Самоцвет Удара (куется в перчатки, луки и пухи)
+StoneItemType[36] = { 26,0 }				--Аметист  (куется в кольцо)
+StoneItemType[37] = { 11,22,27,0 }			--Треснутый Самоцвет Колосса (куется в щиты, доспехи и тату)
+StoneItemType[38] = { 11,22,27,0 }			--Неограненный Самоцвет Колосса (куется в щиты, доспехи и тату)
+StoneItemType[39] = { 26,0 }				--Рубин (куется в кольцо)
+StoneItemType[40] = { 1,2,3,4,7,9,0 }		--Треснутый Самоцвет Ярости (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
+StoneItemType[41] = { 1,2,3,4,7,9,0 }		--Неограненный Самоцвет Ярости (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
+StoneItemType[42] = { 26,0 }				--Янтарь (куется в кольцо)
+StoneItemType[43] = { 1,2,3,4,7,9,0 }		--Треснутый Самоцвет Души (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
+StoneItemType[44] = { 1,2,3,4,7,9,0 }		--Неограненный Самоцвет Души (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
+StoneItemType[45] = { 1,2,3,4,7,9,0 }		--Великий Самоцвет Ярости (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи)
+StoneItemType[46] = { 1,2,3,4,7,9,23,24,0 }	--Великий Самоцвет Души (куется в мечи, двуручные мечи, луки, пистолеты, клинки покорителей морей, посохи, перчатки, ботинки)
+StoneItemType[47] = { 23,0 }				--Великий Самоцвет Удара (куется в перчатки)
+StoneItemType[48] = { 11,22,27,0 }			--Великий Самоцвет Колосса (куется в щиты, доспехи и тату)
+StoneItemType[49] = { 24,0 }				--Великий Самоцвет Ветра (куется в ботинки)
+StoneItemType[50] = { 23,24,0 }				--Дух Черного дракона (куется в перчатки, ботинки)
+StoneItemType[51] = { 25,0 }				--Самоцвет Скорости (куется в бижутерию)
+StoneItemType[52] = { 25,0 }				--Самоцвет Сопротивления (куется в бижутерию)
 
+--Массив с типами самоцветов
+StoneAttrType_Num = 52 --Количество самоцветов
+StoneAttrType = {}
+StoneAttrType [0]		=		0
+StoneAttrType [1]		=		ITEMATTR_VAL_MNATK	--Огненный самоцвет
+StoneAttrType [2]		=		ITEMATTR_VAL_MNATK	--Самоцвет Ярости
+StoneAttrType [3]		=		ITEMATTR_VAL_MNATK	--Взрывной самоцвет
+StoneAttrType [4]		=		ITEMATTR_VAL_HIT	--Люстриновый самоцвет
+StoneAttrType [5]		=		ITEMATTR_VAL_DEF	--Сияющий самоцвет
+StoneAttrType [6]		=		ITEMATTR_VAL_MXHP	--Блестящий самоцвет
+StoneAttrType [7]		=		ITEMATTR_VAL_FLEE	--Теневой самоцвет
+StoneAttrType [8]		=		ITEMATTR_VAL_STA	--Самоцвет Духа
+StoneAttrType [9]		=		ITEMATTR_VAL_AGI	--Самоцвет Ветра
+StoneAttrType [10]		=		ITEMATTR_VAL_DEX	--Самоцвет удара
+StoneAttrType [11]		=		ITEMATTR_VAL_CON	--Самоцвет колосса
+StoneAttrType [12]		=		ITEMATTR_VAL_STR	--Самоцвет Ярости
+StoneAttrType [13]		=		ITEMATTR_VAL_MNATK	--Глаз черного дракона
+StoneAttrType [14]		=		ITEMATTR_VAL_PDEF	--Душа Черного дракона
+StoneAttrType [15]		=		ITEMATTR_VAL_MXHP	--Сердце черного дракона
+StoneAttrType [16]		=		ITEMATTR_VAL_STA	--Самоцвет души
+StoneAttrType [17]		=		ITEMATTR_VAL_DEF	--Желтый нефрит
+StoneAttrType [18]		=		ITEMATTR_VAL_MXHP	--Красный нефрит
+StoneAttrType [19]		=		ITEMATTR_VAL_MXSP	--Зеленый нефрит
+StoneAttrType [20]		=		ITEMATTR_VAL_CRT	--Аура Чиатана
+StoneAttrType [21]		=		ITEMATTR_VAL_HIT	--Удар Лока
+StoneAttrType [22]		=		ITEMATTR_VAL_FLEE	--Уклонение Бинга
+StoneAttrType [23]		=		ITEMATTR_VAL_DEF	--Защита Фенга
+StoneAttrType [24]		=		ITEMATTR_VAL_MXHP	--Усиление Акулы
+StoneAttrType [25]		=		ITEMATTR_VAL_STR	--Сияние Азраила
+StoneAttrType [26]		=		ITEMATTR_VAL_CON	--Неупокоенный Азраил
+StoneAttrType [27]		=		ITEMATTR_VAL_STA	--Свет Азраила
+StoneAttrType [28]		=		ITEMATTR_VAL_DEX	--Соединение Азраила
+StoneAttrType [29]		=		ITEMATTR_VAL_AGI	--Танец Азраила
+StoneAttrType [30]		=		ITEMATTR_VAL_AGI	--Сапфир
+StoneAttrType [31]		=		ITEMATTR_VAL_AGI	--Треснутый Самоцвет Ветра
+StoneAttrType [32]		=		ITEMATTR_VAL_AGI	--Неограненный Самоцвет Ветра
+StoneAttrType [33]		=		ITEMATTR_VAL_DEX	--Изумруд
+StoneAttrType [34]		=		ITEMATTR_VAL_DEX	--Треснутый Самоцвет Удара
+StoneAttrType [35]		=		ITEMATTR_VAL_DEX	--Неограненный Самоцвет Удара
+StoneAttrType [36]		=		ITEMATTR_VAL_CON	--Аметист
+StoneAttrType [37]		=		ITEMATTR_VAL_CON	--Треснутый Самоцвет Колосса
+StoneAttrType [38]		=		ITEMATTR_VAL_CON	--Неограненный Самоцвет Колосса
+StoneAttrType [39]		=		ITEMATTR_VAL_STR	--Рубин
+StoneAttrType [40]		=		ITEMATTR_VAL_STR	--Треснутый Самоцвет Ярости
+StoneAttrType [41]		=		ITEMATTR_VAL_STR	--Неограненный Самоцвет Ярости
+StoneAttrType [42]		=		ITEMATTR_VAL_STA	--Янтарь
+StoneAttrType [43]		=		ITEMATTR_VAL_STA	--Треснутый Самоцвет Души
+StoneAttrType [44]		=		ITEMATTR_VAL_STA	--Неограненный Самоцвет Души
+StoneAttrType [45]		=		ITEMATTR_VAL_STR	--Великий Самоцвет Ярости
+StoneAttrType [46]		=		ITEMATTR_VAL_STA	--Великий Самоцвет Души
+StoneAttrType [47]		=		ITEMATTR_VAL_DEX	--Великий Самоцвет Удара
+StoneAttrType [48]		=		ITEMATTR_VAL_CON	--Великий Самоцвет Колосса
+StoneAttrType [49]		=		ITEMATTR_VAL_AGI	--Великий Самоцвет Ветра
+StoneAttrType [50]		=		ITEMATTR_VAL_MXSP	--Дух Черного дракона
+StoneAttrType [51]		=		ITEMATTR_VAL_MSPD	--Самоцвет Скорости
+StoneAttrType [52]		=		ITEMATTR_VAL_PDEF	--Самоцвет Сопротивления
 
+RYZ_Rongyu_Min = -300
+RYZ_Rongyu_Max = 30000
 
-RYZ_Rongyu_Min	= -300	-- Минимальное кол-во очков чести
-RYZ_Rongyu_Max	= 30000	-- Максимальное кол-во очков чести
-	
-	-- Массив с монстрами для карты "Сад Эдель"&"Священная Война" --
-	----------------------------------------------------------------
+--ЖХНЁ№ЦОп
 UnNormalMonster_Num =		13
 UnNormalMonster_ID = { }
 UnNormalMonster_ID [0]	=	1
@@ -4205,11 +3725,11 @@ UnNormalMonster_ID [11]	=	743
 UnNormalMonster_ID [12]	=	744
 UnNormalMonster_ID [13]	=	745
 
-
---------------------------------------------------------------------------
-	-- Массив с удаляемыми предметами при телепортации на карту "Сад Эдель" --
-	--------------------------------------------------------------------------
+--PKµє№Ш±ХјЖКэ-----------
 PK_Win_CountNum		=	60
+
+----------------------------------------------------------------------------------------------------
+--PKµєРиТЄЙѕіэµДµАѕЯ
 PK_BagItemDelCheckNum = 6
 PK_BagItemDelCheck_ID = { }
 PK_BagItemDelCheck_ID [0] = 1854
@@ -4226,9 +3746,6 @@ PK_BagItemDelCheck_ID [6] = 1860
 --КҐХЅ№Ш±Х-----------
 SZ_Win_CountNum		=	60
 SZ_Win_CountNum2	=	60
-	---------------------------------------------------------
-	-- Массив со временем закрытия карты "Священная Война" --
-	---------------------------------------------------------
 GUILDNOTICE = 6
 GUILDCLOSESHOW = {}
 GUILDCLOSESHOW[1] = 900
@@ -4239,9 +3756,6 @@ GUILDCLOSESHOW[5] = 120
 GUILDCLOSESHOW[6] = 60
 GUILDWARCLOSETIME = 10800
 
-	---------------------------------------------------------------
-	-- Массив со временем закрытия карты " Мини Священная Война" --
-	---------------------------------------------------------------
 GUILDNOTICE2 = 6
 GUILDCLOSESHOW2 = {}
 GUILDCLOSESHOW2[1] = 900
@@ -4271,10 +3785,6 @@ SS_BagItemDelCheckNum = 2
 SS_BagItemDelCheck_ID = { }
 SS_BagItemDelCheck_ID [1] = 1855		--ЅшИлУАєгµШУьµДГЕЖ±
 SS_BagItemDelCheck_ID [2] = 1856		--Й±ЛАЙс±ШРлК№УГµДµАѕЯ
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---                                                                  Переменные для Абаддона (Начало)                                                                   --
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CRY = {}
 CRY[5]=0
@@ -4338,11 +3848,10 @@ NOTICETIME[15] = 3
 NOTICETIME[16] = 2
 NOTICETIME[17] = 1
 
+--ЛАЙсЧЁКфІї·Ц
 
 
-----------------
--- Неизвестно --
-----------------
+--µАѕЯКµАэ»ЇКВјюАаРН
 NPC_SALE				=	0	--npcВтВф
 MONSTER_BAOLIAO		=	1	--№ЦОп±©БП
 PLAYER_HECHENG		=	2	--НжјТєПіЙ
@@ -4823,102 +4332,106 @@ Item_Attr_19 [4]		=		0						--1ёцёЅјУКфРФ
 
 
 Item_Mission_20 = { }
-Item_Mission_20 [0]		=		0						                
-Item_Mission_20 [1]		=		100						                
-Item_Mission_20 [2]		=		100						
-Item_Mission_20 [3]		=		100						
-Item_Mission_20 [4]		=		100						                
-Item_Mission_20 [5]		=		100						    
-Item_Mission_20 [6]		=		100						    
-Item_Mission_20 [7]		=		100						    
-Item_Mission_20 [8]		=		100						    
-Item_Mission_20 [9]		=		100						    
+Item_Mission_20 [0]		=		0						--                
+Item_Mission_20 [1]		=		100						--                
+Item_Mission_20 [2]		=		100						--                
+Item_Mission_20 [3]		=		100						--                
+Item_Mission_20 [4]		=		100						--                
+Item_Mission_20 [5]		=		100						--ЙсУчЦ®...    
+Item_Mission_20 [6]		=		100						--НхХЯЦ®...    
+Item_Mission_20 [7]		=		100						--НіЛ§Ц®...    
+Item_Mission_20 [8]		=		100						--ЧїФЅЦ®...    
+Item_Mission_20 [9]		=		100						--ЖХНЁРН...    
 	     
 Item_Attr_20 = { }					
-Item_Attr_20 [0]		=		0						
-Item_Attr_20 [1]		=		0						
-Item_Attr_20 [2]		=		0						
-Item_Attr_20 [3]		=		0						
-Item_Attr_20 [4]		=		0						
+Item_Attr_20 [0]		=		0						--5ёцёЅјУКфРФ
+Item_Attr_20 [1]		=		0						--4ёцёЅјУКфРФ
+Item_Attr_20 [2]		=		0						--3ёцёЅјУКфРФ
+Item_Attr_20 [3]		=		0						--2ёцёЅјУКфРФ
+Item_Attr_20 [4]		=		0						--1ёцёЅјУКфРФ
 
 Item_Mission_22 = { }
-Item_Mission_22 [0]		=		0						                
-Item_Mission_22 [1]		=		0						                
-Item_Mission_22 [2]		=		0						                
-Item_Mission_22 [3]		=		0						                
-Item_Mission_22 [4]		=		100						                
-Item_Mission_22 [5]		=		100						    
-Item_Mission_22 [6]		=		100						    
-Item_Mission_22 [7]		=		100						    
-Item_Mission_22 [8]		=		100						    
-Item_Mission_22 [9]		=		100						    
+Item_Mission_22 [0]		=		0						--                
+Item_Mission_22 [1]		=		0						--                
+Item_Mission_22 [2]		=		0						--                
+Item_Mission_22 [3]		=		0						--                
+Item_Mission_22 [4]		=		100						--                
+Item_Mission_22 [5]		=		100						--ЙсУчЦ®...    
+Item_Mission_22 [6]		=		100						--НхХЯЦ®...    
+Item_Mission_22 [7]		=		100						--НіЛ§Ц®...    
+Item_Mission_22 [8]		=		100						--ЧїФЅЦ®...    
+Item_Mission_22 [9]		=		100						--ЖХНЁРН...    
 	     
 Item_Attr_22 = { }					
-Item_Attr_22 [0]		=		0							
-Item_Attr_22 [1]		=		0							
-Item_Attr_22 [2]		=		1							
-Item_Attr_22 [3]		=		4							
-Item_Attr_22 [4]		=		50							
+Item_Attr_22 [0]		=		0							--5ёцёЅјУКфРФ
+Item_Attr_22 [1]		=		0							--4ёцёЅјУКфРФ
+Item_Attr_22 [2]		=		1							--3ёцёЅјУКфРФ
+Item_Attr_22 [3]		=		4							--2ёцёЅјУКфРФ
+Item_Attr_22 [4]		=		50							--1ёцёЅјУКфРФ
 
 Item_Mission_23 = { }
-Item_Mission_23 [0]		=		0							                
-Item_Mission_23 [1]		=		0							
-Item_Mission_23 [2]		=		0							                
-Item_Mission_23 [3]		=		0							                
-Item_Mission_23 [4]		=		3							                
-Item_Mission_23 [5]		=		6							    
-Item_Mission_23 [6]		=		25							    
-Item_Mission_23 [7]		=		50							    
-Item_Mission_23 [8]		=		70							    
-Item_Mission_23 [9]		=		100							    
+Item_Mission_23 [0]		=		0							--                
+Item_Mission_23 [1]		=		0							--                
+Item_Mission_23 [2]		=		0							--                
+Item_Mission_23 [3]		=		0							--                
+Item_Mission_23 [4]		=		3							--                
+Item_Mission_23 [5]		=		6							--ЙсУчЦ®...    
+Item_Mission_23 [6]		=		25							--НхХЯЦ®...    
+Item_Mission_23 [7]		=		50							--НіЛ§Ц®...    
+Item_Mission_23 [8]		=		70							--ЧїФЅЦ®...    
+Item_Mission_23 [9]		=		100							--ЖХНЁРН...    
 	     
 Item_Attr_23 = { }					
-Item_Attr_23 [0]		=		0							--
-Item_Attr_23 [1]		=		0							--
-Item_Attr_23 [2]		=		1							--
-Item_Attr_23 [3]		=		5							--
-Item_Attr_23 [4]		=		60							--
+Item_Attr_23 [0]		=		0							--5ёцёЅјУКфРФ
+Item_Attr_23 [1]		=		0							--4ёцёЅјУКфРФ
+Item_Attr_23 [2]		=		1							--3ёцёЅјУКфРФ
+Item_Attr_23 [3]		=		5							--2ёцёЅјУКфРФ
+Item_Attr_23 [4]		=		60							--1ёцёЅјУКфРФ
 
 Item_Mission_24 = { }
-Item_Mission_24 [0]		=		0							                
-Item_Mission_24 [1]		=		0							                
-Item_Mission_24 [2]		=		0							
-Item_Mission_24 [3]		=		0							               
-Item_Mission_24 [4]		=		0							                
-Item_Mission_24 [5]		=		1							    
-Item_Mission_24 [6]		=		5							    
-Item_Mission_24 [7]		=		20							    
-Item_Mission_24 [8]		=		65							    
-Item_Mission_24 [9]		=		99							    
+Item_Mission_24 [0]		=		0							--                
+Item_Mission_24 [1]		=		0							--                
+Item_Mission_24 [2]		=		0							--                
+Item_Mission_24 [3]		=		0							--                
+Item_Mission_24 [4]		=		0							--                
+Item_Mission_24 [5]		=		1							--ЙсУчЦ®...    
+Item_Mission_24 [6]		=		5							--НхХЯЦ®...    
+Item_Mission_24 [7]		=		20							--НіЛ§Ц®...    
+Item_Mission_24 [8]		=		65							--ЧїФЅЦ®...    
+Item_Mission_24 [9]		=		99							--ЖХНЁРН...    
 	     
 Item_Attr_24 = { }					
-Item_Attr_24 [0]		=		0							--
-Item_Attr_24 [1]		=		0							--
-Item_Attr_24 [2]		=		1							--
-Item_Attr_24 [3]		=		4							--
-Item_Attr_24 [4]		=		50							--
+Item_Attr_24 [0]		=		0							--5ёцёЅјУКфРФ
+Item_Attr_24 [1]		=		0							--4ёцёЅјУКфРФ
+Item_Attr_24 [2]		=		1							--3ёцёЅјУКфРФ
+Item_Attr_24 [3]		=		4							--2ёцёЅјУКфРФ
+Item_Attr_24 [4]		=		50							--1ёцёЅјУКфРФ
 
---
+--ЙиЦГЧ°±ё»сµГїЧКэµДёЕВК
+
 Item_HoleNum_Monster = { }
-Item_HoleNum_Monster [0]		=		75						--
-Item_HoleNum_Monster [1]		=		99						--
-Item_HoleNum_Monster [2]		=		100				--
-Item_HoleNum_Monster [3]		=		100						--
+Item_HoleNum_Monster [0]		=		75						--0ёц¶ґ
+Item_HoleNum_Monster [1]		=		99						--1ёц¶ґ
+Item_HoleNum_Monster [2]		=		100				--2ёц¶ґ						
+Item_HoleNum_Monster [3]		=		100						--3ёц¶ґ
 
 Item_HoleNum_Hecheng = { }
-Item_HoleNum_Hecheng [0]		=		25						--
-Item_HoleNum_Hecheng [1]		=		75						--
-Item_HoleNum_Hecheng [2]		=		100						--						
-Item_HoleNum_Hecheng [3]		=		100						--
+Item_HoleNum_Hecheng [0]		=		25						--0ёц¶ґ
+Item_HoleNum_Hecheng [1]		=		75						--1ёц¶ґ
+Item_HoleNum_Hecheng [2]		=		100						--2ёц¶ґ						
+Item_HoleNum_Hecheng [3]		=		100						--3ёц¶ґ
 
 Item_HoleNum_Mission_1 = { }
-Item_HoleNum_Mission_1 [0]		=		25						--
-Item_HoleNum_Mission_1 [1]		=		75						--
-Item_HoleNum_Mission_1 [2]		=		100						--						
-Item_HoleNum_Mission_1 [3]		=		100						--
+Item_HoleNum_Mission_1 [0]		=		25						--0ёц¶ґ
+Item_HoleNum_Mission_1 [1]		=		75						--1ёц¶ґ
+Item_HoleNum_Mission_1 [2]		=		100						--2ёц¶ґ						
+Item_HoleNum_Mission_1 [3]		=		100						--3ёц¶ґ
 
 
---
+
+
+--єЅєЈјјДЬПыєДєЅєЈѕ­СйЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄ
+--јјДЬјЧ°ејУ№МЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄ
 sk_jbjg = { } 
 sk_jbjg [1]				=		625
 sk_jbjg [2]				=		3439    
@@ -4931,7 +4444,7 @@ sk_jbjg [8]				=		246559
 sk_jbjg [9]				=		352529 
 sk_jbjg [10]			=		485199 
 
---
+--јјДЬ»рЕЪКмБ·ЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄ
 sk_hpsl = { } 
 sk_hpsl [1]				=		671
 sk_hpsl [2]				=		4641            
@@ -4944,7 +4457,7 @@ sk_hpsl [8]				=		265761
 sk_hpsl [9]				=		376831         
 sk_hpsl [10]			=		515201         
 
---
+--јјДЬґ¬МеЗї»ЇЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄ
 sk_ctqh = { } 
 sk_ctqh [1]			=		1105
 sk_ctqh [2]			=		6095      
@@ -4957,7 +4470,7 @@ sk_ctqh [8]			=		285935
 sk_ctqh [9]			=		402225   
 sk_ctqh [10]			=		546415   
 
---
+--јјДЬІЩ·«КхЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄ
 sk_cfs = { } 
 sk_cfs [1]				=		1695
 sk_cfs [2]				=		7825         
@@ -4971,7 +4484,7 @@ sk_cfs [9]				=		428735
 sk_cfs [10]				=		578865      
 
 
---
+--јјДЬІ№ёшА©ИЭЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄЎЄ
 sk_bjkr = { } 
 sk_bjkr [1]				=		2465
 sk_bjkr [2]				=		9855         
@@ -4985,44 +4498,49 @@ sk_bjkr [9]				=		456385
 sk_bjkr [10]			=		612575      
 
 
---------------------------------------------------------
---    Массив с условиями для создания гильдии NAVY    --
---------------------------------------------------------
+
+
+
+
+
+
+
+
+--ґґЅЁєЈѕь№¤»бЛщРиОпЖ·
 Guild1_ItemMax		=	1
 
 Guild1_item = {}
 Guild1_count = {}
-								Guild1_fame	=	150
-								Guild1_Gold	=	300000
+								Guild1_fame	=	0
+								Guild1_Gold	=	100000
 Guild1_item[1]	=	1780				Guild1_count[1]	=	1
 Guild1_item[2]	=	-1				Guild1_count[2]	=	-1
 Guild1_item[3]	=	-1				Guild1_count[3]	=	-1
 Guild1_item[4]	=	-1				Guild1_count[4]	=	-1
 Guild1_item[5]	=	-1				Guild1_count[5]	=	-1
 
---------------------------------------------------------
---   Массив с условиями для создания гильдии PIRATE   --
---------------------------------------------------------
+--ґґЅЁєЈµБ№¤»бЛщРиОпЖ·
 Guild2_ItemMax		=	1
 
 Guild2_item = {}
 Guild2_count = {}
-								Guild2_fame	=	300
-								Guild2_Gold	=	400000
+								Guild2_fame	=	0
+								Guild2_Gold	=	100000
 Guild2_item[1]	=	1780				Guild2_count[1]	=	1
 Guild2_item[2]	=	-1				Guild2_count[2]	=	-1
 Guild2_item[3]	=	-1				Guild2_count[3]	=	-1
 Guild2_item[4]	=	-1				Guild2_count[4]	=	-1
 Guild2_item[5]	=	-1				Guild2_count[5]	=	-1
 
+----јУИлєЈѕь№¤»бЛщРиМхјю
+	JOINGUILD_NAVY_FAME	=	0			--јУИлєЈѕьГыЙщ
 
-	JOINGUILD_NAVY_FAME	=	0			
-	JOINGUILD_PIRATE_FAME	=	0			
+  --јУИлєЈµБ№¤»бЛщРиМхјю
+	JOINGUILD_PIRATE_FAME	=	0			--јУИлєЈµБГыЙщ
+--
+--
 
 
-	------------------------------------------
-	-- Массив с ID навыков из skillinfo.txt --
-	------------------------------------------
 SK_DPSL		=	73					--јјДЬ¶ЬЕЖКмБ·
 SK_LZJ		=	90					--јјДЬБ¬»чјэ
 SK_LXJY		=	112					--јјДЬБчРЗјэУк
@@ -5127,7 +4645,6 @@ SK_PJ		=	222					--јјДЬЖЖјЧ
 SK_FNQ		=	223					--јјДЬ·ЬЖр
 SK_DJ		=	224					--јјДЬ¶ѕјэ
 SK_SHPF		=	225					--јјДЬКЇ»ЇЖ¤·ф
-
 SK_HPSL		=	226					--јјДЬ»рЕЪКмБ·
 SK_JBJG		=	227					--јјДЬјЧ°ејУ№М
 SK_CFS		=	228					--јјДЬІЩ·«Кх
@@ -5173,36 +4690,36 @@ SK_QX		=	267					--И®РҐ
 SK_SD		=	268					--К¬¶ѕ
 SK_BLGJ		=	269					--±щБъ№Ґ»ч
 
-SK_JXJBFW	=	270					--
-SK_CRXSF	=	271					--
-SK_SXZZZ	=	272					--
-SK_XBLBD	=	273					--
-SK_BHSD		=	274					--
-SK_HLKJ		=	275					--
-SK_HLLM		=	276					---
-SK_BlackLY	=	277					--
-SK_BlackLX	=	278					--
-SK_BlackHeal	=	279					--
-SK_JLFT	=	280					--
-SK_JLZB	=	311					--	
-SK_JLTX1			=	312				--	
-SK_JLTX2			=	313				--	
-SK_JLTX3			=	314				--
-SK_JLTX4			=	315				--	
-SK_JLTX5			=	316				--	
-SK_JLTX6			=	317				--	
-SK_JLTX7			=	318				--	
-SK_JLTX8			=	319				--	
+SK_JXJBFW	=	270					--»ъРµѕЮ±ш·¶О§
+SK_CRXSF	=	271					--і¤Р·ИЮКшёї
+SK_SXZZZ	=	272					--Л®ПЙЧУЧзЦд
+SK_XBLBD	=	273					--РЎ±щБъ±щ¶і
+SK_BHSD		=	274					--±щБъИєМе±щ¶і
+SK_HLKJ		=	275					--єЪБъїЦѕе
+SK_HLLM		=	276					--єЪБъ-БъГщ
+SK_BlackLY	=	277					--єЪБъ-БъТн
+SK_BlackLX	=	278					--єЪБъ-БъПў
+SK_BlackHeal	=	279					--ЖрЛА»ШЙъ
+SK_JLFT	=	280					--ѕ«БйёЅМе
+SK_JLZB	=	311					--ѕ«БйЧФ±¬	
+SK_JLTX1			=	312				--ѕ«БйМШР§1	
+SK_JLTX2			=	313				--ѕ«БйМШР§2	
+SK_JLTX3			=	314				--ѕ«БйМШР§3	
+SK_JLTX4			=	315				--ѕ«БйМШР§4	
+SK_JLTX5			=	316				--ѕ«БйМШР§5	
+SK_JLTX6			=	317				--ѕ«БйМШР§6	
+SK_JLTX7			=	318				--ѕ«БйМШР§7	
+SK_JLTX8			=	319				--ѕ«БйМШР§8	
 
-SK_KSSQQW =446
-SK_KS			=	200					
-SK_WK			=	201					--
-SK_PKQX			=	254					--
-SK_ZHIZAO		=	338				
-SK_PENGREN		=	339				
-SK_ZHUZAO		=	340				----------------
-SK_FENJIE			=	341				----------------
-SK_WYZ			=	453				----------------
+
+SK_KS			=	200					--јјДЬїіКч
+SK_WK			=	201					--јјДЬНЪїу
+SK_PKQX			=	254					--јјДЬЗАРЮ
+SK_ZHIZAO		=	338				----------------ЦЖФм
+SK_PENGREN		=	339				----------------ЦэФм
+SK_ZHUZAO		=	340				----------------Елвї
+SK_FENJIE			=	341				----------------·ЦЅв
+SK_WYZ			=	453				----------------ОЮУ°Х¶
 SK_CYN			=	454				----------------і¬ТвДо
 SK_BSJ			=	455				----------------°ЩКЮ»ч
 SK_HLP			=	456				----------------ємАЧЕЪ
@@ -5211,28 +4728,8 @@ SK_SSSP			=	458				----------------ЙсКҐЙуЕР
 SK_ZSSL			=	459				----------------ЧЄЙъЙсБ¦
 SK_DS			=	461				---------------јјДЬ¶БКй
 SK_QLZX			=	467
-SK_GROM 		=	0492
 
--- my skill for White Knight --
-
-SK_White006			=	469				----------------heaven tears
-SK_White007			=	470				----------------Bolt barrage
-SK_White008			=	471				----------------Flame Ball
-SK_White009			=	472				--------------TEchy Sharingan (sage)
-SK_White010			=	473				----------------thunder blade
-SK_White011			=	474				----------------heaven tears
-SK_White012			=	475				----------------Bolt barrage
-SK_White013			=	476				----------------Flame Ball
-SK_White014			=	477				--------------TEchy Sharingan (sage)
-SK_White001			=	478				---------------HP
-SK_White002			=	479				---------------Dual Sword
-SK_White003			=	480				----------------ice meteora
-SK_White004			=	481				---------------thunder shot
-SK_White005			=	482				----------------thunder blade
--- end my skill white knight --
-------------------------------------------
--- Массив с ID эффектов из skilleff.txt --
-------------------------------------------
+--0--
 STATE_RS		=	1
 STATE_HFWQ		=	2
 STATE_ZZZH		=	3
@@ -5390,8 +4887,8 @@ STATE_WLCX			=	140
 STATE_ZZZX			=	141
 STATE_WLDB			=	142
 STATE_WLJY			=	143
-STATE_HPPOTS		=	224
-STATE_HPMAX			=	225
+STATE_HPPOTS		=	144
+STATE_HPMAX			=	145
 STATE_WLNH			=	146
 STATE_JLJSGZ		=	147
 STATE_JLTX1			=	148
@@ -5497,41 +4994,51 @@ STATE_GUOMIN		=	238
 STATE_QB			=	239
 
 --Несуразная хуйня
-STATE_BHLHP			=	0446
+--STATE_BHLHP			=	52
 --STATE_YWGJ			=	142
 --STATE_XLZD			=	225
 --STATE_HFHP			=	226
 
-dmg = 0					
-sus = 1					
-hpdmg = 0					
-dmgsa = 1					
-dis = 0					
-dis_eff = 0					
-sklv = 0					
+
+
+
+
+
+
+
+
+
+
+dmg = 0					--ЙЛє¦
+sus = 1					--№Ґ»чЧґМ¬
+hpdmg = 0					--hpЙЛє¦
+dmgsa = 1					--ЙЛє¦±¶Кэ
+dis = 0					--ѕаАл
+dis_eff = 0					--ѕаАлР§№ы
+sklv = 0					--јјДЬµИј¶
 
 ItemAttr_Rad	=	 { } 
-ItemAttr_Rad	[	0	]	=	0	--	
-ItemAttr_Rad	[	1	]	=	10	--	
-ItemAttr_Rad	[	2	]	=	10	--	
-ItemAttr_Rad	[	3	]	=	10	--	
-ItemAttr_Rad	[	4	]	=	5	--
-ItemAttr_Rad	[	5	]	=	10	--
+ItemAttr_Rad	[	0	]	=	0	--	-1	ОЮМШКвКфРФјУіЙ
+ItemAttr_Rad	[	1	]	=	10	--	ВщБ¦Ц®	+str
+ItemAttr_Rad	[	2	]	=	10	--	±ШЦРЦ®	+dex
+ItemAttr_Rad	[	3	]	=	10	--	ЗїМеЦ®	+con
+ItemAttr_Rad	[	4	]	=	5	--	јІ·зЦ®	+agi
+ItemAttr_Rad	[	5	]	=	10	--	КҐПНЦ®	+sta
 ItemAttr_Rad	[	6	]	=	0	--	-1	0
 ItemAttr_Rad	[	7	]	=	0	--	-1	0
 ItemAttr_Rad	[	8	]	=	0	--	-1	0
 ItemAttr_Rad	[	9	]	=	0	--	-1	0
 ItemAttr_Rad	[	10	]	=	0	--	-1	0
-ItemAttr_Rad	[	11	]	=	10	--	
-ItemAttr_Rad	[	12	]	=	10	--	
-ItemAttr_Rad	[	13	]	=	5	--	
-ItemAttr_Rad	[	14	]	=	10	--		
-ItemAttr_Rad	[	15	]	=	10	--	
-ItemAttr_Rad	[	16	]	=	5	--	
-ItemAttr_Rad	[	17	]	=	10	--	
-ItemAttr_Rad	[	18	]	=	5	--	
-ItemAttr_Rad	[	19	]	=	10	--	
-ItemAttr_Rad	[	20	]	=	5	--	
+ItemAttr_Rad	[	11	]	=	10	--	єЪБъЦ®	+str +dex
+ItemAttr_Rad	[	12	]	=	10	--	ємБъЦ®	+str +con
+ItemAttr_Rad	[	13	]	=	5	--	А¶БъЦ®	+str +agi 
+ItemAttr_Rad	[	14	]	=	10	--	ТшБъЦ®	+str +sta
+ItemAttr_Rad	[	15	]	=	10	--	°ЩБъЦ®	+dex +con
+ItemAttr_Rad	[	16	]	=	5	--	ВМБъЦ®	+dex +agi
+ItemAttr_Rad	[	17	]	=	10	--	»ЖБъЦ®	+dex +sta
+ItemAttr_Rad	[	18	]	=	5	--	ЅрБъЦ®	+con +agi
+ItemAttr_Rad	[	19	]	=	10	--	КҐБъЦ®	+con +sta
+ItemAttr_Rad	[	20	]	=	5	--	Д§БъЦ®	+agi +sta
 ItemAttr_Rad	[	21	]	=	0	--	-1	0
 ItemAttr_Rad	[	22	]	=	0	--	-1	0
 ItemAttr_Rad	[	23	]	=	0	--	-1	0
@@ -5561,16 +5068,16 @@ ItemAttr_Rad	[	46	]	=	0	--	-1	0
 ItemAttr_Rad	[	47	]	=	0	--	-1	0
 ItemAttr_Rad	[	48	]	=	0	--	-1	0
 ItemAttr_Rad	[	49	]	=	0	--	-1	0
-ItemAttr_Rad	[	50	]	=	10	--	
-ItemAttr_Rad	[	51	]	=	5	--	
-ItemAttr_Rad	[	52	]	=	10	--	
-ItemAttr_Rad	[	53	]	=	5	--	
-ItemAttr_Rad	[	54	]	=	10	--	
-ItemAttr_Rad	[	55	]	=	5	--	
-ItemAttr_Rad	[	56	]	=	5	--	
-ItemAttr_Rad	[	57	]	=	10	--	
-ItemAttr_Rad	[	58	]	=	5	--	
-ItemAttr_Rad	[	59	]	=	5	--	
+ItemAttr_Rad	[	50	]	=	10	--	їЁА­Ц®	+str +dex +con
+ItemAttr_Rad	[	51	]	=	5	--	їЁА­Ц®	+str +dex +agi
+ItemAttr_Rad	[	52	]	=	10	--	їЁА­Ц®	+str +dex +sta
+ItemAttr_Rad	[	53	]	=	5	--	їЁА­Ц®	+str +con +agi
+ItemAttr_Rad	[	54	]	=	10	--	їЁА­Ц®	+str +con +sta
+ItemAttr_Rad	[	55	]	=	5	--	їЁА­Ц®	+str +agi +sta
+ItemAttr_Rad	[	56	]	=	5	--	їЁА­Ц®	+dex +con +agi
+ItemAttr_Rad	[	57	]	=	10	--	їЁА­Ц®	+dex +con +sta
+ItemAttr_Rad	[	58	]	=	5	--	їЁА­Ц®	+dex +agi +sta
+ItemAttr_Rad	[	59	]	=	5	--	їЁА­Ц®	+con +agi +sta
 ItemAttr_Rad	[	60	]	=	0	--	-1	0
 ItemAttr_Rad	[	61	]	=	0	--	-1	0
 ItemAttr_Rad	[	62	]	=	0	--	-1	0
@@ -5601,11 +5108,11 @@ ItemAttr_Rad	[	86	]	=	0	--	-1	0
 ItemAttr_Rad	[	87	]	=	0	--	-1	0
 ItemAttr_Rad	[	88	]	=	0	--	-1	0
 ItemAttr_Rad	[	89	]	=	0	--	-1	0
-ItemAttr_Rad	[	90	]	=	10	--
-ItemAttr_Rad	[	91	]	=	10	--	
-ItemAttr_Rad	[	92	]	=	10	--	
-ItemAttr_Rad	[	93	]	=	10	--	
-ItemAttr_Rad	[	94	]	=	10	--	
+ItemAttr_Rad	[	90	]	=	10	--	О¬¶ыЦ®	 +str +dex +con +agi
+ItemAttr_Rad	[	91	]	=	10	--	О¬¶ыЦ®	 +str +dex +con +sta
+ItemAttr_Rad	[	92	]	=	10	--	О¬¶ыЦ®	 +str +dex +agi +sta
+ItemAttr_Rad	[	93	]	=	10	--	О¬¶ыЦ®	 +str +con +agi +sta
+ItemAttr_Rad	[	94	]	=	10	--	О¬¶ыЦ®	 +dex +con +agi +sta
 ItemAttr_Rad	[	95	]	=	0	--	-1	0
 ItemAttr_Rad	[	96	]	=	0	--	-1	0
 ItemAttr_Rad	[	97	]	=	0	--	-1	0
@@ -5617,12 +5124,6 @@ GiveItemPlayerID = 0
 GiveItemPlayerNumber = 0
 GiveItemPlayerParametr = 0
 
---------------------------------------------------------
---   Массив предметов из Красивого Сундука (ID 1815)  --
---------------------------------------------------------
---                   Структура:                       --
---  1 - ID пердмета; 2 - Шанс выпадения; 3 - Кол-во;  --
---------------------------------------------------------
 	BaoXiang_HLBX_Qua	=	7	 				BaoXiang_HLBX_Mxcount	=	109
 
 	BaoXiang_HLBX	=	{}						BaoXiang_HLBX_Rad	=	{}					BaoXiang_HLBX_Count	=	{}
@@ -5737,12 +5238,6 @@ GiveItemPlayerParametr = 0
 	BaoXiang_HLBX	[	109	]	=	0455		BaoXiang_HLBX_Rad	[	109	]	=	20 		BaoXiang_HLBX_Count	[	109	]	=	1
 
 
------------------------------------------------------------
---   Массив предметов из Мистического Сундука (ID 1814)  --
------------------------------------------------------------
---                      Структура:                       --
---   1 - ID пердмета; 2 - Шанс выпадения; 3 - Кол-во;    --
------------------------------------------------------------
 
 	BaoXiang_SMBX_Qua	=	7	 				BaoXiang_SMBX_Mxcount	=	174
 
@@ -5925,7 +5420,8 @@ GiveItemPlayerParametr = 0
 
 
 	BaoXiang_WZX_Qua	=	98	 				BaoXiang_WZX_Mxcount	=	153									
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_WZX	=	{}					BaoXiang_WZX_Rad	=	{}					BaoXiang_WZX_Count	=	{}			
 	BaoXiang_WZX	[	1	]	=	0004		BaoXiang_WZX_Rad	[	1	]	=	1		BaoXiang_WZX_Count	[	1	]	=	1
 	BaoXiang_WZX	[	2	]	=	0005		BaoXiang_WZX_Rad	[	2	]	=	1		BaoXiang_WZX_Count	[	2	]	=	1
@@ -6082,35 +5578,48 @@ GiveItemPlayerParametr = 0
 	BaoXiang_WZX	[	153	]	=	0455		BaoXiang_WZX_Rad	[	153	]	=	60 		BaoXiang_WZX_Count	[	153	]	=	1
 																		
 																				
-																									
+																				
+--	чјчГЦ®ЅЈКїЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_KLJS_Qua	=	5	 				BaoXiang_KLJS_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_KLJS	=	{}					BaoXiang_KLJS_Rad	=	{}					BaoXiang_KLJS_Count	=	{}			
 	BaoXiang_KLJS	[	1	]	=	1928		BaoXiang_KLJS_Rad	[	1	]	=	1		BaoXiang_KLJS_Count	[	1	]	=	1
 	BaoXiang_KLJS	[	2	]	=	1935		BaoXiang_KLJS_Rad	[	2	]	=	1		BaoXiang_KLJS_Count	[	2	]	=	1
 	BaoXiang_KLJS	[	3	]	=	1939		BaoXiang_KLJS_Rad	[	3	]	=	1		BaoXiang_KLJS_Count	[	3	]	=	1
 	BaoXiang_KLJS	[	4	]	=	3798		BaoXiang_KLJS_Rad	[	4	]	=	1		BaoXiang_KLJS_Count	[	4	]	=	1
 																				
-																								
+																				
+--	чјчГЦ®БФИЛЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_KLLR_Qua	=	5	 				BaoXiang_KLLR_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_KLLR	=	{}					BaoXiang_KLLR_Rad	=	{}					BaoXiang_KLLR_Count	=	{}			
 	BaoXiang_KLLR	[	1	]	=	1943		BaoXiang_KLLR_Rad	[	1	]	=	1		BaoXiang_KLLR_Count	[	1	]	=	1
 	BaoXiang_KLLR	[	2	]	=	1947		BaoXiang_KLLR_Rad	[	2	]	=	1		BaoXiang_KLLR_Count	[	2	]	=	1
 	BaoXiang_KLLR	[	3	]	=	1951		BaoXiang_KLLR_Rad	[	3	]	=	1		BaoXiang_KLLR_Count	[	3	]	=	1
 	BaoXiang_KLLR	[	4	]	=	3805		BaoXiang_KLLR_Rad	[	4	]	=	1		BaoXiang_KLLR_Count	[	4	]	=	1
 																				
-																							
+																				
+--	чјчГЦ®ТЅЙъЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_KLYS_Qua	=	5	 				BaoXiang_KLYS_Mxcount	=	4										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_KLYS	=	{}					BaoXiang_KLYS_Rad	=	{}					BaoXiang_KLYS_Count	=	{}			
 	BaoXiang_KLYS	[	1	]	=	1955		BaoXiang_KLYS_Rad	[	1	]	=	1		BaoXiang_KLYS_Count	[	1	]	=	1
 	BaoXiang_KLYS	[	2	]	=	1962		BaoXiang_KLYS_Rad	[	2	]	=	1		BaoXiang_KLYS_Count	[	2	]	=	1
 	BaoXiang_KLYS	[	3	]	=	1969		BaoXiang_KLYS_Rad	[	3	]	=	1		BaoXiang_KLYS_Count	[	3	]	=	1
 	BaoXiang_KLYS	[	4	]	=	3809		BaoXiang_KLYS_Rad	[	4	]	=	1		BaoXiang_KLYS_Count	[	4	]	=	1
-																										
+																				
+																				
+--	чјчГЦ®Г°ПХХЯЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_KLMX_Qua	=	5	 				BaoXiang_KLMX_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_KLMX	=	{}					BaoXiang_KLMX_Rad	=	{}					BaoXiang_KLMX_Count	=	{}			
 	BaoXiang_KLMX	[	1	]	=	1976		BaoXiang_KLMX_Rad	[	1	]	=	1		BaoXiang_KLMX_Count	[	1	]	=	1
 	BaoXiang_KLMX	[	2	]	=	1980		BaoXiang_KLMX_Rad	[	2	]	=	1		BaoXiang_KLMX_Count	[	2	]	=	1
@@ -6118,9 +5627,11 @@ GiveItemPlayerParametr = 0
 	BaoXiang_KLMX	[	4	]	=	3816		BaoXiang_KLMX_Rad	[	4	]	=	1		BaoXiang_KLMX_Count	[	4	]	=	1
 																				
 																				
---	ЦдКхЦ®Л«ЅЈКїЧ°±ёПд																				
+--	ЦдКхЦ®Л«ЅЈКїЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_ZSSJ_Qua	=	5	 				BaoXiang_ZSSJ_Mxcount	=	4										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_ZSSJ	=	{}					BaoXiang_ZSSJ_Rad	=	{}					BaoXiang_ZSSJ_Count	=	{}			
 	BaoXiang_ZSSJ	[	1	]	=	1929		BaoXiang_ZSSJ_Rad	[	1	]	=	1		BaoXiang_ZSSJ_Count	[	1	]	=	1
 	BaoXiang_ZSSJ	[	2	]	=	1936		BaoXiang_ZSSJ_Rad	[	2	]	=	1		BaoXiang_ZSSJ_Count	[	2	]	=	1
@@ -6137,43 +5648,56 @@ GiveItemPlayerParametr = 0
 
 --
 	BaoXiang_ZSJJ_Qua	=	5	 				BaoXiang_ZSJJ_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_ZSJJ	=	{}					BaoXiang_ZSJJ_Rad	=	{}					BaoXiang_ZSJJ_Count	=	{}			
 	BaoXiang_ZSJJ	[	1	]	=	1944		BaoXiang_ZSJJ_Rad	[	1	]	=	1		BaoXiang_ZSJJ_Count	[	1	]	=	1
 	BaoXiang_ZSJJ	[	2	]	=	1948		BaoXiang_ZSJJ_Rad	[	2	]	=	1		BaoXiang_ZSJJ_Count	[	2	]	=	1
 	BaoXiang_ZSJJ	[	3	]	=	1952		BaoXiang_ZSJJ_Rad	[	3	]	=	1		BaoXiang_ZSJJ_Count	[	3	]	=	1
 	BaoXiang_ZSJJ	[	4	]	=	3806		BaoXiang_ZSJJ_Rad	[	4	]	=	1		BaoXiang_ZSJJ_Count	[	4	]	=	1
 																				
-																								
+																				
+--	ЦдКхЦ®КҐЦ°ХЯЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_ZSSZ_Qua	=	5	 				BaoXiang_ZSSZ_Mxcount	=	4										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_ZSSZ	=	{}					BaoXiang_ZSSZ_Rad	=	{}					BaoXiang_ZSSZ_Count	=	{}			
 	BaoXiang_ZSSZ	[	1	]	=	1959		BaoXiang_ZSSZ_Rad	[	1	]	=	1		BaoXiang_ZSSZ_Count	[	1	]	=	1
 	BaoXiang_ZSSZ	[	2	]	=	1966		BaoXiang_ZSSZ_Rad	[	2	]	=	1		BaoXiang_ZSSZ_Count	[	2	]	=	1
 	BaoXiang_ZSSZ	[	3	]	=	1973		BaoXiang_ZSSZ_Rad	[	3	]	=	1		BaoXiang_ZSSZ_Count	[	3	]	=	1
 	BaoXiang_ZSSZ	[	4	]	=	3813		BaoXiang_ZSSZ_Rad	[	4	]	=	1		BaoXiang_ZSSZ_Count	[	4	]	=	1
 																				
-																									
+																				
+--	ЦдКхЦ®·вУЎК¦Ч°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_ZSFY_Qua	=	5	 				BaoXiang_ZSFY_Mxcount	=	4										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_ZSFY	=	{}					BaoXiang_ZSFY_Rad	=	{}					BaoXiang_ZSFY_Count	=	{}			
 	BaoXiang_ZSFY	[	1	]	=	3810		BaoXiang_ZSFY_Rad	[	1	]	=	1		BaoXiang_ZSFY_Count	[	1	]	=	1
 	BaoXiang_ZSFY	[	2	]	=	1956		BaoXiang_ZSFY_Rad	[	2	]	=	1		BaoXiang_ZSFY_Count	[	2	]	=	1
 	BaoXiang_ZSFY	[	3	]	=	1963		BaoXiang_ZSFY_Rad	[	3	]	=	1		BaoXiang_ZSFY_Count	[	3	]	=	1
 	BaoXiang_ZSFY	[	4	]	=	1970		BaoXiang_ZSFY_Rad	[	4	]	=	1		BaoXiang_ZSFY_Count	[	4	]	=	1
 																				
-																									
+																				
+--	ЦдКхЦ®єЅєЈКїЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_ZSHH_Qua	=	5	 				BaoXiang_ZSHH_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_ZSHH	=	{}					BaoXiang_ZSHH_Rad	=	{}					BaoXiang_ZSHH_Count	=	{}			
 	BaoXiang_ZSHH	[	1	]	=	1977		BaoXiang_ZSHH_Rad	[	1	]	=	1		BaoXiang_ZSHH_Count	[	1	]	=	1
 	BaoXiang_ZSHH	[	2	]	=	1981		BaoXiang_ZSHH_Rad	[	2	]	=	1		BaoXiang_ZSHH_Count	[	2	]	=	1
 	BaoXiang_ZSHH	[	3	]	=	1985		BaoXiang_ZSHH_Rad	[	3	]	=	1		BaoXiang_ZSHH_Count	[	3	]	=	1
 	BaoXiang_ZSHH	[	4	]	=	3817		BaoXiang_ZSHH_Rad	[	4	]	=	1		BaoXiang_ZSHH_Count	[	4	]	=	1
 																				
-																									
+																				
+--	»ГБйЦ®Л«ЅЈКїЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_HLSJ_Qua	=	5	 				BaoXiang_HLSJ_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_HLSJ	=	{}					BaoXiang_HLSJ_Rad	=	{}					BaoXiang_HLSJ_Count	=	{}			
 	BaoXiang_HLSJ	[	1	]	=	1930		BaoXiang_HLSJ_Rad	[	1	]	=	1		BaoXiang_HLSJ_Count	[	1	]	=	1
 	BaoXiang_HLSJ	[	2	]	=	1937		BaoXiang_HLSJ_Rad	[	2	]	=	1		BaoXiang_HLSJ_Count	[	2	]	=	1
@@ -6190,43 +5714,56 @@ GiveItemPlayerParametr = 0
 
 --
 	BaoXiang_HLJJ_Qua	=	5	 				BaoXiang_HLJJ_Mxcount	=	4										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_HLJJ	=	{}					BaoXiang_HLJJ_Rad	=	{}					BaoXiang_HLJJ_Count	=	{}			
 	BaoXiang_HLJJ	[	1	]	=	1945		BaoXiang_HLJJ_Rad	[	1	]	=	1		BaoXiang_HLJJ_Count	[	1	]	=	1
 	BaoXiang_HLJJ	[	2	]	=	1949		BaoXiang_HLJJ_Rad	[	2	]	=	1		BaoXiang_HLJJ_Count	[	2	]	=	1
 	BaoXiang_HLJJ	[	3	]	=	1953		BaoXiang_HLJJ_Rad	[	3	]	=	1		BaoXiang_HLJJ_Count	[	3	]	=	1
 	BaoXiang_HLJJ	[	4	]	=	3807		BaoXiang_HLJJ_Rad	[	4	]	=	1		BaoXiang_HLJJ_Count	[	4	]	=	1
 																				
-																									
+																				
+--	»ГБйЦ®КҐЦ°ХЯЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_HLSZ_Qua	=	5	 				BaoXiang_HLSZ_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_HLSZ	=	{}					BaoXiang_HLSZ_Rad	=	{}					BaoXiang_HLSZ_Count	=	{}			
 	BaoXiang_HLSZ	[	1	]	=	1960		BaoXiang_HLSZ_Rad	[	1	]	=	1		BaoXiang_HLSZ_Count	[	1	]	=	1
 	BaoXiang_HLSZ	[	2	]	=	1967		BaoXiang_HLSZ_Rad	[	2	]	=	1		BaoXiang_HLSZ_Count	[	2	]	=	1
 	BaoXiang_HLSZ	[	3	]	=	1974		BaoXiang_HLSZ_Rad	[	3	]	=	1		BaoXiang_HLSZ_Count	[	3	]	=	1
 	BaoXiang_HLSZ	[	4	]	=	3814		BaoXiang_HLSZ_Rad	[	4	]	=	1		BaoXiang_HLSZ_Count	[	4	]	=	1
 																				
-																									
+																				
+--	»ГБйЦ®·вУЎК¦Ч°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_HLFY_Qua	=	5	 				BaoXiang_HLFY_Mxcount	=	4										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_HLFY	=	{}					BaoXiang_HLFY_Rad	=	{}					BaoXiang_HLFY_Count	=	{}			
 	BaoXiang_HLFY	[	1	]	=	1957		BaoXiang_HLFY_Rad	[	1	]	=	1		BaoXiang_HLFY_Count	[	1	]	=	1
 	BaoXiang_HLFY	[	2	]	=	1964		BaoXiang_HLFY_Rad	[	2	]	=	1		BaoXiang_HLFY_Count	[	2	]	=	1
 	BaoXiang_HLFY	[	3	]	=	1971		BaoXiang_HLFY_Rad	[	3	]	=	1		BaoXiang_HLFY_Count	[	3	]	=	1
 	BaoXiang_HLFY	[	4	]	=	3811		BaoXiang_HLFY_Rad	[	4	]	=	1		BaoXiang_HLFY_Count	[	4	]	=	1
 																				
-																									
+																				
+--	»ГБйЦ®єЅєЈКїЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_HLHH_Qua	=	5	 				BaoXiang_HLHH_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_HLHH	=	{}					BaoXiang_HLHH_Rad	=	{}					BaoXiang_HLHH_Count	=	{}			
 	BaoXiang_HLHH	[	1	]	=	1978		BaoXiang_HLHH_Rad	[	1	]	=	1		BaoXiang_HLHH_Count	[	1	]	=	1
 	BaoXiang_HLHH	[	2	]	=	1982		BaoXiang_HLHH_Rad	[	2	]	=	1		BaoXiang_HLHH_Count	[	2	]	=	1
 	BaoXiang_HLHH	[	3	]	=	1986		BaoXiang_HLHH_Rad	[	3	]	=	1		BaoXiang_HLHH_Count	[	3	]	=	1
 	BaoXiang_HLHH	[	4	]	=	3818		BaoXiang_HLHH_Rad	[	4	]	=	1		BaoXiang_HLHH_Count	[	4	]	=	1
 																				
-																									
+																				
+--	ГФЦ®Л«ЅЈКїЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_MSJ_Qua	=	5	 				BaoXiang_MSJ_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_MSJ	=	{}					BaoXiang_MSJ_Rad	=	{}					BaoXiang_MSJ_Count	=	{}			
 	BaoXiang_MSJ	[	1	]	=	1931		BaoXiang_MSJ_Rad	[	1	]	=	1		BaoXiang_MSJ_Count	[	1	]	=	1
 	BaoXiang_MSJ	[	2	]	=	1938		BaoXiang_MSJ_Rad	[	2	]	=	1		BaoXiang_MSJ_Count	[	2	]	=	1
@@ -6241,35 +5778,46 @@ GiveItemPlayerParametr = 0
 	BaoXiang_MJS	[	3	]	=	1508		BaoXiang_MJS_Rad	[	3	]	=	1		BaoXiang_MJS_Count	[	3	]	=	1
 	BaoXiang_MJS	[	4	]	=	1511		BaoXiang_MJS_Rad	[	4	]	=	1		BaoXiang_MJS_Count	[	4	]	=	1
 
-
+--
 	BaoXiang_MJJ_Qua	=	5	 				BaoXiang_MJJ_Mxcount	=	4										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_MJJ	=	{}					BaoXiang_MJJ_Rad	=	{}					BaoXiang_MJJ_Count	=	{}			
 	BaoXiang_MJJ	[	1	]	=	1946		BaoXiang_MJJ_Rad	[	1	]	=	1		BaoXiang_MJJ_Count	[	1	]	=	1
 	BaoXiang_MJJ	[	2	]	=	1950		BaoXiang_MJJ_Rad	[	2	]	=	1		BaoXiang_MJJ_Count	[	2	]	=	1
 	BaoXiang_MJJ	[	3	]	=	1954		BaoXiang_MJJ_Rad	[	3	]	=	1		BaoXiang_MJJ_Count	[	3	]	=	1
 	BaoXiang_MJJ	[	4	]	=	3808		BaoXiang_MJJ_Rad	[	4	]	=	1		BaoXiang_MJJ_Count	[	4	]	=	1
 																				
-																									
+																				
+--	ГФЦ®КҐЦ°ХЯЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_MSZ_Qua	=	5	 				BaoXiang_MSZ_Mxcount	=	4										
-																							
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_MSZ	=	{}					BaoXiang_MSZ_Rad	=	{}					BaoXiang_MSZ_Count	=	{}			
 	BaoXiang_MSZ	[	1	]	=	1961		BaoXiang_MSZ_Rad	[	1	]	=	1		BaoXiang_MSZ_Count	[	1	]	=	1
 	BaoXiang_MSZ	[	2	]	=	1968		BaoXiang_MSZ_Rad	[	2	]	=	1		BaoXiang_MSZ_Count	[	2	]	=	1
 	BaoXiang_MSZ	[	3	]	=	1975		BaoXiang_MSZ_Rad	[	3	]	=	1		BaoXiang_MSZ_Count	[	3	]	=	1
 	BaoXiang_MSZ	[	4	]	=	3815		BaoXiang_MSZ_Rad	[	4	]	=	1		BaoXiang_MSZ_Count	[	4	]	=	1
 																				
-																								
+																				
+--	ГФЦ®·вУЎК¦Ч°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_MFY_Qua	=	5	 				BaoXiang_MFY_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_MFY	=	{}					BaoXiang_MFY_Rad	=	{}					BaoXiang_MFY_Count	=	{}			
 	BaoXiang_MFY	[	1	]	=	1958		BaoXiang_MFY_Rad	[	1	]	=	1		BaoXiang_MFY_Count	[	1	]	=	1
 	BaoXiang_MFY	[	2	]	=	1965		BaoXiang_MFY_Rad	[	2	]	=	1		BaoXiang_MFY_Count	[	2	]	=	1
 	BaoXiang_MFY	[	3	]	=	1972		BaoXiang_MFY_Rad	[	3	]	=	1		BaoXiang_MFY_Count	[	3	]	=	1
 	BaoXiang_MFY	[	4	]	=	3812		BaoXiang_MFY_Rad	[	4	]	=	1		BaoXiang_MFY_Count	[	4	]	=	1
-																							
+																				
+																				
+--	ГФЦ®єЅєЈКїЧ°±ёПд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_MHH_Qua	=	5	 				BaoXiang_MHH_Mxcount	=	4										
-																									
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_MHH	=	{}					BaoXiang_MHH_Rad	=	{}					BaoXiang_MHH_Count	=	{}			
 	BaoXiang_MHH	[	1	]	=	1979		BaoXiang_MHH_Rad	[	1	]	=	1		BaoXiang_MHH_Count	[	1	]	=	1
 	BaoXiang_MHH	[	2	]	=	1983		BaoXiang_MHH_Rad	[	2	]	=	1		BaoXiang_MHH_Count	[	2	]	=	1
@@ -6350,7 +5898,8 @@ GiveItemPlayerParametr = 0
 
 --
 	BaoXiang_SDWZBOX_Qua	=	5	 				BaoXiang_SDWZBOX_Mxcount	=	19										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_SDWZBOX	=	{}					BaoXiang_SDWZBOX_Rad	=	{}					BaoXiang_SDWZBOX_Count	=	{}			
 	BaoXiang_SDWZBOX	[	1	]	=	0863		BaoXiang_SDWZBOX_Rad	[	1	]	=	1		BaoXiang_SDWZBOX_Count	[	1	]	=	1
 	BaoXiang_SDWZBOX	[	2	]	=	0862		BaoXiang_SDWZBOX_Rad	[	2	]	=	1		BaoXiang_SDWZBOX_Count	[	2	]	=	1
@@ -6371,9 +5920,12 @@ GiveItemPlayerParametr = 0
 	BaoXiang_SDWZBOX	[	16	]	=	0883		BaoXiang_SDWZBOX_Rad	[	17	]	=	8		BaoXiang_SDWZBOX_Count	[	17	]	=	1
 	BaoXiang_SDWZBOX	[	17	]	=	0884		BaoXiang_SDWZBOX_Rad	[	18	]	=	8		BaoXiang_SDWZBOX_Count	[	18	]	=	1
 	BaoXiang_SDWZBOX	[	19	]	=	0887		BaoXiang_SDWZBOX_Rad	[	19	]	=	8		BaoXiang_SDWZBOX_Count	[	19	]	=	1
-																							
+																				
+--	КҐµ®АсєР±¦Пд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_SDLHBOX_Qua	=	5	 				BaoXiang_SDLHBOX_Mxcount	=	150										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК							ОпЖ·КэДї					
 	BaoXiang_SDLHBOX	=	{}					BaoXiang_SDLHBOX_Rad	=	{}					BaoXiang_SDLHBOX_Count	=	{}			
 	BaoXiang_SDLHBOX	[	1	]	=	0004		BaoXiang_SDLHBOX_Rad	[	1	]	=	1		BaoXiang_SDLHBOX_Count	[	1	]	=	1
 	BaoXiang_SDLHBOX	[	2	]	=	0005		BaoXiang_SDLHBOX_Rad	[	2	]	=	1		BaoXiang_SDLHBOX_Count	[	2	]	=	1
@@ -6525,9 +6077,13 @@ GiveItemPlayerParametr = 0
 	BaoXiang_SDLHBOX	[	148	]	=	4545		BaoXiang_SDLHBOX_Rad	[	148	]	=	20		BaoXiang_SDLHBOX_Count	[	148	]	=	8
 	BaoXiang_SDLHBOX	[	149	]	=	4546		BaoXiang_SDLHBOX_Rad	[	149	]	=	20		BaoXiang_SDLHBOX_Count	[	149	]	=	5
 	BaoXiang_SDLHBOX	[	150	]	=	1478		BaoXiang_SDLHBOX_Rad	[	150	]	=	20		BaoXiang_SDLHBOX_Count	[	150	]	=	10
-																		
+
+
+--	єГФЛ°ь±¦Пд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_HYBOX_Qua	=	5	 				BaoXiang_HYBOX_Mxcount	=	19										
-																							
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BaoXiang_HYBOX	=	{}					BaoXiang_HYBOX_Rad	=	{}					BaoXiang_HYBOX_Count	=	{}			
 	BaoXiang_HYBOX	[	1	]	=	3851		BaoXiang_HYBOX_Rad	[	1	]	=	1		BaoXiang_HYBOX_Count	[	1	]	=	1
 	BaoXiang_HYBOX	[	2	]	=	3852		BaoXiang_HYBOX_Rad	[	2	]	=	1		BaoXiang_HYBOX_Count	[	2	]	=	1
@@ -6550,11 +6106,17 @@ GiveItemPlayerParametr = 0
 	BaoXiang_HYBOX	[	19	]	=	3875		BaoXiang_HYBOX_Rad	[	19	]	=	1		BaoXiang_HYBOX_Count	[	19	]	=	1
 	BaoXiang_HYBOX	[	20	]	=	3873		BaoXiang_HYBOX_Rad	[	20	]	=	1 		BaoXiang_HYBOX_Count	[	20	]	=	1
 	BaoXiang_HYBOX	[	21	]	=	3874		BaoXiang_HYBOX_Rad	[	21	]	=	1 		BaoXiang_HYBOX_Count	[	21	]	=	1
-	BaoXiang_HYBOX	[	22	]	=	3875		BaoXiang_HYBOX_Rad	[	22	]	=	1 		BaoXiang_HYBOX_Count	[	22	]	=	1											
+	BaoXiang_HYBOX	[	22	]	=	3875		BaoXiang_HYBOX_Rad	[	22	]	=	1 		BaoXiang_HYBOX_Count	[	22	]	=	1
 																				
-																						
+																				
+																				
+																				
+																				
+--	єиФЛ°ь±¦Пд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_HYUNBOX_Qua	=	5	 				BaoXiang_HYUNBOX_Mxcount	=	50										
-																							
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BaoXiang_HYUNBOX	=	{}					BaoXiang_HYUNBOX_Rad	=	{}					BaoXiang_HYUNBOX_Count	=	{}			
 	BaoXiang_HYUNBOX	[	1	]	=	3851		BaoXiang_HYUNBOX_Rad	[	1	]	=	200		BaoXiang_HYUNBOX_Count	[	1	]	=	1
 	BaoXiang_HYUNBOX	[	2	]	=	3852		BaoXiang_HYUNBOX_Rad	[	2	]	=	300		BaoXiang_HYUNBOX_Count	[	2	]	=	1
@@ -6612,9 +6174,15 @@ GiveItemPlayerParametr = 0
 	BaoXiang_HYUNBOX	[	53	]	=	3137		BaoXiang_HYUNBOX_Rad	[	53	]	=	21 		BaoXiang_HYUNBOX_Count	[	53	]	=	1
 																				
 																				
-																					
+																				
+																				
+																				
+																				
+--	ё»№у°ь±¦Пд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_FGBOX_Qua	=	5	 				BaoXiang_FGBOX_Mxcount	=	41										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BaoXiang_FGBOX	=	{}					BaoXiang_FGBOX_Rad	=	{}					BaoXiang_FGBOX_Count	=	{}			
 	BaoXiang_FGBOX	[	1	]	=	3828		BaoXiang_FGBOX_Rad	[	1	]	=	32 		BaoXiang_FGBOX_Count	[	1	]	=	1
 	BaoXiang_FGBOX	[	2	]	=	3829		BaoXiang_FGBOX_Rad	[	2	]	=	32 		BaoXiang_FGBOX_Count	[	2	]	=	1
@@ -6658,11 +6226,15 @@ GiveItemPlayerParametr = 0
 	BaoXiang_FGBOX	[	40	]	=	3141		BaoXiang_FGBOX_Rad	[	40	]	=	174 		BaoXiang_FGBOX_Count	[	40	]	=	1
 	BaoXiang_FGBOX	[	41	]	=	3129		BaoXiang_FGBOX_Rad	[	41	]	=	174 		BaoXiang_FGBOX_Count	[	41	]	=	1
 																				
-																								
+																				
+																				
+--	°µµ­РнФёКЇ±¦Пд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_ADBOX_Qua	=	5	 				BaoXiang_ADBOX_Mxcount	=	139										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BaoXiang_ADBOX	=	{}					BaoXiang_ADBOX_Rad	=	{}					BaoXiang_ADBOX_Count	=	{}			
-	BaoXiang_ADBOX	[	1	]	=	3909		BaoXiang_ADBOX_Rad	[	1	]	=	23600 		BaoXiang_ADBOX_Count	[	1	]	=	1
+	BaoXiang_ADBOX	[	1	]	=	3909		BaoXiang_ADBOX_Rad	[	1	]	=	600 		BaoXiang_ADBOX_Count	[	1	]	=	1
 	BaoXiang_ADBOX	[	2	]	=	3345		BaoXiang_ADBOX_Rad	[	2	]	=	300 		BaoXiang_ADBOX_Count	[	2	]	=	1
 	BaoXiang_ADBOX	[	3	]	=	3346		BaoXiang_ADBOX_Rad	[	3	]	=	300 		BaoXiang_ADBOX_Count	[	3	]	=	1
 	BaoXiang_ADBOX	[	4	]	=	3347		BaoXiang_ADBOX_Rad	[	4	]	=	300 		BaoXiang_ADBOX_Count	[	4	]	=	1
@@ -6802,9 +6374,22 @@ GiveItemPlayerParametr = 0
 	BaoXiang_ADBOX	[	138	]	=	3138		BaoXiang_ADBOX_Rad	[	138	]	=	736 		BaoXiang_ADBOX_Count	[	138	]	=	1
 	BaoXiang_ADBOX	[	139	]	=	3135		BaoXiang_ADBOX_Rad	[	139	]	=	736 		BaoXiang_ADBOX_Count	[	139	]	=	1
 																				
-																						
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+--	ЙБ№вРнФёКЇ±¦Пд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_SGBOX_Qua	=	5	 				BaoXiang_SGBOX_Mxcount	=	78										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BaoXiang_SGBOX	=	{}					BaoXiang_SGBOX_Rad	=	{}					BaoXiang_SGBOX_Count	=	{}			
 	BaoXiang_SGBOX	[	1	]	=	3909		BaoXiang_SGBOX_Rad	[	1	]	=	60000 		BaoXiang_SGBOX_Count	[	1	]	=	1
 	BaoXiang_SGBOX	[	2	]	=	3345		BaoXiang_SGBOX_Rad	[	2	]	=	10000 		BaoXiang_SGBOX_Count	[	2	]	=	1
@@ -6891,7 +6476,7 @@ GiveItemPlayerParametr = 0
 -- СТАРАЯ КАРТА ПИРАТСКИХ СОКРОВИЩ - СП (ID=1093)
 ------
 	
-	BaoXiang_CBTBOX_Qua	=	5	 				BaoXiang_CBTBOX_Mxcount	=	236									
+	BaoXiang_CBTBOX_Qua	=	5	 				BaoXiang_CBTBOX_Mxcount	=	222									
 																															
 	BaoXiang_CBTBOX	=	{}						BaoXiang_CBTBOX_Rad	=	{}					BaoXiang_CBTBOX_Count	=	{}			
 	BaoXiang_CBTBOX	[	1	]	=	0396		BaoXiang_CBTBOX_Rad	[	1	]	=	1 		BaoXiang_CBTBOX_Count	[	1	]	=	1
@@ -7116,25 +6701,14 @@ GiveItemPlayerParametr = 0
 	BaoXiang_CBTBOX	[	219	]	=	0259		BaoXiang_CBTBOX_Rad	[	219	]	=	10 		BaoXiang_CBTBOX_Count	[	219	]	=	1
 	BaoXiang_CBTBOX	[	220	]	=	0260		BaoXiang_CBTBOX_Rad	[	220	]	=	5 		BaoXiang_CBTBOX_Count	[	220	]	=	1
 	BaoXiang_CBTBOX	[	221	]	=	0453		BaoXiang_CBTBOX_Rad	[	221	]	=	25 		BaoXiang_CBTBOX_Count	[	221	]	=	1
-	BaoXiang_CBTBOX	[	222	]	=	8724		BaoXiang_CBTBOX_Rad	[	222	]	=	25		BaoXiang_CBTBOX_Count	[	222	]	=	1
-	BaoXiang_CBTBOX	[	223	]	=	8725		BaoXiang_CBTBOX_Rad	[	223	]	=	25		BaoXiang_CBTBOX_Count	[	223	]	=	1
-	BaoXiang_CBTBOX	[	224	]	=	8726		BaoXiang_CBTBOX_Rad	[	224	]	=	25		BaoXiang_CBTBOX_Count	[	224	]	=	1
-	BaoXiang_CBTBOX	[	225	]	=	8727		BaoXiang_CBTBOX_Rad	[	225	]	=	25		BaoXiang_CBTBOX_Count	[	225	]	=	1
-	BaoXiang_CBTBOX	[	226	]	=	8728		BaoXiang_CBTBOX_Rad	[	226	]	=	25		BaoXiang_CBTBOX_Count	[	226	]	=	1
-	BaoXiang_CBTBOX	[	227	]	=	8729		BaoXiang_CBTBOX_Rad	[	227	]	=	25		BaoXiang_CBTBOX_Count	[	227	]	=	1
-	BaoXiang_CBTBOX	[	228	]	=	8272		BaoXiang_CBTBOX_Rad	[	228	]	=	25		BaoXiang_CBTBOX_Count	[	228	]	=	1
-	BaoXiang_CBTBOX	[	229	]	=	8143		BaoXiang_CBTBOX_Rad	[	229	]	=	25		BaoXiang_CBTBOX_Count	[	229	]	=	1
-	BaoXiang_CBTBOX	[	230	]	=	3422		BaoXiang_CBTBOX_Rad	[	230	]	=	25		BaoXiang_CBTBOX_Count	[	230	]	=	1
-	BaoXiang_CBTBOX	[	231	]	=	3423		BaoXiang_CBTBOX_Rad	[	231	]	=	25		BaoXiang_CBTBOX_Count	[	231	]	=	1
-	BaoXiang_CBTBOX	[	232	]	=	3424		BaoXiang_CBTBOX_Rad	[	232	]	=	25		BaoXiang_CBTBOX_Count	[	232	]	=	1
-	BaoXiang_CBTBOX	[	233	]	=	1020		BaoXiang_CBTBOX_Rad	[	233	]	=	25		BaoXiang_CBTBOX_Count	[	233	]	=	1
-	BaoXiang_CBTBOX	[	234	]	=	1028		BaoXiang_CBTBOX_Rad	[	234	]	=	25		BaoXiang_CBTBOX_Count	[	234	]	=	1
-	BaoXiang_CBTBOX	[	235	]	=	8145		BaoXiang_CBTBOX_Rad	[	235	]	=	25		BaoXiang_CBTBOX_Count	[	235	]	=	1
-	BaoXiang_CBTBOX	[	236	]	=	8144		BaoXiang_CBTBOX_Rad	[	236	]	=	26		BaoXiang_CBTBOX_Count	[	236	]	=	2
+	BaoXiang_CBTBOX	[	222	]	=	0455		BaoXiang_CBTBOX_Rad	[	222	]	=	25 		BaoXiang_CBTBOX_Count	[	222	]	=	1
 
-																	
+
+--	іиіи±¦Пд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_SYBOX_Qua	=	5					BaoXiang_SYBOX_Mxcount	=	15										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BaoXiang_SYBOX	=	{}					BaoXiang_SYBOX_Rad	=	{}					BaoXiang_SYBOX_Count	=	{}			
 	BaoXiang_SYBOX	[	1	]	=	0183		BaoXiang_SYBOX_Rad	[	1	]	=	1 		BaoXiang_SYBOX_Count	[	1	]	=	1
 	BaoXiang_SYBOX	[	2	]	=	0184		BaoXiang_SYBOX_Rad	[	2	]	=	1 		BaoXiang_SYBOX_Count	[	2	]	=	1
@@ -7147,7 +6721,7 @@ GiveItemPlayerParametr = 0
 	BaoXiang_SYBOX	[	9	]	=	0191		BaoXiang_SYBOX_Rad	[	9	]	=	1 		BaoXiang_SYBOX_Count	[	9	]	=	1
 	BaoXiang_SYBOX	[	10	]	=	0199		BaoXiang_SYBOX_Rad	[	10	]	=	1 		BaoXiang_SYBOX_Count	[	10	]	=	1
 	BaoXiang_SYBOX	[	11	]	=	3336		BaoXiang_SYBOX_Rad	[	11	]	=	15 		BaoXiang_SYBOX_Count	[	11	]	=	1
-	BaoXiang_SYBOX	[	12	]	=	8142		BaoXiang_SYBOX_Rad	[	12	]	=	25 		BaoXiang_SYBOX_Count	[	12	]	=	1
+	BaoXiang_SYBOX	[	12	]	=	3885		BaoXiang_SYBOX_Rad	[	12	]	=	25 		BaoXiang_SYBOX_Count	[	12	]	=	1
 	BaoXiang_SYBOX	[	13	]	=	3339		BaoXiang_SYBOX_Rad	[	13	]	=	100 		BaoXiang_SYBOX_Count	[	13	]	=	1
 	BaoXiang_SYBOX	[	14	]	=	3340		BaoXiang_SYBOX_Rad	[	14	]	=	150 		BaoXiang_SYBOX_Count	[	14	]	=	1
 	BaoXiang_SYBOX	[	15	]	=	3342		BaoXiang_SYBOX_Rad	[	15	]	=	200 		BaoXiang_SYBOX_Count	[	15	]	=	1
@@ -7168,11 +6742,14 @@ GiveItemPlayerParametr = 0
 	BaoXiang_JingLingBOX	[	7	]	=	0189		BaoXiang_JingLingBOX_Rad	[	7	]	=	10		BaoXiang_JingLingBOX_Count	[	7	]	=	1
 	BaoXiang_JingLingBOX	[	8	]	=	0190		BaoXiang_JingLingBOX_Rad	[	8	]	=	10		BaoXiang_JingLingBOX_Count	[	8	]	=	1
 	BaoXiang_JingLingBOX	[	9	]	=	0191		BaoXiang_JingLingBOX_Rad	[	9	]	=	10		BaoXiang_JingLingBOX_Count	[	9	]	=	1
-	BaoXiang_JingLingBOX	[	10	]	=	0190		BaoXiang_JingLingBOX_Rad	[	10	]	=	10		BaoXiang_JingLingBOX_Count	[	10	]	=	1
-	BaoXiang_JingLingBOX	[	11	]	=	0680		BaoXiang_JingLingBOX_Rad	[	11	]	=	6		BaoXiang_JingLingBOX_Count	[	11	]	=	1
-															
+	BaoXiang_JingLingBOX	[	10	]	=	0199		BaoXiang_JingLingBOX_Rad	[	10	]	=	10		BaoXiang_JingLingBOX_Count	[	10	]	=	1
+	BaoXiang_JingLingBOX	[	11	]	=	0680		BaoXiang_JingLingBOX_Rad	[	11	]	=	1		BaoXiang_JingLingBOX_Count	[	11	]	=	1
+
+--	·зАЧ±¦Пд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BoxXiang_FLeiBOX_Qua	=	5					BoxXiang_FLeiBOX_Mxcount	=	12										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BoxXiang_FLeiBOX	=	{}	 	 	 			BoxXiang_FLeiBOX_Rad	=	{}	 	 			BoxXiang_FLeiBOX_Count	=	{}			
 	BoxXiang_FLeiBOX	[	1	]	=	5001		BoxXiang_FLeiBOX_Rad	[	1	]	=	1		BoxXiang_FLeiBOX_Count	[	1	]	=	1
 	BoxXiang_FLeiBOX	[	2	]	=	5002		BoxXiang_FLeiBOX_Rad	[	2	]	=	1		BoxXiang_FLeiBOX_Count	[	2	]	=	1
@@ -7187,9 +6764,12 @@ GiveItemPlayerParametr = 0
 	BoxXiang_FLeiBOX	[	11	]	=	5011		BoxXiang_FLeiBOX_Rad	[	11	]	=	1		BoxXiang_FLeiBOX_Count	[	11	]	=	1
 	BoxXiang_FLeiBOX	[	12	]	=	5012		BoxXiang_FLeiBOX_Rad	[	12	]	=	1		BoxXiang_FLeiBOX_Count	[	12	]	=	1
 
-																							
+																				
+--	Т»ФЄєГФЛ°ь																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BoxXiang_YiYuanBOX_Qua	=	5					BoxXiang_YiYuanBOX_Mxcount	=	32										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BoxXiang_YiYuanBOX	=	{}					BoxXiang_YiYuanBOX_Rad	=	{}					BoxXiang_YiYuanBOX_Count	=	{}			
 	BoxXiang_YiYuanBOX	[	1	]	=	3098		BoxXiang_YiYuanBOX_Rad	[	1	]	=	150 		BoxXiang_YiYuanBOX_Count	[	1	]	=	4
 	BoxXiang_YiYuanBOX	[	2	]	=	3054		BoxXiang_YiYuanBOX_Rad	[	2	]	=	150 		BoxXiang_YiYuanBOX_Count	[	2	]	=	4
@@ -7209,7 +6789,7 @@ GiveItemPlayerParametr = 0
 	BoxXiang_YiYuanBOX	[	16	]	=	222		BoxXiang_YiYuanBOX_Rad	[	16	]	=	180 		BoxXiang_YiYuanBOX_Count	[	16	]	=	2
 	BoxXiang_YiYuanBOX	[	17	]	=	225		BoxXiang_YiYuanBOX_Rad	[	17	]	=	180 		BoxXiang_YiYuanBOX_Count	[	17	]	=	2
 	BoxXiang_YiYuanBOX	[	18	]	=	3336		BoxXiang_YiYuanBOX_Rad	[	18	]	=	180 		BoxXiang_YiYuanBOX_Count	[	18	]	=	1
-	BoxXiang_YiYuanBOX	[	19	]	=	8141		BoxXiang_YiYuanBOX_Rad	[	19	]	=	50 		BoxXiang_YiYuanBOX_Count	[	19	]	=	1
+	BoxXiang_YiYuanBOX	[	19	]	=	3885		BoxXiang_YiYuanBOX_Rad	[	19	]	=	50 		BoxXiang_YiYuanBOX_Count	[	19	]	=	1
 	BoxXiang_YiYuanBOX	[	20	]	=	430		BoxXiang_YiYuanBOX_Rad	[	20	]	=	50 		BoxXiang_YiYuanBOX_Count	[	20	]	=	1
 	BoxXiang_YiYuanBOX	[	21	]	=	3886		BoxXiang_YiYuanBOX_Rad	[	21	]	=	50 		BoxXiang_YiYuanBOX_Count	[	21	]	=	1
 	BoxXiang_YiYuanBOX	[	22	]	=	3113		BoxXiang_YiYuanBOX_Rad	[	22	]	=	50 		BoxXiang_YiYuanBOX_Count	[	22	]	=	1
@@ -7223,9 +6803,13 @@ GiveItemPlayerParametr = 0
 	BoxXiang_YiYuanBOX	[	30	]	=	179		BoxXiang_YiYuanBOX_Rad	[	30	]	=	1 		BoxXiang_YiYuanBOX_Count	[	30	]	=	1
 	BoxXiang_YiYuanBOX	[	31	]	=	3084		BoxXiang_YiYuanBOX_Rad	[	31	]	=	1 		BoxXiang_YiYuanBOX_Count	[	31	]	=	1
 	BoxXiang_YiYuanBOX	[	32	]	=	3085		BoxXiang_YiYuanBOX_Rad	[	32	]	=	1 		BoxXiang_YiYuanBOX_Count	[	32	]	=	1
-														
+
+
+--	99±¬ХЁ°ь																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BoxXiang_baozhabao_Qua	=	5					BoxXiang_baozhabao_Mxcount	=	35										
-																							
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BoxXiang_BaoZhaBOX	=	{}					BoxXiang_BaoZhaBOX_Rad	=	{}					BoxXiang_BaoZhaBOX_Count	=	{}			
 	BoxXiang_BaoZhaBOX	[	1	]	=	3077		BoxXiang_BaoZhaBOX_Rad	[	1	]	=	566 		BoxXiang_BaoZhaBOX_Count	[	1	]	=	10
 	BoxXiang_BaoZhaBOX	[	2	]	=	3094		BoxXiang_BaoZhaBOX_Rad	[	2	]	=	566 		BoxXiang_BaoZhaBOX_Count	[	2	]	=	2
@@ -7262,9 +6846,13 @@ GiveItemPlayerParametr = 0
 	BoxXiang_BaoZhaBOX	[	33	]	=	3458		BoxXiang_BaoZhaBOX_Rad	[	33	]	=	22 		BoxXiang_BaoZhaBOX_Count	[	33	]	=	1
 	BoxXiang_BaoZhaBOX	[	34	]	=	0247		BoxXiang_BaoZhaBOX_Rad	[	34	]	=	11 		BoxXiang_BaoZhaBOX_Count	[	34	]	=	1
 	BoxXiang_BaoZhaBOX	[	35	]	=	271		BoxXiang_BaoZhaBOX_Rad	[	35	]	=	5 		BoxXiang_BaoZhaBOX_Count	[	35	]	=	1
-																		
+
+
+--	єЈµБНхЦЬЛк°Щ±¦Пд																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BoxXiang_ZhouSui_Qua	=	5					BoxXiang_ZhouSui_Mxcount	=	16										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BoxXiang_ZhousSuiBOX	=	{}					BoxXiang_ZhousSuiBOX_Rad	=	{}					BoxXiang_ZhousSuiBOX_Count	=	{}			
 	BoxXiang_ZhousSuiBOX	[	1	]	=	0853		BoxXiang_ZhousSuiBOX_Rad	[	1	]	=	2 		BoxXiang_ZhousSuiBOX_Count	[	1	]	=	1
 	BoxXiang_ZhousSuiBOX	[	2	]	=	3047		BoxXiang_ZhousSuiBOX_Rad	[	2	]	=	5 		BoxXiang_ZhousSuiBOX_Count	[	2	]	=	5
@@ -7289,131 +6877,8 @@ GiveItemPlayerParametr = 0
 ------
 -- КАРТА КАРИБСКИХ СОКРОВИЩ
 ------
- GoodItem_SP = {}
-		GoodItem_SP[0]		=	0110
-		GoodItem_SP[1]		=	0112
-		GoodItem_SP[2]		=	0114
-		GoodItem_SP[3]		=	0116
-		GoodItem_SP[4]		=	0118
-		GoodItem_SP[5]		=	0120
-		GoodItem_SP[6]		=	0151
-		GoodItem_SP[7]		=	0396
-		GoodItem_SP[8]		=	0398
-		GoodItem_SP[9]		=	0400
-		GoodItem_SP[10]	=	0402
-		GoodItem_SP[11]	=	0404
-		GoodItem_SP[12]	=	0406
-		GoodItem_SP[13]	=	0408
-		GoodItem_SP[14]	=	0411
-		GoodItem_SP[15]	=	0413
-		GoodItem_SP[16]	=	0588
-		GoodItem_SP[17]	=	0590
-		GoodItem_SP[18]	=	0592
-		GoodItem_SP[19]	=	0594
-		GoodItem_SP[20]	=	0596
-		GoodItem_SP[21]	=	0598
-		GoodItem_SP[22]	=	0600
-		GoodItem_SP[23]	=	0602
-		GoodItem_SP[24]	=	0748
-		GoodItem_SP[25]	=	0750
-		GoodItem_SP[26]	=	0752
-		GoodItem_SP[27]	=	0754
-		GoodItem_SP[28]	=	0756
-		GoodItem_SP[29]	=	0758
-		GoodItem_SP[30]	=	1012
-		GoodItem_SP[31]	=	0860
-		GoodItem_SP[32]	=	0861
-		GoodItem_SP[33]	=	0862
-		GoodItem_SP[34]	=	0863
-		GoodItem_SP[35]	=	8535
-		GoodItem_SP[36]	=	8574
-		GoodItem_SP[37]	=	8587
-		GoodItem_SP[38]	=	8584
-		GoodItem_SP[39]	=	8583
-		GoodItem_SP[40]	=	8581
-		GoodItem_SP[41]	=	8615
-		GoodItem_SP[42]	=	6814
-		GoodItem_SP[43]	=	8613
-		GoodItem_SP[44]	=	8549
-		GoodItem_SP[45]	=	8546
-		GoodItem_SP[46]	=	8529
-		GoodItem_SP[47]	=	8298
-		GoodItem_SP[48]	=	8297
-		GoodItem_SP[49]	=	8296
-		GoodItem_SP[50]	=	8295
-		GoodItem_SP[51]	=	8551
-		GoodItem_SP[52]	=	8723
-		GoodItem_SP[53]	=	8724
-		GoodItem_SP[54]	=	8725
-		GoodItem_SP[55]	=	8726
-		GoodItem_SP[56]	=	8727
-		GoodItem_SP[57]	=	8728
-		GoodItem_SP[58]	=	8729
-		GoodItem_SP[59]	=	8272
-		GoodItem_SP[60]	=	8143
-		GoodItem_SP[61]	=	3422
-		GoodItem_SP[62]	=	3423
-		GoodItem_SP[63]	=	3424
-		GoodItem_SP[64]	=	1020
-		GoodItem_SP[65]	=	1028
-		GoodItem_SP[66]	=	8145
-		GoodItem_SP[67]	=	8144
-
-GoodItem_NP = {}
-		GoodItem_NP[0]		=	0110
-		GoodItem_NP[1]		=	0112
-		GoodItem_NP[2]		=	0114
-		GoodItem_NP[3]		=	0116
-		GoodItem_NP[4]		=	0118
-		GoodItem_NP[5]		=	0120
-		GoodItem_NP[6]		=	0151
-		GoodItem_NP[7]		=	0396
-		GoodItem_NP[8]		=	0398
-		GoodItem_NP[9]		=	0400
-		GoodItem_NP[10]	=	0402
-		GoodItem_NP[11]	=	0404
-		GoodItem_NP[12]	=	0406
-		GoodItem_NP[13]	=	0408
-		GoodItem_NP[14]	=	0411
-		GoodItem_NP[15]	=	0413
-		GoodItem_NP[16]	=	0588
-		GoodItem_NP[17]	=	0590
-		GoodItem_NP[18]	=	0592
-		GoodItem_NP[19]	=	0594
-		GoodItem_NP[20]	=	0596
-		GoodItem_NP[21]	=	0598
-		GoodItem_NP[22]	=	0600
-		GoodItem_NP[23]	=	0602
-		GoodItem_NP[24]	=	0748
-		GoodItem_NP[25]	=	0750
-		GoodItem_NP[26]	=	0752
-		GoodItem_NP[27]	=	0754
-		GoodItem_NP[28]	=	0756
-		GoodItem_NP[29]	=	0758
-		GoodItem_NP[30]	=	1012
-		GoodItem_NP[31]	=	0860
-		GoodItem_NP[32]	=	0861
-		GoodItem_NP[33]	=	0862
-		GoodItem_NP[34]	=	0863
-		GoodItem_NP[35]	=	8535
-		GoodItem_NP[36]	=	8574
-		GoodItem_NP[37]	=	8587
-		GoodItem_NP[38]	=	8584
-		GoodItem_NP[39]	=	8583
-		GoodItem_NP[40]	=	8581
-		GoodItem_NP[41]	=	8615
-		GoodItem_NP[42]	=	6814
-		GoodItem_NP[43]	=	8613
-		GoodItem_NP[44]	=	8549
-		GoodItem_NP[45]	=	8546
-		GoodItem_NP[46]	=	8529
-		GoodItem_NP[47]	=	8298
-		GoodItem_NP[48]	=	8297
-		GoodItem_NP[49]	=	8296
-		GoodItem_NP[50]	=	8295
-
 												
-	BaoXiang_JLBCBTBOX_Qua	=	5	 				BaoXiang_JLBCBTBOX_Mxcount	=	202										
+	BaoXiang_JLBCBTBOX_Qua	=	5	 				BaoXiang_JLBCBTBOX_Mxcount	=	184										
 																				
 --	ИД ПРЕДМЕТА										ШАНС											КОЛ-ВО												
 	BaoXiang_JLBCBTBOX	=	{}						BaoXiang_JLBCBTBOX_Rad	=	{}					BaoXiang_JLBCBTBOX_Count	=	{}			
@@ -7598,33 +7063,16 @@ GoodItem_NP = {}
 	BaoXiang_JLBCBTBOX	[	179	]	=	0895		BaoXiang_JLBCBTBOX_Rad	[	179	]	=	5 		BaoXiang_JLBCBTBOX_Count	[	179	]	=	1
 	BaoXiang_JLBCBTBOX	[	180	]	=	0896		BaoXiang_JLBCBTBOX_Rad	[	180	]	=	5 		BaoXiang_JLBCBTBOX_Count	[	180	]	=	1
 	BaoXiang_JLBCBTBOX	[	181	]	=	0897		BaoXiang_JLBCBTBOX_Rad	[	181	]	=	5 		BaoXiang_JLBCBTBOX_Count	[	181	]	=	1
-	BaoXiang_JLBCBTBOX	[	182	]	=	0453		BaoXiang_JLBCBTBOX_Rad	[	182	]	=	5 		BaoXiang_JLBCBTBOX_Count	[	182	]	=	1
-	BaoXiang_JLBCBTBOX	[	183	]	=	0455		BaoXiang_JLBCBTBOX_Rad	[	183	]	=	5 		BaoXiang_JLBCBTBOX_Count	[	183	]	=	1
-	BaoXiang_JLBCBTBOX	[	184	]	=	0938		BaoXiang_JLBCBTBOX_Rad	[	184	]	=	5 		BaoXiang_JLBCBTBOX_Count	[	184	]	=	1
-	BaoXiang_JLBCBTBOX	[	185	]	=	8551		BaoXiang_JLBCBTBOX_Rad	[	185	]	=	5		BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	186	]	=	8546		BaoXiang_JLBCBTBOX_Rad	[	186	]	=	5		BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	187	]	=	8535		BaoXiang_JLBCBTBOX_Rad	[	187	]	=	5		BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	188	]	=	8529		BaoXiang_JLBCBTBOX_Rad	[	188	]	=	25	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	3
-	BaoXiang_JLBCBTBOX	[	189	]	=	8574		BaoXiang_JLBCBTBOX_Rad	[	189	]	=	5	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	190	]	=	262		BaoXiang_JLBCBTBOX_Rad	[	190	]	=	5	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	191	]	=	8616		BaoXiang_JLBCBTBOX_Rad	[	191	]	=	25	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-																				
-	BaoXiang_JLBCBTBOX	[	193	]	=	8295		BaoXiang_JLBCBTBOX_Rad	[	193	]	=	20		BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	194	]	=	8296		BaoXiang_JLBCBTBOX_Rad	[	194	]	=	20		BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	195	]	=	8297		BaoXiang_JLBCBTBOX_Rad	[	195	]	=	20		BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	196	]	=	8298		BaoXiang_JLBCBTBOX_Rad	[	196	]	=	20	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	3
-	BaoXiang_JLBCBTBOX	[	197	]	=	8529		BaoXiang_JLBCBTBOX_Rad	[	197	]	=	20	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	198	]	=	8546		BaoXiang_JLBCBTBOX_Rad	[	198	]	=	20	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	199	]	=	8613		BaoXiang_JLBCBTBOX_Rad	[	199	]	=	20	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	200	]	=	3844		BaoXiang_JLBCBTBOX_Rad	[	200	]	=	20	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	201	]	=	3845		BaoXiang_JLBCBTBOX_Rad	[	201	]	=	20	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-	BaoXiang_JLBCBTBOX	[	202	]	=	3879		BaoXiang_JLBCBTBOX_Rad	[	202	]	=	20	 	BaoXiang_JLBCBTBOX_Count	[	185	]	=	1
-																				
-																				
+	BaoXiang_JLBCBTBOX	[	182	]	=	0453		BaoXiang_JLBCBTBOX_Rad	[	182	]	=	100 	BaoXiang_JLBCBTBOX_Count	[	182	]	=	1
+	BaoXiang_JLBCBTBOX	[	183	]	=	0455		BaoXiang_JLBCBTBOX_Rad	[	183	]	=	100 	BaoXiang_JLBCBTBOX_Count	[	183	]	=	1
+	BaoXiang_JLBCBTBOX	[	184	]	=	0938		BaoXiang_JLBCBTBOX_Rad	[	184	]	=	100 	BaoXiang_JLBCBTBOX_Count	[	184	]	=	1
 
-	
+
+--	98°ь																			
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ												
 	BaoXiang_98BOX_Qua	=	5	 				BaoXiang_98BOX_Mxcount	=	22										
-																								
+																				
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК												
 	BaoXiang_98BOX	=	{}					BaoXiang_98BOX_Rad	=	{}					BaoXiang_98BOX_Count	=	{}			
 	BaoXiang_98BOX	[	1	]	=	2440		BaoXiang_98BOX_Rad	[	1	]	=	100 		BaoXiang_98BOX_Count	[	1	]	=	30
 	BaoXiang_98BOX	[	2	]	=	3098		BaoXiang_98BOX_Rad	[	2	]	=	100 		BaoXiang_98BOX_Count	[	2	]	=	6
@@ -7641,16 +7089,23 @@ GoodItem_NP = {}
 	BaoXiang_98BOX	[	13	]	=	3074		BaoXiang_98BOX_Rad	[	13	]	=	20 		BaoXiang_98BOX_Count	[	13	]	=	1
 	BaoXiang_98BOX	[	14	]	=	3075		BaoXiang_98BOX_Rad	[	14	]	=	10 		BaoXiang_98BOX_Count	[	14	]	=	1
 	BaoXiang_98BOX	[	15	]	=	0937		BaoXiang_98BOX_Rad	[	15	]	=	10 		BaoXiang_98BOX_Count	[	15	]	=	1
-	BaoXiang_98BOX	[	16	]	=	8142		BaoXiang_98BOX_Rad	[	16	]	=	5 		BaoXiang_98BOX_Count	[	16	]	=	1
+	BaoXiang_98BOX	[	16	]	=	3885		BaoXiang_98BOX_Rad	[	16	]	=	5 		BaoXiang_98BOX_Count	[	16	]	=	1
 	BaoXiang_98BOX	[	17	]	=	0680		BaoXiang_98BOX_Rad	[	17	]	=	5 		BaoXiang_98BOX_Count	[	17	]	=	1
 	BaoXiang_98BOX	[	18	]	=	0938		BaoXiang_98BOX_Rad	[	18	]	=	1 		BaoXiang_98BOX_Count	[	18	]	=	1
 	BaoXiang_98BOX	[	19	]	=	2488		BaoXiang_98BOX_Rad	[	19	]	=	2 		BaoXiang_98BOX_Count	[	19	]	=	1
 	BaoXiang_98BOX	[	20	]	=	2489		BaoXiang_98BOX_Rad	[	20	]	=	2 		BaoXiang_98BOX_Count	[	20	]	=	1
 	BaoXiang_98BOX	[	21	]	=	2490		BaoXiang_98BOX_Rad	[	21	]	=	2 		BaoXiang_98BOX_Count	[	21	]	=	1
 	BaoXiang_98BOX	[	22	]	=	2436		BaoXiang_98BOX_Rad	[	22	]	=	2 		BaoXiang_98BOX_Count	[	22	]	=	1
-																													
+																						
+--      єЪКРЙМИЛ±¦Пд--Leo																				
+																						
+																						
+																						
+--	УОБъ±¦Пд24РН												w0289									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsyla_Qua	=	24	 				BaoXiang_jsyla_Mxcount	=	19												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsyla	=	{}					BaoXiang_jsyla_Rad	=	{}					BaoXiang_jsyla_Count	=	{}					
 	BaoXiang_jsyla	[	1	]	=	0114		BaoXiang_jsyla_Rad	[	1	]	=	1 		BaoXiang_jsyla_Count	[	1	]	=	1	--	УОБъ
 	BaoXiang_jsyla	[	2	]	=	3302		BaoXiang_jsyla_Rad	[	2	]	=	30 		BaoXiang_jsyla_Count	[	2	]	=	1	--	УОБъ±¦Пд24РН
@@ -7672,9 +7127,12 @@ GoodItem_NP = {}
 	BaoXiang_jsyla	[	18	]	=	1399		BaoXiang_jsyla_Rad	[	18	]	=	9000 		BaoXiang_jsyla_Count	[	18	]	=	1	--	зъзкЅЈ
 	BaoXiang_jsyla	[	19	]	=	0022		BaoXiang_jsyla_Rad	[	19	]	=	9000 		BaoXiang_jsyla_Count	[	19	]	=	1	--	НдИРЅЈ
 																						
-																												
+																						
+--	УОБъ±¦Пд23РН												w0289									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsylb_Qua	=	23	 				BaoXiang_jsylb_Mxcount	=	19												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsylb	=	{}					BaoXiang_jsylb_Rad	=	{}					BaoXiang_jsylb_Count	=	{}					
 	BaoXiang_jsylb	[	1	]	=	0114		BaoXiang_jsylb_Rad	[	1	]	=	5 		BaoXiang_jsylb_Count	[	1	]	=	1	--	УОБъ
 	BaoXiang_jsylb	[	2	]	=	3303		BaoXiang_jsylb_Rad	[	2	]	=	15 		BaoXiang_jsylb_Count	[	2	]	=	1	--	УОБъ±¦Пд23РН
@@ -7695,9 +7153,14 @@ GoodItem_NP = {}
 	BaoXiang_jsylb	[	17	]	=	1398		BaoXiang_jsylb_Rad	[	17	]	=	9200 		BaoXiang_jsylb_Count	[	17	]	=	1	--	ТмЧеЅЈ
 	BaoXiang_jsylb	[	18	]	=	1399		BaoXiang_jsylb_Rad	[	18	]	=	9200 		BaoXiang_jsylb_Count	[	18	]	=	1	--	зъзкЅЈ
 	BaoXiang_jsylb	[	19	]	=	0022		BaoXiang_jsylb_Rad	[	19	]	=	9200 		BaoXiang_jsylb_Count	[	19	]	=	1	--	НдИРЅЈ
-																			
+
+
+																						
+--	ГФЦ®АыИР±¦Пд24РН												w0007									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmzlra_Qua	=	24	 				BaoXiang_jsmzlra_Mxcount	=	18												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmzlra	=	{}					BaoXiang_jsmzlra_Rad	=	{}					BaoXiang_jsmzlra_Count	=	{}					
 	BaoXiang_jsmzlra	[	1	]	=	1895		BaoXiang_jsmzlra_Rad	[	1	]	=	30 		BaoXiang_jsmzlra_Count	[	1	]	=	1	--	ОЫДа·вУЎµДЦдОЖґМЅЈ
 	BaoXiang_jsmzlra	[	2	]	=	1896		BaoXiang_jsmzlra_Rad	[	2	]	=	20 		BaoXiang_jsmzlra_Count	[	2	]	=	1	--	БТСж·вУЎµД»ГБйЦ®Ои
@@ -7717,9 +7180,13 @@ GoodItem_NP = {}
 	BaoXiang_jsmzlra	[	16	]	=	1398		BaoXiang_jsmzlra_Rad	[	16	]	=	9000 		BaoXiang_jsmzlra_Count	[	16	]	=	1	--	ТмЧеЅЈ
 	BaoXiang_jsmzlra	[	17	]	=	1399		BaoXiang_jsmzlra_Rad	[	17	]	=	9000		BaoXiang_jsmzlra_Count	[	17	]	=	1	--	зъзкЅЈ
 	BaoXiang_jsmzlra	[	18	]	=	0022		BaoXiang_jsmzlra_Rad	[	18	]	=	9000 		BaoXiang_jsmzlra_Count	[	18	]	=	1	--	НдИРЅЈ
-												
+
+																						
+--	ГФЦ®АыИР±¦Пд23РН												w0007									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmzlrb_Qua	=	23	 				BaoXiang_jsmzlrb_Mxcount	=	18												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmzlrb	=	{}					BaoXiang_jsmzlrb_Rad	=	{}					BaoXiang_jsmzlrb_Count	=	{}					
 	BaoXiang_jsmzlrb	[	1	]	=	1895		BaoXiang_jsmzlrb_Rad	[	1	]	=	30 		BaoXiang_jsmzlrb_Count	[	1	]	=	1	--	ОЫДа·вУЎµДЦдОЖґМЅЈ
 	BaoXiang_jsmzlrb	[	2	]	=	1896		BaoXiang_jsmzlrb_Rad	[	2	]	=	10 		BaoXiang_jsmzlrb_Count	[	2	]	=	1	--	БТСж·вУЎµД»ГБйЦ®Ои
@@ -7740,9 +7207,13 @@ GoodItem_NP = {}
 	BaoXiang_jsmzlrb	[	17	]	=	1399		BaoXiang_jsmzlrb_Rad	[	17	]	=	9100 		BaoXiang_jsmzlrb_Count	[	17	]	=	1	--	зъзкЅЈ
 	BaoXiang_jsmzlrb	[	18	]	=	0022		BaoXiang_jsmzlrb_Rad	[	18	]	=	9100 		BaoXiang_jsmzlrb_Count	[	18	]	=	1	--	НдИРЅЈ
 
-												
+
+																						
+--	ѕЮгЪ±¦Пд24РН												w0210									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsjqa_Qua	=	24	 				BaoXiang_jsjqa_Mxcount	=	17												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsjqa	=	{}					BaoXiang_jsjqa_Rad	=	{}					BaoXiang_jsjqa_Count	=	{}					
 	BaoXiang_jsjqa	[	1	]	=	0116		BaoXiang_jsjqa_Rad	[	1	]	=	1 		BaoXiang_jsjqa_Count	[	1	]	=	1	--	--ѕЮгЪ
 	BaoXiang_jsjqa	[	2	]	=	3306		BaoXiang_jsjqa_Rad	[	2	]	=	23 		BaoXiang_jsjqa_Count	[	2	]	=	1	--	ѕЮгЪ±¦Пд24РН
@@ -7762,9 +7233,13 @@ GoodItem_NP = {}
 	BaoXiang_jsjqa	[	16	]	=	1382		BaoXiang_jsjqa_Rad	[	16	]	=	1300 		BaoXiang_jsjqa_Count	[	16	]	=	1	--	НЛµРЅЈ
 	BaoXiang_jsjqa	[	17	]	=	1386		BaoXiang_jsjqa_Rad	[	17	]	=	1300 		BaoXiang_jsjqa_Count	[	17	]	=	1	--	Зї»ЇХЅКїЅЈ
 																						
-													
+
+																						
+--	ѕЮгЪ±¦Пд23РН												w0210									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsjqb_Qua	=	23	 				BaoXiang_jsjqb_Mxcount	=	17												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsjqb	=	{}					BaoXiang_jsjqb_Rad	=	{}					BaoXiang_jsjqb_Count	=	{}					
 	BaoXiang_jsjqb	[	1	]	=	0116		BaoXiang_jsjqb_Rad	[	1	]	=	5 		BaoXiang_jsjqb_Count	[	1	]	=	1	--	--ѕЮгЪ
 	BaoXiang_jsjqb	[	2	]	=	3307		BaoXiang_jsjqb_Rad	[	2	]	=	10 		BaoXiang_jsjqb_Count	[	2	]	=	1	--	ѕЮгЪ±¦Пд24РН
@@ -7784,9 +7259,14 @@ GoodItem_NP = {}
 	BaoXiang_jsjqb	[	16	]	=	1382		BaoXiang_jsjqb_Rad	[	16	]	=	14000 		BaoXiang_jsjqb_Count	[	16	]	=	1	--	НЛµРЅЈ
 	BaoXiang_jsjqb	[	17	]	=	1386		BaoXiang_jsjqb_Rad	[	17	]	=	14000 		BaoXiang_jsjqb_Count	[	17	]	=	1	--	Зї»ЇХЅКїЅЈ
 																						
-													
+
+
+																						
+--	ГФЦ®ІГѕц±¦Пд24РН												w0013									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmzcja_Qua	=	24	 				BaoXiang_jsmzcja_Mxcount	=	19												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmzcja	=	{}					BaoXiang_jsmzcja_Rad	=	{}					BaoXiang_jsmzcja_Count	=	{}					
 	BaoXiang_jsmzcja	[	1	]	=	1892		BaoXiang_jsmzcja_Rad	[	1	]	=	30 		BaoXiang_jsmzcja_Count	[	1	]	=	1	--	--ОЫДа·вУЎµДЦдОЖЦШЅЈ
 	BaoXiang_jsmzcja	[	2	]	=	1893		BaoXiang_jsmzcja_Rad	[	2	]	=	20 		BaoXiang_jsmzcja_Count	[	2	]	=	1	--	--БТСж·вУЎµД»ГБйЦ®ЕШПш
@@ -7808,9 +7288,12 @@ GoodItem_NP = {}
 	BaoXiang_jsmzcja	[	18	]	=	1382		BaoXiang_jsmzcja_Rad	[	18	]	=	13000 		BaoXiang_jsmzcja_Count	[	18	]	=	1	--	НЛµРЅЈ
 	BaoXiang_jsmzcja	[	19	]	=	1386		BaoXiang_jsmzcja_Rad	[	19	]	=	13000 		BaoXiang_jsmzcja_Count	[	19	]	=	1	--	Зї»ЇХЅКїЅЈ
 
-													
+																						
+--	ГФЦ®ІГѕц±¦Пд23РН												w0013									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmzcjb_Qua	=	23	 				BaoXiang_jsmzcjb_Mxcount	=	19												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmzcjb	=	{}					BaoXiang_jsmzcjb_Rad	=	{}					BaoXiang_jsmzcjb_Count	=	{}					
 	BaoXiang_jsmzcjb	[	1	]	=	1892		BaoXiang_jsmzcjb_Rad	[	1	]	=	30 		BaoXiang_jsmzcjb_Count	[	1	]	=	1	--	--ОЫДа·вУЎµДЦдОЖЦШЅЈ
 	BaoXiang_jsmzcjb	[	2	]	=	1893		BaoXiang_jsmzcjb_Rad	[	2	]	=	10 		BaoXiang_jsmzcjb_Count	[	2	]	=	1	--	--БТСж·вУЎµД»ГБйЦ®ЕШПш
@@ -7831,9 +7314,13 @@ GoodItem_NP = {}
 	BaoXiang_jsmzcjb	[	17	]	=	1381		BaoXiang_jsmzcjb_Rad	[	17	]	=	14000 		BaoXiang_jsmzcjb_Count	[	17	]	=	1	--	КҐХЯЅЈ
 	BaoXiang_jsmzcjb	[	18	]	=	1382		BaoXiang_jsmzcjb_Rad	[	18	]	=	14000 		BaoXiang_jsmzcjb_Count	[	18	]	=	1	--	НЛµРЅЈ
 	BaoXiang_jsmzcjb	[	19	]	=	1386		BaoXiang_jsmzcjb_Rad	[	19	]	=	14000 		BaoXiang_jsmzcjb_Count	[	19	]	=	1	--	Зї»ЇХЅКїЅЈ
-													
+
+																						
+--	Л«ЅЈїшјЧ±¦Пд24РН												e0106									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jssjkja_Qua	=	24	 				BaoXiang_jssjkja_Mxcount	=	12												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jssjkja	=	{}					BaoXiang_jssjkja_Rad	=	{}					BaoXiang_jssjkja_Count	=	{}					
 	BaoXiang_jssjkja	[	1	]	=	1884		BaoXiang_jssjkja_Rad	[	1	]	=	10 		BaoXiang_jssjkja_Count	[	1	]	=	1	--	І»ЛА·вУЎµДУДБйошјЧ
 	BaoXiang_jssjkja	[	2	]	=	1888		BaoXiang_jssjkja_Rad	[	2	]	=	30 		BaoXiang_jssjkja_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЧзЦдЦ®БйёЦјЧ
@@ -7847,9 +7334,13 @@ GoodItem_NP = {}
 	BaoXiang_jssjkja	[	10	]	=	0303		BaoXiang_jssjkja_Rad	[	10	]	=	22400 		BaoXiang_jssjkja_Count	[	10	]	=	1	--	¶ЖТшёЦјЧ
 	BaoXiang_jssjkja	[	11	]	=	1929		BaoXiang_jssjkja_Rad	[	11	]	=	22400 		BaoXiang_jssjkja_Count	[	11	]	=	1	--	јІ·зХЅјЧ
 	BaoXiang_jssjkja	[	12	]	=	1930		BaoXiang_jssjkja_Rad	[	12	]	=	22400 		BaoXiang_jssjkja_Count	[	12	]	=	1	--	ОчЛ№ХЅјЧ
-													
+
+																						
+--	Л«ЅЈїшјЧ±¦Пд23РН												e0106									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jssjkjb_Qua	=	23	 				BaoXiang_jssjkjb_Mxcount	=	12												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jssjkjb	=	{}					BaoXiang_jssjkjb_Rad	=	{}					BaoXiang_jssjkjb_Count	=	{}					
 	BaoXiang_jssjkjb	[	1	]	=	1884		BaoXiang_jssjkjb_Rad	[	1	]	=	10 		BaoXiang_jssjkjb_Count	[	1	]	=	1	--	І»ЛА·вУЎµДУДБйошјЧ
 	BaoXiang_jssjkjb	[	2	]	=	1888		BaoXiang_jssjkjb_Rad	[	2	]	=	30 		BaoXiang_jssjkjb_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЧзЦдЦ®БйёЦјЧ
@@ -7864,9 +7355,13 @@ GoodItem_NP = {}
 	BaoXiang_jssjkjb	[	11	]	=	1929		BaoXiang_jssjkjb_Rad	[	11	]	=	23000 		BaoXiang_jssjkjb_Count	[	11	]	=	1	--	јІ·зХЅјЧ
 	BaoXiang_jssjkjb	[	12	]	=	1930		BaoXiang_jssjkjb_Rad	[	12	]	=	23000 		BaoXiang_jssjkjb_Count	[	12	]	=	1	--	ОчЛ№ХЅјЧ
 																						
-													
+
+																						
+--	ѕС»чїшјЧ±¦Пд24РН												e0119									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jszjkja_Qua	=	24	 				BaoXiang_jszjkja_Mxcount	=	13												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jszjkja	=	{}					BaoXiang_jszjkja_Rad	=	{}					BaoXiang_jszjkja_Count	=	{}					
 	BaoXiang_jszjkja	[	1	]	=	1898		BaoXiang_jszjkja_Rad	[	1	]	=	10 		BaoXiang_jszjkja_Count	[	1	]	=	1	--	І»ЛА·вУЎµДНцБй¶МЕЫ
 	BaoXiang_jszjkja	[	2	]	=	1899		BaoXiang_jszjkja_Rad	[	2	]	=	30 		BaoXiang_jszjkja_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦдОЖЅфЙнТВ
@@ -7881,9 +7376,14 @@ GoodItem_NP = {}
 	BaoXiang_jszjkja	[	11	]	=	0317		BaoXiang_jszjkja_Rad	[	11	]	=	5000 		BaoXiang_jszjkja_Count	[	11	]	=	1	--	ГНЗЭТВ·ю
 	BaoXiang_jszjkja	[	12	]	=	0314		BaoXiang_jszjkja_Rad	[	12	]	=	40000 	BaoXiang_jszjkja_Count	[	12	]	=	1	--	ГфЅЭТВ·ю
 	BaoXiang_jszjkja	[	13	]	=	0315		BaoXiang_jszjkja_Rad	[	13	]	=	40000		BaoXiang_jszjkja_Count	[	13	]	=	1	--	ЙЅИёТВ·ю
-																																			
+																						
+																						
+																						
+--	ѕС»чїшјЧ±¦Пд23РН												e0119									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jszjkjb_Qua	=	23	 				BaoXiang_jszjkjb_Mxcount	=	13												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jszjkjb	=	{}					BaoXiang_jszjkjb_Rad	=	{}					BaoXiang_jszjkjb_Count	=	{}					
 	BaoXiang_jszjkjb	[	1	]	=	1898		BaoXiang_jszjkjb_Rad	[	1	]	=	10		BaoXiang_jszjkjb_Count	[	1	]	=	1	--	І»ЛА·вУЎµДНцБй¶МЕЫ
 	BaoXiang_jszjkjb	[	2	]	=	1899		BaoXiang_jszjkjb_Rad	[	2	]	=	30 		BaoXiang_jszjkjb_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦдОЖЅфЙнТВ
@@ -7899,9 +7399,13 @@ GoodItem_NP = {}
 	BaoXiang_jszjkjb	[	12	]	=	0314		BaoXiang_jszjkjb_Rad	[	12	]	=	42000 	BaoXiang_jszjkjb_Count	[	12	]	=	1	--	ГфЅЭТВ·ю
 	BaoXiang_jszjkjb	[	13	]	=	0315		BaoXiang_jszjkjb_Rad	[	13	]	=	42000		BaoXiang_jszjkjb_Count	[	13	]	=	1	--	ЙЅИёТВ·ю
 
-													
+																						
+																						
+--	КҐЦ°їшјЧ±¦Пд24РН												e0178									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsszkja_Qua	=	24	 				BaoXiang_jsszkja_Mxcount	=	19												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsszkja	=	{}					BaoXiang_jsszkja_Rad	=	{}					BaoXiang_jsszkja_Count	=	{}					
 	BaoXiang_jsszkja	[	1	]	=	1910		BaoXiang_jsszkja_Rad	[	1	]	=	10 		BaoXiang_jsszkja_Count	[	1	]	=	1	--	І»ЛА·вУЎµДОЧ¶ѕ·ЁЕЫ
 	BaoXiang_jsszkja	[	2	]	=	1911		BaoXiang_jsszkja_Rad	[	2	]	=	30 		BaoXiang_jsszkja_Count	[	2	]	=	1	--	ОЫДа·вУЎµД·ыОДНвТВ
@@ -7922,9 +7426,13 @@ GoodItem_NP = {}
 	BaoXiang_jsszkja	[	17	]	=	0382		BaoXiang_jsszkja_Rad	[	17	]	=	20000 	BaoXiang_jsszkja_Count	[	17	]	=	1	--	і¤¶ъНГТВ·ю
 	BaoXiang_jsszkja	[	18	]	=	0388		BaoXiang_jsszkja_Rad	[	18	]	=	20000 	BaoXiang_jsszkja_Count	[	18	]	=	1	--	їмАЦНГТВ·ю
 	BaoXiang_jsszkja	[	19	]	=	0392		BaoXiang_jsszkja_Rad	[	19	]	=	20000 	BaoXiang_jsszkja_Count	[	19	]	=	1	--	±¦±ґНГТВ·ю
-													
+
+																						
+--	КҐЦ°їшјЧ±¦Пд23РН												e0178									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsszkjb_Qua	=	23	 				BaoXiang_jsszkjb_Mxcount	=	19												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsszkjb	=	{}					BaoXiang_jsszkjb_Rad	=	{}					BaoXiang_jsszkjb_Count	=	{}					
 	BaoXiang_jsszkjb	[	1	]	=	1910		BaoXiang_jsszkjb_Rad	[	1	]	=	10 		BaoXiang_jsszkjb_Count	[	1	]	=	1	--	І»ЛА·вУЎµДОЧ¶ѕ·ЁЕЫ
 	BaoXiang_jsszkjb	[	2	]	=	1911		BaoXiang_jsszkjb_Rad	[	2	]	=	30 		BaoXiang_jsszkjb_Count	[	2	]	=	1	--	ОЫДа·вУЎµД·ыОДНвТВ
@@ -7945,9 +7453,14 @@ GoodItem_NP = {}
 	BaoXiang_jsszkjb	[	17	]	=	0382		BaoXiang_jsszkjb_Rad	[	17	]	=	21110 	BaoXiang_jsszkjb_Count	[	17	]	=	1	--	і¤¶ъНГТВ·ю
 	BaoXiang_jsszkjb	[	18	]	=	0388		BaoXiang_jsszkjb_Rad	[	18	]	=	21110 	BaoXiang_jsszkjb_Count	[	18	]	=	1	--	їмАЦНГТВ·ю
 	BaoXiang_jsszkjb	[	19	]	=	0392		BaoXiang_jsszkjb_Rad	[	19	]	=	21110 	BaoXiang_jsszkjb_Count	[	19	]	=	1	--	±¦±ґНГТВ·ю
-													
+
+
+																						
+--	·вУЎїшјЧ±¦Пд24РН												e0176									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsfykja_Qua	=	24	 				BaoXiang_jsfykja_Mxcount	=	21												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsfykja	=	{}					BaoXiang_jsfykja_Rad	=	{}					BaoXiang_jsfykja_Count	=	{}					
 	BaoXiang_jsfykja	[	1	]	=	1910		BaoXiang_jsfykja_Rad	[	1	]	=	10 		BaoXiang_jsfykja_Count	[	1	]	=	1	--	І»ЛА·вУЎµДОЧ¶ѕ·ЁЕЫ
 	BaoXiang_jsfykja	[	2	]	=	1917		BaoXiang_jsfykja_Rad	[	2	]	=	30 		BaoXiang_jsfykja_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦдОДЦ®ЕЫ
@@ -7970,9 +7483,13 @@ GoodItem_NP = {}
 	BaoXiang_jsfykja	[	19	]	=	0375		BaoXiang_jsfykja_Rad	[	19	]	=	16000 	BaoXiang_jsfykja_Count	[	19	]	=	1	--	Ф¶РРТВ·ю
 	BaoXiang_jsfykja	[	20	]	=	0369		BaoXiang_jsfykja_Rad	[	20	]	=	16000 	BaoXiang_jsfykja_Count	[	20	]	=	1	--	КМХЯТВ·ю
 	BaoXiang_jsfykja	[	21	]	=	0362		BaoXiang_jsfykja_Rad	[	21	]	=	16000 	BaoXiang_jsfykja_Count	[	21	]	=	1	--	±Д±ДКуТВ·ю
-											
+
+																						
+--	·вУЎїшјЧ±¦Пд23РН												e0176									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsfykjb_Qua	=	23	 				BaoXiang_jsfykjb_Mxcount	=	21												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsfykjb	=	{}					BaoXiang_jsfykjb_Rad	=	{}					BaoXiang_jsfykjb_Count	=	{}					
 	BaoXiang_jsfykjb	[	1	]	=	1910		BaoXiang_jsfykjb_Rad	[	1	]	=	10 		BaoXiang_jsfykjb_Count	[	1	]	=	1	--	І»ЛА·вУЎµДОЧ¶ѕ·ЁЕЫ
 	BaoXiang_jsfykjb	[	2	]	=	1917		BaoXiang_jsfykjb_Rad	[	2	]	=	30 		BaoXiang_jsfykjb_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦдОДЦ®ЕЫ
@@ -7995,9 +7512,14 @@ GoodItem_NP = {}
 	BaoXiang_jsfykjb	[	19	]	=	0375		BaoXiang_jsfykjb_Rad	[	19	]	=	17000 	BaoXiang_jsfykjb_Count	[	19	]	=	1	--	Ф¶РРТВ·ю
 	BaoXiang_jsfykjb	[	20	]	=	0369		BaoXiang_jsfykjb_Rad	[	20	]	=	17000 	BaoXiang_jsfykjb_Count	[	20	]	=	1	--	КМХЯТВ·ю
 	BaoXiang_jsfykjb	[	21	]	=	0362		BaoXiang_jsfykjb_Rad	[	21	]	=	17000 	BaoXiang_jsfykjb_Count	[	21	]	=	1	--	±Д±ДКуТВ·ю
-										
+
+
+																						
+--	єЅєЈїшјЧ±¦Пд24РН												e0152									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jshhkja_Qua	=	24	 				BaoXiang_jshhkja_Mxcount	=	20												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jshhkja	=	{}					BaoXiang_jshhkja_Rad	=	{}					BaoXiang_jshhkja_Count	=	{}					
 	BaoXiang_jshhkja	[	1	]	=	1924		BaoXiang_jshhkja_Rad	[	1	]	=	10 		BaoXiang_jshhkja_Count	[	1	]	=	1	--	І»ЛА·вУЎµДєЈСэЕы·з
 	BaoXiang_jshhkja	[	2	]	=	1925		BaoXiang_jshhkja_Rad	[	2	]	=	30 		BaoXiang_jshhkja_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦд»р¶·Ес
@@ -8019,9 +7541,13 @@ GoodItem_NP = {}
 	BaoXiang_jshhkja	[	18	]	=	0353		BaoXiang_jshhkja_Rad	[	18	]	=	16000 	BaoXiang_jshhkja_Count	[	18	]	=	1	--	РЎСјТВ·ю
 	BaoXiang_jshhkja	[	19	]	=	0356		BaoXiang_jshhkja_Rad	[	19	]	=	16000 	BaoXiang_jshhkja_Count	[	19	]	=	1	--	ТЎ°ЪСјТВ·ю
 	BaoXiang_jshhkja	[	20	]	=	1977		BaoXiang_jshhkja_Rad	[	20	]	=	16000 	BaoXiang_jshhkja_Count	[	20	]	=	1	--	·з±©НвМЧ
-													
+
+																						
+--	єЅєЈїшјЧ±¦Пд23РН												e0152									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jshhkjb_Qua	=	23	 				BaoXiang_jshhkjb_Mxcount	=	20												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jshhkjb	=	{}					BaoXiang_jshhkjb_Rad	=	{}					BaoXiang_jshhkjb_Count	=	{}					
 	BaoXiang_jshhkjb	[	1	]	=	1924		BaoXiang_jshhkjb_Rad	[	1	]	=	10 		BaoXiang_jshhkjb_Count	[	1	]	=	1	--	І»ЛА·вУЎµДєЈСэЕы·з
 	BaoXiang_jshhkjb	[	2	]	=	1925		BaoXiang_jshhkjb_Rad	[	2	]	=	30 		BaoXiang_jshhkjb_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦд»р¶·Ес
@@ -8043,9 +7569,13 @@ GoodItem_NP = {}
 	BaoXiang_jshhkjb	[	18	]	=	0353		BaoXiang_jshhkjb_Rad	[	18	]	=	17000 	BaoXiang_jshhkjb_Count	[	18	]	=	1	--	РЎСјТВ·ю
 	BaoXiang_jshhkjb	[	19	]	=	0356		BaoXiang_jshhkjb_Rad	[	19	]	=	17000 	BaoXiang_jshhkjb_Count	[	19	]	=	1	--	ТЎ°ЪСјТВ·ю
 	BaoXiang_jshhkjb	[	20	]	=	1977		BaoXiang_jshhkjb_Rad	[	20	]	=	17000 	BaoXiang_jshhkjb_Count	[	20	]	=	1	--	·з±©НвМЧ
-													
+
+																						
+--	ѕЮЅЈїшјЧ±¦Пд24РН												h0124									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsjjkja_Qua	=	24	 				BaoXiang_jsjjkja_Mxcount	=	9												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsjjkja	=	{}					BaoXiang_jsjjkja_Rad	=	{}					BaoXiang_jsjjkja_Count	=	{}					
 	BaoXiang_jsjjkja	[	1	]	=	1885		BaoXiang_jsjjkja_Rad	[	1	]	=	50		BaoXiang_jsjjkja_Count	[	1	]	=	1	--	ОЫДа·вУЎµДОдКїЧзЦдОЖЙн
 	BaoXiang_jsjjkja	[	2	]	=	1886		BaoXiang_jsjjkja_Rad	[	2	]	=	20		BaoXiang_jsjjkja_Count	[	2	]	=	1	--	БТСж·вУЎµД»ГБйОЖЙн
@@ -8057,9 +7587,12 @@ GoodItem_NP = {}
 	BaoXiang_jsjjkja	[	8	]	=	0230		BaoXiang_jsjjkja_Rad	[	8	]	=	32000		BaoXiang_jsjjkja_Count	[	8	]	=	1	--	КЮНхОЖЙн
 	BaoXiang_jsjjkja	[	9	]	=	0229		BaoXiang_jsjjkja_Rad	[	9	]	=	32000		BaoXiang_jsjjkja_Count	[	9	]	=	1	--	ВщЕЈОЖЙн
 
-													
+																						
+--	ѕЮЅЈїшјЧ±¦Пд23РН												h0124									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsjjkjb_Qua	=	23	 				BaoXiang_jsjjkjb_Mxcount	=	9												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsjjkjb	=	{}					BaoXiang_jsjjkjb_Rad	=	{}					BaoXiang_jsjjkjb_Count	=	{}					
 	BaoXiang_jsjjkjb	[	1	]	=	1885		BaoXiang_jsjjkjb_Rad	[	1	]	=	50 		BaoXiang_jsjjkjb_Count	[	1	]	=	1	--	ОЫДа·вУЎµДОдКїЧзЦдОЖЙн
 	BaoXiang_jsjjkjb	[	2	]	=	1886		BaoXiang_jsjjkjb_Rad	[	2	]	=	10 		BaoXiang_jsjjkjb_Count	[	2	]	=	1	--	БТСж·вУЎµД»ГБйОЖЙн
@@ -8070,9 +7603,13 @@ GoodItem_NP = {}
 	BaoXiang_jsjjkjb	[	7	]	=	0228		BaoXiang_jsjjkjb_Rad	[	7	]	=	32500		BaoXiang_jsjjkjb_Count	[	7	]	=	1	--	Е­ЕЈОЖЙн
 	BaoXiang_jsjjkjb	[	8	]	=	0230		BaoXiang_jsjjkjb_Rad	[	8	]	=	32500		BaoXiang_jsjjkjb_Count	[	8	]	=	1	--	КЮНхОЖЙн
 	BaoXiang_jsjjkjb	[	9	]	=	0229		BaoXiang_jsjjkjb_Rad	[	9	]	=	32500		BaoXiang_jsjjkjb_Count	[	9	]	=	1	--	ВщЕЈОЖЙн
-									
-	BaoXiang_jshlza_Qua	=	24	 				BaoXiang_jshlza_Mxcount	=	70		
-	
+
+																						
+--	єЪБъЦ®Зы±¦Пд24РН	1/100001											e0831									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
+	BaoXiang_jshlza_Qua	=	24	 				BaoXiang_jshlza_Mxcount	=	70												
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jshlza	=	{}					BaoXiang_jshlza_Rad	=	{}					BaoXiang_jshlza_Count	=	{}					
 	BaoXiang_jshlza	[	1	]	=	0845		BaoXiang_jshlza_Rad	[	1	]	=	1 		BaoXiang_jshlza_Count	[	1	]	=	1	--	єЪБъЦ®Зы
 	BaoXiang_jshlza	[	2	]	=	0398		BaoXiang_jshlza_Rad	[	2	]	=	160 		BaoXiang_jshlza_Count	[	2	]	=	1	--	БйЙсошјЧ
@@ -8219,9 +7756,14 @@ GoodItem_NP = {}
 	BaoXiang_jshlzb	[	68	]	=	0303		BaoXiang_jshlzb_Rad	[	68	]	=	4400		BaoXiang_jshlzb_Count	[	68	]	=	1
 	BaoXiang_jshlzb	[	69	]	=	1929		BaoXiang_jshlzb_Rad	[	69	]	=	4400		BaoXiang_jshlzb_Count	[	69	]	=	1
 	BaoXiang_jshlzb	[	70	]	=	1930		BaoXiang_jshlzb_Rad	[	70	]	=	4400		BaoXiang_jshlzb_Count	[	70	]	=	1
-							
-	BaoXiang_jshlta_Qua	=	24	 				BaoXiang_jshlta_Mxcount	=	9
-	
+
+
+																						
+--	єЪБъЦ®КЧ±¦Пд24РН	1/100001											e0834									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
+	BaoXiang_jshlta_Qua	=	24	 				BaoXiang_jshlta_Mxcount	=	9												
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jshlta	=	{}					BaoXiang_jshlta_Rad	=	{}					BaoXiang_jshlta_Count	=	{}					
 	BaoXiang_jshlta	[	1	]	=	0848		BaoXiang_jshlta_Rad	[	1	]	=	1 		BaoXiang_jshlta_Count	[	1	]	=	1	--	єЪБъЦ®КЧ
 	BaoXiang_jshlta	[	2	]	=	2215		BaoXiang_jshlta_Rad	[	2	]	=	1000		BaoXiang_jshlta_Count	[	2	]	=	1	--	ЧЈёЈНГГ±ЧУ
@@ -8232,9 +7774,13 @@ GoodItem_NP = {}
 	BaoXiang_jshlta	[	7	]	=	2210		BaoXiang_jshlta_Rad	[	7	]	=	22500	BaoXiang_jshlta_Count	[	7	]	=	1	--	їмАЦНГГ±ЧУ
 	BaoXiang_jshlta	[	8	]	=	2214		BaoXiang_jshlta_Rad	[	8	]	=	22500	BaoXiang_jshlta_Count	[	8	]	=	1	--	±¦±ґНГГ±ЧУ
 	BaoXiang_jshlta	[	9	]	=	2212		BaoXiang_jshlta_Rad	[	9	]	=	22500	BaoXiang_jshlta_Count	[	9	]	=	1	--	ґьКуГ±ЧУ
-															
+																						
+																						
+--	єЪБъЦ®Ч¦±¦Пд24РН		1/100101										e0832									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jshlsa_Qua	=	24	 				BaoXiang_jshlsa_Mxcount	=	43												
-													
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jshlsa	=	{}					BaoXiang_jshlsa_Rad	=	{}					BaoXiang_jshlsa_Count	=	{}					
 	BaoXiang_jshlsa	[	1	]	=	0846		BaoXiang_jshlsa_Rad	[	1	]	=	1 		BaoXiang_jshlsa_Count	[	1	]	=	1	--	єЪБъЦ®Ч¦
 	BaoXiang_jshlsa	[	2	]	=	1988		BaoXiang_jshlsa_Rad	[	2	]	=	20 		BaoXiang_jshlsa_Count	[	2	]	=	1	--	БТСж·вУЎµД»ГБйХЅјЧКЦМЧ
@@ -8327,9 +7873,14 @@ GoodItem_NP = {}
 	BaoXiang_jshlsb	[	41	]	=	1963		BaoXiang_jshlsb_Rad	[	41	]	=	6000		BaoXiang_jshlsb_Count	[	41	]	=	1
 	BaoXiang_jshlsb	[	42	]	=	1966		BaoXiang_jshlsb_Rad	[	42	]	=	6000		BaoXiang_jshlsb_Count	[	42	]	=	1
 	BaoXiang_jshlsb	[	43	]	=	1981		BaoXiang_jshlsb_Rad	[	43	]	=	6000		BaoXiang_jshlsb_Count	[	43	]	=	1
-									
+
+
+
+--	єЪБъЦ®Тн±¦Пд24РН												e0833									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jshlya_Qua	=	24	 				BaoXiang_jshlya_Mxcount	=	65												
-	
+
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jshlya	=	{}					BaoXiang_jshlya_Rad	=	{}					BaoXiang_jshlya_Count	=	{}					
 	BaoXiang_jshlya	[	1	]	=	847		BaoXiang_jshlya_Rad	[	1	]	=	1		BaoXiang_jshlya_Count	[	1	]	=	1	--	єЪБъЦ®Тн
 	BaoXiang_jshlya	[	2	]	=	1989		BaoXiang_jshlya_Rad	[	2	]	=	120		BaoXiang_jshlya_Count	[	2	]	=	1	--	БТСж·вУЎµД»ГБйХЅјЧСҐ
@@ -8467,9 +8018,14 @@ GoodItem_NP = {}
 	BaoXiang_jshlyb	[	63	]	=	1970		BaoXiang_jshlyb_Rad	[	63	]	=	3700		BaoXiang_jshlyb_Count	[	63	]	=	1
 	BaoXiang_jshlyb	[	64	]	=	1973		BaoXiang_jshlyb_Rad	[	64	]	=	3700		BaoXiang_jshlyb_Count	[	64	]	=	1
 	BaoXiang_jshlyb	[	65	]	=	1985		BaoXiang_jshlyb_Rad	[	65	]	=	3700		BaoXiang_jshlyb_Count	[	65	]	=	1
-													
+
+
+
+--	ГФ»ГЦ®ґМ±¦Пд24РН												w0049											
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmhzca_Qua	=	24	 				BaoXiang_jsmhzca_Mxcount	=	19												
-																		
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmhzca	=	{}					BaoXiang_jsmhzca_Rad	=	{}					BaoXiang_jsmhzca_Count	=	{}					
 	BaoXiang_jsmhzca	[	1	]	=	1920		BaoXiang_jsmhzca_Rad	[	1	]	=	10 		BaoXiang_jsmhzca_Count	[	1	]	=	1	--	І»ЛА·вУЎµД°µУ°Ц®СА
 	BaoXiang_jsmhzca	[	2	]	=	1921		BaoXiang_jsmhzca_Rad	[	2	]	=	30		BaoXiang_jsmhzca_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЧзЦдЦ®ґМ
@@ -8490,9 +8046,13 @@ GoodItem_NP = {}
 	BaoXiang_jsmhzca	[	17	]	=	1425		BaoXiang_jsmhzca_Rad	[	17	]	=	18000		BaoXiang_jsmhzca_Count	[	17	]	=	1	--	КЇУўШ°КЧ
 	BaoXiang_jsmhzca	[	18	]	=	1446		BaoXiang_jsmhzca_Rad	[	18	]	=	18000		BaoXiang_jsmhzca_Count	[	18	]	=	1	--	ЙБЛёґМ
 	BaoXiang_jsmhzca	[	19	]	=	1460		BaoXiang_jsmhzca_Rad	[	19	]	=	18000		BaoXiang_jsmhzca_Count	[	19	]	=	1	--	±¦КЇШ°КЧ
-													
+
+																						
+--	ГФ»ГЦ®ґМ±¦Пд23РН												w0049									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmhzcb_Qua	=	23	 				BaoXiang_jsmhzcb_Mxcount	=	19												
-													
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmhzcb	=	{}					BaoXiang_jsmhzcb_Rad	=	{}					BaoXiang_jsmhzcb_Count	=	{}					
 	BaoXiang_jsmhzcb	[	1	]	=	1920		BaoXiang_jsmhzcb_Rad	[	1	]	=	20 		BaoXiang_jsmhzcb_Count	[	1	]	=	1	--	І»ЛА·вУЎµД°µУ°Ц®СА
 	BaoXiang_jsmhzcb	[	2	]	=	1921		BaoXiang_jsmhzcb_Rad	[	2	]	=	30		BaoXiang_jsmhzcb_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЧзЦдЦ®ґМ
@@ -8513,9 +8073,13 @@ GoodItem_NP = {}
 	BaoXiang_jsmhzcb	[	17	]	=	1425		BaoXiang_jsmhzcb_Rad	[	17	]	=	18500		BaoXiang_jsmhzcb_Count	[	17	]	=	1	--	КЇУўШ°КЧ
 	BaoXiang_jsmhzcb	[	18	]	=	1446		BaoXiang_jsmhzcb_Rad	[	18	]	=	18500		BaoXiang_jsmhzcb_Count	[	18	]	=	1	--	ЙБЛёґМ
 	BaoXiang_jsmhzcb	[	19	]	=	1460		BaoXiang_jsmhzcb_Rad	[	19	]	=	18500		BaoXiang_jsmhzcb_Count	[	19	]	=	1	--	±¦КЇШ°КЧ
-													
+
+																						
+--	ГФЦд·ЁХИ±¦Пд24РН												w0062									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmzfza_Qua	=	24	 				BaoXiang_jsmzfza_Mxcount	=	18												
-													
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmzfza	=	{}					BaoXiang_jsmzfza_Rad	=	{}					BaoXiang_jsmzfza_Count	=	{}					
 	BaoXiang_jsmzfza	[	1	]	=	1906		BaoXiang_jsmzfza_Rad	[	1	]	=	10 		BaoXiang_jsmzfza_Count	[	1	]	=	1	--	І»ЛА·вУЎµДЖЖД§·ЁХИ
 	BaoXiang_jsmzfza	[	2	]	=	1914		BaoXiang_jsmzfza_Rad	[	2	]	=	30		BaoXiang_jsmzfza_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦдОД·ЁХИ
@@ -8535,9 +8099,13 @@ GoodItem_NP = {}
 	BaoXiang_jsmzfza	[	16	]	=	1437		BaoXiang_jsmzfza_Rad	[	16	]	=	2100		BaoXiang_jsmzfza_Count	[	16	]	=	1	--	С№ЦЖЦ®ХИ
 	BaoXiang_jsmzfza	[	17	]	=	1466		BaoXiang_jsmzfza_Rad	[	17	]	=	2100		BaoXiang_jsmzfza_Count	[	17	]	=	1	--	»оБ¦ИЁХИ
 	BaoXiang_jsmzfza	[	18	]	=	1472		BaoXiang_jsmzfza_Rad	[	18	]	=	2100		BaoXiang_jsmzfza_Count	[	18	]	=	1	--	Е¬Б¦Ц®ХИ
-											
+
+																						
+--	ГФЦд·ЁХИ±¦Пд23РН												w0062									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmzfzb_Qua	=	23	 				BaoXiang_jsmzfza_Mxcount	=	18												
-									
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmzfzb	=	{}					BaoXiang_jsmzfzb_Rad	=	{}					BaoXiang_jsmzfzb_Count	=	{}					
 	BaoXiang_jsmzfzb	[	1	]	=	1906		BaoXiang_jsmzfzb_Rad	[	1	]	=	100 		BaoXiang_jsmzfzb_Count	[	1	]	=	1	--	І»ЛА·вУЎµДЖЖД§·ЁХИ
 	BaoXiang_jsmzfzb	[	2	]	=	1914		BaoXiang_jsmzfzb_Rad	[	2	]	=	30		BaoXiang_jsmzfzb_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦдОД·ЁХИ
@@ -8558,9 +8126,12 @@ GoodItem_NP = {}
 	BaoXiang_jsmzfzb	[	17	]	=	1466		BaoXiang_jsmzfzb_Rad	[	17	]	=	21500		BaoXiang_jsmzfzb_Count	[	17	]	=	1	--	»оБ¦ИЁХИ
 	BaoXiang_jsmzfzb	[	18	]	=	1472		BaoXiang_jsmzfzb_Rad	[	18	]	=	21500		BaoXiang_jsmzfzb_Count	[	18	]	=	1	--	Е¬Б¦Ц®ХИ
 																						
-								
+																						
+--	ГФ·ЁЦ®ХИ±¦Пд24РН												w0063									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmfzza_Qua	=	24	 				BaoXiang_jsmfzza_Mxcount	=	25												
-												
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmfzza	=	{}					BaoXiang_jsmfzza_Rad	=	{}					BaoXiang_jsmfzza_Count	=	{}					
 	BaoXiang_jsmfzza	[	1	]	=	1906		BaoXiang_jsmfzza_Rad	[	1	]	=	100 		BaoXiang_jsmfzza_Count	[	1	]	=	1	--	І»ЛА·вУЎµДЖЖД§·ЁХИ
 	BaoXiang_jsmfzza	[	2	]	=	1907		BaoXiang_jsmfzza_Rad	[	2	]	=	30		BaoXiang_jsmfzza_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦдКхЦ®ХИ
@@ -8588,9 +8159,12 @@ GoodItem_NP = {}
 	BaoXiang_jsmfzza	[	24	]	=	3813		BaoXiang_jsmfzza_Rad	[	24	]	=	14500		BaoXiang_jsmfzza_Count	[	24	]	=	1	--	Т«ИХУЎјЗ
 	BaoXiang_jsmfzza	[	25	]	=	4301		BaoXiang_jsmfzza_Rad	[	25	]	=	14500		BaoXiang_jsmfzza_Count	[	25	]	=	1	--	ЦЗ»ЫЦ®ХИ
 
-									
+																						
+--	ГФ·ЁЦ®ХИ±¦Пд23РН												w0063									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmfzzb_Qua	=	23	 				BaoXiang_jsmfzzb_Mxcount	=	25												
-																																			
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmfzzb	=	{}					BaoXiang_jsmfzzb_Rad	=	{}					BaoXiang_jsmfzzb_Count	=	{}					
 	BaoXiang_jsmfzzb	[	1	]	=	1906		BaoXiang_jsmfzzb_Rad	[	1	]	=	100 		BaoXiang_jsmfzzb_Count	[	1	]	=	1	--	І»ЛА·вУЎµДЖЖД§·ЁХИ
 	BaoXiang_jsmfzzb	[	2	]	=	1907		BaoXiang_jsmfzzb_Rad	[	2	]	=	30		BaoXiang_jsmfzzb_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЦдКхЦ®ХИ
@@ -8619,9 +8193,11 @@ GoodItem_NP = {}
 	BaoXiang_jsmfzzb	[	25	]	=	4301		BaoXiang_jsmfzzb_Rad	[	25	]	=	14500		BaoXiang_jsmfzzb_Count	[	25	]	=	1	--	ЦЗ»ЫЦ®ХИ
 
 																						
---	ГФЦ®і¤З№±¦Пд24РН												w0027												
+--	ГФЦ®і¤З№±¦Пд24РН												w0027									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
 	BaoXiang_jsmzcqa_Qua	=	24	 				BaoXiang_jsmzcqa_Mxcount	=	20												
-														
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
 	BaoXiang_jsmzcqa	=	{}					BaoXiang_jsmzcqa_Rad	=	{}					BaoXiang_jsmzcqa_Count	=	{}					
 	BaoXiang_jsmzcqa	[	1	]	=	1902		BaoXiang_jsmzcqa_Rad	[	1	]	=	100 		BaoXiang_jsmzcqa_Count	[	1	]	=	1	--	І»ЛА·вУЎµДНцБйЦ®ґҐ
 	BaoXiang_jsmzcqa	[	2	]	=	1903		BaoXiang_jsmzcqa_Rad	[	2	]	=	30 		BaoXiang_jsmzcqa_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЧзЦдЦ®ОЗ
@@ -8643,33 +8219,40 @@ GoodItem_NP = {}
 	BaoXiang_jsmzcqa	[	18	]	=	1408		BaoXiang_jsmzcqa_Rad	[	18	]	=	17000		BaoXiang_jsmzcqa_Count	[	18	]	=	1	--	РдХдКЦЗ№
 	BaoXiang_jsmzcqa	[	19	]	=	1413		BaoXiang_jsmzcqa_Rad	[	19	]	=	17000		BaoXiang_jsmzcqa_Count	[	19	]	=	1	--	ТшЦЖКЦЗ№
 	BaoXiang_jsmzcqa	[	20	]	=	3806		BaoXiang_jsmzcqa_Rad	[	20	]	=	17000		BaoXiang_jsmzcqa_Count	[	20	]	=	1	--	БТ»рКЦЗ№
-												
-	BaoXiang_jsmzcqa_Qua2	=	23	 				BaoXiang_jsmzcqa_Mxcount2	=	20												
+
 																						
-	BaoXiang_jsmzcqa2	=	{}						BaoXiang_jsmzcqa_Rad2	=	{}					BaoXiang_jsmzcqa_Count2	=	{}					
-	BaoXiang_jsmzcqa2	[	1	]	=	1902		BaoXiang_jsmzcqa_Rad2	[	1	]	=	100 	BaoXiang_jsmzcqa_Count2	[	1	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	2	]	=	1903		BaoXiang_jsmzcqa_Rad2	[	2	]	=	30 		BaoXiang_jsmzcqa_Count2	[	2	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	3	]	=	1904		BaoXiang_jsmzcqa_Rad2	[	3	]	=	10 		BaoXiang_jsmzcqa_Count2	[	3	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	4	]	=	1905		BaoXiang_jsmzcqa_Rad2	[	4	]	=	5 		BaoXiang_jsmzcqa_Count2	[	4	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	5	]	=	0120		BaoXiang_jsmzcqa_Rad2	[	5	]	=	40		BaoXiang_jsmzcqa_Count2	[	5	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	6	]	=	0042		BaoXiang_jsmzcqa_Rad2	[	6	]	=	40		BaoXiang_jsmzcqa_Count2	[	6	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	7	]	=	0041		BaoXiang_jsmzcqa_Rad2	[	7	]	=	50		BaoXiang_jsmzcqa_Count2	[	7	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	8	]	=	1410		BaoXiang_jsmzcqa_Rad2	[	8	]	=	50		BaoXiang_jsmzcqa_Count2	[	8	]	=	1	--
-	BaoXiang_jsmzcqa2	[	9	]	=	3808		BaoXiang_jsmzcqa_Rad2	[	9	]	=	50		BaoXiang_jsmzcqa_Count2	[	9	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	10	]	=	4214		BaoXiang_jsmzcqa_Rad2	[	10	]	=	50		BaoXiang_jsmzcqa_Count2	[	10	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	11	]	=	4215		BaoXiang_jsmzcqa_Rad2	[	11	]	=	50		BaoXiang_jsmzcqa_Count2	[	11	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	12	]	=	0040		BaoXiang_jsmzcqa_Rad2	[	12	]	=	2500	BaoXiang_jsmzcqa_Count2	[	12	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	13	]	=	0045		BaoXiang_jsmzcqa_Rad2	[	13	]	=	2500	BaoXiang_jsmzcqa_Count2	[	13	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	14	]	=	1409		BaoXiang_jsmzcqa_Rad2	[	14	]	=	2500	BaoXiang_jsmzcqa_Count2	[	14	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	15	]	=	1414		BaoXiang_jsmzcqa_Rad2	[	15	]	=	2500	BaoXiang_jsmzcqa_Count2	[	15	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	16	]	=	0039		BaoXiang_jsmzcqa_Rad2	[	16	]	=	17500	BaoXiang_jsmzcqa_Count2	[	16	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	17	]	=	0044		BaoXiang_jsmzcqa_Rad2	[	17	]	=	17500	BaoXiang_jsmzcqa_Count2	[	17	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	18	]	=	1408		BaoXiang_jsmzcqa_Rad2	[	18	]	=	17500	BaoXiang_jsmzcqa_Count2	[	18	]	=	1	--	
-	BaoXiang_jsmzcqa2	[	20	]	=	3806		BaoXiang_jsmzcqa_Rad2	[	20	]	=	17500	BaoXiang_jsmzcqa_Count2	[	20	]	=	1	--	
+--	ГФЦ®і¤З№±¦Пд23РН												w0027									
+--	ОпЖ·ЦКБї							±¦ПдОпЖ·ЙППЮ														
+	BaoXiang_jsmzcqa_Qua	=	23	 				BaoXiang_jsmzcqa_Mxcount	=	20												
+																						
+--	ОпЖ·ЦЦАа							ОпЖ·ёЕВК														
+	BaoXiang_jsmzcqa	=	{}					BaoXiang_jsmzcqa_Rad	=	{}					BaoXiang_jsmzcqa_Count	=	{}					
+	BaoXiang_jsmzcqa	[	1	]	=	1902		BaoXiang_jsmzcqa_Rad	[	1	]	=	100 		BaoXiang_jsmzcqa_Count	[	1	]	=	1	--	І»ЛА·вУЎµДНцБйЦ®ґҐ
+	BaoXiang_jsmzcqa	[	2	]	=	1903		BaoXiang_jsmzcqa_Rad	[	2	]	=	30 		BaoXiang_jsmzcqa_Count	[	2	]	=	1	--	ОЫДа·вУЎµДЧзЦдЦ®ОЗ
+	BaoXiang_jsmzcqa	[	3	]	=	1904		BaoXiang_jsmzcqa_Rad	[	3	]	=	10 		BaoXiang_jsmzcqa_Count	[	3	]	=	1	--	БТСж·вУЎµД»ГБйЦ®Е­єр
+	BaoXiang_jsmzcqa	[	4	]	=	1905		BaoXiang_jsmzcqa_Rad	[	4	]	=	5 		BaoXiang_jsmzcqa_Count	[	4	]	=	1	--	є®±щ·вУЎµДГФЦ®і¤З№
+	BaoXiang_jsmzcqa	[	5	]	=	0120		BaoXiang_jsmzcqa_Rad	[	5	]	=	40		BaoXiang_jsmzcqa_Count	[	5	]	=	1	--	ЕщцЁЙсАЧ
+	BaoXiang_jsmzcqa	[	6	]	=	0042		BaoXiang_jsmzcqa_Rad	[	6	]	=	40		BaoXiang_jsmzcqa_Count	[	6	]	=	1	--	¶ѕРЗЗ№
+	BaoXiang_jsmzcqa	[	7	]	=	0041		BaoXiang_jsmzcqa_Rad	[	7	]	=	50		BaoXiang_jsmzcqa_Count	[	7	]	=	1	--	КҐ№вЗ№
+	BaoXiang_jsmzcqa	[	8	]	=	1410		BaoXiang_jsmzcqa_Rad	[	8	]	=	50		BaoXiang_jsmzcqa_Count	[	8	]	=	1	--	МмЙсЦ®·Ј
+	BaoXiang_jsmzcqa	[	9	]	=	3808		BaoXiang_jsmzcqa_Rad	[	9	]	=	50		BaoXiang_jsmzcqa_Count	[	9	]	=	1	--	°Ч»ўБФЗ№
+	BaoXiang_jsmzcqa	[	10	]	=	4214		BaoXiang_jsmzcqa_Rad	[	10	]	=	50		BaoXiang_jsmzcqa_Count	[	10	]	=	1	--	ПмОІЙЯ
+	BaoXiang_jsmzcqa	[	11	]	=	4215		BaoXiang_jsmzcqa_Rad	[	11	]	=	50		BaoXiang_jsmzcqa_Count	[	11	]	=	1	--	ЙЯГщЗ№
+	BaoXiang_jsmzcqa	[	12	]	=	0040		BaoXiang_jsmzcqa_Rad	[	12	]	=	2500		BaoXiang_jsmzcqa_Count	[	12	]	=	1	--	ѕ«ЦВБФЗ№
+	BaoXiang_jsmzcqa	[	13	]	=	0045		BaoXiang_jsmzcqa_Rad	[	13	]	=	2500		BaoXiang_jsmzcqa_Count	[	13	]	=	1	--	ЛЩЙд»рЗ№
+	BaoXiang_jsmzcqa	[	14	]	=	1409		BaoXiang_jsmzcqa_Rad	[	14	]	=	2500		BaoXiang_jsmzcqa_Count	[	14	]	=	1	--	ХЅ¶·і¤З№
+	BaoXiang_jsmzcqa	[	15	]	=	1414		BaoXiang_jsmzcqa_Rad	[	15	]	=	2500		BaoXiang_jsmzcqa_Count	[	15	]	=	1	--	УДБй»рЗ№
+	BaoXiang_jsmzcqa	[	16	]	=	0039		BaoXiang_jsmzcqa_Rad	[	16	]	=	17500		BaoXiang_jsmzcqa_Count	[	16	]	=	1	--	ѕ«ЦВКЦЗ№
+	BaoXiang_jsmzcqa	[	17	]	=	0044		BaoXiang_jsmzcqa_Rad	[	17	]	=	17500		BaoXiang_jsmzcqa_Count	[	17	]	=	1	--	АсЖ·КЦЗ№
+	BaoXiang_jsmzcqa	[	18	]	=	1408		BaoXiang_jsmzcqa_Rad	[	18	]	=	17500		BaoXiang_jsmzcqa_Count	[	18	]	=	1	--	РдХдКЦЗ№
+	BaoXiang_jsmzcqa	[	19	]	=	1413		BaoXiang_jsmzcqa_Rad	[	19	]	=	17500		BaoXiang_jsmzcqa_Count	[	19	]	=	1	--	ТшЦЖКЦЗ№
+	BaoXiang_jsmzcqa	[	20	]	=	3806		BaoXiang_jsmzcqa_Rad	[	20	]	=	17500		BaoXiang_jsmzcqa_Count	[	20	]	=	1	--	БТ»рКЦЗ№
+
 	
 ------
 -- СНЕЖНАЯ ВОЙНА
 ------
+
 -- Тип СНВ (большая или маленькая). Маленькая стартует раньше, поэтому по дефолту она
 type_07xmas2 = "small"
 
@@ -8719,2990 +8302,322 @@ SkillListId[25]    = 0459
 SkillListId[26]    = 0467
 
 
-Item_Auk={}
-Item_Auk	[	1	]	=	1
-Item_Auk	[	2	]	=	2
-Item_Auk	[	3	]	=	3
-Item_Auk	[	4	]	=	4
-Item_Auk	[	5	]	=	5
-Item_Auk	[	6	]	=	8
-Item_Auk	[	7	]	=	9
-Item_Auk	[	8	]	=	10
-Item_Auk	[	9	]	=	11
-Item_Auk	[	10	]	=	12
-Item_Auk	[	11	]	=	13
-Item_Auk	[	12	]	=	14
-Item_Auk	[	13	]	=	15
-Item_Auk	[	14	]	=	16
-Item_Auk	[	15	]	=	20
-Item_Auk	[	16	]	=	21
-Item_Auk	[	17	]	=	22
-Item_Auk	[	18	]	=	23
-Item_Auk	[	19	]	=	25
-Item_Auk	[	20	]	=	26
-Item_Auk	[	21	]	=	27
-Item_Auk	[	22	]	=	28
-Item_Auk	[	23	]	=	29
-Item_Auk	[	24	]	=	30
-Item_Auk	[	25	]	=	32
-Item_Auk	[	26	]	=	33
-Item_Auk	[	27	]	=	34
-Item_Auk	[	28	]	=	37
-Item_Auk	[	29	]	=	38
-Item_Auk	[	30	]	=	39
-Item_Auk	[	31	]	=	40
-Item_Auk	[	32	]	=	44
-Item_Auk	[	33	]	=	45
-Item_Auk	[	34	]	=	73
-Item_Auk	[	35	]	=	74
-Item_Auk	[	36	]	=	75
-Item_Auk	[	37	]	=	76
-Item_Auk	[	38	]	=	77
-Item_Auk	[	39	]	=	80
-Item_Auk	[	40	]	=	81
-Item_Auk	[	41	]	=	82
-Item_Auk	[	42	]	=	83
-Item_Auk	[	43	]	=	84
-Item_Auk	[	44	]	=	97
-Item_Auk	[	45	]	=	98
-Item_Auk	[	46	]	=	99
-Item_Auk	[	47	]	=	100
-Item_Auk	[	48	]	=	101
-Item_Auk	[	49	]	=	102
-Item_Auk	[	50	]	=	103
-Item_Auk	[	51	]	=	104
-Item_Auk	[	52	]	=	105
-Item_Auk	[	53	]	=	106
-Item_Auk	[	54	]	=	107
-Item_Auk	[	55	]	=	108
-Item_Auk	[	56	]	=	121
-Item_Auk	[	57	]	=	122
-Item_Auk	[	58	]	=	123
-Item_Auk	[	59	]	=	124
-Item_Auk	[	60	]	=	125
-Item_Auk	[	61	]	=	126
-Item_Auk	[	62	]	=	228
-Item_Auk	[	63	]	=	229
-Item_Auk	[	64	]	=	289
-Item_Auk	[	65	]	=	290
-Item_Auk	[	66	]	=	291
-Item_Auk	[	67	]	=	292
-Item_Auk	[	68	]	=	293
-Item_Auk	[	69	]	=	294
-Item_Auk	[	70	]	=	295
-Item_Auk	[	71	]	=	296
-Item_Auk	[	72	]	=	297
-Item_Auk	[	73	]	=	298
-Item_Auk	[	74	]	=	299
-Item_Auk	[	75	]	=	300
-Item_Auk	[	76	]	=	301
-Item_Auk	[	77	]	=	302
-Item_Auk	[	78	]	=	303
-Item_Auk	[	79	]	=	305
-Item_Auk	[	80	]	=	306
-Item_Auk	[	81	]	=	307
-Item_Auk	[	82	]	=	308
-Item_Auk	[	83	]	=	309
-Item_Auk	[	84	]	=	310
-Item_Auk	[	85	]	=	311
-Item_Auk	[	86	]	=	312
-Item_Auk	[	87	]	=	313
-Item_Auk	[	88	]	=	314
-Item_Auk	[	89	]	=	315
-Item_Auk	[	90	]	=	316
-Item_Auk	[	91	]	=	335
-Item_Auk	[	92	]	=	336
-Item_Auk	[	93	]	=	337
-Item_Auk	[	94	]	=	338
-Item_Auk	[	95	]	=	339
-Item_Auk	[	96	]	=	340
-Item_Auk	[	97	]	=	341
-Item_Auk	[	98	]	=	342
-Item_Auk	[	99	]	=	343
-Item_Auk	[	100	]	=	345
-Item_Auk	[	101	]	=	350
-Item_Auk	[	102	]	=	351
-Item_Auk	[	103	]	=	352
-Item_Auk	[	104	]	=	353
-Item_Auk	[	105	]	=	354
-Item_Auk	[	106	]	=	355
-Item_Auk	[	107	]	=	356
-Item_Auk	[	108	]	=	357
-Item_Auk	[	109	]	=	359
-Item_Auk	[	110	]	=	360
-Item_Auk	[	111	]	=	361
-Item_Auk	[	112	]	=	362
-Item_Auk	[	113	]	=	363
-Item_Auk	[	114	]	=	365
-Item_Auk	[	115	]	=	366
-Item_Auk	[	116	]	=	367
-Item_Auk	[	117	]	=	368
-Item_Auk	[	118	]	=	369
-Item_Auk	[	119	]	=	370
-Item_Auk	[	120	]	=	371
-Item_Auk	[	121	]	=	372
-Item_Auk	[	122	]	=	373
-Item_Auk	[	123	]	=	374
-Item_Auk	[	124	]	=	375
-Item_Auk	[	125	]	=	376
-Item_Auk	[	126	]	=	378
-Item_Auk	[	127	]	=	379
-Item_Auk	[	128	]	=	380
-Item_Auk	[	129	]	=	381
-Item_Auk	[	130	]	=	382
-Item_Auk	[	131	]	=	383
-Item_Auk	[	132	]	=	384
-Item_Auk	[	133	]	=	385
-Item_Auk	[	134	]	=	386
-Item_Auk	[	135	]	=	388
-Item_Auk	[	136	]	=	389
-Item_Auk	[	137	]	=	390
-Item_Auk	[	138	]	=	391
-Item_Auk	[	139	]	=	392
-Item_Auk	[	140	]	=	410
-Item_Auk	[	141	]	=	464
-Item_Auk	[	142	]	=	465
-Item_Auk	[	143	]	=	466
-Item_Auk	[	144	]	=	467
-Item_Auk	[	145	]	=	468
-Item_Auk	[	146	]	=	469
-Item_Auk	[	147	]	=	470
-Item_Auk	[	148	]	=	471
-Item_Auk	[	149	]	=	472
-Item_Auk	[	150	]	=	473
-Item_Auk	[	151	]	=	474
-Item_Auk	[	152	]	=	475
-Item_Auk	[	153	]	=	476
-Item_Auk	[	154	]	=	477
-Item_Auk	[	155	]	=	478
-Item_Auk	[	156	]	=	479
-Item_Auk	[	157	]	=	481
-Item_Auk	[	158	]	=	482
-Item_Auk	[	159	]	=	483
-Item_Auk	[	160	]	=	484
-Item_Auk	[	161	]	=	485
-Item_Auk	[	162	]	=	486
-Item_Auk	[	163	]	=	487
-Item_Auk	[	164	]	=	488
-Item_Auk	[	165	]	=	489
-Item_Auk	[	166	]	=	490
-Item_Auk	[	167	]	=	491
-Item_Auk	[	168	]	=	492
-Item_Auk	[	169	]	=	511
-Item_Auk	[	170	]	=	512
-Item_Auk	[	171	]	=	513
-Item_Auk	[	172	]	=	514
-Item_Auk	[	173	]	=	515
-Item_Auk	[	174	]	=	516
-Item_Auk	[	175	]	=	517
-Item_Auk	[	176	]	=	518
-Item_Auk	[	177	]	=	519
-Item_Auk	[	178	]	=	521
-Item_Auk	[	179	]	=	526
-Item_Auk	[	180	]	=	527
-Item_Auk	[	181	]	=	528
-Item_Auk	[	182	]	=	529
-Item_Auk	[	183	]	=	530
-Item_Auk	[	184	]	=	531
-Item_Auk	[	185	]	=	532
-Item_Auk	[	186	]	=	533
-Item_Auk	[	187	]	=	535
-Item_Auk	[	188	]	=	536
-Item_Auk	[	189	]	=	537
-Item_Auk	[	190	]	=	538
-Item_Auk	[	191	]	=	539
-Item_Auk	[	192	]	=	541
-Item_Auk	[	193	]	=	542
-Item_Auk	[	194	]	=	543
-Item_Auk	[	195	]	=	544
-Item_Auk	[	196	]	=	545
-Item_Auk	[	197	]	=	546
-Item_Auk	[	198	]	=	547
-Item_Auk	[	199	]	=	548
-Item_Auk	[	200	]	=	549
-Item_Auk	[	201	]	=	550
-Item_Auk	[	202	]	=	551
-Item_Auk	[	203	]	=	552
-Item_Auk	[	204	]	=	554
-Item_Auk	[	205	]	=	555
-Item_Auk	[	206	]	=	556
-Item_Auk	[	207	]	=	557
-Item_Auk	[	208	]	=	558
-Item_Auk	[	209	]	=	559
-Item_Auk	[	210	]	=	560
-Item_Auk	[	211	]	=	561
-Item_Auk	[	212	]	=	562
-Item_Auk	[	213	]	=	564
-Item_Auk	[	214	]	=	565
-Item_Auk	[	215	]	=	566
-Item_Auk	[	216	]	=	567
-Item_Auk	[	217	]	=	568
-Item_Auk	[	218	]	=	586
-Item_Auk	[	219	]	=	640
-Item_Auk	[	220	]	=	641
-Item_Auk	[	221	]	=	642
-Item_Auk	[	222	]	=	643
-Item_Auk	[	223	]	=	644
-Item_Auk	[	224	]	=	645
-Item_Auk	[	225	]	=	646
-Item_Auk	[	226	]	=	647
-Item_Auk	[	227	]	=	648
-Item_Auk	[	228	]	=	649
-Item_Auk	[	229	]	=	650
-Item_Auk	[	230	]	=	651
-Item_Auk	[	231	]	=	652
-Item_Auk	[	232	]	=	653
-Item_Auk	[	233	]	=	654
-Item_Auk	[	234	]	=	655
-Item_Auk	[	235	]	=	657
-Item_Auk	[	236	]	=	658
-Item_Auk	[	237	]	=	659
-Item_Auk	[	238	]	=	660
-Item_Auk	[	239	]	=	661
-Item_Auk	[	240	]	=	662
-Item_Auk	[	241	]	=	663
-Item_Auk	[	242	]	=	664
-Item_Auk	[	243	]	=	665
-Item_Auk	[	244	]	=	666
-Item_Auk	[	245	]	=	667
-Item_Auk	[	246	]	=	668
-Item_Auk	[	247	]	=	687
-Item_Auk	[	248	]	=	688
-Item_Auk	[	249	]	=	689
-Item_Auk	[	250	]	=	690
-Item_Auk	[	251	]	=	691
-Item_Auk	[	252	]	=	692
-Item_Auk	[	253	]	=	693
-Item_Auk	[	254	]	=	694
-Item_Auk	[	255	]	=	695
-Item_Auk	[	256	]	=	697
-Item_Auk	[	257	]	=	702
-Item_Auk	[	258	]	=	703
-Item_Auk	[	259	]	=	704
-Item_Auk	[	260	]	=	705
-Item_Auk	[	261	]	=	706
-Item_Auk	[	262	]	=	707
-Item_Auk	[	263	]	=	708
-Item_Auk	[	264	]	=	709
-Item_Auk	[	265	]	=	711
-Item_Auk	[	266	]	=	712
-Item_Auk	[	267	]	=	713
-Item_Auk	[	268	]	=	714
-Item_Auk	[	269	]	=	715
-Item_Auk	[	270	]	=	717
-Item_Auk	[	271	]	=	718
-Item_Auk	[	272	]	=	719
-Item_Auk	[	273	]	=	720
-Item_Auk	[	274	]	=	721
-Item_Auk	[	275	]	=	722
-Item_Auk	[	276	]	=	723
-Item_Auk	[	277	]	=	724
-Item_Auk	[	278	]	=	725
-Item_Auk	[	279	]	=	726
-Item_Auk	[	280	]	=	727
-Item_Auk	[	281	]	=	728
-Item_Auk	[	282	]	=	730
-Item_Auk	[	283	]	=	731
-Item_Auk	[	284	]	=	732
-Item_Auk	[	285	]	=	733
-Item_Auk	[	286	]	=	734
-Item_Auk	[	287	]	=	735
-Item_Auk	[	288	]	=	736
-Item_Auk	[	289	]	=	737
-Item_Auk	[	290	]	=	738
-Item_Auk	[	291	]	=	740
-Item_Auk	[	292	]	=	741
-Item_Auk	[	293	]	=	742
-Item_Auk	[	294	]	=	743
-Item_Auk	[	295	]	=	744
-Item_Auk	[	296	]	=	762
-Item_Auk	[	297	]	=	763
-Item_Auk	[	298	]	=	764
-Item_Auk	[	299	]	=	765
-Item_Auk	[	300	]	=	767
-Item_Auk	[	301	]	=	768
-Item_Auk	[	302	]	=	770
-Item_Auk	[	303	]	=	771
-Item_Auk	[	304	]	=	772
-Item_Auk	[	305	]	=	774
-Item_Auk	[	306	]	=	775
-Item_Auk	[	307	]	=	777
-Item_Auk	[	308	]	=	778
-Item_Auk	[	309	]	=	779
-Item_Auk	[	310	]	=	781
-Item_Auk	[	311	]	=	782
-Item_Auk	[	312	]	=	783
-Item_Auk	[	313	]	=	785
-Item_Auk	[	314	]	=	786
-Item_Auk	[	315	]	=	787
-Item_Auk	[	316	]	=	789
-Item_Auk	[	317	]	=	790
-Item_Auk	[	318	]	=	791
-Item_Auk	[	319	]	=	793
-Item_Auk	[	320	]	=	794
-Item_Auk	[	321	]	=	796
-Item_Auk	[	322	]	=	797
-Item_Auk	[	323	]	=	799
-Item_Auk	[	324	]	=	800
-Item_Auk	[	325	]	=	801
-Item_Auk	[	326	]	=	803
-Item_Auk	[	327	]	=	804
-Item_Auk	[	328	]	=	805
-Item_Auk	[	329	]	=	807
-Item_Auk	[	330	]	=	808
-Item_Auk	[	331	]	=	809
-Item_Auk	[	332	]	=	810
-Item_Auk	[	333	]	=	811
-Item_Auk	[	334	]	=	812
-Item_Auk	[	335	]	=	813
-Item_Auk	[	336	]	=	814
-Item_Auk	[	337	]	=	815
-Item_Auk	[	338	]	=	816
---Item_Auk	[	339	]	=	825
---Item_Auk	[	340	]	=	826
---Item_Auk	[	341	]	=	827
---Item_Auk	[	342	]	=	828
---Item_Auk	[	343	]	=	831
---Item_Auk	[	344	]	=	832
---Item_Auk	[	345	]	=	833
---Item_Auk	[	346	]	=	834
---Item_Auk	[	347	]	=	835
---Item_Auk	[	348	]	=	836
---Item_Auk	[	349	]	=	837
---Item_Auk	[	350	]	=	838
---Item_Auk	[	351	]	=	839
---Item_Auk	[	352	]	=	840
---Item_Auk	[	353	]	=	841
---Item_Auk	[	354	]	=	842
---Item_Auk	[	355	]	=	843
---Item_Auk	[	356	]	=	935
---Item_Auk	[	357	]	=	936
-Item_Auk	[	358	]	=	1029
-Item_Auk	[	359	]	=	1115
-Item_Auk	[	360	]	=	1116
-Item_Auk	[	361	]	=	1117
-Item_Auk	[	362	]	=	1118
-Item_Auk	[	363	]	=	1120
-Item_Auk	[	364	]	=	1121
-Item_Auk	[	365	]	=	1122
-Item_Auk	[	366	]	=	1124
-Item_Auk	[	367	]	=	1125
-Item_Auk	[	368	]	=	1126
-Item_Auk	[	369	]	=	1127
-Item_Auk	[	370	]	=	1153
-Item_Auk	[	371	]	=	1154
-Item_Auk	[	372	]	=	1155
-Item_Auk	[	373	]	=	1159
-Item_Auk	[	374	]	=	1160
-Item_Auk	[	375	]	=	1161
-Item_Auk	[	376	]	=	1162
-Item_Auk	[	377	]	=	1163
-Item_Auk	[	378	]	=	1164
-Item_Auk	[	379	]	=	1370
-Item_Auk	[	380	]	=	1371
-Item_Auk	[	381	]	=	1372
-Item_Auk	[	382	]	=	1373
-Item_Auk	[	383	]	=	1377
-Item_Auk	[	384	]	=	1378
-Item_Auk	[	385	]	=	1379
-Item_Auk	[	386	]	=	1380
-Item_Auk	[	387	]	=	1381
-Item_Auk	[	388	]	=	1382
-Item_Auk	[	389	]	=	1386
-Item_Auk	[	390	]	=	1387
-Item_Auk	[	391	]	=	1388
-Item_Auk	[	392	]	=	1389
-Item_Auk	[	393	]	=	1390
-Item_Auk	[	394	]	=	1391
-Item_Auk	[	395	]	=	1392
-Item_Auk	[	396	]	=	1395
-Item_Auk	[	397	]	=	1396
-Item_Auk	[	398	]	=	1397
-Item_Auk	[	399	]	=	1398
-Item_Auk	[	400	]	=	1399
-Item_Auk	[	401	]	=	1400
-Item_Auk	[	402	]	=	1401
-Item_Auk	[	403	]	=	1402
-Item_Auk	[	404	]	=	1403
-Item_Auk	[	405	]	=	1404
-Item_Auk	[	406	]	=	1405
-Item_Auk	[	407	]	=	1406
-Item_Auk	[	408	]	=	1407
-Item_Auk	[	409	]	=	1408
-Item_Auk	[	410	]	=	1409
-Item_Auk	[	411	]	=	1413
-Item_Auk	[	412	]	=	1414
-Item_Auk	[	413	]	=	1415
-Item_Auk	[	414	]	=	1416
-Item_Auk	[	415	]	=	1417
-Item_Auk	[	416	]	=	1418
-Item_Auk	[	417	]	=	1419
-Item_Auk	[	418	]	=	1422
-Item_Auk	[	419	]	=	1423
-Item_Auk	[	420	]	=	1424
-Item_Auk	[	421	]	=	1425
-Item_Auk	[	422	]	=	1426
-Item_Auk	[	423	]	=	1427
-Item_Auk	[	424	]	=	1428
-Item_Auk	[	425	]	=	1429
-Item_Auk	[	426	]	=	1430
-Item_Auk	[	427	]	=	1431
-Item_Auk	[	428	]	=	1432
-Item_Auk	[	429	]	=	1433
-Item_Auk	[	430	]	=	1434
-Item_Auk	[	431	]	=	1435
-Item_Auk	[	432	]	=	1436
-Item_Auk	[	433	]	=	1437
-Item_Auk	[	434	]	=	1438
-Item_Auk	[	435	]	=	1440
-Item_Auk	[	436	]	=	1441
-Item_Auk	[	437	]	=	1443
-Item_Auk	[	438	]	=	1444
-Item_Auk	[	439	]	=	1445
-Item_Auk	[	440	]	=	1446
-Item_Auk	[	441	]	=	1447
-Item_Auk	[	442	]	=	1450
-Item_Auk	[	443	]	=	1451
-Item_Auk	[	444	]	=	1452
-Item_Auk	[	445	]	=	1460
-Item_Auk	[	446	]	=	1461
-Item_Auk	[	447	]	=	1462
-Item_Auk	[	448	]	=	1463
-Item_Auk	[	449	]	=	1464
-Item_Auk	[	450	]	=	1465
-Item_Auk	[	451	]	=	1466
-Item_Auk	[	452	]	=	1467
-Item_Auk	[	453	]	=	1468
-Item_Auk	[	454	]	=	1469
-Item_Auk	[	455	]	=	1470
-Item_Auk	[	456	]	=	1471
-Item_Auk	[	457	]	=	1472
-Item_Auk	[	458	]	=	1473
-Item_Auk	[	459	]	=	1475
-Item_Auk	[	460	]	=	1476
-Item_Auk	[	461	]	=	1506
-Item_Auk	[	462	]	=	1507
-Item_Auk	[	463	]	=	1509
-Item_Auk	[	464	]	=	1510
-Item_Auk	[	465	]	=	1884
-Item_Auk	[	466	]	=	1885
-Item_Auk	[	467	]	=	1886
-Item_Auk	[	468	]	=	1888
-Item_Auk	[	469	]	=	1889
-Item_Auk	[	470	]	=	1891
-Item_Auk	[	471	]	=	1892
-Item_Auk	[	472	]	=	1893
-Item_Auk	[	473	]	=	1895
-Item_Auk	[	474	]	=	1896
-Item_Auk	[	475	]	=	1898
-Item_Auk	[	476	]	=	1899
-Item_Auk	[	477	]	=	1900
-Item_Auk	[	478	]	=	1902
-Item_Auk	[	479	]	=	1903
-Item_Auk	[	480	]	=	1904
-Item_Auk	[	481	]	=	1906
-Item_Auk	[	482	]	=	1907
-Item_Auk	[	483	]	=	1908
-Item_Auk	[	484	]	=	1910
-Item_Auk	[	485	]	=	1911
-Item_Auk	[	486	]	=	1912
-Item_Auk	[	487	]	=	1914
-Item_Auk	[	488	]	=	1915
-Item_Auk	[	489	]	=	1917
-Item_Auk	[	490	]	=	1918
-Item_Auk	[	491	]	=	1920
-Item_Auk	[	492	]	=	1921
-Item_Auk	[	493	]	=	1922
-Item_Auk	[	494	]	=	1924
-Item_Auk	[	495	]	=	1925
-Item_Auk	[	496	]	=	1926
-Item_Auk	[	497	]	=	1928
-Item_Auk	[	498	]	=	1929
-Item_Auk	[	499	]	=	1930
-Item_Auk	[	500	]	=	1932
-Item_Auk	[	501	]	=	1933
-Item_Auk	[	502	]	=	1935
-Item_Auk	[	503	]	=	1936
-Item_Auk	[	504	]	=	1937
-Item_Auk	[	505	]	=	1939
-Item_Auk	[	506	]	=	1940
-Item_Auk	[	507	]	=	1941
-Item_Auk	[	508	]	=	1943
-Item_Auk	[	509	]	=	1944
-Item_Auk	[	510	]	=	1945
-Item_Auk	[	511	]	=	1947
-Item_Auk	[	512	]	=	1948
-Item_Auk	[	513	]	=	1949
-Item_Auk	[	514	]	=	1951
-Item_Auk	[	515	]	=	1952
-Item_Auk	[	516	]	=	1953
-Item_Auk	[	517	]	=	1955
-Item_Auk	[	518	]	=	1956
-Item_Auk	[	519	]	=	1957
-Item_Auk	[	520	]	=	1959
-Item_Auk	[	521	]	=	1960
-Item_Auk	[	522	]	=	1962
-Item_Auk	[	523	]	=	1963
-Item_Auk	[	524	]	=	1964
-Item_Auk	[	525	]	=	1966
-Item_Auk	[	526	]	=	1967
-Item_Auk	[	527	]	=	1969
-Item_Auk	[	528	]	=	1970
-Item_Auk	[	529	]	=	1971
-Item_Auk	[	530	]	=	1973
-Item_Auk	[	531	]	=	1974
-Item_Auk	[	532	]	=	1976
-Item_Auk	[	533	]	=	1977
-Item_Auk	[	534	]	=	1978
-Item_Auk	[	535	]	=	1980
-Item_Auk	[	536	]	=	1981
-Item_Auk	[	537	]	=	1982
-Item_Auk	[	538	]	=	1984
-Item_Auk	[	539	]	=	1985
-Item_Auk	[	540	]	=	1986
-Item_Auk	[	541	]	=	1988
-Item_Auk	[	542	]	=	1989
-Item_Auk	[	543	]	=	1990
-Item_Auk	[	544	]	=	1991
-Item_Auk	[	545	]	=	1992
-Item_Auk	[	546	]	=	1993
-Item_Auk	[	547	]	=	1994
-Item_Auk	[	548	]	=	1995
-Item_Auk	[	549	]	=	1996
-Item_Auk	[	550	]	=	1997
-Item_Auk	[	551	]	=	2186
-Item_Auk	[	552	]	=	2187
-Item_Auk	[	553	]	=	2188
-Item_Auk	[	554	]	=	2189
-Item_Auk	[	555	]	=	2190
-Item_Auk	[	556	]	=	2191
-Item_Auk	[	557	]	=	2192
-Item_Auk	[	558	]	=	2193
-Item_Auk	[	559	]	=	2194
-Item_Auk	[	560	]	=	2196
-Item_Auk	[	561	]	=	2197
-Item_Auk	[	562	]	=	2198
-Item_Auk	[	563	]	=	2199
-Item_Auk	[	564	]	=	2200
-Item_Auk	[	565	]	=	2202
-Item_Auk	[	566	]	=	2203
-Item_Auk	[	567	]	=	2204
-Item_Auk	[	568	]	=	2205
-Item_Auk	[	569	]	=	2206
-Item_Auk	[	570	]	=	2207
-Item_Auk	[	571	]	=	2208
-Item_Auk	[	572	]	=	2210
-Item_Auk	[	573	]	=	2211
-Item_Auk	[	574	]	=	2212
-Item_Auk	[	575	]	=	2213
-Item_Auk	[	576	]	=	2214
-Item_Auk	[	577	]	=	2217
-Item_Auk	[	578	]	=	2246
-Item_Auk	[	579	]	=	2247
-Item_Auk	[	580	]	=	2248
-Item_Auk	[	581	]	=	2249
-Item_Auk	[	582	]	=	2250
-Item_Auk	[	583	]	=	2251
-Item_Auk	[	584	]	=	2252
-Item_Auk	[	585	]	=	2253
-Item_Auk	[	586	]	=	2254
-Item_Auk	[	587	]	=	2255
-Item_Auk	[	588	]	=	2256
-Item_Auk	[	589	]	=	2257
-Item_Auk	[	590	]	=	2258
-Item_Auk	[	591	]	=	2259
-Item_Auk	[	592	]	=	2260
-Item_Auk	[	593	]	=	2261
-Item_Auk	[	594	]	=	2262
-Item_Auk	[	595	]	=	2263
-Item_Auk	[	596	]	=	2264
-Item_Auk	[	597	]	=	2265
-Item_Auk	[	598	]	=	2266
-Item_Auk	[	599	]	=	2267
-Item_Auk	[	600	]	=	2268
-Item_Auk	[	601	]	=	2269
-Item_Auk	[	602	]	=	2270
-Item_Auk	[	603	]	=	2271
-Item_Auk	[	604	]	=	2272
-Item_Auk	[	605	]	=	2275
-Item_Auk	[	606	]	=	2276
-Item_Auk	[	607	]	=	2277
-Item_Auk	[	608	]	=	2278
-Item_Auk	[	609	]	=	2279
-Item_Auk	[	610	]	=	2280
-Item_Auk	[	611	]	=	2281
-Item_Auk	[	612	]	=	2282
-Item_Auk	[	613	]	=	2283
-Item_Auk	[	614	]	=	2284
-Item_Auk	[	615	]	=	2285
-Item_Auk	[	616	]	=	2286
-Item_Auk	[	617	]	=	2287
-Item_Auk	[	618	]	=	2288
-Item_Auk	[	619	]	=	2289
-Item_Auk	[	620	]	=	2290
-Item_Auk	[	621	]	=	2291
-Item_Auk	[	622	]	=	2292
-Item_Auk	[	623	]	=	2293
-Item_Auk	[	624	]	=	2294
-Item_Auk	[	625	]	=	2420
-Item_Auk	[	626	]	=	2421
-Item_Auk	[	627	]	=	2422
-Item_Auk	[	628	]	=	2423
-Item_Auk	[	629	]	=	2424
-Item_Auk	[	630	]	=	2425
-Item_Auk	[	631	]	=	2527
-Item_Auk	[	632	]	=	2552
-Item_Auk	[	633	]	=	2553
-Item_Auk	[	634	]	=	2583
-Item_Auk	[	635	]	=	2584
-Item_Auk	[	636	]	=	3061
-Item_Auk	[	637	]	=	3115
-Item_Auk	[	638	]	=	3286
-Item_Auk	[	639	]	=	3287
-
-
-
---Торговцы
---Торговцы
-ChangeItemList[253]=	{	4790	,	25	,	8141	,	25	}--
-ChangeItemList[254]=	{	4790	,	26	,	8141	,	25	}--
-ChangeItemList[255]=	{	4790	,	27	,	8141	,	25	}--
-ChangeItemList[256]=	{	4790	,	28	,	8141	,	25	}--
-ChangeItemList[257]=	{	4790	,	29	,	8141	,	25	}--
-ChangeItemList[258]=	{	4790	,	30	,	8141	,	25	}--
-ChangeItemList[259]=	{	4790	,	31	,	8141	,	25	}--
-ChangeItemList[260]=	{	4790	,	32	,	8141	,	25	}--
-ChangeItemList[261]=	{	4790	,	33	,	8141	,	25	}--
-ChangeItemList[262]=	{	4790	,	34	,	8141	,	25	}--
-ChangeItemList[263]=	{	4790	,	35	,	8141	,	25	}--
-ChangeItemList[264]=	{	4790	,	36	,	8141	,	40	}--
-ChangeItemList[265]=	{	4790	,	37	,	8141	,	40	}--
-ChangeItemList[266]=	{	4790	,	38	,	8141	,	40	}--
-ChangeItemList[267]=	{	4790	,	39	,	8141	,	40	}--
-ChangeItemList[268]=	{	4790	,	40	,	8141	,	40	}--
-ChangeItemList[269]=	{	4790	,	41	,	8141	,	40	}--
-ChangeItemList[270]=	{	4790	,	42	,	8141	,	40	}--
-ChangeItemList[271]=	{	4790	,	43	,	8141	,	40	}--
-ChangeItemList[272]=	{	4790	,	44	,	8141	,	40	}--
-ChangeItemList[273]=	{	4790	,	45	,	8141	,	40	}--
-ChangeItemList[274]=	{	4790	,	46	,	8141	,	40	}--
-ChangeItemList[275]=	{	4790	,	47	,	8141	,	40	}--
-ChangeItemList[276]=	{	4790	,	48	,	8141	,	40	}--
-ChangeItemList[277]=	{	4790	,	49	,	8141	,	40	}--
-ChangeItemList[278]=	{	4790	,	50	,	8141	,	40	}--
-ChangeItemList[279]=	{	4790	,	51	,	8141	,	80	}--
-ChangeItemList[280]=	{	4790	,	52	,	8141	,	80	}--
-ChangeItemList[281]=	{	4790	,	53	,	8141	,	80	}--
-ChangeItemList[282]=	{	4790	,	54	,	8141	,	80	}--
-ChangeItemList[283]=	{	4790	,	55	,	8141	,	80	}--
-ChangeItemList[284]=	{	4790	,	56	,	8141	,	80	}--
-ChangeItemList[285]=	{	4790	,	57	,	8141	,	80	}--
-ChangeItemList[286]=	{	4790	,	58	,	8141	,	80	}--
-ChangeItemList[287]=	{	4790	,	59	,	8141	,	80	}--
-ChangeItemList[288]=	{	4790	,	60	,	8141	,	80	}--
-ChangeItemList[289]=	{	4790	,	61	,	8141	,	80	}--
-ChangeItemList[290]=	{	4790	,	62	,	8141	,	80	}--
-ChangeItemList[291]=	{	4790	,	63	,	8141	,	80	}--
-ChangeItemList[292]=	{	4790	,	64	,	8141	,	80	}--
-ChangeItemList[293]=	{	4790	,	65	,	8141	,	80	}--
-ChangeItemList[294]=	{	1353	,	25	,	8141	,	25	}--
-ChangeItemList[295]=	{	1353	,	26	,	8141	,	25	}--
-ChangeItemList[296]=	{	1353	,	27	,	8141	,	25	}--
-ChangeItemList[297]=	{	1353	,	28	,	8141	,	25	}--
-ChangeItemList[298]=	{	1353	,	29	,	8141	,	25	}--
-ChangeItemList[299]=	{	1353	,	30	,	8141	,	25	}--
-ChangeItemList[300]=	{	1353	,	31	,	8141	,	25	}--
-ChangeItemList[301]=	{	1353	,	32	,	8141	,	25	}--
-ChangeItemList[302]=	{	1353	,	33	,	8141	,	25	}--
-ChangeItemList[303]=	{	1353	,	34	,	8141	,	25	}--
-ChangeItemList[344]=	{	1353	,	35	,	8141	,	25	}--
-ChangeItemList[345]=	{	1353	,	36	,	8141	,	40	}--
-ChangeItemList[346]=	{	1353	,	37	,	8141	,	40	}--
-ChangeItemList[347]=	{	1353	,	38	,	8141	,	40	}--
-ChangeItemList[348]=	{	1353	,	39	,	8141	,	40	}--
-ChangeItemList[348]=	{	1353	,	40	,	8141	,	40	}--
-ChangeItemList[349]=	{	1353	,	41	,	8141	,	40	}--
-ChangeItemList[350]=	{	1353	,	42	,	8141	,	40	}--
-ChangeItemList[351]=	{	1353	,	43	,	8141	,	40	}--
-ChangeItemList[352]=	{	1353	,	44	,	8141	,	40	}--
-ChangeItemList[353]=	{	1353	,	45	,	8141	,	40	}--
-ChangeItemList[354]=	{	1353	,	46	,	8141	,	40	}--
-ChangeItemList[355]=	{	1353	,	47	,	8141	,	40	}--
-ChangeItemList[356]=	{	1353	,	48	,	8141	,	40	}--
-ChangeItemList[357]=	{	1353	,	49	,	8141	,	40	}--
-ChangeItemList[358]=	{	1353	,	50	,	8141	,	40	}--
-ChangeItemList[359]=	{	1353	,	51	,	8141	,	80	}--
-ChangeItemList[360]=	{	1353	,	52	,	8141	,	80	}--
-ChangeItemList[361]=	{	1353	,	53	,	8141	,	80	}--
-ChangeItemList[362]=	{	1353	,	54	,	8141	,	80	}--
-ChangeItemList[363]=	{	1353	,	55	,	8141	,	80	}--
-ChangeItemList[364]=	{	1353	,	56	,	8141	,	80	}--
-ChangeItemList[365]=	{	1353	,	57	,	8141	,	80	}--
-ChangeItemList[366]=	{	1353	,	58	,	8141	,	80	}--
-ChangeItemList[367]=	{	1353	,	59	,	8141	,	80	}--
-ChangeItemList[368]=	{	1353	,	60	,	8141	,	80	}--
-ChangeItemList[369]=	{	1353	,	61	,	8141	,	80	}--
-ChangeItemList[370]=	{	1353	,	62	,	8141	,	80	}--
-ChangeItemList[371]=	{	1353	,	63	,	8141	,	80	}--
-ChangeItemList[372]=	{	1353	,	64	,	8141	,	80	}--
-ChangeItemList[373]=	{	1353	,	65	,	8141	,	80	}--
-ChangeItemList[374]=	{	1184	,	25	,	8141	,	25	}--
-ChangeItemList[375]=	{	1184	,	26	,	8141	,	25	}--
-ChangeItemList[376]=	{	1184	,	27	,	8141	,	25	}--
-ChangeItemList[377]=	{	1184	,	28	,	8141	,	25	}--
-ChangeItemList[378]=	{	1184	,	29	,	8141	,	25	}--
-ChangeItemList[379]=	{	1184	,	30	,	8141	,	25	}--
-ChangeItemList[380]=	{	1184	,	31	,	8141	,	25	}--
-ChangeItemList[381]=	{	1184	,	32	,	8141	,	25	}--
-ChangeItemList[382]=	{	1184	,	33	,	8141	,	25	}--
-ChangeItemList[383]=	{	1184	,	34	,	8141	,	25	}--
-ChangeItemList[384]=	{	1184	,	35	,	8141	,	25	}--
-ChangeItemList[385]=	{	1184	,	36	,	8141	,	40	}--
-ChangeItemList[386]=	{	1184	,	37	,	8141	,	40	}--
-ChangeItemList[387]=	{	1184	,	38	,	8141	,	40	}--
-ChangeItemList[388]=	{	1184	,	39	,	8141	,	40	}--
-ChangeItemList[389]=	{	1184	,	40	,	8141	,	40	}--
-ChangeItemList[390]=	{	1184	,	41	,	8141	,	40	}--
-ChangeItemList[391]=	{	1184	,	42	,	8141	,	40	}--
-ChangeItemList[392]=	{	1184	,	43	,	8141	,	40	}--
-ChangeItemList[393]=	{	1184	,	44	,	8141	,	40	}--
-ChangeItemList[394]=	{	1184	,	45	,	8141	,	40	}--
-ChangeItemList[395]=	{	1184	,	46	,	8141	,	40	}--
-ChangeItemList[396]=	{	1184	,	47	,	8141	,	40	}--
-ChangeItemList[397]=	{	1184	,	48	,	8141	,	40	}--
-ChangeItemList[398]=	{	1184	,	49	,	8141	,	40	}--
-ChangeItemList[399]=	{	1184	,	50	,	8141	,	40	}--
-ChangeItemList[400]=	{	1184	,	51	,	8141	,	80	}--
-ChangeItemList[401]=	{	1184	,	52	,	8141	,	80	}--
-ChangeItemList[402]=	{	1184	,	53	,	8141	,	80	}--
-ChangeItemList[403]=	{	1184	,	54	,	8141	,	80	}--
-ChangeItemList[404]=	{	1184	,	55	,	8141	,	80	}--
-ChangeItemList[405]=	{	1184	,	56	,	8141	,	80	}--
-ChangeItemList[406]=	{	1184	,	57	,	8141	,	80	}--
-ChangeItemList[407]=	{	1184	,	58	,	8141	,	80	}--
-ChangeItemList[408]=	{	1184	,	59	,	8141	,	80	}--
-ChangeItemList[409]=	{	1184	,	60	,	8141	,	80	}--
-ChangeItemList[410]=	{	1184	,	61	,	8141	,	80	}--
-ChangeItemList[411]=	{	1184	,	62	,	8141	,	80	}--
-ChangeItemList[412]=	{	1184	,	63	,	8141	,	80	}--
-ChangeItemList[413]=	{	1184	,	64	,	8141	,	80	}--
-ChangeItemList[414]=	{	1184	,	65	,	8141	,	80	}--
-ChangeItemList[415]=	{	1184	,	25	,	8141	,	25	}--
-ChangeItemList[416]=	{	1184	,	26	,	8141	,	25	}--
-ChangeItemList[417]=	{	4983	,	27	,	8141	,	25	}--
-ChangeItemList[418]=	{	4983	,	28	,	8141	,	25	}--
-ChangeItemList[419]=	{	4983	,	29	,	8141	,	25	}--
-ChangeItemList[420]=	{	4983	,	30	,	8141	,	25	}--
-ChangeItemList[421]=	{	4983	,	31	,	8141	,	25	}--
-ChangeItemList[422]=	{	4983	,	32	,	8141	,	25	}--
-ChangeItemList[423]=	{	4983	,	33	,	8141	,	25	}--
-ChangeItemList[424]=	{	4983	,	34	,	8141	,	25	}--
-ChangeItemList[425]=	{	4983	,	35	,	8141	,	25	}--
-ChangeItemList[426]=	{	4983	,	36	,	8141	,	40	}--
-ChangeItemList[427]=	{	4983	,	37	,	8141	,	40	}--
-ChangeItemList[428]=	{	4983	,	38	,	8141	,	40	}--
-ChangeItemList[429]=	{	4983	,	39	,	8141	,	40	}--
-ChangeItemList[430]=	{	4983	,	40	,	8141	,	40	}--
-ChangeItemList[431]=	{	4983	,	41	,	8141	,	40	}--
-ChangeItemList[432]=	{	4983	,	42	,	8141	,	40	}--
-ChangeItemList[433]=	{	4983	,	43	,	8141	,	40	}--
-ChangeItemList[434]=	{	4983	,	44	,	8141	,	40	}--
-ChangeItemList[435]=	{	4983	,	45	,	8141	,	40	}--
-ChangeItemList[436]=	{	4983	,	46	,	8141	,	40	}--
-ChangeItemList[437]=	{	4983	,	47	,	8141	,	40	}--
-ChangeItemList[438]=	{	4983	,	48	,	8141	,	40	}--
-ChangeItemList[439]=	{	4983	,	49	,	8141	,	40	}--
-ChangeItemList[440]=	{	4983	,	50	,	8141	,	40	}--
-ChangeItemList[441]=	{	4983	,	51	,	8141	,	80	}--
-ChangeItemList[442]=	{	4983	,	52	,	8141	,	80	}--
-ChangeItemList[443]=	{	4983	,	53	,	8141	,	80	}--
-ChangeItemList[444]=	{	4983	,	54	,	8141	,	80	}--
-ChangeItemList[445]=	{	4983	,	55	,	8141	,	80	}--
-ChangeItemList[446]=	{	4983	,	56	,	8141	,	80	}--
-ChangeItemList[447]=	{	4983	,	57	,	8141	,	80	}--
-ChangeItemList[448]=	{	4983	,	58	,	8141	,	80	}--
-ChangeItemList[449]=	{	4983	,	59	,	8141	,	80	}--
-ChangeItemList[450]=	{	4983	,	60	,	8141	,	80	}--
-ChangeItemList[451]=	{	4983	,	61	,	8141	,	80	}--
-ChangeItemList[452]=	{	4983	,	62	,	8141	,	80	}--
-ChangeItemList[453]=	{	4983	,	63	,	8141	,	80	}--
-ChangeItemList[454]=	{	4983	,	64	,	8141	,	80	}--
-ChangeItemList[455]=	{	4983	,	65	,	8141	,	80	}--
-ChangeItemList[456]=	{	3139	,	25	,	8141	,	25	}--
-ChangeItemList[457]=	{	3139	,	26	,	8141	,	25	}--
-ChangeItemList[458]=	{	3139	,	27	,	8141	,	25	}--
-ChangeItemList[459]=	{	3139	,	28	,	8141	,	25	}--
-ChangeItemList[460]=	{	3139	,	29	,	8141	,	25	}--
-ChangeItemList[461]=	{	3139	,	30	,	8141	,	25	}--
-ChangeItemList[462]=	{	3139	,	31	,	8141	,	25	}--
-ChangeItemList[463]=	{	3139	,	32	,	8141	,	25	}--
-ChangeItemList[464]=	{	3139	,	33	,	8141	,	25	}--
-ChangeItemList[465]=	{	3139	,	34	,	8141	,	25	}--
-ChangeItemList[466]=	{	3139	,	35	,	8141	,	25	}--
-ChangeItemList[467]=	{	3139	,	36	,	8141	,	40	}--
-ChangeItemList[468]=	{	3139	,	37	,	8141	,	40	}--
-ChangeItemList[469]=	{	3139	,	38	,	8141	,	40	}--
-ChangeItemList[470]=	{	3139	,	39	,	8141	,	40	}--
-ChangeItemList[471]=	{	3139	,	40	,	8141	,	40	}--
-ChangeItemList[472]=	{	3139	,	41	,	8141	,	40	}--
-ChangeItemList[473]=	{	3139	,	42	,	8141	,	40	}--
-ChangeItemList[474]=	{	3139	,	43	,	8141	,	40	}--
-ChangeItemList[475]=	{	3139	,	44	,	8141	,	40	}--
-ChangeItemList[476]=	{	3139	,	45	,	8141	,	40	}--
-ChangeItemList[477]=	{	3139	,	46	,	8141	,	40	}--
-ChangeItemList[478]=	{	3139	,	47	,	8141	,	40	}--
-ChangeItemList[479]=	{	3139	,	48	,	8141	,	40	}--
-ChangeItemList[480]=	{	3139	,	49	,	8141	,	40	}--
-ChangeItemList[481]=	{	3139	,	50	,	8141	,	40	}--
-ChangeItemList[482]=	{	3139	,	51	,	8141	,	80	}--
-ChangeItemList[483]=	{	3139	,	52	,	8141	,	80	}--
-ChangeItemList[484]=	{	3139	,	53	,	8141	,	80	}--
-ChangeItemList[485]=	{	3139	,	54	,	8141	,	80	}--
-ChangeItemList[486]=	{	3139	,	55	,	8141	,	80	}--
-ChangeItemList[487]=	{	3139	,	56	,	8141	,	80	}--
-ChangeItemList[488]=	{	3139	,	57	,	8141	,	80	}--
-ChangeItemList[489]=	{	3139	,	58	,	8141	,	80	}--
-ChangeItemList[490]=	{	3139	,	59	,	8141	,	80	}--
-ChangeItemList[491]=	{	3139	,	60	,	8141	,	80	}--
-ChangeItemList[492]=	{	3139	,	61	,	8141	,	80	}--
-ChangeItemList[493]=	{	3139	,	62	,	8141	,	80	}--
-ChangeItemList[494]=	{	3139	,	63	,	8141	,	80	}--
-ChangeItemList[495]=	{	3139	,	64	,	8141	,	80	}--
-ChangeItemList[496]=	{	3139	,	65	,	8141	,	80	}--
-ChangeItemList[497]=	{	4939	,	25	,	8141	,	25	}--
-ChangeItemList[498]=	{	4939	,	26	,	8141	,	25	}--
-ChangeItemList[499]=	{	4939	,	27	,	8141	,	25	}--
-ChangeItemList[500]=	{	4939	,	28	,	8141	,	25	}--
-ChangeItemList[501]=	{	4939	,	29	,	8141	,	25	}--
-ChangeItemList[502]=	{	4939	,	30	,	8141	,	25	}--
-ChangeItemList[503]=	{	4939	,	31	,	8141	,	25	}--
-ChangeItemList[504]=	{	4939	,	32	,	8141	,	25	}--
-ChangeItemList[505]=	{	4939	,	33	,	8141	,	25	}--
-ChangeItemList[506]=	{	4939	,	34	,	8141	,	25	}--
-ChangeItemList[507]=	{	4939	,	35	,	8141	,	25	}--
-ChangeItemList[508]=	{	4939	,	36	,	8141	,	40	}--
-ChangeItemList[509]=	{	4939	,	37	,	8141	,	40	}--
-ChangeItemList[510]=	{	4939	,	38	,	8141	,	40	}--
-ChangeItemList[511]=	{	4939	,	39	,	8141	,	40	}--
-ChangeItemList[512]=	{	4939	,	40	,	8141	,	40	}--
-ChangeItemList[513]=	{	4939	,	41	,	8141	,	40	}--
-ChangeItemList[514]=	{	4939	,	42	,	8141	,	40	}--
-ChangeItemList[515]=	{	4939	,	43	,	8141	,	40	}--
-ChangeItemList[516]=	{	4939	,	44	,	8141	,	40	}--
-ChangeItemList[517]=	{	4939	,	45	,	8141	,	40	}--
-ChangeItemList[518]=	{	4939	,	46	,	8141	,	40	}--
-ChangeItemList[519]=	{	4939	,	47	,	8141	,	40	}--
-ChangeItemList[520]=	{	4939	,	48	,	8141	,	40	}--
-ChangeItemList[521]=	{	4939	,	49	,	8141	,	40	}--
-ChangeItemList[522]=	{	4939	,	50	,	8141	,	40	}--
-ChangeItemList[523]=	{	4939	,	51	,	8141	,	80	}--
-ChangeItemList[524]=	{	4939	,	52	,	8141	,	80	}--
-ChangeItemList[525]=	{	4939	,	53	,	8141	,	80	}--
-ChangeItemList[526]=	{	4939	,	54	,	8141	,	80	}--
-ChangeItemList[527]=	{	4939	,	55	,	8141	,	80	}--
-ChangeItemList[528]=	{	4939	,	56	,	8141	,	80	}--
-ChangeItemList[529]=	{	4939	,	57	,	8141	,	80	}--
-ChangeItemList[530]=	{	4939	,	58	,	8141	,	80	}--
-ChangeItemList[531]=	{	4939	,	59	,	8141	,	80	}--
-ChangeItemList[532]=	{	4939	,	60	,	8141	,	80	}--
-ChangeItemList[533]=	{	4939	,	61	,	8141	,	80	}--
-ChangeItemList[534]=	{	4939	,	62	,	8141	,	80	}--
-ChangeItemList[535]=	{	4939	,	63	,	8141	,	80	}--
-ChangeItemList[536]=	{	4939	,	64	,	8141	,	80	}--
-ChangeItemList[537]=	{	4939	,	65	,	8141	,	80	}--
-ChangeItemList[538]=	{	1327	,	25	,	8141	,	25	}--
-ChangeItemList[539]=	{	1327	,	26	,	8141	,	25	}--
-ChangeItemList[540]=	{	1327	,	27	,	8141	,	25	}--
-ChangeItemList[541]=	{	1327	,	28	,	8141	,	25	}--
-ChangeItemList[542]=	{	1327	,	29	,	8141	,	25	}--
-ChangeItemList[543]=	{	1327	,	30	,	8141	,	25	}--
-ChangeItemList[544]=	{	1327	,	31	,	8141	,	25	}--
-ChangeItemList[545]=	{	1327	,	32	,	8141	,	25	}--
-ChangeItemList[546]=	{	1327	,	33	,	8141	,	25	}--
-ChangeItemList[547]=	{	1327	,	34	,	8141	,	25	}--
-ChangeItemList[548]=	{	1327	,	35	,	8141	,	25	}--
-ChangeItemList[549]=	{	1327	,	36	,	8141	,	40	}--
-ChangeItemList[550]=	{	1327	,	37	,	8141	,	40	}--
-ChangeItemList[551]=	{	1327	,	38	,	8141	,	40	}--
-ChangeItemList[552]=	{	1327	,	39	,	8141	,	40	}--
-ChangeItemList[553]=	{	1327	,	40	,	8141	,	40	}--
-ChangeItemList[554]=	{	1327	,	41	,	8141	,	40	}--
-ChangeItemList[555]=	{	1327	,	42	,	8141	,	40	}--
-ChangeItemList[556]=	{	1327	,	43	,	8141	,	40	}--
-ChangeItemList[557]=	{	1327	,	44	,	8141	,	40	}--
-ChangeItemList[558]=	{	1327	,	45	,	8141	,	40	}--
-ChangeItemList[559]=	{	1327	,	46	,	8141	,	40	}--
-ChangeItemList[560]=	{	1327	,	47	,	8141	,	40	}--
-ChangeItemList[561]=	{	1327	,	48	,	8141	,	40	}--
-ChangeItemList[562]=	{	1327	,	49	,	8141	,	40	}--
-ChangeItemList[563]=	{	1327	,	50	,	8141	,	40	}--
-ChangeItemList[564]=	{	1327	,	51	,	8141	,	80	}--
-ChangeItemList[565]=	{	1327	,	52	,	8141	,	80	}--
-ChangeItemList[566]=	{	1327	,	53	,	8141	,	80	}--
-ChangeItemList[567]=	{	1327	,	54	,	8141	,	80	}--
-ChangeItemList[568]=	{	1327	,	55	,	8141	,	80	}--
-ChangeItemList[569]=	{	1327	,	56	,	8141	,	80	}--
-ChangeItemList[570]=	{	1327	,	57	,	8141	,	80	}--
-ChangeItemList[571]=	{	1327	,	58	,	8141	,	80	}--
-ChangeItemList[572]=	{	1327	,	59	,	8141	,	80	}--
-ChangeItemList[573]=	{	1327	,	60	,	8141	,	80	}--
-ChangeItemList[574]=	{	1327	,	61	,	8141	,	80	}--
-ChangeItemList[575]=	{	1327	,	62	,	8141	,	80	}--
-ChangeItemList[576]=	{	1327	,	63	,	8141	,	80	}--
-ChangeItemList[577]=	{	1327	,	64	,	8141	,	80	}--
-ChangeItemList[578]=	{	1327	,	65	,	8141	,	80	}--
-ChangeItemList[579]=	{	1241	,	25	,	8141	,	25	}--
-ChangeItemList[580]=	{	1241	,	26	,	8141	,	25	}--
-ChangeItemList[581]=	{	1241	,	27	,	8141	,	25	}--
-ChangeItemList[582]=	{	1241	,	28	,	8141	,	25	}--
-ChangeItemList[583]=	{	1241	,	29	,	8141	,	25	}--
-ChangeItemList[584]=	{	1241	,	30	,	8141	,	25	}--
-ChangeItemList[585]=	{	1241	,	31	,	8141	,	25	}--
-ChangeItemList[586]=	{	1241	,	32	,	8141	,	25	}--
-ChangeItemList[587]=	{	1241	,	33	,	8141	,	25	}--
-ChangeItemList[588]=	{	1241	,	34	,	8141	,	25	}--
-ChangeItemList[589]=	{	1241	,	35	,	8141	,	25	}--
-ChangeItemList[590]=	{	1241	,	36	,	8141	,	40	}--
-ChangeItemList[591]=	{	1241	,	37	,	8141	,	40	}--
-ChangeItemList[592]=	{	1241	,	38	,	8141	,	40	}--
-ChangeItemList[593]=	{	1241	,	39	,	8141	,	40	}--
-ChangeItemList[594]=	{	1241	,	40	,	8141	,	40	}--
-ChangeItemList[595]=	{	1241	,	41	,	8141	,	40	}--
-ChangeItemList[596]=	{	1241	,	42	,	8141	,	40	}--
-ChangeItemList[597]=	{	1241	,	43	,	8141	,	40	}--
-ChangeItemList[598]=	{	1241	,	44	,	8141	,	40	}--
-ChangeItemList[599]=	{	1241	,	45	,	8141	,	40	}--
-ChangeItemList[600]=	{	1241	,	46	,	8141	,	40	}--
-ChangeItemList[601]=	{	1241	,	47	,	8141	,	40	}--
-ChangeItemList[602]=	{	1241	,	48	,	8141	,	40	}--
-ChangeItemList[603]=	{	1241	,	49	,	8141	,	40	}--
-ChangeItemList[604]=	{	1241	,	50	,	8141	,	40	}--
-ChangeItemList[605]=	{	1241	,	51	,	8141	,	80	}--
-ChangeItemList[606]=	{	1241	,	52	,	8141	,	80	}--
-ChangeItemList[607]=	{	1241	,	53	,	8141	,	80	}--
-ChangeItemList[608]=	{	1241	,	54	,	8141	,	80	}--
-ChangeItemList[609]=	{	1241	,	55	,	8141	,	80	}--
-ChangeItemList[610]=	{	1241	,	56	,	8141	,	80	}--
-ChangeItemList[611]=	{	1241	,	57	,	8141	,	80	}--
-ChangeItemList[612]=	{	1241	,	58	,	8141	,	80	}--
-ChangeItemList[613]=	{	1241	,	59	,	8141	,	80	}--
-ChangeItemList[614]=	{	1241	,	60	,	8141	,	80	}--
-ChangeItemList[615]=	{	1241	,	61	,	8141	,	80	}--
-ChangeItemList[616]=	{	1241	,	62	,	8141	,	80	}--
-ChangeItemList[617]=	{	1241	,	63	,	8141	,	80	}--
-ChangeItemList[618]=	{	1241	,	64	,	8141	,	80	}--
-ChangeItemList[619]=	{	1241	,	65	,	8141	,	80	}--
-ChangeItemList[620]=	{	4955	,	25	,	8141	,	25	}--
-ChangeItemList[621]=	{	4955	,	26	,	8141	,	25	}--
-ChangeItemList[622]=	{	4955	,	27	,	8141	,	25	}--
-ChangeItemList[623]=	{	4955	,	28	,	8141	,	25	}--
-ChangeItemList[624]=	{	4955	,	29	,	8141	,	25	}--
-ChangeItemList[625]=	{	4955	,	30	,	8141	,	25	}--
-ChangeItemList[626]=	{	4955	,	31	,	8141	,	25	}--
-ChangeItemList[627]=	{	4955	,	32	,	8141	,	25	}--
-ChangeItemList[628]=	{	4955	,	33	,	8141	,	25	}--
-ChangeItemList[629]=	{	4955	,	34	,	8141	,	25	}--
-ChangeItemList[630]=	{	4955	,	35	,	8141	,	25	}--
-ChangeItemList[631]=	{	4955	,	36	,	8141	,	40	}--
-ChangeItemList[632]=	{	4955	,	37	,	8141	,	40	}--
-ChangeItemList[633]=	{	4955	,	38	,	8141	,	40	}--
-ChangeItemList[634]=	{	4955	,	39	,	8141	,	40	}--
-ChangeItemList[635]=	{	4955	,	40	,	8141	,	40	}--
-ChangeItemList[636]=	{	4955	,	41	,	8141	,	40	}--
-ChangeItemList[637]=	{	4955	,	42	,	8141	,	40	}--
-ChangeItemList[638]=	{	4955	,	43	,	8141	,	40	}--
-ChangeItemList[639]=	{	4955	,	44	,	8141	,	40	}--
-ChangeItemList[640]=	{	4955	,	45	,	8141	,	40	}--
-ChangeItemList[641]=	{	4955	,	46	,	8141	,	40	}--
-ChangeItemList[642]=	{	4955	,	47	,	8141	,	40	}--
-ChangeItemList[643]=	{	4955	,	48	,	8141	,	40	}--
-ChangeItemList[644]=	{	4955	,	49	,	8141	,	40	}--
-ChangeItemList[645]=	{	4955	,	50	,	8141	,	40	}--
-ChangeItemList[646]=	{	4955	,	51	,	8141	,	80	}--
-ChangeItemList[647]=	{	4955	,	52	,	8141	,	80	}--
-ChangeItemList[648]=	{	4955	,	53	,	8141	,	80	}--
-ChangeItemList[649]=	{	4955	,	54	,	8141	,	80	}--
-ChangeItemList[650]=	{	4955	,	55	,	8141	,	80	}--
-ChangeItemList[651]=	{	4955	,	56	,	8141	,	80	}--
-ChangeItemList[652]=	{	4955	,	57	,	8141	,	80	}--
-ChangeItemList[653]=	{	4955	,	58	,	8141	,	80	}--
-ChangeItemList[654]=	{	4955	,	59	,	8141	,	80	}--
-ChangeItemList[655]=	{	4955	,	60	,	8141	,	80	}--
-ChangeItemList[656]=	{	4955	,	61	,	8141	,	80	}--
-ChangeItemList[657]=	{	4955	,	62	,	8141	,	80	}--
-ChangeItemList[658]=	{	4955	,	63	,	8141	,	80	}--
-ChangeItemList[659]=	{	4955	,	64	,	8141	,	80	}--
-ChangeItemList[660]=	{	4955	,	65	,	8141	,	80	}--
-ChangeItemList[661]=	{	1237	,	25	,	8141	,	25	}--
-ChangeItemList[662]=	{	1237	,	26	,	8141	,	25	}--
-ChangeItemList[663]=	{	1237	,	27	,	8141	,	25	}--
-ChangeItemList[664]=	{	1237	,	28	,	8141	,	25	}--
-ChangeItemList[665]=	{	1237	,	29	,	8141	,	25	}--
-ChangeItemList[666]=	{	1237	,	30	,	8141	,	25	}--
-ChangeItemList[667]=	{	1237	,	31	,	8141	,	25	}--
-ChangeItemList[668]=	{	1237	,	32	,	8141	,	25	}--
-ChangeItemList[669]=	{	1237	,	33	,	8141	,	25	}--
-ChangeItemList[670]=	{	1237	,	34	,	8141	,	25	}--
-ChangeItemList[671]=	{	1237	,	35	,	8141	,	25	}--
-ChangeItemList[672]=	{	1237	,	36	,	8141	,	40	}--
-ChangeItemList[673]=	{	1237	,	37	,	8141	,	40	}--
-ChangeItemList[674]=	{	1237	,	38	,	8141	,	40	}--
-ChangeItemList[675]=	{	1237	,	39	,	8141	,	40	}--
-ChangeItemList[676]=	{	1237	,	40	,	8141	,	40	}--
-ChangeItemList[677]=	{	1237	,	41	,	8141	,	40	}--
-ChangeItemList[678]=	{	1237	,	42	,	8141	,	40	}--
-ChangeItemList[679]=	{	1237	,	43	,	8141	,	40	}--
-ChangeItemList[680]=	{	1237	,	44	,	8141	,	40	}--
-ChangeItemList[681]=	{	1237	,	45	,	8141	,	40	}--
-ChangeItemList[682]=	{	1237	,	46	,	8141	,	40	}--
-ChangeItemList[683]=	{	1237	,	47	,	8141	,	40	}--
-ChangeItemList[684]=	{	1237	,	48	,	8141	,	40	}--
-ChangeItemList[685]=	{	1237	,	49	,	8141	,	40	}--
-ChangeItemList[686]=	{	1237	,	50	,	8141	,	40	}--
-ChangeItemList[687]=	{	1237	,	51	,	8141	,	80	}--
-ChangeItemList[688]=	{	1237	,	52	,	8141	,	80	}--
-ChangeItemList[689]=	{	1237	,	53	,	8141	,	80	}--
-ChangeItemList[690]=	{	1237	,	54	,	8141	,	80	}--
-ChangeItemList[691]=	{	1237	,	55	,	8141	,	80	}--
-ChangeItemList[692]=	{	1237	,	56	,	8141	,	80	}--
-ChangeItemList[693]=	{	1237	,	57	,	8141	,	80	}--
-ChangeItemList[694]=	{	1237	,	58	,	8141	,	80	}--
-ChangeItemList[695]=	{	1237	,	59	,	8141	,	80	}--
-ChangeItemList[696]=	{	1237	,	60	,	8141	,	80	}--
-ChangeItemList[697]=	{	1237	,	61	,	8141	,	80	}--
-ChangeItemList[698]=	{	1237	,	62	,	8141	,	80	}--
-ChangeItemList[699]=	{	1237	,	63	,	8141	,	80	}--
-ChangeItemList[700]=	{	1237	,	64	,	8141	,	80	}--
-ChangeItemList[701]=	{	1237	,	65	,	8141	,	80	}--
-ChangeItemList[702]=	{	1256	,	25	,	8141	,	25	}--
-ChangeItemList[703]=	{	1256	,	26	,	8141	,	25	}--
-ChangeItemList[704]=	{	1256	,	27	,	8141	,	25	}--
-ChangeItemList[705]=	{	1256	,	28	,	8141	,	25	}--
-ChangeItemList[706]=	{	1256	,	29	,	8141	,	25	}--
-ChangeItemList[707]=	{	1256	,	30	,	8141	,	25	}--
-ChangeItemList[708]=	{	1256	,	31	,	8141	,	25	}--
-ChangeItemList[709]=	{	1256	,	32	,	8141	,	25	}--
-ChangeItemList[710]=	{	1256	,	33	,	8141	,	25	}--
-ChangeItemList[711]=	{	1256	,	34	,	8141	,	25	}--
-ChangeItemList[712]=	{	1256	,	35	,	8141	,	25	}--
-ChangeItemList[713]=	{	1256	,	36	,	8141	,	40	}--
-ChangeItemList[714]=	{	1256	,	37	,	8141	,	40	}--
-ChangeItemList[715]=	{	1256	,	38	,	8141	,	40	}--
-ChangeItemList[716]=	{	1256	,	39	,	8141	,	40	}--
-ChangeItemList[717]=	{	1256	,	40	,	8141	,	40	}--
-ChangeItemList[718]=	{	1256	,	41	,	8141	,	40	}--
-ChangeItemList[719]=	{	1256	,	42	,	8141	,	40	}--
-ChangeItemList[720]=	{	1256	,	43	,	8141	,	40	}--
-ChangeItemList[721]=	{	1256	,	44	,	8141	,	40	}--
-ChangeItemList[722]=	{	1256	,	45	,	8141	,	40	}--
-ChangeItemList[723]=	{	1256	,	46	,	8141	,	40	}--
-ChangeItemList[724]=	{	1256	,	47	,	8141	,	40	}--
-ChangeItemList[725]=	{	1256	,	48	,	8141	,	40	}--
-ChangeItemList[726]=	{	1256	,	49	,	8141	,	40	}--
-ChangeItemList[727]=	{	1256	,	50	,	8141	,	40	}--
-ChangeItemList[728]=	{	1256	,	51	,	8141	,	80	}--
-ChangeItemList[729]=	{	1256	,	52	,	8141	,	80	}--
-ChangeItemList[730]=	{	1256	,	53	,	8141	,	80	}--
-ChangeItemList[731]=	{	1256	,	54	,	8141	,	80	}--
-ChangeItemList[732]=	{	1256	,	55	,	8141	,	80	}--
-ChangeItemList[733]=	{	1256	,	56	,	8141	,	80	}--
-ChangeItemList[734]=	{	1256	,	57	,	8141	,	80	}--
-ChangeItemList[735]=	{	1256	,	58	,	8141	,	80	}--
-ChangeItemList[736]=	{	1256	,	59	,	8141	,	80	}--
-ChangeItemList[737]=	{	1256	,	60	,	8141	,	80	}--
-ChangeItemList[738]=	{	1256	,	61	,	8141	,	80	}--
-ChangeItemList[739]=	{	1256	,	62	,	8141	,	80	}--
-ChangeItemList[740]=	{	1256	,	63	,	8141	,	80	}--
-ChangeItemList[741]=	{	1256	,	64	,	8141	,	80	}--
-ChangeItemList[742]=	{	1256	,	65	,	8141	,	80	}--
-ChangeItemList[743]=	{	4756	,	25	,	8141	,	25	}--
-ChangeItemList[744]=	{	4756	,	26	,	8141	,	25	}--
-ChangeItemList[745]=	{	4756	,	27	,	8141	,	25	}--
-ChangeItemList[746]=	{	4756	,	28	,	8141	,	25	}--
-ChangeItemList[747]=	{	4756	,	29	,	8141	,	25	}--
-ChangeItemList[748]=	{	4756	,	30	,	8141	,	25	}--
-ChangeItemList[749]=	{	4756	,	31	,	8141	,	25	}--
-ChangeItemList[750]=	{	4756	,	32	,	8141	,	25	}--
-ChangeItemList[751]=	{	4756	,	33	,	8141	,	25	}--
-ChangeItemList[752]=	{	4756	,	34	,	8141	,	25	}--
-ChangeItemList[753]=	{	4756	,	35	,	8141	,	25	}--
-ChangeItemList[754]=	{	4756	,	36	,	8141	,	40	}--
-ChangeItemList[755]=	{	4756	,	37	,	8141	,	40	}--
-ChangeItemList[756]=	{	4756	,	38	,	8141	,	40	}--
-ChangeItemList[757]=	{	4756	,	39	,	8141	,	40	}--
-ChangeItemList[758]=	{	4756	,	40	,	8141	,	40	}--
-ChangeItemList[759]=	{	4756	,	41	,	8141	,	40	}--
-ChangeItemList[760]=	{	4756	,	42	,	8141	,	40	}--
-ChangeItemList[761]=	{	4756	,	43	,	8141	,	40	}--
-ChangeItemList[762]=	{	4756	,	44	,	8141	,	40	}--
-ChangeItemList[763]=	{	4756	,	45	,	8141	,	40	}--
-ChangeItemList[764]=	{	4756	,	46	,	8141	,	40	}--
-ChangeItemList[765]=	{	4756	,	47	,	8141	,	40	}--
-ChangeItemList[766]=	{	4756	,	48	,	8141	,	40	}--
-ChangeItemList[767]=	{	4756	,	49	,	8141	,	40	}--
-ChangeItemList[768]=	{	4756	,	50	,	8141	,	40	}--
-ChangeItemList[769]=	{	4756	,	51	,	8141	,	80	}--
-ChangeItemList[770]=	{	4756	,	52	,	8141	,	80	}--
-ChangeItemList[771]=	{	4756	,	53	,	8141	,	80	}--
-ChangeItemList[772]=	{	4756	,	54	,	8141	,	80	}--
-ChangeItemList[773]=	{	4756	,	55	,	8141	,	80	}--
-ChangeItemList[774]=	{	4756	,	56	,	8141	,	80	}--
-ChangeItemList[775]=	{	4756	,	57	,	8141	,	80	}--
-ChangeItemList[776]=	{	4756	,	58	,	8141	,	80	}--
-ChangeItemList[777]=	{	4756	,	59	,	8141	,	80	}--
-ChangeItemList[778]=	{	4756	,	60	,	8141	,	80	}--
-ChangeItemList[779]=	{	4756	,	61	,	8141	,	80	}--
-ChangeItemList[780]=	{	4756	,	62	,	8141	,	80	}--
-ChangeItemList[781]=	{	4756	,	63	,	8141	,	80	}--
-ChangeItemList[782]=	{	4756	,	64	,	8141	,	80	}--
-ChangeItemList[783]=	{	4756	,	65	,	8141	,	80	}--
-ChangeItemList[784]=	{	4759	,	25	,	8141	,	25	}--
-ChangeItemList[785]=	{	4759	,	26	,	8141	,	25	}--
-ChangeItemList[786]=	{	4759	,	27	,	8141	,	25	}--
-ChangeItemList[787]=	{	4759	,	28	,	8141	,	25	}--
-ChangeItemList[788]=	{	4759	,	29	,	8141	,	25	}--
-ChangeItemList[789]=	{	4759	,	30	,	8141	,	25	}--
-ChangeItemList[790]=	{	4759	,	31	,	8141	,	25	}--
-ChangeItemList[791]=	{	4759	,	32	,	8141	,	25	}--
-ChangeItemList[792]=	{	4759	,	33	,	8141	,	25	}--
-ChangeItemList[793]=	{	4759	,	34	,	8141	,	25	}--
-ChangeItemList[794]=	{	4759	,	35	,	8141	,	25	}--
-ChangeItemList[795]=	{	4759	,	36	,	8141	,	40	}--
-ChangeItemList[796]=	{	4759	,	37	,	8141	,	40	}--
-ChangeItemList[797]=	{	4759	,	38	,	8141	,	40	}--
-ChangeItemList[798]=	{	4759	,	39	,	8141	,	40	}--
-ChangeItemList[799]=	{	4759	,	40	,	8141	,	40	}--
-ChangeItemList[800]=	{	4759	,	41	,	8141	,	40	}--
-ChangeItemList[801]=	{	4759	,	42	,	8141	,	40	}--
-ChangeItemList[802]=	{	4759	,	43	,	8141	,	40	}--
-ChangeItemList[803]=	{	4759	,	44	,	8141	,	40	}--
-ChangeItemList[804]=	{	4759	,	45	,	8141	,	40	}--
-ChangeItemList[805]=	{	4759	,	46	,	8141	,	40	}--
-ChangeItemList[806]=	{	4759	,	47	,	8141	,	40	}--
-ChangeItemList[807]=	{	4759	,	48	,	8141	,	40	}--
-ChangeItemList[808]=	{	4759	,	49	,	8141	,	40	}--
-ChangeItemList[809]=	{	4759	,	50	,	8141	,	40	}--
-ChangeItemList[810]=	{	4759	,	51	,	8141	,	80	}--
-ChangeItemList[811]=	{	4759	,	52	,	8141	,	80	}--
-ChangeItemList[812]=	{	4759	,	53	,	8141	,	80	}--
-ChangeItemList[813]=	{	4759	,	54	,	8141	,	80	}--
-ChangeItemList[814]=	{	4759	,	55	,	8141	,	80	}--
-ChangeItemList[815]=	{	4759	,	56	,	8141	,	80	}--
-ChangeItemList[816]=	{	4759	,	57	,	8141	,	80	}--
-ChangeItemList[817]=	{	4759	,	58	,	8141	,	80	}--
-ChangeItemList[818]=	{	4759	,	59	,	8141	,	80	}--
-ChangeItemList[819]=	{	4759	,	60	,	8141	,	80	}--
-ChangeItemList[820]=	{	4759	,	61	,	8141	,	80	}--
-ChangeItemList[821]=	{	4759	,	62	,	8141	,	80	}--
-ChangeItemList[822]=	{	4759	,	63	,	8141	,	80	}--
-ChangeItemList[823]=	{	4759	,	64	,	8141	,	80	}--
-ChangeItemList[824]=	{	4759	,	65	,	8141	,	80	}--
-ChangeItemList[825]=	{	4763	,	25	,	8141	,	25	}--
-ChangeItemList[826]=	{	4763	,	26	,	8141	,	25	}--
-ChangeItemList[827]=	{	4763	,	27	,	8141	,	25	}--
-ChangeItemList[828]=	{	4763	,	28	,	8141	,	25	}--
-ChangeItemList[829]=	{	4763	,	29	,	8141	,	25	}--
-ChangeItemList[830]=	{	4763	,	30	,	8141	,	25	}--
-ChangeItemList[831]=	{	4763	,	31	,	8141	,	25	}--
-ChangeItemList[832]=	{	4763	,	32	,	8141	,	25	}--
-ChangeItemList[833]=	{	4763	,	33	,	8141	,	25	}--
-ChangeItemList[834]=	{	4763	,	34	,	8141	,	25	}--
-ChangeItemList[835]=	{	4763	,	35	,	8141	,	25	}--
-ChangeItemList[836]=	{	4763	,	36	,	8141	,	40	}--
-ChangeItemList[837]=	{	4763	,	37	,	8141	,	40	}--
-ChangeItemList[838]=	{	4763	,	38	,	8141	,	40	}--
-ChangeItemList[839]=	{	4763	,	39	,	8141	,	40	}--
-ChangeItemList[840]=	{	4763	,	40	,	8141	,	40	}--
-ChangeItemList[841]=	{	4763	,	41	,	8141	,	40	}--
-ChangeItemList[842]=	{	4763	,	42	,	8141	,	40	}--
-ChangeItemList[843]=	{	4763	,	43	,	8141	,	40	}--
-ChangeItemList[844]=	{	4763	,	44	,	8141	,	40	}--
-ChangeItemList[845]=	{	4763	,	45	,	8141	,	40	}--
-ChangeItemList[846]=	{	4763	,	46	,	8141	,	40	}--
-ChangeItemList[847]=	{	4763	,	47	,	8141	,	40	}--
-ChangeItemList[848]=	{	4763	,	48	,	8141	,	40	}--
-ChangeItemList[849]=	{	4763	,	49	,	8141	,	40	}--
-ChangeItemList[850]=	{	4763	,	50	,	8141	,	40	}--
-ChangeItemList[851]=	{	4763	,	51	,	8141	,	80	}--
-ChangeItemList[852]=	{	4763	,	52	,	8141	,	80	}--
-ChangeItemList[853]=	{	4763	,	53	,	8141	,	80	}--
-ChangeItemList[854]=	{	4763	,	54	,	8141	,	80	}--
-ChangeItemList[855]=	{	4763	,	55	,	8141	,	80	}--
-ChangeItemList[856]=	{	4763	,	56	,	8141	,	80	}--
-ChangeItemList[857]=	{	4763	,	57	,	8141	,	80	}--
-ChangeItemList[858]=	{	4763	,	58	,	8141	,	80	}--
-ChangeItemList[859]=	{	4763	,	59	,	8141	,	80	}--
-ChangeItemList[860]=	{	4763	,	60	,	8141	,	80	}--
-ChangeItemList[861]=	{	4763	,	61	,	8141	,	80	}--
-ChangeItemList[862]=	{	4763	,	62	,	8141	,	80	}--
-ChangeItemList[863]=	{	4763	,	63	,	8141	,	80	}--
-ChangeItemList[864]=	{	4763	,	64	,	8141	,	80	}--
-ChangeItemList[865]=	{	4763	,	65	,	8141	,	80	}--
-ChangeItemList[866]=	{	4767	,	25	,	8141	,	25	}--
-ChangeItemList[867]=	{	4767	,	26	,	8141	,	25	}--
-ChangeItemList[868]=	{	4767	,	27	,	8141	,	25	}--
-ChangeItemList[869]=	{	4767	,	28	,	8141	,	25	}--
-ChangeItemList[870]=	{	4767	,	29	,	8141	,	25	}--
-ChangeItemList[871]=	{	4767	,	30	,	8141	,	25	}--
-ChangeItemList[872]=	{	4767	,	31	,	8141	,	25	}--
-ChangeItemList[873]=	{	4767	,	32	,	8141	,	25	}--
-ChangeItemList[874]=	{	4767	,	33	,	8141	,	25	}--
-ChangeItemList[875]=	{	4767	,	34	,	8141	,	25	}--
-ChangeItemList[876]=	{	4767	,	35	,	8141	,	25	}--
-ChangeItemList[877]=	{	4767	,	36	,	8141	,	40	}--
-ChangeItemList[878]=	{	4767	,	37	,	8141	,	40	}--
-ChangeItemList[879]=	{	4767	,	38	,	8141	,	40	}--
-ChangeItemList[880]=	{	4767	,	39	,	8141	,	40	}--
-ChangeItemList[881]=	{	4767	,	40	,	8141	,	40	}--
-ChangeItemList[882]=	{	4767	,	41	,	8141	,	40	}--
-ChangeItemList[883]=	{	4767	,	42	,	8141	,	40	}--
-ChangeItemList[884]=	{	4767	,	43	,	8141	,	40	}--
-ChangeItemList[885]=	{	4767	,	44	,	8141	,	40	}--
-ChangeItemList[886]=	{	4767	,	45	,	8141	,	40	}--
-ChangeItemList[887]=	{	4767	,	46	,	8141	,	40	}--
-ChangeItemList[888]=	{	4767	,	47	,	8141	,	40	}--
-ChangeItemList[889]=	{	4767	,	48	,	8141	,	40	}--
-ChangeItemList[890]=	{	4767	,	49	,	8141	,	40	}--
-ChangeItemList[891]=	{	4767	,	50	,	8141	,	40	}--
-ChangeItemList[892]=	{	4767	,	51	,	8141	,	80	}--
-ChangeItemList[893]=	{	4767	,	52	,	8141	,	80	}--
-ChangeItemList[894]=	{	4767	,	53	,	8141	,	80	}--
-ChangeItemList[895]=	{	4767	,	54	,	8141	,	80	}--
-ChangeItemList[896]=	{	4767	,	55	,	8141	,	80	}--
-ChangeItemList[897]=	{	4767	,	56	,	8141	,	80	}--
-ChangeItemList[898]=	{	4767	,	57	,	8141	,	80	}--
-ChangeItemList[899]=	{	4767	,	58	,	8141	,	80	}--
-ChangeItemList[900]=	{	4767	,	59	,	8141	,	80	}--
-ChangeItemList[901]=	{	4767	,	60	,	8141	,	80	}--
-ChangeItemList[902]=	{	4767	,	61	,	8141	,	80	}--
-ChangeItemList[903]=	{	4767	,	62	,	8141	,	80	}--
-ChangeItemList[904]=	{	4767	,	63	,	8141	,	80	}--
-ChangeItemList[905]=	{	4767	,	64	,	8141	,	80	}--
-ChangeItemList[906]=	{	4767	,	65	,	8141	,	80	}--
-ChangeItemList[907]=	{	4784	,	25	,	8141	,	25	}--
-ChangeItemList[908]=	{	4784	,	26	,	8141	,	25	}--
-ChangeItemList[909]=	{	4784	,	27	,	8141	,	25	}--
-ChangeItemList[910]=	{	4784	,	28	,	8141	,	25	}--
-ChangeItemList[911]=	{	4784	,	29	,	8141	,	25	}--
-ChangeItemList[912]=	{	4784	,	30	,	8141	,	25	}--
-ChangeItemList[913]=	{	4784	,	31	,	8141	,	25	}--
-ChangeItemList[914]=	{	4784	,	32	,	8141	,	25	}--
-ChangeItemList[915]=	{	4784	,	33	,	8141	,	25	}--
-ChangeItemList[916]=	{	4784	,	34	,	8141	,	25	}--
-ChangeItemList[917]=	{	4784	,	35	,	8141	,	25	}--
-ChangeItemList[918]=	{	4784	,	36	,	8141	,	40	}--
-ChangeItemList[919]=	{	4784	,	37	,	8141	,	40	}--
-ChangeItemList[920]=	{	4784	,	38	,	8141	,	40	}--
-ChangeItemList[921]=	{	4784	,	39	,	8141	,	40	}--
-ChangeItemList[922]=	{	4784	,	40	,	8141	,	40	}--
-ChangeItemList[923]=	{	4784	,	41	,	8141	,	40	}--
-ChangeItemList[924]=	{	4784	,	42	,	8141	,	40	}--
-ChangeItemList[925]=	{	4784	,	43	,	8141	,	40	}--
-ChangeItemList[926]=	{	4784	,	44	,	8141	,	40	}--
-ChangeItemList[927]=	{	4784	,	45	,	8141	,	40	}--
-ChangeItemList[928]=	{	4784	,	46	,	8141	,	40	}--
-ChangeItemList[929]=	{	4784	,	47	,	8141	,	40	}--
-ChangeItemList[930]=	{	4784	,	48	,	8141	,	40	}--
-ChangeItemList[931]=	{	4784	,	49	,	8141	,	40	}--
-ChangeItemList[932]=	{	4784	,	50	,	8141	,	40	}--
-ChangeItemList[933]=	{	4784	,	51	,	8141	,	80	}--
-ChangeItemList[934]=	{	4784	,	52	,	8141	,	80	}--
-ChangeItemList[935]=	{	4784	,	53	,	8141	,	80	}--
-ChangeItemList[936]=	{	4784	,	54	,	8141	,	80	}--
-ChangeItemList[937]=	{	4784	,	55	,	8141	,	80	}--
-ChangeItemList[938]=	{	4784	,	56	,	8141	,	80	}--
-ChangeItemList[939]=	{	4784	,	57	,	8141	,	80	}--
-ChangeItemList[940]=	{	4784	,	58	,	8141	,	80	}--
-ChangeItemList[941]=	{	4784	,	59	,	8141	,	80	}--
-ChangeItemList[942]=	{	4784	,	60	,	8141	,	80	}--
-ChangeItemList[943]=	{	4784	,	61	,	8141	,	80	}--
-ChangeItemList[944]=	{	4784	,	62	,	8141	,	80	}--
-ChangeItemList[945]=	{	4784	,	63	,	8141	,	80	}--
-ChangeItemList[946]=	{	4784	,	64	,	8141	,	80	}--
-ChangeItemList[947]=	{	4784	,	65	,	8141	,	80	}--
-ChangeItemList[948]=	{	4800	,	25	,	8141	,	25	}--
-ChangeItemList[949]=	{	4800	,	26	,	8141	,	25	}--
-ChangeItemList[950]=	{	4800	,	27	,	8141	,	25	}--
-ChangeItemList[951]=	{	4800	,	28	,	8141	,	25	}--
-ChangeItemList[952]=	{	4800	,	29	,	8141	,	25	}--
-ChangeItemList[953]=	{	4800	,	30	,	8141	,	25	}--
-ChangeItemList[954]=	{	4800	,	31	,	8141	,	25	}--
-ChangeItemList[955]=	{	4800	,	32	,	8141	,	25	}--
-ChangeItemList[956]=	{	4800	,	33	,	8141	,	25	}--
-ChangeItemList[957]=	{	4800	,	34	,	8141	,	25	}--
-ChangeItemList[958]=	{	4800	,	35	,	8141	,	25	}--
-ChangeItemList[959]=	{	4800	,	36	,	8141	,	40	}--
-ChangeItemList[960]=	{	4800	,	37	,	8141	,	40	}--
-ChangeItemList[961]=	{	4800	,	38	,	8141	,	40	}--
-ChangeItemList[962]=	{	4800	,	39	,	8141	,	40	}--
-ChangeItemList[963]=	{	4800	,	40	,	8141	,	40	}--
-ChangeItemList[964]=	{	4800	,	41	,	8141	,	40	}--
-ChangeItemList[965]=	{	4800	,	42	,	8141	,	40	}--
-ChangeItemList[966]=	{	4800	,	43	,	8141	,	40	}--
-ChangeItemList[967]=	{	4800	,	44	,	8141	,	40	}--
-ChangeItemList[968]=	{	4800	,	45	,	8141	,	40	}--
-ChangeItemList[969]=	{	4800	,	46	,	8141	,	40	}--
-ChangeItemList[970]=	{	4800	,	47	,	8141	,	40	}--
-ChangeItemList[971]=	{	4800	,	48	,	8141	,	40	}--
-ChangeItemList[972]=	{	4800	,	49	,	8141	,	40	}--
-ChangeItemList[973]=	{	4800	,	50	,	8141	,	40	}--
-ChangeItemList[974]=	{	4800	,	51	,	8141	,	80	}--
-ChangeItemList[975]=	{	4800	,	52	,	8141	,	80	}--
-ChangeItemList[976]=	{	4800	,	53	,	8141	,	80	}--
-ChangeItemList[977]=	{	4800	,	54	,	8141	,	80	}--
-ChangeItemList[978]=	{	4800	,	55	,	8141	,	80	}--
-ChangeItemList[979]=	{	4800	,	56	,	8141	,	80	}--
-ChangeItemList[980]=	{	4800	,	57	,	8141	,	80	}--
-ChangeItemList[981]=	{	4800	,	58	,	8141	,	80	}--
-ChangeItemList[982]=	{	4800	,	59	,	8141	,	80	}--
-ChangeItemList[983]=	{	4800	,	60	,	8141	,	80	}--
-ChangeItemList[984]=	{	4800	,	61	,	8141	,	80	}--
-ChangeItemList[985]=	{	4800	,	62	,	8141	,	80	}--
-ChangeItemList[986]=	{	4800	,	63	,	8141	,	80	}--
-ChangeItemList[987]=	{	4800	,	64	,	8141	,	80	}--
-ChangeItemList[988]=	{	4800	,	65	,	8141	,	80	}--
-ChangeItemList[989]=	{	4801	,	25	,	8141	,	25	}--
-ChangeItemList[990]=	{	4801	,	26	,	8141	,	25	}--
-ChangeItemList[991]=	{	4801	,	27	,	8141	,	25	}--
-ChangeItemList[992]=	{	4801	,	28	,	8141	,	25	}--
-ChangeItemList[993]=	{	4801	,	29	,	8141	,	25	}--
-ChangeItemList[994]=	{	4801	,	30	,	8141	,	25	}--
-ChangeItemList[995]=	{	4801	,	31	,	8141	,	25	}--
-ChangeItemList[996]=	{	4801	,	32	,	8141	,	25	}--
-ChangeItemList[997]=	{	4801	,	33	,	8141	,	25	}--
-ChangeItemList[998]=	{	4801	,	34	,	8141	,	25	}--
-ChangeItemList[999]=	{	4801	,	35	,	8141	,	25	}--
-ChangeItemList[1000]=	{	4801	,	36	,	8141	,	40	}--
-ChangeItemList[1001]=	{	4801	,	37	,	8141	,	40	}--
-ChangeItemList[1002]=	{	4801	,	38	,	8141	,	40	}--
-ChangeItemList[1003]=	{	4801	,	39	,	8141	,	40	}--
-ChangeItemList[1004]=	{	4801	,	40	,	8141	,	40	}--
-ChangeItemList[1005]=	{	4801	,	41	,	8141	,	40	}--
-ChangeItemList[1006]=	{	4801	,	42	,	8141	,	40	}--
-ChangeItemList[1007]=	{	4801	,	43	,	8141	,	40	}--
-ChangeItemList[1008]=	{	4801	,	44	,	8141	,	40	}--
-ChangeItemList[1009]=	{	4801	,	45	,	8141	,	40	}--
-ChangeItemList[1010]=	{	4801	,	46	,	8141	,	40	}--
-ChangeItemList[1011]=	{	4801	,	47	,	8141	,	40	}--
-ChangeItemList[1012]=	{	4801	,	48	,	8141	,	40	}--
-ChangeItemList[1013]=	{	4801	,	49	,	8141	,	40	}--
-ChangeItemList[1014]=	{	4801	,	50	,	8141	,	40	}--
-ChangeItemList[1015]=	{	4801	,	51	,	8141	,	80	}--
-ChangeItemList[1016]=	{	4801	,	52	,	8141	,	80	}--
-ChangeItemList[1017]=	{	4801	,	53	,	8141	,	80	}--
-ChangeItemList[1018]=	{	4801	,	54	,	8141	,	80	}--
-ChangeItemList[1019]=	{	4801	,	55	,	8141	,	80	}--
-ChangeItemList[1020]=	{	4801	,	56	,	8141	,	80	}--
-ChangeItemList[1021]=	{	4801	,	57	,	8141	,	80	}--
-ChangeItemList[1022]=	{	4801	,	58	,	8141	,	80	}--
-ChangeItemList[1023]=	{	4801	,	59	,	8141	,	80	}--
-ChangeItemList[1024]=	{	4801	,	60	,	8141	,	80	}--
-ChangeItemList[1025]=	{	4801	,	61	,	8141	,	80	}--
-ChangeItemList[1026]=	{	4801	,	62	,	8141	,	80	}--
-ChangeItemList[1027]=	{	4801	,	63	,	8141	,	80	}--
-ChangeItemList[1028]=	{	4801	,	64	,	8141	,	80	}--
-ChangeItemList[1029]=	{	4801	,	65	,	8141	,	80	}--
-ChangeItemList[1102]=	{	4766	,	25	,	8141	,	25	}--
-ChangeItemList[1103]=	{	4766	,	26	,	8141	,	25	}--
-ChangeItemList[1104]=	{	4766	,	27	,	8141	,	25	}--
-ChangeItemList[1105]=	{	4766	,	28	,	8141	,	25	}--
-ChangeItemList[1106]=	{	4766	,	29	,	8141	,	25	}--
-ChangeItemList[1107]=	{	4766	,	30	,	8141	,	25	}--
-ChangeItemList[1108]=	{	4766	,	31	,	8141	,	25	}--
-ChangeItemList[1109]=	{	4766	,	32	,	8141	,	25	}--
-ChangeItemList[1110]=	{	4766	,	33	,	8141	,	25	}--
-ChangeItemList[1111]=	{	4766	,	34	,	8141	,	25	}--
-ChangeItemList[1112]=	{	4766	,	35	,	8141	,	25	}--
-ChangeItemList[1113]=	{	4766	,	36	,	8141	,	40	}--
-ChangeItemList[1114]=	{	4766	,	37	,	8141	,	40	}--
-ChangeItemList[1115]=	{	4766	,	38	,	8141	,	40	}--
-ChangeItemList[1116]=	{	4766	,	39	,	8141	,	40	}--
-ChangeItemList[1117]=	{	4766	,	40	,	8141	,	40	}--
-ChangeItemList[1118]=	{	4766	,	41	,	8141	,	40	}--
-ChangeItemList[1119]=	{	4766	,	42	,	8141	,	40	}--
-ChangeItemList[1120]=	{	4766	,	43	,	8141	,	40	}--
-ChangeItemList[1121]=	{	4766	,	44	,	8141	,	40	}--
-ChangeItemList[1122]=	{	4766	,	45	,	8141	,	40	}--
-ChangeItemList[1123]=	{	4766	,	46	,	8141	,	40	}--
-ChangeItemList[1124]=	{	4766	,	47	,	8141	,	40	}--
-ChangeItemList[1125]=	{	4766	,	48	,	8141	,	40	}--
-ChangeItemList[1126]=	{	4766	,	49	,	8141	,	40	}--
-ChangeItemList[1127]=	{	4766	,	50	,	8141	,	40	}--
-ChangeItemList[1128]=	{	4766	,	51	,	8141	,	80	}--
-ChangeItemList[1129]=	{	4766	,	52	,	8141	,	80	}--
-ChangeItemList[1130]=	{	4766	,	53	,	8141	,	80	}--
-ChangeItemList[1131]=	{	4766	,	54	,	8141	,	80	}--
-ChangeItemList[1132]=	{	4766	,	55	,	8141	,	80	}--
-ChangeItemList[1133]=	{	4766	,	56	,	8141	,	80	}--
-ChangeItemList[1134]=	{	4766	,	57	,	8141	,	80	}--
-ChangeItemList[1135]=	{	4766	,	58	,	8141	,	80	}--
-ChangeItemList[1136]=	{	4766	,	59	,	8141	,	80	}--
-ChangeItemList[1137]=	{	4766	,	60	,	8141	,	80	}--
-ChangeItemList[1138]=	{	4766	,	61	,	8141	,	80	}--
-ChangeItemList[1139]=	{	4766	,	62	,	8141	,	80	}--
-ChangeItemList[1140]=	{	4766	,	63	,	8141	,	80	}--
-ChangeItemList[1141]=	{	4766	,	64	,	8141	,	80	}--
-ChangeItemList[1142]=	{	4791	,	65	,	8141	,	80	}--
-ChangeItemList[1143]=	{	4791	,	25	,	8141	,	25	}--
-ChangeItemList[1144]=	{	4791	,	26	,	8141	,	25	}--
-ChangeItemList[1145]=	{	4791	,	27	,	8141	,	25	}--
-ChangeItemList[1146]=	{	4791	,	28	,	8141	,	25	}--
-ChangeItemList[1147]=	{	4791	,	29	,	8141	,	25	}--
-ChangeItemList[1148]=	{	4791	,	30	,	8141	,	25	}--
-ChangeItemList[1149]=	{	4791	,	31	,	8141	,	25	}--
-ChangeItemList[1150]=	{	4791	,	32	,	8141	,	25	}--
-ChangeItemList[1151]=	{	4791	,	33	,	8141	,	25	}--
-ChangeItemList[1152]=	{	4791	,	34	,	8141	,	25	}--
-ChangeItemList[1153]=	{	4791	,	35	,	8141	,	25	}--
-ChangeItemList[1154]=	{	4791	,	36	,	8141	,	40	}--
-ChangeItemList[1155]=	{	4791	,	37	,	8141	,	40	}--
-ChangeItemList[1156]=	{	4791	,	38	,	8141	,	40	}--
-ChangeItemList[1157]=	{	4791	,	39	,	8141	,	40	}--
-ChangeItemList[1158]=	{	4791	,	40	,	8141	,	40	}--
-ChangeItemList[1159]=	{	4791	,	41	,	8141	,	40	}--
-ChangeItemList[1160]=	{	4791	,	42	,	8141	,	40	}--
-ChangeItemList[1161]=	{	4791	,	43	,	8141	,	40	}--
-ChangeItemList[1162]=	{	4791	,	44	,	8141	,	40	}--
-ChangeItemList[1163]=	{	4791	,	45	,	8141	,	40	}--
-ChangeItemList[1164]=	{	4791	,	46	,	8141	,	40	}--
-ChangeItemList[1165]=	{	4791	,	47	,	8141	,	40	}--
-ChangeItemList[1166]=	{	4791	,	48	,	8141	,	40	}--
-ChangeItemList[1167]=	{	4791	,	49	,	8141	,	40	}--
-ChangeItemList[1168]=	{	4791	,	50	,	8141	,	40	}--
-ChangeItemList[1169]=	{	4791	,	51	,	8141	,	80	}--
-ChangeItemList[1170]=	{	4791	,	52	,	8141	,	80	}--
-ChangeItemList[1171]=	{	4791	,	53	,	8141	,	80	}--
-ChangeItemList[1172]=	{	4791	,	54	,	8141	,	80	}--
-ChangeItemList[1173]=	{	4791	,	55	,	8141	,	80	}--
-ChangeItemList[1174]=	{	4791	,	56	,	8141	,	80	}--
-ChangeItemList[1175]=	{	4791	,	57	,	8141	,	80	}--
-ChangeItemList[1176]=	{	4791	,	58	,	8141	,	80	}--
-ChangeItemList[1177]=	{	4791	,	59	,	8141	,	80	}--
-ChangeItemList[1178]=	{	4791	,	60	,	8141	,	80	}--
-ChangeItemList[1179]=	{	4791	,	61	,	8141	,	80	}--
-ChangeItemList[1180]=	{	4791	,	62	,	8141	,	80	}--
-ChangeItemList[1181]=	{	4791	,	63	,	8141	,	80	}--
-ChangeItemList[1182]=	{	4791	,	64	,	8141	,	80	}--
-ChangeItemList[1183]=	{	4791	,	65	,	8141	,	80	}--
-ChangeItemList[1184]=	{	4790	,	25	,	8141	,	25	}--
-ChangeItemList[1185]=	{	4790	,	26	,	8141	,	25	}--
-ChangeItemList[1186]=	{	4790	,	27	,	8141	,	25	}--
-ChangeItemList[1187]=	{	4790	,	28	,	8141	,	25	}--
-ChangeItemList[1188]=	{	4790	,	29	,	8141	,	25	}--
-ChangeItemList[1189]=	{	4790	,	30	,	8141	,	25	}--
-ChangeItemList[1190]=	{	4790	,	31	,	8141	,	25	}--
-ChangeItemList[1191]=	{	4790	,	32	,	8141	,	25	}--
-ChangeItemList[1192]=	{	4790	,	33	,	8141	,	25	}--
-ChangeItemList[1193]=	{	4790	,	34	,	8141	,	25	}--
-ChangeItemList[1194]=	{	4790	,	35	,	8141	,	25	}--
-ChangeItemList[1195]=	{	4790	,	36	,	8141	,	40	}--
-ChangeItemList[1196]=	{	4790	,	37	,	8141	,	40	}--
-ChangeItemList[1197]=	{	4790	,	38	,	8141	,	40	}--
-ChangeItemList[1198]=	{	4790	,	39	,	8141	,	40	}--
-ChangeItemList[1199]=	{	4790	,	40	,	8141	,	40	}--
-ChangeItemList[1200]=	{	4790	,	41	,	8141	,	40	}--
-ChangeItemList[1201]=	{	4790	,	42	,	8141	,	40	}--
-ChangeItemList[1202]=	{	4790	,	43	,	8141	,	40	}--
-ChangeItemList[1203]=	{	4790	,	44	,	8141	,	40	}--
-ChangeItemList[1204]=	{	4790	,	45	,	8141	,	40	}--
-ChangeItemList[1205]=	{	4790	,	46	,	8141	,	40	}--
-ChangeItemList[1206]=	{	4790	,	47	,	8141	,	40	}--
-ChangeItemList[1207]=	{	4790	,	48	,	8141	,	40	}--
-ChangeItemList[1208]=	{	4790	,	49	,	8141	,	40	}--
-ChangeItemList[1209]=	{	4790	,	50	,	8141	,	40	}--
-ChangeItemList[1210]=	{	4790	,	51	,	8141	,	80	}--
-ChangeItemList[1211]=	{	4790	,	52	,	8141	,	80	}--
-ChangeItemList[1212]=	{	4790	,	53	,	8141	,	80	}--
-ChangeItemList[1213]=	{	4790	,	54	,	8141	,	80	}--
-ChangeItemList[1214]=	{	4790	,	55	,	8141	,	80	}--
-ChangeItemList[1215]=	{	4790	,	56	,	8141	,	80	}--
-ChangeItemList[1216]=	{	4790	,	57	,	8141	,	80	}--
-ChangeItemList[1217]=	{	4790	,	58	,	8141	,	80	}--
-ChangeItemList[1218]=	{	4790	,	59	,	8141	,	80	}--
-ChangeItemList[1219]=	{	4790	,	60	,	8141	,	80	}--
-ChangeItemList[1220]=	{	4790	,	61	,	8141	,	80	}--
-ChangeItemList[1221]=	{	4790	,	62	,	8141	,	80	}--
-ChangeItemList[1222]=	{	4790	,	63	,	8141	,	80	}--
-ChangeItemList[1223]=	{	4790	,	64	,	8141	,	80	}--
-ChangeItemList[1224]=	{	4790	,	65	,	8141	,	80	}--
-ChangeItemList[1225]=	{	4796	,	25	,	8141	,	25	}--
-ChangeItemList[1226]=	{	4796	,	26	,	8141	,	25	}--
-ChangeItemList[1227]=	{	4796	,	27	,	8141	,	25	}--
-ChangeItemList[1228]=	{	4796	,	28	,	8141	,	25	}--
-ChangeItemList[1229]=	{	4796	,	29	,	8141	,	25	}--
-ChangeItemList[1230]=	{	4796	,	30	,	8141	,	25	}--
-ChangeItemList[1231]=	{	4796	,	31	,	8141	,	25	}--
-ChangeItemList[1232]=	{	4796	,	32	,	8141	,	25	}--
-ChangeItemList[1233]=	{	4796	,	33	,	8141	,	25	}--
-ChangeItemList[1234]=	{	4796	,	34	,	8141	,	25	}--
-ChangeItemList[1235]=	{	4796	,	35	,	8141	,	25	}--
-ChangeItemList[1236]=	{	4796	,	36	,	8141	,	40	}--
-ChangeItemList[1237]=	{	4796	,	37	,	8141	,	40	}--
-ChangeItemList[1238]=	{	4796	,	38	,	8141	,	40	}--
-ChangeItemList[1239]=	{	4796	,	39	,	8141	,	40	}--
-ChangeItemList[1240]=	{	4796	,	40	,	8141	,	40	}--
-ChangeItemList[1241]=	{	4796	,	41	,	8141	,	40	}--
-ChangeItemList[1242]=	{	4796	,	42	,	8141	,	40	}--
-ChangeItemList[1243]=	{	4796	,	43	,	8141	,	40	}--
-ChangeItemList[1244]=	{	4796	,	44	,	8141	,	40	}--
-ChangeItemList[1245]=	{	4796	,	45	,	8141	,	40	}--
-ChangeItemList[1246]=	{	4796	,	46	,	8141	,	40	}--
-ChangeItemList[1247]=	{	4796	,	47	,	8141	,	40	}--
-ChangeItemList[1248]=	{	4796	,	48	,	8141	,	40	}--
-ChangeItemList[1249]=	{	4796	,	49	,	8141	,	40	}--
-ChangeItemList[1250]=	{	4796	,	50	,	8141	,	40	}--
-ChangeItemList[1251]=	{	4796	,	51	,	8141	,	80	}--
-ChangeItemList[1252]=	{	4796	,	52	,	8141	,	80	}--
-ChangeItemList[1253]=	{	4796	,	53	,	8141	,	80	}--
-ChangeItemList[1254]=	{	4796	,	54	,	8141	,	80	}--
-ChangeItemList[1255]=	{	4796	,	55	,	8141	,	80	}--
-ChangeItemList[1256]=	{	4796	,	56	,	8141	,	80	}--
-ChangeItemList[1257]=	{	4796	,	57	,	8141	,	80	}--
-ChangeItemList[1258]=	{	4796	,	58	,	8141	,	80	}--
-ChangeItemList[1259]=	{	4796	,	59	,	8141	,	80	}--
-ChangeItemList[1260]=	{	4796	,	60	,	8141	,	80	}--
-ChangeItemList[1261]=	{	4796	,	61	,	8141	,	80	}--
-ChangeItemList[1262]=	{	4796	,	62	,	8141	,	80	}--
-ChangeItemList[1263]=	{	4796	,	63	,	8141	,	80	}--
-ChangeItemList[1264]=	{	4796	,	64	,	8141	,	80	}--
-ChangeItemList[1265]=	{	4796	,	65	,	8141	,	80	}--
-ChangeItemList[1266]=	{	4860	,	25	,	8141	,	25	}--
-ChangeItemList[1267]=	{	4860	,	26	,	8141	,	25	}--
-ChangeItemList[1268]=	{	4860	,	27	,	8141	,	25	}--
-ChangeItemList[1269]=	{	4860	,	28	,	8141	,	25	}--
-ChangeItemList[1270]=	{	4860	,	29	,	8141	,	25	}--
-ChangeItemList[1271]=	{	4860	,	30	,	8141	,	25	}--
-ChangeItemList[1272]=	{	4860	,	31	,	8141	,	25	}--
-ChangeItemList[1273]=	{	4860	,	32	,	8141	,	25	}--
-ChangeItemList[1274]=	{	4860	,	33	,	8141	,	25	}--
-ChangeItemList[1275]=	{	4860	,	34	,	8141	,	25	}--
-ChangeItemList[1276]=	{	4860	,	35	,	8141	,	25	}--
-ChangeItemList[1277]=	{	4860	,	36	,	8141	,	40	}--
-ChangeItemList[1278]=	{	4860	,	37	,	8141	,	40	}--
-ChangeItemList[1279]=	{	4860	,	38	,	8141	,	40	}--
-ChangeItemList[1280]=	{	4860	,	39	,	8141	,	40	}--
-ChangeItemList[1281]=	{	4860	,	40	,	8141	,	40	}--
-ChangeItemList[1282]=	{	4860	,	41	,	8141	,	40	}--
-ChangeItemList[1283]=	{	4860	,	42	,	8141	,	40	}--
-ChangeItemList[1284]=	{	4860	,	43	,	8141	,	40	}--
-ChangeItemList[1285]=	{	4860	,	44	,	8141	,	40	}--
-ChangeItemList[1286]=	{	4860	,	45	,	8141	,	40	}--
-ChangeItemList[1287]=	{	4860	,	46	,	8141	,	40	}--
-ChangeItemList[1288]=	{	4860	,	47	,	8141	,	40	}--
-ChangeItemList[1289]=	{	4860	,	48	,	8141	,	40	}--
-ChangeItemList[1290]=	{	4860	,	49	,	8141	,	40	}--
-ChangeItemList[1291]=	{	4860	,	50	,	8141	,	40	}--
-ChangeItemList[1292]=	{	4860	,	51	,	8141	,	80	}--
-ChangeItemList[1293]=	{	4860	,	52	,	8141	,	80	}--
-ChangeItemList[1294]=	{	4860	,	53	,	8141	,	80	}--
-ChangeItemList[1295]=	{	4860	,	54	,	8141	,	80	}--
-ChangeItemList[1296]=	{	4860	,	55	,	8141	,	80	}--
-ChangeItemList[1297]=	{	4860	,	56	,	8141	,	80	}--
-ChangeItemList[1298]=	{	4860	,	57	,	8141	,	80	}--
-ChangeItemList[1299]=	{	4860	,	58	,	8141	,	80	}--
-ChangeItemList[1300]=	{	4860	,	59	,	8141	,	80	}--
-ChangeItemList[1301]=	{	4860	,	60	,	8141	,	80	}--
-ChangeItemList[1302]=	{	4860	,	61	,	8141	,	80	}--
-ChangeItemList[1303]=	{	4860	,	62	,	8141	,	80	}--
-ChangeItemList[1304]=	{	4860	,	63	,	8141	,	80	}--
-ChangeItemList[1305]=	{	4860	,	64	,	8141	,	80	}--
-ChangeItemList[1306]=	{	4860	,	65	,	8141	,	80	}--
-ChangeItemList[1307]=	{	4857	,	25	,	8141	,	25	}--
-ChangeItemList[1308]=	{	4857	,	26	,	8141	,	25	}--
-ChangeItemList[1309]=	{	4857	,	27	,	8141	,	25	}--
-ChangeItemList[1310]=	{	4857	,	28	,	8141	,	25	}--
-ChangeItemList[1311]=	{	4857	,	29	,	8141	,	25	}--
-ChangeItemList[1312]=	{	4857	,	30	,	8141	,	25	}--
-ChangeItemList[1313]=	{	4857	,	31	,	8141	,	25	}--
-ChangeItemList[1314]=	{	4857	,	32	,	8141	,	25	}--
-ChangeItemList[1315]=	{	4857	,	33	,	8141	,	25	}--
-ChangeItemList[1316]=	{	4857	,	34	,	8141	,	25	}--
-ChangeItemList[1317]=	{	4857	,	35	,	8141	,	25	}--
-ChangeItemList[1318]=	{	4857	,	36	,	8141	,	40	}--
-ChangeItemList[1319]=	{	4857	,	37	,	8141	,	40	}--
-ChangeItemList[1320]=	{	4857	,	38	,	8141	,	40	}--
-ChangeItemList[1321]=	{	4857	,	39	,	8141	,	40	}--
-ChangeItemList[1322]=	{	4857	,	40	,	8141	,	40	}--
-ChangeItemList[1323]=	{	4857	,	41	,	8141	,	40	}--
-ChangeItemList[1324]=	{	4857	,	42	,	8141	,	40	}--
-ChangeItemList[1325]=	{	4857	,	43	,	8141	,	40	}--
-ChangeItemList[1326]=	{	4857	,	44	,	8141	,	40	}--
-ChangeItemList[1327]=	{	4857	,	45	,	8141	,	40	}--
-ChangeItemList[1328]=	{	4857	,	46	,	8141	,	40	}--
-ChangeItemList[1329]=	{	4857	,	47	,	8141	,	40	}--
-ChangeItemList[1330]=	{	4857	,	48	,	8141	,	40	}--
-ChangeItemList[1331]=	{	4857	,	49	,	8141	,	40	}--
-ChangeItemList[1332]=	{	4857	,	50	,	8141	,	40	}--
-ChangeItemList[1333]=	{	4857	,	51	,	8141	,	80	}--
-ChangeItemList[1334]=	{	4857	,	52	,	8141	,	80	}--
-ChangeItemList[1335]=	{	4857	,	53	,	8141	,	80	}--
-ChangeItemList[1336]=	{	4857	,	54	,	8141	,	80	}--
-ChangeItemList[1337]=	{	4857	,	55	,	8141	,	80	}--
-ChangeItemList[1338]=	{	4857	,	56	,	8141	,	80	}--
-ChangeItemList[1339]=	{	4857	,	57	,	8141	,	80	}--
-ChangeItemList[1340]=	{	4857	,	58	,	8141	,	80	}--
-ChangeItemList[1341]=	{	4857	,	59	,	8141	,	80	}--
-ChangeItemList[1342]=	{	4857	,	60	,	8141	,	80	}--
-ChangeItemList[1343]=	{	4857	,	61	,	8141	,	80	}--
-ChangeItemList[1344]=	{	4857	,	62	,	8141	,	80	}--
-ChangeItemList[1345]=	{	4857	,	63	,	8141	,	80	}--
-ChangeItemList[1346]=	{	4857	,	64	,	8141	,	80	}--
-ChangeItemList[1347]=	{	4857	,	65	,	8141	,	80	}--
-ChangeItemList[1348]=	{	4864	,	25	,	8141	,	25	}--
-ChangeItemList[1349]=	{	4864	,	26	,	8141	,	25	}--
-ChangeItemList[1350]=	{	4864	,	27	,	8141	,	25	}--
-ChangeItemList[1351]=	{	4864	,	28	,	8141	,	25	}--
-ChangeItemList[1352]=	{	4864	,	29	,	8141	,	25	}--
-ChangeItemList[1353]=	{	4864	,	30	,	8141	,	25	}--
-ChangeItemList[1354]=	{	4864	,	31	,	8141	,	25	}--
-ChangeItemList[1355]=	{	4864	,	32	,	8141	,	25	}--
-ChangeItemList[1356]=	{	4864	,	33	,	8141	,	25	}--
-ChangeItemList[1357]=	{	4864	,	34	,	8141	,	25	}--
-ChangeItemList[1358]=	{	4864	,	35	,	8141	,	25	}--
-ChangeItemList[1359]=	{	4864	,	36	,	8141	,	40	}--
-ChangeItemList[1360]=	{	4864	,	37	,	8141	,	40	}--
-ChangeItemList[1361]=	{	4864	,	38	,	8141	,	40	}--
-ChangeItemList[1362]=	{	4864	,	39	,	8141	,	40	}--
-ChangeItemList[1363]=	{	4864	,	40	,	8141	,	40	}--
-ChangeItemList[1364]=	{	4864	,	41	,	8141	,	40	}--
-ChangeItemList[1365]=	{	4864	,	42	,	8141	,	40	}--
-ChangeItemList[1366]=	{	4864	,	43	,	8141	,	40	}--
-ChangeItemList[1367]=	{	4864	,	44	,	8141	,	40	}--
-ChangeItemList[1368]=	{	4864	,	45	,	8141	,	40	}--
-ChangeItemList[1369]=	{	4864	,	46	,	8141	,	40	}--
-ChangeItemList[1370]=	{	4864	,	47	,	8141	,	40	}--
-ChangeItemList[1371]=	{	4864	,	48	,	8141	,	40	}--
-ChangeItemList[1372]=	{	4864	,	49	,	8141	,	40	}--
-ChangeItemList[1373]=	{	4864	,	50	,	8141	,	40	}--
-ChangeItemList[1374]=	{	4864	,	51	,	8141	,	80	}--
-ChangeItemList[1375]=	{	4864	,	52	,	8141	,	80	}--
-ChangeItemList[1376]=	{	4864	,	53	,	8141	,	80	}--
-ChangeItemList[1377]=	{	4864	,	54	,	8141	,	80	}--
-ChangeItemList[1378]=	{	4864	,	55	,	8141	,	80	}--
-ChangeItemList[1379]=	{	4864	,	56	,	8141	,	80	}--
-ChangeItemList[1380]=	{	4864	,	57	,	8141	,	80	}--
-ChangeItemList[1381]=	{	4864	,	58	,	8141	,	80	}--
-ChangeItemList[1382]=	{	4864	,	59	,	8141	,	80	}--
-ChangeItemList[1383]=	{	4864	,	60	,	8141	,	80	}--
-ChangeItemList[1384]=	{	4864	,	61	,	8141	,	80	}--
-ChangeItemList[1385]=	{	4864	,	62	,	8141	,	80	}--
-ChangeItemList[1386]=	{	4864	,	63	,	8141	,	80	}--
-ChangeItemList[1387]=	{	4864	,	64	,	8141	,	80	}--
-ChangeItemList[1388]=	{	4864	,	65	,	8141	,	80	}--
-ChangeItemList[1389]=	{	4863	,	25	,	8141	,	25	}--
-ChangeItemList[1390]=	{	4863	,	26	,	8141	,	25	}--
-ChangeItemList[1391]=	{	4863	,	27	,	8141	,	25	}--
-ChangeItemList[1392]=	{	4863	,	28	,	8141	,	25	}--
-ChangeItemList[1393]=	{	4863	,	29	,	8141	,	25	}--
-ChangeItemList[1394]=	{	4863	,	30	,	8141	,	25	}--
-ChangeItemList[1395]=	{	4863	,	31	,	8141	,	25	}--
-ChangeItemList[1396]=	{	4863	,	32	,	8141	,	25	}--
-ChangeItemList[1397]=	{	4863	,	33	,	8141	,	25	}--
-ChangeItemList[1398]=	{	4863	,	34	,	8141	,	25	}--
-ChangeItemList[1399]=	{	4863	,	35	,	8141	,	25	}--
-ChangeItemList[1400]=	{	4863	,	36	,	8141	,	40	}--
-ChangeItemList[1401]=	{	4863	,	37	,	8141	,	40	}--
-ChangeItemList[1402]=	{	4863	,	38	,	8141	,	40	}--
-ChangeItemList[1403]=	{	4863	,	39	,	8141	,	40	}--
-ChangeItemList[1404]=	{	4863	,	40	,	8141	,	40	}--
-ChangeItemList[1405]=	{	4863	,	41	,	8141	,	40	}--
-ChangeItemList[1406]=	{	4863	,	42	,	8141	,	40	}--
-ChangeItemList[1407]=	{	4863	,	43	,	8141	,	40	}--
-ChangeItemList[1408]=	{	4863	,	44	,	8141	,	40	}--
-ChangeItemList[1409]=	{	4863	,	45	,	8141	,	40	}--
-ChangeItemList[1410]=	{	4863	,	46	,	8141	,	40	}--
-ChangeItemList[1411]=	{	4863	,	47	,	8141	,	40	}--
-ChangeItemList[1412]=	{	4863	,	48	,	8141	,	40	}--
-ChangeItemList[1413]=	{	4863	,	49	,	8141	,	40	}--
-ChangeItemList[1414]=	{	4863	,	50	,	8141	,	40	}--
-ChangeItemList[1415]=	{	4863	,	51	,	8141	,	80	}--
-ChangeItemList[1416]=	{	4863	,	52	,	8141	,	80	}--
-ChangeItemList[1417]=	{	4863	,	53	,	8141	,	80	}--
-ChangeItemList[1418]=	{	4863	,	54	,	8141	,	80	}--
-ChangeItemList[1419]=	{	4863	,	55	,	8141	,	80	}--
-ChangeItemList[1420]=	{	4863	,	56	,	8141	,	80	}--
-ChangeItemList[1421]=	{	4863	,	57	,	8141	,	80	}--
-ChangeItemList[1422]=	{	4863	,	58	,	8141	,	80	}--
-ChangeItemList[1423]=	{	4863	,	59	,	8141	,	80	}--
-ChangeItemList[1424]=	{	4863	,	60	,	8141	,	80	}--
-ChangeItemList[1425]=	{	4863	,	61	,	8141	,	80	}--
-ChangeItemList[1426]=	{	4863	,	62	,	8141	,	80	}--
-ChangeItemList[1427]=	{	4863	,	63	,	8141	,	80	}--
-ChangeItemList[1428]=	{	4863	,	64	,	8141	,	80	}--
-ChangeItemList[1429]=	{	4863	,	65	,	8141	,	80	}--
-ChangeItemList[1430]=	{	4866	,	25	,	8141	,	25	}--
-ChangeItemList[1431]=	{	4866	,	26	,	8141	,	25	}--
-ChangeItemList[1432]=	{	4866	,	27	,	8141	,	25	}--
-ChangeItemList[1433]=	{	4866	,	28	,	8141	,	25	}--
-ChangeItemList[1434]=	{	4866	,	29	,	8141	,	25	}--
-ChangeItemList[1435]=	{	4866	,	30	,	8141	,	25	}--
-ChangeItemList[1436]=	{	4866	,	31	,	8141	,	25	}--
-ChangeItemList[1437]=	{	4866	,	32	,	8141	,	25	}--
-ChangeItemList[1438]=	{	4866	,	33	,	8141	,	25	}--
-ChangeItemList[1439]=	{	4866	,	34	,	8141	,	25	}--
-ChangeItemList[1440]=	{	4866	,	35	,	8141	,	25	}--
-ChangeItemList[1441]=	{	4866	,	36	,	8141	,	40	}--
-ChangeItemList[1442]=	{	4866	,	37	,	8141	,	40	}--
-ChangeItemList[1443]=	{	4866	,	38	,	8141	,	40	}--
-ChangeItemList[1444]=	{	4866	,	39	,	8141	,	40	}--
-ChangeItemList[1445]=	{	4866	,	40	,	8141	,	40	}--
-ChangeItemList[1446]=	{	4866	,	41	,	8141	,	40	}--
-ChangeItemList[1447]=	{	4866	,	42	,	8141	,	40	}--
-ChangeItemList[1448]=	{	4866	,	43	,	8141	,	40	}--
-ChangeItemList[1449]=	{	4866	,	44	,	8141	,	40	}--
-ChangeItemList[1450]=	{	4866	,	45	,	8141	,	40	}--
-ChangeItemList[1451]=	{	4866	,	46	,	8141	,	40	}--
-ChangeItemList[1452]=	{	4866	,	47	,	8141	,	40	}--
-ChangeItemList[1453]=	{	4866	,	48	,	8141	,	40	}--
-ChangeItemList[1454]=	{	4866	,	49	,	8141	,	40	}--
-ChangeItemList[1455]=	{	4866	,	50	,	8141	,	40	}--
-ChangeItemList[1456]=	{	4866	,	51	,	8141	,	80	}--
-ChangeItemList[1457]=	{	4866	,	52	,	8141	,	80	}--
-ChangeItemList[1458]=	{	4866	,	53	,	8141	,	80	}--
-ChangeItemList[1459]=	{	4866	,	54	,	8141	,	80	}--
-ChangeItemList[1460]=	{	4866	,	55	,	8141	,	80	}--
-ChangeItemList[1461]=	{	4866	,	56	,	8141	,	80	}--
-ChangeItemList[1462]=	{	4866	,	57	,	8141	,	80	}--
-ChangeItemList[1463]=	{	4866	,	58	,	8141	,	80	}--
-ChangeItemList[1464]=	{	4866	,	59	,	8141	,	80	}--
-ChangeItemList[1465]=	{	4866	,	60	,	8141	,	80	}--
-ChangeItemList[1466]=	{	4866	,	61	,	8141	,	80	}--
-ChangeItemList[1467]=	{	4866	,	62	,	8141	,	80	}--
-ChangeItemList[1468]=	{	4866	,	63	,	8141	,	80	}--
-ChangeItemList[1469]=	{	4866	,	64	,	8141	,	80	}--
-ChangeItemList[1470]=	{	4866	,	65	,	8141	,	80	}--
-ChangeItemList[1471]=	{	4887	,	25	,	8141	,	25	}--
-ChangeItemList[1472]=	{	4887	,	26	,	8141	,	25	}--
-ChangeItemList[1473]=	{	4887	,	27	,	8141	,	25	}--
-ChangeItemList[1474]=	{	4887	,	28	,	8141	,	25	}--
-ChangeItemList[1475]=	{	4887	,	29	,	8141	,	25	}--
-ChangeItemList[1476]=	{	4887	,	30	,	8141	,	25	}--
-ChangeItemList[1477]=	{	4887	,	31	,	8141	,	25	}--
-ChangeItemList[1478]=	{	4887	,	32	,	8141	,	25	}--
-ChangeItemList[1479]=	{	4887	,	33	,	8141	,	25	}--
-ChangeItemList[1480]=	{	4887	,	34	,	8141	,	25	}--
-ChangeItemList[1481]=	{	4887	,	35	,	8141	,	25	}--
-ChangeItemList[1482]=	{	4887	,	36	,	8141	,	40	}--
-ChangeItemList[1483]=	{	4887	,	37	,	8141	,	40	}--
-ChangeItemList[1484]=	{	4887	,	38	,	8141	,	40	}--
-ChangeItemList[1485]=	{	4887	,	39	,	8141	,	40	}--
-ChangeItemList[1486]=	{	4887	,	40	,	8141	,	40	}--
-ChangeItemList[1487]=	{	4887	,	41	,	8141	,	40	}--
-ChangeItemList[1488]=	{	4887	,	42	,	8141	,	40	}--
-ChangeItemList[1489]=	{	4887	,	43	,	8141	,	40	}--
-ChangeItemList[1490]=	{	4887	,	44	,	8141	,	40	}--
-ChangeItemList[1491]=	{	4887	,	45	,	8141	,	40	}--
-ChangeItemList[1492]=	{	4887	,	46	,	8141	,	40	}--
-ChangeItemList[1493]=	{	4887	,	47	,	8141	,	40	}--
-ChangeItemList[1494]=	{	4887	,	48	,	8141	,	40	}--
-ChangeItemList[1495]=	{	4887	,	49	,	8141	,	40	}--
-ChangeItemList[1496]=	{	4887	,	50	,	8141	,	40	}--
-ChangeItemList[1497]=	{	4887	,	51	,	8141	,	80	}--
-ChangeItemList[1498]=	{	4887	,	52	,	8141	,	80	}--
-ChangeItemList[1499]=	{	4887	,	53	,	8141	,	80	}--
-ChangeItemList[1500]=	{	4887	,	54	,	8141	,	80	}--
-ChangeItemList[1501]=	{	4887	,	55	,	8141	,	80	}--
-ChangeItemList[1502]=	{	4887	,	56	,	8141	,	80	}--
-ChangeItemList[1503]=	{	4887	,	57	,	8141	,	80	}--
-ChangeItemList[1504]=	{	4887	,	58	,	8141	,	80	}--
-ChangeItemList[1505]=	{	4887	,	59	,	8141	,	80	}--
-ChangeItemList[1506]=	{	4887	,	60	,	8141	,	80	}--
-ChangeItemList[1507]=	{	4887	,	61	,	8141	,	80	}--
-ChangeItemList[1508]=	{	4887	,	62	,	8141	,	80	}--
-ChangeItemList[1509]=	{	4887	,	63	,	8141	,	80	}--
-ChangeItemList[1510]=	{	4887	,	64	,	8141	,	80	}--
-ChangeItemList[1511]=	{	4887	,	65	,	8141	,	80	}--
-ChangeItemList[1512]=	{	4889	,	25	,	8141	,	25	}--
-ChangeItemList[1513]=	{	4889	,	26	,	8141	,	25	}--
-ChangeItemList[1514]=	{	4889	,	27	,	8141	,	25	}--
-ChangeItemList[1515]=	{	4889	,	28	,	8141	,	25	}--
-ChangeItemList[1516]=	{	4889	,	29	,	8141	,	25	}--
-ChangeItemList[1517]=	{	4889	,	30	,	8141	,	25	}--
-ChangeItemList[1518]=	{	4889	,	31	,	8141	,	25	}--
-ChangeItemList[1519]=	{	4889	,	32	,	8141	,	25	}--
-ChangeItemList[1520]=	{	4889	,	33	,	8141	,	25	}--
-ChangeItemList[1521]=	{	4889	,	34	,	8141	,	25	}--
-ChangeItemList[1522]=	{	4889	,	35	,	8141	,	25	}--
-ChangeItemList[1523]=	{	4889	,	36	,	8141	,	40	}--
-ChangeItemList[1524]=	{	4889	,	37	,	8141	,	40	}--
-ChangeItemList[1525]=	{	4889	,	38	,	8141	,	40	}--
-ChangeItemList[1526]=	{	4889	,	39	,	8141	,	40	}--
-ChangeItemList[1527]=	{	4889	,	40	,	8141	,	40	}--
-ChangeItemList[1528]=	{	4889	,	41	,	8141	,	40	}--
-ChangeItemList[1529]=	{	4889	,	42	,	8141	,	40	}--
-ChangeItemList[1530]=	{	4889	,	43	,	8141	,	40	}--
-ChangeItemList[1531]=	{	4889	,	44	,	8141	,	40	}--
-ChangeItemList[1532]=	{	4889	,	45	,	8141	,	40	}--
-ChangeItemList[1533]=	{	4889	,	46	,	8141	,	40	}--
-ChangeItemList[1534]=	{	4889	,	47	,	8141	,	40	}--
-ChangeItemList[1535]=	{	4889	,	48	,	8141	,	40	}--
-ChangeItemList[1536]=	{	4889	,	49	,	8141	,	40	}--
-ChangeItemList[1537]=	{	4889	,	50	,	8141	,	40	}--
-ChangeItemList[1538]=	{	4889	,	51	,	8141	,	80	}--
-ChangeItemList[1539]=	{	4889	,	52	,	8141	,	80	}--
-ChangeItemList[1540]=	{	4889	,	53	,	8141	,	80	}--
-ChangeItemList[1541]=	{	4889	,	54	,	8141	,	80	}--
-ChangeItemList[1542]=	{	4889	,	55	,	8141	,	80	}--
-ChangeItemList[1543]=	{	4889	,	56	,	8141	,	80	}--
-ChangeItemList[1544]=	{	4889	,	57	,	8141	,	80	}--
-ChangeItemList[1545]=	{	4889	,	58	,	8141	,	80	}--
-ChangeItemList[1546]=	{	4889	,	59	,	8141	,	80	}--
-ChangeItemList[1547]=	{	4889	,	60	,	8141	,	80	}--
-ChangeItemList[1548]=	{	4889	,	61	,	8141	,	80	}--
-ChangeItemList[1549]=	{	4889	,	62	,	8141	,	80	}--
-ChangeItemList[1550]=	{	4889	,	63	,	8141	,	80	}--
-ChangeItemList[1551]=	{	4889	,	64	,	8141	,	80	}--
-ChangeItemList[1552]=	{	4889	,	65	,	8141	,	80	}--
-ChangeItemList[1553]=	{	3365	,	25	,	8141	,	25	}--
-ChangeItemList[1554]=	{	3365	,	26	,	8141	,	25	}--
-ChangeItemList[1555]=	{	3365	,	27	,	8141	,	25	}--
-ChangeItemList[1556]=	{	3365	,	28	,	8141	,	25	}--
-ChangeItemList[1557]=	{	3365	,	29	,	8141	,	25	}--
-ChangeItemList[1558]=	{	3365	,	30	,	8141	,	25	}--
-ChangeItemList[1559]=	{	3365	,	31	,	8141	,	25	}--
-ChangeItemList[1560]=	{	3365	,	32	,	8141	,	25	}--
-ChangeItemList[1561]=	{	3365	,	33	,	8141	,	25	}--
-ChangeItemList[1562]=	{	3365	,	34	,	8141	,	25	}--
-ChangeItemList[1563]=	{	3365	,	35	,	8141	,	25	}--
-ChangeItemList[1564]=	{	3365	,	36	,	8141	,	40	}--
-ChangeItemList[1565]=	{	3365	,	37	,	8141	,	40	}--
-ChangeItemList[1566]=	{	3365	,	38	,	8141	,	40	}--
-ChangeItemList[1567]=	{	3365	,	39	,	8141	,	40	}--
-ChangeItemList[1568]=	{	3365	,	40	,	8141	,	40	}--
-ChangeItemList[1569]=	{	3365	,	41	,	8141	,	40	}--
-ChangeItemList[1570]=	{	3365	,	42	,	8141	,	40	}--
-ChangeItemList[1571]=	{	3365	,	43	,	8141	,	40	}--
-ChangeItemList[1572]=	{	3365	,	44	,	8141	,	40	}--
-ChangeItemList[1573]=	{	3365	,	45	,	8141	,	40	}--
-ChangeItemList[1574]=	{	3365	,	46	,	8141	,	40	}--
-ChangeItemList[1575]=	{	3365	,	47	,	8141	,	40	}--
-ChangeItemList[1576]=	{	3365	,	48	,	8141	,	40	}--
-ChangeItemList[1577]=	{	3365	,	49	,	8141	,	40	}--
-ChangeItemList[1578]=	{	3365	,	50	,	8141	,	40	}--
-ChangeItemList[1579]=	{	3365	,	51	,	8141	,	80	}--
-ChangeItemList[1580]=	{	3365	,	52	,	8141	,	80	}--
-ChangeItemList[1581]=	{	3365	,	53	,	8141	,	80	}--
-ChangeItemList[1582]=	{	3365	,	54	,	8141	,	80	}--
-ChangeItemList[1583]=	{	3365	,	55	,	8141	,	80	}--
-ChangeItemList[1584]=	{	3365	,	56	,	8141	,	80	}--
-ChangeItemList[1585]=	{	3365	,	57	,	8141	,	80	}--
-ChangeItemList[1586]=	{	3365	,	58	,	8141	,	80	}--
-ChangeItemList[1587]=	{	3365	,	59	,	8141	,	80	}--
-ChangeItemList[1588]=	{	3365	,	60	,	8141	,	80	}--
-ChangeItemList[1589]=	{	3365	,	61	,	8141	,	80	}--
-ChangeItemList[1590]=	{	3365	,	62	,	8141	,	80	}--
-ChangeItemList[1591]=	{	3365	,	63	,	8141	,	80	}--
-ChangeItemList[1592]=	{	3365	,	64	,	8141	,	80	}--
-ChangeItemList[1593]=	{	3365	,	65	,	8141	,	80	}--
-ChangeItemList[1594]=	{	3133	,	25	,	8141	,	25	}--
-ChangeItemList[1595]=	{	3133	,	26	,	8141	,	25	}--
-ChangeItemList[1596]=	{	3133	,	27	,	8141	,	25	}--
-ChangeItemList[1597]=	{	3133	,	28	,	8141	,	25	}--
-ChangeItemList[1598]=	{	3133	,	29	,	8141	,	25	}--
-ChangeItemList[1599]=	{	3133	,	30	,	8141	,	25	}--
-ChangeItemList[1600]=	{	3133	,	31	,	8141	,	25	}--
-ChangeItemList[1601]=	{	3133	,	32	,	8141	,	25	}--
-ChangeItemList[1602]=	{	3133	,	33	,	8141	,	25	}--
-ChangeItemList[1603]=	{	3133	,	34	,	8141	,	25	}--
-ChangeItemList[1604]=	{	3133	,	35	,	8141	,	25	}--
-ChangeItemList[1605]=	{	3133	,	36	,	8141	,	40	}--
-ChangeItemList[1606]=	{	3133	,	37	,	8141	,	40	}--
-ChangeItemList[1607]=	{	3133	,	38	,	8141	,	40	}--
-ChangeItemList[1608]=	{	3133	,	39	,	8141	,	40	}--
-ChangeItemList[1609]=	{	3133	,	40	,	8141	,	40	}--
-ChangeItemList[1610]=	{	3133	,	41	,	8141	,	40	}--
-ChangeItemList[1611]=	{	3133	,	42	,	8141	,	40	}--
-ChangeItemList[1612]=	{	3133	,	43	,	8141	,	40	}--
-ChangeItemList[1613]=	{	3133	,	44	,	8141	,	40	}--
-ChangeItemList[1614]=	{	3133	,	45	,	8141	,	40	}--
-ChangeItemList[1615]=	{	3133	,	46	,	8141	,	40	}--
-ChangeItemList[1616]=	{	3133	,	47	,	8141	,	40	}--
-ChangeItemList[1617]=	{	3133	,	48	,	8141	,	40	}--
-ChangeItemList[1618]=	{	3133	,	49	,	8141	,	40	}--
-ChangeItemList[1619]=	{	3133	,	50	,	8141	,	40	}--
-ChangeItemList[1620]=	{	3133	,	51	,	8141	,	80	}--
-ChangeItemList[1621]=	{	3133	,	52	,	8141	,	80	}--
-ChangeItemList[1622]=	{	3133	,	53	,	8141	,	80	}--
-ChangeItemList[1623]=	{	3133	,	54	,	8141	,	80	}--
-ChangeItemList[1624]=	{	3133	,	55	,	8141	,	80	}--
-ChangeItemList[1625]=	{	3133	,	56	,	8141	,	80	}--
-ChangeItemList[1626]=	{	3133	,	57	,	8141	,	80	}--
-ChangeItemList[1627]=	{	3133	,	58	,	8141	,	80	}--
-ChangeItemList[1628]=	{	3133	,	59	,	8141	,	80	}--
-ChangeItemList[1629]=	{	3133	,	60	,	8141	,	80	}--
-ChangeItemList[1630]=	{	3133	,	61	,	8141	,	80	}--
-ChangeItemList[1631]=	{	3133	,	62	,	8141	,	80	}--
-ChangeItemList[1632]=	{	3133	,	63	,	8141	,	80	}--
-ChangeItemList[1633]=	{	3133	,	64	,	8141	,	80	}--
-ChangeItemList[1634]=	{	3133	,	65	,	8141	,	80	}--
-ChangeItemList[1635]=	{	1631	,	25	,	8141	,	25	}--
-ChangeItemList[1636]=	{	1631	,	26	,	8141	,	25	}--
-ChangeItemList[1637]=	{	1631	,	27	,	8141	,	25	}--
-ChangeItemList[1638]=	{	1631	,	28	,	8141	,	25	}--
-ChangeItemList[1639]=	{	1631	,	29	,	8141	,	25	}--
-ChangeItemList[1640]=	{	1631	,	30	,	8141	,	25	}--
-ChangeItemList[1641]=	{	1631	,	31	,	8141	,	25	}--
-ChangeItemList[1642]=	{	1631	,	32	,	8141	,	25	}--
-ChangeItemList[1643]=	{	1631	,	33	,	8141	,	25	}--
-ChangeItemList[1644]=	{	1631	,	34	,	8141	,	25	}--
-ChangeItemList[1645]=	{	1631	,	35	,	8141	,	25	}--
-ChangeItemList[1646]=	{	1631	,	36	,	8141	,	40	}--
-ChangeItemList[1647]=	{	1631	,	37	,	8141	,	40	}--
-ChangeItemList[1648]=	{	1631	,	38	,	8141	,	40	}--
-ChangeItemList[1649]=	{	1631	,	39	,	8141	,	40	}--
-ChangeItemList[1650]=	{	1631	,	40	,	8141	,	40	}--
-ChangeItemList[1651]=	{	1631	,	41	,	8141	,	40	}--
-ChangeItemList[1652]=	{	1631	,	42	,	8141	,	40	}--
-ChangeItemList[1653]=	{	1631	,	43	,	8141	,	40	}--
-ChangeItemList[1654]=	{	1631	,	44	,	8141	,	40	}--
-ChangeItemList[1655]=	{	1631	,	45	,	8141	,	40	}--
-ChangeItemList[1656]=	{	1631	,	46	,	8141	,	40	}--
-ChangeItemList[1657]=	{	1631	,	47	,	8141	,	40	}--
-ChangeItemList[1658]=	{	1631	,	48	,	8141	,	40	}--
-ChangeItemList[1659]=	{	1631	,	49	,	8141	,	40	}--
-ChangeItemList[1660]=	{	1631	,	50	,	8141	,	40	}--
-ChangeItemList[1661]=	{	1631	,	51	,	8141	,	80	}--
-ChangeItemList[1662]=	{	1631	,	52	,	8141	,	80	}--
-ChangeItemList[1663]=	{	1631	,	53	,	8141	,	80	}--
-ChangeItemList[1664]=	{	1631	,	54	,	8141	,	80	}--
-ChangeItemList[1665]=	{	1631	,	55	,	8141	,	80	}--
-ChangeItemList[1666]=	{	1631	,	56	,	8141	,	80	}--
-ChangeItemList[1667]=	{	1631	,	57	,	8141	,	80	}--
-ChangeItemList[1668]=	{	1631	,	58	,	8141	,	80	}--
-ChangeItemList[1669]=	{	1631	,	59	,	8141	,	80	}--
-ChangeItemList[1670]=	{	1631	,	60	,	8141	,	80	}--
-ChangeItemList[1671]=	{	1631	,	61	,	8141	,	80	}--
-ChangeItemList[1672]=	{	1631	,	62	,	8141	,	80	}--
-ChangeItemList[1673]=	{	1631	,	63	,	8141	,	80	}--
-ChangeItemList[1674]=	{	1631	,	64	,	8141	,	80	}--
-ChangeItemList[1675]=	{	1631	,	65	,	8141	,	80	}--
-ChangeItemList[1676]=	{	1584	,	25	,	8141	,	25	}--
-ChangeItemList[1677]=	{	1584	,	26	,	8141	,	25	}--
-ChangeItemList[1678]=	{	1584	,	27	,	8141	,	25	}--
-ChangeItemList[1679]=	{	1584	,	28	,	8141	,	25	}--
-ChangeItemList[1680]=	{	1584	,	29	,	8141	,	25	}--
-ChangeItemList[1681]=	{	1584	,	30	,	8141	,	25	}--
-ChangeItemList[1682]=	{	1584	,	31	,	8141	,	25	}--
-ChangeItemList[1683]=	{	1584	,	32	,	8141	,	25	}--
-ChangeItemList[1684]=	{	1584	,	33	,	8141	,	25	}--
-ChangeItemList[1685]=	{	1584	,	34	,	8141	,	25	}--
-ChangeItemList[1686]=	{	1584	,	35	,	8141	,	25	}--
-ChangeItemList[1687]=	{	1584	,	36	,	8141	,	40	}--
-ChangeItemList[1688]=	{	1584	,	37	,	8141	,	40	}--
-ChangeItemList[1689]=	{	1584	,	38	,	8141	,	40	}--
-ChangeItemList[1690]=	{	1584	,	39	,	8141	,	40	}--
-ChangeItemList[1691]=	{	1584	,	40	,	8141	,	40	}--
-ChangeItemList[1692]=	{	1584	,	41	,	8141	,	40	}--
-ChangeItemList[1693]=	{	1584	,	42	,	8141	,	40	}--
-ChangeItemList[1694]=	{	1584	,	43	,	8141	,	40	}--
-ChangeItemList[1695]=	{	1584	,	44	,	8141	,	40	}--
-ChangeItemList[1696]=	{	1584	,	45	,	8141	,	40	}--
-ChangeItemList[1697]=	{	1584	,	46	,	8141	,	40	}--
-ChangeItemList[1698]=	{	1584	,	47	,	8141	,	40	}--
-ChangeItemList[1699]=	{	1584	,	48	,	8141	,	40	}--
-ChangeItemList[1700]=	{	1584	,	49	,	8141	,	40	}--
-ChangeItemList[1701]=	{	1584	,	50	,	8141	,	40	}--
-ChangeItemList[1702]=	{	1584	,	51	,	8141	,	80	}--
-ChangeItemList[1703]=	{	1584	,	52	,	8141	,	80	}--
-ChangeItemList[1704]=	{	1584	,	53	,	8141	,	80	}--
-ChangeItemList[1705]=	{	1584	,	54	,	8141	,	80	}--
-ChangeItemList[1706]=	{	1584	,	55	,	8141	,	80	}--
-ChangeItemList[1707]=	{	1584	,	56	,	8141	,	80	}--
-ChangeItemList[1708]=	{	1584	,	57	,	8141	,	80	}--
-ChangeItemList[1709]=	{	1584	,	58	,	8141	,	80	}--
-ChangeItemList[1710]=	{	1584	,	59	,	8141	,	80	}--
-ChangeItemList[1711]=	{	1584	,	60	,	8141	,	80	}--
-ChangeItemList[1712]=	{	1584	,	61	,	8141	,	80	}--
-ChangeItemList[1713]=	{	1584	,	62	,	8141	,	80	}--
-ChangeItemList[1714]=	{	1584	,	63	,	8141	,	80	}--
-ChangeItemList[1715]=	{	1584	,	64	,	8141	,	80	}--
-ChangeItemList[1716]=	{	1584	,	65	,	8141	,	80	}--
-ChangeItemList[1717]=	{	4545	,	25	,	8141	,	25	}--
-ChangeItemList[1718]=	{	4545	,	26	,	8141	,	25	}--
-ChangeItemList[1719]=	{	4545	,	27	,	8141	,	25	}--
-ChangeItemList[1720]=	{	4545	,	28	,	8141	,	25	}--
-ChangeItemList[1721]=	{	4545	,	29	,	8141	,	25	}--
-ChangeItemList[1722]=	{	4545	,	30	,	8141	,	25	}--
-ChangeItemList[1723]=	{	4545	,	31	,	8141	,	25	}--
-ChangeItemList[1724]=	{	4545	,	32	,	8141	,	25	}--
-ChangeItemList[1725]=	{	4545	,	33	,	8141	,	25	}--
-ChangeItemList[1726]=	{	4545	,	34	,	8141	,	25	}--
-ChangeItemList[1727]=	{	4545	,	35	,	8141	,	25	}--
-ChangeItemList[1728]=	{	4545	,	36	,	8141	,	40	}--
-ChangeItemList[1729]=	{	4545	,	37	,	8141	,	40	}--
-ChangeItemList[1730]=	{	4545	,	38	,	8141	,	40	}--
-ChangeItemList[1731]=	{	4545	,	39	,	8141	,	40	}--
-ChangeItemList[1732]=	{	4545	,	40	,	8141	,	40	}--
-ChangeItemList[1733]=	{	4545	,	41	,	8141	,	40	}--
-ChangeItemList[1734]=	{	4545	,	42	,	8141	,	40	}--
-ChangeItemList[1735]=	{	4545	,	43	,	8141	,	40	}--
-ChangeItemList[1736]=	{	4545	,	44	,	8141	,	40	}--
-ChangeItemList[1737]=	{	4545	,	45	,	8141	,	40	}--
-ChangeItemList[1738]=	{	4545	,	46	,	8141	,	40	}--
-ChangeItemList[1739]=	{	4545	,	47	,	8141	,	40	}--
-ChangeItemList[1740]=	{	4545	,	48	,	8141	,	40	}--
-ChangeItemList[1741]=	{	4545	,	49	,	8141	,	40	}--
-ChangeItemList[1742]=	{	4545	,	50	,	8141	,	40	}--
-ChangeItemList[1743]=	{	4545	,	51	,	8141	,	80	}--
-ChangeItemList[1744]=	{	4545	,	52	,	8141	,	80	}--
-ChangeItemList[1745]=	{	4545	,	53	,	8141	,	80	}--
-ChangeItemList[1746]=	{	4545	,	54	,	8141	,	80	}--
-ChangeItemList[1747]=	{	4545	,	55	,	8141	,	80	}--
-ChangeItemList[1748]=	{	4545	,	56	,	8141	,	80	}--
-ChangeItemList[1749]=	{	4545	,	57	,	8141	,	80	}--
-ChangeItemList[1750]=	{	4545	,	58	,	8141	,	80	}--
-ChangeItemList[1751]=	{	4545	,	59	,	8141	,	80	}--
-ChangeItemList[1752]=	{	4545	,	60	,	8141	,	80	}--
-ChangeItemList[1753]=	{	4545	,	61	,	8141	,	80	}--
-ChangeItemList[1754]=	{	4545	,	62	,	8141	,	80	}--
-ChangeItemList[1755]=	{	4545	,	63	,	8141	,	80	}--
-ChangeItemList[1756]=	{	4545	,	64	,	8141	,	80	}--
-ChangeItemList[1757]=	{	4545	,	65	,	8141	,	80	}--
-ChangeItemList[1758]=	{	465	,	25	,	8141	,	25	}--
-ChangeItemList[1759]=	{	465	,	26	,	8141	,	25	}--
-ChangeItemList[1760]=	{	465	,	27	,	8141	,	25	}--
-ChangeItemList[1761]=	{	465	,	28	,	8141	,	25	}--
-ChangeItemList[1762]=	{	465	,	29	,	8141	,	25	}--
-ChangeItemList[1763]=	{	465	,	30	,	8141	,	25	}--
-ChangeItemList[1764]=	{	465	,	31	,	8141	,	25	}--
-ChangeItemList[1765]=	{	465	,	32	,	8141	,	25	}--
-ChangeItemList[1766]=	{	465	,	33	,	8141	,	25	}--
-ChangeItemList[1767]=	{	465	,	34	,	8141	,	25	}--
-ChangeItemList[1768]=	{	465	,	35	,	8141	,	25	}--
-ChangeItemList[1769]=	{	465	,	36	,	8141	,	40	}--
-ChangeItemList[1770]=	{	465	,	37	,	8141	,	40	}--
-ChangeItemList[1771]=	{	465	,	38	,	8141	,	40	}--
-ChangeItemList[1772]=	{	465	,	39	,	8141	,	40	}--
-ChangeItemList[1773]=	{	465	,	40	,	8141	,	40	}--
-ChangeItemList[1774]=	{	465	,	41	,	8141	,	40	}--
-ChangeItemList[1775]=	{	465	,	42	,	8141	,	40	}--
-ChangeItemList[1776]=	{	465	,	43	,	8141	,	40	}--
-ChangeItemList[1777]=	{	465	,	44	,	8141	,	40	}--
-ChangeItemList[1778]=	{	465	,	45	,	8141	,	40	}--
-ChangeItemList[1779]=	{	465	,	46	,	8141	,	40	}--
-ChangeItemList[1780]=	{	465	,	47	,	8141	,	40	}--
-ChangeItemList[1781]=	{	465	,	48	,	8141	,	40	}--
-ChangeItemList[1782]=	{	465	,	49	,	8141	,	40	}--
-ChangeItemList[1783]=	{	465	,	50	,	8141	,	40	}--
-ChangeItemList[1784]=	{	465	,	51	,	8141	,	80	}--
-ChangeItemList[1785]=	{	465	,	52	,	8141	,	80	}--
-ChangeItemList[1786]=	{	465	,	53	,	8141	,	80	}--
-ChangeItemList[1787]=	{	465	,	54	,	8141	,	80	}--
-ChangeItemList[1788]=	{	465	,	55	,	8141	,	80	}--
-ChangeItemList[1789]=	{	465	,	56	,	8141	,	80	}--
-ChangeItemList[1790]=	{	465	,	57	,	8141	,	80	}--
-ChangeItemList[1791]=	{	465	,	58	,	8141	,	80	}--
-ChangeItemList[1792]=	{	465	,	59	,	8141	,	80	}--
-ChangeItemList[1793]=	{	465	,	60	,	8141	,	80	}--
-ChangeItemList[1794]=	{	465	,	61	,	8141	,	80	}--
-ChangeItemList[1795]=	{	465	,	62	,	8141	,	80	}--
-ChangeItemList[1796]=	{	465	,	63	,	8141	,	80	}--
-ChangeItemList[1797]=	{	465	,	64	,	8141	,	80	}--
-ChangeItemList[1798]=	{	465	,	65	,	8141	,	80	}--
-ChangeItemList[1799]=	{	1210	,	25	,	8141	,	25	}--
-ChangeItemList[1800]=	{	1210	,	26	,	8141	,	25	}--
-ChangeItemList[1801]=	{	1210	,	27	,	8141	,	25	}--
-ChangeItemList[1802]=	{	1210	,	28	,	8141	,	25	}--
-ChangeItemList[1803]=	{	1210	,	29	,	8141	,	25	}--
-ChangeItemList[1804]=	{	1210	,	30	,	8141	,	25	}--
-ChangeItemList[1805]=	{	1210	,	31	,	8141	,	25	}--
-ChangeItemList[1806]=	{	1210	,	32	,	8141	,	25	}--
-ChangeItemList[1807]=	{	1210	,	33	,	8141	,	25	}--
-ChangeItemList[1808]=	{	1210	,	34	,	8141	,	25	}--
-ChangeItemList[1809]=	{	1210	,	35	,	8141	,	25	}--
-ChangeItemList[1810]=	{	1210	,	36	,	8141	,	40	}--
-ChangeItemList[1811]=	{	1210	,	37	,	8141	,	40	}--
-ChangeItemList[1812]=	{	1210	,	38	,	8141	,	40	}--
-ChangeItemList[1813]=	{	1210	,	39	,	8141	,	40	}--
-ChangeItemList[1814]=	{	1210	,	40	,	8141	,	40	}--
-ChangeItemList[1815]=	{	1210	,	41	,	8141	,	40	}--
-ChangeItemList[1816]=	{	1210	,	42	,	8141	,	40	}--
-ChangeItemList[1817]=	{	1210	,	43	,	8141	,	40	}--
-ChangeItemList[1818]=	{	1210	,	44	,	8141	,	40	}--
-ChangeItemList[1819]=	{	1210	,	45	,	8141	,	40	}--
-ChangeItemList[1820]=	{	1210	,	46	,	8141	,	40	}--
-ChangeItemList[1821]=	{	1210	,	47	,	8141	,	40	}--
-ChangeItemList[1822]=	{	1210	,	48	,	8141	,	40	}--
-ChangeItemList[1823]=	{	1210	,	49	,	8141	,	40	}--
-ChangeItemList[1824]=	{	1210	,	50	,	8141	,	40	}--
-ChangeItemList[1825]=	{	1210	,	51	,	8141	,	80	}--
-ChangeItemList[1826]=	{	1210	,	52	,	8141	,	80	}--
-ChangeItemList[1827]=	{	1210	,	53	,	8141	,	80	}--
-ChangeItemList[1828]=	{	1210	,	54	,	8141	,	80	}--
-ChangeItemList[1829]=	{	1210	,	55	,	8141	,	80	}--
-ChangeItemList[1830]=	{	1210	,	56	,	8141	,	80	}--
-ChangeItemList[1831]=	{	1210	,	57	,	8141	,	80	}--
-ChangeItemList[1832]=	{	1210	,	58	,	8141	,	80	}--
-ChangeItemList[1833]=	{	1210	,	59	,	8141	,	80	}--
-ChangeItemList[1834]=	{	1210	,	60	,	8141	,	80	}--
-ChangeItemList[1835]=	{	1210	,	61	,	8141	,	80	}--
-ChangeItemList[1836]=	{	1210	,	62	,	8141	,	80	}--
-ChangeItemList[1837]=	{	1210	,	63	,	8141	,	80	}--
-ChangeItemList[1838]=	{	1210	,	64	,	8141	,	80	}--
-ChangeItemList[1839]=	{	1210	,	65	,	8141	,	80	}--
-ChangeItemList[1840]=	{	4434	,	25	,	8141	,	25	}--
-ChangeItemList[1841]=	{	4434	,	26	,	8141	,	25	}--
-ChangeItemList[1842]=	{	4434	,	27	,	8141	,	25	}--
-ChangeItemList[1843]=	{	4434	,	28	,	8141	,	25	}--
-ChangeItemList[1844]=	{	4434	,	29	,	8141	,	25	}--
-ChangeItemList[1845]=	{	4434	,	30	,	8141	,	25	}--
-ChangeItemList[1846]=	{	4434	,	31	,	8141	,	25	}--
-ChangeItemList[1847]=	{	4434	,	32	,	8141	,	25	}--
-ChangeItemList[1848]=	{	4434	,	33	,	8141	,	25	}--
-ChangeItemList[1849]=	{	4434	,	34	,	8141	,	25	}--
-ChangeItemList[1850]=	{	4434	,	35	,	8141	,	25	}--
-ChangeItemList[1851]=	{	4434	,	36	,	8141	,	40	}--
-ChangeItemList[1852]=	{	4434	,	37	,	8141	,	40	}--
-ChangeItemList[1853]=	{	4434	,	38	,	8141	,	40	}--
-ChangeItemList[1854]=	{	4434	,	39	,	8141	,	40	}--
-ChangeItemList[1855]=	{	4434	,	40	,	8141	,	40	}--
-ChangeItemList[1856]=	{	4434	,	41	,	8141	,	40	}--
-ChangeItemList[1857]=	{	4434	,	42	,	8141	,	40	}--
-ChangeItemList[1858]=	{	4434	,	43	,	8141	,	40	}--
-ChangeItemList[1859]=	{	4434	,	44	,	8141	,	40	}--
-ChangeItemList[1860]=	{	4434	,	45	,	8141	,	40	}--
-ChangeItemList[1861]=	{	4434	,	46	,	8141	,	40	}--
-ChangeItemList[1862]=	{	4434	,	47	,	8141	,	40	}--
-ChangeItemList[1863]=	{	4434	,	48	,	8141	,	40	}--
-ChangeItemList[1864]=	{	4434	,	49	,	8141	,	40	}--
-ChangeItemList[1865]=	{	4434	,	50	,	8141	,	40	}--
-ChangeItemList[1866]=	{	4434	,	51	,	8141	,	80	}--
-ChangeItemList[1867]=	{	4434	,	52	,	8141	,	80	}--
-ChangeItemList[1868]=	{	4434	,	53	,	8141	,	80	}--
-ChangeItemList[1869]=	{	4434	,	54	,	8141	,	80	}--
-ChangeItemList[1870]=	{	4434	,	55	,	8141	,	80	}--
-ChangeItemList[1871]=	{	4434	,	56	,	8141	,	80	}--
-ChangeItemList[1872]=	{	4434	,	57	,	8141	,	80	}--
-ChangeItemList[1873]=	{	4434	,	58	,	8141	,	80	}--
-ChangeItemList[1874]=	{	4434	,	59	,	8141	,	80	}--
-ChangeItemList[1875]=	{	4434	,	60	,	8141	,	80	}--
-ChangeItemList[1876]=	{	4434	,	61	,	8141	,	80	}--
-ChangeItemList[1877]=	{	4434	,	62	,	8141	,	80	}--
-ChangeItemList[1878]=	{	4434	,	63	,	8141	,	80	}--
-ChangeItemList[1879]=	{	4434	,	64	,	8141	,	80	}--
-ChangeItemList[1880]=	{	4434	,	65	,	8141	,	80	}--
-ChangeItemList[1881]=	{	2324	,	25	,	8141	,	25	}--
-ChangeItemList[1882]=	{	2324	,	26	,	8141	,	25	}--
-ChangeItemList[1883]=	{	2324	,	27	,	8141	,	25	}--
-ChangeItemList[1884]=	{	2324	,	28	,	8141	,	25	}--
-ChangeItemList[1885]=	{	2324	,	29	,	8141	,	25	}--
-ChangeItemList[1886]=	{	2324	,	30	,	8141	,	25	}--
-ChangeItemList[1887]=	{	2324	,	31	,	8141	,	25	}--
-ChangeItemList[1888]=	{	2324	,	32	,	8141	,	25	}--
-ChangeItemList[1889]=	{	2324	,	33	,	8141	,	25	}--
-ChangeItemList[1890]=	{	2324	,	34	,	8141	,	25	}--
-ChangeItemList[1891]=	{	2324	,	35	,	8141	,	25	}--
-ChangeItemList[1892]=	{	2324	,	36	,	8141	,	40	}--
-ChangeItemList[1893]=	{	2324	,	37	,	8141	,	40	}--
-ChangeItemList[1894]=	{	2324	,	38	,	8141	,	40	}--
-ChangeItemList[1895]=	{	2324	,	39	,	8141	,	40	}--
-ChangeItemList[1896]=	{	2324	,	40	,	8141	,	40	}--
-ChangeItemList[1897]=	{	2324	,	41	,	8141	,	40	}--
-ChangeItemList[1898]=	{	2324	,	42	,	8141	,	40	}--
-ChangeItemList[1899]=	{	2324	,	43	,	8141	,	40	}--
-ChangeItemList[1900]=	{	2324	,	44	,	8141	,	40	}--
-ChangeItemList[1901]=	{	2324	,	45	,	8141	,	40	}--
-ChangeItemList[1902]=	{	2324	,	46	,	8141	,	40	}--
-ChangeItemList[1903]=	{	2324	,	47	,	8141	,	40	}--
-ChangeItemList[1904]=	{	2324	,	48	,	8141	,	40	}--
-ChangeItemList[1905]=	{	2324	,	49	,	8141	,	40	}--
-ChangeItemList[1906]=	{	2324	,	50	,	8141	,	40	}--
-ChangeItemList[1907]=	{	2324	,	51	,	8141	,	80	}--
-ChangeItemList[1908]=	{	2324	,	52	,	8141	,	80	}--
-ChangeItemList[1909]=	{	2324	,	53	,	8141	,	80	}--
-ChangeItemList[1910]=	{	2324	,	54	,	8141	,	80	}--
-ChangeItemList[1911]=	{	2324	,	55	,	8141	,	80	}--
-ChangeItemList[1912]=	{	2324	,	56	,	8141	,	80	}--
-ChangeItemList[1913]=	{	2324	,	57	,	8141	,	80	}--
-ChangeItemList[1914]=	{	2324	,	58	,	8141	,	80	}--
-ChangeItemList[1915]=	{	2324	,	59	,	8141	,	80	}--
-ChangeItemList[1916]=	{	2324	,	60	,	8141	,	80	}--
-ChangeItemList[1917]=	{	2324	,	61	,	8141	,	80	}--
-ChangeItemList[1918]=	{	2324	,	62	,	8141	,	80	}--
-ChangeItemList[1919]=	{	2324	,	63	,	8141	,	80	}--
-ChangeItemList[1920]=	{	2324	,	64	,	8141	,	80	}--
-ChangeItemList[1921]=	{	2324	,	65	,	8141	,	80	}--
-ChangeItemList[1922]=	{	4722	,	25	,	8141	,	25	}--
-ChangeItemList[1923]=	{	4722	,	26	,	8141	,	25	}--
-ChangeItemList[1924]=	{	4722	,	27	,	8141	,	25	}--
-ChangeItemList[1925]=	{	4722	,	28	,	8141	,	25	}--
-ChangeItemList[1926]=	{	4722	,	29	,	8141	,	25	}--
-ChangeItemList[1927]=	{	4722	,	30	,	8141	,	25	}--
-ChangeItemList[1928]=	{	4722	,	31	,	8141	,	25	}--
-ChangeItemList[1929]=	{	4722	,	32	,	8141	,	25	}--
-ChangeItemList[1930]=	{	4722	,	33	,	8141	,	25	}--
-ChangeItemList[1931]=	{	4722	,	34	,	8141	,	25	}--
-ChangeItemList[1932]=	{	4722	,	35	,	8141	,	25	}--
-ChangeItemList[1933]=	{	4722	,	36	,	8141	,	40	}--
-ChangeItemList[1934]=	{	4722	,	37	,	8141	,	40	}--
-ChangeItemList[1935]=	{	4722	,	38	,	8141	,	40	}--
-ChangeItemList[1936]=	{	4722	,	39	,	8141	,	40	}--
-ChangeItemList[1937]=	{	4722	,	40	,	8141	,	40	}--
-ChangeItemList[1938]=	{	4722	,	41	,	8141	,	40	}--
-ChangeItemList[1939]=	{	4722	,	42	,	8141	,	40	}--
-ChangeItemList[1940]=	{	4722	,	43	,	8141	,	40	}--
-ChangeItemList[1941]=	{	4722	,	44	,	8141	,	40	}--
-ChangeItemList[1942]=	{	4722	,	45	,	8141	,	40	}--
-ChangeItemList[1943]=	{	4722	,	46	,	8141	,	40	}--
-ChangeItemList[1944]=	{	4722	,	47	,	8141	,	40	}--
-ChangeItemList[1945]=	{	4722	,	48	,	8141	,	40	}--
-ChangeItemList[1946]=	{	4722	,	49	,	8141	,	40	}--
-ChangeItemList[1947]=	{	4722	,	50	,	8141	,	40	}--
-ChangeItemList[1948]=	{	4722	,	51	,	8141	,	80	}--
-ChangeItemList[1949]=	{	4722	,	52	,	8141	,	80	}--
-ChangeItemList[1950]=	{	4722	,	53	,	8141	,	80	}--
-ChangeItemList[1951]=	{	4722	,	54	,	8141	,	80	}--
-ChangeItemList[1952]=	{	4722	,	55	,	8141	,	80	}--
-ChangeItemList[1953]=	{	4722	,	56	,	8141	,	80	}--
-ChangeItemList[1954]=	{	4722	,	57	,	8141	,	80	}--
-ChangeItemList[1955]=	{	4722	,	58	,	8141	,	80	}--
-ChangeItemList[1956]=	{	4722	,	59	,	8141	,	80	}--
-ChangeItemList[1957]=	{	4722	,	60	,	8141	,	80	}--
-ChangeItemList[1958]=	{	4722	,	61	,	8141	,	80	}--
-ChangeItemList[1959]=	{	4722	,	62	,	8141	,	80	}--
-ChangeItemList[1960]=	{	4722	,	63	,	8141	,	80	}--
-ChangeItemList[1961]=	{	4722	,	64	,	8141	,	80	}--
-ChangeItemList[1962]=	{	4722	,	65	,	8141	,	80	}--
-ChangeItemList[1963]=	{	4840	,	25	,	8141	,	25	}--
-ChangeItemList[1964]=	{	4840	,	26	,	8141	,	25	}--
-ChangeItemList[1965]=	{	4840	,	27	,	8141	,	25	}--
-ChangeItemList[1966]=	{	4840	,	28	,	8141	,	25	}--
-ChangeItemList[1967]=	{	4840	,	29	,	8141	,	25	}--
-ChangeItemList[1968]=	{	4840	,	30	,	8141	,	25	}--
-ChangeItemList[1969]=	{	4840	,	31	,	8141	,	25	}--
-ChangeItemList[1970]=	{	4840	,	32	,	8141	,	25	}--
-ChangeItemList[1971]=	{	4840	,	33	,	8141	,	25	}--
-ChangeItemList[1972]=	{	4840	,	34	,	8141	,	25	}--
-ChangeItemList[1973]=	{	4840	,	35	,	8141	,	25	}--
-ChangeItemList[1974]=	{	4840	,	36	,	8141	,	40	}--
-ChangeItemList[1975]=	{	4840	,	37	,	8141	,	40	}--
-ChangeItemList[1976]=	{	4840	,	38	,	8141	,	40	}--
-ChangeItemList[1977]=	{	4840	,	39	,	8141	,	40	}--
-ChangeItemList[1978]=	{	4840	,	40	,	8141	,	40	}--
-ChangeItemList[1979]=	{	4840	,	41	,	8141	,	40	}--
-ChangeItemList[1980]=	{	4840	,	42	,	8141	,	40	}--
-ChangeItemList[1981]=	{	4840	,	43	,	8141	,	40	}--
-ChangeItemList[1982]=	{	4840	,	44	,	8141	,	40	}--
-ChangeItemList[1983]=	{	4840	,	45	,	8141	,	40	}--
-ChangeItemList[1984]=	{	4840	,	46	,	8141	,	40	}--
-ChangeItemList[1985]=	{	4840	,	47	,	8141	,	40	}--
-ChangeItemList[1986]=	{	4840	,	48	,	8141	,	40	}--
-ChangeItemList[1987]=	{	4840	,	49	,	8141	,	40	}--
-ChangeItemList[1988]=	{	4840	,	50	,	8141	,	40	}--
-ChangeItemList[1989]=	{	4840	,	51	,	8141	,	80	}--
-ChangeItemList[1990]=	{	4840	,	52	,	8141	,	80	}--
-ChangeItemList[1991]=	{	4840	,	53	,	8141	,	80	}--
-ChangeItemList[1992]=	{	4840	,	54	,	8141	,	80	}--
-ChangeItemList[1993]=	{	4840	,	55	,	8141	,	80	}--
-ChangeItemList[1994]=	{	4840	,	56	,	8141	,	80	}--
-ChangeItemList[1995]=	{	4840	,	57	,	8141	,	80	}--
-ChangeItemList[1996]=	{	4840	,	58	,	8141	,	80	}--
-ChangeItemList[1997]=	{	4840	,	59	,	8141	,	80	}--
-ChangeItemList[1998]=	{	4840	,	60	,	8141	,	80	}--
-ChangeItemList[1999]=	{	4840	,	61	,	8141	,	80	}--
-ChangeItemList[2000]=	{	4840	,	62	,	8141	,	80	}--
-ChangeItemList[2001]=	{	4840	,	63	,	8141	,	80	}--
-ChangeItemList[2002]=	{	4840	,	64	,	8141	,	80	}--
-ChangeItemList[2003]=	{	4840	,	65	,	8141	,	80	}--
-ChangeItemList[2004]=	{	4736	,	25	,	8141	,	25	}--
-ChangeItemList[2005]=	{	4736	,	26	,	8141	,	25	}--
-ChangeItemList[2006]=	{	4736	,	27	,	8141	,	25	}--
-ChangeItemList[2007]=	{	4736	,	28	,	8141	,	25	}--
-ChangeItemList[2008]=	{	4736	,	29	,	8141	,	25	}--
-ChangeItemList[2009]=	{	4736	,	30	,	8141	,	25	}--
-ChangeItemList[2010]=	{	4736	,	31	,	8141	,	25	}--
-ChangeItemList[2011]=	{	4736	,	32	,	8141	,	25	}--
-ChangeItemList[2012]=	{	4736	,	33	,	8141	,	25	}--
-ChangeItemList[2013]=	{	4736	,	34	,	8141	,	25	}--
-ChangeItemList[2014]=	{	4736	,	35	,	8141	,	25	}--
-ChangeItemList[2015]=	{	4736	,	36	,	8141	,	40	}--
-ChangeItemList[2016]=	{	4736	,	37	,	8141	,	40	}--
-ChangeItemList[2017]=	{	4736	,	38	,	8141	,	40	}--
-ChangeItemList[2018]=	{	4736	,	39	,	8141	,	40	}--
-ChangeItemList[2019]=	{	4736	,	40	,	8141	,	40	}--
-ChangeItemList[2020]=	{	4736	,	41	,	8141	,	40	}--
-ChangeItemList[2021]=	{	4736	,	42	,	8141	,	40	}--
-ChangeItemList[2022]=	{	4736	,	43	,	8141	,	40	}--
-ChangeItemList[2023]=	{	4736	,	44	,	8141	,	40	}--
-ChangeItemList[2024]=	{	4736	,	45	,	8141	,	40	}--
-ChangeItemList[2025]=	{	4736	,	46	,	8141	,	40	}--
-ChangeItemList[2026]=	{	4736	,	47	,	8141	,	40	}--
-ChangeItemList[2027]=	{	4736	,	48	,	8141	,	40	}--
-ChangeItemList[2028]=	{	4736	,	49	,	8141	,	40	}--
-ChangeItemList[2029]=	{	4736	,	50	,	8141	,	40	}--
-ChangeItemList[2030]=	{	4736	,	51	,	8141	,	80	}--
-ChangeItemList[2031]=	{	4736	,	52	,	8141	,	80	}--
-ChangeItemList[2032]=	{	4736	,	53	,	8141	,	80	}--
-ChangeItemList[2033]=	{	4736	,	54	,	8141	,	80	}--
-ChangeItemList[2034]=	{	4736	,	55	,	8141	,	80	}--
-ChangeItemList[2035]=	{	4736	,	56	,	8141	,	80	}--
-ChangeItemList[2036]=	{	4736	,	57	,	8141	,	80	}--
-ChangeItemList[2037]=	{	4736	,	58	,	8141	,	80	}--
-ChangeItemList[2038]=	{	4736	,	59	,	8141	,	80	}--
-ChangeItemList[2039]=	{	4736	,	60	,	8141	,	80	}--
-ChangeItemList[2040]=	{	4736	,	61	,	8141	,	80	}--
-ChangeItemList[2041]=	{	4736	,	62	,	8141	,	80	}--
-ChangeItemList[2042]=	{	4736	,	63	,	8141	,	80	}--
-ChangeItemList[2043]=	{	4736	,	64	,	8141	,	80	}--
-ChangeItemList[2044]=	{	4736	,	65	,	8141	,	80	}--
-ChangeItemList[2045]=	{	4324	,	25	,	8141	,	25	}--
-ChangeItemList[2046]=	{	4324	,	26	,	8141	,	25	}--
-ChangeItemList[2047]=	{	4324	,	27	,	8141	,	25	}--
-ChangeItemList[2048]=	{	4324	,	28	,	8141	,	25	}--
-ChangeItemList[2049]=	{	4324	,	29	,	8141	,	25	}--
-ChangeItemList[2050]=	{	4324	,	30	,	8141	,	25	}--
-ChangeItemList[2051]=	{	4324	,	31	,	8141	,	25	}--
-ChangeItemList[2052]=	{	4324	,	32	,	8141	,	25	}--
-ChangeItemList[2053]=	{	4324	,	33	,	8141	,	25	}--
-ChangeItemList[2054]=	{	4324	,	34	,	8141	,	25	}--
-ChangeItemList[2055]=	{	4324	,	35	,	8141	,	25	}--
-ChangeItemList[2056]=	{	4324	,	36	,	8141	,	40	}--
-ChangeItemList[2057]=	{	4324	,	37	,	8141	,	40	}--
-ChangeItemList[2058]=	{	4324	,	38	,	8141	,	40	}--
-ChangeItemList[2059]=	{	4324	,	39	,	8141	,	40	}--
-ChangeItemList[2060]=	{	4324	,	40	,	8141	,	40	}--
-ChangeItemList[2061]=	{	4324	,	41	,	8141	,	40	}--
-ChangeItemList[2062]=	{	4324	,	42	,	8141	,	40	}--
-ChangeItemList[2063]=	{	4324	,	43	,	8141	,	40	}--
-ChangeItemList[2064]=	{	4324	,	44	,	8141	,	40	}--
-ChangeItemList[2065]=	{	4324	,	45	,	8141	,	40	}--
-ChangeItemList[2066]=	{	4324	,	46	,	8141	,	40	}--
-ChangeItemList[2067]=	{	4324	,	47	,	8141	,	40	}--
-ChangeItemList[2068]=	{	4324	,	48	,	8141	,	40	}--
-ChangeItemList[2069]=	{	4324	,	49	,	8141	,	40	}--
-ChangeItemList[2070]=	{	4324	,	50	,	8141	,	40	}--
-ChangeItemList[2071]=	{	4324	,	51	,	8141	,	80	}--
-ChangeItemList[2072]=	{	4324	,	52	,	8141	,	80	}--
-ChangeItemList[2073]=	{	4324	,	53	,	8141	,	80	}--
-ChangeItemList[2074]=	{	4324	,	54	,	8141	,	80	}--
-ChangeItemList[2075]=	{	4324	,	55	,	8141	,	80	}--
-ChangeItemList[2076]=	{	4324	,	56	,	8141	,	80	}--
-ChangeItemList[2077]=	{	4324	,	57	,	8141	,	80	}--
-ChangeItemList[2078]=	{	4324	,	58	,	8141	,	80	}--
-ChangeItemList[2079]=	{	4324	,	59	,	8141	,	80	}--
-ChangeItemList[2080]=	{	4324	,	60	,	8141	,	80	}--
-ChangeItemList[2081]=	{	4324	,	61	,	8141	,	80	}--
-ChangeItemList[2082]=	{	4324	,	62	,	8141	,	80	}--
-ChangeItemList[2083]=	{	4324	,	63	,	8141	,	80	}--
-ChangeItemList[2084]=	{	4324	,	64	,	8141	,	80	}--
-ChangeItemList[2085]=	{	4324	,	65	,	8141	,	80	}--
-ChangeItemList[2086]=	{	3822	,	25	,	8141	,	25	}--
-ChangeItemList[2087]=	{	3822	,	26	,	8141	,	25	}--
-ChangeItemList[2088]=	{	3822	,	27	,	8141	,	25	}--
-ChangeItemList[2089]=	{	3822	,	28	,	8141	,	25	}--
-ChangeItemList[2090]=	{	3822	,	29	,	8141	,	25	}--
-ChangeItemList[2091]=	{	3822	,	30	,	8141	,	25	}--
-ChangeItemList[2092]=	{	3822	,	31	,	8141	,	25	}--
-ChangeItemList[2093]=	{	3822	,	32	,	8141	,	25	}--
-ChangeItemList[2094]=	{	3822	,	33	,	8141	,	25	}--
-ChangeItemList[2095]=	{	3822	,	34	,	8141	,	25	}--
-ChangeItemList[2096]=	{	3822	,	35	,	8141	,	25	}--
-ChangeItemList[2097]=	{	3822	,	36	,	8141	,	40	}--
-ChangeItemList[2098]=	{	3822	,	37	,	8141	,	40	}--
-ChangeItemList[2099]=	{	3822	,	38	,	8141	,	40	}--
-ChangeItemList[2100]=	{	3822	,	39	,	8141	,	40	}--
-ChangeItemList[2101]=	{	3822	,	40	,	8141	,	40	}--
-ChangeItemList[2102]=	{	3822	,	41	,	8141	,	40	}--
-ChangeItemList[2103]=	{	3822	,	42	,	8141	,	40	}--
-ChangeItemList[2104]=	{	3822	,	43	,	8141	,	40	}--
-ChangeItemList[2105]=	{	3822	,	44	,	8141	,	40	}--
-ChangeItemList[2106]=	{	3822	,	45	,	8141	,	40	}--
-ChangeItemList[2107]=	{	3822	,	46	,	8141	,	40	}--
-ChangeItemList[2108]=	{	3822	,	47	,	8141	,	40	}--
-ChangeItemList[2109]=	{	3822	,	48	,	8141	,	40	}--
-ChangeItemList[2110]=	{	3822	,	49	,	8141	,	40	}--
-ChangeItemList[2111]=	{	3822	,	50	,	8141	,	40	}--
-ChangeItemList[2112]=	{	3822	,	51	,	8141	,	80	}--
-ChangeItemList[2113]=	{	3822	,	52	,	8141	,	80	}--
-ChangeItemList[2114]=	{	3822	,	53	,	8141	,	80	}--
-ChangeItemList[2115]=	{	3822	,	54	,	8141	,	80	}--
-ChangeItemList[2116]=	{	3822	,	55	,	8141	,	80	}--
-ChangeItemList[2117]=	{	3822	,	56	,	8141	,	80	}--
-ChangeItemList[2118]=	{	3822	,	57	,	8141	,	80	}--
-ChangeItemList[2119]=	{	3822	,	58	,	8141	,	80	}--
-ChangeItemList[2120]=	{	3822	,	59	,	8141	,	80	}--
-ChangeItemList[2121]=	{	3822	,	60	,	8141	,	80	}--
-ChangeItemList[2122]=	{	3822	,	61	,	8141	,	80	}--
-ChangeItemList[2123]=	{	3822	,	62	,	8141	,	80	}--
-ChangeItemList[2124]=	{	3822	,	63	,	8141	,	80	}--
-ChangeItemList[2125]=	{	3822	,	64	,	8141	,	80	}--
-ChangeItemList[2126]=	{	3822	,	65	,	8141	,	80	}--
-ChangeItemList[2127]=	{	178	,	25	,	8141	,	25	}--
-ChangeItemList[2128]=	{	178	,	26	,	8141	,	25	}--
-ChangeItemList[2129]=	{	178	,	27	,	8141	,	25	}--
-ChangeItemList[2130]=	{	178	,	28	,	8141	,	25	}--
-ChangeItemList[2131]=	{	178	,	29	,	8141	,	25	}--
-ChangeItemList[2132]=	{	178	,	30	,	8141	,	25	}--
-ChangeItemList[2133]=	{	178	,	31	,	8141	,	25	}--
-ChangeItemList[2134]=	{	178	,	32	,	8141	,	25	}--
-ChangeItemList[2135]=	{	178	,	33	,	8141	,	25	}--
-ChangeItemList[2136]=	{	178	,	34	,	8141	,	25	}--
-ChangeItemList[2137]=	{	178	,	35	,	8141	,	25	}--
-ChangeItemList[2138]=	{	178	,	36	,	8141	,	40	}--
-ChangeItemList[2139]=	{	178	,	37	,	8141	,	40	}--
-ChangeItemList[2140]=	{	178	,	38	,	8141	,	40	}--
-ChangeItemList[2141]=	{	178	,	39	,	8141	,	40	}--
-ChangeItemList[2142]=	{	178	,	40	,	8141	,	40	}--
-ChangeItemList[2143]=	{	178	,	41	,	8141	,	40	}--
-ChangeItemList[2144]=	{	178	,	42	,	8141	,	40	}--
-ChangeItemList[2145]=	{	178	,	43	,	8141	,	40	}--
-ChangeItemList[2146]=	{	178	,	44	,	8141	,	40	}--
-ChangeItemList[2147]=	{	178	,	45	,	8141	,	40	}--
-ChangeItemList[2148]=	{	178	,	46	,	8141	,	40	}--
-ChangeItemList[2149]=	{	178	,	47	,	8141	,	40	}--
-ChangeItemList[2150]=	{	178	,	48	,	8141	,	40	}--
-ChangeItemList[2151]=	{	178	,	49	,	8141	,	40	}--
-ChangeItemList[2152]=	{	178	,	50	,	8141	,	40	}--
-ChangeItemList[2153]=	{	178	,	51	,	8141	,	80	}--
-ChangeItemList[2154]=	{	178	,	52	,	8141	,	80	}--
-ChangeItemList[2155]=	{	178	,	53	,	8141	,	80	}--
-ChangeItemList[2156]=	{	178	,	54	,	8141	,	80	}--
-ChangeItemList[2157]=	{	178	,	55	,	8141	,	80	}--
-ChangeItemList[2158]=	{	178	,	56	,	8141	,	80	}--
-ChangeItemList[2159]=	{	178	,	57	,	8141	,	80	}--
-ChangeItemList[2160]=	{	178	,	58	,	8141	,	80	}--
-ChangeItemList[2161]=	{	178	,	59	,	8141	,	80	}--
-ChangeItemList[2162]=	{	178	,	60	,	8141	,	80	}--
-ChangeItemList[2163]=	{	178	,	61	,	8141	,	80	}--
-ChangeItemList[2164]=	{	178	,	62	,	8141	,	80	}--
-ChangeItemList[2165]=	{	178	,	63	,	8141	,	80	}--
-ChangeItemList[2166]=	{	178	,	64	,	8141	,	80	}--
-ChangeItemList[2167]=	{	178	,	65	,	8141	,	80	}--
-ChangeItemList[2168]=	{	4897	,	25	,	8141	,	25	}--
-ChangeItemList[2169]=	{	4897	,	26	,	8141	,	25	}--
-ChangeItemList[2170]=	{	4897	,	27	,	8141	,	25	}--
-ChangeItemList[2171]=	{	4897	,	28	,	8141	,	25	}--
-ChangeItemList[2172]=	{	4897	,	29	,	8141	,	25	}--
-ChangeItemList[2173]=	{	4897	,	30	,	8141	,	25	}--
-ChangeItemList[2174]=	{	4897	,	31	,	8141	,	25	}--
-ChangeItemList[2175]=	{	4897	,	32	,	8141	,	25	}--
-ChangeItemList[2176]=	{	4897	,	33	,	8141	,	25	}--
-ChangeItemList[2177]=	{	4897	,	34	,	8141	,	25	}--
-ChangeItemList[2178]=	{	4897	,	35	,	8141	,	25	}--
-ChangeItemList[2179]=	{	4897	,	36	,	8141	,	40	}--
-ChangeItemList[2180]=	{	4897	,	37	,	8141	,	40	}--
-ChangeItemList[2181]=	{	4897	,	38	,	8141	,	40	}--
-ChangeItemList[2182]=	{	4897	,	39	,	8141	,	40	}--
-ChangeItemList[2183]=	{	4897	,	40	,	8141	,	40	}--
-ChangeItemList[2184]=	{	4897	,	41	,	8141	,	40	}--
-ChangeItemList[2185]=	{	4897	,	42	,	8141	,	40	}--
-ChangeItemList[2186]=	{	4897	,	43	,	8141	,	40	}--
-ChangeItemList[2187]=	{	4897	,	44	,	8141	,	40	}--
-ChangeItemList[2188]=	{	4897	,	45	,	8141	,	40	}--
-ChangeItemList[2189]=	{	4897	,	46	,	8141	,	40	}--
-ChangeItemList[2190]=	{	4897	,	47	,	8141	,	40	}--
-ChangeItemList[2191]=	{	4897	,	48	,	8141	,	40	}--
-ChangeItemList[2192]=	{	4897	,	49	,	8141	,	40	}--
-ChangeItemList[2193]=	{	4897	,	50	,	8141	,	40	}--
-ChangeItemList[2194]=	{	4897	,	51	,	8141	,	80	}--
-ChangeItemList[2195]=	{	4897	,	52	,	8141	,	80	}--
-ChangeItemList[2196]=	{	4897	,	53	,	8141	,	80	}--
-ChangeItemList[2197]=	{	4897	,	54	,	8141	,	80	}--
-ChangeItemList[2198]=	{	4897	,	55	,	8141	,	80	}--
-ChangeItemList[2199]=	{	4897	,	56	,	8141	,	80	}--
-ChangeItemList[2200]=	{	4897	,	57	,	8141	,	80	}--
-ChangeItemList[2201]=	{	4897	,	58	,	8141	,	80	}--
-ChangeItemList[2202]=	{	4897	,	59	,	8141	,	80	}--
-ChangeItemList[2203]=	{	4897	,	60	,	8141	,	80	}--
-ChangeItemList[2204]=	{	4897	,	61	,	8141	,	80	}--
-ChangeItemList[2205]=	{	4897	,	62	,	8141	,	80	}--
-ChangeItemList[2206]=	{	4897	,	63	,	8141	,	80	}--
-ChangeItemList[2207]=	{	4897	,	64	,	8141	,	80	}--
-ChangeItemList[2208]=	{	4897	,	65	,	8141	,	80	}--
-ChangeItemList[2209]=	{	4906	,	25	,	8141	,	25	}--
-ChangeItemList[2210]=	{	4906	,	26	,	8141	,	25	}--
-ChangeItemList[2211]=	{	4906	,	27	,	8141	,	25	}--
-ChangeItemList[2212]=	{	4906	,	28	,	8141	,	25	}--
-ChangeItemList[2213]=	{	4906	,	29	,	8141	,	25	}--
-ChangeItemList[2214]=	{	4906	,	30	,	8141	,	25	}--
-ChangeItemList[2215]=	{	4906	,	31	,	8141	,	25	}--
-ChangeItemList[2216]=	{	4906	,	32	,	8141	,	25	}--
-ChangeItemList[2217]=	{	4906	,	33	,	8141	,	25	}--
-ChangeItemList[2218]=	{	4906	,	34	,	8141	,	25	}--
-ChangeItemList[2219]=	{	4906	,	35	,	8141	,	25	}--
-ChangeItemList[2220]=	{	4906	,	36	,	8141	,	40	}--
-ChangeItemList[2221]=	{	4906	,	37	,	8141	,	40	}--
-ChangeItemList[2222]=	{	4906	,	38	,	8141	,	40	}--
-ChangeItemList[2223]=	{	4906	,	39	,	8141	,	40	}--
-ChangeItemList[2224]=	{	4906	,	40	,	8141	,	40	}--
-ChangeItemList[2225]=	{	4906	,	41	,	8141	,	40	}--
-ChangeItemList[2226]=	{	4906	,	42	,	8141	,	40	}--
-ChangeItemList[2227]=	{	4906	,	43	,	8141	,	40	}--
-ChangeItemList[2228]=	{	4906	,	44	,	8141	,	40	}--
-ChangeItemList[2229]=	{	4906	,	45	,	8141	,	40	}--
-ChangeItemList[2230]=	{	4906	,	46	,	8141	,	40	}--
-ChangeItemList[2231]=	{	4906	,	47	,	8141	,	40	}--
-ChangeItemList[2232]=	{	4906	,	48	,	8141	,	40	}--
-ChangeItemList[2233]=	{	4906	,	49	,	8141	,	40	}--
-ChangeItemList[2234]=	{	4906	,	50	,	8141	,	40	}--
-ChangeItemList[2235]=	{	4906	,	51	,	8141	,	80	}--
-ChangeItemList[2236]=	{	4906	,	52	,	8141	,	80	}--
-ChangeItemList[2237]=	{	4906	,	53	,	8141	,	80	}--
-ChangeItemList[2238]=	{	4906	,	54	,	8141	,	80	}--
-ChangeItemList[2239]=	{	4906	,	55	,	8141	,	80	}--
-ChangeItemList[2240]=	{	4906	,	56	,	8141	,	80	}--
-ChangeItemList[2241]=	{	4906	,	57	,	8141	,	80	}--
-ChangeItemList[2242]=	{	4906	,	58	,	8141	,	80	}--
-ChangeItemList[2243]=	{	4906	,	59	,	8141	,	80	}--
-ChangeItemList[2244]=	{	4906	,	60	,	8141	,	80	}--
-ChangeItemList[2245]=	{	4906	,	61	,	8141	,	80	}--
-ChangeItemList[2246]=	{	4906	,	62	,	8141	,	80	}--
-ChangeItemList[2247]=	{	4906	,	63	,	8141	,	80	}--
-ChangeItemList[2248]=	{	4906	,	64	,	8141	,	80	}--
-ChangeItemList[2249]=	{	4906	,	65	,	8141	,	80	}--
-ChangeItemList[2250]=	{	4910	,	25	,	8141	,	25	}--
-ChangeItemList[2251]=	{	4910	,	26	,	8141	,	25	}--
-ChangeItemList[2252]=	{	4910	,	27	,	8141	,	25	}--
-ChangeItemList[2253]=	{	4910	,	28	,	8141	,	25	}--
-ChangeItemList[2254]=	{	4910	,	29	,	8141	,	25	}--
-ChangeItemList[2255]=	{	4910	,	30	,	8141	,	25	}--
-ChangeItemList[2256]=	{	4910	,	31	,	8141	,	25	}--
-ChangeItemList[2257]=	{	4910	,	32	,	8141	,	25	}--
-ChangeItemList[2258]=	{	4910	,	33	,	8141	,	25	}--
-ChangeItemList[2259]=	{	4910	,	34	,	8141	,	25	}--
-ChangeItemList[2260]=	{	4910	,	35	,	8141	,	25	}--
-ChangeItemList[2261]=	{	4910	,	36	,	8141	,	40	}--
-ChangeItemList[2262]=	{	4910	,	37	,	8141	,	40	}--
-ChangeItemList[2263]=	{	4910	,	38	,	8141	,	40	}--
-ChangeItemList[2264]=	{	4910	,	39	,	8141	,	40	}--
-ChangeItemList[2265]=	{	4910	,	40	,	8141	,	40	}--
-ChangeItemList[2266]=	{	4910	,	41	,	8141	,	40	}--
-ChangeItemList[2267]=	{	4910	,	42	,	8141	,	40	}--
-ChangeItemList[2268]=	{	4910	,	43	,	8141	,	40	}--
-ChangeItemList[2269]=	{	4910	,	44	,	8141	,	40	}--
-ChangeItemList[2270]=	{	4910	,	45	,	8141	,	40	}--
-ChangeItemList[2271]=	{	4910	,	46	,	8141	,	40	}--
-ChangeItemList[2272]=	{	4910	,	47	,	8141	,	40	}--
-ChangeItemList[2273]=	{	4910	,	48	,	8141	,	40	}--
-ChangeItemList[2274]=	{	4910	,	49	,	8141	,	40	}--
-ChangeItemList[2275]=	{	4910	,	50	,	8141	,	40	}--
-ChangeItemList[2276]=	{	4910	,	51	,	8141	,	80	}--
-ChangeItemList[2277]=	{	4910	,	52	,	8141	,	80	}--
-ChangeItemList[2278]=	{	4910	,	53	,	8141	,	80	}--
-ChangeItemList[2279]=	{	4910	,	54	,	8141	,	80	}--
-ChangeItemList[2280]=	{	4910	,	55	,	8141	,	80	}--
-ChangeItemList[2281]=	{	4910	,	56	,	8141	,	80	}--
-ChangeItemList[2282]=	{	4910	,	57	,	8141	,	80	}--
-ChangeItemList[2283]=	{	4910	,	58	,	8141	,	80	}--
-ChangeItemList[2284]=	{	4910	,	59	,	8141	,	80	}--
-ChangeItemList[2285]=	{	4910	,	60	,	8141	,	80	}--
-ChangeItemList[2286]=	{	4910	,	61	,	8141	,	80	}--
-ChangeItemList[2287]=	{	4910	,	62	,	8141	,	80	}--
-ChangeItemList[2288]=	{	4910	,	63	,	8141	,	80	}--
-ChangeItemList[2289]=	{	4910	,	64	,	8141	,	80	}--
-ChangeItemList[2290]=	{	4910	,	65	,	8141	,	80	}--
-ChangeItemList[2291]=	{	4825	,	25	,	8141	,	25	}--
-ChangeItemList[2292]=	{	4825	,	26	,	8141	,	25	}--
-ChangeItemList[2293]=	{	4825	,	27	,	8141	,	25	}--
-ChangeItemList[2294]=	{	4825	,	28	,	8141	,	25	}--
-ChangeItemList[2295]=	{	4825	,	29	,	8141	,	25	}--
-ChangeItemList[2296]=	{	4825	,	30	,	8141	,	25	}--
-ChangeItemList[2297]=	{	4825	,	31	,	8141	,	25	}--
-ChangeItemList[2298]=	{	4825	,	32	,	8141	,	25	}--
-ChangeItemList[2299]=	{	4825	,	33	,	8141	,	25	}--
-ChangeItemList[2300]=	{	4825	,	34	,	8141	,	25	}--
-ChangeItemList[2301]=	{	4825	,	35	,	8141	,	25	}--
-ChangeItemList[2302]=	{	4825	,	36	,	8141	,	40	}--
-ChangeItemList[2303]=	{	4825	,	37	,	8141	,	40	}--
-ChangeItemList[2304]=	{	4825	,	38	,	8141	,	40	}--
-ChangeItemList[2305]=	{	4825	,	39	,	8141	,	40	}--
-ChangeItemList[2306]=	{	4825	,	40	,	8141	,	40	}--
-ChangeItemList[2307]=	{	4825	,	41	,	8141	,	40	}--
-ChangeItemList[2308]=	{	4825	,	42	,	8141	,	40	}--
-ChangeItemList[2309]=	{	4825	,	43	,	8141	,	40	}--
-ChangeItemList[2310]=	{	4825	,	44	,	8141	,	40	}--
-ChangeItemList[2311]=	{	4825	,	45	,	8141	,	40	}--
-ChangeItemList[2312]=	{	4825	,	46	,	8141	,	40	}--
-ChangeItemList[2313]=	{	4825	,	47	,	8141	,	40	}--
-ChangeItemList[2314]=	{	4825	,	48	,	8141	,	40	}--
-ChangeItemList[2315]=	{	4825	,	49	,	8141	,	40	}--
-ChangeItemList[2316]=	{	4825	,	50	,	8141	,	40	}--
-ChangeItemList[2317]=	{	4825	,	51	,	8141	,	80	}--
-ChangeItemList[2318]=	{	4825	,	52	,	8141	,	80	}--
-ChangeItemList[2319]=	{	4825	,	53	,	8141	,	80	}--
-ChangeItemList[2320]=	{	4825	,	54	,	8141	,	80	}--
-ChangeItemList[2321]=	{	4825	,	55	,	8141	,	80	}--
-ChangeItemList[2322]=	{	4825	,	56	,	8141	,	80	}--
-ChangeItemList[2323]=	{	4825	,	57	,	8141	,	80	}--
-ChangeItemList[2324]=	{	4825	,	58	,	8141	,	80	}--
-ChangeItemList[2325]=	{	4825	,	59	,	8141	,	80	}--
-ChangeItemList[2326]=	{	4825	,	60	,	8141	,	80	}--
-ChangeItemList[2327]=	{	4825	,	61	,	8141	,	80	}--
-ChangeItemList[2328]=	{	4825	,	62	,	8141	,	80	}--
-ChangeItemList[2329]=	{	4825	,	63	,	8141	,	80	}--
-ChangeItemList[2330]=	{	4825	,	64	,	8141	,	80	}--
-ChangeItemList[2331]=	{	4825	,	65	,	8141	,	80	}--
-ChangeItemList[2332]=	{	4900	,	25	,	8141	,	25	}--
-ChangeItemList[2333]=	{	4900	,	26	,	8141	,	25	}--
-ChangeItemList[2334]=	{	4900	,	27	,	8141	,	25	}--
-ChangeItemList[2335]=	{	4900	,	28	,	8141	,	25	}--
-ChangeItemList[2336]=	{	4900	,	29	,	8141	,	25	}--
-ChangeItemList[2337]=	{	4900	,	30	,	8141	,	25	}--
-ChangeItemList[2338]=	{	4900	,	31	,	8141	,	25	}--
-ChangeItemList[2339]=	{	4900	,	32	,	8141	,	25	}--
-ChangeItemList[2340]=	{	4900	,	33	,	8141	,	25	}--
-ChangeItemList[2341]=	{	4900	,	34	,	8141	,	25	}--
-ChangeItemList[2342]=	{	4900	,	35	,	8141	,	25	}--
-ChangeItemList[2343]=	{	4900	,	36	,	8141	,	40	}--
-ChangeItemList[2344]=	{	4900	,	37	,	8141	,	40	}--
-ChangeItemList[2345]=	{	4900	,	38	,	8141	,	40	}--
-ChangeItemList[2346]=	{	4900	,	39	,	8141	,	40	}--
-ChangeItemList[2347]=	{	4900	,	40	,	8141	,	40	}--
-ChangeItemList[2348]=	{	4900	,	41	,	8141	,	40	}--
-ChangeItemList[2349]=	{	4900	,	42	,	8141	,	40	}--
-ChangeItemList[2350]=	{	4900	,	43	,	8141	,	40	}--
-ChangeItemList[2351]=	{	4900	,	44	,	8141	,	40	}--
-ChangeItemList[2352]=	{	4900	,	45	,	8141	,	40	}--
-ChangeItemList[2353]=	{	4900	,	46	,	8141	,	40	}--
-ChangeItemList[2354]=	{	4900	,	47	,	8141	,	40	}--
-ChangeItemList[2355]=	{	4900	,	48	,	8141	,	40	}--
-ChangeItemList[2356]=	{	4900	,	49	,	8141	,	40	}--
-ChangeItemList[2357]=	{	4900	,	50	,	8141	,	40	}--
-ChangeItemList[2358]=	{	4900	,	51	,	8141	,	80	}--
-ChangeItemList[2359]=	{	4900	,	52	,	8141	,	80	}--
-ChangeItemList[2360]=	{	4900	,	53	,	8141	,	80	}--
-ChangeItemList[2361]=	{	4900	,	54	,	8141	,	80	}--
-ChangeItemList[2362]=	{	4900	,	55	,	8141	,	80	}--
-ChangeItemList[2363]=	{	4900	,	56	,	8141	,	80	}--
-ChangeItemList[2364]=	{	4900	,	57	,	8141	,	80	}--
-ChangeItemList[2365]=	{	4900	,	58	,	8141	,	80	}--
-ChangeItemList[2366]=	{	4900	,	59	,	8141	,	80	}--
-ChangeItemList[2367]=	{	4900	,	60	,	8141	,	80	}--
-ChangeItemList[2368]=	{	4900	,	61	,	8141	,	80	}--
-ChangeItemList[2369]=	{	4900	,	62	,	8141	,	80	}--
-ChangeItemList[2370]=	{	4900	,	63	,	8141	,	80	}--
-ChangeItemList[2371]=	{	4900	,	64	,	8141	,	80	}--
-ChangeItemList[2372]=	{	4900	,	65	,	8141	,	80	}--
-ChangeItemList[2373]=	{	4903	,	25	,	8141	,	25	}--
-ChangeItemList[2374]=	{	4903	,	26	,	8141	,	25	}--
-ChangeItemList[2375]=	{	4903	,	27	,	8141	,	25	}--
-ChangeItemList[2376]=	{	4903	,	28	,	8141	,	25	}--
-ChangeItemList[2377]=	{	4903	,	29	,	8141	,	25	}--
-ChangeItemList[2378]=	{	4903	,	30	,	8141	,	25	}--
-ChangeItemList[2379]=	{	4903	,	31	,	8141	,	25	}--
-ChangeItemList[2380]=	{	4903	,	32	,	8141	,	25	}--
-ChangeItemList[2381]=	{	4903	,	33	,	8141	,	25	}--
-ChangeItemList[2382]=	{	4903	,	34	,	8141	,	25	}--
-ChangeItemList[2383]=	{	4903	,	35	,	8141	,	25	}--
-ChangeItemList[2384]=	{	4903	,	36	,	8141	,	40	}--
-ChangeItemList[2385]=	{	4903	,	37	,	8141	,	40	}--
-ChangeItemList[2386]=	{	4903	,	38	,	8141	,	40	}--
-ChangeItemList[2387]=	{	4903	,	39	,	8141	,	40	}--
-ChangeItemList[2388]=	{	4903	,	40	,	8141	,	40	}--
-ChangeItemList[2389]=	{	4903	,	41	,	8141	,	40	}--
-ChangeItemList[2390]=	{	4903	,	42	,	8141	,	40	}--
-ChangeItemList[2391]=	{	4903	,	43	,	8141	,	40	}--
-ChangeItemList[2392]=	{	4903	,	44	,	8141	,	40	}--
-ChangeItemList[2393]=	{	4903	,	45	,	8141	,	40	}--
-ChangeItemList[2394]=	{	4903	,	46	,	8141	,	40	}--
-ChangeItemList[2395]=	{	4903	,	47	,	8141	,	40	}--
-ChangeItemList[2396]=	{	4903	,	48	,	8141	,	40	}--
-ChangeItemList[2397]=	{	4903	,	49	,	8141	,	40	}--
-ChangeItemList[2398]=	{	4903	,	50	,	8141	,	40	}--
-ChangeItemList[2399]=	{	4903	,	51	,	8141	,	80	}--
-ChangeItemList[2400]=	{	4903	,	52	,	8141	,	80	}--
-ChangeItemList[2401]=	{	4903	,	53	,	8141	,	80	}--
-ChangeItemList[2402]=	{	4903	,	54	,	8141	,	80	}--
-ChangeItemList[2403]=	{	4903	,	55	,	8141	,	80	}--
-ChangeItemList[2404]=	{	4903	,	56	,	8141	,	80	}--
-ChangeItemList[2405]=	{	4903	,	57	,	8141	,	80	}--
-ChangeItemList[2406]=	{	4903	,	58	,	8141	,	80	}--
-ChangeItemList[2407]=	{	4903	,	59	,	8141	,	80	}--
-ChangeItemList[2408]=	{	4903	,	60	,	8141	,	80	}--
-ChangeItemList[2409]=	{	4903	,	61	,	8141	,	80	}--
-ChangeItemList[2410]=	{	4903	,	62	,	8141	,	80	}--
-ChangeItemList[2411]=	{	4903	,	63	,	8141	,	80	}--
-ChangeItemList[2412]=	{	4903	,	64	,	8141	,	80	}--
-ChangeItemList[2413]=	{	4903	,	65	,	8141	,	80	}--
-ChangeItemList[2414]=	{	4903	,	25	,	8141	,	25	}--
-ChangeItemList[2415]=	{	4903	,	26	,	8141	,	25	}--
-ChangeItemList[2416]=	{	4903	,	27	,	8141	,	25	}--
-ChangeItemList[2417]=	{	4903	,	28	,	8141	,	25	}--
-ChangeItemList[2418]=	{	4903	,	29	,	8141	,	25	}--
-ChangeItemList[2419]=	{	4903	,	30	,	8141	,	25	}--
-ChangeItemList[2420]=	{	4903	,	31	,	8141	,	25	}--
-ChangeItemList[2421]=	{	4903	,	32	,	8141	,	25	}--
-ChangeItemList[2422]=	{	4903	,	33	,	8141	,	25	}--
-ChangeItemList[2423]=	{	4903	,	34	,	8141	,	25	}--
-ChangeItemList[2424]=	{	4903	,	35	,	8141	,	25	}--
-ChangeItemList[2425]=	{	4903	,	36	,	8141	,	40	}--
-ChangeItemList[2426]=	{	4903	,	37	,	8141	,	40	}--
-ChangeItemList[2427]=	{	4903	,	38	,	8141	,	40	}--
-ChangeItemList[2428]=	{	4903	,	39	,	8141	,	40	}--
-ChangeItemList[2429]=	{	4903	,	40	,	8141	,	40	}--
-ChangeItemList[2430]=	{	4903	,	41	,	8141	,	40	}--
-ChangeItemList[2431]=	{	4903	,	42	,	8141	,	40	}--
-ChangeItemList[2432]=	{	4903	,	43	,	8141	,	40	}--
-ChangeItemList[2433]=	{	4903	,	44	,	8141	,	40	}--
-ChangeItemList[2434]=	{	4903	,	45	,	8141	,	40	}--
-ChangeItemList[2435]=	{	4903	,	46	,	8141	,	40	}--
-ChangeItemList[2436]=	{	4903	,	47	,	8141	,	40	}--
-ChangeItemList[2437]=	{	4903	,	48	,	8141	,	40	}--
-ChangeItemList[2438]=	{	4903	,	49	,	8141	,	40	}--
-ChangeItemList[2439]=	{	4903	,	50	,	8141	,	40	}--
-ChangeItemList[2440]=	{	4903	,	51	,	8141	,	80	}--
-ChangeItemList[2441]=	{	4903	,	52	,	8141	,	80	}--
-ChangeItemList[2442]=	{	4903	,	53	,	8141	,	80	}--
-ChangeItemList[2443]=	{	4903	,	54	,	8141	,	80	}--
-ChangeItemList[2444]=	{	4903	,	55	,	8141	,	80	}--
-ChangeItemList[2445]=	{	4903	,	56	,	8141	,	80	}--
-ChangeItemList[2446]=	{	4903	,	57	,	8141	,	80	}--
-ChangeItemList[2447]=	{	4903	,	58	,	8141	,	80	}--
-ChangeItemList[2448]=	{	4903	,	59	,	8141	,	80	}--
-ChangeItemList[2449]=	{	4903	,	60	,	8141	,	80	}--
-ChangeItemList[2450]=	{	4903	,	61	,	8141	,	80	}--
-ChangeItemList[2451]=	{	4903	,	62	,	8141	,	80	}--
-ChangeItemList[2452]=	{	4903	,	63	,	8141	,	80	}--
-ChangeItemList[2453]=	{	4903	,	64	,	8141	,	80	}--
-ChangeItemList[2454]=	{	4903	,	65	,	8141	,	80	}--
-ChangeItemList[2455]=	{	1244	,	25	,	8141	,	25	}--
-ChangeItemList[2456]=	{	1244	,	26	,	8141	,	25	}--
-ChangeItemList[2457]=	{	1244	,	27	,	8141	,	25	}--
-ChangeItemList[2458]=	{	1244	,	28	,	8141	,	25	}--
-ChangeItemList[2459]=	{	1244	,	29	,	8141	,	25	}--
-ChangeItemList[2460]=	{	1244	,	30	,	8141	,	25	}--
-ChangeItemList[2461]=	{	1244	,	31	,	8141	,	25	}--
-ChangeItemList[2462]=	{	1244	,	32	,	8141	,	25	}--
-ChangeItemList[2463]=	{	1244	,	33	,	8141	,	25	}--
-ChangeItemList[2464]=	{	1244	,	34	,	8141	,	25	}--
-ChangeItemList[2465]=	{	1244	,	35	,	8141	,	25	}--
-ChangeItemList[2466]=	{	1244	,	36	,	8141	,	40	}--
-ChangeItemList[2467]=	{	1244	,	37	,	8141	,	40	}--
-ChangeItemList[2468]=	{	1244	,	38	,	8141	,	40	}--
-ChangeItemList[2469]=	{	1244	,	39	,	8141	,	40	}--
-ChangeItemList[2470]=	{	1244	,	40	,	8141	,	40	}--
-ChangeItemList[2471]=	{	1244	,	41	,	8141	,	40	}--
-ChangeItemList[2472]=	{	1244	,	42	,	8141	,	40	}--
-ChangeItemList[2473]=	{	1244	,	43	,	8141	,	40	}--
-ChangeItemList[2474]=	{	1244	,	44	,	8141	,	40	}--
-ChangeItemList[2475]=	{	1244	,	45	,	8141	,	40	}--
-ChangeItemList[2476]=	{	1244	,	46	,	8141	,	40	}--
-ChangeItemList[2477]=	{	1244	,	47	,	8141	,	40	}--
-ChangeItemList[2478]=	{	1244	,	48	,	8141	,	40	}--
-ChangeItemList[2479]=	{	1244	,	49	,	8141	,	40	}--
-ChangeItemList[2480]=	{	1244	,	50	,	8141	,	40	}--
-ChangeItemList[2481]=	{	1244	,	51	,	8141	,	80	}--
-ChangeItemList[2482]=	{	1244	,	52	,	8141	,	80	}--
-ChangeItemList[2483]=	{	1244	,	53	,	8141	,	80	}--
-ChangeItemList[2484]=	{	1244	,	54	,	8141	,	80	}--
-ChangeItemList[2485]=	{	1244	,	55	,	8141	,	80	}--
-ChangeItemList[2486]=	{	1244	,	56	,	8141	,	80	}--
-ChangeItemList[2487]=	{	1244	,	57	,	8141	,	80	}--
-ChangeItemList[2488]=	{	1244	,	58	,	8141	,	80	}--
-ChangeItemList[2489]=	{	1244	,	59	,	8141	,	80	}--
-ChangeItemList[2490]=	{	1244	,	60	,	8141	,	80	}--
-ChangeItemList[2491]=	{	1244	,	61	,	8141	,	80	}--
-ChangeItemList[2492]=	{	1244	,	62	,	8141	,	80	}--
-ChangeItemList[2493]=	{	1244	,	63	,	8141	,	80	}--
-ChangeItemList[2494]=	{	1244	,	64	,	8141	,	80	}--
-ChangeItemList[2495]=	{	1244	,	65	,	8141	,	80	}--
-ChangeItemList[2496]=	{	4983	,	25	,	8141	,	25	}--
-ChangeItemList[2497]=	{	4983	,	26	,	8141	,	25	}--
-ChangeItemList[2498]=	{	4983	,	27	,	8141	,	25	}--
-ChangeItemList[2499]=	{	4983	,	28	,	8141	,	25	}--
-ChangeItemList[2500]=	{	4983	,	29	,	8141	,	25	}--
-ChangeItemList[2501]=	{	4983	,	30	,	8141	,	25	}--
-ChangeItemList[2502]=	{	4983	,	31	,	8141	,	25	}--
-ChangeItemList[2503]=	{	4983	,	32	,	8141	,	25	}--
-ChangeItemList[2504]=	{	4983	,	33	,	8141	,	25	}--
-ChangeItemList[2505]=	{	4983	,	34	,	8141	,	25	}--
-ChangeItemList[2506]=	{	4983	,	35	,	8141	,	25	}--
-ChangeItemList[2507]=	{	4983	,	36	,	8141	,	40	}--
-ChangeItemList[2508]=	{	4983	,	37	,	8141	,	40	}--
-ChangeItemList[2509]=	{	4983	,	38	,	8141	,	40	}--
-ChangeItemList[2510]=	{	4983	,	39	,	8141	,	40	}--
-ChangeItemList[2511]=	{	4983	,	40	,	8141	,	40	}--
-ChangeItemList[2512]=	{	4983	,	41	,	8141	,	40	}--
-ChangeItemList[2513]=	{	4983	,	42	,	8141	,	40	}--
-ChangeItemList[2514]=	{	4983	,	43	,	8141	,	40	}--
-ChangeItemList[2515]=	{	4983	,	44	,	8141	,	40	}--
-ChangeItemList[2516]=	{	4983	,	45	,	8141	,	40	}--
-ChangeItemList[2517]=	{	4983	,	46	,	8141	,	40	}--
-ChangeItemList[2518]=	{	4983	,	47	,	8141	,	40	}--
-ChangeItemList[2519]=	{	4983	,	48	,	8141	,	40	}--
-ChangeItemList[2520]=	{	4983	,	49	,	8141	,	40	}--
-ChangeItemList[2521]=	{	4983	,	50	,	8141	,	40	}--
-ChangeItemList[2522]=	{	4983	,	51	,	8141	,	80	}--
-ChangeItemList[2523]=	{	4983	,	52	,	8141	,	80	}--
-ChangeItemList[2524]=	{	4983	,	53	,	8141	,	80	}--
-ChangeItemList[2525]=	{	4983	,	54	,	8141	,	80	}--
-ChangeItemList[2526]=	{	4983	,	55	,	8141	,	80	}--
-ChangeItemList[2527]=	{	4983	,	56	,	8141	,	80	}--
-ChangeItemList[2528]=	{	4983	,	57	,	8141	,	80	}--
-ChangeItemList[2529]=	{	4983	,	58	,	8141	,	80	}--
-ChangeItemList[2530]=	{	4983	,	59	,	8141	,	80	}--
-ChangeItemList[2531]=	{	4983	,	60	,	8141	,	80	}--
-ChangeItemList[2532]=	{	4983	,	61	,	8141	,	80	}--
-ChangeItemList[2533]=	{	4983	,	62	,	8141	,	80	}--
-ChangeItemList[2534]=	{	4983	,	63	,	8141	,	80	}--
-ChangeItemList[2535]=	{	4983	,	64	,	8141	,	80	}--
-ChangeItemList[2536]=	{	4983	,	65	,	8141	,	80	}--
-ChangeItemList[2537]=	{	1269	,	25	,	8141	,	25	}--
-ChangeItemList[2538]=	{	1269	,	26	,	8141	,	25	}--
-ChangeItemList[2539]=	{	1269	,	27	,	8141	,	25	}--
-ChangeItemList[2540]=	{	1269	,	28	,	8141	,	25	}--
-ChangeItemList[2541]=	{	1269	,	29	,	8141	,	25	}--
-ChangeItemList[2542]=	{	1269	,	30	,	8141	,	25	}--
-ChangeItemList[2543]=	{	1269	,	31	,	8141	,	25	}--
-ChangeItemList[2544]=	{	1269	,	32	,	8141	,	25	}--
-ChangeItemList[2545]=	{	1269	,	33	,	8141	,	25	}--
-ChangeItemList[2546]=	{	1269	,	34	,	8141	,	25	}--
-ChangeItemList[2547]=	{	1269	,	35	,	8141	,	25	}--
-ChangeItemList[2548]=	{	1269	,	36	,	8141	,	40	}--
-ChangeItemList[2549]=	{	1269	,	37	,	8141	,	40	}--
-ChangeItemList[2550]=	{	1269	,	38	,	8141	,	40	}--
-ChangeItemList[2551]=	{	1269	,	39	,	8141	,	40	}--
-ChangeItemList[2552]=	{	1269	,	40	,	8141	,	40	}--
-ChangeItemList[2553]=	{	1269	,	41	,	8141	,	40	}--
-ChangeItemList[2554]=	{	1269	,	42	,	8141	,	40	}--
-ChangeItemList[2555]=	{	1269	,	43	,	8141	,	40	}--
-ChangeItemList[2556]=	{	1269	,	44	,	8141	,	40	}--
-ChangeItemList[2557]=	{	1269	,	45	,	8141	,	40	}--
-ChangeItemList[2558]=	{	1269	,	46	,	8141	,	40	}--
-ChangeItemList[2559]=	{	1269	,	47	,	8141	,	40	}--
-ChangeItemList[2560]=	{	1269	,	48	,	8141	,	40	}--
-ChangeItemList[2561]=	{	1269	,	49	,	8141	,	40	}--
-ChangeItemList[2562]=	{	1269	,	50	,	8141	,	40	}--
-ChangeItemList[2563]=	{	1269	,	51	,	8141	,	80	}--
-ChangeItemList[2564]=	{	1269	,	52	,	8141	,	80	}--
-ChangeItemList[2565]=	{	1269	,	53	,	8141	,	80	}--
-ChangeItemList[2566]=	{	1269	,	54	,	8141	,	80	}--
-ChangeItemList[2567]=	{	1269	,	55	,	8141	,	80	}--
-ChangeItemList[2568]=	{	1269	,	56	,	8141	,	80	}--
-ChangeItemList[2569]=	{	1269	,	57	,	8141	,	80	}--
-ChangeItemList[2570]=	{	1269	,	58	,	8141	,	80	}--
-ChangeItemList[2571]=	{	1269	,	59	,	8141	,	80	}--
-ChangeItemList[2572]=	{	1269	,	60	,	8141	,	80	}--
-ChangeItemList[2573]=	{	1269	,	61	,	8141	,	80	}--
-ChangeItemList[2574]=	{	1269	,	62	,	8141	,	80	}--
-ChangeItemList[2575]=	{	1269	,	63	,	8141	,	80	}--
-ChangeItemList[2576]=	{	1269	,	64	,	8141	,	80	}--
-ChangeItemList[2577]=	{	1269	,	65	,	8141	,	80	}--
-ChangeItemList[2578]=	{	1278	,	25	,	8141	,	25	}--
-ChangeItemList[2579]=	{	1278	,	26	,	8141	,	25	}--
-ChangeItemList[2580]=	{	1278	,	27	,	8141	,	25	}--
-ChangeItemList[2581]=	{	1278	,	28	,	8141	,	25	}--
-ChangeItemList[2582]=	{	1278	,	29	,	8141	,	25	}--
-ChangeItemList[2583]=	{	1278	,	30	,	8141	,	25	}--
-ChangeItemList[2584]=	{	1278	,	31	,	8141	,	25	}--
-ChangeItemList[2585]=	{	1278	,	32	,	8141	,	25	}--
-ChangeItemList[2586]=	{	1278	,	33	,	8141	,	25	}--
-ChangeItemList[2587]=	{	1278	,	34	,	8141	,	25	}--
-ChangeItemList[2588]=	{	1278	,	35	,	8141	,	25	}--
-ChangeItemList[2589]=	{	1278	,	36	,	8141	,	40	}--
-ChangeItemList[2590]=	{	1278	,	37	,	8141	,	40	}--
-ChangeItemList[2591]=	{	1278	,	38	,	8141	,	40	}--
-ChangeItemList[2592]=	{	1278	,	39	,	8141	,	40	}--
-ChangeItemList[2593]=	{	1278	,	40	,	8141	,	40	}--
-ChangeItemList[2594]=	{	1278	,	41	,	8141	,	40	}--
-ChangeItemList[2595]=	{	1278	,	42	,	8141	,	40	}--
-ChangeItemList[2596]=	{	1278	,	43	,	8141	,	40	}--
-ChangeItemList[2597]=	{	1278	,	44	,	8141	,	40	}--
-ChangeItemList[2598]=	{	1278	,	45	,	8141	,	40	}--
-ChangeItemList[2599]=	{	1278	,	46	,	8141	,	40	}--
-ChangeItemList[2600]=	{	1278	,	47	,	8141	,	40	}--
-ChangeItemList[2601]=	{	1278	,	48	,	8141	,	40	}--
-ChangeItemList[2602]=	{	1278	,	49	,	8141	,	40	}--
-ChangeItemList[2603]=	{	1278	,	50	,	8141	,	40	}--
-ChangeItemList[2604]=	{	1278	,	51	,	8141	,	80	}--
-ChangeItemList[2605]=	{	1278	,	52	,	8141	,	80	}--
-ChangeItemList[2606]=	{	1278	,	53	,	8141	,	80	}--
-ChangeItemList[2607]=	{	1278	,	54	,	8141	,	80	}--
-ChangeItemList[2608]=	{	1278	,	55	,	8141	,	80	}--
-ChangeItemList[2609]=	{	1278	,	56	,	8141	,	80	}--
-ChangeItemList[2610]=	{	1278	,	57	,	8141	,	80	}--
-ChangeItemList[2611]=	{	1278	,	58	,	8141	,	80	}--
-ChangeItemList[2612]=	{	1278	,	59	,	8141	,	80	}--
-ChangeItemList[2613]=	{	1278	,	60	,	8141	,	80	}--
-ChangeItemList[2614]=	{	1278	,	61	,	8141	,	80	}--
-ChangeItemList[2615]=	{	1278	,	62	,	8141	,	80	}--
-ChangeItemList[2616]=	{	1278	,	63	,	8141	,	80	}--
-ChangeItemList[2617]=	{	1278	,	64	,	8141	,	80	}--
-ChangeItemList[2618]=	{	1278	,	65	,	8141	,	80	}--
-ChangeItemList[2619]=	{	1782	,	25	,	8141	,	25	}--
-ChangeItemList[2620]=	{	1782	,	26	,	8141	,	25	}--
-ChangeItemList[2621]=	{	1782	,	27	,	8141	,	25	}--
-ChangeItemList[2622]=	{	1782	,	28	,	8141	,	25	}--
-ChangeItemList[2623]=	{	1782	,	29	,	8141	,	25	}--
-ChangeItemList[2624]=	{	1782	,	30	,	8141	,	25	}--
-ChangeItemList[2625]=	{	1782	,	31	,	8141	,	25	}--
-ChangeItemList[2626]=	{	1782	,	32	,	8141	,	25	}--
-ChangeItemList[2627]=	{	1782	,	33	,	8141	,	25	}--
-ChangeItemList[2628]=	{	1782	,	34	,	8141	,	25	}--
-ChangeItemList[2629]=	{	1782	,	35	,	8141	,	25	}--
-ChangeItemList[2630]=	{	1782	,	36	,	8141	,	40	}--
-ChangeItemList[2631]=	{	1782	,	37	,	8141	,	40	}--
-ChangeItemList[2632]=	{	1782	,	38	,	8141	,	40	}--
-ChangeItemList[2633]=	{	1782	,	39	,	8141	,	40	}--
-ChangeItemList[2634]=	{	1782	,	40	,	8141	,	40	}--
-ChangeItemList[2635]=	{	1782	,	41	,	8141	,	40	}--
-ChangeItemList[2636]=	{	1782	,	42	,	8141	,	40	}--
-ChangeItemList[2637]=	{	1782	,	43	,	8141	,	40	}--
-ChangeItemList[2638]=	{	1782	,	44	,	8141	,	40	}--
-ChangeItemList[2639]=	{	1782	,	45	,	8141	,	40	}--
-ChangeItemList[2640]=	{	1782	,	46	,	8141	,	40	}--
-ChangeItemList[2641]=	{	1782	,	47	,	8141	,	40	}--
-ChangeItemList[2642]=	{	1782	,	48	,	8141	,	40	}--
-ChangeItemList[2643]=	{	1782	,	49	,	8141	,	40	}--
-ChangeItemList[2644]=	{	1782	,	50	,	8141	,	40	}--
-ChangeItemList[2645]=	{	1782	,	51	,	8141	,	80	}--
-ChangeItemList[2646]=	{	1782	,	52	,	8141	,	80	}--
-ChangeItemList[2647]=	{	1782	,	53	,	8141	,	80	}--
-ChangeItemList[2648]=	{	1782	,	54	,	8141	,	80	}--
-ChangeItemList[2649]=	{	1782	,	55	,	8141	,	80	}--
-ChangeItemList[2650]=	{	1782	,	56	,	8141	,	80	}--
-ChangeItemList[2651]=	{	1782	,	57	,	8141	,	80	}--
-ChangeItemList[2652]=	{	1782	,	58	,	8141	,	80	}--
-ChangeItemList[2653]=	{	1782	,	59	,	8141	,	80	}--
-ChangeItemList[2654]=	{	1782	,	60	,	8141	,	80	}--
-ChangeItemList[2655]=	{	1782	,	61	,	8141	,	80	}--
-ChangeItemList[2656]=	{	1782	,	62	,	8141	,	80	}--
-ChangeItemList[2657]=	{	1782	,	63	,	8141	,	80	}--
-ChangeItemList[2658]=	{	1782	,	64	,	8141	,	80	}--
-ChangeItemList[2659]=	{	1782	,	65	,	8141	,	80	}--
-ChangeItemList[2660]=	{	1782	,	25	,	8141	,	25	}--
-ChangeItemList[2661]=	{	1782	,	26	,	8141	,	25	}--
-ChangeItemList[2662]=	{	1782	,	27	,	8141	,	25	}--
-ChangeItemList[2663]=	{	1782	,	28	,	8141	,	25	}--
-ChangeItemList[2664]=	{	1782	,	29	,	8141	,	25	}--
-ChangeItemList[2665]=	{	1782	,	30	,	8141	,	25	}--
-ChangeItemList[2666]=	{	1782	,	31	,	8141	,	25	}--
-ChangeItemList[2667]=	{	1782	,	32	,	8141	,	25	}--
-ChangeItemList[2668]=	{	1782	,	33	,	8141	,	25	}--
-ChangeItemList[2669]=	{	1782	,	34	,	8141	,	25	}--
-ChangeItemList[2670]=	{	1782	,	35	,	8141	,	25	}--
-ChangeItemList[2671]=	{	1782	,	36	,	8141	,	40	}--
-ChangeItemList[2672]=	{	1782	,	37	,	8141	,	40	}--
-ChangeItemList[2673]=	{	1782	,	38	,	8141	,	40	}--
-ChangeItemList[2674]=	{	1782	,	39	,	8141	,	40	}--
-ChangeItemList[2675]=	{	1782	,	40	,	8141	,	40	}--
-ChangeItemList[2676]=	{	1782	,	41	,	8141	,	40	}--
-ChangeItemList[2677]=	{	1782	,	42	,	8141	,	40	}--
-ChangeItemList[2678]=	{	1782	,	43	,	8141	,	40	}--
-ChangeItemList[2679]=	{	1782	,	44	,	8141	,	40	}--
-ChangeItemList[2680]=	{	1782	,	45	,	8141	,	40	}--
-ChangeItemList[2681]=	{	1782	,	46	,	8141	,	40	}--
-ChangeItemList[2682]=	{	1782	,	47	,	8141	,	40	}--
-ChangeItemList[2683]=	{	1782	,	48	,	8141	,	40	}--
-ChangeItemList[2684]=	{	1782	,	49	,	8141	,	40	}--
-ChangeItemList[2685]=	{	1782	,	50	,	8141	,	40	}--
-ChangeItemList[2686]=	{	1782	,	51	,	8141	,	80	}--
-ChangeItemList[2687]=	{	1782	,	52	,	8141	,	80	}--
-ChangeItemList[2688]=	{	1782	,	53	,	8141	,	80	}--
-ChangeItemList[2689]=	{	1782	,	54	,	8141	,	80	}--
-ChangeItemList[2690]=	{	1782	,	55	,	8141	,	80	}--
-ChangeItemList[2691]=	{	1782	,	56	,	8141	,	80	}--
-ChangeItemList[2692]=	{	1782	,	57	,	8141	,	80	}--
-ChangeItemList[2693]=	{	1782	,	58	,	8141	,	80	}--
-ChangeItemList[2694]=	{	1782	,	59	,	8141	,	80	}--
-ChangeItemList[2695]=	{	1782	,	60	,	8141	,	80	}--
-ChangeItemList[2696]=	{	1782	,	61	,	8141	,	80	}--
-ChangeItemList[2697]=	{	1782	,	62	,	8141	,	80	}--
-ChangeItemList[2698]=	{	1782	,	63	,	8141	,	80	}--
-ChangeItemList[2699]=	{	1782	,	64	,	8141	,	80	}--
-ChangeItemList[2700]=	{	1782	,	65	,	8141	,	80	}--
 
 
 
 
 
+
+--Массивы для феи
+autoSiLiaoID = {}			autoSiLiaoXG={}				autoSiLiaoLow={}
+autoSiLiaoID[1] = 2312		autoSiLiaoXG[1] = 2500		autoSiLiaoLow[1] = 7500
+autoSiLiaoID[2] = 5645		autoSiLiaoXG[2] = 5000		autoSiLiaoLow[2] = 7500
+autoSiLiaoID[3] = 0227		autoSiLiaoXG[3] = 2500		autoSiLiaoLow[3] = 7500
+autoSiLiaoID[4] = 5644		autoSiLiaoXG[4] = 5000		autoSiLiaoLow[4] = 7500
+
+autoSiLiaoFructID = {}				autoSiLiaoFructXG = {}			autoSiLiaoFructAttr = {}						autoSiLiaoFructProc = {}
+autoSiLiaoFructID[1]  = 0276		autoSiLiaoFructXG[1]  = 2		autoSiLiaoFructAttr[1]  = ITEMATTR_VAL_STR		autoSiLiaoFructProc[1]  = 1
+autoSiLiaoFructID[2]  = 0277		autoSiLiaoFructXG[2]  = 2		autoSiLiaoFructAttr[2]  = ITEMATTR_VAL_AGI		autoSiLiaoFructProc[2]  = 1
+autoSiLiaoFructID[3]  = 0278		autoSiLiaoFructXG[3]  = 2		autoSiLiaoFructAttr[3]  = ITEMATTR_VAL_DEX		autoSiLiaoFructProc[3]  = 1
+autoSiLiaoFructID[4]  = 0279		autoSiLiaoFructXG[4]  = 2		autoSiLiaoFructAttr[4]  = ITEMATTR_VAL_CON		autoSiLiaoFructProc[4]  = 1
+autoSiLiaoFructID[5]  = 0280		autoSiLiaoFructXG[5]  = 2		autoSiLiaoFructAttr[5]  = ITEMATTR_VAL_STA		autoSiLiaoFructProc[5]  = 1
+autoSiLiaoFructID[6]  = 0222		autoSiLiaoFructXG[6]  = 1		autoSiLiaoFructAttr[6]  = ITEMATTR_VAL_STR		autoSiLiaoFructProc[6]  = 1
+autoSiLiaoFructID[7]  = 0223		autoSiLiaoFructXG[7]  = 1		autoSiLiaoFructAttr[7]  = ITEMATTR_VAL_AGI		autoSiLiaoFructProc[7]  = 1
+autoSiLiaoFructID[8]  = 0224		autoSiLiaoFructXG[8]  = 1		autoSiLiaoFructAttr[8]  = ITEMATTR_VAL_DEX		autoSiLiaoFructProc[8]  = 1
+autoSiLiaoFructID[9]  = 0225		autoSiLiaoFructXG[9]  = 1		autoSiLiaoFructAttr[9]  = ITEMATTR_VAL_CON		autoSiLiaoFructProc[9]  = 1
+autoSiLiaoFructID[10] = 0226		autoSiLiaoFructXG[10] = 1		autoSiLiaoFructAttr[10] = ITEMATTR_VAL_STA		autoSiLiaoFructProc[10] = 1
+autoSiLiaoFructID[11] = 7003		autoSiLiaoFructXG[11] = 1		autoSiLiaoFructAttr[11] = ITEMATTR_VAL_STR		autoSiLiaoFructProc[11] = 2
+autoSiLiaoFructID[12] = 7004		autoSiLiaoFructXG[12] = 1		autoSiLiaoFructAttr[12] = ITEMATTR_VAL_AGI		autoSiLiaoFructProc[12] = 2
+autoSiLiaoFructID[13] = 7005		autoSiLiaoFructXG[13] = 1		autoSiLiaoFructAttr[13] = ITEMATTR_VAL_DEX		autoSiLiaoFructProc[13] = 2
+autoSiLiaoFructID[14] = 7006		autoSiLiaoFructXG[14] = 1		autoSiLiaoFructAttr[14] = ITEMATTR_VAL_CON		autoSiLiaoFructProc[14] = 2
+autoSiLiaoFructID[15] = 7007		autoSiLiaoFructXG[15] = 1		autoSiLiaoFructAttr[15] = ITEMATTR_VAL_STA		autoSiLiaoFructProc[15] = 2
+autoSiLiaoFructID[16] = 8233		autoSiLiaoFructXG[16] = 1		autoSiLiaoFructAttr[16] = ITEMATTR_VAL_STR		autoSiLiaoFructProc[16] = 4
+autoSiLiaoFructID[17] = 8234		autoSiLiaoFructXG[17] = 1		autoSiLiaoFructAttr[17] = ITEMATTR_VAL_AGI		autoSiLiaoFructProc[17] = 4
+autoSiLiaoFructID[18] = 8235		autoSiLiaoFructXG[18] = 1		autoSiLiaoFructAttr[18] = ITEMATTR_VAL_DEX		autoSiLiaoFructProc[18] = 4
+autoSiLiaoFructID[19] = 8236		autoSiLiaoFructXG[19] = 1		autoSiLiaoFructAttr[19] = ITEMATTR_VAL_CON		autoSiLiaoFructProc[19] = 4
+autoSiLiaoFructID[20] = 8237		autoSiLiaoFructXG[20] = 1		autoSiLiaoFructAttr[20] = ITEMATTR_VAL_STA		autoSiLiaoFructProc[20] = 4
+------------------------------------------------------------------------------------------------------------------------
+---Крафт колец
+Item_kole = {}
+--Item_kole[	ID	] 	=	{	Last	,	Next	]}
+--Силы
+Item_kole[8563]={ Next = 8646 , Last = 8563 }
+Item_kole[8646]={ Next = 8665 , Last = 8563 }
+Item_kole[8665]={ Next = 8676 , Last = 8646 }
+Item_kole[8676]={ Next = 8691 , Last = 8665 }
+Item_kole[8691]={ Next = 8870 , Last = 8676 }
+
+Item_kole[8870]={ Next = 8871 , Last = 8691 }
+Item_kole[8871]={ Next = 8872 , Last = 8870 }
+Item_kole[8872]={ Next = 8873 , Last = 8871 }
+Item_kole[8873]={ Next = 8874 , Last = 8872 }
+Item_kole[8874]={ Next = 8875 , Last = 8873 }
+Item_kole[8875]={ Next = 8876 , Last = 8874 }
+Item_kole[8876]={ Next = 8877 , Last = 8875 }
+Item_kole[8877]={ Next = 8878 , Last = 8876 }
+Item_kole[8878]={ Next = 8879 , Last = 8877 }
+Item_kole[8879]={ Next = 8880 , Last = 8878 }
+Item_kole[8980]={ Next = 8881 , Last = 8879 }
+Item_kole[8981]={ Next = 8882 , Last = 8880 }
+Item_kole[8982]={ Next = 8883 , Last = 8881 }
+
+--Души
+Item_kole[8564]={ Next = 8647 , Last = 8564 }
+Item_kole[8647]={ Next = 8666 , Last = 8564 }
+Item_kole[8666]={ Next = 8677 , Last = 8647 }
+Item_kole[8677]={ Next = 8692 , Last = 8666 }
+Item_kole[8692]={ Next = 8883 , Last = 8677 }
+
+
+Item_kole[8883]={ Next = 8884 , Last = 8692 }
+Item_kole[8884]={ Next = 8885 , Last = 8883 }
+Item_kole[8885]={ Next = 8886 , Last = 8884 }
+Item_kole[8886]={ Next = 8887 , Last = 8885 }
+Item_kole[8887]={ Next = 8888 , Last = 8886 }
+Item_kole[8888]={ Next = 8889 , Last = 8887 }
+Item_kole[8889]={ Next = 8890 , Last = 8888 }
+Item_kole[8890]={ Next = 8891 , Last = 8889 }
+Item_kole[8891]={ Next = 8892 , Last = 8890 }
+Item_kole[8892]={ Next = 8893 , Last = 8891 }
+Item_kole[8893]={ Next = 8894 , Last = 8892 }
+Item_kole[8894]={ Next = 8895 , Last = 8893 }
+Item_kole[8895]={ Next = 8895 , Last = 8894 }
+--Стойкости
+Item_kole[8565]={ Next = 8648 , Last = 8565 }
+Item_kole[8648]={ Next = 8667 , Last = 8565 }
+Item_kole[8667]={ Next = 8678 , Last = 8648 }
+Item_kole[8678]={ Next = 8693 , Last = 8667 }
+Item_kole[8693]={ Next = 8896 , Last = 8678 }
+
+Item_kole[8896]={ Next = 8897 , Last = 8693 }
+Item_kole[8897]={ Next = 8898 , Last = 8896 }
+Item_kole[8898]={ Next = 8899 , Last = 8897 }
+Item_kole[8899]={ Next = 8900 , Last = 8898 }
+Item_kole[8900]={ Next = 8901 , Last = 8899 }
+Item_kole[8901]={ Next = 8902 , Last = 8900 }
+Item_kole[8902]={ Next = 8903 , Last = 8901 }
+Item_kole[8903]={ Next = 8904 , Last = 8902 }
+Item_kole[8904]={ Next = 8905 , Last = 8903 }
+Item_kole[8905]={ Next = 8906 , Last = 8904 }
+Item_kole[8906]={ Next = 8907 , Last = 8905 }
+Item_kole[8907]={ Next = 8908 , Last = 8906 }
+Item_kole[8908]={ Next = 8908 , Last = 8907 }
+--Точности
+Item_kole[8566]={ Next = 8649 , Last = 8566 }
+Item_kole[8649]={ Next = 8668 , Last = 8566 }
+Item_kole[8668]={ Next = 8679 , Last = 8649 }
+Item_kole[8679]={ Next = 8694 , Last = 8668 }
+Item_kole[8694]={ Next = 8909 , Last = 8679 }
+
+Item_kole[8909]={ Next = 8910 , Last = 8694 }
+Item_kole[8910]={ Next = 8911 , Last = 8909 }
+Item_kole[8911]={ Next = 8912 , Last = 8910 }
+Item_kole[8912]={ Next = 8913 , Last = 8911 }
+Item_kole[8913]={ Next = 8914 , Last = 8912 }
+Item_kole[8914]={ Next = 8915 , Last = 8913 }
+Item_kole[8915]={ Next = 8916 , Last = 8914 }
+Item_kole[8916]={ Next = 8917 , Last = 8915 }
+Item_kole[8917]={ Next = 8918 , Last = 8916 }
+Item_kole[8918]={ Next = 8919 , Last = 8917 }
+Item_kole[8919]={ Next = 8920 , Last = 8918 }
+Item_kole[8920]={ Next = 8921 , Last = 8919 }
+Item_kole[8921]={ Next = 8921 , Last = 8920 }
+--Обязьяны
+Item_kole[8567]={ Next = 8650 , Last = 8567 }
+Item_kole[8650]={ Next = 8669 , Last = 8567 }
+Item_kole[8669]={ Next = 8680 , Last = 8650 }
+Item_kole[8680]={ Next = 8695 , Last = 8669 }
+Item_kole[8695]={ Next = 8922 , Last = 8680 }
+
+Item_kole[8922]={ Next = 8923 , Last = 8695 }
+Item_kole[8923]={ Next = 8924 , Last = 8922 }
+Item_kole[8924]={ Next = 8925 , Last = 8923 }
+Item_kole[8925]={ Next = 8926 , Last = 8924 }
+Item_kole[8926]={ Next = 8927 , Last = 8925 }
+Item_kole[8927]={ Next = 8928 , Last = 8926 }
+Item_kole[8928]={ Next = 8929 , Last = 8927 }
+Item_kole[8929]={ Next = 8930 , Last = 8928 }
+Item_kole[8930]={ Next = 8931 , Last = 8929 }
+Item_kole[8931]={ Next = 8932 , Last = 8930 }
+Item_kole[8932]={ Next = 8933 , Last = 8931 }
+Item_kole[8933]={ Next = 8934 , Last = 8932 }
+Item_kole[8934]={ Next = 8934 , Last = 8933 }
+--Свободы
+Item_kole[8568]={ Next = 8651 , Last = 8568 }
+Item_kole[8651]={ Next = 8670 , Last = 8568 }
+Item_kole[8670]={ Next = 8681 , Last = 8651 }
+Item_kole[8681]={ Next = 8696 , Last = 8670 }
+Item_kole[8696]={ Next = 8935 , Last = 8681 }
+
+Item_kole[8935]={ Next = 8936 , Last = 8696 }
+Item_kole[8936]={ Next = 8937 , Last = 8935 }
+Item_kole[8937]={ Next = 8938 , Last = 8936 }
+Item_kole[8938]={ Next = 8939 , Last = 8937 }
+Item_kole[8939]={ Next = 8940 , Last = 8938 }
+Item_kole[8940]={ Next = 8941 , Last = 8939 }
+Item_kole[8941]={ Next = 8942 , Last = 8940 }
+Item_kole[8942]={ Next = 8943 , Last = 8941 }
+Item_kole[8943]={ Next = 8944 , Last = 8942 }
+Item_kole[8944]={ Next = 8945 , Last = 8943 }
+Item_kole[8945]={ Next = 8946 , Last = 8944 }
+Item_kole[8946]={ Next = 8947 , Last = 8945 }
+Item_kole[8947]={ Next = 8947 , Last = 8946 }
+
+--Атаки
+Item_kole[8569]={ Next = 8652 , Last = 8569 }
+Item_kole[8652]={ Next = 8671 , Last = 8569 }
+Item_kole[8671]={ Next = 8682 , Last = 8652 }
+Item_kole[8682]={ Next = 8697 , Last = 8671 }
+Item_kole[8697]={ Next = 9012 , Last = 8682 }
+
+Item_kole[9012]={ Next = 8948 , Last = 8697 }
+Item_kole[8948]={ Next = 8949 , Last = 9012 }
+Item_kole[8949]={ Next = 8950 , Last = 8948 }
+Item_kole[8950]={ Next = 8951 , Last = 8949 }
+Item_kole[8951]={ Next = 8952 , Last = 8950 }
+Item_kole[8952]={ Next = 8953 , Last = 8951 }
+Item_kole[8953]={ Next = 8954 , Last = 8952 }
+Item_kole[8954]={ Next = 8955 , Last = 8953 }
+Item_kole[8955]={ Next = 8956 , Last = 8954 }
+Item_kole[8956]={ Next = 8957 , Last = 8955 }
+Item_kole[8957]={ Next = 8958 , Last = 8956 }
+Item_kole[8958]={ Next = 8959 , Last = 8957 }
+Item_kole[8959]={ Next = 8959 , Last = 8958 }
+
+--Защиты 
+Item_kole[8569]={ Next = 8652 , Last = 8569 }
+Item_kole[8652]={ Next = 8671 , Last = 8569 }
+Item_kole[8671]={ Next = 8682 , Last = 8652 }
+Item_kole[8682]={ Next = 8697 , Last = 8671 }
+Item_kole[8697]={ Next = 8960 , Last = 8682 }
+
+Item_kole[8960]={ Next = 8961 , Last = 8697 }
+Item_kole[8961]={ Next = 8962 , Last = 8960 }
+Item_kole[8962]={ Next = 8963 , Last = 8961 }
+Item_kole[8963]={ Next = 8964 , Last = 8962 }
+Item_kole[8964]={ Next = 8965 , Last = 8963 }
+Item_kole[8965]={ Next = 8966 , Last = 8964 }
+Item_kole[8966]={ Next = 8967 , Last = 8965 }
+Item_kole[8967]={ Next = 8968 , Last = 8966 }
+Item_kole[8968]={ Next = 8969 , Last = 8967 }
+Item_kole[8969]={ Next = 8970 , Last = 8968 }
+Item_kole[8970]={ Next = 8971 , Last = 8969 }
+Item_kole[8971]={ Next = 8972 , Last = 8970 }
+Item_kole[8972]={ Next = 8972 , Last = 8971 }
+
+
+--попадания
+Item_kole[8571]={ Next = 8654 , Last = 8571 }
+Item_kole[8654]={ Next = 8673 , Last = 8571 }
+Item_kole[8673]={ Next = 8684 , Last = 8654 }
+Item_kole[8684]={ Next = 8699 , Last = 8673 }
+Item_kole[8699]={ Next = 8973 , Last = 8684 }
+
+Item_kole[8973]={ Next = 8974 , Last = 8699 }
+Item_kole[8974]={ Next = 8975 , Last = 8973 }
+Item_kole[8975]={ Next = 8976 , Last = 8974 }
+Item_kole[8976]={ Next = 8977 , Last = 8975 }
+Item_kole[8977]={ Next = 8978 , Last = 8976 }
+Item_kole[8978]={ Next = 8979 , Last = 8977 }
+Item_kole[8979]={ Next = 8980 , Last = 8978 }
+Item_kole[8980]={ Next = 8981 , Last = 8979 }
+Item_kole[8981]={ Next = 8982 , Last = 8980 }
+Item_kole[8982]={ Next = 8983 , Last = 8981 }
+Item_kole[8983]={ Next = 8984 , Last = 8982 }
+Item_kole[8984]={ Next = 8985 , Last = 8983 }
+Item_kole[8985]={ Next = 8985 , Last = 8984 }
+ 
+-- Скорости
+Item_kole[8570]={ Next = 8653 , Last = 8570 }
+Item_kole[8653]={ Next = 8672 , Last = 8570 }
+Item_kole[8672]={ Next = 8683 , Last = 8653 }
+Item_kole[8683]={ Next = 8698 , Last = 8672 }
+Item_kole[8698]={ Next = 8986 , Last = 8683 }
+
+Item_kole[8986]={ Next = 8987 , Last = 8698 }
+Item_kole[8987]={ Next = 8988 , Last = 8986 }
+Item_kole[8988]={ Next = 8989 , Last = 8987 }
+Item_kole[8989]={ Next = 8990 , Last = 8988 }
+Item_kole[8990]={ Next = 8991 , Last = 8989 }
+Item_kole[8991]={ Next = 8992 , Last = 8990 }
+Item_kole[8992]={ Next = 8993 , Last = 8991 }
+Item_kole[8993]={ Next = 8994 , Last = 8992 }
+Item_kole[8994]={ Next = 8995 , Last = 8993 }
+Item_kole[8995]={ Next = 8996 , Last = 8994 }
+Item_kole[8996]={ Next = 8997 , Last = 8995 }
+Item_kole[8997]={ Next = 8998 , Last = 8996 }
+Item_kole[8998]={ Next = 8998 , Last = 8997 }
+ 
+ --Уклонения
+Item_kole[8573]={ Next = 8656 , Last = 8573 }
+Item_kole[8656]={ Next = 8675 , Last = 8573 }
+Item_kole[8675]={ Next = 8686 , Last = 8656 }
+Item_kole[8686]={ Next = 8701 , Last = 8675 }
+Item_kole[8701]={ Next = 8999 , Last = 8686 }
+Item_kole[8999]={ Next = 9000 , Last = 8701 }
+Item_kole[9000]={ Next = 9001 , Last = 8999 }
+Item_kole[9001]={ Next = 9002 , Last = 9000 }
+Item_kole[9002]={ Next = 9003 , Last = 9001 }
+Item_kole[9003]={ Next = 9004 , Last = 9002 }
+Item_kole[9004]={ Next = 9005 , Last = 9003 }
+Item_kole[9005]={ Next = 9006 , Last = 9004 }
+Item_kole[9006]={ Next = 9007 , Last = 9005 }
+Item_kole[9007]={ Next = 9008 , Last = 9006 }
+Item_kole[9008]={ Next = 9009 , Last = 9007 }
+Item_kole[9009]={ Next = 9010 , Last = 9008 }
+Item_kole[9010]={ Next = 9011 , Last = 9009 }
+Item_kole[9011]={ Next = 9011 , Last = 9010 }
+
+
+
+EXPparty = {}
+LocalChat = {}
+
+DropEXP1 = {}
+DropEXP2 = {}
+DropEXP3 = {}
+DropEXP4 = {}
+DropEXP5 = {}
+DropEXP6 = {}
+DropEXP7 = {}
+
+Drop1 = {}
+Drop2 = {}
+Drop3 = {}
+Drop4 = {}
+Drop5 = {}
+Drop6 = {}
+Drop7 = {}
+Mana = {}
+Kovka = {}
+Sochet = {}
+Vstavka = {}
+Apparel = {}
+
+Skolz1 = {}
+Skolz2 = {}
+
+leg1 = {}
+leg2 = {}
+
+stroi1 = {}
+stroi2 = {} 
+
+dosp1 = {} 
+dosp2 = {}
+
+bik1 = {}
+bik2 = {}
+
+bers1 = {}
+bers2 = {}
+
+energ1 = {}
+energ2 = {}
+
+ukrep1 = {}
+ukrep2 = {}
+effff = {}
+acc1 = {}
+acc2 = {}
+gr = {}

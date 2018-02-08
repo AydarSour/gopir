@@ -1,7 +1,5 @@
---Функции при использовании скиллов
-
-print("‡ Јаг§Є  skilleffect.lua")
-
+print("Loading skilleffect.lua")
+print("Program started".."haha,resource\\script\\calculate\\")
 
 dofile(GetResPath("script\\calculate\\exp_and_level.lua"))
 dofile(GetResPath("script\\calculate\\exp_and_level.lua"))
@@ -17,6 +15,7 @@ dofile(GetResPath("script\\calculate\\Look.lua"))
 dofile(GetResPath("script\\calculate\\forge.lua"))
 dofile(GetResPath("script\\calculate\\ItemGetMission.lua"))
 
+
 CheckDmgChaNameTest = {}
 CheckDmgChaNameTest [0] = "Re©YЁKОЙ©зАБ"
 CheckDmgChaNameTest [1] = "Carsise"      
@@ -24,107 +23,72 @@ CheckDmgChaNameTest [2] = "I am rubbish"
 CheckDmgChaNameTest [3] = "CG mao mao"      
 CheckDmgChaNameTest [4] = "Chief mate against"
 
---
-BOSSWOD = {}
-BOSSWOD[978] = 12
-BOSSWOD[796] = 12
-BOSSWOD[685] = 12
-BOSSWOD[815] = 12
 
-
--- 0086    Теневой удар по боссам Абаддона
 BOSSXYSJ = {}
-BOSSXYSJ[979] = RAID_Skill_for_boss * 3    -- Барон-фантом
-BOSSXYSJ[980] = RAID_Skill_for_boss * 12    -- Огненный демон
-BOSSXYSJ[981] = RAID_Skill_for_boss * 6    -- Злобное отродье
-BOSSXYSJ[982] = RAID_Skill_for_boss * 4    -- Тайран
-BOSSXYSJ[983] = RAID_Skill_for_boss * 12    -- Феникс
-BOSSXYSJ[984] = RAID_Skill_for_boss * 16    -- Отчаяние
-BOSSXYSJ[985] = RAID_Skill_for_boss * 16    -- Дракан
-BOSSXYSJ[986] = RAID_Skill_for_boss * 12    -- Тидаль
-BOSSXYSJ[987] = RAID_Skill_for_boss * 4    -- Хардин
-BOSSXYSJ[988] = RAID_Skill_for_boss * 4    -- Кара
-BOSSXYSJ[789] = RAID_Skill_for_boss * 5    -- БД
-BOSSXYSJ[807] = RAID_Skill_for_boss * 5    --Барба
-BOSSXYSJ[805] = RAID_Skill_for_boss * 5    --КМД
---BOSSXYSJ[] = RAID_Skill_for_boss * 
+BOSSXYSJ[979] = 1
+BOSSXYSJ[980] = 12
+BOSSXYSJ[981] = 6
+BOSSXYSJ[982] = 4
+BOSSXYSJ[983] = 12
+BOSSXYSJ[984] = 16
+BOSSXYSJ[985] = 16
+BOSSXYSJ[986] = 12
+BOSSXYSJ[987] = 4
+BOSSXYSJ[988] = 4
 
--- 0095    Ослабление по боссам 
 BOSSSJSJ = {}
-BOSSSJSJ[979] = RAID_Skill_for_boss * 8
-BOSSSJSJ[980] = RAID_Skill_for_boss * 1
-BOSSSJSJ[981] = RAID_Skill_for_boss * 6
-BOSSSJSJ[982] = RAID_Skill_for_boss * 4
-BOSSSJSJ[983] = RAID_Skill_for_boss * 6
-BOSSSJSJ[984] = RAID_Skill_for_boss * 8
-BOSSSJSJ[985] = RAID_Skill_for_boss * 8
-BOSSSJSJ[986] = RAID_Skill_for_boss * 6
-BOSSSJSJ[987] = RAID_Skill_for_boss * 4
-BOSSSJSJ[988] = RAID_Skill_for_boss * 4
-BOSSSJSJ[789] = RAID_Skill_for_boss * 3
-BOSSSJSJ[807] = RAID_Skill_for_boss * 5
-BOSSSJSJ[805] = RAID_Skill_for_boss * 5
---BOSSSJSJ[] = RAID_Skill_for_boss * 
+BOSSSJSJ[979] = 8
+BOSSSJSJ[980] = 1
+BOSSSJSJ[981] = 6
+BOSSSJSJ[982] = 4
+BOSSSJSJ[983] = 12
+BOSSSJSJ[984] = 16
+BOSSSJSJ[985] = 16
+BOSSSJSJ[986] = 12
+BOSSSJSJ[987] = 4
+BOSSSJSJ[988] = 4
 
--- 0094    Калечащий выстрел по боссам 
 BOSSTJSJ = {}
-BOSSTJSJ[979] = RAID_Skill_for_boss * 8
-BOSSTJSJ[980] = RAID_Skill_for_boss * 1
-BOSSTJSJ[981] = RAID_Skill_for_boss * 6
-BOSSTJSJ[982] = RAID_Skill_for_boss * 4
-BOSSTJSJ[983] = RAID_Skill_for_boss * 6
-BOSSTJSJ[984] = RAID_Skill_for_boss * 8
-BOSSTJSJ[985] = RAID_Skill_for_boss * 6
-BOSSTJSJ[986] = RAID_Skill_for_boss * 6
-BOSSTJSJ[987] = RAID_Skill_for_boss * 4
-BOSSTJSJ[988] = RAID_Skill_for_boss * 4
-BOSSTJSJ[789] = RAID_Skill_for_boss * 3
-BOSSTJSJ[807] = RAID_Skill_for_boss * 3
-BOSSTJSJ[805] = RAID_Skill_for_boss * 5
---BOSSTJSJ[] = RAID_Skill_for_boss * 
+BOSSTJSJ[979] = 8
+BOSSTJSJ[980] = 1
+BOSSTJSJ[981] = 6
+BOSSTJSJ[982] = 4
+BOSSTJSJ[983] = 12
+BOSSTJSJ[984] = 16
+BOSSTJSJ[985] = 16
+BOSSTJSJ[986] = 12
+BOSSTJSJ[987] = 4
+BOSSTJSJ[988] = 4
 
--- 0104    Печать старейшины по боссам 
 BOSSXZSJ = {}
-BOSSXZSJ[979] = RAID_Skill_for_boss * 6
-BOSSXZSJ[980] = RAID_Skill_for_boss * 6
-BOSSXZSJ[981] = RAID_Skill_for_boss * 8
-BOSSXZSJ[982] = RAID_Skill_for_boss * 8
-BOSSXZSJ[983] = RAID_Skill_for_boss * 6
-BOSSXZSJ[984] = RAID_Skill_for_boss * 4
-BOSSXZSJ[985] = RAID_Skill_for_boss * 1
-BOSSXZSJ[986] = RAID_Skill_for_boss * 6
-BOSSXZSJ[987] = RAID_Skill_for_boss * 4
-BOSSXZSJ[988] = RAID_Skill_for_boss * 4
-BOSSXZSJ[789] = RAID_Skill_for_boss * 3
-BOSSXZSJ[807] = RAID_Skill_for_boss * 9
-BOSSXZSJ[805] = RAID_Skill_for_boss * 9
---BOSSXZSJ[] = RAID_Skill_for_boss * 
+BOSSXZSJ[979] = 12
+BOSSXZSJ[980] = 12
+BOSSXZSJ[981] = 16
+BOSSXZSJ[982] = 16
+BOSSXZSJ[983] = 12
+BOSSXZSJ[984] = 4
+BOSSXZSJ[985] = 1
+BOSSXZSJ[986] = 6
+BOSSXZSJ[987] = 4
+BOSSXZSJ[988] = 4
 
--- 0105    Росчерк тени по боссам 
 BOSSAYSJ = {}
-BOSSAYSJ[979] = RAID_Skill_for_boss * 6
-BOSSAYSJ[980] = RAID_Skill_for_boss * 7
-BOSSAYSJ[981] = RAID_Skill_for_boss * 6
-BOSSAYSJ[982] = RAID_Skill_for_boss * 7
-BOSSAYSJ[983] = RAID_Skill_for_boss * 6
-BOSSAYSJ[984] = RAID_Skill_for_boss * 4
-BOSSAYSJ[985] = RAID_Skill_for_boss * 1
-BOSSAYSJ[986] = RAID_Skill_for_boss * 6
-BOSSAYSJ[987] = RAID_Skill_for_boss * 4
-BOSSAYSJ[988] = RAID_Skill_for_boss * 4 
-BOSSAYSJ[789] = RAID_Skill_for_boss * 3
-BOSSAYSJ[807] = RAID_Skill_for_boss * 3
-BOSSAYSJ[805] = RAID_Skill_for_boss * 3  
---BOSSAYSJ[] =  
+BOSSAYSJ[979] = 12
+BOSSAYSJ[980] = 12
+BOSSAYSJ[981] = 16
+BOSSAYSJ[982] = 16
+BOSSAYSJ[983] = 12
+BOSSAYSJ[984] = 4
+BOSSAYSJ[985] = 1
+BOSSAYSJ[986] = 6
+BOSSAYSJ[987] = 4
+BOSSAYSJ[988] = 4
 
---Расчет дропа
-function Check_Baoliao(ATKER, DEFER, ... ) 
+
+
+
+function Check_Baoliao(ATKER, DEFER, ... ) --[[ЕР¶ЁКЗ·с±©БП,ґ«Ил№Ґ»чХЯµИј¶ЎўКЬ»чХЯµИј¶Ўў№Ґ»чХЯ±©БПВКЎўКЬ»чХЯ±©БПВК]]--
     local diaoliao_count = arg.n 
-	local map_name_ATKER = GetChaMapName ( ATKER )
-	local RAID_MAP = 1
-	local RAID_Mor = 1
-	local RAID_EV_PL = 1
-	local RAID_EVENT_TERR=1
 	--LuaPrint("Enter function Check_Baoliao(Atker,Defer,mf_atker,mf_defer) --[[determine if it is drop item]]--".."\n" ) 
 	--LG("Drop List", "Enter function Check_Baoliao(Atker,Defer,mf_atker,mf_defer) --[[determine if it is drop item]]--","\n" ) 
 	Atker = TurnToCha ( ATKER ) 
@@ -141,43 +105,18 @@ function Check_Baoliao(ATKER, DEFER, ... )
 	local MF_VIP_RAID_NEWBIE = 1
 	local MF_VIP_RAID = 1
 	local StateLv = GetChaStateLv ( ATKER , STATE_SBBLGZ )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( ATKER )
 	item = {} 
 	local bsmf = 1
 	bsmf = GetChaAttr(ATKER, ATTR_STATEV_MF) 
-	
-	if SCHET >= 0 and SCHET < SCORE_PL_1 then
-			RAID_EV_PL = 1
-		elseif SCHET > SCORE_PL_1 and SCHET < SCORE_PL_2 then
-			RAID_EV_PL = 2.02
-		elseif SCHET > SCORE_PL_2 and SCHET < SCORE_PL_3 then
-			RAID_EV_PL = 2.12
-		elseif SCHET > SCORE_PL_3 and SCHET < SCORE_PL_4 then
-			RAID_EV_PL = 2.22
-		elseif SCHET > SCORE_PL_4 and SCHET < SCORE_PL_5 then
-			RAID_EV_PL = 2.42
-		elseif SCHET > SCORE_PL_5 and SCHET < SCORE_PL_6 then
-			RAID_EV_PL = 2.84
-		elseif SCHET > SCORE_PL_6 and SCHET < SCORE_PL_7 then
-			RAID_EV_PL = 3.12
-		elseif SCHET > SCORE_PL_7 and SCHET < SCORE_PL_8 then
-			RAID_EV_PL = 4.22
-		elseif SCHET > SCORE_PL_8 and SCHET < SCORE_PL_9 then
-			RAID_EV_PL = 4.44
-		elseif SCHET > SCORE_PL_9 and SCHET < SCORE_PL_10 then
-			RAID_EV_PL = 5.88
-		elseif SCHET > SCORE_PL_10 and SCHET < SCORE_PL_11 then
-			RAID_EV_PL = 6.00
-		end
-	
 	if bsmf < 100 or bsmf == nil then 
 		bsmf = 100 
 	end
 
 	if IsPlayer(Defer) == 1 then
+	--LG("Drop List","is PVP")	
 		if IsInGymkhana(Defer) == 1 then 
-				count = 1 
+		--LG("Drop List","is in PK")
+			count = 1 
 			if lv_defer - lv_atker >= 5 then
 				item[count] = 1
 			elseif lv_defer - lv_atker <= (- 5)  then
@@ -185,6 +124,8 @@ function Check_Baoliao(ATKER, DEFER, ... )
 			else
 				item[count] = 2
 			end
+			--LuaPrint("Out function Check_Baoliao(lv_atker,lv_defer,mf_atker,mf_defer) --[[determine if it is drop item]]--") 
+			--LG("Drop List" , "function Check_Baoliao : " , "count = " , count , "item[1] =" ,item[1] , "item[2] = " , item[2], "item[3] = " , item[3] ,  "item[4] = " ,item[4] , "item[5] = " , item[5] , "item[6] = " ,item[6] , "item[7] = " ,item[7], "item[8] = " ,item[8], "item[9] = " ,item[9], "item[10] = " ,item[10]) 
 			SetItemFall ( count , item[1] , item[2] , item[3] , item[4] , item[5] , item[6], item[7] ,item[8],item[9],item[10] )
 		end 
 	else
@@ -194,83 +135,52 @@ function Check_Baoliao(ATKER, DEFER, ... )
 			--LG("baoliao_err", "function Check_Baoliao : " , " drop list exceeded 10: diaoliao_count = " , diaoliao_count ) 
 			return 
 		end 
-	--Рейты на карте
-	if map_name_ATKER =="abandonedcity" or map_name_ATKER=="abandonedcity2" or map_name_ATKER=="abandonedcity3" then 
-		RAID_MAP=0.5 -- Шанс в ФС
-	elseif map_name_ATKER == "darkswamp" then
-		RAID_MAP=0.5 -- Шанс в ДС
-	elseif map_name_ATKER == "garner2" then
-		RAID_MAP=0.5 -- Шанс в ХС
-	elseif map_name_ATKER == "07xmas" then
-		RAID_MAP=0.5 -- Шанс в СНВ
-	elseif map_name_ATKER == "puzzleworld" or map_name_ATKER == "puzzleworld2"  then
-		RAID_MAP=0.9 -- Шанс в ДВ
-	elseif map_name_ATKER == "garner" or map_name_ATKER == "darkblue" or map_name_ATKER == "magicsea" then
-		RAID_MAP=0.7 -- Шанс в Лоаках
-	elseif map_name_ATKER == "bountypk"  then
-		RAID_MAP=0.5 -- Шанс в Лоаках
-	else 
-		RAID_MAP=0.4 -- Не данж 
-	end
-	
-	if Cha_Boat ~= nil then 
-		RAID_Mor = 0.08
-	end 
-	--Повышение дропа от зя бу буу
-	if StateLv >= 0 and StateLv <= 10 then
-			
-			if StateLv <= 1  or StateLv==nil then 
-				MF_RAID_STATE = 1
-			elseif  StateLv > 1 then
-				MF_RAID_STATE = StateLv
+		
+		if StateLv >= 0 and StateLv <= 10 then
+			if StateLv == 1 then
+				MF_RAID_STATE = StateLv + 1
 			end
-			
-		--Доп дроп для владельца карты
-	  local Map = GetChaMapName(ATKER) -- получаем карту
-	  local name = GetChaDefaultName(ATKER)
-	  local Guild_ID = GetChaGuildID(ATKER)
-	  local Guild_name = GetGuildName( Guild_ID )
-		 if (Guild_name ==TerrDark) or  (Guild_name ==TerrGarn) or  (Guild_name ==TerrMagi) or (name==TerrDarkSol) or (name==TerrGarnSol) or (name==TerrMagiSol)  then
-			 if Map == "garner" then 
-				 if Guild_name==TerrGarn or TerrGarnSol == name then
-					 RAID_MAP = RAID_MAP + 1.5
-				 end
-			 end
-			 if Map == "magicsea" then 
-				 if Guild_name==TerrMagi or TerrMagiSol == name then
-					 RAID_MAP = RAID_MAP + 1.5
-				 end
+			if StateLv == 2 then
+				MF_RAID_STATE = 2.5
 			end
-			 if Map == "darkblue" then 
-				 if Guild_name==TerrDark or TerrDarkSol == name then
-					 RAID_MAP = RAID_MAP + 1.5
-				 end
-			 end
+			if StateLv == 3 then
+				MF_RAID_STATE = 3
 			end
-			
-
---Рейты для новых игроков до 80 уровня Дроп выше
+			if StateLv == 4 then
+				MF_RAID_STATE = 3.5
+			end
+			if StateLv == 5 then
+				MF_RAID_STATE = 7
+			end
+			if StateLv == 6 then
+				MF_RAID_STATE = 10
+			end
+			if StateLv == 7 then
+				MF_RAID_STATE = 20
+			end
+			--тест дроп?
+			if StateLv == 8 then
+				MF_RAID_STATE = 100
+			end
+			--тест дроп?чо?падает вс?
+			if StateLv == 9 then
+				MF_RAID_STATE = 1000
+			end
+		end
+--Рейт?для новы?игроко?до 40 уров? Дроп выше
 	if lv_atker >= 1 and lv_atker <= 10 then
-		LVL_DROP = 3* Raid_EXP_FUN
+		LVL_DROP = 3
 	elseif lv_atker >= 11 and lv_atker <= 20 then
-		LVL_DROP = 2.5* Raid_EXP_FUN
+		LVL_DROP = 2.5
 	elseif lv_atker >= 21 and lv_atker <= 30 then
-		LVL_DROP = 2.4* Raid_EXP_FUN
-	elseif lv_atker >= 31 and lv_atker <= 40 then
-		LVL_DROP = 2.3* Raid_EXP_FUN
-	elseif lv_atker >= 41 and lv_atker <= 50 then
-		LVL_DROP = 1.3* Raid_EXP_FUN
-	elseif lv_atker >= 51 and lv_atker <= 60 then
-		LVL_DROP = 1.2* Raid_EXP_FUN
-	elseif lv_atker >= 61 and lv_atker <= 70 then
-		LVL_DROP = 1.1* Raid_EXP_FUN
-	elseif lv_atker >= 71 and lv_atker <= 80 then
-		LVL_DROP = 1.0* Raid_EXP_FUN
+		LVL_DROP = 2
+	elseif lv_atker >= 31 and lv_atker <= 39 then
+		LVL_DROP = 1.5
 	else
-		LVL_DROP = 1* Raid_EXP_FUN
+		LVL_DROP = 1
 	end
-
---Авто рейты на выходные
+--------------------------------------------------
+--Авто рейт?на выходные
 	if AUTO_RAID_MF_START == 1 then
 		local now_week= os.date("%w")
 		local now_hour= os.date("%H")
@@ -279,19 +189,19 @@ function Check_Baoliao(ATKER, DEFER, ... )
 		now_hour= tonumber(now_hour)
 		now_miniute= tonumber(now_miniute)
 		local CheckDateNum = now_hour*100 +now_miniute
-		--начало в пятницу с 19.00
+		--начало ??тниц??19.00
 		if now_week == 5 then
 			if CheckDateNum >= 1900 then
-				AUTO_RAID_MF = 1.3
+				AUTO_RAID_MF = 2
 			else
 				AUTO_RAID_MF = 1
 			end
 		elseif now_week == 6 or now_week == 7 then
-			AUTO_RAID_MF = 1.3
-		--конец в понедельник в 12.00
+			AUTO_RAID_MF = 2
+		--коне??понедельни??12.00
 		elseif now_week == 1 then
 			if CheckDateNum <= 1200 then
-				AUTO_RAID_MF = 1.3
+				AUTO_RAID_MF = 2
 			else
 				AUTO_RAID_MF = 1
 			end
@@ -303,37 +213,46 @@ function Check_Baoliao(ATKER, DEFER, ... )
 	end
 		for i = 1 , diaoliao_count , 1 do 
 			if arg[i] >= 100 then 
-				mf = math.min ( 1, 100 / arg[i] * ( bsmf / 100 ) ) * MF_RAID * MF_RAID_STATE * LVL_DROP * AUTO_RAID_MF * MF_VIP_RAID_NEWBIE * MF_VIP_RAID * RAID_MAP  * RAID_Mor * RAID_EVENT_TERR * RAID_EV_PL
+				mf = math.min ( 1, 100 / arg[i] * ( bsmf / 100 ) ) * MF_RAID * MF_RAID_STATE * LVL_DROP * AUTO_RAID_MF * MF_VIP_RAID_NEWBIE * MF_VIP_RAID
+				--perm1 = arg[i]
+				--perm2 = bsmf / 100
+				
+				--Notice ("arg[i] = "..perm1..", bsmf = "..perm2..", MF_RAID = "..MF_RAID..", MF_RAID_STATE = "..MF_RAID_STATE..", LVL_DROP = "..LVL_DROP..", AUTO_RAID_MF = "..AUTO_RAID_MF)
+				--Notice(mf)
 				a = Percentage_Random(mf) 
 				if a == 1 then 
 					count = count + 1 
 					item[count] = i 
 				end 
-							else 
+			else 
 				--LG("baoliao_err", "function Check_Baoliao : " , " drop item rate error ", "Round", i , "kind of drop list rate= " , arg[i] )  
-							end 
+			end 
 		end 
 		--LG("Drop List" , "function Check_Baoliao : " , "count = " , count , "item[1] =" ,item[1] , "item[2] = " , item[2], "item[3] = " , item[3] ,  "item[4] = " ,item[4] , "item[5] = " , item[5] , "item[6] = " ,item[6] , "item[7] = " ,item[7], "item[8] = " ,item[8], "item[9] = " ,item[9], "item[10] = " ,item[10]) 
 		SetItemFall ( count , item[1] , item[2] , item[3] , item[4] , item[5] , item[6], item[7] ,item[8],item[9],item[10] )  
 	end
+end 
 
-	end 
-end
---генерация дропа с моба
-function Check_SpawnResource ( ATKER, DEFER , lv_skill , diaoliao_count , ...) 
+
+function Check_SpawnResource ( ATKER, DEFER , lv_skill , diaoliao_count , ...) --[[ЕР¶ЁКЗ·с±©їу,јјДЬµИј¶,±©їуёЕВК]]--
+	--LuaPrint("Enter function Check_SpawnResource  --[[determine if mine burst]]--".."\n" ) 
 	item = {} 
 	local count = 0 
 	local bsmf=1  
+	--LG("mine burst", "mine burst rate= ", bsmf ,"\n") 
 	if diaoliao_count <= 0 or diaoliao_count > 10 then 
-		
+		--LG("mine burst_err", "function Check_mine burst : " , " drop items exceeded 6: diaoliao_count = " , diaoliao_count ) 
 		return 
 	end 
+	
+--	local SpItemAdd = 1
+--	local Take_Item = 0
 	local ResourceGet_RAID = 1
 	local ResourceItemUse_Check = 0
 	ResourceItemUse_Check = CheckCha_ResourceItemUse ( ATKER )
 	
 	if ResourceItemUse_Check == 1 then
-		ResourceGet_RAID = 4
+		ResourceGet_RAID = 2
 	end
 
 	local UnNormal_ResourceID_Num = 1
@@ -346,17 +265,18 @@ function Check_SpawnResource ( ATKER, DEFER , lv_skill , diaoliao_count , ...)
 	local Un_C = 0
 	
 	for Un_C = 0 , UnNormal_ResourceID_Num , 1 do
-		if Resource_ID == UnNormal_ResourceID[Un_C] then
+		if Resource_ID == UnNormal_ResourceID[Un_C] then				----МШКвЧКФґУГёЯј¶·ҐДѕё«єНїуёдОЮР§
 			ResourceGet_RAID = 1
 		end
 	end
+
 	local Tree_ID = GetChaTypeID( DEFER )
 	local Tree_hp = Hp( DEFER )
 	local i = 0
 	
-	for Un_C = 0 , UnNormal_ResourceID_Num , 1 do	
+	for Un_C = 0 , UnNormal_ResourceID_Num , 1 do						----МШКвЧКФґјјДЬµИј¶ОЮР§
 		if Tree_ID == UnNormal_ResourceID[Un_C] then
-lv_skill = 0
+				lv_skill = 0
 		end
 	end
 
@@ -365,14 +285,15 @@ lv_skill = 0
 			mf = math.min ( 1, 100 / arg[i] * bsmf * (1 + lv_skill * 0.1 ) ) * ResourceGet_RAID * Resource_RAID_ADJUST
 			a = Percentage_Random(mf) 
 			if a == 1 then 
-count = count + 1 
-item[count] = i 
+				count = count + 1 
+				item[count] = i 
 			end 
 		else 
 			--LG("mine burst_err", "function Check_SpawnResource : " , " drop item rate error ", "Round", i , "kind of drop list rate= " , arg[i] )  
 		end 
 	end 
-
+	--LuaPrint("Out function Check_SpawnResource(lv_atker,lv_defer,mf_atker,mf_defer) --[[determine if mine burst]]--") 
+	--LG("mine burst" , "function Check_SpawnResource : " , "count = " , count , "item[1] =" ,item[1] , "item[2] = " , item[2], "item[3] = " , item[3] ,  "item[4] = " ,item[4] , "item[5] = " , item[5] , "item[6] = " ,item[6] , "item[7] = " ,item[7], "item[8] = " ,item[8], "item[9] = " ,item[9], "item[10] = " ,item[10]) 
 	if count >= 1 then 
 		item[1] = item[count]  
 		count = 1 
@@ -390,6 +311,9 @@ function CheckCha_ResourceItemUse ( role )
 	return 0
 end
 
+
+
+
 function SetSus( role , sus ) 
 	if sus == 0 then 
 		SkillMiss( role )  
@@ -398,7 +322,7 @@ function SetSus( role , sus )
 	end 
 end 
 
--- МИЛИ-АТАКА
+-- §®§Є§­§Є-§Ў§ґ§Ў§¬§Ў
 function Skill_Melee_Begin ( role , sklv ) 
 end 
 
@@ -427,8 +351,8 @@ local ElfCrt = 0
 if CheckElfSkill == 2 then
 	ElfCrt = ElfSKill_ElfCrt ( ATKER , Elf_Item , Num )
 	if ElfCrt == 1 then
-		SystemNotice ( ATKER , "Ваша фея использовала Берсерк. Бонус к атаке!" )
-		SystemNotice ( DEFER , "Вражеская фея использовала Берсерк. Бонус к атаке!" )
+		SystemNotice ( ATKER , "§Ј§С§к§С §ж§Ц§с §Ъ§г§б§а§Э§о§Щ§а§У§С§Э§С §ў§Ц§в§г§Ц§в§Ь. §ў§а§Я§е§г §Ь §С§д§С§Ь§Ц!" )
+		SystemNotice ( DEFER , "§Ј§в§С§Ш§Ц§г§Ь§С§с §ж§Ц§с §Ъ§г§б§а§Э§о§Щ§а§У§С§Э§С §ў§Ц§в§г§Ц§в§Ь. §ў§а§Я§е§г §Ь §С§д§С§Ь§Ц!" )
 		dmgsa = 2
 		SetSus( DEFER , sus )
 	end
@@ -451,14 +375,14 @@ P_R = 0.03
 			local Percentage = Percentage_Random ( P_R )
 			if Percentage == 1 then
 				AddState ( ATKER , DEFER , STATE_XY , 1 , 1 )
-SystemNotice ( ATKER , "Получено благословение Богини. Противник оглушен на 1 сек.")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§а §Т§Э§С§Ф§а§г§Э§а§У§Ц§Я§Ъ§Ц §ў§а§Ф§Ъ§Я§Ъ. §±§в§а§д§Ъ§У§Я§Ъ§Ь §а§Ф§Э§е§к§Ц§Я §Я§С 1 §г§Ц§Ь.")
 			end
 		end
 		
 		Check_Ys_Rem ( ATKER , DEFER)
  end 
 
--- РЕЙНДЖ-АТАКА
+-- §І§¦§«§Ї§Ґ§Ё-§Ў§ґ§Ў§¬§Ў
 function Skill_Range_Begin ( role , sklv ) 
 end 
 
@@ -486,8 +410,8 @@ local ElfCrt = 0
 if CheckElfSkill == 2 then
 	ElfCrt = ElfSKill_ElfCrt ( ATKER , Elf_Item , Num )
 	if ElfCrt == 1 then
-		SystemNotice ( ATKER , "Ваша фея использовала Берсерк. Бонус к атаке!" )
-		SystemNotice ( DEFER , "Вражеская фея использовала Берсерк. Бонус к атаке!" )
+		SystemNotice ( ATKER , "§Ј§С§к§С §ж§Ц§с §Ъ§г§б§а§Э§о§Щ§а§У§С§Э§С §ў§Ц§в§г§Ц§в§Ь. §ў§а§Я§е§г §Ь §С§д§С§Ь§Ц!" )
+		SystemNotice ( DEFER , "§Ј§в§С§Ш§Ц§г§Ь§С§с §ж§Ц§с §Ъ§г§б§а§Э§о§Щ§а§У§С§Э§С §ў§Ц§в§г§Ц§в§Ь. §ў§а§Я§е§г §Ь §С§д§С§Ь§Ц!" )
 		dmgsa = 2
 		SetSus( DEFER , sus )
 	end
@@ -506,7 +430,7 @@ end
 			local Percentage = Percentage_Random ( 0.1 )
 			if Percentage == 1 then
 AddState ( ATKER , DEFER , STATE_XY , 1 , 1 )
-SystemNotice ( ATKER , "Получено благословение Богини. Противник оглушен на 1 сек.")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§а §Т§Э§С§Ф§а§г§Э§а§У§Ц§Я§Ъ§Ц §ў§а§Ф§Ъ§Я§Ъ. §±§в§а§д§Ъ§У§Я§Ъ§Ь §а§Ф§Э§е§к§Ц§Я §Я§С 1 §г§Ц§Ь.")
 			end
 		end
 
@@ -641,7 +565,7 @@ function Check_MisorCrt(a,b)
 	return sus,dmgsa 
 end 
 
---function MAGIC_Atk_Dmg(a,b) --[[јЖЛгЖХНЁ№Ґ»чµД»щ±ѕХэіЈЙЛє¦]]--
+--function MAGIC_Atk_Dmg(a,b) --[[?§Ё§­§Ф§Ё§·§Ї§§Ўн??§й¦М§Ґ?§лЎА?§·§п??§«§­?|]]--
 --	Check_State ( a , b ) 
 --	--LuaPrint("Enter function Atk_Dmg(a,b) --[[calculate normal attack base normal damage]]--".."\n") 
 --	--LG("Atk_Dmg","Enter function Atk_Dmg(a,b) --[[calculate normal attack base normal damage]]--", "\n" ) 
@@ -663,15 +587,15 @@ end
 --	
 --	--LG("Atk_Dmg", "atk_mnatk = ", atk_mnatk, "atk_mxatk =", atk_mxatk, "defer_def = ", defer_def,  "atker_lv = ", atker_lv, "\n" ) 
 --	local atk = math.random( atk_mnatk , atk_mxatk ) 
---	local dmg = Phy_Dmg ( atk, defer_def , defer_resist )  --[[јЖЛгХэіЈЙЛє¦Цµ]]--
---	local mndmg = math.floor(  Lv(a) * 0.25 + Mnatk(a) * 0 ) + 1 --[[јЖЛгЧоРЎЙЛє¦Цµ]]--
+--	local dmg = Phy_Dmg ( atk, defer_def , defer_resist )  --[[?§Ё§­§Ф§·§п??§«§­?|§ё¦М]]--
+--	local mndmg = math.floor(  Lv(a) * 0.25 + Mnatk(a) * 0 ) + 1 --[[?§Ё§­§Ф§№§а§І?§«§­?|§ё¦М]]--
 --	dmg =math.max(  lv_eff * dmg , mndmg ) 
 --	--LG("Atk_Dmg", "Normal Damage= ", dmg, "Min Damage mndmg = ", mndmg, "\n" ) 
 --	--LG("Atk_Dmg","End function Atk_Dmg(a,b) --[[calculate normal attack base normal damage]]--".."\n" ) 
 --	--LuaPrint("Out function Atk_Dmg(a,b) --[[calculate normal attack base normal damage]]--") 
 --	return dmg 
 --end 
---Артобстрел
+--§Ў§в§д§а§Т§г§д§в§Ц§Э
 function SkillArea_Circle_Paodan( sklv )	
 		local side = 400 
 		SetSkillRange ( 4 , side )  
@@ -710,7 +634,7 @@ function Skill_Huoqiang_End ( ATKER , DEFER , sklv )
 		Hp_Endure_Dmg( DEFER , hpdmg )		
 end 
 
---Рык тигра
+--§І§н§Ь §д§Ъ§Ф§в§С
 function SkillArea_Circle_Hx ( sklv )
 	local side = 200 
 	SetSkillRange ( 4 , side  )  
@@ -769,7 +693,7 @@ function State_Hx_Rem ( role , statelv )
 	ALLExAttrSet(role) 
 end 
 
---Ангельское благословение
+--§Ў§Я§Ф§Ц§Э§о§г§Ь§а§Ц §Т§Э§С§Ф§а§г§Э§а§У§Ц§Я§Ъ§Ц
 function SkillSp_Tsqy ( sklv )	
 	local sp_reduce = sklv * 1 
 	return sp_reduce 
@@ -815,7 +739,7 @@ function State_Tsqy_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Лечение
+--§­§Ц§й§Ц§Я§Ъ§Ц
 function SkillSp_Jd ( sklv )	
 	local sp_reduce = sklv * 1 
 	return sp_reduce 
@@ -844,7 +768,7 @@ function Skill_Jd_End ( ATKER , DEFER , sklv )
 
 end 
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function SkillSp_Zjcm ( sklv )	
 	local sp_reduce = sklv * 1 
 	return sp_reduce 
@@ -891,7 +815,7 @@ function State_Sm_Rem ( role , statelv )
 
 end 
 
---Щит мороза
+--§»§Ъ§д §Ю§а§в§а§Щ§С
 function SkillSp_Bshd ( sklv )	
 	local sp_reduce = sklv * 1 
 	return sp_reduce 
@@ -936,7 +860,7 @@ function State_Bshd_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Адские крылья
+--§Ў§Х§г§Ь§Ъ§Ц §Ь§в§н§Э§о§с
 function SkillSp_Lyzy ( sklv )
 	local sp_reduce = sklv * 1 
 	return sp_reduce 
@@ -965,7 +889,7 @@ function Skill_Lyzy_End ( ATKER , DEFER , sklv )
 
 end 
 
---Священный луч
+--§і§У§с§л§Ц§Я§Я§н§Ы §Э§е§й
 function SkillSp_Shzg ( sklv )	
 	local sp_reduce = sklv * 1 
 	return sp_reduce 
@@ -993,7 +917,7 @@ function Skill_Shzg_End ( ATKER , DEFER , sklv )
 	--LG( "Shzg", "Holy Beam Skill Level= " , sklv , "Skill Damage= " , dmg , '\n" ) 
 end 
 
---Пересечение
+--§±§Ц§в§Ц§г§Ц§й§Ц§Я§Ъ§Ц
 function SkillSp_Clcy ( sklv )
 	local sp_reduce = sklv * 1 
 	return sp_reduce 
@@ -1036,7 +960,7 @@ function State_Clcy_Rem ( role , statelv )
 end 
 
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function SkillPre_Hyps ( sklv )			
 end 
 
@@ -1055,7 +979,7 @@ function SkillArea_State_Hyps ( sklv )
 	local statetime = 10 + sklv * 5 
 	local statelv = sklv 
 	--LG("SkillPre_Hyps" , " fucntion SkillPre_Hyps :" ,  
-	SetRangeState ( STATE_RS , statelv  , statetime ) --МнјУµШГжЎ°»рСжЕзЙдЎ±ЧґМ¬
+	SetRangeState ( STATE_RS , statelv  , statetime ) --§®§Я?§µ¦М§є§¤§Ш?Ўг?§в§і§Ш§¦§Щ§«§Х?ЎА§№?§®?
 end 
 
 function SkillSp_Hyps ( sklv )	
@@ -1097,7 +1021,7 @@ function State_Hyps_Tran ( statelv )
 	return 2   
 end 
 
--- РУБКА ЛЕСА
+-- §І§µ§ў§¬§Ў §­§¦§і§Ў
 function SkillSp_Ks ( sklv ) 
 	return 0 
 end 
@@ -1111,10 +1035,10 @@ function Skill_Ks_Begin  ( role , sklv )
 end 
 
 function Skill_Ks_End ( ATKER , DEFER , sklv ) 
-	SystemNotice ( ATKER , "Хрусть Хрусть Хрусть..." ) 
+	SystemNotice ( ATKER , "§·§в§е§г§д§о §·§в§е§г§д§о §·§в§е§г§д§о..." ) 
 	local defer_lv = GetChaAttr ( DEFER , ATTR_LV ) 
 	if sklv < defer_lv then 
-		SystemNotice ( ATKER , "Уровень навыка слишком низкий" ) 
+		SystemNotice ( ATKER , "§µ§в§а§У§Ц§Я§о §Я§С§У§н§Ь§С §г§Э§Ъ§к§Ь§а§Ю §Я§Ъ§Щ§Ь§Ъ§Ы" ) 
 		return 
 	end 
 	local hpdmg = 1
@@ -1128,7 +1052,7 @@ function Skill_Ks_End ( ATKER , DEFER , sklv )
 	--[[if Tree_ID == UnNormal_Tree_ID then
 		if Tree_hp <= 800 then
 			hpdmg = 0
-			SystemNotice( ATKER , "Ты не видишь в этом ничего хорошего? Пройдет время и ты почувствуешь пользу от работы" )
+			SystemNotice( ATKER , "§ґ§н §Я§Ц §У§Ъ§Х§Ъ§к§о §У §п§д§а§Ю §Я§Ъ§й§Ц§Ф§а §з§а§в§а§к§Ц§Ф§а? §±§в§а§Ы§Х§Ц§д §У§в§Ц§Ю§с §Ъ §д§н §б§а§й§е§У§г§д§У§е§Ц§к§о §б§а§Э§о§Щ§е §а§д §в§С§Т§а§д§н" )
 		end
 	end]]--
 
@@ -1137,7 +1061,7 @@ function Skill_Ks_End ( ATKER , DEFER , sklv )
  
 end 
 
--- ДОБЫЧА РУДЫ
+-- §Ґ§°§ў§Ѕ§№§Ў §І§µ§Ґ§Ѕ
 function SkillSp_Wk( sklv ) 
 	return 0 
 end 
@@ -1154,7 +1078,7 @@ function Skill_Wk_End ( ATKER , DEFER , sklv )
 	local defer_lv = Lv ( DEFER ) 
 
 	if sklv < defer_lv then 
-		SystemNotice ( ATKER , "Уровень навыка слишком низкий" ) 
+		SystemNotice ( ATKER , "§µ§в§а§У§Ц§Я§о §Я§С§У§н§Ь§С §г§Э§Ъ§к§Ь§а§Ю §Я§Ъ§Щ§Ь§Ъ§Ы" ) 
 		return 
 	end 
 	
@@ -1172,7 +1096,7 @@ function Skill_Wk_End ( ATKER , DEFER , sklv )
 		local ItemID_Use = GetItemID ( Item_Use )
 		
 		if ItemID_Use ~= 3908 and ItemID_Use ~= 3108 then
-			SystemNotice( ATKER , "Для этого действия нужна Легированная кирка" )
+			SystemNotice( ATKER , "§Ґ§Э§с §п§д§а§Ф§а §Х§Ц§Ы§г§д§У§Ъ§с §Я§е§Ш§Я§С §­§Ц§Ф§Ъ§в§а§У§С§Я§Я§С§с §Ь§Ъ§в§Ь§С" )
 			return
 		end
 
@@ -1189,7 +1113,7 @@ function Skill_Wk_End ( ATKER , DEFER , sklv )
 		if Item_URE < 50 then
 			Take_Num = 0
 			hpdmg = 0
-			SystemNotice( ATKER , "Кирка повреждена! Невозможно продолжить добычу" )
+			SystemNotice( ATKER , "§¬§Ъ§в§Ь§С §б§а§У§в§Ц§Ш§Х§Ц§Я§С! §Ї§Ц§У§а§Щ§Ю§а§Ш§Я§а §б§в§а§Х§а§Э§Ш§Ъ§д§о §Х§а§Т§н§й§е" )
 		end
 
 		Item_URE = Item_URE - Take_Num
@@ -1204,7 +1128,7 @@ function Skill_Wk_End ( ATKER , DEFER , sklv )
 
 		if KS_hp <= 800 then
 			hpdmg = 0
-			SystemNotice( ATKER , "Похоже, что метеорит уже выработан! Увы." )
+			SystemNotice( ATKER , "§±§а§з§а§Ш§Ц, §й§д§а §Ю§Ц§д§Ц§а§в§Ъ§д §е§Ш§Ц §У§н§в§С§Т§а§д§С§Я! §µ§У§н." )
 		end
 
 	end
@@ -1214,7 +1138,7 @@ function Skill_Wk_End ( ATKER , DEFER , sklv )
 
 end 
 
--- РЫБОЛОВСТВО
+-- §І§Ѕ§ў§°§­§°§Ј§і§ґ§Ј§°
 function SkillSp_By ( sklv ) 
 	return 0 
 end 
@@ -1230,16 +1154,16 @@ end
 function Skill_By_End ( ATKER , DEFER , sklv )  
 	local defer_lv = Lv ( DEFER ) 
 	if sklv < defer_lv then 
-		SystemNotice ( ATKER , "Уровень навыка слишком низкий" ) 
+		SystemNotice ( ATKER , "§µ§в§а§У§Ц§Я§о §Я§С§У§н§Ь§С §г§Э§Ъ§к§Ь§а§Ю §Я§Ъ§Щ§Ь§Ъ§Ы" ) 
 		return 
 	end 
-	SystemNotice ( ATKER , "Идет рыбалка..." ) 
+	SystemNotice ( ATKER , "§Є§Х§Ц§д §в§н§Т§С§Э§Ь§С..." ) 
 	local hpdmg = 1 
 	local hp = Hp(DEFER) - hpdmg 
 	SetCharaAttr(hp , DEFER , ATTR_HP ) 
 end 
 
--- ТРАЛЕНИЕ
+-- §ґ§І§Ў§­§¦§Ї§Є§¦
 function SkillSp_Dl ( sklv ) 
 	return 0 
 end 
@@ -1255,16 +1179,16 @@ end
 function Skill_Dl_End ( ATKER , DEFER , sklv ) 
 	local defer_lv = Lv ( DEFER ) 
 	if sklv < defer_lv then 
-		SystemNotice ( ATKER , "Уровень навыка слишком низкий" ) 
+		SystemNotice ( ATKER , "§µ§в§а§У§Ц§Я§о §Я§С§У§н§Ь§С §г§Э§Ъ§к§Ь§а§Ю §Я§Ъ§Щ§Ь§Ъ§Ы" ) 
 		return 
 	end 
-		SystemNotice ( ATKER , "Идет траление..." ) 
+		SystemNotice ( ATKER , "§Є§Х§Ц§д §д§в§С§Э§Ц§Я§Ъ§Ц..." ) 
 	local hpdmg = 1 
 	local hp = Hp(DEFER) - hpdmg 
 	SetCharaAttr(hp , DEFER , ATTR_HP ) 
 end 
 
--- ВОРОНКА ТОРНАДО
+-- §Ј§°§І§°§Ї§¬§Ў §ґ§°§І§Ї§Ў§Ґ§°
 function SkillSp_Jsfb ( sklv )	
 	local sp_reduce = 20
 	return sp_reduce 
@@ -1315,7 +1239,7 @@ function State_Jsfb_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- ПЕЧАТЬ СТАРЕЙШИНЫ
+-- §±§¦§№§Ў§ґ§ѕ §і§ґ§Ў§І§¦§«§є§Є§Ї§Ѕ
 function SkillSp_Xzfy ( sklv )
 	local sklv = sklv * 2
 	local sp_reduce = 30 + sklv * 2 
@@ -1355,7 +1279,7 @@ function Skill_Xzfy_End ( ATKER , DEFER , sklv )
 		local Percentage_Death = Percentage_Random ( 0.7 )
 			if Percentage_Death == 1 then
 statetime = math.floor (statetime * 1.5)
-SystemNotice ( ATKER , "Получена сила набора Сета Смерти. Эффект навыка усилен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §і§Ц§д§С §і§Ю§Ц§в§д§Ъ. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	local Check_Heilong = CheckItem_Heilong ( ATKER )
@@ -1363,7 +1287,7 @@ SystemNotice ( ATKER , "Получена сила набора Сета Смерти. Эффект навыка усилен!"
 		local Percentage = Percentage_Random ( 0.7)
 			if Percentage == 1 then
 statetime = statetime * 1.5
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усилен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	local Check_Heilong_app = CheckItem_Heilong_app ( ATKER )
@@ -1371,7 +1295,7 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усил
 		local Percentage_app = Percentage_Random ( 0.7)
 			if Percentage_app == 1 then
 statetime = statetime * 1.5
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усилен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	local hp_defer = Hp ( DEFER ) 
@@ -1381,7 +1305,7 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усил
 			statetime = 5 + math.floor ( sklv * 0.3 ) 
 		else
 			SetSus( DEFER , 0 ) 
-			SystemNotice ( ATKER , "Не удалось наложить Печать Старейшины!") 
+			SystemNotice ( ATKER , "§Ї§Ц §е§Х§С§Э§а§г§о §Я§С§Э§а§Ш§Ъ§д§о §±§Ц§й§С§д§о §і§д§С§в§Ц§Ы§к§Ъ§Я§н!") 
 			return
 		end
 	end 
@@ -1392,7 +1316,7 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усил
 	end
 	if GetChaAIType( DEFER ) >= 21 then
 		if BOSSXZSJ[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSXZSJ[GetChaTypeID( DEFER )] = BOSSXZSJ[GetChaTypeID( DEFER )] -1
@@ -1404,7 +1328,7 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усил
 
 end 
 
--- РОСЧЕРК ТЕНИ
+-- §І§°§і§№§¦§І§¬ §ґ§¦§Ї§Є
 function SkillSp_Ayzz ( sklv )
 	local sklv = sklv * 2
 	local sp_reduce = 30 + sklv * 3  
@@ -1444,7 +1368,7 @@ function Skill_Ayzz_End ( ATKER , DEFER , sklv )
 		local Percentage_Death = Percentage_Random ( 0.7)
 			if Percentage_Death == 1 then
 statetime = math.floor (statetime * 1.5)
-SystemNotice ( ATKER , "Получена сила набора Сета Смерти. Эффект навыка усилен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §і§Ц§д§С §і§Ю§Ц§в§д§Ъ. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	local Check_Heilong = CheckItem_Heilong ( ATKER )
@@ -1452,7 +1376,7 @@ SystemNotice ( ATKER , "Получена сила набора Сета Смерти. Эффект навыка усилен!"
 		local Percentage = Percentage_Random ( 0.7)
 			if Percentage == 1 then
 	statetime =  statetime * 1.5
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усилен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	local Check_Heilong_app = CheckItem_Heilong_app ( ATKER )
@@ -1460,7 +1384,7 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усил
 		local Percentage_app = Percentage_Random ( 0.7)
 			if Percentage_app == 1 then
   statetime =  statetime * 1.5
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усилен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	local hp_defer = Mxhp ( DEFER )
@@ -1488,7 +1412,7 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усил
 	end
 	if GetChaAIType( DEFER ) >= 21 then
 		if BOSSAYSJ[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSAYSJ[GetChaTypeID( DEFER )] = BOSSAYSJ[GetChaTypeID( DEFER )] -1
@@ -1511,11 +1435,11 @@ function New_Xlcz ( ATKER , DEFER)
 end 
 
 function State_TK_Add (role , statelv) 
-	hpdmg = math.floor (statelv *100/50 )
+	hpdmg = math.floor (statelv *100/90 )
 	--Hp_Endure_Dmg ( role, hpdmg )  
 end 
 
--- ГЛАЗ ОРЛА
+-- §¤§­§Ў§© §°§І§­§Ў
 function SkillSp_Yy ( sklv )
 	local sp_reduce = 10  
 	return sp_reduce 
@@ -1556,7 +1480,7 @@ function State_Yy_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- ДВОЙНОЙ ВЫСТРЕЛ
+-- §Ґ§Ј§°§«§Ї§°§« §Ј§Ѕ§і§ґ§І§¦§­
 function SkillSp_Lzj ( sklv )
 	local sp_reduce = 20  
 	return sp_reduce 
@@ -1591,7 +1515,7 @@ function Skill_Lzj_End ( ATKER , DEFER , sklv )
 
 end 
 
--- ЗВЕЗДНЫЙ УДА
+-- §©§Ј§¦§©§Ґ§Ї§Ѕ§« §µ§Ґ§Ў
 function SkillSp_Hxqj ( sklv )
    local sp_reduce = 20 + sklv * 2 
 	return sp_reduce 
@@ -1624,7 +1548,7 @@ function Skill_Hxqj_End ( ATKER , DEFER , sklv )
 
 end 
 
--- ИЛЛЮЗОРНЫЙ УДАР
+-- §Є§­§­§А§©§°§І§Ї§Ѕ§« §µ§Ґ§Ў§І
 function SkillSp_Hyz ( sklv )
    local sp_reduce = 20 
 	return sp_reduce 
@@ -1671,7 +1595,7 @@ function Skill_Hyz_End ( ATKER , DEFER , sklv )
 	Check_Ys_Rem ( ATKER , DEFER )
 end 
 
--- МОГУЧИЙ УДАР
+-- §®§°§¤§µ§№§Є§« §µ§Ґ§Ў§І
 function SkillSp_Zj ( sklv )
    local sp_reduce = 8 + sklv * 1  
 	return sp_reduce 
@@ -1699,7 +1623,7 @@ function Skill_Zj_End ( ATKER , DEFER , sklv )
 	Check_Ys_Rem ( ATKER ,DEFER )
 end 
 
--- Воодушевление
+-- §Ј§а§а§Х§е§к§Ц§У§Э§Ц§Я§Ъ§Ц
 function SkillSp_Fnq ( sklv )
 	local sp_reduce = 35 
 	return sp_reduce 
@@ -1728,7 +1652,7 @@ function Skill_Fnq_End ( ATKER , DEFER , sklv )
 		statetime = 120
 		statelv = 10
 	end
-SystemNotice(DEFER, "Получено усиление <Воодушевление> "..statelv.."ур. на "..statetime.. " секунд" )
+SystemNotice(DEFER, "§±§а§Э§е§й§Ц§Я§а §е§г§Ъ§Э§Ц§Я§Ъ§Ц <§Ј§а§а§Х§е§к§Ц§У§Э§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	AddState( ATKER , DEFER , STATE_FNQ, statelv , statetime ) 
 	
@@ -1749,7 +1673,7 @@ function State_Fnq_Rem ( role , statelv )
 	ALLExAttrSet(role) 
 end
 
--- Берсерк
+-- §ў§Ц§в§г§Ц§в§Ь
 function SkillSp_Kb ( sklv )
 	local sp_reduce = 15 
 	return sp_reduce 
@@ -1773,7 +1697,7 @@ end
 function Skill_Kb_End ( ATKER , DEFER , sklv ) 
 	local statelv = sklv 
 	local statetime = 25  
-	SystemNotice(DEFER, "Получено усиление <Берсерк> "..statelv.."ур. на "..statetime.. " секунд" )
+	SystemNotice(DEFER, "§±§а§Э§е§й§Ц§Я§а §е§г§Ъ§Э§Ц§Я§Ъ§Ц <§ў§Ц§в§г§Ц§в§Ь> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	AddState( ATKER , DEFER , STATE_KB, statelv , statetime ) 
 end 
@@ -1793,7 +1717,7 @@ function State_Kb_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- ПЕРВОБЫТНАЯ ЯРОСТЬ
+-- §±§¦§І§Ј§°§ў§Ѕ§ґ§Ї§Ў§Б §Б§І§°§і§ґ§ѕ
 function SkillSp_Swzq ( sklv )
    local sp_reduce = 50+sklv*3  
 	return sp_reduce 
@@ -1830,7 +1754,7 @@ function Skill_Swzq_End ( ATKER , DEFER , sklv )
 			local Percentage = Percentage_Random ( 0.3 )
 			if Percentage == 1 then
 dmg = dmg * 3
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Атака усилена!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §Ў§д§С§Ь§С §е§г§Ъ§Э§Ц§Я§С!")
 			end
 	end
 	local Check_Heilong_app = CheckItem_Heilong_app ( ATKER )
@@ -1838,7 +1762,7 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Атака усилена!")
 			local Percentage_app = Percentage_Random ( 0.3 )
 			if Percentage_app == 1 then
 dmg = dmg * 3
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Атака усилена!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §Ў§д§С§Ь§С §е§г§Ъ§Э§Ц§Я§С!")
 			end
 	end
 	if IsPlayer ( DEFER ) == 1 and IsPlayer ( ATKER ) == 1 then
@@ -1856,7 +1780,7 @@ end
 local Percentage = Percentage_Random ( 0.5 )
 if Percentage == 1 then
 	Ran = Ran * 1.5
-	SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Увеличен шанс урона!")
+	SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§У§Ц§Э§Ъ§й§Ц§Я §к§С§Я§г §е§в§а§Я§С!")
 end
 			end
 			local Check_Heilong_app = CheckItem_Heilong_app ( ATKER )
@@ -1864,14 +1788,14 @@ end
 local Percentage_app = Percentage_Random ( 0.5 )
 if Percentage_app == 1 then
 	Ran = Ran * 1.5
-	SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Увеличен шанс урона!")
+	SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§У§Ц§Э§Ъ§й§Ц§Я §к§С§Я§г §е§в§а§Я§С!")
 end
 			end
 			local Dmg_Max = math.floor( dmg * (2/3) )
 			local Dmg_Min = math.floor( dmg / 8 )
 			dmg = ReCheck_Skill_Dmg ( Dmg_Max , Dmg_Min , Ran )
 			if dmg == Dmg_Min then
-SystemNotice ( ATKER , "Первобытная Ярость не попала по противнику" )
+SystemNotice ( ATKER , "§±§Ц§в§У§а§Т§н§д§Я§С§с §Б§в§а§г§д§о §Я§Ц §б§а§б§С§Э§С §б§а §б§в§а§д§Ъ§У§Я§Ъ§Ь§е" )
 			end
 	end
 	Hp_Endure_Dmg ( DEFER , dmg )  
@@ -1883,7 +1807,7 @@ SystemNotice ( ATKER , "Первобытная Ярость не попала по противнику" )
 			local Percentage = Percentage_Random ( 0.5 )
 			if Percentage == 1 then
 statetime = statetime * 3
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Увеличена продолжительность оглушения!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§У§Ц§Э§Ъ§й§Ц§Я§С §б§в§а§Х§а§Э§Ш§Ъ§д§Ц§Э§о§Я§а§г§д§о §а§Ф§Э§е§к§Ц§Я§Ъ§с!")
 			end
 	end
 	local Check_Heilong_app = CheckItem_Heilong_app ( ATKER )
@@ -1891,7 +1815,7 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Увеличена продолжи
 			local Percentage_app = Percentage_Random ( 0.5 )
 			if Percentage_app == 1 then
 statetime = statetime * 3
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Увеличена продолжительность оглушения!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§У§Ц§Э§Ъ§й§Ц§Я§С §б§в§а§Х§а§Э§Ш§Ъ§д§Ц§Э§о§Я§а§г§д§о §а§Ф§Э§е§к§Ц§Я§Ъ§с!")
 			end
 	end
 	local hp_defer = Hp ( DEFER ) 
@@ -1904,7 +1828,7 @@ end
 function State_Xy_Rem ( role , statelv )
 end
 
--- ВОСКРЕШЕНИЕ
+-- §Ј§°§і§¬§І§¦§є§¦§Ї§Є§¦
 function SkillSp_Fh ( sklv )
    local sp_reduce = 50   
 	return sp_reduce 
@@ -1919,14 +1843,14 @@ end
 function Skill_Fh_Begin ( role , sklv ) 
 	local map_name_ATKER = GetChaMapName ( role )
 	if map_name_ATKER == "garner2" or map_name_ATKER == "07xmas2" then
-		SystemNotice ( role , "Невозможно использовать навык Воскрешения" )
+		SystemNotice ( role , "§Ї§Ц§У§а§Щ§Ю§а§Ш§Я§а §Ъ§г§б§а§Э§о§Щ§а§У§С§д§о §Я§С§У§н§Ь §Ј§а§г§Ь§в§Ц§к§Ц§Я§Ъ§с" )
 		SkillUnable(role)   
 	end
 	
 	local item_count = CheckBagItem ( role , ITEM_RELIFE ) 
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет необходимого предмета для воскрешения" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§Ц§а§Т§з§а§Х§Ъ§Ю§а§Ф§а §б§в§Ц§Х§Ю§Ц§д§С §Х§Э§с §У§а§г§Ь§в§Ц§к§Ц§Я§Ъ§с" ) 
 	end 
 	local a = DelBagItem ( role , ITEM_RELIFE , 1 ) 
 end 
@@ -1936,11 +1860,11 @@ function Skill_Fh_End ( ATKER , DEFER , sklv )
 	local ChaHp = GetChaAttr( DEFER , ATTR_HP )
 	if ChaHp <= 0 then
 		local ChaName = GetChaDefaultName ( ATKER )
-		SetRelive ( ATKER , DEFER ,  sklv , "Игрок "..ChaName.."\n\n пытается вас воскресить. Вы согласны?" ) 
+		SetRelive ( ATKER , DEFER ,  sklv , "§Є§Ф§в§а§Ь "..ChaName.."\n\n §б§н§д§С§Ц§д§г§с §У§С§г §У§а§г§Ь§в§Ц§г§Ъ§д§о. §Ј§н §г§а§Ф§Э§С§г§Я§н?" ) 
 	end
 end 
 
--- КРИСТАЛЬНОЕ БЛАГОСЛОВЕНИЕ
+-- §¬§І§Є§і§ґ§Ў§­§ѕ§Ї§°§¦ §ў§­§Ў§¤§°§і§­§°§Ј§¦§Ї§Є§¦
 function SkillSp_BingX ( sklv )
    local sp_reduce = 40 + sklv * 4 
 	return sp_reduce 
@@ -1964,7 +1888,7 @@ end
 function Skill_BingX_End ( ATKER , DEFER , sklv ) 
 	local i = CheckBagItem( ATKER , 3463 )
 	if i <= 0 then
-		SystemNotice ( ATKER , "Для каждого использования навыка нужен 1 Ледяной кристалл")
+		SystemNotice ( ATKER , "§Ґ§Э§с §Ь§С§Ш§Х§а§Ф§а §Ъ§г§б§а§Э§о§Щ§а§У§С§Я§Ъ§с §Я§С§У§н§Ь§С §Я§е§Ш§Ц§Я 1 §­§Ц§Х§с§Я§а§Ы §Ь§в§Ъ§г§д§С§Э§Э")
 		return
 	end
 	local j = DelBagItem(ATKER,3463,1)
@@ -1984,13 +1908,13 @@ function Skill_BingX_End ( ATKER , DEFER , sklv )
 	else
 		LG("Skill_Item","Delete Icy Crystal failed")
 	end
-SystemNotice(DEFER, "Получено усиление <Кристальное благославление> "..statelv.."ур. на "..statetime.. " секунд" )
+SystemNotice(DEFER, "§±§а§Э§е§й§Ц§Я§а §е§г§Ъ§Э§Ц§Я§Ъ§Ц <§¬§в§Ъ§г§д§С§Э§о§Я§а§Ц §Т§Э§С§Ф§а§г§Э§С§У§Э§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 
 	 
 end
 
--- ЗАКАЛКА
+-- §©§Ў§¬§Ў§­§¬§Ў
 function SkillSp_Shpf ( sklv )
    local sp_reduce = 40 + sklv * 4 
 	return sp_reduce 
@@ -2015,7 +1939,7 @@ function Skill_Shpf_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  200 + statelv * 20
 	AddState ( ATKER , DEFER , STATE_SHPF , statelv , statetime ) 
-	SystemNotice(DEFER, "Получено усиление <Закалка> "..statelv.."ур. на "..statetime.. " секунд" )
+	SystemNotice(DEFER, "§±§а§Э§е§й§Ц§Я§а §е§г§Ъ§Э§Ц§Я§Ъ§Ц <§©§С§Ь§С§Э§Ь§С> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 end
 
 function State_Shpf_Add ( role , statelv ) 
@@ -2034,7 +1958,7 @@ function State_Shpf_Rem ( role , statelv )
 	
 end 
 
--- СИЛЬНАЯ МАГИЯ
+-- §і§Є§­§ѕ§Ї§Ў§Б §®§Ў§¤§Є§Б
 function SkillSp_Mlch ( sklv )	
    local sp_reduce = 40 + sklv * 4 
 	return sp_reduce 
@@ -2058,7 +1982,7 @@ end
 function Skill_Mlch_End ( ATKER , DEFER , sklv ) 
 	local i = CheckBagItem( ATKER , 3462 )
 	if i <= 0 then
-		SystemNotice ( ATKER , "Требуется 1 Магический клевер")
+		SystemNotice ( ATKER , "§ґ§в§Ц§Т§е§Ц§д§г§с 1 §®§С§Ф§Ъ§й§Ц§г§Ь§Ъ§Ы §Ь§Э§Ц§У§Ц§в")
 		return
 	end
 	local b = ( sklv - 1 ) * 0.05
@@ -2068,13 +1992,13 @@ function Skill_Mlch_End ( ATKER , DEFER , sklv )
 		j = DelBagItem(ATKER,3462,1)
 	elseif a == 1 then
 		j = 1
-		SystemNotice ( ATKER , "Усиленная магия не забрала Магический Клевер" )
+		SystemNotice ( ATKER , "§µ§г§Ъ§Э§Ц§Я§Я§С§с §Ю§С§Ф§Ъ§с §Я§Ц §Щ§С§Т§в§С§Э§С §®§С§Ф§Ъ§й§Ц§г§Ь§Ъ§Ы §¬§Э§Ц§У§Ц§в" )
 	end
 	if j == 1 then
 		local statelv = sklv 
 		local statetime =  90 + 90 * sklv   
 		AddState ( ATKER , DEFER , STATE_MLCH , statelv/2 , statetime ) 
-		SystemNotice(DEFER, "Получено усиление <Сильная магия> "..statelv.."ур. на "..statetime.. " секунд" )		
+		SystemNotice(DEFER, "§±§а§Э§е§й§Ц§Я§а §е§г§Ъ§Э§Ц§Я§Ъ§Ц <§і§Ъ§Э§о§Я§С§с §Ю§С§Ф§Ъ§с> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 	else
 		LG("Skill_Item","Delete Magical Clover failed")
 	end
@@ -2092,7 +2016,7 @@ function Cuihua_Mofa ( dmg , statelv )
 end 
  
 
---Стальная воля
+--§і§д§С§Э§о§Я§С§с §У§а§Э§с
 function SkillSp_Gtyz ( sklv )	
    local sp_reduce = 15  
 	return sp_reduce 
@@ -2120,7 +2044,7 @@ function Skill_Gtyz_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_GTYZ , statelv , statetime ) 
 	--LG("skill_Gtyz", "function Skill_Def_Gtyz : " , "role = " , role , "sklv =  " , sklv , "\n" ) 
 	Check_Ys_Rem ( ATKER , DEFER )
-SystemNotice(DEFER, "Получено усиление <Стальная воля> "..statelv.."ур. на "..statetime.. " секунд" )		
+SystemNotice(DEFER, "§±§а§Э§е§й§Ц§Я§а §е§г§Ъ§Э§Ц§Я§Ъ§Ц <§і§д§С§Э§о§Я§С§с §У§а§Э§с> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 		
 end 
 
@@ -2141,7 +2065,7 @@ function State_Gtyz_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end 
 
--- Бронелом
+-- §ў§в§а§Я§Ц§Э§а§Ю
 function SkillSp_Pj ( sklv )
    local sp_reduce = 25  
 	return sp_reduce 
@@ -2178,7 +2102,7 @@ function Skill_Pj_End ( ATKER , DEFER , sklv )
 			end
 		end
 		AddState ( ATKER , DEFER , STATE_PJ , statelv , statetime ) 
-		SystemNotice(DEFER, "На вас действует эффект   <Бронелом> "..statelv.."ур. на "..statetime.. " секунд" )		
+		SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д   <§ў§в§а§Я§Ц§Э§а§Ю> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 	
 		Check_Ys_Rem ( ATKER , DEFER )
 end 
@@ -2197,7 +2121,7 @@ function State_Pj_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end 
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_JLPj_Add ( role , statelv ) 
 	local def_dif = statelv * 60
 	local def = DefSb(role) - def_dif
@@ -2213,7 +2137,7 @@ function State_JLPj_Rem ( role , statelv )
 end 
 
 
--- Удар в спину
+-- §µ§Х§С§в §У §г§б§Ъ§Я§е
 function SkillSp_Bc ( sklv )
 	local sp_reduce = 15 + sklv * 2  
 	return sp_reduce 
@@ -2250,7 +2174,7 @@ function Skill_Bc_End ( ATKER , DEFER , sklv )
 
 end 
 
--- Теневой удар
+-- §ґ§Ц§Я§Ц§У§а§Ы §е§Х§С§в
 function SkillSp_Guz ( sklv )
 	local sp_reduce = 20 + sklv * 3  
 	return sp_reduce 
@@ -2312,7 +2236,7 @@ function Skill_Guz_End ( ATKER , DEFER , sklv )
 			local Percentage = Percentage_Random ( 0.5 )
 			if Percentage == 1 then
 				statetime = statetime * 2
-				SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усилен!")
+				SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	local Check_Heilong_app = CheckItem_Heilong_app ( ATKER )
@@ -2320,7 +2244,7 @@ function Skill_Guz_End ( ATKER , DEFER , sklv )
 			local Percentage_app = Percentage_Random ( 0.5 )
 			if Percentage_app == 1 then
 				statetime = statetime * 2
-				SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Эффект навыка усилен!")
+				SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	if  a == 1 then
@@ -2330,7 +2254,7 @@ function Skill_Guz_End ( ATKER , DEFER , sklv )
 
 	if GetChaAIType( DEFER ) >= 21 then
 		if BOSSXYSJ[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSXYSJ[GetChaTypeID( DEFER )] = BOSSXYSJ[GetChaTypeID( DEFER )] -1
@@ -2344,7 +2268,7 @@ function Skill_Guz_End ( ATKER , DEFER , sklv )
 	Check_Ys_Rem ( ATKER ,DEFER )
 
 end 
--- Отравленная стрела
+-- §°§д§в§С§У§Э§Ц§Я§Я§С§с §г§д§в§Ц§Э§С
 function SkillSp_Dj ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -2369,7 +2293,7 @@ function Skill_Dj_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  9 + sklv * 1    
 	AddState ( ATKER , DEFER , STATE_DJ , statelv , statetime ) 
-	SystemNotice(DEFER, "На вас действует эффект  <Отравление> "..statelv.."ур. на "..statetime.. " секунд" )		
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д  <§°§д§в§С§У§Э§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 	
 	Check_Ys_Rem ( ATKER , DEFER )
 end 
@@ -2383,7 +2307,7 @@ end
 function State_Dj_Rem ( role , statelv ) 
 end 
 
--- Ядовитый дротик
+-- §Б§Х§а§У§Ъ§д§н§Ы §Х§в§а§д§Ъ§Ь
 function SkillSp_Db ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -2408,7 +2332,7 @@ function Skill_Db_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  7 + sklv * 4    
 	AddState ( ATKER , DEFER , STATE_ZD , statelv , statetime ) 
-	SystemNotice(DEFER, "На вас действует эффект <Отравление> "..statelv.."ур. на "..statetime.. " секунд" )		
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§°§д§в§С§У§Э§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 	
 	Check_Ys_Rem ( ATKER , DEFER )
 end 
@@ -2431,7 +2355,7 @@ function State_Zd_Rem ( role , statelv )
 end 
 
 
--- Оцепенение
+-- §°§и§Ц§б§Ц§Я§Ц§Я§Ъ§Ц
 function SkillSp_Mb ( sklv )	
 --	local sp_reduce = 10 
 --	return sp_reduce 
@@ -2480,7 +2404,7 @@ function State_Mb_Rem ( role , statelv )
 end 
 
 
--- Торнадо
+-- §ґ§а§в§Я§С§Х§а
 function SkillSp_Jf ( sklv )	
 	local sp_reduce = 25 + sklv * 2   
 	return sp_reduce 
@@ -2528,7 +2452,7 @@ function Skill_Jf_End ( ATKER , DEFER , sklv )
 			statelv = 10
 		end
 		AddState ( ATKER , DEFER , STATE_JF , statelv , statetime ) 
-		SystemNotice(DEFER, "На вас действует эффект <Торнадо> "..statelv.."ур. на "..statetime.. " секунд" )		
+		SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§ґ§а§в§Я§С§Х§а> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 	
 	else 
 		SetSus( DEFER , 0 ) 
@@ -2541,7 +2465,7 @@ end
 function State_jf_Rem ( role , statelv ) 
 end 
 
--- Молния
+-- §®§а§Э§Я§Ъ§с
 function SkillSp_Lj ( sklv )	
 	local sp_reduce = 25 + sklv * 2   
 	return sp_reduce 
@@ -2592,7 +2516,7 @@ function Skill_Lj_End ( ATKER , DEFER , sklv )
 		local Percentage_Death = Percentage_Random ( 0.6 )
 			if Percentage_Death == 1 then
 				dmg = math.floor(dmg * 1.5)
-				SystemNotice ( ATKER , "Получена сила набора Сета Смерти. Эффект навыка усилен!")
+				SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §і§Ц§д§С §і§Ю§Ц§в§д§Ъ. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	local Check_Heilong = CheckItem_Heilong ( ATKER )
@@ -2600,7 +2524,7 @@ function Skill_Lj_End ( ATKER , DEFER , sklv )
 		local Percentage = Percentage_Random ( 0.8 )
 		if Percentage == 1 then
 			dmg = dmg*1.5 
-			SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Урон увеличен!")
+			SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§в§а§Я §е§У§Ц§Э§Ъ§й§Ц§Я!")
 		end
 	end
 	local Check_Heilong_app = CheckItem_Heilong_app ( ATKER )
@@ -2608,7 +2532,7 @@ function Skill_Lj_End ( ATKER , DEFER , sklv )
 		local Percentage_app = Percentage_Random ( 0.8 )
 		if Percentage_app == 1 then
 			dmg = dmg*1.5 
-			SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Урон увеличен!")
+			SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§в§а§Я §е§У§Ц§Э§Ъ§й§Ц§Я!")
 		end
 	end
 	local dmg_fin = Cuihua_Mofa ( dmg , AddStateLv )
@@ -2618,7 +2542,7 @@ function Skill_Lj_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg_fin ) 
 end 
 
---Охотничий удар
+--§°§з§а§д§Я§Ъ§й§Ъ§Ы §е§Х§С§в
 function SkillSp_Ldc ( sklv )
 	local sp_reduce = 10  
 	return sp_reduce 
@@ -2653,7 +2577,7 @@ function Skill_Ldc_End ( ATKER , DEFER , sklv )
 
 end 
 
---Исцеление
+--§Є§г§и§Ц§Э§Ц§Я§Ъ§Ц
 function SkillSp_Xzy ( sklv )			
 	local sp_reduce = 30 + sklv * 5   
 	return sp_reduce 
@@ -2720,7 +2644,7 @@ end
 
 end 
 
---Восстановление
+--§Ј§а§г§г§д§С§Я§а§У§Э§Ц§Я§Ъ§Ц
 function SkillSp_Hfs ( sklv )	
 	local sp_reduce = 20    
 	return sp_reduce 
@@ -2749,7 +2673,7 @@ function Skill_Hfs_End ( ATKER , DEFER , sklv )
 		--LG( "Hfs", "Recover Skill Level=" , sklv , "Skill Damage= " , dmg , '\n" ) 
 end 
 
---Призрачный удар
+--§±§в§Ъ§Щ§в§С§й§Я§н§Ы §е§Х§С§в
 function SkillSp_Xlcz ( sklv )
 	local sp_reduce = 30 + sklv * 2   
 	return sp_reduce 
@@ -2829,10 +2753,10 @@ function Skill_Xlcz_End ( ATKER , DEFER , sklv )
 --	LG( "xlcz", "Spiritual Bolt Skill Level=" , sklv ,"Attacker sta=", sta ,"Normal attack damage=", atkdmg , "Skill Damage= " , dmg , "\n" ) 
 end 
 
---Магическая атака
+--§®§С§Ф§Ъ§й§Ц§г§Ь§С§с §С§д§С§Ь§С
 function MAGIC_Atk_Dmg(a,b) 
 
-	local job = GetChaAttr(a, ATTR_JOB) --І»Н¬Ц°ТµІЙУГІ»Н¬µДКфРФіЙі¤ВК
+	local job = GetChaAttr(a, ATTR_JOB) --??§Ї?§ёЎг§ґ¦М?§«§µ§¤??§Ї?¦М§Ґ§¬§ж§І§¶?§«?Ўи§Ј§¬
 	local sta_atker = Sta(a) 
 	local sta_defer = Sta(b) 
 	local atk_mnatk = math.floor (MnatkIb(a) + sta_atker*Magic_rate1[job] +  Magic_rate2[job] * math.pow(math.floor( sta_atker*4/15), 2 ))
@@ -2848,8 +2772,8 @@ function MAGIC_Atk_Dmg(a,b)
 	end 
 		
 	local atk = math.random( atk_mnatk , atk_mxatk ) 
-	local dmg = Magic_Dmg ( atk, defer_mgic_def , defer_resist )  --[[јЖЛгХэіЈЙЛє¦Цµ]]--
-	local mndmg = math.floor(  Lv(a) * 0.25 + Mnatk(a) * 0 ) + 1 --[[јЖЛгЧоРЎЙЛє¦Цµ]]--
+	local dmg = Magic_Dmg ( atk, defer_mgic_def , defer_resist )  --[[?§Ё§­§Ф§·§п??§«§­?|§ё¦М]]--
+	local mndmg = math.floor(  Lv(a) * 0.25 + Mnatk(a) * 0 ) + 1 --[[?§Ё§­§Ф§№§а§І?§«§­?|§ё¦М]]--
 	dmg =math.max(  lv_eff * dmg , mndmg ) 
 
 	return dmg 
@@ -2910,7 +2834,7 @@ Magic_rate2[	JOB_TYPE_HANGHAISHI	]=	0.35
 Magic_rate2[	JOB_TYPE_BAOFAHU	]=	0.4
 Magic_rate2[	JOB_TYPE_GONGCHENGSHI	]=	0.4
 
---Призрачный огоньь
+--§±§в§Ъ§Щ§в§С§й§Я§н§Ы §а§Ф§а§Я§о§о
 function SkillSp_Xlzh ( sklv )	
 	local sp_reduce = 45  + math.floor ( sklv * 3 )  
 	return sp_reduce 
@@ -2936,7 +2860,7 @@ function Skill_Xlzh_End ( ATKER , DEFER , sklv )
 	local statetime = 200 + sklv * 40 
 	--LG( "Xlzh", "Spiritual Fire Skill Level=" , sklv , "\n" ) 
 	AddState( ATKER , DEFER , STATE_XLZH, statelv , statetime )
-	SystemNotice(DEFER, "Получено усиление <Призрачный огонь> "..statelv.."ур. на "..statetime.. " секунд" )
+	SystemNotice(DEFER, "§±§а§Э§е§й§Ц§Я§а §е§г§Ъ§Э§Ц§Я§Ъ§Ц <§±§в§Ъ§Щ§в§С§й§Я§н§Ы §а§Ф§а§Я§о> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	--LG("skill_Xlzh", "function Skill_Oper_Xlzh: " , "add state Xlzh " , "\n" ) 
 end 
@@ -2963,7 +2887,7 @@ function State_Xlzh_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Мощь бури
+--§®§а§л§о §Т§е§в§Ъ
 function SkillSp_Fzlz ( sklv )	
 	local sp_reduce = 40  + sklv * 4
 	return sp_reduce 
@@ -2992,7 +2916,7 @@ function Skill_Fzlz_End ( ATKER , DEFER , sklv )
 		statetime = 360
 		statelv = 10
 	end
-	SystemNotice(DEFER, "Получено усиление <Мощь бури> "..statelv.."ур. на "..statetime.. " секунд" )
+	SystemNotice(DEFER, "§±§а§Э§е§й§Ц§Я§а §е§г§Ъ§Э§Ц§Я§Ъ§Ц <§®§а§л§о §Т§е§в§Ъ> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	AddState( ATKER , DEFER , STATE_FZLZ, statelv , statetime ) 
 end 
@@ -3019,7 +2943,7 @@ function State_Fzlz_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Ледяная стрела
+--§­§Ц§Х§с§Я§С§с §г§д§в§Ц§Э§С
 function SkillSp_Bdj ( sklv )	
    local sp_reduce = 15   
 	return sp_reduce 
@@ -3062,10 +2986,10 @@ function Skill_Bdj_End ( ATKER , DEFER , sklv )
 		local Percentage_Death = Percentage_Random ( 0.7 )
 			if Percentage_Death == 1 then
 statetime = math.floor (statetime * 1.3)
-SystemNotice ( ATKER , "Получена сила набора Сета Смерти. Эффект навыка усилен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §і§Ц§д§С §і§Ю§Ц§в§д§Ъ. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
-SystemNotice(DEFER, "На вас действует эффект <Замедление> "..statelv.."ур. на "..statetime.. " секунд" )		
+SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§©§С§Ю§Ц§Х§Э§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 	
 	AddState ( ATKER , DEFER , STATE_BDJ , statelv , statetime ) 
 end 
@@ -3087,7 +3011,7 @@ function State_Bdj_Rem ( role , statelv )
 end 
 
 
---Калечащий выстрел
+--§¬§С§Э§Ц§й§С§л§Ъ§Ы §У§н§г§д§в§Ц§Э
 function SkillSp_Tj ( sklv )	
 	local sp_reduce = 10 + sklv * 0.5  
 	return sp_reduce 
@@ -3133,7 +3057,7 @@ function Skill_Tj_End ( ATKER , DEFER , sklv )
 	end
 	if GetChaAIType( DEFER ) >= 21 then   
 		if BOSSTJSJ[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSTJSJ[GetChaTypeID( DEFER )] = BOSSTJSJ[GetChaTypeID( DEFER )] -1
@@ -3145,10 +3069,10 @@ function Skill_Tj_End ( ATKER , DEFER , sklv )
 		local Percentage_Death = Percentage_Random ( 0.7 )
 			if Percentage_Death == 1 then
 statetime = math.floor (statetime * 1.3)
-SystemNotice ( ATKER , "Получена сила набора Сета Смерти. Эффект навыка усилен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §і§Ц§д§С §і§Ю§Ц§в§д§Ъ. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
-SystemNotice(DEFER, "На вас действует эффект <Замедление> "..statelv.."ур. на "..statetime.. " секунд" )		
+SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§©§С§Ю§Ц§Х§Э§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 
 	AddState( ATKER , DEFER , STATE_TJ, statelv , statetime ) 
 
@@ -3177,7 +3101,7 @@ function State_Tj_Rem ( role , statelv )
 end 
 
 
---Ослабление
+--§°§г§Э§С§Т§Э§Ц§Я§Ъ§Ц
 function SkillSp_Sj ( sklv )	
 	local sp_reduce = 25 + sklv * 1   
 	return sp_reduce 
@@ -3231,7 +3155,7 @@ function Skill_Sj_End ( ATKER , DEFER , sklv )
 	end
 	if GetChaAIType( DEFER ) >= 21 then   
 		if BOSSSJSJ[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSSJSJ[GetChaTypeID( DEFER )] = BOSSSJSJ[GetChaTypeID( DEFER )] -1
@@ -3243,10 +3167,10 @@ function Skill_Sj_End ( ATKER , DEFER , sklv )
 		local Percentage_Death = Percentage_Random ( 0.7 )
 			if Percentage_Death == 1 then
 					statetime = math.floor (statetime * 1.3)
-					SystemNotice ( ATKER , "Получена сила набора Сета Смерти. Эффект навыка усилен!")
+					SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §і§Ц§д§С §і§Ю§Ц§в§д§Ъ. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
-	SystemNotice(DEFER, "На вас действует эффект <Безмолвие> "..statelv.."ур. на "..statetime.. " секунд" )		
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§ў§Ц§Щ§Ю§а§Э§У§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 
 	AddState( ATKER , DEFER , STATE_SJ, statelv , statetime ) 
 	AddState( ATKER , DEFER , STATE_JNJZ, statelv , statetime ) 
@@ -3277,7 +3201,7 @@ function State_Sj_Rem ( role , statelv )
 end 
 
 
---Выстрел в голову
+--§Ј§н§г§д§в§Ц§Э §У §Ф§а§Э§а§У§е
 function SkillSp_Bt ( sklv )	
 	local sp_reduce = sklv * 2 + 30  
 	return sp_reduce 
@@ -3318,7 +3242,7 @@ function Skill_Bt_End ( ATKER , DEFER , sklv )
 			local Percentage = Percentage_Random ( 0.1 )
 			if Percentage == 1 then
 				dmg = dmg * 10 
-				SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Урон увеличен!")
+				SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§в§а§Я §е§У§Ц§Э§Ъ§й§Ц§Я!")
 			end
 	end
 	local Check_Heilong_app = CheckItem_Heilong_app ( ATKER )
@@ -3326,7 +3250,7 @@ function Skill_Bt_End ( ATKER , DEFER , sklv )
 			local Percentage_app = Percentage_Random ( 0.1 )
 			if Percentage_app == 1 then
 				dmg = dmg * 10 
-				SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Урон увеличен!")
+				SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§в§а§Я §е§У§Ц§Э§Ъ§й§Ц§Я!")
 			end
 	end
 	
@@ -3334,7 +3258,7 @@ function Skill_Bt_End ( ATKER , DEFER , sklv )
 	SetCharaAttr ( hp , DEFER , ATTR_HP ) 
 end 
 
---Ангельский щит
+--§Ў§Я§Ф§Ц§Э§о§г§Ь§Ъ§Ы §л§Ъ§д
 function SkillSp_Tshd ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -3374,7 +3298,7 @@ function Skill_Tshd_End ( ATKER , DEFER , sklv )
 		statelv = 10
 	end
         AddState( ATKER , DEFER , STATE_TSHD, statelv , statetime )
-		SystemNotice(DEFER, "На вас действует эффект <Ангельский щит> "..statelv.."ур. на "..statetime.. " секунд" )		
+		SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§Ў§Я§Ф§Ц§Э§о§г§Ь§Ъ§Ы §л§Ъ§д> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 
 end 
 
@@ -3394,7 +3318,7 @@ function State_Tshd_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---	Магический щит
+--	§®§С§Ф§Ъ§й§Ц§г§Ь§Ъ§Ы §л§Ъ§д
 function SkillSp_Xlpz ( sklv )	
 	local sp_reduce = 0  
 	return sp_reduce 
@@ -3427,10 +3351,10 @@ function Skill_Xlpz_End ( ATKER , DEFER , sklv )
 	end
 	AddState( ATKER , DEFER , STATE_MFD, statelv , statetime )
 	
-	SystemNotice(DEFER, "На вас действует эффект <Магический щит> "..sklv.."ур.")		
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§®§С§Ф§Ъ§й§Ц§г§Ь§Ъ§Ы §л§Ъ§д> "..sklv.."§е§в.")		
 end 
 
---Утаивание
+--§µ§д§С§Ъ§У§С§Я§Ъ§Ц
 function SkillSp_Ys ( sklv ) 
 	local sp_reduce = 10  
 	return sp_reduce 
@@ -3466,7 +3390,7 @@ function Skill_Ys_End ( ATKER , DEFER , sklv )
 	end
 	AddState ( ATKER , DEFER , STATE_YS , statelv , statetime ) 
 
-	SystemNotice(DEFER, "На вас действует эффект <Невидимость> "..statelv.."ур. на "..statetime.." секунд" )		
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§Ї§Ц§У§Ъ§Х§Ъ§Ю§а§г§д§о> "..statelv.."§е§в. §Я§С "..statetime.." §г§Ц§Ь§е§Я§Х" )		
 
 end 
 
@@ -3514,7 +3438,7 @@ function State_Ys_Rem ( role , statelv )
 --	end
 end 
 
---Переплетение
+--§±§Ц§в§Ц§б§Э§Ц§д§Ц§Я§Ъ§Ц
 function SkillSp_Hzcr ( sklv )
 	local sp_reduce = 20 + sklv * 1  
 	return sp_reduce 
@@ -3545,7 +3469,7 @@ function Skill_Hzcr_End ( ATKER , DEFER , sklv )
 			local Percentage = Percentage_Random ( 0.8 )
 			if Percentage == 1 then
 statetime = statetime * 2
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Действие навыка увеличено!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §Ґ§Ц§Ы§г§д§У§Ъ§Ц §Я§С§У§н§Ь§С §е§У§Ц§Э§Ъ§й§Ц§Я§а!")
 			end
 	end
 	local Check_Heilong_app = CheckItem_Heilong_app ( role1)
@@ -3553,7 +3477,7 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Действие навыка ув
 			local Percentage_app = Percentage_Random ( 0.8 )
 			if Percentage_app == 1 then
 statetime = statetime * 2
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Действие навыка увеличено!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §Ґ§Ц§Ы§г§д§У§Ъ§Ц §Я§С§У§н§Ь§С §е§У§Ц§Э§Ъ§й§Ц§Я§а!")
 			end
 	end
 	local hp_defer = Mxhp ( DEFER ) 
@@ -3569,14 +3493,14 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Действие навыка ув
 	end 
 	if GetChaAIType( DEFER ) >= 21 then
 		if BOSSWOD[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSWOD[GetChaTypeID( DEFER )] = BOSSWOD[GetChaTypeID( DEFER )] -1
 		end
 	end
 	AddState ( ATKER , DEFER , STATE_HZCR , statelv , statetime ) 
-	SystemNotice(DEFER, "На вас действует эффект <Переплетение> "..statelv.."ур. на "..statetime.. " секунд" )		
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§±§Ц§в§Ц§б§Э§Ц§д§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )		
 
 end 
 
@@ -3588,7 +3512,7 @@ end
 function State_Hzcr_Rem ( role , statelv ) 
 end
 
---Насмешка
+--§Ї§С§г§Ю§Ц§к§Ь§С
 function SkillSp_CHF ( sklv )	
 	local sp_reduce = 10  
 	return sp_reduce 
@@ -3707,7 +3631,7 @@ end
 	AddHate ( role  , ATKER , hate )
 end 
 
---Рык
+--§І§н§Ь
 function SkillArea_Circle_Pax ( sklv )	
 	local side = 200 + 20 * sklv 
 	SetSkillRange ( 4 , side )   
@@ -3788,7 +3712,7 @@ Hate_dif = Hate[i]
 	end
 end 
 
---Владение щитом	
+--§Ј§Э§С§Х§Ц§Я§Ъ§Ц §л§Ъ§д§а§Ю	
 function Skill_Dpsl_Use( role , sklv ) 
 	local statelv = sklv  
 	local defsb_dif = 3 * statelv 
@@ -3825,7 +3749,7 @@ function State_Dpsl_Rem ( role , statelv )
 
 end 
 
---Мастер большого меча
+--§®§С§г§д§Ц§в §Т§а§Э§о§к§а§Ф§а §Ю§Ц§й§С
 function Skill_Jjsl_Use( role , sklv ) 
 	local statelv = sklv  
 	local atksb_dif = 7 * statelv 
@@ -3883,7 +3807,7 @@ function State_Jjsl_Rem ( role , statelv )
 
 end 
 
---Искусство владеть мечом	
+--§Є§г§Ь§е§г§г§д§У§а §У§Э§С§Х§Ц§д§о §Ю§Ц§й§а§Ю	
 function Skill_Jssl_Use( role , sklv ) 
 	local statelv = sklv  
 	local atksb_dif = 4 * statelv 
@@ -3933,7 +3857,7 @@ function State_Jssl_Rem ( role , statelv )
 end 
 
 
---Звериная сила
+--§©§У§Ц§в§Ъ§Я§С§с §г§Ъ§Э§С
 function Skill_Shtz_Use( role , sklv ) 
 	local statelv = sklv  
 	local mxhpsb_dif = 50 * statelv 
@@ -3958,7 +3882,7 @@ function State_Shtz_Rem ( role , statelv )
 
 end 
 
---Усиление
+--§µ§г§Ъ§Э§Ц§Я§Ъ§Ц
 function Skill_Qhtz_Use( role , sklv ) 
 	local statelv = sklv  
 	local mxhpsb_dif = 20 * statelv + Con(role) * 3 
@@ -3997,7 +3921,7 @@ end
 function State_Qhtz_Rem ( role , statelv ) 
 end 
 
---Сноровка
+--§і§Я§а§в§а§У§Ь§С
 function Skill_Lqhb_Use( role , sklv ) 
 	local statelv = sklv  
 	local fleesb_dif = 3 * statelv 
@@ -4023,7 +3947,7 @@ function State_Lqhb_Rem ( role , statelv )
 end 
 
 
---Концентрация
+--§¬§а§Я§и§Ц§Я§д§в§С§и§Ъ§с
 function Skill_Jdzz_Use( role , sklv ) 
 	local statelv = sklv  
 	local hitsb_dif = 1 * statelv 
@@ -4046,7 +3970,7 @@ end
 function State_Jdzz_Rem ( role , statelv ) 
 end 
 
---Кровавый бык
+--§¬§в§а§У§С§У§н§Ы §Т§н§Ь
 function Skill_Mnrx_Use( role , sklv ) 
 	local statelv = sklv  
 	local mxhpsa_dif = 0.1 + 0.02 * statelv 
@@ -4090,7 +4014,7 @@ end
 function State_Mnrx_Rem ( role , statelv ) 
 end 
 
---Отклонение
+--§°§д§Ь§Э§а§Я§Ц§Я§Ъ§Ц
 function Skill_Hys_Use( role , sklv )  
 	local statelv = sklv  
 	local fleesb_dif =4 * statelv 
@@ -4113,7 +4037,7 @@ end
 function State_Hys_Rem ( role , statelv ) 
 end 
 
---Кровавое безумие
+--§¬§в§а§У§С§У§а§Ц §Т§Ц§Щ§е§Ю§Ъ§Ц
 function Skill_Pxkg_Use( role , sklv ) 
 	local statelv = sklv 
 	local aspdsa_dif =  ( 0.1 + 0.01 * statelv ) 
@@ -4146,7 +4070,7 @@ end
 function State_Pxkg_Rem ( role , statelv ) 
 end 
 
---Восстанавливать
+--§Ј§а§г§г§д§С§Я§С§У§Э§Ъ§У§С§д§о
 function Skill_Tzhf_Use( role , sklv ) 
 	local statelv = sklv  
 	local hrecsb_dif =  statelv  
@@ -4169,7 +4093,7 @@ end
 function State_Tzhf_Rem ( role , statelv ) 
 end 
 
---Шипастый щит
+--§є§Ъ§б§С§г§д§н§Ы §л§Ъ§д
 function Skill_Zjft_Use( role , sklv ) 
 	local statelv = sklv  
 	AddState ( role , role , STATE_ZJFT , statelv , -1 ) 
@@ -4180,7 +4104,7 @@ function Skill_Zjft_Unuse( role , sklv )
 	RemoveState ( role , STATE_ZJFT )  
 end 
 
---Мастер стрелкового оружия
+--§®§С§г§д§Ц§в §г§д§в§Ц§Э§Ь§а§У§а§Ф§а §а§в§е§Ш§Ъ§с
 function Skill_Gjsl_Use( role , sklv ) 
 	local statelv = sklv  
 	local mnatksb_dif = 2 * statelv 
@@ -4225,14 +4149,14 @@ function State_Gjsl_Rem ( role , statelv )
 end 
 
 
--- Путь ветра (id=75)
+-- §±§е§д§о §У§Ц§д§в§С (id=75)
 function Skill_Jfb_Use( role , sklv )
-	-- Профессия шарп,  мастер стрелкового 2 (74)
+	-- §±§в§а§ж§Ц§г§г§Ъ§с §к§С§в§б,  §Ю§С§г§д§Ц§в §г§д§в§Ц§Э§Ь§а§У§а§Ф§а 2 (74)
 	--local job = GetChaAttr( role, ATTR_JOB)
 	--local slv = GetSkillLv( role , 74 ) 
 	--if job ~= 12 or slv < 2 or sklv > 10 then
 		--SkillUnable(role)
-		--SystemNotice(role, "Невозможно применить эффект")
+		--SystemNotice(role, "§Ї§Ц§У§а§Щ§Ю§а§Ш§Я§а §б§в§Ъ§Ю§Ц§Я§Ъ§д§о §п§ж§ж§Ц§Ь§д")
 		--return 0 
 	--end
 	local statelv = sklv  
@@ -4256,7 +4180,7 @@ end
 function State_Jfb_Rem ( role , statelv ) 
 end
 
---Сила
+--§і§Ъ§Э§С
 function Skill_Jsjc_Use( role , sklv ) 
 	--LG("skill_jsjc", "enter function Skill_Oper_jsjc:", "sklv = ", sklv ,"role = ", role , "\n") 
 	local statelv = sklv  
@@ -4281,7 +4205,7 @@ end
 function State_Jsjc_Rem ( role , statelv ) 
 end 
 
---Благодать господня
+--§ў§Э§С§Ф§а§Х§С§д§о §Ф§а§г§б§а§Х§Я§с
 function Skill_Sy_Use( role , sklv ) 
 	local statelv = sklv  
 	local srecsb_dif = 1+statelv*1   
@@ -4304,7 +4228,7 @@ end
 function State_Sy_Rem ( role , statelv ) 
 end 
 
---Усердие
+--§µ§г§Ц§в§Х§Ъ§Ц
 function Skill_Jr_Use( role , sklv ) 
 	local statelv = sklv  
 	local srecsb_dif = 1+statelv*1   
@@ -4321,7 +4245,7 @@ function Skill_Jr_Unuse( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
---Водоток
+--§Ј§а§Х§а§д§а§Ь
 function Skill_Sl_Use( role , sklv ) 
 	local statelv = sklv  
 	local ship_mspdsa_dif = 0.05 + statelv * 0.01    
@@ -4339,7 +4263,7 @@ function Skill_Sl_Unuse( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
---Броня из раковин
+--§ў§в§а§Я§с §Ъ§Щ §в§С§Ь§а§У§Ъ§Я
 function Skill_Bkzj_Use( role , sklv ) 
 --	LG("skill_Bkzj", "enter function Skill_Oper_Bkzj:", "sklv = ", sklv ,"role = ", role , "\n") 
 	local statelv = sklv  
@@ -4358,7 +4282,7 @@ function Skill_Bkzj_Unuse( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
---Мастерство канонира +
+--§®§С§г§д§Ц§в§г§д§У§а §Ь§С§Я§а§Я§Ъ§в§С +
 function Skill_Hpsl_Use( role , sklv ) 
 --	LG("skill_Hpsl", "enter function Skill_Oper_Hpsl:", "sklv = ", sklv ,"role = ", role , "\n") 
 	local statelv = sklv  
@@ -4383,7 +4307,7 @@ function Skill_Hpsl_Unuse( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
---Усилен. дерев. конструкции +
+--§µ§г§Ъ§Э§Ц§Я. §Х§Ц§в§Ц§У. §Ь§а§Я§г§д§в§е§Ь§и§Ъ§Ъ +
 function Skill_Jbjg_Use( role , sklv ) 
 	LG("skill_Jbjg", "enter function Skill_Oper_Jbjg:", "sklv = ", sklv ,"role = ", role , "\n") 
 	local statelv = sklv  
@@ -4402,7 +4326,7 @@ function Skill_Jbjg_Unuse( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
---Мореходство
+--§®§а§в§Ц§з§а§Х§г§д§У§а
 function Skill_Cfs_Use( role , sklv ) 
 	LG("skill_Cfs", "enter function Skill_Oper_Cfs:", "sklv = ", sklv ,"role = ", role , "\n") 
 	local statelv = sklv  
@@ -4421,7 +4345,7 @@ function Skill_Cfs_Unuse( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
---Усиление корпуса
+--§µ§г§Ъ§Э§Ц§Я§Ъ§Ц §Ь§а§в§б§е§г§С
 function Skill_Ctqh_Use( role , sklv ) 
 	LG("skill_Ctqh", "enter function Skill_Oper_Ctqh:", "sklv = ", sklv ,"role = ", role , "\n") 
 	local statelv = sklv  
@@ -4440,7 +4364,7 @@ function Skill_Ctqh_Unuse( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
---Топливо
+--§ґ§а§б§Э§Ъ§У§а
 function Skill_Bjkr_Use( role , sklv ) 
 	LG("skill_Bjcr", "enter function Skill_Oper_Bjcr:", "sklv = ", sklv ,"role = ", role , "\n") 
 	local statelv = sklv  
@@ -4460,7 +4384,7 @@ function Skill_Bjkr_Unuse( role , sklv )
 end 
 
 
---Переплетение водорослей
+--§±§Ц§в§Ц§б§Э§Ц§д§Ц§Я§Ъ§Ц §У§а§Х§а§в§а§г§Э§Ц§Ы
 function Skill_Clxz_Use( role , sklv )
 	local statelv = sklv  
 	local fleesb_dif = 3 * statelv 
@@ -4478,7 +4402,7 @@ function Skill_Clxz_Unuse( role , sklv )
 	
 	if GetChaAIType( DEFER ) >= 21 then
 		if BOSSWOD[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSWOD[GetChaTypeID( DEFER )] = BOSSWOD[GetChaTypeID( DEFER )] -1
@@ -4492,7 +4416,7 @@ end
 function State_Clxz_Rem ( role , statelv )
 end 
 
---Охотничий камуфляж
+--§°§з§а§д§Я§Ъ§й§Ъ§Ы §Ь§С§Ю§е§ж§Э§с§Ш
 function Skill_Lrwz_Use( role , sklv ) 
 	local statelv = sklv  
 	local fleesb_dif = 2 * statelv 
@@ -4515,7 +4439,7 @@ end
 function State_Lrwz_Rem ( role , statelv ) 
 end 
 
---Мастер огнестрельного оружия
+--§®§С§г§д§Ц§в §а§Ф§Я§Ц§г§д§в§Ц§Э§о§Я§а§Ф§а §а§в§е§Ш§Ъ§с
 function Skill_Hqsl_Use( role , sklv ) 
 	local statelv = sklv  
 	local mnatksb_dif = 6 * statelv 
@@ -4558,7 +4482,7 @@ end
 function State_Hqsl_Rem ( role , statelv ) 
 end 
 
---Рубка двумя мечами
+--§І§е§Т§Ь§С §Х§У§е§Ю§с §Ю§Ц§й§С§Ю§Ъ
 function Skill_Fsz_Use( role , sklv ) 
 	local statelv = sklv
 	local vilka_barb = vilka_barb(role)
@@ -4631,7 +4555,7 @@ end
 function State_Fsz_Rem ( role , statelv ) 
 end 
 
---Место
+--§®§Ц§г§д§а
 function Skill_Zx_Use( role , sklv ) 
 	local ys_statelv = GetChaStateLv ( role , STATE_YS ) 
 	if ys_statelv >= 1 then  
@@ -4683,7 +4607,7 @@ function Skill_Zx_Unuse( role , sklv )
 	ALLExAttrSet(role)
 end 
 
---Метеоритный дождь
+--§®§Ц§д§Ц§а§в§Ъ§д§Я§н§Ы §Х§а§Ш§Х§о
 function SkillArea_Square_Lxjy ( sklv )	
 	local side = 400 
 	SetSkillRange ( 4 , side )  	
@@ -4731,7 +4655,7 @@ function Skill_Lxjy_End ( ATKER , DEFER , sklv )
 	--LG( "Lxjy", "Meteor Shower Skill Level=" , sklv , "Skill Damage= " , dmg , '\n" ) 
 end 
 
---Вой
+--§Ј§а§Ы
 function SkillArea_Circle_Lh ( sklv )
 	--LG( "skarea_lh", " enter function SkillArea_Circle_Lh : " , "sklv = " ,sklv ) 
 	local side = 300 + math.floor ( sklv * 20 ) 
@@ -4780,7 +4704,7 @@ function Skill_Lh_End ( ATKER , DEFER , sklv )
 end 
 
 
---Парирование
+--§±§С§в§Ъ§в§а§У§С§Я§Ъ§Ц
 function SkillArea_Sector_Hxdj ( sklv )	
 	local radius = 400 + math.floor ( sklv * 10 ) 
 	local angle = 100 + math.floor ( sklv / 5 ) * 20 
@@ -4821,7 +4745,7 @@ function Skill_Hxdj_End ( ATKER , DEFER , sklv )
 	--LG( "Hxdj", "Parry Skill Level= " , sklv , "Skill Damage= " , dmg , '\n" ) 
 end 
 
---Варварское дробление
+--§Ј§С§в§У§С§в§г§Ь§а§Ц §Х§в§а§Т§Э§Ц§Я§Ъ§Ц
 function SkillArea_Circle_Ymsl ( sklv )
 	--LG( "skarea_ymsl", " enter function SkillArea_Circle_Ymsl : " , "sklv = " ,sklv ) 
 	local side = 200 + math.floor ( sklv * 10 ) 
@@ -4862,7 +4786,7 @@ function Skill_Ymsl_End ( ATKER , DEFER , sklv )
  end
 
 
---Великое исцеление
+--§Ј§Ц§Э§Ъ§Ь§а§Ц §Ъ§г§и§Ц§Э§Ц§Я§Ъ§Ц
 function SkillArea_Circle_Dzy ( sklv )
 	local side = 300 + math.floor ( sklv * 30 ) 
 	SetSkillRange ( 4 , side )   
@@ -4898,7 +4822,7 @@ function Skill_Dzy_End ( ATKER , DEFER , sklv )
 end 
 
 
---Мощное Восстановление
+--§®§а§л§Я§а§Ц §Ј§а§г§г§д§С§Я§а§У§Э§Ц§Я§Ъ§Ц
 function SkillArea_Circle_Dhfs ( sklv )
 	local side = 300 + math.floor ( sklv * 30 ) 
 	SetSkillRange ( 4 , side )   
@@ -4935,7 +4859,7 @@ function Skill_Dhfs_End ( ATKER , DEFER , sklv )
 end 
 
 
--- Коралловый луч
+-- §¬§а§в§С§Э§Э§а§У§н§Ы §Э§е§й
 function SkillArea_Line_Bkcj ( sklv )
 	local lenth = 500 + sklv * 30  
 	local width = 100 + sklv * 10 
@@ -4999,7 +4923,7 @@ end
 		local Percentage_Death = Percentage_Random ( 0.7 )
 			if Percentage_Death == 1 then
 				dmg = math.floor(dmg*1.5)
-				SystemNotice ( ATKER , "Получена сила набора Сета Смерти. Эффект навыка усилен!")
+				SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §і§Ц§д§С §і§Ю§Ц§в§д§Ъ. §ї§ж§ж§Ц§Ь§д §Я§С§У§н§Ь§С §е§г§Ъ§Э§Ц§Я!")
 			end
 	end
 	local dmg_fin = Cuihua_Mofa ( dmg , AddStateLv ) 
@@ -5008,7 +4932,7 @@ end
 	Hp_Endure_Dmg ( DEFER , dmg_fin ) 
 end 
 
---Попутный ветер
+--§±§а§б§е§д§Я§н§Ы §У§Ц§д§Ц§в
 function SkillArea_Circle_Sf ( sklv )	
 	local side = 1000  
 	SetSkillRange ( 3 , side  )  
@@ -5059,7 +4983,7 @@ function State_Sf_Rem ( role , statelv )
 	ALLExAttrSet(role) 
 end 
 
---Зажигательная пуля
+--§©§С§Ш§Ъ§Ф§С§д§Ц§Э§о§Я§С§с §б§е§Э§с
 function SkillPre_Rsd ( sklv )	
 end 
 
@@ -5118,7 +5042,7 @@ function State_Rs_Add ( role , statelv )
 	end
 	local statedttime = 10 + statelv * 5
 	Hp_Endure_Dmg ( role , hpdmg ) 
-	SystemNotice(role, "На вас действует эффект <Огонь> "..statelv.."ур. на "..statedttime.. " секунд" )
+	SystemNotice(role, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§°§Ф§а§Я§о> "..statelv.."§е§в. §Я§С "..statedttime.. " §г§Ц§Ь§е§Я§Х" )
 			
 
 end 
@@ -5130,7 +5054,7 @@ function State_Rs_Tran ( statelv )
 	return 10   
 end 
 
---Проклятый огонь
+--§±§в§а§Ь§Э§с§д§н§Ы §а§Ф§а§Я§о
 function SkillSp_Zzzh ( sklv )	
 	local sp_reduce = 20   
 	return sp_reduce 
@@ -5205,7 +5129,7 @@ function  State_Zzzh_Tran ( statelv )
 	return statetime 
 end 
 
---Контргард
+--§¬§а§Я§д§в§Ф§С§в§Х
 function SkillSp_Sdbz ( sklv )	
 	local sp_reduce = 20   
 	return sp_reduce 
@@ -5269,7 +5193,7 @@ function  State_Sdbz_Tran ( statelv )
 	return statetime 
 end 
 
---Бездонное болото
+--§ў§Ц§Щ§Х§а§Я§Я§а§Ц §Т§а§Э§а§д§а
 function SkillSp_Synz ( sklv )
 	local sklv = sklv * 2
 	local sp_reduce = sklv * 5 + 50  
@@ -5323,7 +5247,7 @@ function State_Synz_Add ( role , statelv )
 
 	local mspdsa_dif = (-1) * ( 0.20 + 0.015 * statelv ) 
 	local mspdsa = math.floor (  (MspdSa(role) + mspdsa_dif ) * ATTR_RADIX ) 
-	SystemNotice(role, "На вас действует эффект <Бездонное болото> "..statelv.."ур." )		
+	SystemNotice(role, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§ў§Ц§Щ§Х§а§Я§Я§а§Ц §Т§а§Э§а§д§а> "..statelv.."§е§в." )		
 
 	SetCharaAttr( mspdsa , role , ATTR_STATEC_MSPD ) 
 	ALLExAttrSet(role)  
@@ -5334,7 +5258,7 @@ function State_Synz_Rem ( role , statelv )
 	local mspdsa_dif = (-1) * ( 0.20 + 0.015 * statelv )
 	local mspdsa = math.floor (  (MspdSa(role) - mspdsa_dif ) * ATTR_RADIX ) 
 	SetCharaAttr( mspdsa , role , ATTR_STATEC_MSPD ) 
-	--SystemNotice(role, "На вас НЕ действует эффект <Бездонное болото> "..statelv.."ур. на  " )	
+	--SystemNotice(role, "§Ї§С §У§С§г §Ї§¦ §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§ў§Ц§Щ§Х§а§Я§Я§а§Ц §Т§а§Э§а§д§а> "..statelv.."§е§в. §Я§С  " )	
 	ALLExAttrSet(role)  
 end 
 
@@ -5344,7 +5268,7 @@ function  State_Synz_Tran ( statelv )
 end 
 
 
---­Исцеляющий источник
+---§Є§г§и§Ц§Э§с§р§л§Ъ§Ы §Ъ§г§д§а§й§Я§Ъ§Ь
 function SkillSp_Hfwq ( sklv )	
 	local sp_reduce = sklv * 2 + 30  
 	return sp_reduce 
@@ -5398,7 +5322,7 @@ function State_Hfwq_Tran ( statelv )
 end 
 
 
---Истинное зрение
+--§Є§г§д§Ъ§Я§Я§а§Ц §Щ§в§Ц§Я§Ъ§Ц
 function SkillSp_Syzy ( sklv )	
 	local sp_reduce = 10 + sklv * 3    
 	return sp_reduce 
@@ -5449,7 +5373,7 @@ function State_Syzy_Tran ( statelv )
 end 
 
 
---Вихрь
+--§Ј§Ъ§з§в§о
 function SkillArea_Circle_Xw ( sklv )	
 	local side = 300  
 	SetSkillRange ( 3 , side  )  
@@ -5509,7 +5433,7 @@ function State_Xw_Tran ( statelv )
 end
 
 
---Туман
+--§ґ§е§Ю§С§Я
 function SkillArea_Circle_Mw ( sklv )	
 	local side = 300 + sklv * 50  
 	SetSkillRange ( 3 , side  )  
@@ -5573,7 +5497,7 @@ function State_Mw_Tran ( statelv )
 	return 1     
 end
 
---Грозовая завеса
+--§¤§в§а§Щ§а§У§С§с §Щ§С§У§Ц§г§С
 function SkillArea_Circle_Lm ( sklv )	
 	local side = 270  
 	SetSkillRange ( 3 , side  )  
@@ -5632,7 +5556,7 @@ function State_Lm_Tran ( statelv )
 end
 
 
---Проникающая пуля
+--§±§в§а§Я§Ъ§Ь§С§р§л§С§с §б§е§Э§с
 function SkillArea_Line_Ctd ( sklv )
 	local lenth = 1500 + sklv * 50  
 	local width = 50 
@@ -5678,7 +5602,7 @@ function Skill_Ctd_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg )  
 end 
 
---Дробь
+--§Ґ§в§а§Т§о
 function SkillArea_Sector_Ssd ( sklv )	
 	local radius = 600 + math.floor ( sklv * 20 ) 
 	local angle = 90 + math.floor ( sklv / 5 ) * 15 
@@ -5720,7 +5644,7 @@ function Skill_Ssd_End ( ATKER , DEFER , sklv )
 end 
 
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_Larea_Tran ( statelv ) 
 	return 1 
 end 
@@ -5741,7 +5665,7 @@ end
 function State_Larea_Rem ( role , statelv ) 
 end 
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_Warea_Tran ( statelv ) 
 	return 1 
 end 
@@ -5765,7 +5689,7 @@ function State_Warea_Rem ( role , statelv )
 --	ALLExAttrSet(role)  
 end 
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_Farea_Tran ( statelv ) 
 	return 1 
 end 
@@ -5789,7 +5713,7 @@ function State_Farea_Rem ( role , statelv )
 --	ALLExAttrSet(role)  
 end 
 
--- Различные виды дистанционной атаки у мобов
+-- §І§С§Щ§Э§Ъ§й§Я§н§Ц §У§Ъ§Х§н §Х§Ъ§г§д§С§Я§и§Ъ§а§Я§Я§а§Ы §С§д§С§Ь§Ъ §е §Ю§а§Т§а§У
 function SkillCooldown_Gwptjn( sklv )
 	local Cooldown = 2500
 	return Cooldown
@@ -5800,7 +5724,7 @@ function SkillCooldown_Zcmtl( sklv )
 	return Cooldown
 end
 
---Крик смерти
+--§¬§в§Ъ§Ь §г§Ю§Ц§в§д§Ъ
 function SkillSp_Swcx ( sklv )	
    local sp_reduce = 50  
 	return sp_reduce 
@@ -5827,7 +5751,7 @@ function Skill_Swcx_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime = 30    
 	AddState ( ATKER , DEFER , STATE_SWCX , statelv , statetime )
-	SystemNotice(DEFER, "На вас действует эффект <Крик смерти> "..statelv.."ур. на "..statetime.. " секунд" )
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§¬§в§Ъ§Ь §г§Ю§Ц§в§д§Ъ> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 end 
 
@@ -5840,7 +5764,7 @@ function State_Swcx_Rem ( role , statelv )
 end
 
 
---Кровавая ярость
+--§¬§в§а§У§С§У§С§с §с§в§а§г§д§о
 function SkillSp_Xn ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -5865,7 +5789,7 @@ function Skill_Xn_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  60    
 	AddState ( ATKER , DEFER , STATE_XN , statelv , statetime )
-	SystemNotice(DEFER, "На вас действует эффект <Кровавая ярость> "..statelv.."ур. на "..statetime.. " секунд" )
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§¬§в§а§У§С§У§С§с §с§в§а§г§д§о> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	Check_Ys_Rem ( ATKER , DEFER )		
 end 
@@ -5881,7 +5805,7 @@ function State_Xn_Rem ( role , statelv )
 end 
 
 
---Логово
+--§­§а§Ф§а§У§а
 function SkillSp_Nt ( sklv )	
 	local sp_reduce = 40
 	return sp_reduce 
@@ -5931,7 +5855,7 @@ function State_Nt_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Землетрясение (глава снежного люда)
+-- §©§Ц§Ю§Э§Ц§д§в§с§г§Ц§Я§Ъ§Ц (§Ф§Э§С§У§С §г§Я§Ц§Ш§Я§а§Ф§а §Э§р§Х§С)
 function SkillSp_DiZ ( sklv )	
 	local sp_reduce = sklv * 5 + 50  
 	return sp_reduce 
@@ -5967,7 +5891,7 @@ end
 function Skill_DiZ_End ( ATKER , DEFER , sklv )
 	local statetime = 20
 	local statelv = 10
-	SystemNotice(DEFER, "На вас действует эффект <Земле трясение> "..statelv.."ур. на "..statetime.. " секунд" )
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§©§Ц§Ю§Э§Ц §д§в§с§г§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	AddState ( ATKER , DEFER , STATE_DIZ , statelv , statetime )
 	AddState ( ATKER , DEFER , STATE_XY , statelv , 10 )
@@ -5992,7 +5916,7 @@ function  State_DiZ_Tran ( statelv )
 	return statetime 
 end 
 
--- Удар колосса (глава снежного люда)
+-- §µ§Х§С§в §Ь§а§Э§а§г§г§С (§Ф§Э§С§У§С §г§Я§Ц§Ш§Я§а§Ф§а §Э§р§Х§С)
 function SkillSp_XiK ( sklv )	
    local sp_reduce = 20 
 	return sp_reduce 
@@ -6020,7 +5944,7 @@ function Skill_Xik_End ( ATKER , DEFER , sklv )
 	Check_Ys_Rem ( ATKER , DEFER )
 end 
 
--- Поцелуй мороза
+-- §±§а§и§Ц§Э§е§Ы §Ю§а§в§а§Щ§С
 function SkillSp_Biw ( sklv )	
    local sp_reduce = 50  
 	return sp_reduce 
@@ -6044,7 +5968,7 @@ end
 function Skill_Biw_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  45  
-	SystemNotice(DEFER, "На вас действует эффект <Поцелуй мороза> "..statelv.."ур. на "..statetime.. " секунд" )
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§±§а§и§Ц§Э§е§Ы §Ю§а§в§а§Щ§С> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	AddState ( ATKER , DEFER , STATE_BIW , statelv , statetime )
 end 
@@ -6055,7 +5979,7 @@ end
 function State_Biw_Rem ( role , statelv )
 end
 
--- Лезвие Демона, Кровожадный клинок
+-- §­§Ц§Щ§У§Ъ§Ц §Ґ§Ц§Ю§а§Я§С, §¬§в§а§У§а§Ш§С§Х§Я§н§Ы §Ь§Э§Ъ§Я§а§Ь
 function SkillArea_Circle_Fer ( sklv )	
 	local side = 1000
 	SetSkillRange ( 4 , side )   
@@ -6091,7 +6015,7 @@ function Skill_Fer_End ( ATKER , DEFER , sklv )
 	Check_Ys_Rem ( ATKER , DEFER)		
 end 
 
---Копия
+--§¬§а§б§Ъ§с
 function SkillSp_Fuz ( sklv )	
 	local sp_reduce = 10  
 	return sp_reduce 
@@ -6116,7 +6040,7 @@ function Skill_Fuz_End ( ATKER , DEFER , sklv )
 
 end 
 
---Ловушка морской водоросли
+--§­§а§У§е§к§Ь§С §Ю§а§в§г§Ь§а§Ы §У§а§Х§а§в§а§г§Э§Ъ
 function SkillArea_Circle_Hztx ( sklv )
 	local side = 300 
 	SetSkillRange ( 4 , side  )  
@@ -6148,7 +6072,7 @@ function Skill_Hztx_End ( ATKER , DEFER , sklv )
 	AddState( ATKER , DEFER , STATE_HZCR, statelv , statetime ) 
 end 
 
---Электрический разряд медузы
+--§ї§Э§Ц§Ь§д§в§Ъ§й§Ц§г§Ь§Ъ§Ы §в§С§Щ§в§с§Х §Ю§Ц§Х§е§Щ§н
 function SkillArea_Circle_Smdj ( sklv )	
 	local side = 400  
 	SetSkillRange ( 3 , side  )  
@@ -6184,7 +6108,7 @@ function Skill_Smdj_End ( ATKER , DEFER , sklv )
 end 
 
 
---Водоворотный удар кальмара
+--§Ј§а§Х§а§У§а§в§а§д§Я§н§Ы §е§Х§С§в §Ь§С§Э§о§Ю§С§в§С
 function SkillArea_Circle_Wzxf ( sklv )	
 	local side = 400
 	SetSkillRange ( 4 , side )   
@@ -6220,7 +6144,7 @@ function Skill_Wzxf_End ( ATKER , DEFER , sklv )
 end 
 
 
---Атака акулы
+--§Ў§д§С§Ь§С §С§Ь§е§Э§н
 function SkillSp_Syzm ( sklv )
 	local sp_reduce = sklv * 2 + 30  
 	return sp_reduce 
@@ -6248,7 +6172,7 @@ function Skill_Syzm_End ( ATKER , DEFER , sklv )
 
 end
 
---Самоуничтожение выползня
+--§і§С§Ю§а§е§Я§Ъ§й§д§а§Ш§Ц§Я§Ъ§Ц §У§н§б§а§Э§Щ§Я§с
 function SkillArea_Circle_Kdzb ( sklv )	
 	local side = 400
 	SetSkillRange ( 4 , side )   
@@ -6283,7 +6207,7 @@ function Skill_Kdzb_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg )  
 end 
 
---Примитивное умение
+--§±§в§Ъ§Ю§Ъ§д§Ъ§У§Я§а§Ц §е§Ю§Ц§Я§Ъ§Ц
 function SkillCooldown_Sgjn1( sklv )
 	local Cooldown = 6000
 	return Cooldown
@@ -6294,7 +6218,7 @@ function SkillCooldown_Sgjn2( sklv )
 	return Cooldown
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_Slzb_Add ( role , statelv ) 
 --	LG ( "bomb" , "Check Water Mine going to explode?" ) 
 --	Notice ( "Check Water Mine going to explode?") 
@@ -6363,7 +6287,7 @@ function Skill_Slzb_End ( ATKER , DEFER , sklv )
 end 
 
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_PKDYK_Add ( role , statelv ) 
 	local mnatksa_dif = -0.8 
 	local mxatksa_dif = -0.8
@@ -6384,7 +6308,7 @@ function State_PKDYK_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
---НАсмешка
+--§Ї§Ў§г§Ю§Ц§к§Ь§С
 function State_PKLC_Add ( role , statelv ) 
 	local def_dif = -200  
 	local def = DefSb(role) + def_dif
@@ -6409,7 +6333,7 @@ function State_PKLC_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end 
 
---Ремонт
+--§І§Ц§Ю§а§Я§д
 function SkillSp_PKXL ( sklv ) 
 	return 0 
 end 
@@ -6425,12 +6349,12 @@ end
 function Skill_PKXL_End ( ATKER , DEFER , sklv ) 
 	local i = CheckBagItem( ATKER , 4661 )
 	if i <= 0 then
-		SystemNotice ( ATKER , "Does not have wood to repairЎ­what do you use?")
+		SystemNotice ( ATKER , "Does not have wood to repair?-what do you use?")
 		return
 	end
 	local j = DelBagItem(ATKER,4661,1)
 	if j == 1 then
-		SystemNotice ( ATKER , "RepairingЎ­" ) 
+		SystemNotice ( ATKER , "Repairing?-" ) 
 		local hpdmg = 200 + sklv * 20 
 		local hp = Hp(DEFER) + hpdmg 
 		SetCharaAttr(hp , DEFER , ATTR_HP )
@@ -6440,7 +6364,7 @@ function Skill_PKXL_End ( ATKER , DEFER , sklv )
 	
 end 
 
---Бычье
+--§ў§н§й§о§Ц
 function State_PKMNYS_Add ( role ,statelv )
 	local MxhpSb_dif = 1000 * statelv/10
 	local MxhpSb = MxhpSb( role ) + MxhpSb_dif
@@ -6455,7 +6379,7 @@ function State_PKMNYS_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Боевоей
+--§ў§а§Ц§У§а§Ц§Ы
 function State_PKZDYS_Add ( role , statelv )
 	local atksb_dif = 150 * statelv/10
 	if statelv == 1 then
@@ -6480,7 +6404,7 @@ function State_PKZDYS_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_KUANGZ_Add ( role , statelv )
 	local atksb_dif = 50	* statelv/5
 	local def_dif = 30 * statelv/5
@@ -6505,7 +6429,7 @@ function State_KUANGZ_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Берсерк
+--§ў§Ц§в§г§Ц§в§Ь
 function State_PKKBYS_Add ( role , statelv )
 	local aspd_dif = 140 * statelv/10
 	local aspdsb = ( AspdSb(role) + aspd_dif ) 
@@ -6520,7 +6444,7 @@ function State_PKKBYS_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_PKJSYS_Add ( role , statelv )
 	local sta_dif = 30 * statelv/10
 	local stasb = StaSb( role ) + sta_dif 
@@ -6535,7 +6459,7 @@ function State_PKJSYS_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_PKSFYS_Add ( role , statelv )
 	local def_dif = 150 * statelv/10
 	if statelv == 1 then
@@ -6556,7 +6480,7 @@ function State_PKSFYS_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Полный доспех
+--§±§а§Э§Я§н§Ы §Х§а§г§б§Ц§з
 function State_QUANS_Add ( role , statelv )
 	local def_dif = 70 * statelv/10
 	local atksb_dif = 30 * statelv/10
@@ -6581,7 +6505,7 @@ function State_QUANS_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_PKJZYS_Add ( role , statelv )
 	local hit_dif = 30 * statelv/10
 	local hitsb  = HitSb( role ) + hit_dif 
@@ -6596,7 +6520,7 @@ function State_PKJZYS_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Удар колосса
+--§µ§Х§С§в §Ь§а§Э§а§г§г§С
 function State_PKSBYS_Add ( role ,statelv )
 	local Flee_dif = 10 * statelv/10
 	if statelv == 1 then
@@ -6617,7 +6541,7 @@ function State_PKSBYS_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
--- Благословляющее зелье
+-- §ў§Э§С§Ф§а§г§Э§а§У§Э§с§р§л§Ц§Ц §Щ§Ц§Э§о§Ц
 function SkillCooldown_Wudiyaoshui( sklv )
 	local Cooldown = 20000 
 	return Cooldown
@@ -6627,13 +6551,13 @@ function Skill_Wudiyaoshui_Begin ( role , sklv )
 	local atk_role = TurnToCha ( role ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( atk_role , 1860 )
 	if item_count <= 0 then  
 		SkillUnable(atk_role)   
-		SystemNotice ( atk_role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( atk_role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( atk_role , 1860 , 1 ) 
 end 
@@ -6641,14 +6565,14 @@ end
 function Skill_Wudiyaoshui_End( ATKER , DEFER , sklv )
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local statelv = 10
 	local statetime = 5
 	AddState( ATKER , DEFER , STATE_PKWD , statelv , statetime )
 	local cha_name = GetChaDefaultName ( ATKER ) 
-	local message = cha_name.." входит в режим неуязвимости на 5 сек."  
+	local message = cha_name.." §У§з§а§Х§Ъ§д §У §в§Ц§Ш§Ъ§Ю §Я§Ц§е§с§Щ§У§Ъ§Ю§а§г§д§Ъ §Я§С 5 §г§Ц§Ь."  
 	Notice ( message )
 end 
 
@@ -6659,7 +6583,7 @@ function State_PKWd_Rem ( role , statelv )
 end
 
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_YSLLQH_Add ( role , statelv )
 	local str_dif = 5 
 	local strsb = StrSb( role ) + str_dif 
@@ -6674,7 +6598,7 @@ function State_YSLLQH_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_YSMJQH_Add ( role , statelv )
 	local agi_dif = 5 
 	local agisb = AgiSb( role ) + agi_dif 
@@ -6689,7 +6613,7 @@ function State_YSMJQH_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_YSLQQH_Add ( role , statelv )
 	local dex_dif = 5 
 	local dexsb = DexSb( role ) + dex_dif 
@@ -6704,7 +6628,7 @@ function State_YSLQQH_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_YSTZQH_Add ( role , statelv )
 	local con_dif = 5 
 	local consb = ConSb( role ) + con_dif 
@@ -6719,7 +6643,7 @@ function State_YSTZQH_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_YSJSQH_Add ( role , statelv )
 	local sta_dif = 5
 	local stasb = StaSb( role ) + sta_dif
@@ -6734,7 +6658,7 @@ function State_YSJSQH_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Скользилка
+--§і§Ь§а§Э§о§Щ§Ъ§Э§Ь§С
 function State_YSMspd_Add ( role , statelv )
 	local mspdsa_dif = 0
 	if statelv == 1 then
@@ -6757,7 +6681,7 @@ function State_YSMspd_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Ускорилка
+--§µ§г§Ь§а§в§Ъ§Э§Ь§С
 function State_QINGZ_Add ( role , statelv )
 	local mspdsa_dif = 0.28
 	local def_dif = 50 * statelv/10
@@ -6780,7 +6704,7 @@ function State_QINGZ_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_YSBoatMspd_Add ( role , statelv )
 	local mspdsa_dif = 0
 	if statelv == 1 then
@@ -6801,7 +6725,7 @@ function State_YSBoatMspd_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Зелье изменения защиты корабля
+--§©§Ц§Э§о§Ц §Ъ§Щ§Ю§Ц§Я§Ц§Я§Ъ§с §Щ§С§л§Ъ§д§н §Ь§а§в§С§Т§Э§с
 function State_YSBoatDEF_Add ( role , statelv )
 	local defsb_dif = 0
 	if statelv == 1 then
@@ -6822,7 +6746,7 @@ function State_YSBoatDEF_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Светильник
+--§і§У§Ц§д§Ъ§Э§о§Я§Ъ§Ь
 function State_DengLong_Add ( role , statelv )
 	local def_dif = 50
 	local defsb = DefSb( role ) + def_dif
@@ -6837,7 +6761,7 @@ function State_DengLong_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Трупная атака
+--§ґ§в§е§б§Я§С§с §С§д§С§Ь§С
 function SkillSp_JSDD ( sklv )	
 	local sp_reduce = 5 
 	return sp_reduce 
@@ -6875,10 +6799,10 @@ end
 
 function State_JSDD_Add ( role , statelv )
 	if statelv == 3 then
-		--К¬¶ѕ
+		--§¬???
 	end
 	if statelv == 4 then
-		--Зхі¤ЦР¶ѕ
+		--§©§з?Ўи§ё§І??
 	end
 	local hpdmg = 100 * statelv   
 	Hp_Endure_Dmg ( role , hpdmg ) 
@@ -6889,7 +6813,7 @@ function State_JSDD_Rem ( role , statelv )
 	--LG("state_JSDD" , "function State_JSDD_Rem : " , "role =  " , role , "statelv = " , statelv, "\n" ) 
 end 
 
---Дистанционная атака трупа
+--§Ґ§Ъ§г§д§С§Я§и§Ъ§а§Я§Я§С§с §С§д§С§Ь§С §д§в§е§б§С
 function SkillSp_JSMF ( sklv )	
 	local sp_reduce = 3 + sklv * 2   
 	return sp_reduce 
@@ -6925,7 +6849,7 @@ function Skill_JSMF_End ( ATKER , DEFER , sklv )
 
 end 
 
---Волшебство лисьего даоса
+--§Ј§а§Э§к§Ц§Т§г§д§У§а §Э§Ъ§г§о§Ц§Ф§а §Х§С§а§г§С
 function SkillSp_HDSMF ( sklv )	
 	local sp_reduce = 30 + sklv * 2   
 	return sp_reduce 
@@ -6952,7 +6876,7 @@ function Skill_HDSMF_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER, hpdmg )
 end 
 
---Волшебство кицуне
+--§Ј§а§Э§к§Ц§Т§г§д§У§а §Ь§Ъ§и§е§Я§Ц
 function SkillSp_HYMF ( sklv )	
 	local sp_reduce = 10 + sklv * 2   
 	return sp_reduce 
@@ -7018,7 +6942,7 @@ function State_HYMH_Rem ( role , statelv )
 
 end 
 
---Волшебство бессмертной лисы	
+--§Ј§а§Э§к§Ц§Т§г§д§У§а §Т§Ц§г§г§Ю§Ц§в§д§Я§а§Ы §Э§Ъ§г§н	
 function SkillSp_FoxMagic ( sklv )	
 	local sp_reduce = 10 + sklv * 2   
 	return sp_reduce 
@@ -7078,7 +7002,7 @@ function Skill_FoxSquareMagic_End ( ATKER , DEFER , sklv )
 
 end
 
---Ритуал
+--§І§Ъ§д§е§С§Э
 function SkillSp_TZJSMagic ( sklv )	
 	local sp_reduce = 10 + sklv * 2   
 	return sp_reduce 
@@ -7105,7 +7029,7 @@ function Skill_TZJSMagic_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER, hpdmg )
 end 
 
---Колдовство сахема
+--§¬§а§Э§Х§а§У§г§д§У§а §г§С§з§Ц§Ю§С
 function SkillArea_Circle_TZQZMagic ( sklv )	
 	local side = 100 
 	SetSkillRange ( 4 , side ) 	
@@ -7141,7 +7065,7 @@ function Skill_TZQZMagic_End ( ATKER , DEFER , sklv )
 
 end
 
---Собачий вой
+--§і§а§Т§С§й§Ъ§Ы §У§а§Ы
 function SkillSp_QuanX ( sklv )	
 	local sp_reduce = sklv * 5 + 50  
 	return sp_reduce 
@@ -7178,7 +7102,7 @@ function Skill_QuanX_End ( ATKER , DEFER , sklv )
 
 end 
 
---Трупный яд
+--§ґ§в§е§б§Я§н§Ы §с§Х
 function SkillSp_SD ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -7208,7 +7132,7 @@ function Skill_SD_End ( ATKER , DEFER , sklv )
 	Check_Ys_Rem ( ATKER , DEFER )		
 end 
 
---Блокада киборга
+--§ў§Э§а§Ь§С§Х§С §Ь§Ъ§Т§а§в§Ф§С
 function SkillArea_Line_JXJBFW ( sklv )	
 	local lenth = 500
 	local width = 200
@@ -7241,7 +7165,7 @@ function Skill_JXJBFW_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg ) 
 end 
 
---Закрученный крюк	
+--§©§С§Ь§в§е§й§Ц§Я§Я§н§Ы §Ь§в§р§Ь	
 function SkillArea_Circle_JBXZSB ( sklv )	
 	
 	local side = 300  
@@ -7280,7 +7204,7 @@ function Skill_JBXZSB_End ( ATKER , DEFER , sklv )
 end 
 
 
---Крабовая оплетка
+--§¬§в§С§Т§а§У§С§с §а§б§Э§Ц§д§Ь§С
 function SkillSp_CRXSF ( sklv )	
 	local sp_reduce = 50 + sklv * 2   
 	return sp_reduce 
@@ -7320,7 +7244,7 @@ function State_CRXSF_Rem ( role , statelv )
 
 end
 
---Проклятие келпи	
+--§±§в§а§Ь§Э§с§д§Ъ§Ц §Ь§Ц§Э§б§Ъ	
 function SkillSp_SXZZZ ( sklv )	
 	local sp_reduce = 50 + sklv * 2   
 	return sp_reduce 
@@ -7352,7 +7276,7 @@ function Skill_SXZZZ_End ( ATKER , DEFER , sklv )
 end 
 
 
---Морозное дыхание
+--§®§а§в§а§Щ§Я§а§Ц §Х§н§з§С§Я§Ъ§Ц
 function SkillSp_XBLBD ( sklv )
 	local sp_reduce = 50 + sklv * 2   
 	return sp_reduce 
@@ -7383,7 +7307,7 @@ function Skill_XBLBD_End ( ATKER , DEFER , sklv )
 	Check_Ys_Rem ( ATKER , DEFER )	
 end 
 
---Удар ледяного дракона
+--§µ§Х§С§в §Э§Ц§Х§с§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillSp_BLGJ ( sklv )	
    local sp_reduce = 15   
 	return sp_reduce 
@@ -7417,7 +7341,7 @@ function Skill_BLGJ_End ( ATKER , DEFER , sklv )
 	
 end 
 
---Танец Ледяного дракона
+--§ґ§С§Я§Ц§и §­§Ц§Х§с§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillArea_Circle_BHSD ( sklv )	
 	
 	local side = 300
@@ -7453,7 +7377,7 @@ function Skill_BHSD_End ( ATKER , DEFER , sklv )
 	
 end
 
--- Ужас черного дракона
+-- §µ§Ш§С§г §й§Ц§в§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillSp_HLKJ ( sklv )	
 	local sp_reduce = 200
 	return sp_reduce 
@@ -7487,7 +7411,7 @@ end
 function State_HLKJ_Rem ( role , statelv ) 
 end 
 
--- Дыхание черного дракона
+-- §Ґ§н§з§С§Я§Ъ§Ц §й§Ц§в§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillSp_BlackDrgDeadHit ( sklv )
 	local sp_reduce = 15   
 	return sp_reduce 
@@ -7520,7 +7444,7 @@ function Skill_BlackDrgDeadHit_End ( ATKER , DEFER , sklv )
 	
 end 
 
---Рык Черного дракона	
+--§І§н§Ь §№§Ц§в§Я§а§Ф§а §Х§в§С§Ь§а§Я§С	
 function SkillArea_Circle_HLLM ( sklv )	
 	local side = 500
 	SetSkillRange ( 4 , side )   
@@ -7574,7 +7498,7 @@ function State_HLLM_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
--- Полет черного дракона
+-- §±§а§Э§Ц§д §й§Ц§в§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillArea_Circle_BlackDrgWing ( sklv )	
 	local side = 3000
 	SetSkillRange ( 4 , side )   
@@ -7610,7 +7534,7 @@ function Skill_BlackDrgWing_End ( ATKER , DEFER , sklv )
 end 
 
 
--- Воскресить (скилл БД)
+-- §Ј§а§г§Ь§в§Ц§г§Ъ§д§о (§г§Ь§Ъ§Э§Э §ў§Ґ)
 function SkillSp_BlackHeal ( sklv )			
 	local sp_reduce = 30 + sklv * 4    
 	return sp_reduce 
@@ -7657,7 +7581,7 @@ function State_MarchElf_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
--- Рык Черного дракона
+-- §І§н§Ь §№§Ц§в§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillArea_Circle_BlackHx( sklv )
 	local side = 5000 
 	SetSkillRange ( 4 , side  )  
@@ -7697,7 +7621,7 @@ function State_BlackHx_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Черный дракон Молния
+-- §№§Ц§в§Я§н§Ы §Х§в§С§Ь§а§Я §®§а§Э§Я§Ъ§с
 function SkillCooldown_BlackLj( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -7719,7 +7643,7 @@ end
 function State_BlackLj_Rem ( role , statelv ) 
 end 
 
--- Ускользающий удар черного дракона
+-- §µ§г§Ь§а§Э§о§Щ§С§р§л§Ъ§Ы §е§Х§С§в §й§Ц§в§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillCooldown_BlackHyz( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -7735,7 +7659,7 @@ function Skill_BlackHyz_End ( ATKER , DEFER , sklv )
 	Check_Ys_Rem ( ATKER , DEFER )
 end 
 
--- Огненный шар черного дракона
+-- §°§Ф§Я§Ц§Я§Я§н§Ы §к§С§в §й§Ц§в§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillCooldown_BlackYq( sklv ) 
 	local Cooldown = 10000 
 	return Cooldown
@@ -7747,7 +7671,7 @@ function Skill_BlackYq_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER, hpdmg )
 end 
 
--- Призыв черного дракона
+-- §±§в§Ъ§Щ§н§У §й§Ц§в§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillCooldown_BlackZh( sklv )
 	local Cooldown = 1200000
 	return Cooldown
@@ -7788,7 +7712,7 @@ function Skill_BlackZh_End( ATKER , DEFER , sklv )
 	--SetChaLifeTime(new6, 900000)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_JLDS_Add ( role , statelv )
 	local hpdmg = 30 * statelv   
 	Hp_Endure_Dmg ( role , hpdmg ) 
@@ -7799,7 +7723,7 @@ function State_JLDS_Rem ( role , statelv )
  
 end 
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_CJBBT_Add ( role , statelv )
 	local str = GetChaAttr( role , ATTR_STR )
 	SetCharaAttr(str ,role , ATTR_STATEV_STR)
@@ -7811,7 +7735,7 @@ function State_CJBBT_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_JRQKL_Add ( role , statelv )
 	local con = GetChaAttr( role , ATTR_CON ) 
 	SetCharaAttr( con , role , ATTR_STATEV_CON )
@@ -7823,7 +7747,7 @@ function State_JRQKL_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Ускользающий удар черного дракона
+--§µ§г§Ь§а§Э§о§Щ§С§р§л§Ъ§Ы §е§Х§С§в §й§Ц§в§Я§а§Ф§а §Х§в§С§Ь§а§Я§С
 function SkillCooldown_wlrsd( sklv ) 
 	local Cooldown = 2000 
 	return Cooldown
@@ -7847,7 +7771,7 @@ end
 function State_wlrsd_Rem ( role , statelv ) 
 end
 
---Ускорение Мертвой души
+--§µ§г§Ь§а§в§Ц§Я§Ъ§Ц §®§Ц§в§д§У§а§Ы §Х§е§к§Ъ
 function SkillCooldown_wljs( sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -7876,7 +7800,7 @@ function State_wljs_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Атака Мушкета
+--§Ў§д§С§Ь§С §®§е§к§Ь§Ц§д§С
 function SkillCooldown_hqgj( sklv )
 	local Cooldown = 3000 
 	return Cooldown
@@ -7891,7 +7815,7 @@ function Skill_hqgj_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg1 )  
 end 
 
---Ракета Мертвой души
+--§І§С§Ь§Ц§д§С §®§Ц§в§д§У§а§Ы §Х§е§к§Ъ
 function SkillCooldown_wljy( sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -7914,7 +7838,7 @@ function State_wljy_Add ( role , statelv )
 function State_wljy_Rem ( role , statelv )
  end 
 
---Лазерный лук
+--§­§С§Щ§Ц§в§Я§н§Ы §Э§е§Ь
 function SkillCooldown_jgs( sklv )
 	local Cooldown = 5000 
 	return Cooldown
@@ -7930,7 +7854,7 @@ function Skill_jgs_End ( ATKER , DEFER , sklv )
 	SetCharaAttr ( hp , DEFER , ATTR_HP ) 
 end 
 
---Отравленный дротик мертвых душ
+--§°§д§в§С§У§Э§Ц§Я§Я§н§Ы §Х§в§а§д§Ъ§Ь §Ю§Ц§в§д§У§н§з §Х§е§к
 function SkillCooldown_wldb ( sklv )
 	local Cooldown = 2000
 	return Cooldown
@@ -7955,7 +7879,7 @@ function State_wldb_Rem ( role , statelv )
 end 
 
 
--- Удаленный взрыв (кмд)
+-- §µ§Х§С§Э§Ц§Я§Я§н§Ы §У§Щ§в§н§У (§Ь§Ю§Х)
 function SkillCooldown_ycbp ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -7967,7 +7891,7 @@ function Skill_ycbp_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER, hpdmg )
 end 
 
---Атака Облака
+--§Ў§д§С§Ь§С §°§Т§Э§С§Ь§С
 function SkillArea_Circle_ywgj ( sklv )
 	local side = 300    
 	SetSkillRange ( 3 , side  )  
@@ -8007,7 +7931,7 @@ function State_ywgj_Tran ( statelv )
 	return 1     
 end
 
---Отягощенный скелет
+--§°§д§с§Ф§а§л§Ц§Я§Я§н§Ы §г§Ь§Ц§Э§Ц§д
 function SkillCooldown_klcs ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -8027,7 +7951,7 @@ end
 function State_klcs_Rem ( role , statelv ) 
 end
 
---Мифическое перемещение
+--§®§Ъ§ж§Ъ§й§Ц§г§Ь§а§Ц §б§Ц§в§Ц§Ю§Ц§л§Ц§Я§Ъ§Ц
 function SkillCooldown_lyyd ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -8067,7 +7991,7 @@ function State_klhd_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Злая атака
+-- §©§Э§С§с §С§д§С§Ь§С
 function SkillCooldown_xegj ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -8081,7 +8005,7 @@ function Skill_xegj_End ( ATKER , DEFER , sklv )
  end
 
 
---Мертвая душа
+--§®§Ц§в§д§У§С§с §Х§е§к§С
 function SkillCooldown_wllk ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -8096,7 +8020,7 @@ function Skill_wllk_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg1 ) 
 end 
 
---Бомбометание
+--§ў§а§Ю§Т§а§Ю§Ц§д§С§Я§Ъ§Ц
 function SkillCooldown_zdtz ( ATKER , DEFER , sklv )
 	local Cooldown = 4000 
 	return Cooldown
@@ -8108,7 +8032,7 @@ function Skill_zdtz_End ( ATKER , DEFER , sklv )
 		Hp_Endure_Dmg ( DEFER, hpdmg )
 end 
 
---Стенания мертвой души
+--§і§д§Ц§Я§С§Я§Ъ§с §Ю§Ц§в§д§У§а§Ы §Х§е§к§Ъ
 function SkillCooldown_wlnh ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -8138,7 +8062,7 @@ function State_wlnh_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Насмешка мертвых душ
+--§Ї§С§г§Ю§Ц§к§Ь§С §Ю§Ц§в§д§У§н§з §Х§е§к
 function SkillCooldown_wlcx ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -8177,7 +8101,7 @@ function State_wlcx_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Проклятая кровь (Барби)
+-- §±§в§а§Ь§Э§с§д§С§с §Ь§в§а§У§о (§ў§С§в§Т§Ъ)
 function SkillCooldown_zzzx ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -8204,7 +8128,7 @@ function State_wlcx_Rem  ( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
--- Восстанавливающий лунный свет (Барби)
+-- §Ј§а§г§г§д§С§Я§С§У§Э§Ъ§У§С§р§л§Ъ§Ы §Э§е§Я§Я§н§Ы §г§У§Ц§д (§ў§С§в§Т§Ъ)
 function SkillCooldown_yghf ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -8236,7 +8160,7 @@ function Skill_wlsj_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg1 )  
 end 
 
---Вихрь Мертвой души
+--§Ј§Ъ§з§в§о §®§Ц§в§д§У§а§Ы §Х§е§к§Ъ
 function SkillCooldown_wlxw ( ATKER , DEFER , sklv )
 	local Cooldown = 2000 
 	return Cooldown
@@ -8282,7 +8206,7 @@ function State_wlxw_Tran ( statelv )
 	return 1     
 end 
 
---Мертвая душа Грозовой завесы
+--§®§Ц§в§д§У§С§с §Х§е§к§С §¤§в§а§Щ§а§У§а§Ы §Щ§С§У§Ц§г§н
 function SkillArea_Circle_wllm ( sklv )	
 	local side = 500  
 	SetSkillRange ( 3 , side  )  
@@ -8336,7 +8260,7 @@ function State_Lm_Tran ( statelv )
 	return 1     
 end
 
--- Призыв мертвой души (кмд, сакруа)
+-- §±§в§Ъ§Щ§н§У §Ю§Ц§в§д§У§а§Ы §Х§е§к§Ъ (§Ь§Ю§Х, §г§С§Ь§в§е§С)
 function SkillCooldown_wlzh ( sklv )
 	local Cooldown = 500000
 	return Cooldown
@@ -8367,7 +8291,7 @@ function Skill_wlzh_End( ATKER , DEFER , sklv )
 		SetChaLifeTime(new4, 900000)
 end
 
--- Физический дротик (Барби)
+-- §¶§Ъ§Щ§Ъ§й§Ц§г§Ь§Ъ§Ы §Х§в§а§д§Ъ§Ь (§ў§С§в§Т§Ъ)
 function SkillCooldown_wlfd( sklv )
 	local Cooldown = 1000 
 	return Cooldown
@@ -8382,7 +8306,7 @@ function Skill_wlfd_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg1 )  
 end 
 
--- Духовный дротик (Барби)
+-- §Ґ§е§з§а§У§Я§н§Ы §Х§в§а§д§Ъ§Ь (§ў§С§в§Т§Ъ)
 function SkillCooldown_jsfd ( ATKER , DEFER , sklv )
 	local Cooldown = 1000 
 	return Cooldown
@@ -8394,7 +8318,7 @@ function Skill_jsfd_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER, hpdmg )
 end 
 
---Тело феи
+--§ґ§Ц§Э§а §ж§Ц§Ъ
 function SkillCooldown_JLFT( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -8419,7 +8343,7 @@ function CheckState_JLFT ( role, sklv )
 	state[8] = GetChaStateLv ( role , STATE_JLFT8 )
 	for i = 1 , state_num , 1 do
 		if state[i] == sklv then
-			SystemNotice ( role , 'Невозможно применить Владение феей, умение уже используется!' )
+			SystemNotice ( role , '§Ї§Ц§У§а§Щ§Ю§а§Ш§Я§а §б§в§Ъ§Ю§Ц§Я§Ъ§д§о §Ј§Э§С§Х§Ц§Я§Ъ§Ц §ж§Ц§Ц§Ы, §е§Ю§Ц§Я§Ъ§Ц §е§Ш§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с!' )
 			return 0
 		end
 	end
@@ -8431,50 +8355,50 @@ function Skill_JLFT_BEGIN( role , sklv )
 		SkillUnable ( role )
 		return
 	end
-	local item_elf = GetChaItem(role , 2, 1) -- Слот, где должен находиться питомец
-	local item_elf_type = GetItemType ( item_elf ) -- Тип питомца
-	local item_elf_maxhp = GetItemAttr(item_elf,ITEMATTR_MAXURE) -- Максимальная стамина
-	local item_elf_hp = GetItemAttr(item_elf,ITEMATTR_URE) -- Текущая стамина
+	local item_elf = GetChaItem(role , 2, 1) -- §і§Э§а§д, §Ф§Х§Ц §Х§а§Э§Ш§Ц§Я §Я§С§з§а§Х§Ъ§д§о§г§с §б§Ъ§д§а§Ю§Ц§и
+	local item_elf_type = GetItemType ( item_elf ) -- §ґ§Ъ§б §б§Ъ§д§а§Ю§и§С
+	local item_elf_maxhp = GetItemAttr(item_elf,ITEMATTR_MAXURE) -- §®§С§Ь§г§Ъ§Ю§С§Э§о§Я§С§с §г§д§С§Ю§Ъ§Я§С
+	local item_elf_hp = GetItemAttr(item_elf,ITEMATTR_URE) -- §ґ§Ц§Ь§е§л§С§с §г§д§С§Ю§Ъ§Я§С
 	local role_mxhp = GetChaAttr(role, ATTR_MXHP)
 	local Num_JL = GetItemForgeParam ( item_elf , 1 )
 
 	if item_elf_type ~= 59 then
 		SkillUnable(role) 
-		SystemNotice ( role , "В слоте для феи нет феи" ) 
+		SystemNotice ( role , "§Ј §г§Э§а§д§Ц §Х§Э§с §ж§Ц§Ъ §Я§Ц§д §ж§Ц§Ъ" ) 
 	return 
 	end
 
-	local str = GetItemAttr( item_elf ,ITEMATTR_VAL_STR ) 	-- Сила
-	local con = GetItemAttr( item_elf ,ITEMATTR_VAL_CON ) 	-- Телосложение
-	local agi = GetItemAttr( item_elf ,ITEMATTR_VAL_AGI ) 	-- Ловкость
-	local dex = GetItemAttr( item_elf ,ITEMATTR_VAL_DEX ) 	-- Дух
-	local sta = GetItemAttr( item_elf ,ITEMATTR_VAL_STA ) 	-- Точность
-	local lv_JL = str + con + agi + dex + sta-- итого уровень феи
+	local str = GetItemAttr( item_elf ,ITEMATTR_VAL_STR ) 	-- §і§Ъ§Э§С
+	local con = GetItemAttr( item_elf ,ITEMATTR_VAL_CON ) 	-- §ґ§Ц§Э§а§г§Э§а§Ш§Ц§Я§Ъ§Ц
+	local agi = GetItemAttr( item_elf ,ITEMATTR_VAL_AGI ) 	-- §­§а§У§Ь§а§г§д§о
+	local dex = GetItemAttr( item_elf ,ITEMATTR_VAL_DEX ) 	-- §Ґ§е§з
+	local sta = GetItemAttr( item_elf ,ITEMATTR_VAL_STA ) 	-- §ґ§а§й§Я§а§г§д§о
+	local lv_JL = str + con + agi + dex + sta-- §Ъ§д§а§Ф§а §е§в§а§У§Ц§Я§о §ж§Ц§Ъ
 
-	if item_elf_hp < 5000 then			-- если ЖЗ феи < 5000 то
-		SkillUnable ( role ) 			-- послать игрока нахер и выводить системку:
-		SystemNotice ( role , "Чтобы использовать этот навык, у феи должно быть 100+ стамины!" ) -- и вывести системку
+	if item_elf_hp < 5000 then			-- §Ц§г§Э§Ъ §Ё§© §ж§Ц§Ъ < 5000 §д§а
+		SkillUnable ( role ) 			-- §б§а§г§Э§С§д§о §Ъ§Ф§в§а§Ь§С §Я§С§з§Ц§в §Ъ §У§н§У§а§Х§Ъ§д§о §г§Ъ§г§д§Ц§Ю§Ь§е:
+		SystemNotice ( role , "§№§д§а§Т§н §Ъ§г§б§а§Э§о§Щ§а§У§С§д§о §п§д§а§д §Я§С§У§н§Ь, §е §ж§Ц§Ъ §Х§а§Э§Ш§Я§а §Т§н§д§о 100+ §г§д§С§Ю§Ъ§Я§н!" ) -- §Ъ §У§н§У§Ц§г§д§Ъ §г§Ъ§г§д§Ц§Ю§Ь§е
 	return 
 	end
-	item_elf_hp = item_elf_hp - (2 * lv_JL / sklv) * 50 -- item_elf_hp = 4500 т.е. 95 хп < 100 => пройдёт
-	SetItemAttr ( item_elf , ITEMATTR_URE , item_elf_hp ) -- убиваем фее ХП за использование пасехи
+	item_elf_hp = item_elf_hp - (2 * lv_JL / sklv) * 50 -- item_elf_hp = 4500 §д.§Ц. 95 §з§б < 100 => §б§в§а§Ы§Х§Ч§д
+	SetItemAttr ( item_elf , ITEMATTR_URE , item_elf_hp ) -- §е§Т§Ъ§У§С§Ц§Ю §ж§Ц§Ц §·§± §Щ§С §Ъ§г§б§а§Э§о§Щ§а§У§С§Я§Ъ§Ц §б§С§г§Ц§з§Ъ
 end
 
 function Skill_JLFT_End( ATKER , DEFER , sklv )
-	local statelv = sklv 			-- узнаём уровень пасехи
-	local statetime = 170 + sklv * 5 -- время использования - 190 в секундах.
-	local item_elf = GetChaItem(ATKER , 2, 1) 		-- проверяем одета фея или нет
-	local item_elf_type = GetItemType ( item_elf ) 	-- тип феи
-	local Item_ID = GetItemID ( item_elf ) 			-- ИД феи
+	local statelv = sklv 			-- §е§Щ§Я§С§Ч§Ю §е§в§а§У§Ц§Я§о §б§С§г§Ц§з§Ъ
+	local statetime = 170 + sklv * 5 -- §У§в§Ц§Ю§с §Ъ§г§б§а§Э§о§Щ§а§У§С§Я§Ъ§с - 190 §У §г§Ц§Ь§е§Я§Х§С§з.
+	local item_elf = GetChaItem(ATKER , 2, 1) 		-- §б§в§а§У§Ц§в§с§Ц§Ю §а§Х§Ц§д§С §ж§Ц§с §Ъ§Э§Ъ §Я§Ц§д
+	local item_elf_type = GetItemType ( item_elf ) 	-- §д§Ъ§б §ж§Ц§Ъ
+	local Item_ID = GetItemID ( item_elf ) 			-- §Є§Ґ §ж§Ц§Ъ
 
---Феи 2 поколения
+--§¶§Ц§Ъ 2 §б§а§Ь§а§Э§Ц§Я§Ъ§с
 	if Item_ID == 0231 or Item_ID == 0232 or Item_ID == 0233 or Item_ID == 0234 or Item_ID == 0235 or Item_ID == 0236 or Item_ID == 0237 or Item_ID == 0681 then
 		AddState( ATKER , ATKER , STATE_JLFT1, statelv , statetime )
---Феи 3 поколения
+--§¶§Ц§Ъ 3 §б§а§Ь§а§Э§Ц§Я§Ъ§с
 	elseif Item_ID == 0129
 	then
 		AddState( ATKER , ATKER , STATE_JLFT2, statelv , statetime )
---Феи 4 поколения
+--§¶§Ц§Ъ 4 §б§а§Ь§а§Э§Ц§Я§Ъ§с
 	elseif Item_ID == 0130
 	then
 		AddState( ATKER , ATKER , STATE_JLFT3, statelv , statetime )
@@ -8487,7 +8411,7 @@ function Skill_JLFT_End( ATKER , DEFER , sklv )
 	elseif Item_ID == 0133
 	then
 		AddState( ATKER , ATKER , STATE_JLFT6, statelv , statetime )
---Феи 5 поколения
+--§¶§Ц§Ъ 5 §б§а§Ь§а§Э§Ц§Я§Ъ§с
 	elseif Item_ID == 0134
 	then
 		AddState( ATKER , ATKER , STATE_JLFT7, statelv , statetime ) 
@@ -8523,7 +8447,7 @@ function State_JLFT_Add ( role , sklv )
  
 		if Part1 == 1 then 
 			local star = 0
---Феи 2 поколения
+--§¶§Ц§Ъ 2 §б§а§Ь§а§Э§Ц§Я§Ъ§с
 			if Item_ID == 0231
 			or Item_ID == 0232
 			or Item_ID == 0233
@@ -8557,7 +8481,7 @@ if agi~=nil and agi~=0 then
 	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
 end
 			end
---Феи 3 поколения
+--§¶§Ц§Ъ 3 §б§а§Ь§а§Э§Ц§Я§Ъ§с
 			if Item_ID == 0129
 			then
 local star = 1 + lv_JL/750 
@@ -8584,7 +8508,7 @@ if agi~=nil and agi~=0 then
 	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
 end
 			end
---Феи 4 поколения
+--§¶§Ц§Ъ 4 §б§а§Ь§а§Э§Ц§Я§Ъ§с
 			if Item_ID == 0130
 			or Item_ID == 0131
 			or Item_ID == 0132
@@ -8614,7 +8538,7 @@ if agi~=nil and agi~=0 then
 	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
 end
 			end
---Феи 5 поколения
+--§¶§Ц§Ъ 5 §б§а§Ь§а§Э§Ц§Я§Ъ§с
 			if Item_ID == 0134
 			then
 local star = 1 + lv_JL/400
@@ -8660,7 +8584,7 @@ function State_JLFT_Rem ( role , sklv )
 end
 
 
---Самоуничтожение
+--§і§С§Ю§а§е§Я§Ъ§й§д§а§Ш§Ц§Я§Ъ§Ц
 function SkillCooldown_jlzb ( sklv )
 	local Cooldown = 180000
 	return Cooldown
@@ -8721,7 +8645,7 @@ function Skill_jlzb_End( ATKER , DEFER , sklv )
 			local dex = GetChaAttr( DEFER , ATTR_DEX )
 			local Defer_Sum =  str+con+sta+agi+dex
 
-			 dmg_fin = elf_lv * 200 - (Defer_Sum * Defer_Sum * Defer_Sum/10000)		--ЙЛє¦јЖЛг
+			 dmg_fin = elf_lv * 200 - (Defer_Sum * Defer_Sum * Defer_Sum/10000)		--§«§­?|?§Ё§­§Ф
 			 if dmg_fin < 0 then
 dmg_fin = 0
 			 end
@@ -8745,7 +8669,7 @@ AddState ( ATKER , ATKER , STATE_XY , statelv , statetime )
 	end
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_5MBS_Add(role , sklv)
 	local role_mxhp = GetChaAttr(role, ATTR_MXHP)
 	Hp_Endure_Dmg ( role , role_mxhp*0.95 )
@@ -8756,7 +8680,7 @@ function State_5MBS_Rem(role , sklv)
 
 end
 
---Не использутеся
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§д§Ц§г§с
 function JLTX_usu(role)
 	local item_elf = GetChaItem(role , 2, 1)
 	local item_elf_type = GetItemType (item_elf )	
@@ -8783,7 +8707,7 @@ function JLTX_usu(role)
 	return 1
 end
 
---Навык - Вонючка
+--§Ї§С§У§н§Ь - §Ј§а§Я§р§й§Ь§С
 function SkillCooldown_Jltx1( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -8807,7 +8731,7 @@ function State_jltx1_Rem(role , sklv)
 
 end
 
---Навык - Белье
+--§Ї§С§У§н§Ь - §ў§Ц§Э§о§Ц
 function SkillCooldown_Jltx2( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -8831,7 +8755,7 @@ function State_jltx2_Rem(role , sklv)
 
 end
 
---Навык - Лифчик
+--§Ї§С§У§н§Ь - §­§Ъ§ж§й§Ъ§Ь
 function SkillCooldown_Jltx3( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -8855,7 +8779,7 @@ function State_jltx3_Rem(role , sklv)
 
 end
 
---Навык - Денежный дождь
+--§Ї§С§У§н§Ь - §Ґ§Ц§Я§Ц§Ш§Я§н§Ы §Х§а§Ш§Х§о
 function SkillCooldown_Jltx4( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -8879,7 +8803,7 @@ function State_jltx4_Rem(role , sklv)
 
 end
 
---Навык - Дурак
+--§Ї§С§У§н§Ь - §Ґ§е§в§С§Ь
 function SkillCooldown_Jltx5( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -8903,7 +8827,7 @@ function State_jltx5_Rem(role , sklv)
 
 end
 
---Навык - Сноб
+--§Ї§С§У§н§Ь - §і§Я§а§Т
 function SkillCooldown_Jltx6( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -8927,7 +8851,7 @@ function State_jltx6_Rem(role , sklv)
 
 end
 
---Навык - Трюкач
+--§Ї§С§У§н§Ь - §ґ§в§р§Ь§С§й
 function SkillCooldown_Jltx7( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -8951,7 +8875,7 @@ function State_jltx7_Rem(role , sklv)
 
 end
 
---Навык - Тупица
+--§Ї§С§У§н§Ь - §ґ§е§б§Ъ§и§С
 function SkillCooldown_Jltx8( sklv )
 	local Cooldown = 10000
 	return Cooldown
@@ -8975,7 +8899,7 @@ function State_jltx8_Rem(role , sklv)
 
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_CZZX_Add ( role , statelv )
 	local str = GetChaAttr( role , ATTR_STR )
 	local con = GetChaAttr( role , ATTR_CON ) 
@@ -9004,7 +8928,7 @@ function State_CZZX_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_KALA_Add ( role , statelv )
 	local sta = GetChaAttr( role , ATTR_STA )
 	SetCharaAttr(sta ,role , ATTR_STATEV_STA)
@@ -9016,7 +8940,7 @@ function State_KALA_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_XUEYU_Add ( role , statelv )
 	local star=statelv*statelv*100
 	local eleven=1
@@ -9048,7 +8972,7 @@ function State_XUEYU_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_MANTOU_Add ( role , statelv )
 	local atksb_dif = 50+(statelv-1)*100	
 	local mnatksb = MnatkSb(role) + atksb_dif  
@@ -9067,7 +8991,7 @@ function State_MANTOU_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Не используется
+--§Ї§Ц §Ъ§г§б§а§Э§о§Щ§е§Ц§д§г§с
 function State_NVER_Add ( role , statelv )
 	local sta = statelv*5
 	SetCharaAttr(sta ,role , ATTR_STATEV_STA)
@@ -9079,17 +9003,17 @@ function State_NVER_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Ботинок заграждения
+--§ў§а§д§Ъ§Я§а§Ь §Щ§С§Ф§в§С§Ш§Х§Ц§Я§Ъ§с
 function Skill_xzlw_End( ATKER , DEFER , sklv )
 	local dmg =math.random(15,35)
 	Hp_Endure_Dmg ( DEFER , dmg )  
 end 
 
---Кулинария
+--§¬§е§Э§Ъ§Я§С§в§Ъ§с
 function Skill_Cooking_End( ATKER , DEFER , sklv )
 end
 
---Производство
+--§±§в§а§Ъ§Щ§У§а§Х§г§д§У§а
 function Skill_Making_End( ATKER , DEFER , sklv )
 end
 
@@ -9097,11 +9021,11 @@ end
 function Skill_Founding_End( ATKER , DEFER , sklv )
 end
 
---Ремесло
+--§І§Ц§Ю§Ц§г§Э§а
 function Skill_Dismissing_End( ATKER , DEFER , sklv )
 end
 
---Иллюзия ускользающего удара
+--§Є§Э§Э§р§Щ§Ъ§с §е§г§Ь§а§Э§о§Щ§С§р§л§Ц§Ф§а §е§Х§С§в§С
 function SkillCooldown_HyzHX( sklv )
 	local Cooldown = 1000
 	return Cooldown
@@ -9129,7 +9053,7 @@ function Skill_HyzHX_End ( ATKER , DEFER , sklv )
 	Check_Ys_Rem ( ATKER , DEFER )		
 end 
 
---Иллюзия кораллового луча
+--§Є§Э§Э§р§Щ§Ъ§с §Ь§а§в§С§Э§Э§а§У§а§Ф§а §Э§е§й§С
 function SkillArea_Line_BkcjHX ( sklv )	
 	local sklv = 8
 	local lenth = 500 + sklv * 30  
@@ -9156,7 +9080,7 @@ function Skill_BkcjHX_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg_fin ) 
 end 
 
---Иллюзия выстрела в голову
+--§Є§Э§Э§р§Щ§Ъ§с §У§н§г§д§в§Ц§Э§С §У §Ф§а§Э§а§У§е
 function SkillCooldown_BtHX( sklv )
 	local Cooldown = 5000
 	return Cooldown
@@ -9174,7 +9098,7 @@ function Skill_BtHX_End ( ATKER , DEFER , sklv )
 			local Percentage = Percentage_Random ( 0.1 )
 			if Percentage == 1 then
 dmg = dmg*10 
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Урон увеличен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§в§а§Я §е§У§Ц§Э§Ъ§й§Ц§Я!")
 			end
 	end
 	local Check_Heilong_app = CheckItem_Heilong_app ( ATKER )
@@ -9182,14 +9106,14 @@ SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Урон увеличен!")
 			local Percentage_app = Percentage_Random ( 0.1 )
 			if Percentage_app == 1 then
 dmg = dmg*10 
-SystemNotice ( ATKER , "Получена сила набора Черного Дракона. Урон увеличен!")
+SystemNotice ( ATKER , "§±§а§Э§е§й§Ц§Я§С §г§Ъ§Э§С §Я§С§Т§а§в§С §№§Ц§в§Я§а§Ф§а §Ґ§в§С§Ь§а§Я§С. §µ§в§а§Я §е§У§Ц§Э§Ъ§й§Ц§Я!")
 			end
 	end
 	hp = hp - dmg 
 	SetCharaAttr ( hp , DEFER , ATTR_HP ) 
 end 
 
---Иллюзия Призрачной стрелы
+--§Є§Э§Э§р§Щ§Ъ§с §±§в§Ъ§Щ§в§С§й§Я§а§Ы §г§д§в§Ц§Э§н
 function SkillCooldown_XlczHX( sklv ) 
 	local Cooldown = 2000
 	return Cooldown
@@ -9222,7 +9146,7 @@ function Skill_XlczHX_End ( ATKER , DEFER , sklv )
 --	LG( "xlcz", "Spiritual Bolt Skill Level=" , sklv ,"Attacker sta=", sta ,"Normal attack damage=", atkdmg , "Skill Damage= " , dmg , "\n" ) 
 end 
 
--- Граната 1 ур.
+-- §¤§в§С§Я§С§д§С 1 §е§в.
 function SkillCooldown_Shoulei1( sklv )
 	local Cooldown = 1000
 	return Cooldown
@@ -9231,13 +9155,13 @@ end
 function Skill_Shoulei1_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 1135 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 1135 , 1 ) 
 end 
@@ -9245,7 +9169,7 @@ end
 function Skill_Shoulei1_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 1
@@ -9257,7 +9181,7 @@ function Skill_Shoulei1_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg )
 end
 
--- Фотобомба 1 ур.
+-- §¶§а§д§а§Т§а§Ю§Т§С 1 §е§в.
 function SkillArea_Circle_ShanGD1( sklv )
 	local side = 600 
 	SetSkillRange ( 4 , side  )  
@@ -9271,13 +9195,13 @@ end
 function Skill_ShanGD1_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 1136 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 1136 , 1 ) 
 end 
@@ -9285,7 +9209,7 @@ end
 function Skill_ShanGD1_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 1
@@ -9302,13 +9226,13 @@ function Skill_ShanGD1_End ( ATKER , DEFER , sklv )
 
 	if GetChaAIType( DEFER ) >= 21 then
 		if BOSSXYSJ[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSXYSJ[GetChaTypeID( DEFER )] = BOSSXYSJ[GetChaTypeID( DEFER )] -1
 		end
 	end
-SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§°§Ф§Э§е§к§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime ) 
 end 
@@ -9319,7 +9243,7 @@ end
 function State_ShanGD_Rem ( role , statelv )
 end 
 
--- Излучатель 1 ур.
+-- §Є§Щ§Э§е§й§С§д§Ц§Э§о 1 §е§в.
 function SkillArea_Circle_FuShe1( sklv )
 	local  sklv = 1
 	local side = 800 + sklv*100
@@ -9334,13 +9258,13 @@ end
 function Skill_FuShe1_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 1137 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 1137 , 1 ) 
 end 
@@ -9348,7 +9272,7 @@ end
 function Skill_FuShe1_End( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 1
@@ -9373,7 +9297,7 @@ end
 function State_FuShe_Rem ( role , statelv ) 
 end 
 
--- Детектор 1 ур.
+-- §Ґ§Ц§д§Ц§Ь§д§а§в 1 §е§в.
 function SkillCooldown_YouL1( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -9395,14 +9319,14 @@ end
 function Skill_YouL1_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		SkillUnable(role)   
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 1138 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 1138 , 1 ) 
 end 
@@ -9420,7 +9344,7 @@ function State_Syzy_Tran ( statelv )
 	return 1     
 end 
 
--- Ускоритель кораблей 1 ур.
+-- §µ§г§Ь§а§в§Ъ§д§Ц§Э§о §Ь§а§в§С§Т§Э§Ц§Ы 1 §е§в.
 function SkillCooldown_JiaSuQi( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -9451,7 +9375,7 @@ function State_wljs_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Распылитель 1 ур.
+-- §І§С§г§б§н§Э§Ъ§д§Ц§Э§о 1 §е§в.
 function SkillCooldown_PengSheQi1( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -9482,7 +9406,7 @@ function State_PengSheQi_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Пробойник 1 ур.
+-- §±§в§а§Т§а§Ы§Я§Ъ§Ь 1 §е§в.
 function SkillCooldown_PoJiaDan( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -9515,7 +9439,7 @@ function State_Pj_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end 
 
--- Корабельный таран 1 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §д§С§в§С§Я 1 §е§в.
 function SkillCooldown_PoRenDan1( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -9556,7 +9480,7 @@ function State_PoRenDan_Rem( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
--- Корабельный огнемет 1 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §а§Ф§Я§Ц§Ю§Ц§д 1 §е§в.
 function SkillCooldown_RanShaoDan1( sklv ) 
 	local Cooldown = 1500 
 	return Cooldown
@@ -9584,7 +9508,7 @@ end
 function State_RanShaoDan_Rem ( role , statelv ) 
 end
 
--- Граната 2 ур.
+-- §¤§в§С§Я§С§д§С 2 §е§в.
 function SkillCooldown_Shoulei2( sklv )
 	local Cooldown = 1200
 	return Cooldown
@@ -9593,13 +9517,13 @@ end
 function Skill_Shoulei2_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
-	local item_count = CheckBagItem ( role , 2719 ) --КЦАЧ
+	local item_count = CheckBagItem ( role , 2719 ) --§¬§ё§Ў§№
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2719 , 1 ) 
 end 
@@ -9607,7 +9531,7 @@ end
 function Skill_Shoulei2_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 2
@@ -9619,7 +9543,7 @@ function Skill_Shoulei2_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg )
 end
 
--- Фотобомба 2 ур.
+-- §¶§а§д§а§Т§а§Ю§Т§С 2 §е§в.
 function SkillArea_Circle_ShanGD2( sklv )
 	local side = 620 
 	SetSkillRange ( 4 , side  )  
@@ -9633,13 +9557,13 @@ end
 function Skill_ShanGD2_Begin ( role , sklv )
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2720 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2720 , 1 ) 
 end 
@@ -9647,7 +9571,7 @@ end
 function Skill_ShanGD2_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 2
@@ -9665,13 +9589,13 @@ function Skill_ShanGD2_End ( ATKER , DEFER , sklv )
 
 	if GetChaAIType( DEFER ) >= 21 then
 		if BOSSXYSJ[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSXYSJ[GetChaTypeID( DEFER )] = BOSSXYSJ[GetChaTypeID( DEFER )] -1
 		end
 	end
-SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§°§Ф§Э§е§к§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime )
 end 
@@ -9682,7 +9606,7 @@ end
 function State_ShanGD_Rem ( role , statelv )
 end 
 
--- Излучатель 2 ур
+-- §Є§Щ§Э§е§й§С§д§Ц§Э§о 2 §е§в
 function SkillArea_Circle_FuShe2( sklv )
 	local  sklv = 2
 	local side = 700 + sklv*100
@@ -9697,13 +9621,13 @@ end
 function Skill_FuShe2_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2721 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2721 , 1 ) 
 end 
@@ -9711,7 +9635,7 @@ end
 function Skill_FuShe2_End( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 2
@@ -9727,7 +9651,7 @@ function Skill_FuShe2_End( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg) 
 end 
 
--- Детектор 2 ур.
+-- §Ґ§Ц§д§Ц§Ь§д§а§в 2 §е§в.
 function SkillCooldown_YouL2( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -9749,14 +9673,14 @@ end
 function Skill_YouL2_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		SkillUnable(role)   
 		return 0
 	end
-	local item_count = CheckBagItem ( role , 2722 ) --УДБйМЅІвЖч2
+	local item_count = CheckBagItem ( role , 2722 ) --§µ§Ґ§ў§Ы§®??§У§Ё§й2
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2722 , 1 ) 
 end 
@@ -9774,7 +9698,7 @@ function State_Syzy_Tran ( statelv )
 	return 1     
 end 
 
--- Ускоритель кораблей 2 ур
+-- §µ§г§Ь§а§в§Ъ§д§Ц§Э§о §Ь§а§в§С§Т§Э§Ц§Ы 2 §е§в
 function SkillCooldown_JiaSuQi2( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -9805,7 +9729,7 @@ function State_wljs_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Распылитель 2 ур.
+-- §І§С§г§б§н§Э§Ъ§д§Ц§Э§о 2 §е§в.
 function SkillCooldown_PengSheQi2( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -9836,7 +9760,7 @@ function State_PengSheQi_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Пробойник 2 ур.
+-- §±§в§а§Т§а§Ы§Я§Ъ§Ь 2 §е§в.
 function SkillCooldown_PoJiaDan2( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -9871,7 +9795,7 @@ function State_Pj_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end 
 
--- Корабельный таран 2 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §д§С§в§С§Я 2 §е§в.
 function SkillCooldown_PoRenDan2( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -9911,7 +9835,7 @@ function State_PoRenDan_Rem( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
--- Корабельный огнемет 2 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §а§Ф§Я§Ц§Ю§Ц§д 2 §е§в.
 function SkillCooldown_RanShaoDan1( sklv ) 
 	local Cooldown = 1500 
 	return Cooldown
@@ -9939,7 +9863,7 @@ end
 function State_RanShaoDan_Rem ( role , statelv ) 
 end
 
--- Граната 3 ур.
+-- §¤§в§С§Я§С§д§С 3 §е§в.
 function SkillCooldown_Shoulei3( sklv )
 	local Cooldown = 1400
 	return Cooldown
@@ -9948,13 +9872,13 @@ end
 function Skill_Shoulei3_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2743 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2743 , 1 ) 
 end 
@@ -9962,7 +9886,7 @@ end
 function Skill_Shoulei3_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 3
@@ -9974,7 +9898,7 @@ function Skill_Shoulei3_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg )
 end
 
--- Фотобомба 3 ур.
+-- §¶§а§д§а§Т§а§Ю§Т§С 3 §е§в.
 function SkillArea_Circle_ShanGD3( sklv )
 	local side = 640 
 	SetSkillRange ( 4 , side  )  
@@ -9988,13 +9912,13 @@ end
 function Skill_ShanGD3_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2744 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2744 , 1 ) 
 end 
@@ -10002,7 +9926,7 @@ end
 function Skill_ShanGD3_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 2
@@ -10020,13 +9944,13 @@ function Skill_ShanGD3_End ( ATKER , DEFER , sklv )
 
 	if GetChaAIType( DEFER ) >= 21 then
 		if BOSSXYSJ[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSXYSJ[GetChaTypeID( DEFER )] = BOSSXYSJ[GetChaTypeID( DEFER )] -1
 		end
 	end
-SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§°§Ф§Э§е§к§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime ) 
 end 
@@ -10037,7 +9961,7 @@ end
 function State_ShanGD_Rem ( role , statelv )
 end 
 
--- Излучатель 3 ур.
+-- §Є§Щ§Э§е§й§С§д§Ц§Э§о 3 §е§в.
 function SkillArea_Circle_FuShe3( sklv )
 	local  sklv = 3
 	local side = 800 + sklv*100
@@ -10052,13 +9976,13 @@ end
 function Skill_FuShe3_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2745 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2745 , 1 ) 
 end 
@@ -10066,7 +9990,7 @@ end
 function Skill_FuShe3_End( ATKER , DEFER , sklv )
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 3
@@ -10083,7 +10007,7 @@ function Skill_FuShe3_End( ATKER , DEFER , sklv )
 end 
 
 
--- Детектор 3 ур.
+-- §Ґ§Ц§д§Ц§Ь§д§а§в 3 §е§в.
 function SkillCooldown_YouL3( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -10105,14 +10029,14 @@ end
 function Skill_YouL3_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		SkillUnable(role)   
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2746 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2746 , 1 ) 
 end 
@@ -10130,7 +10054,7 @@ function State_Syzy_Tran ( statelv )
 	return 1     
 end 
 
--- Ускоритель кораблей 3 ур.
+-- §µ§г§Ь§а§в§Ъ§д§Ц§Э§о §Ь§а§в§С§Т§Э§Ц§Ы 3 §е§в.
 function SkillCooldown_JiaSuQi3( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -10161,7 +10085,7 @@ function State_wljs_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Распылитель 3 ур.
+-- §І§С§г§б§н§Э§Ъ§д§Ц§Э§о 3 §е§в.
 function SkillCooldown_PengSheQi3( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -10192,7 +10116,7 @@ function State_PengSheQi_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Пробойник 3 ур.
+-- §±§в§а§Т§а§Ы§Я§Ъ§Ь 3 §е§в.
 function SkillCooldown_PoJiaDan3( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -10227,7 +10151,7 @@ function State_Pj_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end 
 
--- Корабельный таран 3 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §д§С§в§С§Я 3 §е§в.
 function SkillCooldown_PoRenDan3( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -10267,7 +10191,7 @@ function State_PoRenDan_Rem( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
--- Корабельный огнемет 3 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §а§Ф§Я§Ц§Ю§Ц§д 3 §е§в.
 function SkillCooldown_RanShaoDan3( sklv ) 
 	local Cooldown = 1500 
 	return Cooldown
@@ -10295,7 +10219,7 @@ end
 function State_RanShaoDan_Rem ( role , statelv ) 
 end
 
--- Граната 4 ур.
+-- §¤§в§С§Я§С§д§С 4 §е§в.
 function SkillCooldown_Shoulei4( sklv )
 	local Cooldown = 1600
 	return Cooldown
@@ -10304,13 +10228,13 @@ end
 function Skill_Shoulei4_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
-	local item_count = CheckBagItem ( role , 2767 ) --КЦАЧ4
+	local item_count = CheckBagItem ( role , 2767 ) --§¬§ё§Ў§№4
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2767 , 1 ) 
 end 
@@ -10318,7 +10242,7 @@ end
 function Skill_Shoulei4_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 4
@@ -10330,7 +10254,7 @@ function Skill_Shoulei4_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg )
 end
 
--- Фотобомба 4 ур.
+-- §¶§а§д§а§Т§а§Ю§Т§С 4 §е§в.
 function SkillArea_Circle_ShanGD4( sklv )
 	local side = 660 
 	SetSkillRange ( 4 , side  )  
@@ -10344,13 +10268,13 @@ end
 function Skill_ShanGD4_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
-	local item_count = CheckBagItem ( role , 2768 ) --ЙБ№вµЇ4
+	local item_count = CheckBagItem ( role , 2768 ) --§«§ўЎн§У¦М?4
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2768 , 1 ) 
 end 
@@ -10358,7 +10282,7 @@ end
 function Skill_ShanGD4_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 2
@@ -10376,13 +10300,13 @@ function Skill_ShanGD4_End ( ATKER , DEFER , sklv )
 
 	if GetChaAIType( DEFER ) >= 21 then
 		if BOSSXYSJ[GetChaTypeID( DEFER )] == 0 then
-			SystemNotice ("Неужели ты думаешь, что меня можно победить единственным навыком? Попробуй что-нибудь другое")
+			SystemNotice ("§Ї§Ц§е§Ш§Ц§Э§Ъ §д§н §Х§е§Ю§С§Ц§к§о, §й§д§а §Ю§Ц§Я§с §Ю§а§Ш§Я§а §б§а§Т§Ц§Х§Ъ§д§о §Ц§Х§Ъ§Я§г§д§У§Ц§Я§Я§н§Ю §Я§С§У§н§Ь§а§Ю? §±§а§б§в§а§Т§е§Ы §й§д§а-§Я§Ъ§Т§е§Х§о §Х§в§е§Ф§а§Ц")
 			return
 		else
 			BOSSXYSJ[GetChaTypeID( DEFER )] = BOSSXYSJ[GetChaTypeID( DEFER )] -1
 		end
 	end
-SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§°§Ф§Э§е§к§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime ) 
 end 
@@ -10393,7 +10317,7 @@ end
 function State_ShanGD_Rem ( role , statelv )
 end 
 
--- Излучатель 4 ур.
+-- §Є§Щ§Э§е§й§С§д§Ц§Э§о 4 §е§в.
 function SkillArea_Circle_FuShe4( sklv )
 	local  sklv = 4
 	local side = 800 + sklv*100
@@ -10408,13 +10332,13 @@ end
 function Skill_FuShe4_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2769 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2769 , 1 ) 
 end 
@@ -10422,7 +10346,7 @@ end
 function Skill_FuShe4_End( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 4
@@ -10438,7 +10362,7 @@ function Skill_FuShe4_End( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg) 
 end 
 
--- Детектор 4 ур.
+-- §Ґ§Ц§д§Ц§Ь§д§а§в 4 §е§в.
 function SkillCooldown_YouL4( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -10460,14 +10384,14 @@ end
 function Skill_YouL4_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		SkillUnable(role)   
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2770 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2770 , 1 ) 
 end 
@@ -10486,7 +10410,7 @@ function State_Syzy_Tran ( statelv )
 end 
 
 
--- Ускоритель кораблей 4 ур.
+-- §µ§г§Ь§а§в§Ъ§д§Ц§Э§о §Ь§а§в§С§Т§Э§Ц§Ы 4 §е§в.
 function SkillCooldown_JiaSuQi4( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -10517,7 +10441,7 @@ function State_wljs_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Распылитель 4 ур.
+-- §І§С§г§б§н§Э§Ъ§д§Ц§Э§о 4 §е§в.
 function SkillCooldown_PengSheQi4( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -10548,7 +10472,7 @@ function State_PengSheQi_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Пробойник 4 ур.
+-- §±§в§а§Т§а§Ы§Я§Ъ§Ь 4 §е§в.
 function SkillCooldown_PoJiaDan4( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -10583,7 +10507,7 @@ function State_Pj_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end 
 
--- Корабельный таран 4 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §д§С§в§С§Я 4 §е§в.
 function SkillCooldown_PoRenDan4( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -10624,7 +10548,7 @@ function State_PoRenDan_Rem( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
--- Корабельный огнемет 4 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §а§Ф§Я§Ц§Ю§Ц§д 4 §е§в.
 function SkillCooldown_RanShaoDan4( sklv ) 
 	local Cooldown = 1500 
 	return Cooldown
@@ -10652,7 +10576,7 @@ end
 function State_RanShaoDan_Rem ( role , statelv ) 
 end
 
--- Граната 5 ур.
+-- §¤§в§С§Я§С§д§С 5 §е§в.
 function SkillCooldown_Shoulei5( sklv )
 	local Cooldown = 2000
 	return Cooldown
@@ -10661,13 +10585,13 @@ end
 function Skill_Shoulei5_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
-	local item_count = CheckBagItem ( role , 2791 ) --КЦАЧ5
+	local item_count = CheckBagItem ( role , 2791 ) --§¬§ё§Ў§№5
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2791 , 1 ) 
 end 
@@ -10675,7 +10599,7 @@ end
 function Skill_Shoulei5_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 5
@@ -10687,7 +10611,7 @@ function Skill_Shoulei5_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg )
 end
 
--- Фотобомба 5 ур.
+-- §¶§а§д§а§Т§а§Ю§Т§С 5 §е§в.
  function SkillArea_Circle_ShanGD5( sklv )
 	local side = 700 
 	SetSkillRange ( 4 , side  )  
@@ -10701,13 +10625,13 @@ end
 function Skill_ShanGD5_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2792 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2792 , 1 ) 
 end 
@@ -10715,7 +10639,7 @@ end
 function Skill_ShanGD5_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 2
@@ -10727,7 +10651,7 @@ function Skill_ShanGD5_End ( ATKER , DEFER , sklv )
 		return
 	end 
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime ) 
-	SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+	SystemNotice(DEFER, "§Ї§С §У§С§г §Х§Ц§Ы§г§д§У§е§Ц§д §п§ж§ж§Ц§Ь§д <§°§Ф§Э§е§к§Ц§Я§Ъ§Ц> "..statelv.."§е§в. §Я§С "..statetime.. " §г§Ц§Ь§е§Я§Х" )
 
 end
 
@@ -10737,7 +10661,7 @@ end
 function State_ShanGD_Rem ( role , statelv )
 end 
 
--- Излучатель 5 ур.
+-- §Є§Щ§Э§е§й§С§д§Ц§Э§о 5 §е§в.
 function SkillArea_Circle_FuShe5( sklv )
 	local  sklv = 5
 	local side = 800 + sklv*100
@@ -10752,13 +10676,13 @@ end
 function Skill_FuShe5_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2793 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2793 , 1 ) 
 end 
@@ -10766,7 +10690,7 @@ end
 function Skill_FuShe5_End( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local  sklv = 5
@@ -10782,7 +10706,7 @@ function Skill_FuShe5_End( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg) 
 end 
  
--- Детектор 5 ур.
+-- §Ґ§Ц§д§Ц§Ь§д§а§в 5 §е§в.
 function SkillCooldown_YouL5( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -10804,14 +10728,14 @@ end
 function Skill_YouL5_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		SkillUnable(role)   
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2794 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2794 , 1 ) 
 end 
@@ -10829,7 +10753,7 @@ function State_Syzy_Tran ( statelv )
 	return 1     
 end 
 
--- Ускоритель кораблей 5 ур.
+-- §µ§г§Ь§а§в§Ъ§д§Ц§Э§о §Ь§а§в§С§Т§Э§Ц§Ы 5 §е§в.
 function SkillCooldown_JiaSuQi5( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -10860,7 +10784,7 @@ function State_wljs_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Распылитель 5 ур.
+-- §І§С§г§б§н§Э§Ъ§д§Ц§Э§о 5 §е§в.
 function SkillCooldown_PengSheQi5( sklv )
 	local Cooldown = 1500 
 	return Cooldown
@@ -10891,7 +10815,7 @@ function State_PengSheQi_Rem  ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Пробойник 5 ур.
+-- §±§в§а§Т§а§Ы§Я§Ъ§Ь 5 §е§в.
 function SkillCooldown_PoJiaDan5( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -10926,7 +10850,7 @@ function State_Pj_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end 
 
--- Корабельный таран 5 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §д§С§в§С§Я 5 §е§в.
 function SkillCooldown_PoRenDan5( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -10967,7 +10891,7 @@ function State_PoRenDan_Rem( role , sklv )
 	ALLExAttrSet(role)  
 end 
 
--- Корабельный огнемет 5 ур.
+-- §¬§а§в§С§Т§Ц§Э§о§Я§н§Ы §а§Ф§Я§Ц§Ю§Ц§д 5 §е§в.
 function SkillCooldown_RanShaoDan5( sklv ) 
 	local Cooldown = 1500 
 	return Cooldown
@@ -10995,7 +10919,7 @@ end
 function State_RanShaoDan_Rem ( role , statelv ) 
 end
 
--- Снежок
+-- §і§Я§Ц§Ш§а§Ь
 function SkillCooldown_Xiaoxueqiu ( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11004,13 +10928,13 @@ end
 function Skill_Xiaoxueqiu_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local item_count = CheckBagItem ( role , 2896 ) 
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2896 , 1 ) 
 
@@ -11019,7 +10943,7 @@ end
 function Skill_Xiaoxueqiu_End ( ATKER , DEFER , sklv ) 
 	local NocLock =	KitbagLock( ATKER, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( ATKER , "Ваш инвентарь заблокирован")
+		SystemNotice( ATKER , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local statetime = 1 
@@ -11030,7 +10954,7 @@ function Skill_Xiaoxueqiu_End ( ATKER , DEFER , sklv )
 	end
 end
 
--- Трупное ядро 1 ур.
+-- §ґ§в§е§б§Я§а§Ц §с§Х§в§а 1 §е§в.
 function SkillCooldown_FuShiZhiQiu1( sklv )
 	local Cooldown = 5000
 	return Cooldown
@@ -11040,14 +10964,14 @@ function Skill_FuShiZhiQiu1_Begin ( role , sklv )
 	local atk_role = TurnToCha ( role ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(atk_role)
 			return 0
 		end
 	local item_count = CheckBagItem ( atk_role , 1146 )
 	if item_count <= 0 then  
 		SkillUnable(atk_role)   
-		SystemNotice ( atk_role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( atk_role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( atk_role , 1146 , 1 ) 
 end 
@@ -11081,7 +11005,7 @@ function State_FuShiZhiQiu_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
--- Трупное ядро 2 ур.
+-- §ґ§в§е§б§Я§а§Ц §с§Х§в§а 2 §е§в.
 function SkillCooldown_FuShiZhiQiu2( sklv )
 	local Cooldown = 5000
 	return Cooldown
@@ -11091,14 +11015,14 @@ function Skill_FuShiZhiQiu2_Begin ( role , sklv )
 	local atk_role = TurnToCha ( role ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(atk_role)
 			return 0
 		end
 	local item_count = CheckBagItem ( atk_role , 2730 )
 	if item_count <= 0 then  
 		SkillUnable(atk_role)   
-		SystemNotice ( atk_role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( atk_role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( atk_role , 2730 , 1 ) 
 end 
@@ -11110,7 +11034,7 @@ function Skill_FuShiZhiQiu2_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_FSZQ , statelv , statetime )  
 end 
 
--- Трупное ядро 3 ур.
+-- §ґ§в§е§б§Я§а§Ц §с§Х§в§а 3 §е§в.
 function SkillCooldown_FuShiZhiQiu3( sklv )
 	local Cooldown = 5000
 	return Cooldown
@@ -11120,14 +11044,14 @@ function Skill_FuShiZhiQiu3_Begin ( role , sklv )
 	local atk_role = TurnToCha ( role ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(atk_role)
 			return 0
 		end
 	local item_count = CheckBagItem ( atk_role , 2754 )
 	if item_count <= 0 then  
 		SkillUnable(atk_role)   
-		SystemNotice ( atk_role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( atk_role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( atk_role , 2754 , 1 ) 
 end 
@@ -11139,7 +11063,7 @@ function Skill_FuShiZhiQiu3_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_FSZQ , statelv , statetime )  
 end 
 
--- Трупное ядро 4 ур.
+-- §ґ§в§е§б§Я§а§Ц §с§Х§в§а 4 §е§в.
 function SkillCooldown_FuShiZhiQiu4( sklv )
 	local Cooldown = 5000
 	return Cooldown
@@ -11149,14 +11073,14 @@ function Skill_FuShiZhiQiu4_Begin ( role , sklv )
 	local atk_role = TurnToCha ( role ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(atk_role)
 			return 0
 		end
 	local item_count = CheckBagItem ( atk_role , 2778 )
 	if item_count <= 0 then  
 		SkillUnable(atk_role)   
-		SystemNotice ( atk_role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( atk_role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( atk_role , 2778 , 1 ) 
 end 
@@ -11168,7 +11092,7 @@ function Skill_FuShiZhiQiu4_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_FSZQ , statelv , statetime )  
 end 
 
--- Трупное ядро 5 ур.
+-- §ґ§в§е§б§Я§а§Ц §с§Х§в§а 5 §е§в.
 function SkillCooldown_FuShiZhiQiu5( sklv )
 	local Cooldown = 5000
 	return Cooldown
@@ -11178,14 +11102,14 @@ function Skill_FuShiZhiQiu5_Begin ( role , sklv )
 	local atk_role = TurnToCha ( role ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(atk_role)
 			return 0
 		end
 	local item_count = CheckBagItem ( atk_role , 2802 )
 	if item_count <= 0 then  
 		SkillUnable(atk_role)   
-		SystemNotice ( atk_role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( atk_role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( atk_role , 2802 , 1 ) 
 end 
@@ -11198,7 +11122,7 @@ function Skill_FuShiZhiQiu5_End ( ATKER , DEFER , sklv )
 end 
 
 
--- Источник шума 1 ур.
+-- §Є§г§д§а§й§Я§Ъ§Ь §к§е§Ю§С 1 §е§в.
 function SkillCooldown_ZaoYinZhiZao1( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -11220,14 +11144,14 @@ end
 function Skill_ZaoYinZhiZao1_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
 	local item_count = CheckBagItem ( role , 1147 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 1147 , 1 ) 
 end 
@@ -11251,7 +11175,7 @@ function State_ZaoYinZhiZao_Tran ( statelv )
 	return 1
 end
 
--- Источник шума 2 ур.
+-- §Є§г§д§а§й§Я§Ъ§Ь §к§е§Ю§С 2 §е§в.
 function SkillCooldown_ZaoYinZhiZao2( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -11273,14 +11197,14 @@ end
 function Skill_ZaoYinZhiZao2_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
 	local item_count = CheckBagItem ( role , 2731 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2731 , 1 ) 
 end 
@@ -11288,7 +11212,7 @@ end
 function Skill_ZaoYinZhiZao2_End ( ATKER , DEFER , sklv )
 end
  
--- Источник шума 3 ур.
+-- §Є§г§д§а§й§Я§Ъ§Ь §к§е§Ю§С 3 §е§в.
 function SkillCooldown_ZaoYinZhiZao3( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -11310,14 +11234,14 @@ end
 function Skill_ZaoYinZhiZao3_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
-	local item_count = CheckBagItem ( role , 2755 ) --ФлТфЦЖФмЖчLv3
+	local item_count = CheckBagItem ( role , 2755 ) --§¶§Э§ґ§ж§ё§Ё§¶§Ю§Ё§йLv3
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2755 , 1 ) 
 end 
@@ -11325,7 +11249,7 @@ end
 function Skill_ZaoYinZhiZao3_End ( ATKER , DEFER , sklv )
 end
  
--- Источник шума 4 ур.
+-- §Є§г§д§а§й§Я§Ъ§Ь §к§е§Ю§С 4 §е§в.
 function SkillCooldown_ZaoYinZhiZao4( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -11347,14 +11271,14 @@ end
 function Skill_ZaoYinZhiZao4_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
 	local item_count = CheckBagItem ( role , 2779 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2779 , 1 ) 
 end 
@@ -11362,7 +11286,7 @@ end
 function Skill_ZaoYinZhiZao4_End ( ATKER , DEFER , sklv )
 end
  
--- Источник шума 5 ур.
+-- §Є§г§д§а§й§Я§Ъ§Ь §к§е§Ю§С 5 §е§в.
 function SkillCooldown_ZaoYinZhiZao5( sklv )
 	local Cooldown = 1500
 	return Cooldown
@@ -11384,14 +11308,14 @@ end
 function Skill_ZaoYinZhiZao5_Begin ( role , sklv ) 
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
 	local item_count = CheckBagItem ( role , 2803 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2803 , 1 ) 
 end 
@@ -11399,7 +11323,7 @@ end
 function Skill_ZaoYinZhiZao5_End ( ATKER , DEFER , sklv )
 end
  
--- Генератор землетрясений 1 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Щ§Ц§Ю§Э§Ц§д§в§с§г§Ц§Я§Ъ§Ы 1 §е§в.
 function SkillCooldown_DiZhenFaSheng1( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11422,14 +11346,14 @@ function Skill_DiZhenFaSheng1_Begin ( role , sklv )
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE 
 		    then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
 	local item_count = CheckBagItem ( role , 1148 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 1148 , 1 ) 
 end 
@@ -11455,7 +11379,7 @@ function State_DiZhenFaSheng_Tran ( statelv )
      return 1
 end
  
--- Генератор землетрясений 2 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Щ§Ц§Ю§Э§Ц§д§в§с§г§Ц§Я§Ъ§Ы 2 §е§в.
 function SkillCooldown_DiZhenFaSheng2( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11478,14 +11402,14 @@ function Skill_DiZhenFaSheng2_Begin ( role , sklv )
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE 
 		    then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
 	local item_count = CheckBagItem ( role , 2732 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2732 , 1 ) 
 end 
@@ -11493,7 +11417,7 @@ end
 function Skill_DiZhenFaSheng2_End ( ATKER , DEFER , sklv ) 
 end 
 
--- Генератор землетрясений 3 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Щ§Ц§Ю§Э§Ц§д§в§с§г§Ц§Я§Ъ§Ы 3 §е§в.
 function SkillCooldown_DiZhenFaSheng3( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11516,14 +11440,14 @@ function Skill_DiZhenFaSheng3_Begin ( role , sklv )
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE 
 		    then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
 	local item_count = CheckBagItem ( role , 2756 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2756 , 1 ) 
 end 
@@ -11531,7 +11455,7 @@ end
 function Skill_DiZhenFaSheng3_End ( ATKER , DEFER , sklv ) 
 end 
 
--- Генератор землетрясений 4 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Щ§Ц§Ю§Э§Ц§д§в§с§г§Ц§Я§Ъ§Ы 4 §е§в.
 function SkillCooldown_DiZhenFaSheng4( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11554,14 +11478,14 @@ function Skill_DiZhenFaSheng4_Begin ( role , sklv )
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE 
 		    then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
 	local item_count = CheckBagItem ( role , 2780 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2780 , 1 ) 
 end
@@ -11569,7 +11493,7 @@ end
 function Skill_DiZhenFaSheng4_End ( ATKER , DEFER , sklv ) 
 end 
 
--- Генератор землетрясений 5 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Щ§Ц§Ю§Э§Ц§д§в§с§г§Ц§Я§Ъ§Ы 5 §е§в.
 function SkillCooldown_DiZhenFaSheng5( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11592,14 +11516,14 @@ function Skill_DiZhenFaSheng5_Begin ( role , sklv )
 	local NocLock =	KitbagLock( role, 0 )
 		if NocLock == LUA_FALSE 
 		    then
-			SystemNotice( role , "Ваш инвентарь заблокирован")
+			SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 			SkillUnable(role)
 			return 0
 		end
 	local item_count = CheckBagItem ( role , 2804 )
 	if item_count <= 0 then  
 		SkillUnable(role)   
-		SystemNotice ( role , "У вас нет нужных предметов для применения навыка" ) 
+		SystemNotice ( role , "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С" ) 
 	end 
 	local a = DelBagItem ( role , 2804 , 1 ) 
 end
@@ -11607,7 +11531,7 @@ end
 function Skill_DiZhenFaSheng5_End ( ATKER , DEFER , sklv ) 
 end 
 
--- Сцепленные пули 1 ур.
+-- §і§и§Ц§б§Э§Ц§Я§Я§н§Ц §б§е§Э§Ъ 1 §е§в.
 function SkillCooldown_LianDan1( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11638,7 +11562,7 @@ function State_LianDan_Rem( role , statelv )
 	ALLExAttrSet(role)  
 end
 
--- Сцепленные пули 2 ур.
+-- §і§и§Ц§б§Э§Ц§Я§Я§н§Ц §б§е§Э§Ъ 2 §е§в.
 function SkillCooldown_LianDan2( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11655,7 +11579,7 @@ function Skill_LianDan2_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_LD , statelv , statetime ) 
 end 
 
--- Сцепленные пули 3 ур.
+-- §і§и§Ц§б§Э§Ц§Я§Я§н§Ц §б§е§Э§Ъ 3 §е§в.
 function SkillCooldown_LianDan3( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11672,7 +11596,7 @@ function Skill_LianDan3_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_LD , statelv , statetime ) 
 end 
 
--- Сцепленные пули 4 ур.
+-- §і§и§Ц§б§Э§Ц§Я§Я§н§Ц §б§е§Э§Ъ 4 §е§в.
 function SkillCooldown_LianDan4( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11689,7 +11613,7 @@ function Skill_LianDan4_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_LD , statelv , statetime ) 
 end 
 
--- Сцепленные пули 5 ур.
+-- §і§и§Ц§б§Э§Ц§Я§Я§н§Ц §б§е§Э§Ъ 5 §е§в.
 function SkillCooldown_LianDan5( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11706,7 +11630,7 @@ function Skill_LianDan5_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_LD , statelv , statetime ) 
 end 
 
--- Генератор миража 1 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Ю§Ъ§в§С§Ш§С 1 §е§в.
 function SkillCooldown_HuanYinFaSheng1( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11729,7 +11653,7 @@ end
 function State_HuanYinFaSheng_Add( role , statelv ) 
 end 
 
--- Генератор миража 2 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Ю§Ъ§в§С§Ш§С 2 §е§в.
 function SkillCooldown_HuanYinFaSheng2( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11746,7 +11670,7 @@ function Skill_HuanYinFaSheng2_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_HYFS , statelv , statetime )  
 end 
 
--- Генератор миража 3 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Ю§Ъ§в§С§Ш§С 3 §е§в.
 function SkillCooldown_HuanYinFaSheng3( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11763,7 +11687,7 @@ function Skill_HuanYinFaSheng3_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_HYFS , statelv , statetime )  
 end 
 
--- Генератор миража 4 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Ю§Ъ§в§С§Ш§С 4 §е§в.
 function SkillCooldown_HuanYinFaSheng4( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11780,7 +11704,7 @@ function Skill_HuanYinFaSheng4_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_HYFS , statelv , statetime )  
 end 
 
--- Генератор миража 5 ур.
+-- §¤§Ц§Я§Ц§в§С§д§а§в §Ю§Ъ§в§С§Ш§С 5 §е§в.
 function SkillCooldown_HuanYinFaSheng5( sklv )
 	local Cooldown = 3000
 	return Cooldown
@@ -11797,7 +11721,7 @@ function Skill_HuanYinFaSheng5_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_HYFS , statelv , statetime )  
 end 
 
--- Скрытный корабль 1 ур
+-- §і§Ь§в§н§д§Я§н§Ы §Ь§а§в§С§Т§Э§о 1 §е§в
 function SkillCooldown_ChuanZhiQianXing1( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -11820,7 +11744,7 @@ end
 function State_ChuanZhiQianXing_Rem  ( role , statelv ) 
 end
 
--- Скрытный корабль 2 ур.
+-- §і§Ь§в§н§д§Я§н§Ы §Ь§а§в§С§Т§Э§о 2 §е§в.
 function SkillCooldown_ChuanZhiQianXing2( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -11837,7 +11761,7 @@ function Skill_ChuanZhiQianXing2_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_CZQX , statelv , statetime )  
 end
 
--- Скрытный корабль 3 ур.
+-- §і§Ь§в§н§д§Я§н§Ы §Ь§а§в§С§Т§Э§о 3 §е§в.
 function SkillCooldown_ChuanZhiQianXing3( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -11854,7 +11778,7 @@ function Skill_ChuanZhiQianXing3_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_CZQX , statelv , statetime )  
 end
 
--- Скрытный корабль 4 ур
+-- §і§Ь§в§н§д§Я§н§Ы §Ь§а§в§С§Т§Э§о 4 §е§в
 function SkillCooldown_ChuanZhiQianXing4( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -11871,7 +11795,7 @@ function Skill_ChuanZhiQianXing4_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_CZQX , statelv , statetime )  
 end
 
--- Скрытный корабль 5 ур.
+-- §і§Ь§в§н§д§Я§н§Ы §Ь§а§в§С§Т§Э§о 5 §е§в.
 function SkillCooldown_ChuanZhiQianXing5( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -11888,7 +11812,7 @@ function Skill_ChuanZhiQianXing5_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_CZQX , statelv , statetime )  
 end
 
--- Радар 1 ур.
+-- §І§С§Х§С§в 1 §е§в.
 function SkillCooldown_LeiDa1( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -11924,7 +11848,7 @@ function State_LeiDa_Tran ( statelv )
 	return 1     
 end
 
--- Радар 2 ур.
+-- §І§С§Х§С§в 2 §е§в.
 function SkillCooldown_LeiDa2( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -11950,7 +11874,7 @@ function Skill_LeiDa2_End ( ATKER , DEFER , sklv )
 	if fixipko_Skill_Compose(2740,ATKER) == 0 then return 0 end
 end 
 
--- Радар 3 ур.
+-- §І§С§Х§С§в 3 §е§в.
 function SkillCooldown_LeiDa3( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -11976,7 +11900,7 @@ function Skill_LeiDa3_End ( ATKER , DEFER , sklv )
 	if fixipko_Skill_Compose(2764,ATKER) == 0 then return 0 end
 end 
 
--- Радар 4 ур.
+-- §І§С§Х§С§в 4 §е§в.
 function SkillCooldown_LeiDa4( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12002,7 +11926,7 @@ function Skill_LeiDa4_End ( ATKER , DEFER , sklv )
 	if fixipko_Skill_Compose(2788,ATKER) == 0 then return 0 end
 end 
 
--- Радар 5 ур.
+-- §І§С§Х§С§в 5 §е§в.
 function SkillCooldown_LeiDa5( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12028,7 +11952,7 @@ function Skill_LeiDa5_End ( ATKER , DEFER , sklv )
 	if fixipko_Skill_Compose(2812,ATKER) == 0 then return 0 end
 end 
 
--- Ремонт корпуса 1 ур.
+-- §І§Ц§Ю§а§Я§д §Ь§а§в§б§е§г§С 1 §е§в.
 function SkillCooldown_ChuanTiXiuFu1( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12051,7 +11975,7 @@ end
 function State_ChuanTiXiuFu_Rem ( role , statelv ) 
 end
 
--- Ремонт корпуса 2 ур.
+-- §І§Ц§Ю§а§Я§д §Ь§а§в§б§е§г§С 2 §е§в.
 function SkillCooldown_ChuanTiXiuFu2( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12068,7 +11992,7 @@ function Skill_ChuanTiXiuFu2_End ( ATKER , DEFER , sklv )
 	ALLExAttrSet(role)
 end
 
--- Ремонт корпуса 3 ур.
+-- §І§Ц§Ю§а§Я§д §Ь§а§в§б§е§г§С 3 §е§в.
 function SkillCooldown_ChuanTiXiuFu3( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12085,7 +12009,7 @@ function Skill_ChuanTiXiuFu3_End ( ATKER , DEFER , sklv )
 	ALLExAttrSet(role)
 end
 
--- Ремонт корпуса 4 ур.
+-- §І§Ц§Ю§а§Я§д §Ь§а§в§б§е§г§С 4 §е§в.
 function SkillCooldown_ChuanTiXiuFu4( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12102,7 +12026,7 @@ function Skill_ChuanTiXiuFu4_End ( ATKER , DEFER , sklv )
 	ALLExAttrSet(role)
 end
 
--- Ремонт корпуса 5 ур.
+-- §І§Ц§Ю§а§Я§д §Ь§а§в§б§е§г§С 5 §е§в.
 function SkillCooldown_ChuanTiXiuFu5( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12119,7 +12043,7 @@ function Skill_ChuanTiXiuFu5_End ( ATKER , DEFER , sklv )
 	ALLExAttrSet(role)
 end
 
--- Создание еды 1 ур.
+-- §і§а§Щ§Х§С§Я§Ъ§Ц §Ц§Х§н 1 §е§в.
 function SkillCooldown_ShiWuZaiSheng1( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12148,7 +12072,7 @@ end
 function State_ShiWuZaiSheng_Rem ( role , statelv ) 
 end
 
--- Создание еды 2 ур.
+-- §і§а§Щ§Х§С§Я§Ъ§Ц §Ц§Х§н 2 §е§в.
 function SkillCooldown_ShiWuZaiSheng2( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12171,7 +12095,7 @@ function Skill_ShiWuZaiSheng2_End ( ATKER , DEFER , sklv )
 	SetCharaAttr ( sp , DEFER , ATTR_SP ) 
 end
 	
--- Создание еды 3 ур.
+-- §і§а§Щ§Х§С§Я§Ъ§Ц §Ц§Х§н 3 §е§в.
 function SkillCooldown_ShiWuZaiSheng3( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12194,7 +12118,7 @@ function Skill_ShiWuZaiSheng3_End ( ATKER , DEFER , sklv )
 	SetCharaAttr ( sp , DEFER , ATTR_SP ) 
 end
 	
--- Создание еды 4 ур.
+-- §і§а§Щ§Х§С§Я§Ъ§Ц §Ц§Х§н 4 §е§в.
 function SkillCooldown_ShiWuZaiSheng4( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12217,7 +12141,7 @@ function Skill_ShiWuZaiSheng4_End ( ATKER , DEFER , sklv )
 	SetCharaAttr ( sp , DEFER , ATTR_SP ) 
 end
 	
--- Создание еды 5 ур.
+-- §і§а§Щ§Х§С§Я§Ъ§Ц §Ц§Х§н 5 §е§в.
 function SkillCooldown_ShiWuZaiSheng5( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12240,7 +12164,7 @@ function Skill_ShiWuZaiSheng5_End ( ATKER , DEFER , sklv )
 	SetCharaAttr ( sp , DEFER , ATTR_SP ) 
 end
 	
--- Трупная пуля 1 ур.
+-- §ґ§в§е§б§Я§С§с §б§е§Э§с 1 §е§в.
 function SkillCooldown_FuShiDan1( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12272,7 +12196,7 @@ end
 function State_FuShiDan_Rem ( role , statelv ) 
 end
 
--- Трупная пуля 2 ур.
+-- §ґ§в§е§б§Я§С§с §б§е§Э§с 2 §е§в.
 function SkillCooldown_FuShiDan2( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12289,7 +12213,7 @@ function Skill_FuShiDan2_End ( ATKER , DEFER , sklv )
     AddState ( ATKER , DEFER , STATE_FSD , statelv , statetime )
 end
 	
--- Трупная пуля 3 ур.
+-- §ґ§в§е§б§Я§С§с §б§е§Э§с 3 §е§в.
 function SkillCooldown_FuShiDan3( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12306,7 +12230,7 @@ function Skill_FuShiDan3_End ( ATKER , DEFER , sklv )
     AddState ( ATKER , DEFER , STATE_FSD , statelv , statetime )
 end
 	
--- Трупная пуля 4 ур
+-- §ґ§в§е§б§Я§С§с §б§е§Э§с 4 §е§в
 function SkillCooldown_FuShiDan4( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12323,7 +12247,7 @@ function Skill_FuShiDan4_End ( ATKER , DEFER , sklv )
     AddState ( ATKER , DEFER , STATE_FSD , statelv , statetime )
 end
 
--- Трупная пуля 5 ур.
+-- §ґ§в§е§б§Я§С§с §б§е§Э§с 5 §е§в.
 function SkillCooldown_FuShiDan5( sklv ) 
 	local Cooldown = 3000 
 	return Cooldown 
@@ -12340,7 +12264,7 @@ function Skill_FuShiDan5_End ( ATKER , DEFER , sklv )
     AddState ( ATKER , DEFER , STATE_FSD , statelv , statetime )
 end
 
--- Водяная мина, 1 ур.
+-- §Ј§а§Х§с§Я§С§с §Ю§Ъ§Я§С, 1 §е§в.
 function SkillArea_Circle_Czsl1 ( sklv )
     local sklv=1
 	local side = 650 + math.floor ( sklv * 50 ) 
@@ -12385,7 +12309,7 @@ function State_Slrs_Tran ( statelv )
 	return 1
 end
 
--- Водяная мина 2 ур.
+-- §Ј§а§Х§с§Я§С§с §Ю§Ъ§Я§С 2 §е§в.
 function SkillArea_Circle_Czsl2 ( sklv )
     local sklv=2
 	local side = 650 + math.floor ( sklv * 50 ) 
@@ -12417,7 +12341,7 @@ function Skill_Czsl2_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_Slrs , statelv , statetime ) 
 end 
 
--- Водяная мина 3 ур.
+-- §Ј§а§Х§с§Я§С§с §Ю§Ъ§Я§С 3 §е§в.
 function SkillArea_Circle_Czsl3 ( sklv )
     local sklv=3
 	local side = 650 + math.floor ( sklv * 50 ) 
@@ -12449,7 +12373,7 @@ function Skill_Czsl3_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_Slrs , statelv , statetime ) 
 end 
 
--- Водяная мина 4 ур.
+-- §Ј§а§Х§с§Я§С§с §Ю§Ъ§Я§С 4 §е§в.
 function SkillArea_Circle_Czsl4 ( sklv )
     local sklv=4
 	local side = 650 + math.floor ( sklv * 50 ) 
@@ -12481,7 +12405,7 @@ function Skill_Czsl4_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_Slrs , statelv , statetime )
 end 
 
--- Водяная мина 5 ур.
+-- §Ј§а§Х§с§Я§С§с §Ю§Ъ§Я§С 5 §е§в.
 function SkillArea_Circle_Czsl5 ( sklv )
     local sklv=5
 	local side = 650 + math.floor ( sklv * 50 ) 
@@ -12514,7 +12438,7 @@ function Skill_Czsl5_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_Slrs , statelv , statetime ) 
 end
 
--- Взрываюшаяся овечка ур. 1
+-- §Ј§Щ§в§н§У§С§р§к§С§с§г§с §а§У§Ц§й§Ь§С §е§в. 1
 function SkillSp_Myzb1 ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -12565,7 +12489,7 @@ function State_Myrs_Tran ( statelv )
 	return 1   
 end 
 
--- Взрывающаяся овечка 2 ур.
+-- §Ј§Щ§в§н§У§С§р§л§С§с§г§с §а§У§Ц§й§Ь§С 2 §е§в.
 function SkillSp_Myzb2 ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -12604,7 +12528,7 @@ function Skill_Myzb2_End ( ATKER , DEFER , sklv )
 end 
 
 
--- Взрывающаяся овечка 3 ур.
+-- §Ј§Щ§в§н§У§С§р§л§С§с§г§с §а§У§Ц§й§Ь§С 3 §е§в.
 function SkillSp_Myzb3 ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -12642,7 +12566,7 @@ function Skill_Myzb3_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_Myrs , statelv , statetime )
 end 
  
--- Взрывающаяся овечка 4 ур.
+-- §Ј§Щ§в§н§У§С§р§л§С§с§г§с §а§У§Ц§й§Ь§С 4 §е§в.
 function SkillSp_Myzb4 ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -12680,7 +12604,7 @@ function Skill_Myzb4_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER , DEFER , STATE_Myrs , statelv , statetime )
 end
 
--- Взрывающаяся овечка 5 ур.
+-- §Ј§Щ§в§н§У§С§р§л§С§с§г§с §а§У§Ц§й§Ь§С 5 §е§в.
 function SkillSp_Myzb5 ( sklv )	
 	local sp_reduce = 20 
 	return sp_reduce 
@@ -12719,7 +12643,7 @@ function Skill_Myzb5_End ( ATKER , DEFER , sklv )
 end 
 
 
--- Замедление
+-- §©§С§Ю§Ц§Х§Э§Ц§Я§Ъ§Ц
 --
 --function Skill_JST_End ( ATKER , DEFER , sklv ) 
 --
@@ -12751,7 +12675,7 @@ end
 --
 
 
--- Дьявольская башня
+-- §Ґ§о§с§У§а§Э§о§г§Ь§С§с §Т§С§к§Я§с
 
 
 --
@@ -12774,7 +12698,7 @@ end
 --
 
 
--- Атака змеи
+-- §Ў§д§С§Ь§С §Щ§Ю§Ц§Ъ
 
 
 --function Skill_FeiShe_End ( ATKER , DEFER , sklv ) 
@@ -12786,14 +12710,14 @@ end
 --end 
 
 
--- Удар Духа
+-- §µ§Х§С§в §Ґ§е§з§С
 function Skill_JSBT_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =300 +  math.max ( 50 , ( 150 - Sta_role ) )  * 10
 	Hp_Endure_Dmg ( DEFER, hpdmg )
 end 
  
--- Дьявольское проклятие
+-- §Ґ§о§с§У§а§Э§о§г§Ь§а§Ц §б§в§а§Ь§Э§с§д§Ъ§Ц
 function SkillSp_EmoYuYan ( sklv )
 	local sp_reduce = 155
 	return sp_reduce
@@ -12838,7 +12762,7 @@ end
 function State_EmoYuYan_Rem ( role , statelv ) 
 end
 
--- Священный суд
+-- §і§У§с§л§Ц§Я§Я§н§Ы §г§е§Х
 function SkillArea_Circle_SSSP( sklv )
 	local side = 1000 
 	SetSkillRange ( 4 , side  )  
@@ -12884,7 +12808,7 @@ function Skill_SSSP_End ( ATKER , DEFER , sklv )
 	end 
 end 
 
--- Удар легиона
+-- §µ§Х§С§в §Э§Ц§Ф§Ъ§а§Я§С
 function SkillSp_ShouWangS ( sklv )
 	local sp_reduce = 125  
 	return sp_reduce 
@@ -12920,7 +12844,7 @@ function Skill_ShouWangS_End ( ATKER , DEFER , sklv )
 	AddState ( ATKER, DEFER , STATE_DZFS , statelv , statetime )
 end 
 
--- Пушка грома
+-- §±§е§к§Ь§С §Ф§в§а§Ю§С
 function SkillArea_Line_ArfGX ( sklv )
 	local lenth = 900 + sklv * 30  
 	local width = 250 + sklv * 10 
@@ -12953,7 +12877,7 @@ function Skill_ArfGX_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg ) 
 end 
 
--- Духовный удар
+-- §Ґ§е§з§а§У§Я§н§Ы §е§Х§С§в
 function SkillArea_Circle_WuYin( sklv )
 	local side = 800 
 	SetSkillRange ( 4 , side  )  
@@ -12985,7 +12909,7 @@ function Skill_WuYin_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg ) 
 end 
 
--- Сверхсознание
+-- §і§У§Ц§в§з§г§а§Щ§Я§С§Я§Ъ§Ц
 function SkillSp_XYSYF ( sklv )
 	local sp_reduce = 160  
 	return sp_reduce 
@@ -13033,11 +12957,11 @@ function State_XYSYF_Tran ( statelv )
 	return 3
 end
 
--- Короткий посох (Дистанционная атака у клеров и смов)
+-- §¬§а§в§а§д§Ь§Ъ§Ы §б§а§г§а§з (§Ґ§Ъ§г§д§С§Я§и§Ъ§а§Я§Я§С§с §С§д§С§Ь§С §е §Ь§Э§Ц§в§а§У §Ъ §г§Ю§а§У)
 function Skill_lackart_Begin ( role , sklv )  
 end
 
---Дистанционка БК И СМ
+--§Ґ§Ъ§г§д§С§Я§и§Ъ§а§Я§Ь§С §ў§¬ §Є §і§®
 function Skill_lackart_End ( ATKER , DEFER , sklv )  
 		if ValidCha(ATKER) == 0 then 
 			LG ( "luascript_err" , "function Skill_lackart_End : ATKER as null" ) 
@@ -13065,32 +12989,32 @@ P_R = 0.03
 			local Percentage = Percentage_Random ( P_R )
 			if Percentage == 1 then
 AddState ( ATKER , DEFER , STATE_XY , 1 , 1 )
-SystemNotice ( ATKER , "Вы получили благословение от Богини. Стан цели в течении 1 секунды. ")
+SystemNotice ( ATKER , "§Ј§н §б§а§Э§е§й§Ъ§Э§Ъ §Т§Э§С§Ф§а§г§Э§а§У§Ц§Я§Ъ§Ц §а§д §ў§а§Ф§Ъ§Я§Ъ. §і§д§С§Я §и§Ц§Э§Ъ §У §д§Ц§й§Ц§Я§Ъ§Ъ 1 §г§Ц§Ь§е§Я§Х§н. ")
 			end
 		end
 
 		Check_Ys_Rem ( ATKER , DEFER)
 end
 
--- Фикс мануфака из трюма @see http://forum.maindev.ru/showpost.php?p=83348&postcount=8
+-- §¶§Ъ§Ь§г §Ю§С§Я§е§ж§С§Ь§С §Ъ§Щ §д§в§р§Ю§С @see http://forum.maindev.ru/showpost.php?p=83348&postcount=8
 function fixipko_Skill_Compose(itemid,role)
 	local NocLock =	KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Ваш инвентарь заблокирован")
+		SystemNotice( role , "§Ј§С§к §Ъ§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return 0
 	end
 	local atk_role = TurnToCha(role)
 	local item_count = CheckBagItem(atk_role, itemid)
 	if item_count <= 0 then
 		SkillUnable(atk_role)
-		SystemNotice(atk_role, "У вас нет нужных предметов для применения навыка")
+		SystemNotice(atk_role, "§µ §У§С§г §Я§Ц§д §Я§е§Ш§Я§н§з §б§в§Ц§Х§Ю§Ц§д§а§У §Х§Э§с §б§в§Ъ§Ю§Ц§Я§Ц§Я§Ъ§с §Я§С§У§н§Ь§С")
 		return 0
 	end
 	DelBagItem(atk_role, itemid, 1)
 	return 1
 end
 
--- Пассивный скилл перерождения - Сила перерождения ID=459
+-- §±§С§г§г§Ъ§У§Я§н§Ы §г§Ь§Ъ§Э§Э §б§Ц§в§Ц§в§а§Ш§Х§Ц§Я§Ъ§с - §і§Ъ§Э§С §б§Ц§в§Ц§в§а§Ш§Х§Ц§Я§Ъ§с ID=459
 function Skill_Rbmp_Use( role , sklv ) 
 	local statelv  = sklv  
 	local rb_bonus = (-1) * ( 0.050 + 0.005 ) * sklv -- Increases by 5.5%
@@ -13119,9 +13043,9 @@ function Skill_Rbmp_Unuse( role , sklv )
 	ALLExAttrSet(role)			 
 end 
 
--- Георгиевская лента
+-- §¤§Ц§а§в§Ф§Ъ§Ц§У§г§Ь§С§с §Э§Ц§Я§д§С
 function STATE_GEORGATK_Add ( role , sklv )
-	SystemNotice( role , "Георгиевская лента увеличивает мощь твоей атаки")
+	SystemNotice( role , "§¤§Ц§а§в§Ф§Ъ§Ц§У§г§Ь§С§с §Э§Ц§Я§д§С §е§У§Ц§Э§Ъ§й§Ъ§У§С§Ц§д §Ю§а§л§о §д§У§а§Ц§Ы §С§д§С§Ь§Ъ")
 	local bonus = (-1) * 0.1
 	local mnatksa  = math.floor ( (MnatkSa (role) - bonus ) * ATTR_RADIX ) 
 	local mxatksa  = math.floor ( (MxatkSa (role) - bonus ) * ATTR_RADIX )
@@ -13140,7 +13064,7 @@ function STATE_GEORGATK_Rem ( role , sklv )
 end
 
 function STATE_GEORGDEF_Add ( role , sklv )
-	SystemNotice( role , "Георгиевская лента увеличивает твою защиту") 
+	SystemNotice( role , "§¤§Ц§а§в§Ф§Ъ§Ц§У§г§Ь§С§с §Э§Ц§Я§д§С §е§У§Ц§Э§Ъ§й§Ъ§У§С§Ц§д §д§У§а§р §Щ§С§л§Ъ§д§е") 
 	local bonus = (-1) * 0.1
 	local defsa = math.floor ( (DefSa   (role) - bonus ) * ATTR_RADIX )
 	SetCharaAttr( defsa , role , ATTR_STATEC_DEF   )
@@ -13154,18 +13078,18 @@ function STATE_GEORGDEF_Rem ( role , sklv )
 	ALLExAttrSet(role)
 end
 
---Узы любви
+--§µ§Щ§н §Э§р§Т§У§Ъ
 function Skill_Qlzx_Begin ( role , sklv ) 
 	local NocLock = KitbagLock( role, 0 )
 	if NocLock == LUA_FALSE then
-		SystemNotice( role , "Инвентарь заблокирован")
+		SystemNotice( role , "§Є§Я§У§Ц§Я§д§С§в§о §Щ§С§Т§Э§а§Ь§Ъ§в§а§У§С§Я")
 		return
 	end
 
 	local item_count = CheckBagItem ( role , 2520 )
 
 	if item_count <= 0 then  
-		SystemNotice( role , "У Вас нет Кольца Влюбленных")
+		SystemNotice( role , "§µ §Ј§С§г §Я§Ц§д §¬§а§Э§о§и§С §Ј§Э§р§Т§Э§Ц§Я§Я§н§з")
 		return
 	else
 		local ring = GetChaItem2 ( role , 2 , 2520 )
@@ -13195,7 +13119,7 @@ if item_count == 1 then
 			x = math.floor (x/100)
 			y = math.floor (y/100)
 			if (map_name_pre == map_name) and ( map_name == "prisonisland" or map_name == "guildwar" or map_name == "guildwar2" or map_name == "teampk" ) then
-				SystemNotice ( role , "Нельзя использовать умение на данной карте" )
+				SystemNotice ( role , "§Ї§Ц§Э§о§Щ§с §Ъ§г§б§а§Э§о§Щ§а§У§С§д§о §е§Ю§Ц§Я§Ъ§Ц §Я§С §Х§С§Я§Я§а§Ы §Ь§С§в§д§Ц" )
 				SkillUnable(role)
 				return
 			end
@@ -13220,12 +13144,12 @@ if item_count == 1 then
 			or (map_name_pre == "magicsea" and map_name == "hell5") or (map_name_pre == "hell5" and map_name == "magicsea")
 			or (map_name_pre == "heilong" and map_name == "heilong2") or (map_name_pre == "heilong2" and map_name == "heilong")
 			then
-	SystemNotice ( role , "Приятного путешествия!" )
-	local effect = 370          -- ID эффекта из sceneffectinfo.txt
-    PlayEffect (t[i], effect )      -- Заставляем проигрывать эффект при открытии сундука 	
+	SystemNotice ( role , "§±§в§Ъ§с§д§Я§а§Ф§а §б§е§д§Ц§к§Ц§г§д§У§Ъ§с!" )
+	local effect = 370          -- ID §п§ж§ж§Ц§Ь§д§С §Ъ§Щ sceneffectinfo.txt
+    PlayEffect (t[i], effect )      -- §©§С§г§д§С§У§Э§с§Ц§Ю §б§в§а§Ъ§Ф§в§н§У§С§д§о §п§ж§ж§Ц§Ь§д §б§в§Ъ §а§д§Ь§в§н§д§Ъ§Ъ §г§е§Я§Х§е§Ь§С 	
 
 			else
-SystemNotice ( role , "Нельзя использовать умение на данной карте" )
+SystemNotice ( role , "§Ї§Ц§Э§о§Щ§с §Ъ§г§б§а§Э§о§Щ§а§У§С§д§о §е§Ю§Ц§Я§Ъ§Ц §Я§С §Х§С§Я§Я§а§Ы §Ь§С§в§д§Ц" )
 SkillUnable(role)
 return
 			end
@@ -13236,14 +13160,14 @@ return
 end
 			end
 			if i == 4 then
-SystemNotice( role , "В Вашем отряде нет Вашей половинки")
+SystemNotice( role , "§Ј §Ј§С§к§Ц§Ю §а§д§в§с§Х§Ц §Я§Ц§д §Ј§С§к§Ц§Ы §б§а§Э§а§У§Ъ§Я§Ь§Ъ")
 			end
 		end
 	end
 	
 end 
 
---Кольцо холода
+--§¬§а§Э§о§и§а §з§а§Э§а§Х§С
 function SkillArea_Circle_BDH ( sklv )
 	local side = 500 
 	SetSkillRange ( 4 , side  ) 
@@ -13432,7 +13356,7 @@ function State_HPMAX_Add ( role , statelv )
 			if hp <= 0 then
 			end
 			hp = hp + hp_resume 
-			--Выключает отображение эффекта при полном HP
+			--§Ј§н§Ь§Э§р§й§С§Ц§д §а§д§а§Т§в§С§Ш§Ц§Я§Ъ§Ц §п§ж§ж§Ц§Ь§д§С §б§в§Ъ §б§а§Э§Я§а§Ю HP
 			--[[mxhp = GetChaAttr(role,ATTR_MXHP) 
 			if hp > mxhp then
 hp = mxhp
@@ -13454,9 +13378,9 @@ function State_HPMAX_Rem ( role , statelv )
 end
 
 
--- Сет Смерти
+-- §і§Ц§д §і§Ю§Ц§в§д§Ъ
 function State_BBRING1_Add ( role , statelv )
-	SystemNotice(role,'Получен эффект Сета Смерти!')
+	SystemNotice(role,'§±§а§Э§е§й§Ц§Я §п§ж§ж§Ц§Ь§д §і§Ц§д§С §і§Ю§Ц§в§д§Ъ!')
 	local job = GetChaAttr ( role , ATTR_JOB )
 	local MAXHP = 0.01
 	local MAXSP = 0.01
@@ -13520,7 +13444,7 @@ end
 
  
  
- --[Бонусы от сетов крыльев]]--
+ --[§ў§а§Я§е§г§н §а§д §г§Ц§д§а§У §Ь§в§н§Э§о§Ц§У]]--
 
 function State_BBRING1_Add ( role , statelv ) 
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_STR)
@@ -13594,7 +13518,7 @@ function State_BBRING1_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
--- Свадебные крылья
+-- §і§У§С§Х§Ц§Т§Я§н§Ц §Ь§в§н§Э§о§с
 function State_BBRING2_Add ( role , statelv ) 
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_STR)
 	local add_bonus = 2
@@ -13668,7 +13592,7 @@ function State_BBRING2_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
--- Крылья 1 уровня
+-- §¬§в§н§Э§о§с 1 §е§в§а§У§Я§с
 function State_BBRING3_Add ( role , statelv ) 
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_STR)
 	local add_bonus = 2
@@ -13741,7 +13665,7 @@ function State_BBRING3_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
--- Крылья 2 уровня
+-- §¬§в§н§Э§о§с 2 §е§в§а§У§Я§с
 function State_BBRING4_Add ( role , statelv ) 
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_STR)
 	local add_bonus = 3
@@ -13815,7 +13739,7 @@ function State_BBRING4_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
--- Крылья 3 уровня
+-- §¬§в§н§Э§о§с 3 §е§в§а§У§Я§с
 function State_BBRING5_Add ( role , statelv ) 
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_STR)
 	local add_bonus = 4
@@ -13888,7 +13812,7 @@ function State_BBRING5_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
--- Крылья 4 уровня
+-- §¬§в§н§Э§о§с 4 §е§в§а§У§Я§с
 function State_BBRING6_Add ( role , statelv ) 
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_STR)
 	local add_bonus = 5
@@ -13974,15 +13898,15 @@ end
 -------------------------------
 -------------------------------
 -------------------------------
-----Захват флага Барбароссы----
+----§©§С§з§У§С§д §ж§Э§С§Ф§С §ў§С§в§Т§С§в§а§г§г§н----
 -------------------------------
 -------------------------------
 -------------------------------
 
--- +1500 к хп
+-- +1500 §Ь §з§б
 function STATE_HP_Add ( role , statelv ) 
 
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MXHP)
 	local cha_bonus2 = GetChaAttr(role, ATTR_STATEV_MXHP)
 	local add_bonus = 1500
@@ -13991,10 +13915,10 @@ function STATE_HP_Add ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Отнимание
+--§°§д§Я§Ъ§Ю§С§Я§Ъ§Ц
 function STATE_HP_Rem ( role , statelv )
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MXHP)
 	local add_bonus = 1500
 	local result_bonus = cha_bonus - add_bonus
@@ -14002,10 +13926,10 @@ function STATE_HP_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
--- -1500 хп
+-- -1500 §з§б
 function STATE_HPREM_Add ( role , statelv ) 
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MXHP)
 	local add_bonus = 1500
 	local result_bonus = cha_bonus - add_bonus
@@ -14013,10 +13937,10 @@ function STATE_HPREM_Add ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Отнимание
+--§°§д§Я§Ъ§Ю§С§Я§Ъ§Ц
 function STATE_HPREM_Rem ( role , statelv )
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MXHP)
 	local add_bonus = 1500
 	local result_bonus = cha_bonus + add_bonus
@@ -14024,11 +13948,11 @@ function STATE_HPREM_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
--- +50 бега
+-- +50 §Т§Ц§Ф§С
 function STATE_GO_Add ( role , statelv ) 
 
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MSPD)
 	local add_bonus = 50
 	local result_bonus = cha_bonus + add_bonus
@@ -14036,10 +13960,10 @@ function STATE_GO_Add ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Отнимание
+--§°§д§Я§Ъ§Ю§С§Я§Ъ§Ц
 function STATE_GO_Rem ( role , statelv )
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MSPD)
 	local add_bonus = 50
 	local result_bonus = cha_bonus - add_bonus
@@ -14048,11 +13972,11 @@ function STATE_GO_Rem ( role , statelv )
 end
 
 
--- -50 бега
+-- -50 §Т§Ц§Ф§С
 function STATE_GOREM_Add ( role , statelv ) 
 
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MSPD)
 	local add_bonus = 50
 	local result_bonus = cha_bonus - add_bonus
@@ -14060,10 +13984,10 @@ function STATE_GOREM_Add ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Отнимание
+--§°§д§Я§Ъ§Ю§С§Я§Ъ§Ц
 function STATE_GOREM_Rem ( role , statelv )
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MSPD)
 	local add_bonus = 50
 	local result_bonus = cha_bonus + add_bonus
@@ -14071,9 +13995,9 @@ function STATE_GOREM_Rem ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
--- +10 к статам
+-- +10 §Ь §г§д§С§д§С§Ю
 function STATE_PARAM_Add ( role , statelv )
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_STR)
 	local add_bonus = 10
 	local result_bonus = cha_bonus + add_bonus
@@ -14101,9 +14025,9 @@ function STATE_PARAM_Add ( role , statelv )
 	ALLExAttrSet(role)  
 end
 
---Отнимание
+--§°§д§Я§Ъ§Ю§С§Я§Ъ§Ц
 function STATE_PARAM_Rem ( role , statelv )
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_STR)
 	local add_bonus = 10
 	local result_bonus = cha_bonus - add_bonus
@@ -14132,10 +14056,10 @@ function STATE_PARAM_Rem ( role , statelv )
 end
 
 
--- -3 пр
+-- -3 §б§в
 function STATE_PRREM_Add ( role , statelv ) 
 
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_PDEF)
 	local add_bonus = 3
 	local result_bonus = cha_bonus - add_bonus
@@ -14143,10 +14067,10 @@ function STATE_PRREM_Add ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Отнимание
+--§°§д§Я§Ъ§Ю§С§Я§Ъ§Ц
 function STATE_PRREM_Rem ( role , statelv )
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_PDEF)
 	local add_bonus = 3
 	local result_bonus = cha_bonus + add_bonus
@@ -14155,10 +14079,10 @@ function STATE_PRREM_Rem ( role , statelv )
 end
 
 
--- +3 пр
+-- +3 §б§в
 function STATE_PR_Add ( role , statelv ) 
 
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_PDEF)
 	local add_bonus = 3
 	local result_bonus = cha_bonus + add_bonus
@@ -14166,10 +14090,10 @@ function STATE_PR_Add ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Отнимание
+--§°§д§Я§Ъ§Ю§С§Я§Ъ§Ц
 function STATE_PR_Rem ( role , statelv )
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_PDEF)
 	local add_bonus = 3
 	local result_bonus = cha_bonus - add_bonus
@@ -14179,69 +14103,69 @@ end
 
 -------------------------------
 -------------------------------
-----Захват флага Барбароссы----
--------------Конец-------------
+----§©§С§з§У§С§д §ж§Э§С§Ф§С §ў§С§в§Т§С§в§а§г§г§н----
+-------------§¬§а§Я§Ц§и-------------
 -------------------------------
 -------------------------------
 
 
 
---[[Питомцы]]--
+--[[§±§Ъ§д§а§Ю§и§н]]--
 function State_PET_Add(role, statelv)
-	--SystemNotice(role, "[DEBUG][PET SYSTEM] Наложен эффект питомца!")
+	--SystemNotice(role, "[DEBUG][PET SYSTEM] §Ї§С§Э§а§Ш§Ц§Я §п§ж§ж§Ц§Ь§д §б§Ъ§д§а§Ю§и§С!")
 	
-	-- Получаем доступ к питомцу персонажа
+	-- §±§а§Э§е§й§С§Ц§Ю §Х§а§г§д§е§б §Ь §б§Ъ§д§а§Ю§и§е §б§Ц§в§г§а§Я§С§Ш§С
 	local pet = GetChaHost(role)
 	
-	-- Если пет есть, то удалим его
+	-- §¦§г§Э§Ъ §б§Ц§д §Ц§г§д§о, §д§а §е§Х§С§Э§Ъ§Ю §Ц§Ф§а
 	if (pet ~= nil) then
 		DelCha ( pet )
 	end
 	
-	-- Получаем ID предмета в 4 слоте инвентаря
-	local item = GetChaItem(role, 2, 3) -- Доступ к 4-ой ячейке
-	local item_id = GetItemID(item)     -- ID предмета в 4-ой ячейке
+	-- §±§а§Э§е§й§С§Ц§Ю ID §б§в§Ц§Х§Ю§Ц§д§С §У 4 §г§Э§а§д§Ц §Ъ§Я§У§Ц§Я§д§С§в§с
+	local item = GetChaItem(role, 2, 3) -- §Ґ§а§г§д§е§б §Ь 4-§а§Ы §с§й§Ц§Ы§Ь§Ц
+	local item_id = GetItemID(item)     -- ID §б§в§Ц§Х§Ю§Ц§д§С §У 4-§а§Ы §с§й§Ц§Ы§Ь§Ц
 		
 
-	-- Получаем ID питомца
-	local pet_id = PET_TYPE[item_id]    -- PET_TYPE - см. массив в variable.lua
+	-- §±§а§Э§е§й§С§Ц§Ю ID §б§Ъ§д§а§Ю§и§С
+	local pet_id = PET_TYPE[item_id]    -- PET_TYPE - §г§Ю. §Ю§С§г§г§Ъ§У §У variable.lua
 	
-	-- Создаем питтомца
-	-- Получаем координаты персонажа
+	-- §і§а§Щ§Х§С§Ц§Ю §б§Ъ§д§д§а§Ю§и§С
+	-- §±§а§Э§е§й§С§Ц§Ю §Ь§а§а§в§Х§Ъ§Я§С§д§н §б§Ц§в§г§а§Я§С§Ш§С
 	local x, y = GetChaPos(role)
 	
 	
 	
 	 
 	
-	-- Создаем питомца рядом с персонажем
+	-- §і§а§Щ§Х§С§Ц§Ю §б§Ъ§д§а§Ю§и§С §в§с§Х§а§Ю §г §б§Ц§в§г§а§Я§С§Ш§Ц§Ю
 	--pet = CreateChaX( pet_id , x , y , 145 , 1, role )
-	-- Связываем персонажа с питомцем
+	-- §і§У§с§Щ§н§У§С§Ц§Ю §б§Ц§в§г§а§Я§С§Ш§С §г §б§Ъ§д§а§Ю§и§Ц§Ю
 	SetChaHost(role, pet)
-	-- Связываем питомца с персонажем
+	-- §і§У§с§Щ§н§У§С§Ц§Ю §б§Ъ§д§а§Ю§и§С §г §б§Ц§в§г§а§Я§С§Ш§Ц§Ю
 	SetChaHost(pet, role)
-	-- Тип AI питомца: следовать за персонажем
+	-- §ґ§Ъ§б AI §б§Ъ§д§а§Ю§и§С: §г§Э§Ц§Х§а§У§С§д§о §Щ§С §б§Ц§в§г§а§Я§С§Ш§Ц§Ю
 	SetChaAIType(pet, AI_PET)
-	-- Цель питомца - персонаж
+	-- §ё§Ц§Э§о §б§Ъ§д§а§Ю§и§С - §б§Ц§в§г§а§Я§С§Ш
 	SetChaTarget(pet, role)
 	
 	
-	-- Добавляем персонажу бонусы питомца
-	-- Получаем список бонусов питомца
-	local pet_bonus = PET_BONUS[pet_id] -- PET_BONUS - см. массив в variable.lua
-	-- Получаем количество бонусов у питомца
+	-- §Ґ§а§Т§С§У§Э§с§Ц§Ю §б§Ц§в§г§а§Я§С§Ш§е §Т§а§Я§е§г§н §б§Ъ§д§а§Ю§и§С
+	-- §±§а§Э§е§й§С§Ц§Ю §г§б§Ъ§г§а§Ь §Т§а§Я§е§г§а§У §б§Ъ§д§а§Ю§и§С
+	local pet_bonus = PET_BONUS[pet_id] -- PET_BONUS - §г§Ю. §Ю§С§г§г§Ъ§У §У variable.lua
+	-- §±§а§Э§е§й§С§Ц§Ю §Ь§а§Э§Ъ§й§Ц§г§д§У§а §Т§а§Я§е§г§а§У §е §б§Ъ§д§а§Ю§и§С
 	local num_bonus = table.getn(pet_bonus)
 		
-	-- Добавляем...
+	-- §Ґ§а§Т§С§У§Э§с§Ц§Ю...
 	for i = 1, num_bonus, 1 do
-		-- Значение характеристики у персонажа
+		-- §©§Я§С§й§Ц§Я§Ъ§Ц §з§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §е §б§Ц§в§г§а§Я§С§Ш§С
 		local cha_bonus = GetChaAttr(role, pet_bonus[i][1])
-		-- Получаем значение характеристики, которую надо прибавить
+		-- §±§а§Э§е§й§С§Ц§Ю §Щ§Я§С§й§Ц§Я§Ъ§Ц §з§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ, §Ь§а§д§а§в§е§р §Я§С§Х§а §б§в§Ъ§Т§С§У§Ъ§д§о
 		local add_bonus = pet_bonus[i][2]
-		-- Вычисляем значение характеристики
+		-- §Ј§н§й§Ъ§г§Э§с§Ц§Ю §Щ§Я§С§й§Ц§Я§Ъ§Ц §з§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ
 		local result_bonus = cha_bonus + add_bonus
 			
-		-- Обновляем значение характеристики персонажу
+		-- §°§Т§Я§а§У§Э§с§Ц§Ю §Щ§Я§С§й§Ц§Я§Ъ§Ц §з§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§е
 		SetChaAttr(role, pet_bonus[i][1], result_bonus)
 	end
 		
@@ -14250,43 +14174,43 @@ function State_PET_Add(role, statelv)
 
 end
 
---Удаление эффекта питомца
+--§µ§Х§С§Э§Ц§Я§Ъ§Ц §п§ж§ж§Ц§Ь§д§С §б§Ъ§д§а§Ю§и§С
 function State_PET_Rem(role, statelv)
-	--SystemNotice(role, "[DEBUG][PET SYSTEM] Снят эффект питомца!")
+	--SystemNotice(role, "[DEBUG][PET SYSTEM] §і§Я§с§д §п§ж§ж§Ц§Ь§д §б§Ъ§д§а§Ю§и§С!")
 	
-	-- Получаем доступ к питомцу персонажа
+	-- §±§а§Э§е§й§С§Ц§Ю §Х§а§г§д§е§б §Ь §б§Ъ§д§а§Ю§и§е §б§Ц§в§г§а§Я§С§Ш§С
 	local pet = GetChaHost(role)
-	-- Получаем ID питомца (из CharacterInfo)
+	-- §±§а§Э§е§й§С§Ц§Ю ID §б§Ъ§д§а§Ю§и§С (§Ъ§Щ CharacterInfo)
 	local pet_id = GetChaTypeID(pet)
 	
-	-- Убиваем питомца
+	-- §µ§Т§Ъ§У§С§Ц§Ю §б§Ъ§д§а§Ю§и§С
 	DelCha ( pet )
 	
-	-- Отнимаем бонусы у персонажа
-	-- Получаем список бонусов питомца
-	local pet_bonus = PET_BONUS[pet_id] -- PET_BONUS - см. массив в variable.lua
-	-- Получаем количество бонусов у питомца
+	-- §°§д§Я§Ъ§Ю§С§Ц§Ю §Т§а§Я§е§г§н §е §б§Ц§в§г§а§Я§С§Ш§С
+	-- §±§а§Э§е§й§С§Ц§Ю §г§б§Ъ§г§а§Ь §Т§а§Я§е§г§а§У §б§Ъ§д§а§Ю§и§С
+	local pet_bonus = PET_BONUS[pet_id] -- PET_BONUS - §г§Ю. §Ю§С§г§г§Ъ§У §У variable.lua
+	-- §±§а§Э§е§й§С§Ц§Ю §Ь§а§Э§Ъ§й§Ц§г§д§У§а §Т§а§Я§е§г§а§У §е §б§Ъ§д§а§Ю§и§С
 	local num_bonus = table.getn(pet_bonus)
 	
-	-- Отнимаем...
+	-- §°§д§Я§Ъ§Ю§С§Ц§Ю...
 	for i = 1, num_bonus, 1 do
-		-- Значение характеристики у персонажа
+		-- §©§Я§С§й§Ц§Я§Ъ§Ц §з§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §е §б§Ц§в§г§а§Я§С§Ш§С
 		local cha_bonus = GetChaAttr(role, pet_bonus[i][1])
-		-- Получаем значение характеристики, которую надо отнять
+		-- §±§а§Э§е§й§С§Ц§Ю §Щ§Я§С§й§Ц§Я§Ъ§Ц §з§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ, §Ь§а§д§а§в§е§р §Я§С§Х§а §а§д§Я§с§д§о
 		local rem_bonus = pet_bonus[i][2]
-		-- Вычисляем значение характеристики
+		-- §Ј§н§й§Ъ§г§Э§с§Ц§Ю §Щ§Я§С§й§Ц§Я§Ъ§Ц §з§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ
 		local result_bonus = cha_bonus  - rem_bonus
 
-		-- Обновляем значение характеристики персонажу
+		-- §°§Т§Я§а§У§Э§с§Ц§Ю §Щ§Я§С§й§Ц§Я§Ъ§Ц §з§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§е
 		SetChaAttr(role, pet_bonus[i][1], result_bonus)
 		
 	end
 	
 	ALLExAttrSet(role) 
 end
---[[Конец]]--
+--[[§¬§а§Я§Ц§и]]--
 
--- Бонусы от плаща адмирала
+-- §ў§а§Я§е§г§н §а§д §б§Э§С§л§С §С§Х§Ю§Ъ§в§С§Э§С
 function State_CAPE_Add ( role , statelv ) 
         local strsb_dif = 1
         local strsb = StrSb( role ) + strsb_dif
@@ -14335,7 +14259,7 @@ function State_CAPE_Rem ( role , statelv )
         SetCharaAttr( consb , role , ATTR_STATEV_STA )
         ALLExAttrSet(role)  
 end	
---клеймор
+--§Ь§Э§Ц§Ы§Ю§а§в
 function State_claymore_Add ( role , statelv )
 	local atksb_dif = 50
 	local mnatksb = MnatkSb(role) + atksb_dif  
@@ -14353,7 +14277,7 @@ function State_claymore_Rem ( role , statelv )
 	SetCharaAttr( mxatksb , role , ATTR_STATEV_MXATK ) 
 	ALLExAttrSet(role)
 end
---амулет теней
+--§С§Ю§е§Э§Ц§д §д§Ц§Я§Ц§Ы
 function State_amulet_Add ( role , statelv )
 	local aspd_dif = 20
 	local aspdsb = ( AspdSb(role) + aspd_dif ) 
@@ -14367,7 +14291,7 @@ function State_amulet_Rem ( role , statelv )
 	SetCharaAttr( aspdsb , role , ATTR_STATEV_ASPD ) 
 	ALLExAttrSet(role)
 end
- --теневой меч
+ --§д§Ц§Я§Ц§У§а§Ы §Ю§Ц§й
 function State_shadow_Add ( role , statelv )
 	local aspd_dif = 30
 	local aspdsb = ( AspdSb(role) + aspd_dif ) 
@@ -14391,7 +14315,7 @@ function State_shadow_Rem ( role , statelv )
 	SetCharaAttr( aspdsb , role , ATTR_STATEV_ASPD ) 
 	ALLExAttrSet(role)
 end
---бонус атаки к теневому мечу
+--§Т§а§Я§е§г §С§д§С§Ь§Ъ §Ь §д§Ц§Я§Ц§У§а§Ю§е §Ю§Ц§й§е
 function State_atkshadow_Add ( role , statelv )
 	local atksb_dif = 250	
 	local mnatksb = MnatkSb(role) + atksb_dif  
@@ -14410,10 +14334,10 @@ function State_atkshadow_Rem ( role , statelv )
 	ALLExAttrSet(role)
 end
 
---Свадьба(Выдача)
+--§і§У§С§Х§о§Т§С(§Ј§н§Х§С§й§С)
 function State_LOVE_Add ( role , statelv ) 
 
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_DEF)
 	local add_bonus = 50
 	local result_bonus = cha_bonus + add_bonus
@@ -14422,10 +14346,10 @@ function State_LOVE_Add ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Свадьба(Отнимание)
+--§і§У§С§Х§о§Т§С(§°§д§Я§Ъ§Ю§С§Я§Ъ§Ц)
 function State_LOVE_Rem ( role , statelv )
 
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_DEF)
 	local add_bonus = 50
 	local result_bonus = cha_bonus - add_bonus
@@ -14438,11 +14362,11 @@ function State_SBJYGZ_Rem (role,statelv)
 
 end
 
--- +100 бега
+-- +100 §Т§Ц§Ф§С
 function STATE_GO_Add ( role , statelv ) 
 
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MSPD)
 	local add_bonus = 100
 	local result_bonus = cha_bonus + add_bonus
@@ -14450,10 +14374,10 @@ function STATE_GO_Add ( role , statelv )
 	ALLExAttrSet(role)  
 end 
 
---Отнимание
+--§°§д§Я§Ъ§Ю§С§Я§Ъ§Ц
 function STATE_GO_Rem ( role , statelv )
 	
-	--Характеристики персонажа
+	--§·§С§в§С§Ь§д§Ц§в§Ъ§г§д§Ъ§Ь§Ъ §б§Ц§в§г§а§Я§С§Ш§С
 	local cha_bonus = GetChaAttr(role, ATTR_STATEV_MSPD)
 	local add_bonus = 100
 	local result_bonus = cha_bonus - add_bonus

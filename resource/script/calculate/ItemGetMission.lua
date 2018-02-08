@@ -1,5 +1,5 @@
-
-function CheckMisChaBoat ( role , ChaType )						
+---相关判断函数
+function CheckMisChaBoat ( role , ChaType )						--船只人物检测
 	local Cha_Boat = GetCtrlBoat ( role )
 	local ChaIsBoat = 0
 	
@@ -16,7 +16,7 @@ function CheckMisChaBoat ( role , ChaType )
 	end
 end
 
-function CheckChaPos ( role , Cha_x_min , Cha_x_max , Cha_y_min , Cha_y_max , MapName )	
+function CheckChaPos ( role , Cha_x_min , Cha_x_max , Cha_y_min , Cha_y_max , MapName )	--坐标检测
 
 	local Cha_Boat = GetCtrlBoat ( role )
 	local ChaIsBoat = 0
@@ -47,7 +47,7 @@ function CheckChaPos ( role , Cha_x_min , Cha_x_max , Cha_y_min , Cha_y_max , Ma
 	return 1
 end
 
-function CheckChaGuildType ( role , GuildType , CheckType )			
+function CheckChaGuildType ( role , GuildType , CheckType )				--检测公会类型
 	
 	local Cha_GuildID = GetChaGuildID( role )
 	
@@ -164,7 +164,8 @@ function ChaMsgCheck ( role , ChaType , Need_CheckPos ,Cha_x_max , Cha_x_min , C
 
 end
 
-function ItemUse_LDADYW (role) 
+
+function ItemUse_LDADYW (role) --[[鲁德安的遗物]]--
 
 	local HasRecordID	= 270			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -293,8 +294,7 @@ function ItemUse_LDADYW (role)
 	end
 
 end 
-
-function ItemUse_GLDYS (role) 
+function ItemUse_GLDYS (role) --[[古老的钥匙]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -412,7 +412,9 @@ function ItemUse_GLDYS (role)
 
 end 
 
-function ItemUse_LDADYS (role) 
+
+
+function ItemUse_LDADYS (role) --[[鲁德安的遗书]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -530,7 +532,8 @@ function ItemUse_LDADYS (role)
 
 end 
 
-function ItemUse_YXYSJY (role) 
+
+function ItemUse_YXYSJY (role) --[[隐形药水解药]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -648,7 +651,9 @@ function ItemUse_YXYSJY (role)
 
 end 
 
-function ItemUse_RYDKL (role) 
+
+
+function ItemUse_RYDKL (role) --[[人鱼的骷髅]]--
 
 	local HasRecordID	= 287			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -776,7 +781,10 @@ function ItemUse_RYDKL (role)
 
 end 
 
-function ItemUse_SXTCQ (role) 
+
+
+
+function ItemUse_SXTCQ (role) --[[水下探测器]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -904,7 +912,11 @@ function ItemUse_SXTCQ (role)
 
 end 
 
-function ItemUse_RJDYW (role) 
+
+
+
+
+function ItemUse_RJDYW (role) --[[日记的译文]]--
 
 	local HasRecordID	= 290			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -1022,7 +1034,12 @@ function ItemUse_RJDYW (role)
 
 end 
 
-function ItemUse_HL (role) 
+
+
+
+
+
+function ItemUse_HL (role) --[[海轮]]--
 
 	local HasRecordID	= 315			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -1140,7 +1157,11 @@ function ItemUse_HL (role)
 
 end 
 
-function ItemUse_WNYDYF (role) 
+
+
+
+
+function ItemUse_WNYDYF (role) --[[万能药的药方]]--
 
 	local HasRecordID	= 328			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -1258,7 +1279,12 @@ function ItemUse_WNYDYF (role)
 
 end 
 
-function ItemUse_LZL (role) 
+
+
+
+
+
+function ItemUse_LZL (role) --[[龙之泪]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -1376,7 +1402,7 @@ function ItemUse_LZL (role)
 
 end 
 
-function ItemUse_BLP (role) 
+function ItemUse_BLP (role) --[[玻璃瓶]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -1494,7 +1520,8 @@ function ItemUse_BLP (role)
 
 end 
 
-function ItemUse_SS (role) 
+
+function ItemUse_SS (role) --[[圣水]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -1612,7 +1639,9 @@ function ItemUse_SS (role)
 
 end 
 
-function ItemUse_FHSDX (role) 
+
+
+function ItemUse_FHSDX (role) --[[粉红色的信]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -1730,7 +1759,12 @@ function ItemUse_FHSDX (role)
 
 end 
 
-function ItemUse_WYJ (role) 
+
+
+
+
+
+function ItemUse_WYJ (role) --[[望远镜]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
@@ -1848,7 +1882,11 @@ function ItemUse_WYJ (role)
 
 end 
 
-function ItemUse_LDADYW2 (role) 
+
+
+
+
+function ItemUse_LDADYW2 (role) --[[鲁德安的遗物2]]--
 
 	local HasRecordID	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
 	local HasRecordID_1	= -1			-- 判断是否带有某记录 ( 填要判断的记录 ID , -1 为不判断 )
