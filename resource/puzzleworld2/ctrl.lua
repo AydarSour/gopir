@@ -33,10 +33,6 @@ function get_map_entry_pos_puzzleworld2()
 	
 	return POS_X , POS_Y
 
---172,165
---147,384
---365,381
---365,171
 
 end
 
@@ -50,7 +46,7 @@ function map_run_puzzleworld2(map)
 end
 function init_entry(map)
     SetMapEntryMapName(map, "puzzleworld")
-    SetMapEntryTime(map, "2005/8/30/0/0", "0/3/0", "0/0/80", "0/2/0")
+    SetMapEntryTime(map, "2005/8/30/0/0", "0/3/0", "0/1/0", "0/2/0")
 end
 function map_copy_run_puzzleworld2(map)
 end

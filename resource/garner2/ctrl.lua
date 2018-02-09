@@ -29,7 +29,7 @@ end
 
 function can_open_entry_garner2(map) 
 local Now_Time = GetNowTime()
-	if Now_Time == 1 or Now_Time == 10 or Now_Time == 14 or Now_Time == 20 then
+	if Now_Time == 10 or Now_Time == 16 or Now_Time == 22  then
 		return 1
 	else
 		return 0

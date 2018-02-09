@@ -35,22 +35,12 @@ local Cha = TurnToCha(role)
 		return 0
 	end
 
-	if Lv(Cha) >=30 and Lv(Cha) <=55 then
+	if Lv(Cha) >= 30 and Lv(Cha) <=45 then
 
 	local Num
 	Num = CheckBagItem(Cha, 1812)
 
-	if Num >= 1 then
-	local j =  CheckBagItem(role, 1812)
-	if j == 1 then
-				return 1
-			end
-	return 1
-
-	else
-	SystemNotice(role, " Ты не имеешь при себе Генератора Древних, поэтому не можешь зайти в Затерянный Город ")
-	return 0
-	end
+	
 
 	else
 	SystemNotice(role, " В Затерянный город могут входить только персонажи с 30 по 45 уровень ")
