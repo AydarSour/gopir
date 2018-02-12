@@ -5489,10 +5489,6 @@ function cha_timer(role, freq, time)
 	if math.mod(now_tick, 10) == 0 and now_tick > 0 then
 		DeathSetBonus(role,now_tick)
 	end
------------------------------------
------------------------------------
-
-
 
 	--Невидимость для ГМ 
 	local gmlvl = GetGmLv(role)

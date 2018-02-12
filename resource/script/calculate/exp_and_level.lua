@@ -164,10 +164,7 @@ end
 function Check_Combat_Mod(dead , atk)
 	local rolemod_atker = IsPlayer(atk) 
 	local rolemod_defer = IsPlayer(dead)
-	--LG("exp_Test" , " atker role = "..rolemod_atker )
-	--LG("exp_Test" , " defer role = "..rolemod_defer ) 
 	if (rolemod_atker==0) and (rolemod_defer==0) then
-		--LG("exp_Test" , " defer role = " ,  rolemod_defer )
 		return 4
 	elseif rolemod_atker==0 and rolemod_defer==1 then 
 		return 2 

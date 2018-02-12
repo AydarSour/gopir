@@ -4506,7 +4506,7 @@ sk_bjkr [10]			=		612575
 
 
 
---创建海军工会所需物品
+--杨玟囗桢 汨
 Guild1_ItemMax		=	1
 
 Guild1_item = {}
@@ -4519,7 +4519,7 @@ Guild1_item[3]	=	-1				Guild1_count[3]	=	-1
 Guild1_item[4]	=	-1				Guild1_count[4]	=	-1
 Guild1_item[5]	=	-1				Guild1_count[5]	=	-1
 
---创建海盗工会所需物品
+--杨玟囗桢 汨
 Guild2_ItemMax		=	1
 
 Guild2_item = {}
