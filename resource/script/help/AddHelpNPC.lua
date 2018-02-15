@@ -1,71 +1,51 @@
-print( "Loading AddHelpNPC.lua" )
-dofile(GetResPath("script/help/hook.lua"))
---dofile(GetResPath("script\\deffer.lua"))
-print("Loading Anti-Dupe System");
-print( "------------------------------------" )
-print( "Loading DONE!" )
+----------------------
+-- Система АнтиДюпа --
+----------------------
+print("-------------------------------------------------------------------------------")
+print( "‡ Јаг§Є  AddHelpNPC.lua + бЁбвҐ¬  Ђ­вЁ„оЇ " )
+print("-------------------------------------------------------------------------------")
 
 ClearHelpNPC()
-AddHelpNPC("Drunkyard - Anthony")
+AddHelpNPC("Помощник - Энтони ")
 
-CacheDir = GetResPath("script/help/cache")
+CacheDir = GetResPath("systems/antidupe")
 
---Проверка игрока на карте
 function PlayerEnterMap(...)
-	local name = GetRoleID(arg[2])	--ID игрока
-	local x, y = GetChaPos(arg[2])
-	local file = io.open(CacheDir.."/"..name..".txt", "r")
-	--Если файл есть, то
+	local Char = arg[2]
+	local mapname = GetChaMapName(Char)
+	local x, y = GetChaPos(Char)
+	if ChaIsBoat(Char) == 1 then 
+		Char = GetMainCha(Char) 
+		mapname = GetChaMapName(GetCtrlBoat(Char))
+	end
+	local name = GetChaDefaultName(Char)
+	local file = io.open(CacheDir .. "/" .. name .. ".txt", "r")
 	if file ~= nil then
 		local x, y, map = file:read("*l"), file:read("*l"), file:read("*l")
-		--Проверим выгрузку переменных
-		if map ~= nil then
-			--Проверим соответсвует ли карта записанной ранее, если нет то
-			if map ~= GetChaMapName(arg[2]) then
-				local file2 = io.open(CacheDir.."/DupeLog.log", "a")
-				local now_date = os.date("%d/%m/%Y - %H:%M:%S")
-				local PlayerName = GetChaDefaultName(arg[2])
-				local PlayerMap = GetChaMapName(arg[2])
-				local Player_x, Player_y = GetChaPos(arg[2])
-				file2:write("["..now_date.."]: Игрок <<"..PlayerName.."(ID: "..name..")>> совершил попытку дюпа на локации: '"..PlayerMap.."' по координатам - ("..Player_x..","..Player_y..").\n")
-				file2:close()
-				GoTo(arg[2] , math.floor(x/100), math.floor(y/100), map)
-				os.remove(CacheDir.."/"..name..".txt")
-			end
-		end
 		file:close()
-	--Если файла нет, то создадим его
+		if map ~= mapname then
+			LG("antidupe" , "Игрок "..name.." совершил попытку дюпа. Карта - "..map..", координаты - "..math.floor(x/100)..", "..math.floor(y/100)..". ")
+			os.remove(CacheDir .. "/" .. name .. ".txt")
+			GoTo(Char , math.floor(x/100), math.floor(y/100), map)
+		end
 	else
-		if x ~= nil then
-			local file = io.open(CacheDir.."/"..name..".txt", "a")
-			file:write(x.."\n"..y.."\n"..GetChaMapName(arg[2]))
+		if x ~= nil and y ~= nil and name ~= nil and mapname ~= nil then
+			local file = io.open(CacheDir .. "/" .. name .. ".txt", "a")
+			file:write(x .. "\n" .. y .. "\n" .. mapname)
 			file:close()
 		end
 	end
 end
 
 function PlayerLeaveMap(...)
-	local name = GetRoleID(arg[2])
-	os.remove(CacheDir.."/"..name..".txt")
-end
-
-function antichit2par(...)
-	if arg[2] == 20 then
-		ClearFightSkill(arg[1])
-		SetChaAttr(arg[1], ATTR_TP ,0 )
+	local Char = arg[2]
+	if ChaIsBoat(Char) == 1 then 
+		Char = GetMainCha(Char) 
+		mapname = GetChaMapName(GetCtrlBoat(Char))
 	end
+	local name = GetChaDefaultName(Char)
+	os.remove(CacheDir .. "/" .. name .. ".txt")
 end
 
-function antichit3par(...)
-	if arg[3] == 20 then
-		ClearFightSkill(arg[1])
-		SetChaAttr(arg[1], ATTR_TP ,0 )
-	end
-end
-
---Hook:SetHookPattern("^.*_End", "PRE", antichit3par, 2)
---Hook:SetHookPattern("^.*_Begin", "PRE", antichit2par, 2)
---Hook:SetHookPattern("^.*_Use", "PRE", antichit2par, 2)
---Hook:SetHookPattern("^.*_Unuse", "PRE", antichit2par, 2)
 Hook:SetHookPattern("^after_enter_.*$", "POST", PlayerEnterMap, 2)
 Hook:SetHookPattern("^before_leave_.*$", "POST", PlayerLeaveMap, 2)

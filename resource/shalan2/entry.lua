@@ -1,42 +1,48 @@
 function config_entry(entry) 
-	SetMapEntryEntiID(entry, 193,1)
+    SetMapEntryEntiID(entry, 193,1)
 end 
 
 function after_create_entry(entry) 
-	local copy_mgr = GetMapEntryCopyObj(entry, 0)
-	map_name, posx, posy, tmap_name = GetMapEntryPosInfo(entry)
-	Notice("Объявление: В Магическом океане ["..posx..","..posy.."] обнаружен портал, ведущий в [Мираж Шайтана].")
+    local copy_mgr = GetMapEntryCopyObj(entry, 0)
+	local EntryName = " Мираж Шайтана "
+	SetMapEntryEventName( entry, EntryName )
+    map_name, posx, posy, tmap_name = GetMapEntryPosInfo(entry)
+    Notice("Обьявление: В Магическом океане, игроки нашли в ["..posx..","..posy.."] портал в Мираж Шайтана. Будьте осторожны!")
 end
 
 function after_destroy_entry_shalan2(entry)
-	map_name, posx, posy, tmap_name = GetMapEntryPosInfo(entry) 
-	Notice("Объявление: Портал в [Мираж Шайтана] закрылся. Удачи!") 
-
+    map_name, posx, posy, tmap_name = GetMapEntryPosInfo(entry) 
+    Notice("Обьявление: Портал в Мираж Шайтана исчез. Ждите более подробной информации. Будьте счастливы!") 
 end
 
 function after_player_login_shalan2(entry, player_name)
-	map_name, posx, posy, tmap_name = GetMapEntryPosInfo(entry)
-	ChaNotice(player_name, "Объявление: В Магическом океане ["..posx..","..posy.."] обнаружен портал, ведущий в [Мираж Шайтана].")
+    map_name, posx, posy, tmap_name = GetMapEntryPosInfo(entry)
+    ChaNotice(player_name, "Обьявление: В Магическом океане, игроки нашли в ["..posx..","..posy.."] портал в Мираж Шайтана. Будьте осторожны!")
 end
 
 function check_can_enter_shalan2( role, copy_mgr )
 	local i = IsChaStall(role)
 	if i == LUA_TRUE then
-		SystemNotice(role, "Невозможно телепортироваться, когда вы торгуете в лотке")
+		SystemNotice(role, "Не возможно телепортироваться ")
 		return 0    
 	end
 	if Lv(role) < 70 then
-		SystemNotice(role, "Вы должны быть не ниже 70 уровня, чтобы войти в [Мираж Шайтана]")
+		SystemNotice(role, "Персонаж должен иметь 70 уровень(или выше), чтобы попасть в мираж Шайтана!")
 		return 0    
 	end
-	if Lv(role) > 100 then
-		SystemNotice(role, "Вы должны быть не выше 100 уровня, чтобы войти в [Мираж Шайтана]")
+	if Lv(role) > 89 then
+		SystemNotice(role, "Персонаж не должен быть выше 90 уровня, чтобы попасть в мираж Шайтана!")
+		return 0    
+	end
+	local Num
+	Num = CheckBagItem(role,2326)
+	if Num < 1 then
+		SystemNotice(role, "Отсутствует Маска Реальности.")	
 		return 0
 	end
-
 	local Credit_Shalan2 = GetCredit(role)
 	if Credit_Shalan2 < 10 then
-		SystemNotice(role, "Недостаточно очков репутации. Невозможно войти в [Мираж Шайтана]")
+		SystemNotice(role, "У вас не хватает репутации. Вы не можете пройти в Мираж Шайтана!")
 		return 0
 	else
 		DelCredit(role,10)
@@ -44,8 +50,15 @@ function check_can_enter_shalan2( role, copy_mgr )
 	end
 end
 
-
 function begin_enter_shalan2(role, copy_mgr)
-	SystemNotice(role,"Вы вошли в [Мираж Шайтана]") 
-	MoveCity(role, "Shaitan Mirage")
+	local Cha = TurnToCha(role)	
+	local Dbag = 0
+	Dbag = DelBagItem(Cha, 2326, 1)
+	
+	if Dbag == 1 then
+		SystemNotice(role,"Вы вошли в Мираж Шайтана ") 
+		MoveCity(role, "Shaitan Mirage")
+	else
+		SystemNotice(role, "У вас нет Маски Реальности. Вы не можете попасть в Мираж Шайтана!")
+	end
 end

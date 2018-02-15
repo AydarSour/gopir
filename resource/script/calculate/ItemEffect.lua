@@ -1,11 +1,13 @@
+print( "‡ Јаг§Є  ItemEffect.lua" )
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Неизвестно (Целебные\восстанавливающие вещи)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 function hp_med_min( role , Item )
-	--LuaPrint("Enter function hp_med_min() --[[mini HP recovery potion formula]]--") 
 	local hp = GetChaAttr( role , ATTR_HP ) 
-	local con = Con(role)
-	--LG("Potion Usage", "Current HP= ", hp , "\n" ) 
+	local con = Con(role) 
 	if hp <= 0 then
-		--LuaPrint("Character dead or illegal HP value")  
-		--LG("Potion Usage", "Character dead or illegal HP value","\n" )  
 		return 
 	end 
 	hp_resume = 20 +con*5 
@@ -13,61 +15,40 @@ function hp_med_min( role , Item )
 	mxhp = GetChaAttr( role , ATTR_MXHP) 
 	if hp > mxhp then
 		 hp = mxhp 
-		 --LG("Potion Usage", "Max HP cap reached", "\n" ) 
 	 end 
-		--LG("Potion Usage", "HP recovered to", hp ,"\n" ) 
 	SetCharaAttr(hp, role, ATTR_HP) 
-	--LuaPrint("Out function hp_med_min() --[[mini HP recovery potion formula]]--") 
 end 
 
 function hp_med_small(role, Item )
-	--LuaPrint("Enter function hp_med_small() --[[small HP potion formula]]--") 
 	local hp = GetChaAttr(role, ATTR_HP)
 	local con = Con(role)
-	--LG("Potion Usage", "Current HP= ", hp , "\n" ) 
-	if hp <= 0 then 
-		--LuaPrint("Character dead or illegal HP value")  return 
-		--LG("Potion Usage", "Character dead or illegal HP value","\n" )  
+	if hp <= 0 then  
 	end 
 	hp_resume = 20+ con*5  
 	hp = hp + hp_resume 
 	mxhp = GetChaAttr(role,ATTR_MXHP) 
 	if hp > mxhp then
 		hp = mxhp 
-		--LG("Potion Usage", "Max HP cap reached", "\n" ) 
 	end 
-		--LG("Potion Usage", "HP recovered to", hp ,"\n" ) 
 	SetCharaAttr(hp, role, ATTR_HP) 
-	--LuaPrint("Out function hp_med_small() --[[small HP potion formula]]--") 
 end 
 
 function hp_med_middle( role , Item )
-	--LuaPrint("Enter function hp_med_small( role )  --[[medium HP potion formula]]--") 
 	local hp = GetChaAttr(role, ATTR_HP) 
-	--LG("Potion Usage", "Current HP= ", hp , "\n" ) 
 	if hp <= 0 then 
-		--LuaPrint("Character dead or illegal HP value")  return 
-		--LG("Potion Usage", "Character dead or illegal HP value","\n" )  
 	end 
 	hp_resume = 800 
 	hp = hp + hp_resume 
 	mxhp = GetChaAttr(role,ATTR_MXHP) 
 	 if hp > mxhp then
 		hp = mxhp 
-		--LG("Potion Usage", "Max HP cap reached", "\n" ) 
 	end 
-		--LG("Potion Usage", "HP recovered to", hp ,"\n" ) 
 	SetCharaAttr(hp, role, ATTR_HP) 
-	--LuaPrint("Out function hp_med_small( role )  --[[medium HP potion formula]]--") 
 end 
 
 function hp_med_large( role , Item )
-	--LuaPrint("Enter function hp_med_small( role )  --[[Big HP potion formula]]--") 
 	local hp = GetChaAttr(role, ATTR_HP) 
-	--LG("Potion Usage", "Current HP= ", hp , "\n" ) 
 	if hp <= 0 then 
-		--LuaPrint("Character dead or illegal HP value")  return 
-		--LG("Potion Usage", "Character dead or illegal HP value","\n" )  
 	end 
 	local mxhp = GetChaAttr(role, ATTR_MXHP) 
 	hp_resume = 0.2 * mxhp 
@@ -75,20 +56,13 @@ function hp_med_large( role , Item )
 	mxhp = GetChaAttr(role,ATTR_MXHP) 
 	if hp > mxhp then
 		hp = mxhp 
-		--LG("Potion Usage", "Max HP cap reached", "\n" ) 
 	end 
-	--LG("Potion Usage", "HP recovered to", hp ,"\n" ) 
 	SetCharaAttr(hp, role, ATTR_HP) 
-	--LuaPrint("Out function hp_med_small( role )  --[[big HP potion formula]]--") 
 end 
 
 function hp_med_super( role , Item )
-	--LuaPrint("Enter function hp_med_small( role )  --[[super HP potion formula]]--") 
 	local hp = GetChaAttr(role, ATTR_HP) 
-	--LG("Potion Usage", "Current HP= ", hp , "\n" ) 
 	if hp <= 0 then 
-		--LuaPrint("Character dead or illegal HP value")  return 
-		--LG("Potion Usage", "Character dead or illegal HP value","\n" )  
 	end 
 	local mxhp = GetChaAttr(role, ATTR_MXHP) 
 	hp_resume = 0.8 * mxhp  
@@ -96,324 +70,413 @@ function hp_med_super( role , Item )
 	mxhp = GetChaAttr(role,ATTR_MXHP) 
 	if hp > mxhp then
 		hp = mxhp 
-		--LG("Potion Usage", "Max HP cap reached", "\n" ) 
 	end 
-	--LG("Potion Usage", "HP recovered to", hp ,"\n" ) 
 	SetCharaAttr(hp, role, ATTR_HP) 
-	--LuaPrint("Out function hp_med_small( role )  --[[super HP potion formula]]--") 
 end 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Целебные\восстанавливающие вещи (Хлеб, Яблоко, Кекс, Тиамарин и т.д.) 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
---	1847	Яблоко
-function ItemUse_APPLE ( role , Item )
-	local statelv = 1
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime )
-	end
-end 
-
---	1848	Хлеб
+-- Хлеб
 function ItemUse_BREAD (role, Item )
-	local statelv = 2
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
-	end
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then   
+	end 
+	hp_resume = 80    
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end  
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
---	1849	Кекс
+-- Яблоко
+function ItemUse_APPLE ( role , Item )
+	local hp = GetChaAttr(role, ATTR_HP)  
+	if hp <= 0 then   
+	end 
+		hp_resume = 20    
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then 
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
+end 
+
+-- Кекс
 function ItemUse_CAKE ( role , Item )
-	local statelv = 3
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
-	end
+	local hp = GetChaAttr(role, ATTR_HP)  
+	if hp <= 0 then  
+	end 
+	hp_resume = 180   
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
-
-------
--- ID3116	Эльфийский фрукт
-------
+-- Эльфийский фрукт
 function ItemUse_JLG( role , Item )
-end
+	local hp = GetChaAttr(role, ATTR_HP)  
+	if hp <= 0 then 
+	end 
+	hp_resume = 15   
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
+end 
 
-------
--- ID3117	Красный финик
-------
+-- Красный финик
 function ItemUse_SZ ( role , Item )
-end
-------
--- ID3118	Гриб
-------
-function ItemsUse_MG ( role , Item )
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then 
+	end 
+	hp_resume = 20   
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
-------
--- ID3119	Плод дурмана
-------
+-- Гриб
+function ItemUse_MG ( role , Item )
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then 
+	end 
+	hp_resume = 35  
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
+end 
+
+-- Плод дурмана
 function ItemUse_MTLG ( role , Item )
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then 
+	end 
+	hp_resume = 40  
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
-------
--- ID3120	Ледяной фрукт
-------
+-- Ледяной фрукт
 function ItemUse_BG ( role , Item )
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then  
+	end 
+	hp_resume = 50 
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
-------
--- ID3121	Радужный фрукт
-------
+-- Радужный фрукт
 function ItemUse_WCG( role , Item )
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then 
+	end 
+	hp_resume = 108 
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
---	3122	Сок Эльф Фрукта
+-- Сок эльфийского фрукта
 function ItemUse_JLGZ( role , Item )
-	local statelv = 6
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime )
-	end
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then  
+	end 
+	hp_resume = 250 
+	
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp  
+	end  
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
---	3123	Чай из красных фиников
+-- Чай из красных фиников
 function ItemUse_SZC( role , Item )
-	local statelv = 7
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime )
-	end
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then 
+	end 
+	hp_resume = 300
+	
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
---	3124	Грибной суп
+-- Грибной суп
 function ItemUse_MGT( role , Item )
-	local statelv = 8
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime )
-	end
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then 
+	end 
+	hp_resume = 350 
+	
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end  
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
---	3125	Сок плодов дурмана
+-- Сок плодов дурмана
 function ItemUse_MTLGZ( role , Item )
-	local statelv = 9
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime )
-	end
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then 
+	end 
+	hp_resume = 400
+	
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
---	3126	Морожка
+-- Мороженое
 function ItemUse_BQL( role , Item )
-	local statelv = 10
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime )
-	end
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then  
+	end 
+	hp_resume = 450
+	
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
---	3127	Радужны сок
+-- Сок радужных фруктов
 function ItemUse_WCLLZ( role , Item )
-	local statelv = 11
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime )
-	end
+	local hp = GetChaAttr(role, ATTR_HP)  
+	if hp <= 0 then  
+	end 
+	hp_resume = 500 
+	
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
---	3128	Фруктовый коктейль
+-- Фруктовый коктейль
 function ItemUse_ZHGZ( role , Item )
-	local statelv = 12
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime )
-	end
+	local hp = GetChaAttr(role, ATTR_HP) 
+	if hp <= 0 then 
+	end 
+	hp_resume = 550
+	
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXHP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_HP) 
 end 
 
-------
--- ID3129	Целебная трава
-------
+-- Целебная трава
 function ItemUse_YYCY( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,4)    == 0 then return end 
-end
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 4 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
+end 
 
-------
--- ID3130	Лепесток многоцвета
-------
+-- Лепесток многоцвета
 function ItemUse_MHHB( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,8)    == 0 then return end 
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 8 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3131	Чудо-фрукт
-------
+-- Чудо-фрукт
 function ItemUse_QYGS( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,18)   == 0 then return end 
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 18 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3132	Побег снежной травы
-------
+-- Побег снежной травы
 function ItemUse_BFCY( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,22)   == 0 then return end 
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 22 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3133	Лакричное зелье
-------
+-- Лакричное зелье
 function ItemUse_GCYS( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,33)   == 0 then return end 
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 33  
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3134	Чай "Бодрячок"
-------
+-- Чай "Бодрячок"
 function ItemUse_XSHC( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,38)   == 0 then return end 
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 38 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3135	Чудо-мазь
-------
+-- Чудо-мазь
 function ItemUse_MZQYG( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,41)   == 0 then return end  
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 41 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3136	Брикет снежной травы
-------
+-- Брикет снежной травы
 function ItemUse_BYS( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,59)   == 0 then return end 
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 59 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3137	Тиамарин
-------
+-- Тиамарин
 function ItemUse_TMLGZ( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,100)  == 0 then return end  
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 100 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3138	Загадочный фрукт
-------
+-- Загадочный фрукт
 function ItemUse_SMG( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,111)  == 0 then return end  
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 111 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3139	Агрипнотик
-------
+-- Агрипнотик
 function ItemUse_TSJ( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,141)  == 0 then return end  
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 141 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3140	Волшебное зелье
-------
+-- Волшебное зелье
 function ItemUse_MHYS( role , Item )
-	if CanUseItem(role) == 0 then return end
-	if AddSp(role,201)  == 0 then return end  
+	local sp = GetChaAttr(role, ATTR_SP) 
+	sp_resume = 201 
+	
+	sp = sp + sp_resume 
+	mxsp = GetChaAttr(role,ATTR_MXSP) 
+	if sp > mxsp then
+		sp = mxsp 
+	end 
+	SetCharaAttr(sp, role, ATTR_SP) 
 end 
 
-------
--- ID3917	Особый клубничный бисквит
-------
+-- Особый клубничный бисквит
 function ItemUse_TZCMB ( role , Item )
-	if CanUseItem(role) == 0 then return end
 	tempt_monster( role ,  99 )
 end 
 
-
-------
--- КНИГИ НАВЫКОВ
-------
-
-------
--- ID3184	Владение щитом
-------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Книги боевых скиллов
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Владение щитом (ID 3184)
 function Sk_Script_Dpsl ( role , Item )
 	local sk_add = SK_DPSL
-	local form_sklv = GetSkillLv( role , sk_add )
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	if a== 0 then 
-		UseItemFailed ( role )  
-		return 
-	end
-end
-
-------
--- ID3190	Двойной выстрел
-------
-function Sk_Script_Lzj ( role , Item )
-	local sk_add = SK_LZJ  
-	local form_sklv = GetSkillLv( role , sk_add )
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -425,9 +488,23 @@ function Sk_Script_Lzj ( role , Item )
 	end 
 end 
 
-------
--- ID3193	Метеоритный дождь
-------
+-- Двойной выстрел (ID 3190)
+function Sk_Script_Lzj ( role , Item )
+										
+	local sk_add = SK_LZJ  
+	local form_sklv = GetSkillLv( role , sk_add ) 
+	if form_sklv ~= 0  then 
+		UseItemFailed ( role )  
+		return 
+	end 
+	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end 
+
+-- Метеоритный дождь (ID 3193)
 function Sk_Script_Lxjy ( role , Item )
 	local sk_add = SK_LXJY 
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -442,9 +519,7 @@ function Sk_Script_Lxjy ( role , Item )
 	end 
 end 
 
-------
--- ID3167	Вой
-------
+-- Вой (ID 3167)
 function Sk_Script_Lh ( role , Item )
 	local sk_add = SK_LH 
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -459,9 +534,7 @@ function Sk_Script_Lh ( role , Item )
 	end 
 end 
 
-------
--- ID3200	Дробь
-------
+-- Дробь (ID 3200)
 function Sk_Script_Ssd ( role , Item )
 	local sk_add = SK_SSD  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -476,12 +549,10 @@ function Sk_Script_Ssd ( role , Item )
 	end 
 end 
 
-------
--- ID3199	Проникающая пуля
-------
+-- Проникающая пуля (ID 3199)
 function Sk_Script_Ctd ( role , Item )
 	local sk_add = SK_CTD 
-	local form_sklv = GetSkillLv( role , sk_add )
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -493,9 +564,7 @@ function Sk_Script_Ctd ( role , Item )
 	end 
 end 
 
-------
--- ID3213	Великое исцеление
-------
+-- Великое исцеление (ID 3213)
 function Sk_Script_Dzy ( role , Item )
 	local sk_add = SK_DZY 
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -510,12 +579,10 @@ function Sk_Script_Dzy ( role , Item )
 	end 
 end 
 
-------
--- ID3293	Рык тигра
-------
-function Sk_Script_Hx ( role , Item )
+-- Рык тигра (ID 3293)
+function Sk_Script_Hx ( role , Item ) 											
 	local sk_add = SK_HX 
-	local form_sklv = GetSkillLv( role , sk_add )  
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -527,10 +594,8 @@ function Sk_Script_Hx ( role , Item )
 	end 
 end 
 
-------
--- ID3198	Зажигательная пуля
-------
-function Sk_Script_Rsd ( role , Item )
+-- Зажигательная пуля (ID 3198)
+function Sk_Script_Rsd ( role , Item ) 											
 	local sk_add =SK_RSD 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -544,10 +609,8 @@ function Sk_Script_Rsd ( role , Item )
 	end 
 end 
 
-------
--- ID3160	Искусство владеть мечом
-------
-function Sk_Script_Jssl ( role , Item )
+-- Искусство владеть мечом (ID 3160)
+function Sk_Script_Jssl ( role , Item ) 											
 	local sk_add = SK_JSSL 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -561,10 +624,8 @@ function Sk_Script_Jssl ( role , Item )
 	end 
 end 
 
-------
--- ID3161	Стальная воля
-------
-function Sk_Script_Gtyz ( role , Item )
+-- Стальная воля (ID 3161)
+function Sk_Script_Gtyz ( role , Item ) 											
 	local sk_add = SK_GTYZ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -578,10 +639,8 @@ function Sk_Script_Gtyz ( role , Item )
 	end 
 end 
 
-------
--- ID3162	Усиление
-------
-function Sk_Script_Qhtz ( role , Item )
+-- Усиление (ID 3162)
+function Sk_Script_Qhtz ( role , Item ) 											
 	local sk_add = SK_QHTZ
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -595,10 +654,8 @@ function Sk_Script_Qhtz ( role , Item )
 	end 
 end 
 
-------
--- ID3163	Сноровка
-------
-function Sk_Script_Lqhb ( role , Item )
+-- Сноровка (ID 3163)
+function Sk_Script_Lqhb ( role , Item ) 											
 	local sk_add = SK_LQHB 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -612,10 +669,8 @@ function Sk_Script_Lqhb ( role , Item )
 	end 
 end 
 
-------
--- ID3164	Концентрация
-------
-function Sk_Script_Jdzz ( role , Item )
+-- Концентрация (ID 3164)
+function Sk_Script_Jdzz ( role , Item ) 											
 	local sk_add = SK_JDZZ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -629,10 +684,8 @@ function Sk_Script_Jdzz ( role , Item )
 	end 
 end 
 
-------
--- ID3165	Иллюзорный удар
-------
-function Sk_Script_Hyz ( role , Item )
+-- Иллюзорный удар (ID 3165)
+function Sk_Script_Hyz ( role , Item ) 											
 	local sk_add = SK_HYZ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -640,17 +693,14 @@ function Sk_Script_Hyz ( role , Item )
 		return 
 	end 
 	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	--LG( " learn sk " , " Sk_Script_Hyz ()	: " , "sever determine return= " , a ) 
 	if a== 0 then 
 		UseItemFailed ( role )  
 		return 
 	end 
 end 
 
-------
--- ID3166	Могучий удар
-------
-function Sk_Script_Zj ( role , Item )
+-- Могучий удар (ID 3166)
+function Sk_Script_Zj ( role , Item ) 											
 	local sk_add = SK_ZJ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -664,10 +714,8 @@ function Sk_Script_Zj ( role , Item )
 	end 
 end 
 
-------
--- ID3168	Мастер большого меча
-------
-function Sk_Script_Jjsl ( role , Item )
+-- Мастер большого меча (ID 3168)
+function Sk_Script_Jjsl ( role , Item ) 											
 	local sk_add = SK_JJSL 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -681,10 +729,8 @@ function Sk_Script_Jjsl ( role , Item )
 	end 
 end 
 
-------
--- ID3169	Варварское дробление
-------
-function Sk_Script_Ymsl ( role , Item )
+-- Варварское дробление (ID 3169)
+function Sk_Script_Ymsl ( role , Item ) 											
 	local sk_add = SK_YMSL 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -698,10 +744,8 @@ function Sk_Script_Ymsl ( role , Item )
 	end 
 end 
 
-------
--- ID3170	Берсерк
-------
-function Sk_Script_Kb ( role , Item )
+-- Берсерк (ID 3170)
+function Sk_Script_Kb ( role , Item ) 											
 	local sk_add = SK_KB  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -709,19 +753,16 @@ function Sk_Script_Kb ( role , Item )
 		return 
 	end 
 	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	--LG( " learn sk " , " function Sk_Script_Kb ()	: " , "sever determine return= " , a ) 
 	if a== 0 then 
 		UseItemFailed ( role )  
 		return 
 	end 
 end 
 
-------
--- ID3171	Поклонение тотему
-------
-function Sk_Script_Ttcb ( role , Item )
+-- Поклонение тотему (ID 3171)
+function Sk_Script_Ttcb ( role , Item ) 											
 	local sk_add = SK_TTCB  
-	local form_sklv = GetSkillLv( role , sk_add )  
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -733,10 +774,8 @@ function Sk_Script_Ttcb ( role , Item )
 	end 
 end 
 
-------
--- ID3172	Кровавый бык
-------
-function Sk_Script_Mnrx ( role , Item )
+-- Кровавый бык (ID 3172)
+function Sk_Script_Mnrx ( role , Item ) 											
 	local sk_add = SK_MNRX 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -750,10 +789,8 @@ function Sk_Script_Mnrx ( role , Item )
 	end 
 end 
 
-------
--- ID3173	Первобытная ярость
-------
-function Sk_Script_Swzq ( role , Item )
+-- Первобытная ярость (ID 3173)
+function Sk_Script_Swzq ( role , Item ) 											
 	local sk_add = SK_SWZQ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -767,10 +804,8 @@ function Sk_Script_Swzq ( role , Item )
 	end 
 end 
 
-------
--- ID3174	Рубка двумя мечами
-------
-function Sk_Script_Ssjjc ( role , Item )
+-- Рубка двумя мечами (ID 3174)
+function Sk_Script_Ssjjc ( role , Item ) 											
 	local sk_add = SK_FSZ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -784,10 +819,8 @@ function Sk_Script_Ssjjc ( role , Item )
 	end 
 end 
 
-------
--- ID3175	Отклонение
-------
-function Sk_Script_Hys ( role , Item )
+-- Отклонение (ID 3175)
+function Sk_Script_Hys ( role , Item ) 											
 	local sk_add = SK_HYS  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -801,12 +834,10 @@ function Sk_Script_Hys ( role , Item )
 	end 
 end 
 
-------
--- ID3176	Кровавое безумие
-------
-function Sk_Script_Pxkg ( role , Item )
+-- Кровавое безумие (ID 3176)
+function Sk_Script_Pxkg ( role , Item ) 											
 	local sk_add = SK_PXKG 
-	local form_sklv = GetSkillLv( role , sk_add )  
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -818,12 +849,10 @@ function Sk_Script_Pxkg ( role , Item )
 	end 
 end 
 
-------
--- ID3177	Скрытность
-------
-function Sk_Script_Qx ( role , Item )
+-- Скрытность (ID 3177)
+function Sk_Script_Qx ( role , Item ) 											
 	local sk_add = SK_YS  
-	local form_sklv = GetSkillLv( role , sk_add )  
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -835,10 +864,8 @@ function Sk_Script_Qx ( role , Item )
 	end 
 end 
 
-------
--- ID3178	Удар в спину
-------
-function Sk_Script_Bc ( role , Item )
+-- Удар в спину (ID 3178)
+function Sk_Script_Bc ( role , Item ) 											
 	local sk_add = SK_BC  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -852,10 +879,8 @@ function Sk_Script_Bc ( role , Item )
 	end 
 end 
 
-------
--- ID3179	Теневой удар
-------
-function Sk_Script_Guz ( role , Item )
+-- Теневой удар (ID 3179)
+function Sk_Script_Guz ( role , Item ) 											
 	local sk_add = SK_GWZ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -863,17 +888,14 @@ function Sk_Script_Guz ( role , Item )
 		return 
 	end 
 	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	--LG( " learn sk " , " function Sk_Script_Guz ()	: " , "sever determine return= " , a ) 
 	if a== 0 then 
 		UseItemFailed ( role )  
 		return 
 	end 
 end 
 
-------
--- ID3180	Ядовитый дротик
-------
-function Sk_Script_Db ( role , Item )
+-- Ядовитый дротик (ID 3180)
+function Sk_Script_Db ( role , Item ) 											
 	local sk_add = SK_DB  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -887,10 +909,8 @@ function Sk_Script_Db ( role , Item )
 	end 
 end 
 
-------
--- ID3181	Оцепенение
-------
-function Sk_Script_Mb ( role , Item )
+-- Оцепенение (ID 3181)
+function Sk_Script_Mb ( role , Item ) 											
 	local sk_add = SK_MB  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -904,10 +924,8 @@ function Sk_Script_Mb ( role , Item )
 	end 
 end 
 
-------
--- ID3182	Звериная сила
-------
-function Sk_Script_Shtz ( role , Item )
+-- Звериная сила (ID 3182)
+function Sk_Script_Shtz ( role , Item ) 											
 	local sk_add = SK_SHTZ  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -921,10 +939,8 @@ function Sk_Script_Shtz ( role , Item )
 	end 
 end 
 
-------
--- ID3183	Восстанавливать
-------
-function Sk_Script_Tzhf ( role , Item )
+-- Восстанавливать (ID 3183)
+function Sk_Script_Tzhf ( role , Item ) 											
 	local sk_add = SK_TZHF  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -938,10 +954,8 @@ function Sk_Script_Tzhf ( role , Item )
 	end 
 end 
 
-------
--- ID3187	Мастер стрелкового оружия
-------
-function Sk_Script_Gjsl ( role , Item )
+-- Мастер стрелкового оружия (ID 3187)
+function Sk_Script_Gjsl ( role , Item ) 											
 	local sk_add = SK_GJSL  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -955,12 +969,10 @@ function Sk_Script_Gjsl ( role , Item )
 	end 
 end 
 
-------
--- ID3188	Путь ветра
-------
-function Sk_Script_Jfb ( role , Item )
+-- Путь ветра (ID 3188)
+function Sk_Script_Jfb ( role , Item ) 											
 	local sk_add = SK_JFB  
-	local form_sklv = GetSkillLv( role , sk_add )  
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -972,10 +984,8 @@ function Sk_Script_Jfb ( role , Item )
 	end 
 end 
 
-------
--- ID3189	Глаз орла
-------
-function Sk_Script_Yy ( role , Item )
+-- Глаз орла (ID 3189)
+function Sk_Script_Yy ( role , Item ) 											
 	local sk_add = SK_YY 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -989,10 +999,8 @@ function Sk_Script_Yy ( role , Item )
 	end 
 end 
 
-------
--- ID3192	Мастер огнестрельного оружия
-------
-function Sk_Script_Hqsl ( role , Item )
+-- Мастер огнестрельного оружия (ID 3192)
+function Sk_Script_Hqsl ( role , Item ) 											
 	local sk_add = SK_HQSL  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1006,12 +1014,10 @@ function Sk_Script_Hqsl ( role , Item )
 	end 
 end 
 
-------
--- ID3193	Метеоритный дождь
-------
-function Sk_Script_Lxjy ( role , Item )
+-- Метеоритный дождь (ID 3193)
+function Sk_Script_Lxjy ( role , Item ) 											
 	local sk_add = SK_LXJY  
-	local form_sklv = GetSkillLv( role , sk_add )
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -1023,10 +1029,8 @@ function Sk_Script_Lxjy ( role , Item )
 	end 
 end 
 
-------
--- ID3201	Исследование пороха
-------
-function Sk_Script_Dyyj ( role , Item )
+-- Неизвестно (ID n\a)
+function Sk_Script_Dyjj ( role , Item ) 											
 	local sk_add = SK_DYJJ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1040,12 +1044,10 @@ function Sk_Script_Dyyj ( role , Item )
 	end 
 end 
 
-------
--- ID3202	Калечащий выстрел
-------
-function Sk_Script_Tj ( role , Item )
+-- Калечащий выстрел (ID 3202)
+function Sk_Script_Tj ( role , Item ) 											
 	local sk_add = SK_TJ 
-	local form_sklv = GetSkillLv( role , sk_add )  
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -1057,10 +1059,8 @@ function Sk_Script_Tj ( role , Item )
 	end 
 end 
 
-------
--- ID3203	Ослабление
-------
-function Sk_Script_Sj ( role , Item )
+-- Ослабление (ID 3203)
+function Sk_Script_Sj ( role , Item ) 											
 	local sk_add = SK_SJ  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1074,10 +1074,8 @@ function Sk_Script_Sj ( role , Item )
 	end 
 end 
 
-------
--- ID3204	Выстрел в голову
-------
-function Sk_Script_Bt ( role , Item )
+-- Выстрел в голову (ID 3204)
+function Sk_Script_Bt ( role , Item ) 											
 	local sk_add = SK_BT  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1091,10 +1089,8 @@ function Sk_Script_Bt ( role , Item )
 	end 
 end 
 
-------
--- ID3205	Сила
-------
-function Sk_Script_Jsjc ( role , Item )
+-- Сила (ID 3205)
+function Sk_Script_Jsjc ( role , Item ) 											
 	local sk_add = SK_JSJC  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1108,10 +1104,8 @@ function Sk_Script_Jsjc ( role , Item )
 	end 
 end 
 
-------
--- ID3206	Исцеление
-------
-function Sk_Script_Xzys ( role , Item )
+-- Исцеление (ID 3206)
+function Sk_Script_Xzys ( role , Item ) 											
 	local sk_add = SK_XZY  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1125,10 +1119,8 @@ function Sk_Script_Xzys ( role , Item )
 	end 
 end 
 
-------
--- ID3207	Восстановление
-------
-function Sk_Script_Hfs ( role , Item )
+-- Восстановление (ID 3207)
+function Sk_Script_Hfs ( role , Item ) 											
 	local sk_add = SK_HFS  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1142,10 +1134,8 @@ function Sk_Script_Hfs ( role , Item )
 	end 
 end 
 
-------
--- ID3208	Призрачный удар
-------
-function Sk_Script_Xlcz ( role , Item )
+-- Призрачный удар (ID 3208)
+function Sk_Script_Xlcz ( role , Item ) 											
 	local sk_add = SK_XLCZ  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1159,10 +1149,8 @@ function Sk_Script_Xlcz ( role , Item )
 	end 
 end 
 
-------
--- ID3209	Истинное зрение
-------
-function Sk_Script_Syzy ( role , Item )
+-- Истинное зрение (ID 3209)
+function Sk_Script_Syzy ( role , Item ) 											
 	local sk_add = SK_SYZY  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1174,12 +1162,10 @@ function Sk_Script_Syzy ( role , Item )
 		UseItemFailed ( role )  
 		return 
 	end 
-end
+end 
 
-------
--- ID3213	Великое исцеление
-------
-function Sk_Script_Dzy( role , Item )
+-- Великое исцеление (ID 3213)
+function Sk_Script_Dzy( role , Item ) 											
 	local sk_add = SK_DZY  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1193,10 +1179,8 @@ function Sk_Script_Dzy( role , Item )
 	end 
 end 
 
-------
--- ID3214	Мощное Восстановление
-------
-function Sk_Script_Dhfs ( role , Item )
+-- Мощное Восстановление (ID 3214)
+function Sk_Script_Dhfs ( role , Item ) 											
 	local sk_add = SK_DHFS  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1210,10 +1194,8 @@ function Sk_Script_Dhfs ( role , Item )
 	end 
 end 
 
-------
--- ID3210	Призрачный огонь
-------
-function Sk_Script_Xlzh ( role , Item )
+-- Призрачный огонь (ID 3210)
+function Sk_Script_Xlzh ( role , Item ) 											
 	local sk_add = SK_XLZH  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1227,10 +1209,8 @@ function Sk_Script_Xlzh ( role , Item )
 	end 
 end 
 
-------
--- ID3211	Мощь бури
-------
-function Sk_Script_Fzlz ( role , Item )
+-- Мощь бури (ID 3211)
+function Sk_Script_Fzlz ( role , Item ) 											
 	local sk_add = SK_FZLZ  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1244,12 +1224,10 @@ function Sk_Script_Fzlz ( role , Item )
 	end 
 end 
 
-------
--- ID3212	Благодать господня
-------
-function Sk_Script_Sy ( role , Item )
+-- Благодать господня (ID 3212)
+function Sk_Script_Sy ( role , Item ) 											
 	local sk_add = SK_SY  
-	local form_sklv = GetSkillLv( role , sk_add )  
+	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
 		return 
@@ -1261,10 +1239,8 @@ function Sk_Script_Sy ( role , Item )
 	end 
 end 
 
-------
--- ID3215	Воскрешение
-------
-function Sk_Script_Fh ( role , Item )
+-- Воскрешение (ID 3215)
+function Sk_Script_Fh ( role , Item ) 											
 	local sk_add = SK_FH  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1278,10 +1254,8 @@ function Sk_Script_Fh ( role , Item )
 	end 
 end 
 
-------
--- ID3216	Воронка торнадо
-------
-function Sk_Script_Jsfb ( role , Item )
+-- Воронка торнадо (ID 3216)
+function Sk_Script_Jsfb ( role , Item ) 											
 	local sk_add = SK_JSFB  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1295,10 +1269,8 @@ function Sk_Script_Jsfb ( role , Item )
 	end 
 end 
 
-------
--- ID3217	Ангельский щит
-------
-function Sk_Script_Tshd ( role , Item )
+-- Ангельский щит (ID 3217)
+function Sk_Script_Tshd ( role , Item ) 											
 	local sk_add = SK_TSHD  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1312,10 +1284,8 @@ function Sk_Script_Tshd ( role , Item )
 	end 
 end 
 
-------
--- ID3218	Печать старейшины
-------
-function Sk_Script_Xzfy ( role , Item )
+-- Печать старейшины (ID 3218)
+function Sk_Script_Xzfy ( role , Item ) 											
 	local sk_add = SK_XZFY  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1329,10 +1299,8 @@ function Sk_Script_Xzfy ( role , Item )
 	end 
 end 
 
-------
--- ID3219	Росчерк тени
-------
-function Sk_Script_Ayzz ( role , Item )
+-- Росчерк тени (ID 3219)
+function Sk_Script_Ayzz ( role , Item ) 											
 	local sk_add = SK_AYZZ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1346,10 +1314,8 @@ function Sk_Script_Ayzz ( role , Item )
 	end 
 end 
 
-------
--- ID3220	Проклятый огонь
-------
-function Sk_Script_Zzzh ( role , Item )
+-- Проклятый огонь (ID 3220)
+function Sk_Script_Zzzh ( role , Item ) 											
 	local sk_add = SK_ZZZH  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1363,10 +1329,8 @@ function Sk_Script_Zzzh ( role , Item )
 	end 
 end 
 
-------
--- ID3221	Контргард
-------
-function Sk_Script_Sdbz ( role , Item )
+-- Контргард (ID 3221)
+function Sk_Script_Sdbz ( role , Item ) 											
 	local sk_add = SK_SDBZ  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1380,10 +1344,8 @@ function Sk_Script_Sdbz ( role , Item )
 	end 
 end 
 
-------
--- ID3222	Бездонное болото
-------
-function Sk_Script_Nzs ( role , Item )
+-- Бездонное болото (ID 3222)
+function Sk_Script_Nzs ( role , Item ) 											
 	local sk_add = SK_SYNZ  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1397,10 +1359,8 @@ function Sk_Script_Nzs ( role , Item )
 	end 
 end 
 
-------
--- ID3223	Магический щит
-------
-function Sk_Script_Xlpz ( role , Item )
+-- Магический щит (ID 3223)
+function Sk_Script_Xlpz ( role , Item ) 											
 	local sk_add = SK_XLPZ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1414,10 +1374,8 @@ function Sk_Script_Xlpz ( role , Item )
 	end 
 end 
 
-------
--- ID3224	Исцеляющий источник
-------
-function Sk_Script_Hfwq ( role , Item )
+-- Исцеляющий источник (ID 3224)
+function Sk_Script_Hfwq ( role , Item ) 											
 	local sk_add = SK_HFWQ  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1431,10 +1389,11 @@ function Sk_Script_Hfwq ( role , Item )
 	end 
 end 
 
-------
--- ID3226	Рубка леса
-------
-function Sk_Script_Ks	( role , Item )
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Книги мирных скиллов (Книги мирных навыков)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Рубка леса (ID 3226)
+function Sk_Script_Ks	( role , Item ) 
 	local sk_add = SK_KS  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1448,16 +1407,14 @@ function Sk_Script_Ks	( role , Item )
 	end 
 end 
 
-------
--- ID2679-ID2688	Справочник по Производству 1 ур. - Справочник по Производству 10 ур.
-------
+-- Введение в производство (ID 2679 - 2688)
 function Sk_Script_ZhiZao( role , Item ) 
 	local star_lv=GetItemID(Item)-2678
 	local sk_add = SK_ZHIZAO  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 1 then
-		SystemNotice(role ,"Для изучения навыка у вас должен быть один свободный слот")
+		SystemNotice(role ,"\194\224\236 \237\243\230\229\237 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \226\251\243\247\232\242\252 \253\242\238 \243\236\229\237\232\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -1466,20 +1423,20 @@ function Sk_Script_ZhiZao( role , Item )
 		return 
 	end 
 	local el_sklv = GetSkillLv( role , SK_KS ) 
-	if el_sklv <star_lv  then
-		SystemNotice ( role , "Из этой книги ты не узнаешь ничего нового, твой "..star_lv.." уровень Рубки леса, к сожалению является недостаточным для изучением." ) 
+	if el_sklv <star_lv  then 	
+		SystemNotice ( role , "\194\224\236 \237\243\230\237\238 \226\251\243\247\232\242\252 \240\243\225\234\243 \228\229\240\229\226\224 "..star_lv.." \243\240\238\226\237\255, \247\242\238\225\251 \239\240\238\247\232\242\224\242\252 \253\242\243 \234\237\232\227\243" ) 
 		UseItemFailed ( role )
 		return
 	end 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if star_lv==1 and Item_CanGet < 1 then
-		SystemNotice(role ,"Для изучения навыка у вас должен быть один свободный слот")
-		UseItemFailed ( role )
+		SystemNotice(role ,"\194\224\236 \237\243\230\229\237 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \226\251\243\247\232\242\252 \253\242\238 \243\236\229\237\232\229")
+	UseItemFailed ( role )
 		return
 	end
 	a = AddChaSkill ( role , sk_add, star_lv , 1 , 1 ) 
 	if a== 0 then 
-		SystemNotice ( role , "Недостаточно очков Жизненных навыков. Попробуйте выполнить больше Исторических заданий" ) 
+		SystemNotice ( role , "\205\229 \245\226\224\242\224\229\242 \238\247\234\238\226 \204\232\240\237\251\245 \237\224\226\251\234\238\226. \207\238\239\251\242\224\233\242\229\241\252 \239\240\238\233\242\232 \234\224\234 \236\238\230\237\238 \225\238\235\252\248\229 \232\241\242\238\240\232\247\229\241\234\232\245 \234\226\229\241\242\238\226." )
 		UseItemFailed ( role )  
 		return 
 	end 
@@ -1494,9 +1451,7 @@ function Sk_Script_ZhiZao( role , Item )
 	end
 end 
 
-------
--- ID2699-ID2708	Справочник по Ремеслу 1 ур. - Справочник по Ремеслу 10 ур.
-------
+-- Справочник по Ремеслу (ID 2699 - 2708)
 function Sk_Script_ZhuZao( role , Item ) 
 	local star_lv=GetItemID(Item)-2698
 	local sk_add = SK_ZHUZAO  
@@ -1506,20 +1461,20 @@ function Sk_Script_ZhuZao( role , Item )
 		return 
 	end 
 	local el_sklv = GetSkillLv( role , SK_WK ) 
-	if el_sklv <star_lv  then
-		SystemNotice ( role ,  "Из этой книги ты не узнаешь ничего нового, твой "..star_lv.." уровень Добычи руды, к сожалению является недостаточным для изучения." ) 
+	if el_sklv <star_lv  then 
+		SystemNotice ( role , "\194\224\236 \237\243\230\237\238 \226\251\243\247\232\242\252 \228\238\225\251\247\243 \240\243\228\251 "..star_lv.." \243\240\238\226\237\255, \247\242\238\225\251 \239\240\238\247\232\242\224\242\252 \253\242\243 \234\237\232\227\243" )
 		UseItemFailed ( role )
 		return
 	end 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if star_lv==1 and Item_CanGet < 1 then
-		SystemNotice(role ,"Для изучения навыка у вас должен быть один свободный слот")
+		SystemNotice(role ,"\194\224\236 \237\243\230\229\237 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \226\251\243\247\232\242\252 \253\242\238 \243\236\229\237\232\229")
 		UseItemFailed ( role )
 		return
 	end
 	a = AddChaSkill ( role , sk_add, star_lv , 1 , 1 ) 
 	if a== 0 then 
-		SystemNotice ( role , "Недостаточно очков Жизненных навыков. Попробуйте выполнить больше Исторических заданий" ) 
+		SystemNotice ( role , "\205\229 \245\226\224\242\224\229\242 \238\247\234\238\226 \204\232\240\237\251\245 \237\224\226\251\234\238\226. \207\238\239\251\242\224\233\242\229\241\252 \239\240\238\233\242\232 \234\224\234 \236\238\230\237\238 \225\238\235\252\248\229 \232\241\242\238\240\232\247\229\241\234\232\245 \234\226\229\241\242\238\226." )
 		UseItemFailed ( role )  
 		return 
 	end
@@ -1532,11 +1487,9 @@ function Sk_Script_ZhuZao( role , Item )
 		SetItemAttr(Itemfinal, ITEMATTR_MAXENERGY ,10000)
 		SetItemAttr(Itemfinal, ITEMATTR_ENERGY ,1)
 	end
-end
+end 
 
-------
--- ID2689-ID2698	Справочник по Кулинарии 1 ур. - Справочник по Кулинарии 10 ур.
-------
+-- Введение в кулинарию (ID 2689 - 2698)
 function Sk_Script_PengRen( role , Item ) 
 	local star_lv=GetItemID(Item)-2688
 	local sk_add = SK_PENGREN  
@@ -1547,13 +1500,13 @@ function Sk_Script_PengRen( role , Item )
 	end 
 	local el_sklv = GetSkillLv( role , SK_BY ) 
 	if el_sklv <star_lv  then
-		SystemNotice ( role ,  "Из этой книги ты не узнаешь ничего нового, твой "..star_lv.." уровень Рыбной ловли, к сожалению является недостаточным для изучения." ) 
+		SystemNotice ( role ,  "\194\224\236 \237\243\230\237\238 \226\251\243\247\232\242\252 \240\251\225\238\235\238\226\241\242\226\238 "..star_lv.." уровня, \247\242\238\225\251 \239\240\238\247\232\242\224\242\252 \253\242\243 \234\237\232\227\243" )
 		UseItemFailed ( role )
 		return
 	end 
 	a = AddChaSkill ( role , sk_add, star_lv , 1 , 1 ) 
 	if a== 0 then 
-		SystemNotice ( role , "Недостаточно очков Жизненных навыков. Попробуйте выполнить больше Исторических заданий" ) 
+		SystemNotice ( role , "\205\229 \245\226\224\242\224\229\242 \238\247\234\238\226 \204\232\240\237\251\245 \237\224\226\251\234\238\226. \207\238\239\251\242\224\233\242\229\241\252 \239\240\238\233\242\232 \234\224\234 \236\238\230\237\238 \225\238\235\252\248\229 \232\241\242\238\240\232\247\229\241\234\232\245 \234\226\229\241\242\238\226." )
 		UseItemFailed ( role )  
 		return 
 	end 
@@ -1566,11 +1519,9 @@ function Sk_Script_PengRen( role , Item )
 		SetItemAttr(Itemfinal, ITEMATTR_MAXENERGY ,10000)
 		SetItemAttr(Itemfinal, ITEMATTR_ENERGY ,1)
 	end
-end
+end 
 
-------
--- ID2709-ID2718	Справочник по Анализу 1 ур. - Справочник по Анализу 10 ур.
-------
+-- Справочник по Анализу (ID 2709 - 2718)
 function Sk_Script_FenJie( role , Item ) 
 	local star_lv=GetItemID(Item)-2708
 	local sk_add = SK_FENJIE  
@@ -1580,20 +1531,20 @@ function Sk_Script_FenJie( role , Item )
 		return 
 	end 
 	local el_sklv = GetSkillLv( role , SK_DL ) 
-	if el_sklv <star_lv  then 
-		SystemNotice ( role , "Из этой книги ты не узнаешь ничего нового, твой "..star_lv.." уровень Траления, к сожалению является недостаточным для изучения." ) 
+	if el_sklv <star_lv  then
+		SystemNotice ( role , "\194\224\236 \237\243\230\237\238 \226\251\243\247\232\242\252 \242\240\224\235\229\237\232\229 "..star_lv.." \243\240\238\226\237\255, \247\242\238\225\251 \239\240\238\247\232\242\224\242\252 \253\242\243 \234\237\232\227\243" ) 
 		UseItemFailed ( role )
 		return
 	end 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if star_lv==1 and Item_CanGet < 1 then
-		SystemNotice(role ,"Для изучения навыка у вас должен быть один свободный слот")
+		SystemNotice(role ,"\194\224\236 \237\243\230\229\237 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \226\251\243\247\232\242\252 \253\242\238 \243\236\229\237\232\229")
 		UseItemFailed ( role )
 		return
 	end
 	a = AddChaSkill ( role , sk_add, star_lv , 1 , 1 ) 
 	if a== 0 then 
-		SystemNotice ( role , "Недостаточно очков Жизненных навыков. Попробуйте выполнить больше Исторических заданий" ) 
+		SystemNotice ( role , "\205\229 \245\226\224\242\224\229\242 \238\247\234\238\226 \204\232\240\237\251\245 \237\224\226\251\234\238\226. \207\238\239\251\242\224\233\242\229\241\252 \239\240\238\233\242\232 \234\224\234 \236\238\230\237\238 \225\238\235\252\248\229 \232\241\242\238\240\232\247\229\241\234\232\245 \234\226\229\241\242\238\226." )
 		UseItemFailed ( role )  
 		return 
 	end
@@ -1606,12 +1557,10 @@ function Sk_Script_FenJie( role , Item )
 		SetItemAttr(Itemfinal, ITEMATTR_MAXENERGY ,10000)
 		SetItemAttr(Itemfinal, ITEMATTR_ENERGY ,1)
 	end
-end
+end 
 
-------
--- ID3225	Добыча руды
-------
-function Sk_Script_Wk( role , Item ) 
+-- Добыча руды (ID 3225)
+function Sk_Script_Wk	( role , Item ) 
 	local sk_add = SK_WK  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1625,10 +1574,12 @@ function Sk_Script_Wk( role , Item )
 	end 
 end 
 
-------
--- ID3227	Усердие
-------
-function Sk_Script_Jr( role , Item )
+--------------------------------------------------------------------------------------------------
+-- Книги боевых скиллов
+--------------------------------------------------------------------------------------------------
+
+-- Усердие (ID 3227)
+function Sk_Script_Jr	( role , Item ) 
 	local sk_add = SK_JR  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1642,10 +1593,8 @@ function Sk_Script_Jr( role , Item )
 	end 
 end 
 
-------
--- ID3228	Водоток
-------
-function Sk_Script_Sl( role , Item ) 
+-- Водоток (ID 3228)
+function Sk_Script_Sl	( role , Item ) 
 	local sk_add = SK_SL  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1659,11 +1608,9 @@ function Sk_Script_Sl( role , Item )
 	end 
 end 
 
-------
--- ID3229	Броня из раковин
-------
-function Sk_Script_Bkzj( role , Item )
-	local sk_add = SK_BKZJ
+-- Броня из раковин (ID 3229)
+function Sk_Script_Bkzj ( role , Item ) 
+	local sk_add = SK_BKZJ   
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1676,11 +1623,9 @@ function Sk_Script_Bkzj( role , Item )
 	end 
 end 
 
-------
--- ID3230	Торнадо
-------
-function Sk_Script_Jf( role , Item )
-	local sk_add = SK_JF
+-- Торнадо (ID 3230)
+function Sk_Script_Jf ( role , Item ) 
+	local sk_add = SK_JF   
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1693,11 +1638,9 @@ function Sk_Script_Jf( role , Item )
 	end 
 end 
 
-------
--- ID3231	Молния
-------
-function Sk_Script_Lj( role , Item )
-	local sk_add = SK_LJ
+-- Молния (ID 3231)
+function Sk_Script_Lj ( role , Item ) 
+	local sk_add = SK_LJ    
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1710,10 +1653,8 @@ function Sk_Script_Lj( role , Item )
 	end 
 end 
 
-------
--- ID3232	Переплетение водорослей
-------
-function Sk_Script_Hzcr( role , Item )
+-- Переплетение водорослей (ID 3232)
+function Sk_Script_Hzcr ( role , Item ) 
 	local sk_add = SK_HZCR     
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1727,10 +1668,8 @@ function Sk_Script_Hzcr( role , Item )
 	end 
 end 
 
-------
--- ID3233	Коралловый луч
-------
-function Sk_Script_Bkcj( role , Item ) 
+-- Коралловый луч (ID 3233)
+function Sk_Script_Bkcj ( role , Item ) 
 	local sk_add = SK_BKCJ      
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1744,10 +1683,8 @@ function Sk_Script_Bkcj( role , Item )
 	end 
 end 
 
-------
--- ID3234	Попутный ветер
-------
-function Sk_Script_Sf( role , Item ) 
+-- Попутный ветер (ID 3234)
+function Sk_Script_Sf ( role , Item ) 
 	local sk_add = SK_SF       
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1761,10 +1698,8 @@ function Sk_Script_Sf( role , Item )
 	end 
 end 
 
-------
--- ID3235	Вихрь
-------
-function Sk_Script_Xw( role , Item ) 
+-- Вихрь (ID 3235)
+function Sk_Script_Xw ( role , Item ) 
 	local sk_add = SK_XW        
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
@@ -1778,11 +1713,9 @@ function Sk_Script_Xw( role , Item )
 	end 
 end 
 
-------
--- ID3236	Туман
-------
-function Sk_Script_Mw( role , Item ) 
-	local sk_add = SK_MW
+-- Туман (ID 3236)
+function Sk_Script_Mw ( role , Item ) 
+	local sk_add = SK_MW        
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1795,11 +1728,9 @@ function Sk_Script_Mw( role , Item )
 	end 
 end 
 
-------
--- ID3237	Грозовая завеса
-------
-function Sk_Script_Lm( role , Item ) 
-	local sk_add = SK_LM
+-- Грозовая завеса (ID 3237)
+function Sk_Script_Lm ( role , Item ) 
+	local sk_add = SK_LM         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1812,11 +1743,9 @@ function Sk_Script_Lm( role , Item )
 	end 
 end 
 
-------
--- ID3238	Бронелом
-------
-function Sk_Script_Pj( role , Item ) 
-	local sk_add = SK_PJ
+-- Бронелом (ID 3238)
+function Sk_Script_Pj ( role , Item ) 
+	local sk_add = SK_PJ         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1829,11 +1758,9 @@ function Sk_Script_Pj( role , Item )
 	end 
 end 
 
-------
--- ID3239	Воодушевление
-------
-function Sk_Script_Fnq( role , Item ) 
-	local sk_add = SK_FNQ
+-- Воодушевление (ID 3239)
+function Sk_Script_Fnq ( role , Item ) 
+	local sk_add = SK_FNQ         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1846,11 +1773,9 @@ function Sk_Script_Fnq( role , Item )
 	end 
 end 
 
-------
--- ID3197	Ледяная стрела
-------
-function Sk_Script_Bdj( role , Item ) 
-	local sk_add = SK_BDJ
+-- Ледяная стрела (ID 3197)
+function Sk_Script_Bdj ( role , Item ) 
+	local sk_add = SK_BDJ         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1863,14 +1788,12 @@ function Sk_Script_Bdj( role , Item )
 	end 
 end 
 
-------
--- ID3241	Отравленная стрела
-------
-function Sk_Script_Dj( role , Item ) 
-	local sk_add = SK_DJ
+-- Отравленная стрела (ID 3241)
+function Sk_Script_Dj ( role , Item ) 
+	local sk_add = SK_DJ         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
-		UseItemFailed ( role )
+		UseItemFailed ( role )  
 		return 
 	end 
 	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
@@ -1880,31 +1803,12 @@ function Sk_Script_Dj( role , Item )
 	end 
 end 
 
-------
--- ID3242	Закалка
-------
-function Sk_Script_Shpf( role , Item )
-	local sk_add = SK_SHPF
-	local form_sklv = GetSkillLv( role , sk_add )  
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	if a== 0 then 
-		UseItemFailed ( role )
-		return 
-	end 
-end 
-
-------
--- ID3297	Насмешка
-------
-function Sk_Script_Cf( role , Item )
-	local sk_add = SK_CHF
+-- Закалка (ID 3242)
+function Sk_Script_Shpf ( role , Item ) 
+	local sk_add = SK_SHPF         
 	local form_sklv = GetSkillLv( role , sk_add ) 
-	if form_sklv ~= 0  then
-		UseItemFailed ( role )
+	if form_sklv ~= 0  then 
+		UseItemFailed ( role )  
 		return 
 	end 
 	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
@@ -1912,13 +1816,10 @@ function Sk_Script_Cf( role , Item )
 		UseItemFailed ( role )  
 		return 
 	end 
-end
+end 
 
-------
--- ID3298	Рык
-------
-function Sk_Script_Px( role , Item )
-	local sk_add = SK_PAX
+function Sk_Script_Cf ( role , Item )
+	local sk_add = SK_CHF         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1931,11 +1832,9 @@ function Sk_Script_Px( role , Item )
 	end 
 end
 
-------
--- ID3300	Сильная магия
-------
-function Sk_Script_MLCH( role , Item )
-	local sk_add = SK_MLCH
+-- Рык (ID 3298)
+function Sk_Script_Px ( role , Item )
+	local sk_add = SK_PAX         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1948,11 +1847,24 @@ function Sk_Script_MLCH( role , Item )
 	end 
 end
 
-------
--- ID3301	Кристальное благословение
-------
-function Sk_Script_BLYZ( role , Item )
-	local sk_add = SK_BLYZ
+-- Сильная магия (ID 3300)
+function Sk_Script_MLCH ( role , Item )
+	local sk_add = SK_MLCH         
+	local form_sklv = GetSkillLv( role , sk_add )
+	if form_sklv ~= 0  then 
+		UseItemFailed ( role )  
+		return 
+	end 
+	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end
+
+-- Кристальное благословение (ID 3301)
+function Sk_Script_BLYZ ( role , Item )
+	local sk_add = SK_BLYZ         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -1964,20 +1876,24 @@ function Sk_Script_BLYZ( role , Item )
 		return 
 	end 
 end
+
+--------------------------------------------------------------------------------------------------
+--Неизвестные вещи (unknow2979 - unknow3027; ID 3243 - 3291)
+--------------------------------------------------------------------------------------------------
 
 function AddSailSkill ( role , i , sk_add , sailexp_req ) 
 	LG ( "AddSailSkill" , "__add a new sailsk________________________ "  ) 
 
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= i - 1  then 
-		SystemNotice ( role , "Эта книга не в состояние поднять ваш текущий уровень умения." ) 
+		SystemNotice ( role , "Эта книга не может поднять ваш уровень умения " ) 
 		UseItemFailed ( role )  
 		return 
 	end 
 
 	local sail_exp_remain = GetChaAttr ( role , ATTR_CLEFT_SAILEXP ) 
 	if sail_exp_remain < sailexp_req  then 
-		SystemNotice ( role , "Опыта навигации недостаточно. Невозможно поднять уровень умения. Пожалуйста, старайтесь лучше!" ) 
+		SystemNotice ( role , "Remaining Navigation experience insufficient. Unable to raise skill level. Please try harder!" ) 
 		UseItemFailed ( role )  
 		return 
 	end 
@@ -1987,7 +1903,7 @@ function AddSailSkill ( role , i , sk_add , sailexp_req )
 	LG ( "AddSailSkill" , " Remaining Navigation EXP  " , sail_exp_remain ) 
 
 	SetCharaAttr ( sail_exp_remain , role , ATTR_CLEFT_SAILEXP ) 
-	SystemNotice ( role , "Навигационного опыта использовано:" .. sailexp_req ) 
+	SystemNotice ( role , "Consumes Navigation experience" .. sailexp_req ) 
 
 	a = AddChaSkill ( role , sk_add, 1 , 0 , 0 ) 
 	if a== 0 then 
@@ -1996,359 +1912,364 @@ function AddSailSkill ( role , i , sk_add , sailexp_req )
 	end 
 end 
 
-function Sk_Script_Hpsl1 ( role , Item )
-	local i = 1
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Hpsl1 ( role , Item ) 
+	local i = 1 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+
 end
 
-function Sk_Script_Hpsl2 ( role , Item )
-	local i = 2
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Hpsl3 ( role , Item )
-	local i = 3
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Hpsl4 ( role , Item )
-	local i = 4
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Hpsl5 ( role , Item )
-	local i = 5
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Hpsl6 ( role , Item )
-	local i = 6
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Hpsl7 ( role , Item )
-	local i = 7
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Hpsl8 ( role , Item )
-	local i = 8
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Hpsl9 ( role , Item )
-	local i = 9
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Hpsl10 ( role , Item )
-	local i = 10
-	local sk_add = SK_HPSL
-	local sailexp_req = sk_hpsl [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Jbjg1 ( role , Item )
-	local i = 1
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Jbjg2 ( role , Item )
-	local i = 2
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Jbjg3 ( role , Item )
-	local i = 3
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Jbjg4 ( role , Item )
-	local i = 4
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Jbjg5 ( role , Item )
-	local i = 5
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Jbjg6 ( role , Item )
-	local i = 6
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
+function Sk_Script_Hpsl2 ( role , Item ) 
+	local i = 2 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Jbjg7 ( role , Item )
-	local i = 7
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Jbjg8 ( role , Item )
-	local i = 8
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
-end
-
-function Sk_Script_Jbjg9 ( role , Item )
-	local i = 9
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
+function Sk_Script_Hpsl3 ( role , Item ) 
+	local i = 3 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Jbjg10 ( role , Item )
-	local i = 10
-	local sk_add = SK_JBJG
-	local sailexp_req = sk_jbjg [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Hpsl4 ( role , Item ) 
+	local i = 4 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs1 ( role , Item )
-	local i = 1
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Hpsl5 ( role , Item ) 
+	local i = 5 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs2 ( role , Item )
-	local i = 2
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Hpsl6 ( role , Item ) 
+	local i = 6 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs3 ( role , Item )
-	local i = 3
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Hpsl7 ( role , Item ) 
+	local i = 7 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs4 ( role , Item )
-	local i = 4
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Hpsl8 ( role , Item ) 
+	local i = 8 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs5 ( role , Item )
-	local i = 5
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Hpsl9 ( role , Item ) 
+	local i = 9 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs6 ( role , Item )
-	local i = 6
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Hpsl10 ( role , Item ) 
+	local i = 10 
+	local sk_add = SK_HPSL         
+	local sailexp_req = sk_hpsl [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs7 ( role , Item )
-	local i = 7
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg1 ( role , Item ) 
+	local i = 1 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs8 ( role , Item )
-	local i = 8
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg2 ( role , Item ) 
+	local i = 2 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs9 ( role , Item )
-	local i = 9
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg3 ( role , Item ) 
+	local i = 3 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Cfs10 ( role , Item )
-	local i = 10
-	local sk_add = SK_CFS
-	local sailexp_req = sk_cfs [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg4 ( role , Item ) 
+	local i = 4 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh1 ( role , Item )
-	local i = 1
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg5 ( role , Item ) 
+	local i = 5 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh2 ( role , Item )
-	local i = 2
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg6 ( role , Item ) 
+	local i = 6 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh3 ( role , Item )
-	local i = 3
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg7 ( role , Item ) 
+	local i = 7 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh4 ( role , Item )
-	local i = 4
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg8 ( role , Item ) 
+	local i = 8 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh5 ( role , Item )
-	local i = 5
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg9 ( role , Item ) 
+	local i = 9 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh6 ( role , Item )
-	local i = 6
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Jbjg10 ( role , Item ) 
+	local i = 10 
+	local sk_add = SK_JBJG         
+	local sailexp_req = sk_jbjg [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh7 ( role , Item )
-	local i = 7
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Cfs1 ( role , Item ) 
+	local i = 1 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh8 ( role , Item )
-	local i = 8
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Cfs2 ( role , Item ) 
+	local i = 2 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh9 ( role , Item )
-	local i = 9
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
-	AddSailSkill ( role , i , sk_add , sailexp_req )
+function Sk_Script_Cfs3 ( role , Item ) 
+	local i = 3 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
-function Sk_Script_Ctqh10 ( role , Item )
-	local i = 10
-	local sk_add = SK_CTQH
-	local sailexp_req = sk_ctqh [ i ]
+function Sk_Script_Cfs4 ( role , Item ) 
+	local i = 4 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Cfs5 ( role , Item ) 
+	local i = 5 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Cfs6 ( role , Item ) 
+	local i = 6 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Cfs7 ( role , Item ) 
+	local i = 7 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Cfs8 ( role , Item ) 
+	local i = 8 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Cfs9 ( role , Item ) 
+	local i = 9 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Cfs10 ( role , Item ) 
+	local i = 10 
+	local sk_add = SK_CFS         
+	local sailexp_req = sk_cfs [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Ctqh1 ( role , Item ) 
+	local i = 1 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Ctqh2 ( role , Item ) 
+	local i = 2 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Ctqh3 ( role , Item ) 
+	local i = 3 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Ctqh4 ( role , Item ) 
+	local i = 4 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+
+end
+
+function Sk_Script_Ctqh5 ( role , Item ) 
+	local i = 5 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Ctqh6 ( role , Item ) 
+	local i = 6 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Ctqh7 ( role , Item ) 
+	local i = 7 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Ctqh8 ( role , Item ) 
+	local i = 8 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Ctqh9 ( role , Item ) 
+	local i = 9 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
+	AddSailSkill ( role , i , sk_add , sailexp_req ) 
+end
+
+function Sk_Script_Ctqh10 ( role , Item ) 
+	local i = 10 
+	local sk_add = SK_CTQH         
+	local sailexp_req = sk_ctqh [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr1 ( role , Item ) 
 	local i = 1 
-	local sk_add = SK_BJKR
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr2 ( role , Item ) 
-	local i = 2
-	local sk_add = SK_BJKR
+	local i = 2 
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr3 ( role , Item ) 
 	local i = 3 
-	local sk_add = SK_BJKR
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr4 ( role , Item ) 
 	local i = 4 
-	local sk_add = SK_BJKR
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr5 ( role , Item ) 
 	local i = 5 
-	local sk_add = SK_BJKR
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr6 ( role , Item ) 
 	local i = 6 
-	local sk_add = SK_BJKR
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr7 ( role , Item ) 
 	local i = 7 
-	local sk_add = SK_BJKR
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr8 ( role , Item ) 
 	local i = 8 
-	local sk_add = SK_BJKR
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr9 ( role , Item ) 
 	local i = 9 
-	local sk_add = SK_BJKR
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
 function Sk_Script_Bjkr10 ( role , Item ) 
 	local i = 10 
-	local sk_add = SK_BJKR
+	local sk_add = SK_BJKR         
 	local sailexp_req = sk_bjkr [ i ]  
 	AddSailSkill ( role , i , sk_add , sailexp_req ) 
 end
 
---ID3294	Рыболовство
+--------------------------------------------------------------------------------------------------
+--Книги мирных скиллов (Книги мирных навыков)
+--------------------------------------------------------------------------------------------------
+--Рыболовство (ID 3294)
 function Sk_Script_By ( role , Item )
-	local sk_add = SK_BY
+	local sk_add = SK_BY         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -2361,9 +2282,9 @@ function Sk_Script_By ( role , Item )
 	end 
 end
 
---ID3295	Траление
+--Траление (ID 3295)
 function Sk_Script_Dl ( role , Item )
-	local sk_add = SK_DL
+	local sk_add = SK_DL         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -2376,9 +2297,9 @@ function Sk_Script_Dl ( role , Item )
 	end 
 end
 
---ID3296	Поставить ларек
+--Поставить ларек (ID 3296)
 function Sk_Script_Btjn ( role , Item )
-	local sk_add = SK_BAT
+	local sk_add = SK_BAT         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -2391,9 +2312,9 @@ function Sk_Script_Btjn ( role , Item )
 	end 
 end
 
---ID3299	Ремонт
+--Ремонт (ID 3299)
 function Sk_Script_Pkqx ( role , Item )
-	local sk_add = SK_PKQX
+	local sk_add = SK_PKQX         
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv ~= 0  then 
 		UseItemFailed ( role )  
@@ -2406,7 +2327,10 @@ function Sk_Script_Pkqx ( role , Item )
 	end 
 end
 
---ID3141	Обратный билет
+--------------------------------------------------------------------------------------------------
+--Билеты
+--------------------------------------------------------------------------------------------------
+--Обратный билет (ID 3141)
 function Jz_Script_hc(role, Item )
 	local i = CheckBagItem(role,3141)
 	local k = ChaIsBoat(role)
@@ -2415,7 +2339,7 @@ function Jz_Script_hc(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "Телепортация очень утомительный процесс. Пожалуйста, восстановите Ваше здоровье и ману ")
 		UseItemFailed ( role )
 		return
 	end
@@ -2430,9 +2354,10 @@ function Jz_Script_hc(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+	
 end
 
---ID4602	Билет до Серебряного
+--Билет до Серебряного (ID 4602)
 function Jz_Script_bycs(role, Item )
 	local i = CheckBagItem(role,4602)
 	local k = ChaIsBoat(role)
@@ -2441,7 +2366,7 @@ function Jz_Script_bycs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -2456,9 +2381,10 @@ function Jz_Script_bycs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID4603	Билет до Шайтана
+--Билет до Шайтана (ID 4603)
 function Jz_Script_slcs(role, Item )
 	local i = CheckBagItem(role,4603)
 	local k = ChaIsBoat(role)
@@ -2467,7 +2393,7 @@ function Jz_Script_slcs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -2482,9 +2408,10 @@ function Jz_Script_slcs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+
 end
 
---ID4604	Билет до Ледыни
+--Билет до Ледыни (ID 4604)
 function Jz_Script_blbcs(role, Item )
 	local i = CheckBagItem(role,4604)
 	local k = ChaIsBoat(role)
@@ -2493,7 +2420,7 @@ function Jz_Script_blbcs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -2508,9 +2435,10 @@ function Jz_Script_blbcs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+
 end
 
---ID332	Билет на о. Весны
+--Билет на о. Весны (Id 0332)
 function Jz_Script_cfzs(role, Item )
 	local i = CheckBagItem(role,332)
 	local k = ChaIsBoat(role)
@@ -2519,7 +2447,7 @@ function Jz_Script_cfzs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -2534,42 +2462,77 @@ function Jz_Script_cfzs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID4547	Корабельный лес
+--Билет на о. Арены (ID n\a)
+function Jz_Script_cfzsAI(role, Item )
+	local i = CheckBagItem(role,5780)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
+		UseItemFailed ( role )
+		return
+	end 
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,5780,1)
+			if j == 1 then
+				MoveCity(role,"Arena Isle")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+	end
+		
+end
+
+--------------------------------------------------------------------------------------------------
+--Корабельнай лес и мясо
+--------------------------------------------------------------------------------------------------
+
+--Корабельный лес (ID 4547)
 function ItemUse_Wood ( role , Item ) 
 	local k = ChaIsBoat ( role ) 
 	if k == 0 then 
-		UseItemFailed ( role ) 
-		SystemNotice ( role , "Предмет может быть использован только на море" )
+		UseItemFailed ( role )
+		SystemNotice ( role , "\207\240\229\228\236\229\242 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237 \242\238\235\252\234\238 \226 \236\238\240\229" )
 		return 
 	end 
 	local hp = GetChaAttr ( role , ATTR_HP ) 
 	local mxhp = GetChaAttr ( role, ATTR_MXHP ) 
 	if hp < 0 then 
 		UseItemFailed ( role ) 
-		SystemNotice ( role , "Ваш корабль затонул. Невозможно использовать предмет" ) 
+		SystemNotice ( role , "\209\243\228\237\238 \231\224\242\238\237\243\235\238. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242" ) 
 	end 
 	local statelv = 1
 	local statetime = 63
 	AddState ( role , role , STATE_MCK , statelv , statetime )
-end
+	
+ 
 
-function State_MCK_Add ( role , statelv )
-	local hpdmg = -100
-	Hp_Endure_Dmg ( role , hpdmg )
-	ALLExAttrSet(role)
+end 
+
+function State_MCK_Add ( role , statelv ) 
+	local hpdmg = -100   
+	Hp_Endure_Dmg ( role , hpdmg ) 
+	ALLExAttrSet(role)  
 end 
 
 function State_MCK_Rem ( role , statelv ) 
 end
 
---ID4551	Мясо
+--Мясо (ID 4551)
 function ItemUse_Fish ( role , Item ) 
 	local k = ChaIsBoat ( role ) 
 	if k == 0 then 
 		UseItemFailed ( role ) 
-		SystemNotice ( role , "Предмет может быть использован только на море" )
+		SystemNotice ( role , "\207\240\229\228\236\229\242 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237 \242\238\235\252\234\238 \226 \236\238\240\229" )
 		return 
 	end 
 	local sp = GetChaAttr ( role , ATTR_SP ) 
@@ -2578,14 +2541,18 @@ function ItemUse_Fish ( role , Item )
 	local mxhp = GetChaAttr ( role, ATTR_MXHP ) 
 	if hp < 0 then 
 		UseItemFailed ( role ) 
-		SystemNotice ( role , "Ваш корабль затонул. Невозможно использовать предмет" ) 
+		SystemNotice ( role , "\209\243\228\237\238 \231\224\242\238\237\243\235\238. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242" ) 
 	end 
 	local sp_resume = 50 
 	sp = math.min ( mxsp , sp + sp_resume  ) 
 	SetCharaAttr ( sp , role , ATTR_SP ) 
 end 
 
---ID3915	Лунный пирог
+--------------------------------------------------------------------------------------------------
+--Лунный пирог
+--------------------------------------------------------------------------------------------------
+
+--Лунный пирог (ID 3915)
 function ItemUse_YB ( role , Item )
 	local exp = Exp ( role )
 	local charLv=Lv ( role )
@@ -2593,12 +2560,16 @@ function ItemUse_YB ( role , Item )
 	if charLv >= 80 then
 		exp_new = exp + 6
 	else
-		exp_new = exp + 300
+		exp_new = exp + 300		
 	end
 	SetCharaAttr ( exp_new , role , ATTR_CEXP )
 end
 
---ID1815	Красивый сундук
+--------------------------------------------------------------------------------------------------
+--Сундуки
+--------------------------------------------------------------------------------------------------
+
+--Красивый сундук (ID 1815)
 function ItemUse_HLBX ( role , Item )
 	local item_type = BaoXiang_HLBX 
 	local item_type_rad = BaoXiang_HLBX_Rad 
@@ -2608,15 +2579,15 @@ function ItemUse_HLBX ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -2639,13 +2610,9 @@ function ItemUse_HLBX ( role , Item )
 		ItemCount = item_type_count [c] 
 	end 
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
-	--local itemname = GetItemName ( ItemId ) 
-	--local cha_name = GetChaDefaultName ( role ) 
-	--local message = cha_name.." открывает сундук и получает "..itemname  
-	--Notice ( message )
 end 
 
---ID1814	Мистический сундук
+--Мистический сундук (ID 1814)
 function ItemUse_SMBX ( role , Item )
 	local item_type = BaoXiang_SMBX 
 	local item_type_rad = BaoXiang_SMBX_Rad 
@@ -2654,16 +2621,16 @@ function ItemUse_SMBX ( role , Item )
 	local item_quality = BaoXiang_SMBX_Qua
 	local General = 0  
 	local ItemId = 0 
-
+	
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -2687,15 +2654,9 @@ function ItemUse_SMBX ( role , Item )
 		ItemCount = item_type_count [c] 
 	end 
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
-	--local itemname = GetItemName ( ItemId ) 
-	--local cha_name = GetChaDefaultName ( role ) 
-	--local message = cha_name.." открывает сундук и получает "..itemname  
-	--Notice ( message )
 end 
 
---ID2442	Затанувший шкаф
---ID2443	Затанувший шкаф
---ID1852	Обычный сундук
+--Обычный сундук (ID 1852)
 function ItemUse_SYBOX ( role , Item )
 	local item_type = BaoXiang_SYBOX 
 	local item_type_rad = BaoXiang_SYBOX_Rad 
@@ -2708,62 +2669,12 @@ function ItemUse_SYBOX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
-	end 
-	local a = math.random ( 1, General )
-	local b = 0
-	local d = 0
-	local c = -1
-	for k = 1 , maxitem , 1 do
-
-		d = item_type_rad [ k ] + b
-
-		 if a <= d and a > b then
-			c = k
-			break 
-		end 
-		b = d 
-
-	end 
-	if c == -1 then 
-		ItemId = 3124 
-	else 
-		ItemId = item_type [c]  
-		ItemCount = item_type_count [c] 
-	end 
-	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
-	 if ItemId >= 0183 and  ItemId <= 0199 then
-		local itemname = GetItemName ( ItemId ) 
-		local cha_name = GetChaDefaultName ( role ) 
-		local message = cha_name.." открывает сундук и получает "..itemname  
-		Notice ( message )
-	end
-end
-
---ID1851	Сундук с вещами
-function ItemUse_WZX ( role , Item )
-	local item_type = BaoXiang_WZX 
-	local item_type_rad = BaoXiang_WZX_Rad
-	local item_type_count = BaoXiang_WZX_Count
-	local maxitem = BaoXiang_WZX_Mxcount
-	local item_quality = BaoXiang_WZX_Qua
-	local General = 0  
-	local ItemId = 0 
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
-		UseItemFailed ( role )
-		return
-	end
-
-	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -2787,13 +2698,61 @@ function ItemUse_WZX ( role , Item )
 		ItemCount = item_type_count [c] 
 	end 
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
---	local itemname = GetItemName ( ItemId ) 
---	local cha_name = GetChaDefaultName ( role ) 
---	local message = cha_name.." открывает сундук и получает"..itemname  
---	Notice ( message )
+	 if   ItemId >= 0183 and  ItemId <= 0199   then
+	 
+		local itemname = GetItemName ( ItemId ) 
+		local cha_name = GetChaDefaultName ( role ) 
+		local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
+ 		Notice ( message )
+	end
 end
 
---ID3400	Скелетный сундук мечника
+--Сундук с вещами (ID 1851)
+function ItemUse_WZX ( role , Item )
+	local item_type = BaoXiang_WZX 
+	local item_type_rad = BaoXiang_WZX_Rad 
+	local item_type_count = BaoXiang_WZX_Count 
+	local maxitem = BaoXiang_WZX_Mxcount
+	local item_quality = BaoXiang_WZX_Qua
+	local General = 0  
+	local ItemId = 0 
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
+		UseItemFailed ( role )
+		return
+	end
+	
+	for i = 1 , maxitem , 1 do 
+		General = item_type_rad [ i ] + General		
+	end 
+	local a = math.random ( 1, General )
+	local b = 0
+	local d = 0 
+	local c = -1
+	for k = 1 , maxitem , 1 do
+
+		d = item_type_rad [ k ] + b
+
+		 if a <= d and a > b then
+			c = k
+			break 
+		end 
+		b = d 
+
+
+	end 
+	if c == -1 then 
+		ItemId = 3124 
+	else 
+		ItemId = item_type [c]  
+		ItemCount = item_type_count [c] 
+	end 
+	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
+end
+
+--Скелетный сундук мечника (ID 3400)
 function ItemUse_KLJS ( role , Item )
 	local item_type = BaoXiang_KLJS 
 	local item_type_rad = BaoXiang_KLJS_Rad 
@@ -2805,13 +2764,13 @@ function ItemUse_KLJS ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -2837,11 +2796,11 @@ function ItemUse_KLJS ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end 
 
---ID3401	Скелетный сундук охотника
+--Скелетный сундук охотника (ID 3401)
 function ItemUse_KLLR ( role , Item )
 	local item_type = BaoXiang_KLLR 
 	local item_type_rad = BaoXiang_KLLR_Rad 
@@ -2853,13 +2812,13 @@ function ItemUse_KLLR ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -2885,11 +2844,11 @@ function ItemUse_KLLR ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end 
 
---ID3402	Скелетный сундук знахарки
+--Скелетный сундук знахарки (ID 3402)
 function ItemUse_KLYS ( role , Item )
 	local item_type = BaoXiang_KLYS 
 	local item_type_rad = BaoXiang_KLYS_Rad 
@@ -2901,13 +2860,13 @@ function ItemUse_KLYS ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -2933,11 +2892,11 @@ function ItemUse_KLYS ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3403	Скелетный сундук исследователя
+--Скелетный сундук исследователя (ID 3403)
 function ItemUse_KLMX ( role , Item )
 	local item_type = BaoXiang_KLMX 
 	local item_type_rad = BaoXiang_KLMX_Rad 
@@ -2949,13 +2908,13 @@ function ItemUse_KLMX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -2981,11 +2940,11 @@ function ItemUse_KLMX ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3404	Сундук заклинаний воителя
+--Сундук заклинаний воителя (ID 3404)
 function ItemUse_ZSSJ ( role , Item )
 	local item_type = BaoXiang_ZSSJ 
 	local item_type_rad = BaoXiang_ZSSJ_Rad 
@@ -2997,13 +2956,13 @@ function ItemUse_ZSSJ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3029,11 +2988,11 @@ function ItemUse_ZSSJ ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3405	Сундук заклинаний чемпиона
+--Сундук заклинаний чемпиона (ID 3405)
 function ItemUse_ZSJS ( role , Item )
 	local item_type = BaoXiang_ZSJS 
 	local item_type_rad = BaoXiang_ZSJS_Rad 
@@ -3043,15 +3002,15 @@ function ItemUse_ZSJS ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3077,11 +3036,11 @@ function ItemUse_ZSJS ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3406	Сундук заклинаний стрелка
+--Сундук заклинаний стрелка (ID 3406)
 function ItemUse_ZSJJ ( role , Item )
 	local item_type = BaoXiang_ZSJJ
 	local item_type_rad = BaoXiang_ZSJJ_Rad 
@@ -3093,13 +3052,13 @@ function ItemUse_ZSJJ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3125,11 +3084,11 @@ function ItemUse_ZSJJ ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3407	Сундук заклинаний целительницы
+--Сундук заклинаний целительницы (ID 3407)
 function ItemUse_ZSSZ ( role , Item )
 	local item_type = BaoXiang_ZSSZ
 	local item_type_rad = BaoXiang_ZSSZ_Rad 
@@ -3141,18 +3100,18 @@ function ItemUse_ZSSZ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
 	local d = 0 
-	local c = -1
+	local c = -1	
 	for k = 1 , maxitem , 1 do
 
 		d = item_type_rad [ k ] + b
@@ -3173,11 +3132,11 @@ function ItemUse_ZSSZ ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3408	Сундук заклинаний колдуньи
+--Сундук заклинаний колдуньи (ID 3408)
 function ItemUse_ZSFY ( role , Item )
 	local item_type = BaoXiang_ZSFY
 	local item_type_rad = BaoXiang_ZSFY_Rad 
@@ -3187,15 +3146,15 @@ function ItemUse_ZSFY ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3221,11 +3180,11 @@ function ItemUse_ZSFY ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3409	Cундук заклинаний мореплавателя
+--Cундук заклинаний мореплавателя (ID 3409)
 function ItemUse_ZSHH ( role , Item )
 	local item_type = BaoXiang_ZSHH
 	local item_type_rad = BaoXiang_ZSHH_Rad 
@@ -3235,15 +3194,15 @@ function ItemUse_ZSHH ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3268,11 +3227,11 @@ function ItemUse_ZSHH ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3410	Исчезающий сундук воителя
+--Исчезающий сундук воителя (ID 3410)
 function ItemUse_HLSJ ( role , Item )
 	local item_type = BaoXiang_HLSJ
 	local item_type_rad = BaoXiang_HLSJ_Rad 
@@ -3282,15 +3241,15 @@ function ItemUse_HLSJ ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3315,11 +3274,11 @@ function ItemUse_HLSJ ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3411	Сундук исчезновения чемпиона
+--Сундук исчезновения чемпиона (ID 3411)
 function ItemUse_HLJS ( role , Item )
 	local item_type = BaoXiang_HLJS
 	local item_type_rad = BaoXiang_HLJS_Rad 
@@ -3329,15 +3288,15 @@ function ItemUse_HLJS ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3362,11 +3321,11 @@ function ItemUse_HLJS ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3412	Сундук исчезновения стрелка
+--Сундук исчезновения стрелка (ID 3412)
 function ItemUse_HLJJ ( role , Item )
 	local item_type = BaoXiang_HLJJ
 	local item_type_rad = BaoXiang_HLJJ_Rad 
@@ -3376,15 +3335,15 @@ function ItemUse_HLJJ ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3409,11 +3368,11 @@ function ItemUse_HLJJ ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3413	Исчезающий сундук целительницы
+--Исчезающий сундук целительницы (ID 3413)
 function ItemUse_HLSZ ( role , Item )
 	local item_type = BaoXiang_HLSZ
 	local item_type_rad = BaoXiang_HLSZ_Rad 
@@ -3423,15 +3382,15 @@ function ItemUse_HLSZ ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3456,11 +3415,11 @@ function ItemUse_HLSZ ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3414	Сундук исчезновения колдуньи
+--Сундук исчезновения колдуньи (ID 3414)
 function ItemUse_HLFY ( role , Item )
 	local item_type = BaoXiang_HLFY
 	local item_type_rad = BaoXiang_HLFY_Rad 
@@ -3470,15 +3429,15 @@ function ItemUse_HLFY ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3503,11 +3462,11 @@ function ItemUse_HLFY ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3415	Сундук исчезновения мореплавателя
+--Сундук исчезновения мореплавателя (ID 3415)
 function ItemUse_HLHH ( role , Item )
 	local item_type = BaoXiang_HLHH
 	local item_type_rad = BaoXiang_HLHH_Rad 
@@ -3517,15 +3476,15 @@ function ItemUse_HLHH ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3550,11 +3509,11 @@ function ItemUse_HLHH ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3416	Потайной сундук воителя
+--Потайной сундук воителя (ID 3416)
 function ItemUse_MSJ ( role , Item )
 	local item_type = BaoXiang_MSJ
 	local item_type_rad = BaoXiang_MSJ_Rad 
@@ -3564,15 +3523,15 @@ function ItemUse_MSJ ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-
+	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3597,11 +3556,11 @@ function ItemUse_MSJ ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3417	Таинственный сундук чемпиона
+--Таинственный сундук чемпиона (ID 3417)
 function ItemUse_MJS ( role , Item )
 	local item_type = BaoXiang_MJS
 	local item_type_rad = BaoXiang_MJS_Rad 
@@ -3613,13 +3572,13 @@ function ItemUse_MJS ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3644,11 +3603,11 @@ function ItemUse_MJS ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3418	Таинственный сундук стрелка
+--Таинственный сундук стрелка (ID 3418)
 function ItemUse_MJJ ( role , Item )
 	local item_type = BaoXiang_MJJ
 	local item_type_rad = BaoXiang_MJJ_Rad 
@@ -3660,13 +3619,13 @@ function ItemUse_MJJ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3691,11 +3650,11 @@ function ItemUse_MJJ ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3419	Таинственный сундук целительницы
+--Таинственный сундук клирика (ID 3419)
 function ItemUse_MSZ ( role , Item )
 	local item_type = BaoXiang_MSZ
 	local item_type_rad = BaoXiang_MSZ_Rad 
@@ -3707,13 +3666,13 @@ function ItemUse_MSZ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3738,11 +3697,11 @@ function ItemUse_MSZ ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3420	Таинственный сундук колдуньи
+--Таинственный сундук колдуньи (ID 3420)
 function ItemUse_MFY ( role , Item )
 	local item_type = BaoXiang_MFY
 	local item_type_rad = BaoXiang_MFY_Rad 
@@ -3754,13 +3713,13 @@ function ItemUse_MFY ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3785,11 +3744,11 @@ function ItemUse_MFY ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3421	Таинственный сундук покорителя морей
+--Таинственный сундук покорителя морей (ID 3421)
 function ItemUse_MHH ( role , Item )
 	local item_type = BaoXiang_MHH
 	local item_type_rad = BaoXiang_MHH_Rad 
@@ -3801,13 +3760,13 @@ function ItemUse_MHH ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3832,11 +3791,11 @@ function ItemUse_MHH ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3422	Сундук из Затерянного города
+--Сундук из Затерянного города (ID 3422)
 function ItemUse_FLBX ( role , Item )
 	local item_type = BaoXiang_FLBX
 	local item_type_rad = BaoXiang_FLBX_Rad 
@@ -3848,13 +3807,13 @@ function ItemUse_FLBX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3879,11 +3838,11 @@ function ItemUse_FLBX ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3423	Сундук с Темной топи
+--Сундук с Темной топи (ID 3423)
 function ItemUse_ZZBX ( role , Item )
 	local item_type = BaoXiang_ZZBX
 	local item_type_rad = BaoXiang_ZZBX_Rad 
@@ -3896,12 +3855,12 @@ function ItemUse_ZZBX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3926,11 +3885,11 @@ function ItemUse_ZZBX ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3424	Сундук из Мира демонов
+--Сундук из Мира демонов (ID 3424)
 function ItemUse_MFBX ( role , Item )
 	local item_type = BaoXiang_MFBX
 	local item_type_rad = BaoXiang_MFBX_Rad 
@@ -3943,12 +3902,12 @@ function ItemUse_MFBX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -3973,11 +3932,11 @@ function ItemUse_MFBX ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---	3458	Сундук потаенного
+--Сундук потаенного (ID 3458)
 function ItemUse_MZBX ( role , Item )
 	local item_type = BaoXiang_MZBX
 	local item_type_rad = BaoXiang_MZBX_Rad 
@@ -3990,12 +3949,12 @@ function ItemUse_MZBX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -4020,73 +3979,83 @@ function ItemUse_MZBX ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	local itemname = GetItemName ( ItemId ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает сундук и получает "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \241\243\237\228\243\234 \241 \241\238\234\240\238\226\232\249\224\236\232 \232 \239\238\235\243\247\224\229\242   "..itemname  
 	Notice ( message )
 end
 
---ID3459	Водяная мина
-function ItemUse_BOMB ( role , Item ) 
+--------------------------------------------------------------------------------------------------
+--Производство
+--------------------------------------------------------------------------------------------------
+
+--Водяная мина (ID 3459)
+function  ItemUse_BOMB ( role , Item ) 
 	local bomb = SummonCha ( role , 1 , 704 ) 
 	local statetime = 10 
 	local statelv = 1 
 	AddState ( role , bomb , STATE_BOMB , statelv , statetime ) 
 	AddChaSkill ( bomb , SK_BOMB , 1 , 1 , 0 ) 
-	SystemNotice ( role , "Мина успешно установлена!" ) 
+	SystemNotice ( role , "\194\238\228\255\237\224\255 \236\232\237\224 \243\241\239\229\248\237\238 \243\241\242\224\237\238\226\235\229\237\224" ) 
 end 
 
---ID1854	Бычье зелье
+
+--------------------------------------------------------------------------------------------------
+--Зелья
+--------------------------------------------------------------------------------------------------
+
+--Бычье зелье (ID 1854)
 function ItemUse_PKMNYS ( role , Item )
 	local statelv = 10
 	local statetime = 1800
 	AddState( role , role , STATE_PKMNYS , statelv , statetime )
 end
 
---ID1855	Боевое зелье
+
+--Боевое зелье (ID 1855)
 function ItemUse_PKZDYS ( role , Item )
 	local statelv = 10
 	local statetime = 150
 	AddState( role , role , STATE_PKZDYS , statelv , statetime )
 end
 
---ID1856	Зелье берсерка
+--Зелье берсерка (ID 1856)
 function ItemUse_PKKBYS ( role , Item )
 	local statelv = 10
 	local statetime = 20
 	AddState( role , role , STATE_PKKBYS , statelv , statetime )
 end
 
---ID1857	Энергозелье
+--Энергозелье (ID 1857)
 function ItemUse_PKJSYS ( role , Item )
 	local statelv = 10
 	local statetime = 180
 	AddState( role , role , STATE_PKJSYS , statelv , statetime )
 end
 
---ID1858	Укрепляющее зелье
+--Укрепляющее зелье (ID 1858)
 function ItemUse_PKSFYS ( role , Item )
 	local statelv = 10
 	local statetime = 300
 	AddState( role , role , STATE_PKSFYS , statelv , statetime )
 end
 
---ID1859	Зелье точности
+--Зелье точности (ID 1859)
 function ItemUse_PKJZYS ( role , Item )
 	local statelv = 10
 	local statetime = 900
 	AddState( role , role , STATE_PKJZYS , statelv , statetime )
 end
 
---ID1860	Благословляющее зелье
+--Неизвестно (ID n\a)
 function ItemUse_PKWDYS ( role , Item )
 	local statelv = 10
 	local statetime = 15
 	AddState( role , role , STATE_PKWD , statelv , statetime )
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." становится неуязвимым в течение 15 секунд!"
+	local message = cha_name.." \241\242\224\237\238\226\232\242\241\255 \205\229\232\231\226\229\241\242\237\206 \237\224 15 \241\229\234\243\237\228" 
 	Notice ( message )
 end
 
---ID1861	Качественный Корабельный лес
+--Качественный Корабельный лес (ID 1861)
 function ItemUse_PKMCK ( role , Item )
 	local map_name = GetChaMapName ( role )
 	if map_name == "secretgarden" then
@@ -4094,11 +4063,17 @@ function ItemUse_PKMCK ( role , Item )
 		Hp_Endure_Dmg ( role , hpdmg ) 
 		ALLExAttrSet(role)
 	else
-		SystemNotice ( role , "Этот предмет можно использовать только в Саду Эдель" )
+		SystemNotice ( role , "\221\242\238\242 \239\240\229\228\236\229\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \226 \209\224\228\243 \221\228\229\235\252" )
 	end
 end
 
---ID3828	Билет до Громограда
+
+
+--------------------------------------------------------------------------------------------------
+--Билеты
+--------------------------------------------------------------------------------------------------
+
+--Пропуск в Громоград ID 3048)
 function Jz_Script_ltcs(role, Item )
 	local i = CheckBagItem(role,3828)
 	local k = ChaIsBoat(role)
@@ -4107,7 +4082,7 @@ function Jz_Script_ltcs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4122,9 +4097,11 @@ function Jz_Script_ltcs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3829	Билет до гавани Громограда
+
+--Следуй в порт Громограда (ID 3049)
 function Jz_Script_ltjgcs(role, Item )
 	local i = CheckBagItem(role,3829)
 	local k = ChaIsBoat(role)
@@ -4133,7 +4110,7 @@ function Jz_Script_ltjgcs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4148,9 +4125,11 @@ function Jz_Script_ltjgcs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3830	Билет на Священную Снежную гору
+
+--Пропуск к Священной Снежной горе (ID 3050)
 function Jz_Script_sxscs(role, Item )
 	local i = CheckBagItem(role,3830)
 	local k = ChaIsBoat(role)
@@ -4159,7 +4138,7 @@ function Jz_Script_sxscs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4174,9 +4153,10 @@ function Jz_Script_sxscs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3831	Билет в Андийский лес
+--Пропуск в Андийский лес (ID 3051)
 function Jz_Script_laslcs(role, Item )
 	local i = CheckBagItem(role,3831)
 	local k = ChaIsBoat(role)
@@ -4185,7 +4165,7 @@ function Jz_Script_laslcs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4200,9 +4180,10 @@ function Jz_Script_laslcs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3832	Билет до Гавани Оазиса
+--Пропуск в Оазис (ID 3052)
 function Jz_Script_sqcs(role, Item )
 	local i = CheckBagItem(role,3832)
 	local k = ChaIsBoat(role)
@@ -4211,7 +4192,7 @@ function Jz_Script_sqcs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4226,9 +4207,10 @@ function Jz_Script_sqcs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3833	Билет до Ледяного Шипа
+--Пропуск к Ледяному шипу (ID 3053)
 function Jz_Script_bjcs(role, Item )
 	local i = CheckBagItem(role,3833)
 	local k = ChaIsBoat(role)
@@ -4237,7 +4219,7 @@ function Jz_Script_bjcs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4252,9 +4234,10 @@ function Jz_Script_bjcs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3834	Билет в Одинокую башню
+--Пропуск в Одинокую башню (ID 3054)
 function Jz_Script_jmztcs(role, Item )
 	local i = CheckBagItem(role,3834)
 	local k = ChaIsBoat(role)
@@ -4263,7 +4246,7 @@ function Jz_Script_jmztcs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4278,9 +4261,10 @@ function Jz_Script_jmztcs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3835	Билет в Пустую пещеру
+--Часть защиты (ID 3055)
 function Jz_Script_scrkcs(role, Item )
 	local i = CheckBagItem(role,3835)
 	local k = ChaIsBoat(role)
@@ -4289,7 +4273,7 @@ function Jz_Script_scrkcs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4304,9 +4288,10 @@ function Jz_Script_scrkcs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3836	Билет в Заброшенную шахту 2
+--Проход в Заброшенные шахты 2 (ID 3056)
 function Jz_Script_fk2cs(role, Item )
 	local i = CheckBagItem(role,3836)
 	local k = ChaIsBoat(role)
@@ -4315,7 +4300,7 @@ function Jz_Script_fk2cs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4330,9 +4315,10 @@ function Jz_Script_fk2cs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3837	Билет до Заброшенной шахты 2
+--Пропуск в Серебряную шахту 2 (ID 3057)
 function Jz_Script_yk2cs(role, Item )
 	local i = CheckBagItem(role,3837)
 	local k = ChaIsBoat(role)
@@ -4341,7 +4327,7 @@ function Jz_Script_yk2cs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4356,9 +4342,10 @@ function Jz_Script_yk2cs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3838	Билет до Заброшенной шахты 3
+--Пропуск в Серебряную шахту 3 (ID 3058)
 function Jz_Script_yk3cs(role, Item )
 	local i = CheckBagItem(role,3838)
 	local k = ChaIsBoat(role)
@@ -4367,7 +4354,7 @@ function Jz_Script_yk3cs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4382,9 +4369,10 @@ function Jz_Script_yk3cs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3839	Билет в Одинокую башню 2
+--Билет в Одинокую башню 2 (ID 3059)
 function Jz_Script_jmzt2cs(role, Item )
 	local i = CheckBagItem(role,3839)
 	local k = ChaIsBoat(role)
@@ -4393,7 +4381,7 @@ function Jz_Script_jmzt2cs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4408,9 +4396,10 @@ function Jz_Script_jmzt2cs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3840	Билет в Одинокую башню 3
+--Пропуск в Одинокую башню 3 (ID 3060)
 function Jz_Script_jmzt3cs(role, Item )
 	local i = CheckBagItem(role,3840)
 	local k = ChaIsBoat(role)
@@ -4419,7 +4408,7 @@ function Jz_Script_jmzt3cs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4434,9 +4423,10 @@ function Jz_Script_jmzt3cs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3841	Билет в Одинокую башню 4
+--Пропуск в Одинокую башню 4 (ID 3070)
 function Jz_Script_jmzt4cs(role, Item )
 	local i = CheckBagItem(role,3841)
 	local k = ChaIsBoat(role)
@@ -4445,7 +4435,7 @@ function Jz_Script_jmzt4cs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4460,9 +4450,10 @@ function Jz_Script_jmzt4cs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3842	Билет в Одинокую башню 5
+--Пропуск в Одинокую башню 5 (ID 3071)
 function Jz_Script_jmzt5cs(role, Item )
 	local i = CheckBagItem(role,3842)
 	local k = ChaIsBoat(role)
@@ -4471,7 +4462,7 @@ function Jz_Script_jmzt5cs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4486,9 +4477,10 @@ function Jz_Script_jmzt5cs(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID3843	Билет в Одинокую башню 6
+--Пропуск в Одинокую башню 6 (ID 3072)
 function Jz_Script_jmzt6cs(role, Item )
 	local i = CheckBagItem(role,3843)
 	local k = ChaIsBoat(role)
@@ -4497,7 +4489,7 @@ function Jz_Script_jmzt6cs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4515,7 +4507,7 @@ function Jz_Script_jmzt6cs(role, Item )
 		
 end
 
---ID3847	Билет до Заброшенной шахты 1
+--Пропуск в Заброшенную шахту 1 (ID 3073)
 function Jz_Script_fk1cs(role, Item )
 	local i = CheckBagItem(role,3847)
 	local k = ChaIsBoat(role)
@@ -4524,7 +4516,7 @@ function Jz_Script_fk1cs(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -4541,38 +4533,42 @@ function Jz_Script_fk1cs(role, Item )
 	end
 end
 
---ID3844	Небесная ягода
-function ItemUse_MoreExpGz( role , Item )
-	local statelv = 1
-	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
+--------------------------------------------------------------------------------------------------
+--УС, СУС, БУУ и остальные множители рейтов
+--------------------------------------------------------------------------------------------------
 
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
-		UseItemFailed ( role )
+--Усилитель стремлений (ID 3094)
+function ItemUse_MoreExpGz( role, Item )
+	local statelv = 1
+	local ChaStateLv = GetChaStateLv( role, STATE_SBJYGZ )
+
+	if ChaStateLv > statelv then
+		SystemNotice( role, "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
+		UseItemFailed( role )
 		return
 	end
 
 	local statetime = 900
 	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
+	Cha_Boat = GetCtrlBoat( role )
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
+		AddState( role, role, STATE_SBJYGZ, statelv, statetime )
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ, statelv, statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Небесной ягоды" )
 end
 
---ID0849	Фрукт опыта отряда
---ID6019	Особый Фрукт Опыта Отряда
+-- Фрукт опыта отряда ( ID 0849 )
 function ItemUse_ZD_MoreExpGz( role , Item )
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_ZDSBJYGZ )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
+
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
@@ -4581,16 +4577,15 @@ function ItemUse_ZD_MoreExpGz( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_ZDSBJYGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Фрукта опыта отряда" )
 end
 
---ID1006	Слеза без любви
---ID3845	Зачарованная ягода
+--Слеза без любви (ID 1006)
 function ItemUse_MoreItemGz( role , Item )
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4603,28 +4598,27 @@ function ItemUse_MoreItemGz( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Зачарованной ягоды" )
 end
 
---ID3879	Особый тайнофрукт
+--Особый тайнофрукт (ID 3879)
 function ItemUse_MoreExpGzLv2( role , Item )
 	local Lv = Lv( role )
 	if Lv < 40 then
-		SystemNotice(role ,"Особый тайнофрукт могут использовать только игроки выше 40 уровня.")
+		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 40 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return
 	end
 
 	local statelv = 2
-
+	
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
@@ -4633,23 +4627,24 @@ function ItemUse_MoreExpGzLv2( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Особого тайно-фрукта" )
+	SystemNotice ( role ,"Feel the effect of Special Mystic Fruit" )
 end
 
---ID3881	Особый счастье-фрукт
+--Особый счастье-фрукт (ID 3881)
 function ItemUse_MoreItemGzLv2( role , Item )
 	local Lv = Lv( role )
 	if Lv < 40 then
-		SystemNotice(role ,"Особый счастье-фрукт могут использовать только игроки выше 40 уровня.")
+		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 40 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return
 	end
 
+
 	local statelv = 2
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
-
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4662,29 +4657,50 @@ function ItemUse_MoreItemGzLv2( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Особого счастье-фрукта" )
+	SystemNotice ( role ,"Feels the effect of Special Lucky Fruit" )
 end
 
---ID3880	Супер тайнофрукт
-function ItemUse_MoreExpGzLv3( role , Item )
-	local Lv = Lv( role )
-	if Lv < 60 then
-		SystemNotice(role ,"Супер тайнофрукт могут использовать только игроки выше 60 уровня.")
-		UseItemFailed ( role )
-		return
-	end
-
+------------СУСЫ
+--Супер Усилитель стремлений х2.5 (ID 3095)
+function ItemUse_MoreExpGzLv3( role, Item )
 	local statelv = 3
+	local ChaStateLv = GetChaStateLv( role, STATE_SBJYGZ )
 
-	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
+	if ChaStateLv > statelv then
+		SystemNotice( role, "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
+		UseItemFailed( role )
+		return
+	end
 
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	local statetime = 1800
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat( role )
+	if Cha_Boat == nil then
+		AddState( role, role, STATE_SBJYGZ, statelv, statetime )
+	else
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ, statelv, statetime )
+	end
+end
+
+--Супер Усилитель стремлений х3.5 (ID 5794)
+function ItemUse_MoreExpGzLv3x5A( role , Item )
+	local Lv = Lv( role )
+	if Lv < 75 then
+		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 75 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return
 	end
 
-	local statetime = 900
+	local statelv = 4
+	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
+	
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
+		UseItemFailed ( role )
+		return
+	end
+
+	local statetime = 1800
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
@@ -4692,24 +4708,53 @@ function ItemUse_MoreExpGzLv3( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Супер тайнофрукта" )
 end
 
---ID3882	Супер счастье-фрукт
+--Супер Усилитель стремлений х4 (ID 5695)
+function ItemUse_MoreExpGzLv4A( role , Item )
+	local Lv = Lv( role )
+	if Lv < 80 then
+		SystemNotice( role, "\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 80 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242" )
+		UseItemFailed( role )
+		return
+	end
+
+	local statelv = 5
+	local ChaStateLv = GetChaStateLv( role, STATE_SBJYGZ )
+
+	if ChaStateLv > statelv then
+		SystemNotice( role, "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
+		UseItemFailed( role )
+		return
+	end
+
+	local statetime = 1800
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat( role )
+	if Cha_Boat == nil then
+		AddState( role, role, STATE_SBJYGZ, statelv, statetime )
+	else
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ, statelv, statetime )
+	end
+	SystemNotice( role, "\207\238\247\243\226\241\242\226\243\233 \253\244\244\229\234\242 \238\242 4x \211\241\232\235\232\242\235\255 \209\242\240\229\236\235\229\237\232\233" )
+end
+
+--Буу 3.5x и 4x от SimplePRO
+
+--Большой усилитель удачи (ID 3097)
 function ItemUse_MoreItemGzLv3( role , Item )
 	local Lv = Lv( role )
 	if Lv < 60 then
-		SystemNotice(role ,"Супер счастье-фрукт могут использовать только игроки выше 60 уровня.")
+		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 60 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return
 	end
 
 	local statelv = 3
-
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
 
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4722,14 +4767,14 @@ function ItemUse_MoreItemGzLv3( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Супер счастье-фрукта" )
+	SystemNotice ( role ,"\207\238\247\243\226\241\242\226\243\233 \253\244\244\229\234\242 \238\242 \193\238\235\252\248\238\227\238 \211\241\232\235\232\242\229\235\255 \211\228\224\247\232" )
 end
 
---ID0898	Волшебный фрукт
+--Волшебный фрукт (ID 0898)
 function ItemUse_MoreItemAndExpGz( role , Item )
 	local Lv = Lv( role )
 	if Lv < 30 then
-		SystemNotice(role ,"Волшебный фрукт могут использовать только игроки выше 30 уровня.")
+		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 30 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return
 	end
@@ -4740,36 +4785,35 @@ function ItemUse_MoreItemAndExpGz( role , Item )
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
-		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
+		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Волшебного фрукта" )
 end
 
---ID3848	Зелье восстановления телосложения
+--------------------------------------------------------------------------------------------------
+--Книги сброса статов
+--------------------------------------------------------------------------------------------------
+--Фляга восстановления телосложения (ID 3098)
 function ItemUse_TLHFJ( role , Item )
 	local hp = GetChaAttr(role, ATTR_HP) 
 	hp_resume = 800 
 	
 	hp = hp + hp_resume 
 	mxhp = GetChaAttr(role,ATTR_MXHP) 
-	if hp > mxhp then
+	if hp > mxhp then 
 		hp = mxhp 
 	end 
 	SetCharaAttr(hp, role, ATTR_HP)
 end
 
---ID0899	Восстановление книги силы
---ID3109	Зелье возврата силы
+--Восстановление книги силы (ID 0899)
 function ItemUse_XD_Str1 ( role , Item )
 	local str = GetChaAttr( role , ATTR_BSTR )
 	local ap = GetChaAttr( role , ATTR_AP )
---	SystemNotice ( role , "strength before edit is"..str )
---	SystemNotice ( role , "attribute before editing is"..ap )
 	if str <= 5 then 
-		SystemNotice ( role , "У тебя недостаточно очков характеристик для сброса. Сброс невозможен!" )
+		SystemNotice ( role , "\211 \194\224\241 \237\229\242 \241\226\238\225\238\228\237\251\245 \238\247\234\238\226 \245\224\240\224\234\242\229\240\232\241\242\232\234. \209\225\240\238\241 \237\229\226\238\231\236\238\230\229\237" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4778,22 +4822,19 @@ function ItemUse_XD_Str1 ( role , Item )
 	str = str - str_dif
 	ap = ap + 1
 
-	SystemNotice ( role , "Возвращено 1 очко Силы, теперь у тебя появилось свободное очко характеристик. Распредели его мудро!" )
---	SystemNotice ( role , "strength before edit is"..str )
---	SystemNotice ( role , "attribute point edited as"..ap )
+	SystemNotice ( role , "\193\251\235\238 \241\225\240\238\248\229\237\238 1 \238\247\234\238 \241\232\235\251" )
+	
+	
 	SetCharaAttr ( str , role , ATTR_BSTR )
 	SetCharaAttr ( ap , role , ATTR_AP )
 end
 
---ID0900	Книга сброса телосложения
---ID3110	Зелье возврата телосложения
+--Книга сброса телосложения (ID 0900)
 function ItemUse_XD_Con1 ( role , Item )
 	local con = GetChaAttr( role , ATTR_BCON )
 	local ap = GetChaAttr( role , ATTR_AP )
---	SystemNotice ( role , "constitution before edit is"..con )
---	SystemNotice ( role , "attribute before editing is"..ap )
 	if con <= 5 then 
-		SystemNotice ( role , "У тебя недостаточно очков характеристик для сброса. Сброс невозможен!" )
+		SystemNotice ( role , "\211 \194\224\241 \237\229\242 \241\226\238\225\238\228\237\251\245 \238\247\234\238\226 \245\224\240\224\234\242\229\240\232\241\242\232\234. \209\225\240\238\241 \237\229\226\238\231\236\238\230\229\237" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4802,23 +4843,18 @@ function ItemUse_XD_Con1 ( role , Item )
 	con = con - con_dif
 	ap = ap + 1
 
-	SystemNotice ( role , "Возвращено 1 очко Телосложения, теперь у тебя появилось свободное очко характеристик. Распредели его мудро!" )
-	
---	SystemNotice ( role , "constitution edited to"..con )
---	SystemNotice ( role , "attribute point edited as"..ap )
+	SystemNotice ( role , "\193\251\235\238 \241\225\240\238\248\229\237\238 1 \238\247\234\238 \242\229\235\238\241\235\238\230\229\237\232\255" )
+
 	SetCharaAttr ( con , role , ATTR_BCON )
 	SetCharaAttr ( ap , role , ATTR_AP )
 end
 
---ID0901	Восстановление книги ловкости
---ID3111	Зелье возврата ловкости
+--Восстановление книги ловкости (ID 0901)
 function ItemUse_XD_Agi1 ( role , Item )
 	local agi = GetChaAttr( role , ATTR_BAGI )
 	local ap = GetChaAttr( role , ATTR_AP )
---	SystemNotice ( role , "agility before edit is"..agi )
---	SystemNotice ( role , "attribute before editing is"..ap )
 	if agi <= 5 then 
-		SystemNotice ( role , "У тебя недостаточно очков характеристик для сброса. Сброс невозможен!" )
+		SystemNotice ( role , "\211 \194\224\241 \237\229\242 \241\226\238\225\238\228\237\251\245 \238\247\234\238\226 \245\224\240\224\234\242\229\240\232\241\242\232\234. \209\225\240\238\241 \237\229\226\238\231\236\238\230\229\237" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4826,24 +4862,19 @@ function ItemUse_XD_Agi1 ( role , Item )
 	local ap_dif = 1
 	agi = agi - agi_dif
 	ap = ap + 1
-
-	SystemNotice ( role , "Возвращено 1 очко Ловкости, теперь у тебя появилось свободное очко характеристик. Распредели его мудро!" )
 	
---	SystemNotice ( role , "Agility edited to"..agi )
---	SystemNotice ( role , "attribute point edited as"..ap )
+	SystemNotice ( role , "\193\251\235\238 \241\225\240\238\248\229\237\238 1 \238\247\234\238 \235\238\226\234\238\241\242\232" )
+
 	SetCharaAttr ( agi , role , ATTR_BAGI )
 	SetCharaAttr ( ap , role , ATTR_AP )
 end
 
---ID0902	Книга восстановления точности
---ID3112	Зелье возврата Точности
+--Книга восстановления точности (ID 0902)
 function ItemUse_XD_Dex1 ( role , Item )
 	local dex = GetChaAttr( role , ATTR_BDEX )
 	local ap = GetChaAttr( role , ATTR_AP )
---	SystemNotice ( role , "Accuracy edited to"..dex )
---	SystemNotice ( role , "attribute before editing is"..ap )
 	if dex <= 5 then 
-		SystemNotice ( role , "У тебя недостаточно очков характеристик для сброса. Сброс невозможен!" )
+		SystemNotice ( role , "\211 \194\224\241 \237\229\242 \241\226\238\225\238\228\237\251\245 \238\247\234\238\226 \245\224\240\224\234\242\229\240\232\241\242\232\234. \209\225\240\238\241 \237\229\226\238\231\236\238\230\229\237" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4851,24 +4882,19 @@ function ItemUse_XD_Dex1 ( role , Item )
 	local ap_dif = 1
 	dex = dex - dex_dif
 	ap = ap + 1
-
-	SystemNotice ( role , "Возвращено 1 очко Точности, теперь у тебя появилось свободное очко характеристик. Распредели его мудро!" )
 	
---	SystemNotice ( role , "accuracy edit as"..dex )
---	SystemNotice ( role , "attribute point edited as"..ap )
+	SystemNotice ( role , "\193\251\235\238 \241\225\240\238\248\229\237\238 1 \238\247\234\238 \242\238\247\237\238\241\242\232" )
+
 	SetCharaAttr ( dex , role , ATTR_BDEX )
 	SetCharaAttr ( ap , role , ATTR_AP )
 end
 
---ID0903	Книга сброса духа
---ID3113	Зелье возврата духа
+--Книга сброса духа (ID 0903)
 function ItemUse_XD_Sta1 ( role , Item )
 	local sta = GetChaAttr( role , ATTR_BSTA )
 	local ap = GetChaAttr( role , ATTR_AP )
---	SystemNotice ( role , "spirit before edit is"..sta )
---	SystemNotice ( role , "attribute before editing is"..ap )
 	if sta <= 5 then 
-		SystemNotice ( role , "У тебя недостаточно очков характеристик для сброса. Сброс невозможен!" )
+		SystemNotice ( role , "\211 \194\224\241 \237\229\242 \241\226\238\225\238\228\237\251\245 \238\247\234\238\226 \245\224\240\224\234\242\229\240\232\241\242\232\234. \209\225\240\238\241 \237\229\226\238\231\236\238\230\229\237" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4877,15 +4903,16 @@ function ItemUse_XD_Sta1 ( role , Item )
 	sta = sta - sta_dif
 	ap = ap + 1
 
-	SystemNotice ( role , "Возвращено 1 очко Духа, теперь у тебя появилось свободное очко характеристик. Распредели его мудро!" )
-	
---	SystemNotice ( role , "Spirit edited as "..sta )
---	SystemNotice ( role , "attribute point edited as"..ap )
+	SystemNotice ( role , "\193\251\235\238 \241\225\240\238\248\229\237\238 1 \238\247\234\238 \228\243\245\224" )
+
 	SetCharaAttr ( sta , role , ATTR_BSTA )
 	SetCharaAttr ( ap , role , ATTR_AP )
 end
 
---ID0893	Зелье обезьяны
+--------------------------------------------------------------------------------------------------
+--Эликсиры повышающие статы
+--------------------------------------------------------------------------------------------------
+--Эликсир  Обезьяны (ID 3101)
 function ItemUse_SPLhyj( role , Item )
 	local OtherStateLv = 0
 	local i = 0
@@ -4902,8 +4929,10 @@ function ItemUse_SPLhyj( role , Item )
 		end
 	end
 
+
+
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242\251 \238\242 \228\240\243\227\232\245 \231\229\235\232\233 \237\229 \241\238\247\232\242\224\254\242\241\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -4911,7 +4940,8 @@ function ItemUse_SPLhyj( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		
 		UseItemFailed ( role )
 		return
 	end
@@ -4919,9 +4949,10 @@ function ItemUse_SPLhyj( role , Item )
 	local statelv = 1
 	local statetime = 3600
 	AddState( role , role , STATE_YSMJQH , statelv , statetime )
+
 end
 
---ID0894	Зелье орла
+--Эликсир Орла (ID 3103)
 function ItemUse_SPYyyj( role , Item )
 	local OtherStateLv = 0
 	local i = 0
@@ -4938,8 +4969,10 @@ function ItemUse_SPYyyj( role , Item )
 		end
 	end
 
+
+
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242\251 \238\242 \228\240\243\227\232\245 \231\229\235\232\233 \237\229 \241\238\247\232\242\224\254\242\241\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -4947,7 +4980,7 @@ function ItemUse_SPYyyj( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4959,8 +4992,9 @@ function ItemUse_SPYyyj( role , Item )
 
 end
 
---ID0895	Зелье быка
+--Зелье быка (ID 0895)
 function ItemUse_SPMnyj( role , Item )
+	
 	local OtherStateLv = 0
 	local i = 0
 	local State_Num = 3
@@ -4976,8 +5010,10 @@ function ItemUse_SPMnyj( role , Item )
 		end
 	end
 
+
+
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242\251 \238\242 \228\240\243\227\232\245 \231\229\235\232\233 \237\229 \241\238\247\232\242\224\254\242\241\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -4985,7 +5021,7 @@ function ItemUse_SPMnyj( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -4997,8 +5033,9 @@ function ItemUse_SPMnyj( role , Item )
 
 end
 
---ID0896	Зелье души
+--Зелье души (ID 0896)
 function ItemUse_SPSlyj( role , Item )
+	
 	local OtherStateLv = 0
 	local i = 0
 	local State_Num = 3
@@ -5014,8 +5051,9 @@ function ItemUse_SPSlyj( role , Item )
 		end
 	end
 
+
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242\251 \238\242 \228\240\243\227\232\245 \231\229\235\232\233 \237\229 \241\238\247\232\242\224\254\242\241\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -5023,10 +5061,11 @@ function ItemUse_SPSlyj( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
+
 
 	local statelv = 1
 	local statetime = 3600
@@ -5034,8 +5073,9 @@ function ItemUse_SPSlyj( role , Item )
 
 end
 
---ID0897	Зелье льва
+--Зелье льва (ID 0897)
 function ItemUse_SPXsyj( role , Item )
+	
 	local OtherStateLv = 0
 	local i = 0
 	local State_Num = 3
@@ -5051,19 +5091,22 @@ function ItemUse_SPXsyj( role , Item )
 		end
 	end
 
+
+
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242\251 \238\242 \228\240\243\227\232\245 \231\229\235\232\233 \237\229 \241\238\247\232\242\224\254\242\241\255")
 		UseItemFailed ( role )
 		return
-	end
+	end	
 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
+
 
 	local statelv = 1
 	local statetime = 3600
@@ -5071,125 +5114,92 @@ function ItemUse_SPXsyj( role , Item )
 
 end
 
---ID3074	Очищающий самоцвет
---ID3883	Синий кузнечный фрукт
+--------------------------------------------------------------------------------------------------
+--Очищающий\Композиционный катализаторы
+--------------------------------------------------------------------------------------------------
+--Очищающий самоцвет (ID 3074)
 function ItemUse_LSDZG ( role , Item )
 	local statelv = 4
 	local statetime = 60
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_JLGLJB , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-end
---ИД 8150	Супер вставка фрукт
-function ItemUse_LSDZGgr ( role , Item )
-	local statelv = 10
-	local statetime = 60
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_JLGLJB , statelv , statetime )
-	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
-
---ID3075	Композиционный катализатор
---ID3884	Красный объединяющий фрукт
+--Композиционный катализатор (ID 3075)
 function ItemUse_HSDZG ( role , Item )
 	local statelv = 2
 	local statetime = 60
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_HCGLJB , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID8151	Супер Фрукт Сочетаний
-function ItemUse_HSDZGgr ( role , Item )
-	local statelv = 10
-	local statetime = 60
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_HCGLJB , statelv , statetime )
-	else
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-end
-
-
---ID3888	Потерянная рождественская шапка
+--------------------------------------------------------------------------------------------------
+--Новогодние предметы\камни желаний\коробочки
+--------------------------------------------------------------------------------------------------
+--Потерянная рождественская шапка (ID 3888)
 function ItemUse_DSSDM ( role , Item )
 	local statelv = 1
 	local statetime = 300
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_PKSFYS , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID3896	Злобный рог
+--Злобный рог (ID 3896)
 function ItemUse_XEZJ ( role , Item )
 	local statelv = 1
 	local statetime = 1800
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_PKZDYS , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID851	Боевой строй
+--Боевой строй (ID 0851)
 function ItemUse_XEZJB ( role , Item )
 	Rem_State_StarUnnormal ( role )
 	local statelv = 1
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		Rem_State_StarUnnormal ( role )
 		AddState( role , role , STATE_KUANGZ , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID3899	Новогодняя конфета
+--Новогодняя конфета (ID3899)
 function ItemUse_SDTG ( role , Item )
+	
 	local hp = GetChaAttr(role, ATTR_HP) 
 	local sp = GetChaAttr(role, ATTR_SP) 
 	
@@ -5212,9 +5222,10 @@ function ItemUse_SDTG ( role , Item )
 
 	SetCharaAttr(hp, role, ATTR_HP)
 	SetCharaAttr(sp, role, ATTR_SP) 
+
 end
 
---ID3895	Рождественский носок
+--Рождественский носок (ID 3895)
 function ItemUse_SDWZBOX ( role , Item )
 	local Now_Day = os.date("%d")
 	local Now_Month = os.date("%m")
@@ -5225,13 +5236,13 @@ function ItemUse_SDWZBOX ( role , Item )
 	local CheckDateNum = NowMonthNum * 10000 + NowDayNum * 100 + NowTimeNum
 	
 	if CheckDateNum < 122423  then
-		SystemNotice ( role , "Пожалуйста имейте терпение. Дед Мороз, очень пунктуально относится ко времени вручения своих подарков. Используйте с 11 вечера 24 декабря до 6 утра 25 декабря." )
+		SystemNotice ( role , "\207\238\230\224\235\243\233\241\242\224, \225\243\228\252\242\229 \242\229\240\239\229\235\232\226\251. \209\224\237\242\224 \202\235\224\243\241 \225\243\228\229\242 \238\247\229\237\252 \239\243\237\234\242\243\224\235\229\237 \241 \226\224\248\232\236 \239\238\228\224\240\234\238\236. \207\238\230\224\235\243\233\241\242\224, \232\241\239\238\235\252\231\243\233\242\229 \239\240\229\228\236\229\242 \236\229\230\228\243 24-\251\236 \228\229\234\224\225\240\255, 8.00 \243\242\240\224 \232 25-\251\236 \228\229\234\224\225\240\255, 8.00 \226\229\247\229\240\224" )
 		UseItemFailed ( role )
 		return
 	end
 	
 	if CheckDateNum > 122506 then
-		SystemNotice ( role , "Дед Мороз уже ушел. Ждите следующего года." )
+		SystemNotice ( role , "\209\224\237\242\224 \202\235\224\243\241 \243\229\245\224\235. \207\238\239\251\242\224\233\242\229\241\252 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242 \226 \241\235\229\228\243\254\249\229\236 \227\238\228\243" )
 		UseItemFailed ( role )
 		return
 	end
@@ -5247,12 +5258,12 @@ function ItemUse_SDWZBOX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -5277,85 +5288,85 @@ function ItemUse_SDWZBOX ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 end
 
---ID3898	Подарочная коробочка
+--Подарочная коробочка (ID 3898)
 function ItemUse_SDLHBOX ( role , Item )
-	SystemNotice(role,"Пожалуйста обратитесь к Распространителю новостей - ПЭПу для получения подарка. Найти его можно в Аргенте около фонтана (2273,2769).")
-	UseItemFailed ( role )
-end
+	local Check = math.random ( 1, 100 )
+	if Check <= 35 then
 
---ID3901	Счастливый мешочек
-function ItemUse_HYBOX ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 1 then
-		SystemNotice(role ,"Недостаточно места в инвентаре, что бы открыть Счастливый мешочек!")
-		UseItemFailed ( role )
-		return
-	end
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat == nil then
-		local rand = math.random( 1 , 1000 )
-		if rand == 1000 then
-			AddMoney ( role , 0 , 1000000 )
-		else
-			local Money_Add = math.random( 1500 , 7000 )
-			AddMoney ( role , 0 , Money_Add )
-			GiveItem ( role , 0 , 3904 , 1 , 5 )
-		end
-	else
-		SystemNotice( role , "Невозможно использовать в море!" )
-		UseItemFailed ( role )
-		return
-	end
-end
---[[
---ID3902	Счастливый мешочек
-function ItemUse_FGBOX ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 1 then
-		SystemNotice(role ,"Недостаточно места в инвентаре, что бы открыть Счастливый мешочек!")
-		UseItemFailed ( role )
-		return
-	end
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat == nil then
-		local exp_dif = 0
-		exp_dif = math.random ( 2 , 3 )
-		exp_dif = exp_dif * 50
 		local exp = Exp ( role )
+		local exp_dif = math.random ( 100 , 300 )
 		if Lv ( TurnToCha ( role )  )  >= 80 then 
 			exp_dif = math.floor ( exp_dif / 50  ) 
-		end
+		end 
 		local exp_new = exp + exp_dif
+	
 		SetCharaAttr ( exp_new , role , ATTR_CEXP )
-		GiveItem ( role , 0 , 3904 , 1 , 5 )
+
+	elseif Check > 35 and Check <= 70 then
+		local Money_add = math.random ( 200 , 600 )
+		AddMoney ( role , 0 , Money_add )
 	else
-		SystemNotice( role , "Невозможно использовать в море!" )
-		UseItemFailed ( role )
-		return
+		local item_type = BaoXiang_SDLHBOX
+		local item_type_rad = BaoXiang_SDLHBOX_Rad 
+		local item_type_count = BaoXiang_SDLHBOX_Count 
+		local maxitem = BaoXiang_SDLHBOX_Mxcount
+		local item_quality = BaoXiang_SDLHBOX_Qua
+		local General = 0  
+		local ItemId = 0 
+		
+		local Item_CanGet = GetChaFreeBagGridNum ( role )
+		
+		if Item_CanGet <= 0 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
+			UseItemFailed ( role )
+			return
+		end
+		for i = 1 , maxitem , 1 do 
+			General = item_type_rad [ i ] + General		
+		end 
+		local a = math.random ( 1, General )
+		local b = 0
+		local d = 0 
+		local c = -1
+		for k = 1 , maxitem , 1 do
+
+			d = item_type_rad [ k ] + b
+
+			 if a <= d and a > b then
+				c = k
+
+			end 
+			b = d 
+		end 
+		if c == -1 then 
+			ItemId = 3124 
+		else 
+			ItemId = item_type [c]  
+			ItemCount = item_type_count [c] 
+		end 
+		GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 	end
 end
---]]
+
+--Счастливый мешочек (ID 3901)
+function ItemUse_HYBOX ( role , Item )
+	AddMoney ( role , 0 , 20000 )
+end 
+
+--Счастливый мешочек (ID 3902)
 function ItemUse_FGBOX ( role , Item )
-	AddMoney ( role , 0 , 88 )
+	
+	AddMoney ( role , 0 , 88 )	
 	local item_type = BaoXiang_FGBOX 
 	local item_type_rad = BaoXiang_FGBOX_Rad 
 	local item_type_count = BaoXiang_FGBOX_Count 
-	local maxitem = BaoXiang_FGBOX_Mxcount
+	local maxitem = BaoXiang_FGBOX_Mxcount	
 	local item_quality = BaoXiang_FGBOX_Qua
 	local General = 0  
 	local ItemId = 0 
---	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	
---	if Item_CanGet <= 1 then
---		SystemNotice(role ,"Insufficient space in inventory. Unable to use Fortune Packet")
---		UseItemFailed ( role )
---		return
---	end
 
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -5381,54 +5392,75 @@ function ItemUse_FGBOX ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality )
 	GiveItem ( role , 0 , 3904 , 1 , item_quality )
 
+	
 	if ItemId == 878 then
 		local itemname = GetItemName ( ItemId ) 
 		local cha_name = GetChaDefaultName ( role ) 
-		local message = cha_name.."  \238\242\234\240\251\226\224\229\242 \207\238\228\224\240\238\234 \212\238\240\242\243\237\251 \232 \239\238\235\243\247\224\229\242 "..itemname  
+		local message = cha_name.." \238\242\234\240\251\226\224\229\242 \209\247\224\241\242\235\232\226\251\233 \236\229\248\238\247\229\234 \232 \239\238\235\243\247\224\229\242  "..itemname 
 		Notice ( message )
 	end
 end 
 
---ID3903	Большой пакет
+--Большой пакет (ID 3903)
 function ItemUse_HYUNBOX ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 1 then
-		SystemNotice(role ,"Недостаточно места в инвентаре, что бы открыть Большой пакет!")
-		UseItemFailed ( role )
-		return
-	end
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat == nil then
-		local ItemId = { 1 }
-		local c = 1
-		ItemId = { 3844, 3845, 1814 }
-		c = math.random(1,3)
+	
+	AddMoney ( role , 0 , 888 )
+	local item_type = BaoXiang_HYUNBOX 
+	local item_type_rad = BaoXiang_HYUNBOX_Rad 
+	local item_type_count = BaoXiang_HYUNBOX_Count 
+	local maxitem = BaoXiang_HYUNBOX_Mxcount
+	local item_quality = BaoXiang_HYUNBOX_Qua
+	local General = 0  
+	local ItemId = 0 
 
-		GiveItem ( role , 0 , ItemId[c] , 1 , 4 )
-		GiveItem ( role , 0 , 3904 , 1 , 5 )
-		local GoodItem = {}
-		GoodItem[1] = 3844
-		GoodItem[2] = 3845
-		GoodItem[3] = 1814
+	for i = 1 , maxitem , 1 do 
+		General = item_type_rad [ i ] + General		
+	end 
+	local a = math.random ( 1, General )
+	local b = 0
+	local d = 0 
+	local c = -1
+	for k = 1 , maxitem , 1 do
 
-		local Good_C = 0
-		for Good_C = 1 , 3 , 1 do
-			if ItemId[c] == GoodItem[Good_C] then
-				local itemname = GetItemName ( ItemId[c] ) 
-				local cha_name = GetChaDefaultName ( role ) 
-				local message = cha_name.." открыл Большой пакет и получил "..itemname  
-				Notice ( message )
-			end
+		d = item_type_rad [ k ] + b
+
+		 if a <= d and a > b then
+			c = k
+			break		
+		end 
+		b = d 
+
+	end 
+	if c == -1 then 
+		ItemId = 3124 
+	else 
+		ItemId = item_type [c]  
+		ItemCount = item_type_count [c] 
+	end 
+	GiveItem ( role , 0 , ItemId , ItemCount , item_quality )
+	GiveItem ( role , 0 , 3904 , 1 , item_quality )
+
+	local GoodItem = {}
+	GoodItem[0] = 3844
+	GoodItem[1] = 3845
+	GoodItem[2] = 899
+	GoodItem[3] = 900
+	GoodItem[4] = 901
+	GoodItem[5] = 902
+	GoodItem[6] = 903
+
+	local Good_C = 0
+	for Good_C = 0 , 6 , 1 do
+		if ItemId == GoodItem[Good_C] then
+			local itemname = GetItemName ( ItemId ) 
+			local cha_name = GetChaDefaultName ( role ) 
+			local message = cha_name.." \238\242\234\240\251\226\224\229\242 a \193\238\235\252\248\238\233 \239\224\234\229\242 \232 \239\238\235\243\247\224\229\242 "..itemname
+			Notice ( message )
 		end
-	else
-		SystemNotice( role , "Невозможно использовать в море!" )
-		UseItemFailed ( role )
-		return
 	end
 end 
 
---ID3905	Темный камень желаний
+--Темный камень желаний (ID 3905)
 function ItemUse_ADBOX ( role , Item )
 	local item_type = BaoXiang_ADBOX 
 	local item_type_rad = BaoXiang_ADBOX_Rad 
@@ -5437,16 +5469,9 @@ function ItemUse_ADBOX ( role , Item )
 	local item_quality = BaoXiang_ADBOX_Qua
 	local General = 0  
 	local ItemId = 0 
---	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	
---	if Item_CanGet <= 0 then
---		SystemNotice(role ,"Insufficient space in inventory. Unable to use Wishing Stone")
---		UseItemFailed ( role )
---		return
---	end
 
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -5469,13 +5494,10 @@ function ItemUse_ADBOX ( role , Item )
 		ItemCount = item_type_count [c] 
 	end 
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
---	local itemname = GetItemName ( ItemId ) 
---	local cha_name = GetChaDefaultName ( role ) 
---	local message = cha_name.."rubbed a Wishing Stone and obtained"..itemname  
---	Notice ( message )
+
 end 
 
---ID3906	Искрящийся камень желаний
+--Искрящийся камень желаний (ID 3906)
 function ItemUse_SGBOX ( role , Item )
 	local item_type = BaoXiang_SGBOX 
 	local item_type_rad = BaoXiang_SGBOX_Rad 
@@ -5484,16 +5506,9 @@ function ItemUse_SGBOX ( role , Item )
 	local item_quality = BaoXiang_SGBOX_Qua
 	local General = 0  
 	local ItemId = 0 
---	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	
---	if Item_CanGet <= 0 then
---		SystemNotice(role ,"Insufficient space in inventory. Unable to use Wishing Stone")
---		UseItemFailed ( role )
---		return
---	end
 
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -5548,13 +5563,13 @@ function ItemUse_SGBOX ( role , Item )
 		if ItemId == GoodItem[Good_C] then
 			local itemname = GetItemName ( ItemId ) 
 			local cha_name = GetChaDefaultName ( role ) 
-			local message = cha_name.." использовал Искрящийся камень желаний и получил "..itemname  
+			local message = cha_name.."\232\241\239\238\235\252\231\229\242 \200\241\234\240\255\249\232\233\241\255 \234\224\236\229\237\252 \230\229\235\224\237\232\233 \232 \239\238\235\243\247\224\229\242 "..itemname
 			Notice ( message )
 		end
 	end
 end 
 
---ID0262	Коробочка феи
+--Коробочка феи (ID 0262)
 function ItemUse_JingLingBOX ( role, Item )
 	local item_type = BaoXiang_JingLingBOX 
 	local item_type_rad = BaoXiang_JingLingBOX_Rad 
@@ -5566,13 +5581,13 @@ function ItemUse_JingLingBOX ( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть Коробочку феи.")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \202\238\240\238\225\238\247\234\243 \212\229\233")
 		UseItemFailed ( role )
 		return
 	end
 
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end   
 	local a = math.random ( 1, General )
 	local b = 0
@@ -5580,7 +5595,7 @@ function ItemUse_JingLingBOX ( role, Item )
 	local c = -1
 	for k = 1 , maxitem , 1 do
 
-		d = item_type_rad [ k ] + b
+		d = item_type_rad [ k ] + b   
 		 if a <= d and a > b then
 			c = k
 			break
@@ -5596,27 +5611,30 @@ function ItemUse_JingLingBOX ( role, Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
 end
 
---ID3909	Гьоза
+--Гьоза (ID 3909)
 function ItemUse_SSSJ ( role , Item )
-	local hp = GetChaAttr(role, ATTR_HP) 
-	local mxhp = GetChaAttr(role,ATTR_MXHP)
+
+  	local hp = GetChaAttr(role, ATTR_HP) 
+	local mxhp = GetChaAttr(role,ATTR_MXHP) 	
 	hp = hp + 0.3*mxhp 
 
 	if hp > mxhp then 
 		hp = mxhp 
-	end
+	end 
 	SetCharaAttr(hp, role, ATTR_HP)
+
 end
 
---ID3910	Суперконфета на палочке
+--Суперконфета на палочке (ID 3910)
 function ItemUse_CJTHL ( role , Item )
-	GiveItem ( role , 0 , 3911 , 1 , 5 )
-	local hp = GetChaAttr(role, ATTR_HP) 
+      
+	GiveItem ( role , 0 , 3911 , 1 , 5 ) 	
+  	local hp = GetChaAttr(role, ATTR_HP) 
 	local sp = GetChaAttr(role, ATTR_SP) 
-
+	
 	hp_resume = 100 
 	sp_resume = 100
-
+	
 	hp = hp + hp_resume 
 	sp = sp + sp_resume 
 
@@ -5632,65 +5650,46 @@ function ItemUse_CJTHL ( role , Item )
 	end 
 
 	SetCharaAttr(hp, role, ATTR_HP)
-	SetCharaAttr(sp, role, ATTR_SP)
+	SetCharaAttr(sp, role, ATTR_SP)    
+
+
 end
 
---ID3342	Светильник
+--Полный доспех (ID 0852)
 function ItemUse_Denglong ( role , Item )
 	local statelv = 1
 	local statetime = 600
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_DENGLONG , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID3343	Роза
+--------------------------------------------------------------------------------------------------
+--Роза\Шоколад для влюбленных
+--------------------------------------------------------------------------------------------------
+	
+--Роза (ID 3343)
 function ItemUse_MeiGui ( role , Item )
 	local statelv = 1
 	local statetime = 600
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_MEIGUI , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID3077	Медовый шоколад
---ID3344	Шоколад для влюбленных
---ID3345	Хлопушка A
---ID3346	Хлопушка B
---ID3347	Хлопушка С
---ID3348	Фейерверк A
---ID3349	Фейерверк B
---ID3350	Фейерверк C
---ID3351	Королевский салют A
---ID3352	Королевский салют B
---ID3353	Королевский салют C
---ID3354	Сердечко с буквой I
---ID3355	Сердечко со словом LOVE
---ID3356	Сердечко с буквой U
---ID4264	Солнце
---ID4265	Туман
---ID4266	Снег
---ID4267	Звезда
---ID4268	Дождь
---ID4269	Облако
---ID4270	Радуга
---ID4271	Ангел
---ID4272	Демон
---ID4273	Скелет
+--Шоколад для влюбленных (ID 3344)
 function ItemUse_BZ ( role , Item )
 	local Now_Day = os.date("%d")
 	local Now_Month = os.date("%m")
@@ -5700,16 +5699,18 @@ function ItemUse_BZ ( role , Item )
 	local NowMonthNum = tonumber(Now_Month)
 	local CheckDateNum = NowMonthNum * 10000 + NowDayNum * 100 + NowTimeNum
 	local Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
-	end 
+	end
 end 
 
---ID0192	Сундук Килин
+--------------------------------------------------------------------------------------------------
+--Сундуки
+--------------------------------------------------------------------------------------------------
+--Сундук Килин (OD 0192)
 function ItemUse_SaintCloth ( role , Item ) 
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5717,19 +5718,19 @@ function ItemUse_SaintCloth ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet <= 3 then
-		SystemNotice(role ,"Тебе необходимо как минимум 4 свободных слота в инвентаре, что бы открыть сундук Кайлин!")
+		SystemNotice(role ,"\205\229\238\225\245\238\228\232\236\238 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229, \247\242\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234 \202\232\235\232\237")
 		UseItemFailed ( role )
 		return
 	end
 	if cha_type == 4 then 
-		GiveItem ( cha , 0 , 828 , 1 , 0 )
+		GiveItem ( cha , 0 , 828 , 1 , 0 )	
 	end 
-	GiveItem ( cha , 0 , 825 , 1 , 0 )
-	GiveItem ( cha , 0 , 826 , 1 , 0 )
-	GiveItem ( cha , 0 , 827 , 1 , 0 )
+	GiveItem ( cha , 0 , 825 , 1 , 0 )	
+	GiveItem ( cha , 0 , 826 , 1 , 0 )	
+	GiveItem ( cha , 0 , 827 , 1 , 0 )	
 end 
 
---ID0209	Ящик с древними доспехами (Ночь)
+-- Ящик с древними доспехами (Ночь) (ID 0209)
 function ItemUse_SCBoxYXTZ ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5737,31 +5738,31 @@ function ItemUse_SCBoxYXTZ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Для того чтобы открыть сундук, необходимо 3 свободных слота ")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \241\243\237\228\243\234 \237\243\230\237\238 3 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 
 	if cha_type == 1 then
-		GiveItem ( cha , 0 , 0395 , 1 , 95 )
-		GiveItem ( cha , 0 , 0587 , 1 , 95 )
-		GiveItem ( cha , 0 , 0747 , 1 , 95 )
+		GiveItem ( cha , 0 , 0395 , 1 , 95 )	
+		GiveItem ( cha , 0 , 0587 , 1 , 95 )	
+		GiveItem ( cha , 0 , 0747 , 1 , 95 )	
 	else
-		SystemNotice(role ,"Этот сундук может открыть только Ланс!")
+		SystemNotice(role ,"\208\224\231\236\229\240 \242\229\235\224 \237\229 \241\238\238\242\226\229\242\241\242\226\243\229\242. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID0210	Ящик с древними доспехами (Геркулес)
-function ItemUse_SCBoxLSTZ ( role , Item )
+-- Ящик с древними доспехами (Геркулес) (ID 0210)
+function ItemUse_SCBoxLSTZ ( role , Item )		
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
 
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet <= 3 then
-		SystemNotice(role ,"Недостаточно свободного места в инвентаре, невозможно открыть сундук. ")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \241\243\237\228\243\234 \237\243\230\237\238 3 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -5770,13 +5771,14 @@ function ItemUse_SCBoxLSTZ ( role , Item )
 		GiveItem ( cha , 0 , 0829 , 1 , 95 )
 		GiveItem ( cha , 0 , 0603 , 1 , 95 )
 	else
-		SystemNotice(role ,"Этот сундук может открыть только Карциз!")
+		SystemNotice(role ,"\208\224\231\236\229\240 \242\229\235\224 \237\229 \241\238\238\242\226\229\242\241\242\226\243\229\242. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
+
 end
 
---ID0211	Ящик с древними доспехами (Отпрыск)
+-- Ящик с древними доспехами (Отпрыск) (ID 0211)
 function ItemUse_SCBoxHYTZ ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5784,7 +5786,7 @@ function ItemUse_SCBoxHYTZ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Для того чтобы открыть сундук, необходимо 3 свободных слота ")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \241\243\237\228\243\234 \237\243\230\237\238 3 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -5794,14 +5796,14 @@ function ItemUse_SCBoxHYTZ ( role , Item )
 		GiveItem ( cha , 0 , 0589 , 1 , 95 )
 		GiveItem ( cha , 0 , 0749 , 1 , 95 )
 	else
-		SystemNotice(role ,"Этот сундук могут открыть только Ланс и Филлис!")
+		SystemNotice(role ,"\208\224\231\236\229\240 \242\229\235\224 \237\229 \241\238\238\242\226\229\242\241\242\226\243\229\242. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 
 end
 
---ID0212	Реликтовый бронированный ящик (мудрый/панда)
+--Реликтовый бронированный ящик (мудрый/панда) (ID 0212)
 function ItemUse_SCBoxFYSTZ ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5809,7 +5811,7 @@ function ItemUse_SCBoxFYSTZ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet <= 3 then
-		SystemNotice(role ,"Для того чтобы открыть сундук, необходимо 4 свободных слота ")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \241\243\237\228\243\234 \237\243\230\237\238 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -5824,13 +5826,14 @@ function ItemUse_SCBoxFYSTZ ( role , Item )
 		GiveItem ( cha , 0 , 0753 , 1 , 95 )
 		GiveItem ( cha , 0 , 2218 , 1 , 95 )
 	else
-		SystemNotice(role ,"Этот сундук могут открыть только Ами и Филлис!")
+		SystemNotice(role ,"\208\224\231\236\229\240 \242\229\235\224 \237\229 \241\238\238\242\226\229\242\241\242\226\243\229\242. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
+	
 end
 
---ID0213	Ящик с древними доспехами (Фея/Золотая рыбка)
+--Ящик с древними доспехами (Фея/Золотая рыбка) (ID 0213)
 function ItemUse_SCBoxSZZTZ ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5838,7 +5841,7 @@ function ItemUse_SCBoxSZZTZ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet <= 3 then
-		SystemNotice(role ,"Для того чтобы открыть сундук, необходимо 4 свободных слота.")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \241\243\237\228\243\234 \237\243\230\237\238 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -5853,21 +5856,21 @@ function ItemUse_SCBoxSZZTZ ( role , Item )
 		GiveItem ( cha , 0 , 0757 , 1 , 95 )
 		GiveItem ( cha , 0 , 2220 , 1 , 95 )
 	else
-		SystemNotice(role ,"Этот сундук могут открыть только Ами и Филлис!")
+		SystemNotice(role ,"\208\224\231\236\229\240 \242\229\235\224 \237\229 \241\238\238\242\226\229\242\241\242\226\243\229\242. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID0214	Ящик с древними доспехами (Прилив/Дракон)
-function ItemUse_SCBoxHHSTZ ( role , Item )
+--Ящик с древними доспехами (Прилив/Дракон) (ID 0214)
+function ItemUse_SCBoxHHSTZ ( role , Item )	
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
 
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet <= 3 then
-		SystemNotice(role ,"Для того чтобы открыть сундук, необходимо 4 свободных слота.")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \241\243\237\228\243\234 \237\243\230\237\238 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -5882,13 +5885,13 @@ function ItemUse_SCBoxHHSTZ ( role , Item )
 		GiveItem ( cha , 0 , 0761 , 1 , 95 )
 		GiveItem ( cha , 0 , 2222 , 1 , 95 )
 	else
-		SystemNotice(role ,"Этот сундук могут открыть только Ами, Ланс и Филлис!")
+		SystemNotice(role ,"\208\224\231\236\229\240 \242\229\235\224 \237\229 \241\238\238\242\226\229\242\241\242\226\243\229\242. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID0215	Ящик с древним оружием (Чудеса
+--Ящик с древним оружием (Чудеса) (ID 0215)
 function ItemUse_SCBoxRYBZ ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5896,7 +5899,7 @@ function ItemUse_SCBoxRYBZ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet == 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -5904,7 +5907,7 @@ function ItemUse_SCBoxRYBZ ( role , Item )
 	GiveItem ( cha , 0 , 0109 , 1 , 95 )
 end
 
---ID0216	Ящик с древним оружием (Бич демонов)
+--Ящик с древним оружием (Бич демонов) (ID 0216)
 function ItemUse_SCBoxXMC ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5912,7 +5915,7 @@ function ItemUse_SCBoxXMC ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet == 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -5920,7 +5923,7 @@ function ItemUse_SCBoxXMC ( role , Item )
 	GiveItem ( cha , 0 , 0111 , 1 , 95 )
 end
 
---ID0217	Ящик с древним оружием (Драко)
+--Ящик с древним оружием (Драко) (ID 0217)
 function ItemUse_SCBoxLQJ ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5928,7 +5931,7 @@ function ItemUse_SCBoxLQJ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet == 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -5936,7 +5939,7 @@ function ItemUse_SCBoxLQJ ( role , Item )
 	GiveItem ( cha , 0 , 0113 , 1 , 95 )
 end
 
---ID0218	Ящик с древним оружием (Утёс)
+--Ящик с древним оружием (Утёс) (ID 0218)
 function ItemUse_SCBoxLYJ ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5944,7 +5947,7 @@ function ItemUse_SCBoxLYJ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet == 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -5952,7 +5955,7 @@ function ItemUse_SCBoxLYJ ( role , Item )
 	GiveItem ( cha , 0 , 0115 , 1 , 95 )
 end
 
---ID0219	Ящик с древним оружием (Радуга)
+--Ящик с древним оружием (Радуга) (ID 0219)
 function ItemUse_SCBoxFHG ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5960,7 +5963,7 @@ function ItemUse_SCBoxFHG ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet == 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -5968,7 +5971,7 @@ function ItemUse_SCBoxFHG ( role , Item )
 	GiveItem ( cha , 0 , 0117 , 1 , 95 )
 end
 
---ID0220	Ящик с древним оружием (Метеор)
+--Ящик с древним оружием (Метеор) (ID 0220)
 function ItemUse_SCBoxLXHZ ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5976,7 +5979,7 @@ function ItemUse_SCBoxLXHZ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet == 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -5984,7 +5987,7 @@ function ItemUse_SCBoxLXHZ ( role , Item )
 	GiveItem ( cha , 0 , 0119 , 1 , 95 )
 end
 
---ID0221	Реликтовый оружейный ящик (вицеральный)
+--Реликтовый оружейный ящик (вицеральный) (ID 0221)
 function ItemUse_SCBoxYCJ ( role , Item )
 	local cha = TurnToCha ( role ) 
 	local cha_type = GetChaTypeID ( cha ) 
@@ -5992,7 +5995,7 @@ function ItemUse_SCBoxYCJ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( cha )
 
 	if Item_CanGet == 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -6000,57 +6003,61 @@ function ItemUse_SCBoxYCJ ( role , Item )
 	GiveItem ( cha , 0 , 0150 , 1 , 95 )
 end
 
---ID1092	Старый пергамент
+--------------------------------------------------------------------------------------------------
+--Старый пергамент\Новый пергамент, карты сокровищ
+--------------------------------------------------------------------------------------------------
+
+--Старый пергамент (ID 1092)
 function ItemUse_Map_YPJ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 1 then
-		SystemNotice(role ,"У Вас должен быть, по крайней мере, 1 свободный слот в инвентаре ")
+		SystemNotice(role ,"\211 \194\224\241 \228\238\235\230\229\237 \225\251\242\252 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end 
 	local Has_GoldenMap = CheckBagItem ( role , 1093 )
 	if Has_GoldenMap >= 1 then
-		SystemNotice ( role , "У тебя уже есть Старая карта пиратских сокровищ!" )
+		SystemNotice ( role , "\194\251 \236\238\230\229\242\229 \239\240\232\237\229\241\242\232 \242\238\235\252\234\238 1 \209\242\224\240\243\254 \234\224\240\242\243 \239\232\240\224\242\241\234\232\245 \241\238\234\240\238\226\232\249 \231\224 \238\228\232\237 \240\224\231" )
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1093 , 1 , 0 )
 end
 
---ID0684	Новый пергамент
+--Новый пергамент (ID 0684)
 function ItemUse_Map_JLBYPJ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 1 then
-		SystemNotice(role ,"У Вас должен быть, по крайней мере, 1 свободный слот в инвентаре ")
+		SystemNotice(role ,"\211 \194\224\241 \228\238\235\230\229\237 \225\251\242\252 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end 
 	local Has_GoldenMap = CheckBagItem ( role , 682 )
 	local lv= GetChaAttr(role, ATTR_LV) 
 	if Has_GoldenMap >= 1 then
-		SystemNotice ( role , "У тебя уже есть Карта Карибских сокровищ!" )
+		SystemNotice ( role , "\194\251 \236\238\230\229\242\229 \239\240\232\237\229\241\242\232 \242\238\235\252\234\238 1 \202\224\240\242\243 \202\224\240\232\225\241\234\232\245 \241\238\234\240\238\226\232\249 \231\224 \238\228\232\237 \240\224\231" )
 		UseItemFailed ( role )
 		return
 	end
 	if lv <15 or  lv >40 then
-		SystemNotice ( role , "Только для игроков с 15 до 40 уровня!" )
+		SystemNotice ( role , "\210\238\235\252\234\238 \239\229\240\241\238\237\224\230\232 \236\229\230\228\243 15 \232 40 \243\240\238\226\237\255\236\232 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \205\238\226\251\233 \207\229\240\227\224\236\229\237\242" )
 		UseItemFailed ( role )
-		return
+		return	
 	end
 	GiveItem ( role , 0 , 682 , 1 , 0 )
 end
 
---ID1093	Старая карта пиратских сокровищ
+--Старая карта пиратских сокровищ ID 1093)
 function ItemUse_GoldenMap ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
+ 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 1 then
-		SystemNotice(role ,"У Вас должен быть, по крайней мере, 1 свободный слот в инвентаре ")
+		SystemNotice(role ,"\211 \194\224\241 \228\238\235\230\229\237 \225\251\242\252 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end 
 	local Has_GoldenMap = CheckBagItem ( role , 1093 )
 	if Has_GoldenMap >= 2 then
-		SystemNotice ( role , "У вас больше, чем одна Старая карта пиратских сокровищ. Поиски сокровища не увенчались успехом " )
+		SystemNotice ( role , "\211 \226\224\241 \225\238\235\252\248\229 \247\229\236 \238\228\237\224 \209\242\224\240\224\255 \234\224\240\242\224 \239\232\240\224\242\241\234\232\245 \241\238\234\240\238\226\232\249. \207\238\232\241\234\232 \241\238\234\240\238\226\232\249\224 \237\229 \243\226\229\237\247\224\235\232\241\252 \243\241\239\229\245\238\236" )
 		UseItemFailed ( role )
 		return
 	end
@@ -6071,10 +6078,10 @@ function ItemUse_GoldenMap ( role , Item )
 
 	local MapNameList = { }
 	
-	MapNameList [0] = "Неизвестном направлении"
-	MapNameList [1] = "Аскароне"
-	MapNameList [2] = "Магическом океане"
-	MapNameList [3] = "Великом синем океане"
+	MapNameList [0] = "No map"
+	MapNameList [1] = "Ascaron"
+	MapNameList [2] = "Magical Ocean"
+	MapNameList [3] = "Deep Blue"
 	if pos_x == 0 or pos_y == 0 or Themap == 0 then
 		pos_x , pos_y , Themap = GetTheMapPos ( role , 1 )
 		Item_MAXURE = pos_x
@@ -6087,7 +6094,8 @@ function ItemUse_GoldenMap ( role , Item )
 	end
 	local GetPos = CheckGetMapPos ( role , pos_x , pos_y , MapList[Themap] )
 	if GetPos == 0 then
-		SystemNotice ( role , "Сокровище спрятано в "..MapNameList[Themap].." по координатам ("..pos_x..","..pos_y..")" )
+		SystemNotice ( role , "\209\238\234\240\238\226\232\249\229 \241\239\240\255\242\224\237\238 \226 "..MapNameList[Themap].." \207\238 \234\238\238\240\228\232\237\224\242\224\236 ("..pos_x..","..pos_y..")" )
+	
 		UseItemFailed ( role )
 		return
 	elseif GetPos == 1 then
@@ -6095,32 +6103,30 @@ function ItemUse_GoldenMap ( role , Item )
 		if getrandom == 1 then
 			GiveGoldenMapItem ( role )
 		else
-			SystemNotice ( role , "Похоже, Вы ничего не нашли. Попробуйте поискать рядом " )
+			SystemNotice ( role , "\207\238\245\238\230\229, \247\242\238 \194\251 \237\232\247\229\227\238 \237\229 \237\224\248\235\232. \207\238\239\240\238\225\243\233\242\229 \239\238\232\241\234\224\242\252 \240\255\228\238\236" )
 			UseItemFailed ( role )
 			return
 		end
 	end
 end
 
-------
--- ID0682	Карта Карибских сокровищ
-------
+--Карта Карибских сокровищ (ID 0682)
 function ItemUse_JLB_GoldenMap ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
+ 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 1 then
-		SystemNotice(role ,"У Вас должен быть, по крайней мере, 1 свободный слот в инвентаре ")
+		SystemNotice(role ,"\211 \194\224\241 \228\238\235\230\229\237 \225\251\242\252 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end 
 	local lv= GetChaAttr(role, ATTR_LV) 
 	if lv <15 or  lv >40 then
-		SystemNotice ( role , "Персонажи меньше 15-го уровня и выше 40-го не могут использовать эту карту сокровищ " )
+		SystemNotice ( role , "\207\229\240\241\238\237\224\230\232 \236\229\237\252\248\229, \247\229\236 \243\240\238\226\237\255 15 \232\235\232 \226\251\248\229 \247\229\236 \243\240\238\226\237\255 40 \237\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\243 \234\224\240\242\243 \241\238\234\240\238\226\232\249" )
 		UseItemFailed ( role )
-		return
+		return	
 	end
 	local Has_GoldenMap = CheckBagItem ( role , 682 )
 	if Has_GoldenMap >= 2 then
-		SystemNotice ( role , "У Вас может быть только 1 карта сокровищ в инвентаре. Пожалуйста, удалите или положите в банк остальные " )
+		SystemNotice ( role , "\211 \194\224\241 \236\238\230\229\242 \242\238\235\252\234\238 \225\251\242\252 1 \234\224\240\242\224 \241\238\234\240\238\226\232\249 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \232\241\234\224\242\252 \241\238\234\240\238\226\232\249\229. \207\238\230\224\235\243\233\241\242\224 \243\228\224\235\232\242\229 \232\235\232 \239\238\235\238\230\232\242\229 \226 \225\224\237\234 \238\241\242\224\235\252\237\251\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -6135,10 +6141,10 @@ function ItemUse_JLB_GoldenMap ( role , Item )
 	MapList [0] = "NoMap"
 	MapList [1] = "jialebi"
 	local MapNameList = { }
-	MapNameList [0] = "Неизвестном направлении"
-	MapNameList [1] = "Заливе сокровищ"
+	MapNameList [0] = "No map"
+	MapNameList [1] = "Treasure Gulf"
 	if pos_x == 0 or pos_y == 0 or Themap == 0 then
-		pos_x , pos_y , Themap = GetTheMapPos_JLB ( role , 1 )
+		pos_x , pos_y , Themap = GetTheMapPos_JLB ( role , 1 )	
 		Item_MAXURE = pos_x
 		Item_URE = Themap
 		Item_MAXENERGY = pos_y
@@ -6148,7 +6154,7 @@ function ItemUse_JLB_GoldenMap ( role , Item )
 	end
 	local GetPos = CheckGetMapPos ( role , pos_x , pos_y , MapList[Themap] )
 	if GetPos == 0 then
-		SystemNotice ( role , "Сокровище спрятано в "..MapNameList[Themap].." по координатам ("..pos_x..","..pos_y..")" )
+		SystemNotice ( role , "\209\238\234\240\238\226\232\249\229 \241\239\240\255\242\224\237\238 \226 "..MapNameList[Themap].." \207\238 \234\238\238\240\228\232\237\224\242\224\236 ("..pos_x..","..pos_y..")" )
 		UseItemFailed ( role )
 		return
 	elseif GetPos == 1 then
@@ -6156,31 +6162,34 @@ function ItemUse_JLB_GoldenMap ( role , Item )
 		if getrandom == 1 then
 			GiveGoldenMapItem_JLB ( role )
 		else
-			SystemNotice ( role , "Похоже, Вы ничего не нашли. Попробуйте поискать рядом " )
+			SystemNotice ( role , "\207\238\245\238\230\229, \247\242\238 \194\251 \237\232\247\229\227\238 \237\229 \237\224\248\235\232. \207\238\239\240\238\225\243\233\242\229 \239\238\232\241\234\224\242\252 \240\255\228\238\236" )
 			UseItemFailed ( role )
 			return
 		end
 	end
 end
 
---ID3338	Знаменитый Кекс
+--------------------------------------------------------------------------------------------------
+--Разное
+--------------------------------------------------------------------------------------------------
+
+--Всемогущий камень (ID 3240)
 function ItemUse_BirthCake ( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		local attr_ap = Attr_ap( role )
 		local ap_extre = 3
 		attr_ap = attr_ap + ap_extre 
 		SetCharaAttr( attr_ap, role, ATTR_AP )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "Cannot use while sailing" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID0853	Журнал "Счастливый отдых"
+--Журнал "Счастливый отдых" (ID 0853)
 function ItemUse_HappyBook ( role , Item )
 	local Cha_Boat = 0
 	local charLv=Lv ( role )
@@ -6189,60 +6198,52 @@ function ItemUse_HappyBook ( role , Item )
 	local dif_exp_five = DEXP[charLv+5]
 	local Exp_star=GetChaAttr (  role , ATTR_CEXP )
 	local dif_exp_half = (DEXP[charLv+1] - DEXP[charLv])*0.5 +  Exp_star +10
-	local dif_exp_thalf = (DEXP[charLv+1] - DEXP[charLv])*0.3  +  Exp_star + 10
-	local dif_exp_thalf_b = dif_exp_thalf - DEXP[charLv+1]
+	local dif_exp_thalf = (DEXP[charLv+1] - DEXP[charLv])*0.3331  +  Exp_star + 10
+	local dif_exp_thalf_b = (DEXP[charLv+1] - DEXP[charLv])*0.2  +  Exp_star + 10
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
-	elseif charLv>=1 and charLv<=9 then
-		SetChaAttrI( role , ATTR_CEXP , dif_exp_five )
-	elseif charLv>=10 and charLv<=29 then
-			SetChaAttrI( role , ATTR_CEXP , dif_exp_three )
-	elseif charLv>=30 and charLv<=59 then
-			SetChaAttrI( role , ATTR_CEXP , dif_exp_one )
-	elseif charLv>=60 and charLv<=75 then
+	elseif charLv>=90 and charLv<=100 then
+		SetChaAttrI( role , ATTR_CEXP , dif_exp_one )
+	elseif charLv>=100 and charLv<=110 then
 			SetChaAttrI( role , ATTR_CEXP , dif_exp_half )
-	elseif charLv>=76 and charLv<=85 and charLv~=79  then
+	elseif charLv>=110 and charLv<=120 then
 			SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf )
-	elseif charLv==79 and dif_exp_thalf_b<=0 then 
-			SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf )
-	elseif charLv==79 and dif_exp_thalf_b>0 then 
-			dif_exp_thalf = dif_exp_thalf_b*0.02 + DEXP[charLv+1]
-			SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf )
-	elseif charLv>=86 then
-		SystemNotice( role , "Your level is too high to use" )
+	elseif charLv>=120 and charLv<=130 then
+			SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf_b )
+	elseif charLv>=130 then
+		SystemNotice( role , "\194\224\248 \243\240\238\226\229\237\252 \241\235\232\248\234\238\236 \226\251\241\238\234\232\233, \247\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID3335	Развитие феи
+--Развитие феи (ID 3335)
 function ItemUse_MarchElf ( role , Item )
 	local statelv = 1
 	local statetime = 600
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		local cha_type = GetChaTypeID ( role )
 		if cha_type == 3 or cha_type == 4 then
 			AddState( role , role , STATE_MarchElf , statelv , statetime )
 		else
-			SystemNotice ( role , "Fairy March can only be used by female" )
+			SystemNotice ( role , "\208\224\231\226\232\242\232\229 \244\229\232 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238 \242\238\235\252\234\238 \230\229\237\241\234\232\236 \239\238\235\238\236" )
 			UseItemFailed ( role )
 			return
 		end
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 
 end
 
---ID
+--Зелье ускорения (ID 3339)
 function ItemUse_MspdYS ( role , Item )
 	local statelv = 1
 	local statetime = 900
@@ -6255,626 +6256,851 @@ function ItemUse_MspdYS ( role , Item )
 		SystemNotice( role , "A" )
 
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		return
 	end
 
 end
 
---ID
+--Треугольный парус (ID 3340)
 function ItemUse_SanJiaoFan ( role , Item )
 	local statelv = 1
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ~=  nil then
 		AddState( Cha_Boat , Cha_Boat , STATE_YSBoatMspd , statelv , statetime )
 	else
-		SystemNotice( role , "Использование возможно только во время плавания. " )
+		SystemNotice( role , "\204\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238 \242\238\235\252\234\238 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 
 end
 
---ID
+--Высококачественный доспех (ID 3341)
 function ItemUse_GJZhuangJia ( role , Item )
 	local statelv = 1
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ~=  nil then
 		AddState( Cha_Boat , Cha_Boat , STATE_YSBoatDEF , statelv , statetime )
 	else
-		SystemNotice( role , "Использование возможно только во время плавания. " )
+		SystemNotice( role , "\204\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238 \242\238\235\252\234\238 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 
 end
 
-------
--- ID 3087 Жребий фортуны
-------
+--------------------------------------------------------------------------------------------------
+--Жребии
+--------------------------------------------------------------------------------------------------
 
+--Жребий фортуны (ID 3087)
 function ItemUse_SuanmingMoney ( role , Item )
-
-	if CanUseItem(role) == 0 then return end
-
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
-	
 	if Cha_Boat ==  nil then
+		
+		
 		local Has_GoldenMap = CheckBagItem ( role , 3336 )
 		if Has_GoldenMap >= 1 then
-			SystemNotice ( role , "Использован мистический клевер" )
+			SystemNotice ( role , "\200\241\239\238\235\252\231\243\229\242\241\255 \204\232\241\242\232\247\229\241\234\232\233 \202\235\229\226\229\240" )
 			SuanmingTeshu_Money ( role )
 			DelBagItem( role , 3336 , 1 )
 		else
 			Suanming_Money ( role )
 		end
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
+
 	
 end
 
---ID3086	Счастливый жребий
+--Счастливый жребий (ID 3086)
 function ItemUse_SuanmingWork ( role , Item )
-	if CanUseItem(role) == 0 then return end
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
 		local lv = Lv ( role )
 		local exp = Exp(role) 
 		local clexp = GetChaAttrI ( role , ATTR_CLEXP )
-		if lv >= 100 then
-		else
-			if exp < clexp then
-				SystemNotice ( role , "Отрицательное значение опыта. Невозможно использовать жребий" )
-				UseItemFailed ( role )
-				return
-			end
+		if exp < clexp then
+			SystemNotice ( role , "\206\239\251\242 \237\232\230\229 \247\229\236 \243\240\238\226\229\237\252. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \230\240\229\225\232\233" )
+			UseItemFailed ( role )
+			return
 		end
+		
 		local Has_GoldenMap = CheckBagItem ( role , 3336 )
 		if Has_GoldenMap >= 1 then
-			SystemNotice ( role , "Использован мистический клевер" )
+			SystemNotice ( role , "\200\241\239\238\235\252\231\243\229\242\241\255 \204\232\241\242\232\247\229\241\234\232\233 \202\235\229\226\229\240" )
 			SuanmingTeshu_Work ( role )
-			DelBagItem( role , 3336 , 1 )
+			DelBagItem( role , 3336 , 1 )	
 		else
 			Suanming_Work ( role )
 		end
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---ID
+--------------------------------------------------------------------------------------------------
+--Ингредиенты защитного средства	
+--------------------------------------------------------------------------------------------------
+
+--Трут (ID 4259)
 function ItemUse_HuoRongSW ( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		RemoveState( role , STATE_BDJ )
 		AddState ( role , role , STATE_TTISW , 1 , 300 )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	
 end
 
---ID
+--Проклятая кость (ID 4260)
 function ItemUse_ZhouGUSW ( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		RemoveState( role , STATE_ZZZH )
 		AddState ( role , role , STATE_TTISW , 2 , 300 )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	
 end
 
---ID
+--Ость (ID 4261)
 function ItemUse_ShuiMangSW ( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		RemoveState( role , STATE_CRXSF )
 		AddState ( role , role , STATE_TTISW , 3 , 300 )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	
 end
 
---ID
+--Амулет (ID 4249)
 function ItemUse_HuFuSW ( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ==  nil then
 		RemoveState( role , STATE_JSDD )
 		AddState ( role , role , STATE_TTISW , 4 , 1200 )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	
 end
 
---ID
+--------------------------------------------------------------------------------------------------
+--Рюкзаки, расширяющие инвентарь	
+--------------------------------------------------------------------------------------------------
+
+--Рюкзак с 28 ячейками (ID3088)
 function ItemUse_28BeiBao( role , Item ) 
 	local bagnum = GetKbCap(role) 
-	if bagnum >= 30 then
-		SystemNotice(role ,"Ваш инвентарь уже расширен!")
-		UseItemFailed ( role )
-		return
-	end
-	AddKbCap(role, 6) 
-end 
-
---Не юзается!
---[[function ItemUse_32BeiBao( role , Item ) 
-	local bagnum = GetKbCap(role) 
-	if bagnum >= 36 then
-		SystemNotice(role ,"Ваш инвентарь уже расширен!")
-		UseItemFailed ( role )
-		return
-	end
-	if bagnum <= 24 then
-		SystemNotice(role ,"Ваш инвентарь ")
+	if bagnum >= 28 then
+		SystemNotice(role ,"Нельзя использовать несколько раз ")
 		UseItemFailed ( role )
 		return
 	end
 	AddKbCap(role, 4) 
-end ]]--
+end 
 
---ID
+--Рюкзак с 32 ячейками ID 3089)
+function ItemUse_32BeiBao( role , Item ) 
+	local bagnum = GetKbCap(role) 
+	if bagnum >= 32 then
+		SystemNotice(role ,"\205\229\235\252\231\255 \232\241\239\238\235\252\231\238\226\224\242\252 \237\229\241\234\238\235\252\234\238 \240\224\231")
+		UseItemFailed ( role )
+		return
+	end
+	if bagnum <= 24 then
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \240\224\241\248\232\240\252\242\229 \241\237\224\247\224\235\238 \232\237\226\229\237\242\224\240\252 \237\224 28 \255\247\229\229\234")
+		UseItemFailed ( role )
+		return
+	end
+	AddKbCap(role, 4) 
+end 
+
+--Рюкзак с 36 ячейками (ID 3090)
 function ItemUse_36BeiBao( role , Item ) 
 	local bagnum = GetKbCap(role) 
 	if bagnum >= 36 then
-		SystemNotice(role ,"Ваш инвентарь уже расширен!")
+		SystemNotice(role ,"\205\229\235\252\231\255 \232\241\239\238\235\252\231\238\226\224\242\252 \237\229\241\234\238\235\252\234\238 \240\224\231")
 		UseItemFailed ( role )
 		return
 	end
-	if bagnum <= 24 then
-		SystemNotice(role ,"Ваш инвентарь ещё не расширялся, неоходимо сначала увеличить до 30-ти ячеек!")
-		UseItemFailed ( role )
-		return
-	end
-	AddKbCap(role, 6) 
-end 
-
---ID
-function ItemUse_40BeiBao( role , Item ) 
-	local bagnum = GetKbCap(role) 
-	if bagnum >= 42 then
-		SystemNotice(role ,"Ваш инвентарь уже расширен!")
-		UseItemFailed ( role )
-		return
-	end
-	if bagnum <= 30 then
-		SystemNotice(role ,"Ваш инвентарь ещё не расширялся, неоходимо сначало увеличить до 36-ти ячеек!")
-		UseItemFailed ( role )
-		return
-	end
-	AddKbCap(role, 6) 
-end 
-
---Не юзается!
---[[function ItemUse_44BeiBao( role , Item ) 
-	local bagnum = GetKbCap(role) 
-	if bagnum >= 44 then
-		SystemNotice(role ,"Cannot use item repeatedly")
-		UseItemFailed ( role )
-		return
-	end
-	if bagnum <= 36 then
-		SystemNotice(role ,"Cannot use item above your level")
+	if bagnum <= 28 then
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \240\224\241\248\232\240\252\242\229 \241\237\224\247\224\235\238 \232\237\226\229\237\242\224\240\252 \237\224 32 \255\247\229\233\234\232")
 		UseItemFailed ( role )
 		return
 	end
 	AddKbCap(role, 4) 
-end  ]]--
+end 
 
---ID
-function ItemUse_48BeiBao( role , Item ) 
+--Рюкзак с 40 ячейками (ID 3091)
+function ItemUse_40BeiBao( role , Item ) 
 	local bagnum = GetKbCap(role) 
-	if bagnum >= 48 then
-		SystemNotice(role ,"Ваш инвентарь уже расширен!")
+	if bagnum >= 40 then
+		SystemNotice(role ,"\205\229\235\252\231\255 \232\241\239\238\235\252\231\238\226\224\242\252 \237\229\241\234\238\235\252\234\238 \240\224\231")
+		UseItemFailed ( role )
+		return
+	end
+	if bagnum <= 32 then
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \240\224\241\248\232\240\252\242\229 \241\237\224\247\224\235\238 \232\237\226\229\237\242\224\240\252 \237\224 36 \255\247\229\229\234")
+		UseItemFailed ( role )
+		return
+	end
+	AddKbCap(role, 4) 
+end 
+
+--Рюкзак с 44 ячейками (ID 3092)
+function ItemUse_44BeiBao( role , Item ) 
+	local bagnum = GetKbCap(role) 
+	if bagnum >= 44 then
+		SystemNotice(role ,"\205\229\235\252\231\255 \232\241\239\238\235\252\231\238\226\224\242\252 \237\229\241\234\238\235\252\234\238 \240\224\231")
 		UseItemFailed ( role )
 		return
 	end
 	if bagnum <= 36 then
-		SystemNotice(role ,"Ваш инвентарь ещё не расширялся, неоходимо сначало увеличить до 42-х ячеек!")
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \240\224\241\248\232\240\252\242\229 \241\237\224\247\224\235\238 \232\237\226\229\237\242\224\240\252 \237\224 40 \255\247\229\229\234")
 		UseItemFailed ( role )
 		return
 	end
-	AddKbCap(role, 6) 
+	AddKbCap(role, 4) 
 end 
 
---ID
+--Рюкзак с 48 ячейками (ID 3093)
+function ItemUse_48BeiBao( role , Item ) 
+	local bagnum = GetKbCap(role) 
+	if bagnum >= 48 then
+		SystemNotice(role ,"\205\229\235\252\231\255 \232\241\239\238\235\252\231\238\226\224\242\252 \237\229\241\234\238\235\252\234\238 \240\224\231")
+		UseItemFailed ( role )
+		return
+	end
+	if bagnum <= 40 then
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \240\224\241\248\232\240\252\242\229 \241\237\224\247\224\235\238 \232\237\226\229\237\242\224\240\252 \237\224 44 \255\247\229\233\234\232")
+		UseItemFailed ( role )
+		return
+	end
+	AddKbCap(role, 4) 
+end 
+
+--Мороженое (ID 3126)
 function ItemUse_BQ ( role , Item )
+
 end 
 
---ID0227	Питание феи
---ID2312	Стандартный паек
+--------------------------------------------------------------------------------------------------
+--Питание, фрукты для фей, книги боевых скиллов для фей
+--------------------------------------------------------------------------------------------------
+--Питание феи (ID 0227)
 function ItemUse_SiLiao ( role , Item , Item_Traget )
-	if CanUseItem(role) == 0 then return end
+	
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return
-	end
-	local Item_Traget_URE=GetItemAttr(Item_Traget,ITEMATTR_URE)
-	local Item_Traget_MAXURE=GetItemAttr(Item_Traget,ITEMATTR_MAXURE)
-	local Item_type = GetItemType ( Item )
-	local Item_Traget_Type = GetItemType ( Item_Traget )
-	local Num = 2500
-	if Item_type == 57 and Item_Traget_Type == 59 then
-		if Item_Traget_URE < Item_Traget_MAXURE then
-			Give_ElfURE ( role , Item_Traget , Num )
-		else
-			SystemNotice(role , "Фея сыта!" ) 
-			UseItemFailed ( role )
-			return
-		end
-	end 
-end
-
---ID5644	Большое Питание Феи
---ID5645	Большой Авто-рацион
-function ItemUse_numeneat ( role , Item , Item_Traget )
-	if CanUseItem(role) == 0 then return end
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return
-	end
-	local Item_Traget_URE=GetItemAttr(Item_Traget,ITEMATTR_URE)
-	local Item_Traget_MAXURE=GetItemAttr(Item_Traget,ITEMATTR_MAXURE)
-	local Item_type = GetItemType ( Item )
-	local Item_Traget_Type = GetItemType ( Item_Traget )
-	local Num = 5000
-	if Item_type == 57 and Item_Traget_Type == 59 then
-		if Item_Traget_URE < Item_Traget_MAXURE then
-			Give_ElfURE ( role , Item_Traget , Num )
-		else
-			SystemNotice(role , "Фея сыта!" ) 
-			UseItemFailed ( role )
-			return
-		end
-	end 
-end
-
---ID3152	Пища фей
-function ItemUse_CWSiLiao ( role , Item , Item_Traget )
-	if CanUseItem(role) == 0 then return end
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
-	end
-	local Item_Traget_URE=GetItemAttr(Item_Traget,ITEMATTR_URE)
-	local Item_Traget_MAXURE=GetItemAttr(Item_Traget,ITEMATTR_MAXURE)
-	local Item_type = GetItemType ( Item )
-	local Item_Traget_Type = GetItemType ( Item_Traget )
-	local Num = 250
-	if Item_type == 57 and Item_Traget_Type == 59 then
-		if Item_Traget_URE < Item_Traget_MAXURE then
-		Give_ElfURE ( role , Item_Traget , Num )
-	else
-		SystemNotice(role , "Фея сыта!" ) 
-			UseItemFailed ( role )
-			return
-		end
-	end
-end
-
---ID0222	Фрукт снежного дракона
-function ItemUse_LS_longguo ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
+	end      
+		local Item_Traget_URE=GetItemAttr(Item_Traget,ITEMATTR_URE)
+		local Item_Traget_MAXURE=GetItemAttr(Item_Traget,ITEMATTR_MAXURE)
 		local Item_type = GetItemType ( Item )
 		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Фруктом снежного дракона(Сила +1)!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Str ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
+		local Num = 2500
 
---ID0223	Ледяная слива
-function ItemUse_LS_koumei ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Ледяной сливой(Ловкость +1)!" ) 
+		if Item_type == 57 and Item_Traget_Type == 59 then
+				if Item_Traget_URE < Item_Traget_MAXURE then
+				   Give_ElfURE ( role , Item_Traget , Num )
+   	 			else
+                    SystemNotice(role , "\212\229\255 \241\251\242\224" ) 
 					UseItemFailed ( role )
-				else
-					Lvup_Agi ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---ID0224	Фишфлос с Зефира
-function ItemUse_LS_yusi ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Фишфлосом с Зефира(Точность +1)!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Dex ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---ID0225	Серебряное манго
-function ItemUse_LS_guopu ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Серебряным манго(Телосложение +1)!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Con ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---ID0226	Шайтанский бисквит
-function ItemUse_LS_mibing ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Шайтанским бисквитом(Дух +1)!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Sta ( role , Item_Num , Item_Traget )
+					return
 				end
 		end 
+
 end
 
---ID
+--Пища фей (ID 3152)
+function ItemUse_CWSiLiao ( role , Item , Item_Traget )
+	
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end      
+		local Item_Traget_URE=GetItemAttr(Item_Traget,ITEMATTR_URE)
+		local Item_Traget_MAXURE=GetItemAttr(Item_Traget,ITEMATTR_MAXURE)
+		local Item_type = GetItemType ( Item )
+		local Item_Traget_Type = GetItemType ( Item_Traget )
+		local Num = 250
+
+		if Item_type == 57 and Item_Traget_Type == 59 then
+				if Item_Traget_URE < Item_Traget_MAXURE then
+				   Give_ElfURE ( role , Item_Traget , Num )
+   	 			else
+                    SystemNotice(role , "\212\229\255 \241\251\242\224" ) 
+					UseItemFailed ( role )
+					return
+				end
+		end 
+
+end
+
+--Фрукт снежного дракона (ID - 0222)
+function ItemUse_LS_longguo ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "После 51 лвл невозможно использовать фрукт. " )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type = GetItemType ( Item )
+		local Item_Traget_Type = GetItemType ( Item_Traget )
+		local Item_Num = GetItemID ( Item )
+		local Check_Exp = 0
+		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "После 51 лвл невозможно использовать фрукт. " )
+			UseItemFailed ( role )
+			return
+		end
+		if Item_type == 58 and Item_Traget_Type == 59 then
+				Check_Exp = CheckElf_EXP ( role , Item_Traget ) 
+				if Check_Exp == 0 then
+					SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \244\240\243\234\242\238\236 \209\237\229\230\237\238\227\238 \196\240\224\234\238\237\224" ) 
+					UseItemFailed ( role )
+				else
+				   Lvup_Str ( role , Item_Num , Item_Traget )
+				end 
+		end 
+end
+
+--Ледяная слива (ID 0223)
+function ItemUse_LS_koumei ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type = GetItemType ( Item )
+		local Item_Traget_Type = GetItemType ( Item_Traget )
+		local Item_Num = GetItemID ( Item )
+		local Check_Exp = 0
+		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "После 51 лвл невозможно использовать фрукт. " )
+			UseItemFailed ( role )
+			return
+		end
+		if Item_type == 58 and Item_Traget_Type == 59 then
+				Check_Exp = CheckElf_EXP ( role , Item_Traget )
+				if Check_Exp == 0 then
+					SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \203\229\228\255\237\238\233 \241\235\232\226\238\233" ) 
+					UseItemFailed ( role )
+				else
+				   Lvup_Agi ( role , Item_Num , Item_Traget )
+				end 
+		end 
+end
+
+--Фишфлос с Зефира (ID 0224)
+function ItemUse_LS_yusi ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type = GetItemType ( Item )
+		local Item_Traget_Type = GetItemType ( Item_Traget )
+		local Item_Num = GetItemID ( Item )
+		local Check_Exp = 0
+		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "После 51 лвл невозможно использовать фрукт.  " )
+			UseItemFailed ( role )
+			return
+		end
+		if Item_type == 58 and Item_Traget_Type == 59  then
+				Check_Exp = CheckElf_EXP ( role , Item_Traget )
+				if Check_Exp == 0 then
+					SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \212\232\248\244\235\238\241\238\236 \241 \199\229\244\232\240\224" ) 
+					UseItemFailed ( role )
+				else
+				   Lvup_Dex ( role , Item_Num , Item_Traget )
+				end 
+		end 
+end
+
+--Серебряное манго (ID 0225)
+function ItemUse_LS_guopu ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type = GetItemType ( Item )
+		local Item_Traget_Type = GetItemType ( Item_Traget )
+		local Item_Num = GetItemID ( Item )
+		local Check_Exp = 0
+		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "После 51 лвл невозможно использовать фрукт. " )
+			UseItemFailed ( role )
+			return
+		end
+		if Item_type == 58 and Item_Traget_Type == 59 then
+				Check_Exp = CheckElf_EXP ( role , Item_Traget )
+				if Check_Exp == 0 then
+					SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \209\229\240\229\225\240\255\237\251\236 \236\224\237\227\238" ) 
+					UseItemFailed ( role )
+				else
+				   Lvup_Con ( role , Item_Num , Item_Traget )
+				end 
+		end 
+end
+
+--Шайтанский бисквит (ID 0226)
+function ItemUse_LS_mibing ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type = GetItemType ( Item )
+		local Item_Traget_Type = GetItemType ( Item_Traget )
+		local Item_Num = GetItemID ( Item )
+		local Check_Exp = 0
+		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "После 51 лвл невозможно использовать фрукт.  " )
+			UseItemFailed ( role )
+			return
+		end
+		if Item_type == 58 and Item_Traget_Type == 59  then
+				Check_Exp = CheckElf_EXP ( role , Item_Traget ) 
+				if Check_Exp == 0 then
+					SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \216\224\233\242\224\237\241\234\232\236 \225\232\241\234\226\232\242\238\236" )
+					UseItemFailed ( role )
+				else
+				   Lvup_Sta ( role , Item_Num , Item_Traget ) 
+				end  				
+		end 
+end
+
+--Защита нач. ур (ID 0243)
 function ItemUse_HuDun_CJ ( role , Item , Item_Traget )
-	if CanUseItem(role) == 0 then return end
+
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local Item_type =  GetItemType ( Item )
-	local Item_Traget_Type =  GetItemType ( Item_Traget )
-	local Num = GetItemForgeParam ( Item_Traget , 1 )
-	local SkillType = 1
-	local SkillNum = 1
-	if Item_type == 58 and Item_Traget_Type == 59 then
-		local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-		if Check == 1 then
-			SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-			UseItemFailed ( role )
-		else
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			SystemNotice( role , "Навык феи успешно добавлен!" )
-		end
-	end
-end
-
---ID
-function ItemUse_HuDun_ZJ ( role , Item , Item_Traget )
-	if CanUseItem(role) == 0 then return end
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local Item_type =  GetItemType ( Item )
-	local Item_Traget_Type =  GetItemType ( Item_Traget )
-	local Num = GetItemForgeParam ( Item_Traget , 1 )
-	local SkillType = 2
-	local SkillNum = 1
-	if Item_type == 58 and Item_Traget_Type == 59 then
-		local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-		if Check == 1 then
-			SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-			UseItemFailed ( role )
-		else
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			SystemNotice( role , "Навык феи успешно добавлен!" )
-		end
-	end
-end
-
---ID
-function ItemUse_HuDun_GJ ( role , Item , Item_Traget )
-			--SystemNotice( role , "s" )
---	local Cha_Boat = 0
---	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
---	if Cha_Boat ~= nil then 
---		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
---		return 
---	end 
---		local Item_type =  GetItemType ( Item )
---		local Item_Traget_Type =  GetItemType ( Item_Traget )
---		local Num = GetItemForgeParam ( Item_Traget , 1 )
---		local SkillType = 3
---		local SkillNum = 1
-				--SystemNotice( role , SkillType )
-				--SystemNotice( role , SkillNum )
---
---		if Item_type == 58 and Item_Traget_Type == 59 then
---			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
---			if Check == 1 then
---				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
---				UseItemFailed ( role )
---			else
-				  --SystemNotice( role , "AddElfSkill" )
---			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				  --SystemNotice( role , "Навык феи успешно добавлен!" )
---			end
---		end
-end
-
---ID
-function ItemUse_BaoJi_CJ ( role , Item , Item_Traget )
-			--SystemNotice( role , "s" )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 		local Item_type =  GetItemType ( Item )
 		local Item_Traget_Type =  GetItemType ( Item_Traget )
 		local Num = GetItemForgeParam ( Item_Traget , 1 )
-		local SkillType = 1
-		local SkillNum = 2
-				--SystemNotice( role , SkillType )
-				--SystemNotice( role , SkillNum )
+		local SkillType = 1	
+		local SkillNum = 1		
+
 		if Item_type == 58 and Item_Traget_Type == 59 then
 			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
 			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
 				UseItemFailed ( role )
 			else
-				--SystemNotice( role , "AddElfSkill" )
+
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				SystemNotice( role , "Навык феи успешно добавлен!" )
+
 			end
 		end
+
 end
 
---ID0247	Стандартный Берсерк
-function ItemUse_BaoJi_ZJ ( role , Item , Item_Traget )
-			--SystemNotice( role , "s" )
+--Обычная защита (ID 0244)
+function ItemUse_HuDun_ZJ ( role , Item , Item_Traget )
+
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 2		
+		local SkillNum = 1	
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+
+			end
+		end
+
+end
+
+--Защита выс. ур. (ID 0245)
+function ItemUse_HuDun_GJ ( role , Item , Item_Traget )
+			--SystemNotice( role , "s" )
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 3
+		local SkillNum = 1
+				SystemNotice( role , SkillType )
+				SystemNotice( role , SkillNum )
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+		        SystemNotice( role , "AddElfSkill" )
+
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+				SystemNotice( role , "\211\236\229\237\232\229 \225\251\235\238 \226\251\243\247\229\237\238" )
+
+			end
+		end
+
+end
+
+--Берсерк нач. ур. (ID 0246)
+function ItemUse_BaoJi_CJ ( role , Item , Item_Traget )
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 1	
+		local SkillNum = 2	
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+				SystemNotice( role , "\211\236\229\237\232\229 \225\251\235\238 \226\251\243\247\229\237\238" )
+
+			end
+		end
+
+end
+
+--Обычный берсерк(ID 0247
+function ItemUse_BaoJi_ZJ ( role , Item , Item_Traget )  
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	
+		local SkillType = 2	
+		local SkillNum = 2		
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+
+			end
+		end
+
+end
+
+--Берсерк выс. ур. (ID 0248)
+function ItemUse_BaoJi_GJ ( role , Item , Item_Traget ) 
+		UseItemFailed ( role ) 
+end
+
+--Магия нач. ур. (ID 0249)
+function ItemUse_MoLi_CJ ( role , Item , Item_Traget )
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 1		
+		local SkillNum = 3	
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" )  
+				UseItemFailed ( role )
+			else
+
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+
+			end
+		end
+
+end
+
+--Обычная магия (ID 0250)
+function ItemUse_MoLi_ZJ ( role , Item , Item_Traget )
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	
+		local SkillType = 2		
+		local SkillNum = 3		
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+
+			end
+		end
+
+end
+
+--Магия выс. ур. (ID 0251)
+function ItemUse_MoLi_GJ ( role , Item , Item_Traget ) 
+		UseItemFailed ( role ) 
+end
+
+--Восстановление нач. ур.(ID 0252)
+function ItemUse_HuiFu_CJ ( role , Item , Item_Traget )
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 1	
+		local SkillNum = 4	
+
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+
+			end
+		end
+
+end
+
+--Обычное восстановление (ID 0253)
+function ItemUse_HuiFu_ZJ ( role , Item , Item_Traget )   
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	
+		local SkillType = 2		
+		local SkillNum = 4	
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+
+
+			end
+		end
+
+end
+
+--Восстановление выс. ур.(ID 0254)
+function ItemUse_HuiFu_GJ ( role , Item , Item_Traget )  
+		UseItemFailed ( role ) 
+end
+
+--Медитация нач. ур. (ID 0259)
+function ItemUse_ChenSi_CJ ( role , Item , Item_Traget )
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	
+		local SkillType = 1		
+		local SkillNum = 5		
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+
+			end
+		end
+
+end
+
+--Обычная медитация (ID 0260)
+function ItemUse_ChenSi_ZJ ( role , Item , Item_Traget )
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -6882,387 +7108,29 @@ function ItemUse_BaoJi_ZJ ( role , Item , Item_Traget )
 		local Item_Traget_Type =  GetItemType ( Item_Traget )
 		local Num = GetItemForgeParam ( Item_Traget , 1 )
 		local SkillType = 2
-		local SkillNum = 2
-				--SystemNotice( role , SkillType )
-				--SystemNotice( role , SkillNum )
+		local SkillNum = 5	
 
 		if Item_type == 58 and Item_Traget_Type == 59 then
 			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
 
 			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно." ) 
+				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
 				UseItemFailed ( role )
 			else
-				--SystemNotice( role , "AddElfSkill" )
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				SystemNotice( role , "Навык феи успешно добавлен!" )
-			end
-		end
-end
-
---ID0248	Продвинутый Берсерк
-function ItemUse_BaoJi_GJ ( role , Item , Item_Traget )
-			--SystemNotice( role , "s" )
---	local Cha_Boat = 0
---	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
---	if Cha_Boat ~= nil then 
---		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
---		return 
---	end 
---		local Item_type =  GetItemType ( Item )
---		local Item_Traget_Type =  GetItemType ( Item_Traget )
---		local Num = GetItemForgeParam ( Item_Traget , 1 )
---		local SkillType = 3		--ТЄФцјУµД Skill АаРН
---		local SkillNum = 2		--ТЄФцјУµДSkill ±аєЕ
-				--SystemNotice( role , SkillType )
-				--SystemNotice( role , SkillNum )
-
---		if Item_type == 58 and Item_Traget_Type == 59 then
---			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
---			if Check == 1 then
---				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
---				UseItemFailed ( role )
---			else
---				 -- SystemNotice( role , "AddElfSkill" )
---			AddElfSkill ( Item_Traget , SkillType , SkillNum )
---				  --SystemNotice( role , "Навык феи успешно добавлен!" )
---			end
---		end
-end
-
-------
--- Начальная магия
-------
-
-function ItemUse_MoLi_CJ ( role , Item , Item_Traget )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local Item_type =  GetItemType ( Item )
-	local Item_Traget_Type =  GetItemType ( Item_Traget )
-	local Num = GetItemForgeParam ( Item_Traget , 1 )
-	local SkillType = 1
-	local SkillNum = 3
-	if Item_type == 58 and Item_Traget_Type == 59 then
-		local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-		if Check == 1 then
-			SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно." ) 
-			UseItemFailed ( role )
-		else
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			  --SystemNotice( role , "Навык феи успешно добавлен" )
-		end
-	end
-end
-
-
-----------------------------------------------------
-function ItemUse_MoLi_ZJ ( role , Item , Item_Traget )   --ЦРј¶Д§Б¦
-			--SystemNotice( role , "s" )
-
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 2		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 3		--ТЄФцјУµДSkill ±аєЕ
-				--SystemNotice( role , SkillType )
-				--SystemNotice( role , SkillNum )
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				  --SystemNotice( role , "AddElfSkill" )
 
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				  --SystemNotice( role , "Навык феи успешно добавлен!" )
 
 			end
 		end
 
 end
 
-----------------------------------------------------
-function ItemUse_MoLi_GJ ( role , Item , Item_Traget )   --ёЯј¶Д§Б¦
-			--SystemNotice( role , "s" )
-
---	local Cha_Boat = 0
---	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
---	if Cha_Boat ~= nil then 
---		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
---		return 
---	end 
---		local Item_type =  GetItemType ( Item )
---		local Item_Traget_Type =  GetItemType ( Item_Traget )
---		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
---		local SkillType = 3		--ТЄФцјУµД Skill АаРН
---		local SkillNum = 3		--ТЄФцјУµДSkill ±аєЕ
---				--SystemNotice( role , SkillType )
---				--SystemNotice( role , SkillNum )
---
---		if Item_type == 58 and Item_Traget_Type == 59 then
---			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
---
---			if Check == 1 then
---				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
---				UseItemFailed ( role )
---			else
---				  --SystemNotice( role , "AddElfSkill" )
---
---			AddElfSkill ( Item_Traget , SkillType , SkillNum )
---				  --SystemNotice( role , "Навык феи успешно добавлен!" )
---
---			end
---		end
-
+--Медитация выс. ур. (ID 0261)
+function ItemUse_ChenSi_GJ ( role , Item , Item_Traget )
+	UseItemFailed ( role )
 end
 
-----------------------------------------------------
-function ItemUse_HuiFu_CJ ( role , Item , Item_Traget )   --іхј¶»Цёґ
-			--SystemNotice( role , "s" )
-
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 1		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 4		--ТЄФцјУµДSkill ±аєЕ
-				--SystemNotice( role , SkillType )
-				--SystemNotice( role , SkillNum )
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				  --SystemNotice( role , "AddElfSkill" )
-
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				  --SystemNotice( role , "Навык феи успешно добавлен!" )
-
-			end
-		end
-
-end
-
-----------------------------------------------------
-function ItemUse_HuiFu_ZJ ( role , Item , Item_Traget )   --ЦРј¶»Цёґ
-			--SystemNotice( role , "s" )
-
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 2		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 4		--ТЄФцјУµДSkill ±аєЕ
-				--SystemNotice( role , SkillType )
-				--SystemNotice( role , SkillNum )
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				  --SystemNotice( role , "AddElfSkill" )
-
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				  --SystemNotice( role , "Навык феи успешно добавлен!" )
-
-			end
-		end
-
-end
-
-
-----------------------------------------------------
-function ItemUse_HuiFu_GJ ( role , Item , Item_Traget )   --ёЯј¶»Цёґ
-			--SystemNotice( role , "s" )
-
---	local Cha_Boat = 0
---	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
---	if Cha_Boat ~= nil then 
---		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
---		return 
---	end 
---		local Item_type =  GetItemType ( Item )
---		local Item_Traget_Type =  GetItemType ( Item_Traget )
---		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
---		local SkillType = 3		--ТЄФцјУµД Skill АаРН
---		local SkillNum = 4		--ТЄФцјУµДSkill ±аєЕ
---				--SystemNotice( role , SkillType )
---				--SystemNotice( role , SkillNum )
---
---		if Item_type == 58 and Item_Traget_Type == 59 then
---			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
---
---			if Check == 1 then
---				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
---				UseItemFailed ( role )
---			else
---				  --SystemNotice( role , "AddElfSkill" )
---
---			AddElfSkill ( Item_Traget , SkillType , SkillNum )
---				  --SystemNotice( role , "Навык феи успешно добавлен!" )
-
---			end
---		end
-
-end
-
-----------------------------------------------------
-function ItemUse_ChenSi_CJ ( role , Item , Item_Traget )   --іхј¶іБЛј
-			--SystemNotice( role , "s" )
-
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 1		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 5		--ТЄФцјУµДSkill ±аєЕ
-				--SystemNotice( role , SkillType )
-				--SystemNotice( role , SkillNum )
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				  --SystemNotice( role , "AddElfSkill" )
-
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				  --SystemNotice( role , "Навык феи успешно добавлен!" )
-
-			end
-		end
-
-end
-
-----------------------------------------------------
-function ItemUse_ChenSi_ZJ ( role , Item , Item_Traget )   --ЦРј¶іБЛј
-			--SystemNotice( role , "s" )
-
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 2		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 5		--ТЄФцјУµДSkill ±аєЕ
-				--SystemNotice( role , SkillType )
-				--SystemNotice( role , SkillNum )
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				  --SystemNotice( role , "AddElfSkill" )
-
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				  --SystemNotice( role , "Навык феи успешно добавлен!" )
-
-			end
-		end
-
-end
-
-
-----------------------------------------------------
-function ItemUse_ChenSi_GJ ( role , Item , Item_Traget )   --ёЯј¶іБЛј
-			--SystemNotice( role , "s" )
-
---	local Cha_Boat = 0
---	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
---	if Cha_Boat ~= nil then 
---		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
---		return 
---	end 
---		local Item_type =  GetItemType ( Item )
---		local Item_Traget_Type =  GetItemType ( Item_Traget )
---		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
---		local SkillType = 3		--ТЄФцјУµД Skill АаРН
---		local SkillNum = 5		--ТЄФцјУµДSkill ±аєЕ
---				--SystemNotice( role , SkillType )
---				--SystemNotice( role , SkillNum )
---
---		if Item_type == 58 and Item_Traget_Type == 59 then
---			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
---
---			if Check == 1 then
---				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
---				UseItemFailed ( role )
---			else
---				  --SystemNotice( role , "AddElfSkill" )
---
---			AddElfSkill ( Item_Traget , SkillType , SkillNum )
---				  --SystemNotice( role , "Навык феи успешно добавлен!" )
---
---			end
---		end
-
-end
-
------------------------------------------------------------
---№ЦОпХЩ»Ѕ
-
+--Свиток призыва чудовищ (ID 0319)
 function ItemUse_MonsterSummon ( role , Item , Item_Traget )
 
 	local Monster_GetID = {}
@@ -7275,17 +7143,14 @@ function ItemUse_MonsterSummon ( role , Item , Item_Traget )
 	local ID_Get = math.random ( 1 , 5 )
 	local x, y = GetChaPos( role )
 	local MonsterID = Monster_GetID [ ID_Get ]
-	local Refresh = 50					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 40000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 50		
+	local life = 40000		
 	local new = CreateCha( MonsterID , x , y , 145 , Refresh )
 	SetChaLifeTime( new, life )
 
 end
 
-
-----------------------------------------------------------
-
---іэІЭјБ
+--Кольчуга убийцы ID 0892)
 function ItemUse_Ant_Hzcr ( role , Item , Item_Traget )
 
 	local Cha_Boat = 0
@@ -7293,21 +7158,22 @@ function ItemUse_Ant_Hzcr ( role , Item , Item_Traget )
 	if Cha_Boat ~=  nil then
 		RemoveState( Cha_Boat , STATE_HZCR )
 	else
-		SystemNotice( role , "Unable to use on the shore" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \237\224 \241\243\248\229" )
 		UseItemFailed ( role )
 		return
 	end
 
 end
 
-
---ГьЦ®ѕ«Бйµ°
-
+--------------------------------------------------------------------------------------------------
+--Яйца фей
+--------------------------------------------------------------------------------------------------
+--Яйцо жизни (ID 0422)
 function ItemUse_MINGZJLD ( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -7315,13 +7181,12 @@ function ItemUse_MINGZJLD ( role, Item )
 	GiveItem ( role , 0 , 183  , 1 , 4 ) 
 end
 
---·ЈЦ®ѕ«Бйµ°
-
+--Яйцо тьмы (ID 0423)
 function ItemUse_FAZJLD ( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -7329,13 +7194,12 @@ function ItemUse_FAZJLD ( role, Item )
 	GiveItem ( role , 0 , 184  , 1 , 4 ) 
 end
 
---З«Ц®ѕ«Бйµ°
-
+--Яйцо добродетели (ID 0424)
 function ItemUse_QIANZJLD ( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -7343,13 +7207,12 @@ function ItemUse_QIANZJLD ( role, Item )
 	GiveItem ( role , 0 , 185  , 1 , 4 ) 
 end
 
---єгЦ®ѕ«Бйµ°
-
+--Яйцо славы (ID 0425)
 function ItemUse_HENGZJLD( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -7357,26 +7220,25 @@ function ItemUse_HENGZJLD( role, Item )
 	GiveItem ( role , 0 , 186  , 1 , 4 )  
 end
 
---УюЦ®ѕ«Бйµ°
-
+--Яйцо Веры (ID 0426)
 function ItemUse_YUZJLD( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
 
 	GiveItem ( role , 0 , 187  , 1 , 4 )  
 end
---СЄЦ®ѕ«Бйµ°
 
+--Яйцо отваги (ID 0427)
 function ItemUse_XUEZJLD( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -7384,13 +7246,12 @@ function ItemUse_XUEZJLD( role, Item )
 	GiveItem ( role , 0 , 188  , 1 , 4 )  
 end
 
---РЕЦ®ѕ«Бйµ°
-
+--Яйцо надежды (ID 0428)
 function ItemUse_XINGZJLD ( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -7398,13 +7259,12 @@ function ItemUse_XINGZJLD ( role, Item )
 	GiveItem ( role , 0 , 189  , 1 , 4 )  
 end
 
---»ЪЦ®ѕ«Бйµ°
-
+--Яйцо горя (ID 0429)
 function ItemUse_HUIZJLD( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -7413,13 +7273,12 @@ function ItemUse_HUIZJLD( role, Item )
 
 end
 
---°®Ц®ѕ«Бйµ°
-
+--Яйцо Любви (ID 0430)
 function ItemUse_AIZJLD ( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -7427,270 +7286,57 @@ function ItemUse_AIZJLD ( role, Item )
 	GiveItem ( role , 0 , 191  , 1 , 4 )  
 end
 
---РДЦ®ѕ«Бйµ°
-
+--Яйцо Сердца (ID 0431)
 function ItemUse_XINGZHIJLD ( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \255\233\246\238 \244\229\232")
 		UseItemFailed ( role )
 		return
 	end
 
 	GiveItem ( role , 0 , 199  , 1 , 4 )  
 end
--------------------------------РВИЛ±¦Пд
+
+--------------------------------------------------------------------------------------------------
+--Сундуки новичков (1 - 45 уровень)
+--------------------------------------------------------------------------------------------------
+
+--Сундук новичка (ID 0436)
 function ItemUse_XRBOX( role, Item )
---	SystemNotice(role ,"Function has not been released")
---	UseItemFailed ( role )
---	return
+
 	local lv = GetChaAttr(role, ATTR_LV)
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 4 then
-		SystemNotice(role ,"To open a Newbie Chest requires 4 empty slots")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \237\238\226\232\247\234\224 \242\240\229\225\243\229\242\241\255 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	if lv < 5 then
-		SystemNotice(role ,"Currently lower than Lv 5. Unable to use item!")
+		SystemNotice(role ,"\194\224\248 \243\240\238\226\237\252 \237\232\230\229 \247\229\236 5. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	else
 		GiveItem ( role , 0 , 437  , 1 , 4 )
 		GiveItem ( role , 0 , 9  , 1 , 95 )
 		GiveItem ( role , 0 , 4308  , 1 , 95 )
 		GiveItem ( role , 0 , 444  , 1 , 4 )
-	--	GiveItem ( role , 0 , 0985  , 1 , 4 )--------------35ЦБЧрєААс
 	end
 end
 
-
--------------------------------35ЦБЧр±¦Пд------------10ј¶
-function ItemUse_SANWUBOX( role, Item )
-
-	local lv = GetChaAttr(role, ATTR_LV)
-	local job = GetChaAttr( role, ATTR_JOB) --ИЎЦ°Тµ
-	local cha_type = GetChaTypeID ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 4 then
-		SystemNotice(role ,"To open a Newbie Chest requires 4 empty slots")
-		UseItemFailed ( role )
-		return
-	end
-	if lv < 10 then
-		SystemNotice(role ,"Currently lower than Lv 10. Unable to use item!")
-		UseItemFailed ( role )
-		return
-	end
-	if cha_type ~= 2 and job==4 then
-		GiveItem ( role , 0 , 0803 , 1 , 4 )--------------єЈСэЕы·з		
-		GiveItem ( role , 0 , 0986 , 1 , 4 )--------------45ЦБЧр±¦Пд
-	elseif cha_type ~= 2 and job==16 then
-		GiveItem ( role , 0 , 0803 , 1 , 4 )--------------єЈСэЕы·з		
-		GiveItem ( role , 0 , 0986 , 1 , 4 )--------------45ЦБЧр±¦Пд
-	elseif cha_type == 2  and job~=0 then
-		GiveItem ( role , 0 , 0763  , 1 , 4 )----------------УДБйошјЧ
-		GiveItem ( role , 0 , 0986  , 1 , 4 )--------------45ЦБЧр±¦Пд
-	elseif cha_type ~= 2 and  cha_type ~= 4 and job==2 then
-		GiveItem ( role , 0 , 0777  , 1 , 4 )-----------------НцБй¶МЕЫ
-		GiveItem ( role , 0 , 0986  , 1 , 4 )--------------45ЦБЧр±¦Пд
-	elseif cha_type ~= 2 and  cha_type ~= 4 and job==12 then
-		GiveItem ( role , 0 , 0777  , 1 , 4 )-----------------НцБй¶МЕЫ
-		GiveItem ( role , 0 , 0986  , 1 , 4 )--------------45ЦБЧр±¦Пд
-	elseif cha_type ~= 1 and  cha_type ~= 2 and job==5 then
-		    GiveItem ( role , 0 , 0789  , 1 , 4 )-------------ОЧ¶ѕ·ЁЕЫ
-		GiveItem ( role , 0 , 0986  , 1 , 4 )--------------45ЦБЧр±¦Пд
-	elseif cha_type ~= 1 and  cha_type ~= 2 and job==13 then
-		    GiveItem ( role , 0 , 0789  , 1 , 4 )-------------ОЧ¶ѕ·ЁЕЫ
-		GiveItem ( role , 0 , 0986  , 1 , 4 )--------------45ЦБЧр±¦Пд
-	elseif cha_type ~= 1 and  cha_type ~= 2 and job==14 then
-		    GiveItem ( role , 0 , 0789  , 1 , 4 )-------------ОЧ¶ѕ·ЁЕЫ
-		GiveItem ( role , 0 , 0986  , 1 , 4 )--------------45ЦБЧр±¦Пд
-	elseif cha_type == 1 and  job==1 then
-		    GiveItem ( role , 0 , 1928  , 1 , 4 )-------------ґуµШХЅјЧ
-		GiveItem ( role , 0 , 0986  , 1 , 4 )--------------45ЦБЧр±¦Пд
-	else 
-		SystemNotice(role ,"Cannot be used right now, please find the class instructors to change class.")
-		UseItemFailed ( role )
-		return
-	end
-end
-
-
--------------------------------45ЦБЧр±¦Пд-----------35ј¶
-function ItemUse_SIWUBOX( role, Item )
-
-	local lv = GetChaAttr(role, ATTR_LV)
-	local job = GetChaAttr( role, ATTR_JOB) --ИЎЦ°Тµ
-	local cha_type = GetChaTypeID ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 4 then
-		SystemNotice(role ,"To open a Newbie Chest requires 4 empty slots")
-		UseItemFailed ( role )
-		return
-	end
-	if lv < 35 then
-		SystemNotice(role ,"Currently lower than Lv 35. Unable to use item!")
-		UseItemFailed ( role )
-		return
-	end
-	if cha_type == 1 and job==9 then
-		GiveItem ( role , 0 , 0767 , 1 , 4 )----------------ЧзЦдЦ®БйёЦјЧ	
-		GiveItem ( role , 0 , 0987 , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type == 2 and job==8 then
-		GiveItem ( role , 0 , 0764  , 1 , 4 )-----------------ОдКїЦ®ЧзЦдОЖЙн
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type == 1 and job==12 then
-		GiveItem ( role , 0 , 778  , 1 , 4 )-------------ЦдОЖЅфЙнТВ
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type == 3 and job==12 then
-		GiveItem ( role , 0 , 778  , 1 , 4 )-------------ЦдОЖЅфЙнТВ
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type == 4 and job==13 then
-		GiveItem ( role , 0 , 0790  , 1 , 4 )-------------·ыОДНвТВ
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type == 3  and job==13 then
-		GiveItem ( role , 0 , 0790  , 1 , 4 )-------------·ыОДНвТВ
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type == 3  and job==14 then
-		GiveItem ( role , 0 , 0796  , 1 , 4 )-------------ЦдОДЦ®ЕЫ
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type == 4 and job==14 then
-		GiveItem ( role , 0 , 0796  , 1 , 4 )-------------ЦдОДЦ®ЕЫ
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type == 3 and job==16 then
-		GiveItem ( role , 0 , 0804  , 1 , 4 )-------------Цд»р¶·Ес
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type == 1 and job==16 then
-		GiveItem ( role , 0 , 0804  , 1 , 4 )-------------Цд»р¶·Ес
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	elseif cha_type ==4 and job==16 then
-		GiveItem ( role , 0 , 0804  , 1 , 4 )-------------Цд»р¶·Ес
-		GiveItem ( role , 0 , 0987  , 1 , 4 )--------------55ЦБЧр±¦Пд
-	else 
-		SystemNotice(role ,"Cannot be used right now, please find the class instructors to change class.")
-		UseItemFailed ( role )
-		return
-	end
-end
-
--------------------------------55ЦБЧр±¦Пд-----------45ј¶
-function ItemUse_WUWUBOX( role, Item )
-
-	local lv = GetChaAttr(role, ATTR_LV)
-	local job = GetChaAttr( role, ATTR_JOB) --ИЎЦ°Тµ
-	local cha_type = GetChaTypeID ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 4 then
-		SystemNotice(role ,"To open a Newbie Chest requires 4 empty slots")
-		UseItemFailed ( role )
-		return
-	end
-	if lv < 45 then
-		SystemNotice(role ,"Current level is below 45, failed to use item!")
-		UseItemFailed ( role )
-		return
-	end
-	if cha_type == 1 and job==9 then
-		GiveItem ( role , 0 , 0768 , 1 , 4 )----------------»ГБйХЅјЧ		
-		GiveItem ( role , 0 , 0988 , 1 , 4 )--------------65ЦБЧр±¦Пд
-	elseif cha_type == 2 and job==8 then
-		GiveItem ( role , 0 , 0765  , 1 , 4 )-----------------»ГБйОЖЙн
-		GiveItem ( role , 0 , 0988  , 1 , 4 )-------------65ЦБЧр±¦Пд
-	elseif cha_type == 3 and job==12 then
-		GiveItem ( role , 0 , 0779  , 1 , 4 )----------------»ГБйНвМЧ
-		GiveItem ( role , 0 , 0988  , 1 , 4 )--------------65ЦБЧр±¦Пд
-	elseif cha_type == 1 and job==12 then
-		GiveItem ( role , 0 , 0779  , 1 , 4 )----------------»ГБйНвМЧ
-		GiveItem ( role , 0 , 0988  , 1 , 4 )--------------65ЦБЧр±¦Пд
-	elseif cha_type == 3 and job==13 then
-		    GiveItem ( role , 0 , 0791  , 1 , 4 )----------------»Г·ЁЦ®ЕЫ
-		GiveItem ( role , 0 , 0988  , 1 , 4 )--------------65ЦБЧр±¦Пд
-	elseif cha_type == 4 and job==13 then
-		    GiveItem ( role , 0 , 0791  , 1 , 4 )----------------»Г·ЁЦ®ЕЫ
-		GiveItem ( role , 0 , 0988  , 1 , 4 )--------------65ЦБЧр±¦Пд
-	elseif cha_type == 3 and job==14 then
-		    GiveItem ( role , 0 , 0797  , 1 , 4 )----------------»ГЦдЦ®ЕЫ
-		GiveItem ( role , 0 , 0988  , 1 , 4 )--------------65ЦБЧр±¦Пд
-	elseif cha_type == 4 and job==14 then
-		    GiveItem ( role , 0 , 0797  , 1 , 4 )----------------»ГЦдЦ®ЕЫ
-		GiveItem ( role , 0 , 0988  , 1 , 4 )--------------65ЦБЧр±¦Пд
-	elseif cha_type == 1 and job==16 then
-		    GiveItem ( role , 0 , 0805  , 1 , 4 )----------------»ГБйЕы·з
-		GiveItem ( role , 0 , 0988  , 1 , 4 )--------------65ЦБЧр±¦Пд
-	elseif cha_type == 3 and job==16 then
-		    GiveItem ( role , 0 , 0805  , 1 , 4 )----------------»ГБйЕы·з
-		GiveItem ( role , 0 , 0988  , 1 , 4 )--------------65ЦБЧр±¦Пд
-	elseif cha_type == 4 and job==16 then
-		    GiveItem ( role , 0 , 0805  , 1 , 4 )----------------»ГБйЕы·з
-		GiveItem ( role , 0 , 0988  , 1 , 4 )--------------65ЦБЧр±¦Пд
-	else 
-		SystemNotice(role ,"Cannot be used right now, please find the class instructors to change class.")
-		UseItemFailed ( role )
-		return
-	end
-end
-
--------------------------------65ЦБЧр±¦Пд-----------55ј¶
-function ItemUse_LIUWUBOX( role, Item )
-
-	local lv = GetChaAttr(role, ATTR_LV)
-	local job = GetChaAttr( role, ATTR_JOB) --ИЎЦ°Тµ
-	local cha_type = GetChaTypeID ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 4 then
-		SystemNotice(role ,"To open a Newbie Chest requires 4 empty slots")
-		UseItemFailed ( role )
-		return
-	end
-	if lv < 55 then
-		SystemNotice(role ,"Current level below 55, unable to use item!")
-		UseItemFailed ( role )
-		return
-	end
-	if cha_type == 1 and job==9 then
-		GiveItem ( role , 0 , 0769 , 1 , 4 )----------------ГФЦ®ХЅјЧ		
-	elseif cha_type == 2 and job==8 then
-		GiveItem ( role , 0 , 0766  , 1 , 4 )-----------------ГФЦ®ОЖЙн
-	elseif cha_type == 3 and job==12 then
-		GiveItem ( role , 0 , 0780  , 1 , 4 )----------------ГФЦ®¶·Ес
-	elseif cha_type == 1 and job==12 then
-		GiveItem ( role , 0 , 0780  , 1 , 4 )----------------ГФЦ®¶·Ес
-	elseif cha_type == 3 and job==13 then
-		    GiveItem ( role , 0 , 0792  , 1 , 4 )----------------ГФЦ®·ЁЕЫ
-	elseif cha_type == 4 and job==13 then
-		    GiveItem ( role , 0 , 0792  , 1 , 4 )----------------ГФЦ®·ЁЕЫ
-	elseif cha_type == 3 and job==14 then
-		    GiveItem ( role , 0 , 0798  , 1 , 4 )----------------ГФЦд·ЁЕЫ
-	elseif cha_type == 4 and job==14 then
-		    GiveItem ( role , 0 , 0798  , 1 , 4 )----------------ГФЦд·ЁЕЫ
-	elseif cha_type == 1 and job==16 then
-		    GiveItem ( role , 0 , 0806  , 1 , 4 )----------------ГФ»Г¶·Ес
-	elseif cha_type == 3 and job==16 then
-		    GiveItem ( role , 0 , 0806  , 1 , 4 )----------------ГФ»Г¶·Ес
-	elseif cha_type == 4 and job==16 then
-		    GiveItem ( role , 0 , 0806  , 1 , 4 )----------------ГФ»Г¶·Ес
-	else 
-		SystemNotice(role ,"Cannot be used right now, please find the class instructors to change class.")
-		UseItemFailed ( role )
-		return
-	end
-end
-
-
----------------------------------- Летучий сундук (437)
+--Летучий сундук (ID 0437)
 function ItemUse_XRBOX1( role, Item )
 	local job = GetChaAttr(role, ATTR_JOB)
 	local lv = GetChaAttr(role, ATTR_LV) 
         local cha_type = GetChaTypeID ( role )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 8 then
-		SystemNotice(role ,"Чтобы открыть Летучий сундук необходимо не менее 8 свободных ячеек в инвентаре")
+	if Item_CanGet < 7 then
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \203\229\242\243\247\232\233 \241\243\237\228\243\234 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 7 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	if lv < 10 then
-		SystemNotice(role ,"Ваш уровень должен быть выше 10. Невозможно использовать предмет!")
+		SystemNotice(role ,"\194\224\248 \243\240\238\226\237\252 \237\232\230\229 \247\229\236 10. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	elseif job == 1 then  
 		GiveItem ( role , 0 , 438  , 1 , 4 ) 
@@ -7700,7 +7346,6 @@ function ItemUse_XRBOX1( role, Item )
 		GiveItem ( role , 0 , 4603  , 1 , 4 )
 		GiveItem ( role , 0 , 4604  , 1 , 4 )
 		GiveItem ( role , 0 , 445  , 1 , 4 ) 
-		GiveItem ( role , 0 , 262  , 1 , 4 ) 
 	elseif job == 2 then   
 		GiveItem ( role , 0 , 438  , 1 , 4 ) 
 		GiveItem ( role , 0 , 32  , 1 , 95 ) 
@@ -7709,13 +7354,11 @@ function ItemUse_XRBOX1( role, Item )
 		GiveItem ( role , 0 , 4603  , 1 , 4 )
 		GiveItem ( role , 0 , 4604  , 1 , 4 )
 		GiveItem ( role , 0 , 445  , 1 , 4 ) 
-		GiveItem ( role , 0 , 262  , 1 , 4 ) 
 	elseif job == 4 then  
 		GiveItem ( role , 0 , 4602  , 1 , 4 )
 		GiveItem ( role , 0 , 4603  , 1 , 4 )
 		GiveItem ( role , 0 , 4604  , 1 , 4 )
 		GiveItem ( role , 0 , 445  , 1 , 4 ) 
-		GiveItem ( role , 0 , 262  , 1 , 4 ) 
 		GiveItem ( role , 0 , 438  , 1 , 4 ) 
 		GiveItem ( role , 0 , 80  , 1 , 95 ) 
 		if cha_type == 1 or cha_type == 3 then 
@@ -7728,7 +7371,6 @@ function ItemUse_XRBOX1( role, Item )
 		GiveItem ( role , 0 , 4603  , 1 , 4 ) 
 		GiveItem ( role , 0 , 4604  , 1 , 4 ) 
 		GiveItem ( role , 0 , 445  , 1 , 4 ) 
-		GiveItem ( role , 0 , 262  , 1 , 4 ) 
 		GiveItem ( role , 0 , 438  , 1 , 4 ) 
 		GiveItem ( role , 0 , 104  , 1 , 95 ) 
 		if cha_type == 3 then 
@@ -7737,23 +7379,24 @@ function ItemUse_XRBOX1( role, Item )
 			GiveItem ( role , 0 , 359  , 1 , 95 ) 
 		end
 	else 
-		SystemNotice(role ,"Предмет может быть использован только после выбора основной профессии!")
+		SystemNotice(role ,"\194\229\249\252 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\224 \242\238\235\252\234\238 \239\238\241\235\229 \226\251\225\238\240\224 \238\241\237\238\226\237\238\227\238 \234\235\224\241\241\224!")
 		UseItemFailed ( role )	
 	end
 end
-----------------------------------+2РВИЛ±¦Пд
+
+--Цветочный сундук (ID 0438)
 function ItemUse_XRBOX2( role, Item )
 	local job = GetChaAttr(role, ATTR_JOB)
 	local lv = GetChaAttr(role, ATTR_LV) 
         local cha_type = GetChaTypeID ( role )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 6 then
-		SystemNotice(role ,"To open a Newbie Chest requires 6 empty slots")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \214\226\229\242\238\247\237\251\233 \241\243\237\228\243\234 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 6 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	if lv < 15 then
-		SystemNotice(role ,"Currently lower than Lv 15. Unable to use item!")
+		SystemNotice(role ,"\194\224\248 \243\240\238\226\237\252 \237\232\230\229 \247\229\236 15. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	elseif job == 1 then  
 		GiveItem ( role , 0 , 2  , 1 , 95 ) 
@@ -7792,11 +7435,12 @@ function ItemUse_XRBOX2( role, Item )
 			GiveItem ( role , 0 , 381  , 1 , 95 )
 		end
 	else 
-		SystemNotice(role ,"Class mismatch. Item can only be used after basic class selection!")
+		SystemNotice(role ,"\194\229\249\252 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\224 \242\238\235\252\234\238 \239\238\241\235\229 \226\251\225\238\240\224 \238\241\237\238\226\237\238\227\238 \234\235\224\241\241\224!")
 		UseItemFailed ( role )	
 	end
 end
-----------------------------------+3РВИЛ±¦Пд
+
+--Исследовательский сундук (ID 0439)
 function ItemUse_XRBOX3( role, Item )
 	local job = GetChaAttr(role, ATTR_JOB)
 	local lv = GetChaAttr(role, ATTR_LV) 
@@ -7804,12 +7448,12 @@ function ItemUse_XRBOX3( role, Item )
         local cha_type = GetChaTypeID ( role )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 5 then
-		SystemNotice(role ,"To open a Newbie Chest requires 5 empty slots")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \214\226\229\242\238\247\237\251\233 \241\243\237\228\243\234 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 5 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	if lv < 20 then
-		SystemNotice(role ,"Currently lower than Lv 20. Unable to use item!")
+		SystemNotice(role ,"\194\224\248 \243\240\238\226\237\252 \237\232\230\229 \247\229\236 20. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	elseif job == 1 then  
 		GiveItem ( role , 0 , 14  , 1 , 95 ) 
@@ -7844,36 +7488,36 @@ function ItemUse_XRBOX3( role, Item )
 			GiveItem ( role , 0 , 360  , 1 , 95 )
 		end
 	else 
-		SystemNotice(role ,"Class mismatch. Item can only be used after basic class selection!")
+		SystemNotice(role ,"\194\229\249\252 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\224 \242\238\235\252\234\238 \239\238\241\235\229 \226\251\225\238\240\224 \238\241\237\238\226\237\238\227\238 \234\235\224\241\241\224!")
 		UseItemFailed ( role )	
 	end
 end
-----------------------------------+4РВИЛ±¦Пд
+
+--Плавка сундука (ID 0440)
 function ItemUse_XRBOX4( role, Item )
 	local job = GetChaAttr(role, ATTR_JOB)
 	local lv = GetChaAttr(role, ATTR_LV) 
         local cha_type = GetChaTypeID ( role )
         local cha_type = GetChaTypeID ( role )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	--local r1,r2 =MakeItem ( role , 0 , 3  , 1 , 11 )
 
 	if Item_CanGet < 4 then
-		SystemNotice(role ,"To open a Newbie Chest requires 4 empty slots")
+		SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \207\235\224\226\234\243 \241\243\237\228\243\234\224")
 		UseItemFailed ( role )
 		return
 	end
 	if lv < 25 then
-		SystemNotice(role ,"Currently lower than Lv 25. Unable to use item!")
+		SystemNotice(role ,"\194\224\248 \243\240\238\226\237\252 \237\232\230\229 \247\229\236 25. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
-	elseif job == 1 then   ----ЅЈКї
+	elseif job == 1 then
 		local r1,r2 =MakeItem ( role , 3  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )
 		GiveItem ( role , 0 , 293  , 1 , 95 )
 		GiveItem ( role , 0 , 448  , 1 , 95 )
 		GiveItem ( role , 0 , 441  , 1 , 4 ) 
 	elseif job == 2 then  
 		local r1,r2 =MakeItem ( role , 27  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )
 		GiveItem ( role , 0 , 307  , 1 , 95 )
 		GiveItem ( role , 0 , 448  , 1 , 95 )
 		GiveItem ( role , 0 , 441  , 1 , 4 ) 
@@ -7881,7 +7525,7 @@ function ItemUse_XRBOX4( role, Item )
 		GiveItem ( role , 0 , 448  , 1 , 95 )
 		GiveItem ( role , 0 , 441  , 1 , 4 ) 
 		local r1,r2 =MakeItem ( role , 75  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )
 		if cha_type == 1 or cha_type == 3 then
 			GiveItem ( role , 0 , 340  , 1 , 95 ) 
 		else
@@ -7891,18 +7535,19 @@ function ItemUse_XRBOX4( role, Item )
 		GiveItem ( role , 0 , 448  , 1 , 95 )
 		GiveItem ( role , 0 , 441  , 1 , 4 ) 
 		local r1,r2 =MakeItem ( role , 99  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )
 		if cha_type == 3 then
 			GiveItem ( role , 0 , 368  , 1 , 95 )
 		else 
 			GiveItem ( role , 0 , 389  , 1 , 95 )
 		end
 	else 
-		SystemNotice(role ,"Class mismatch. Item can only be used after basic class selection!")
+		SystemNotice(role ,"\194\229\249\252 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\224 \242\238\235\252\234\238 \239\238\241\235\229 \226\251\225\238\240\224 \238\241\237\238\226\237\238\227\238 \234\235\224\241\241\224!")
 		UseItemFailed ( role )	
 	end
 end
-----------------------------------+5РВИЛ±¦Пд
+
+--Сундук исследований (ID 0441)
 function ItemUse_XRBOX5( role, Item )
 	local job = GetChaAttr(role, ATTR_JOB)
 	local lv = GetChaAttr(role, ATTR_LV) 
@@ -7910,12 +7555,12 @@ function ItemUse_XRBOX5( role, Item )
         local cha_type = GetChaTypeID ( role )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 4 then
-		SystemNotice(role ,"To open a Newbie Chest requires 4 empty slots")
+		SystemNotice(role ,"\205\243\230\237\238 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \232\241\241\235\229\228\238\226\224\237\232\233")
 		UseItemFailed ( role )
 		return
 	end
 	if lv < 30 then
-		SystemNotice(role ,"Currently lower than Lv 30. Unable to use item!")
+		SystemNotice(role ,"\194\224\248 \243\240\238\226\237\252 \237\232\230\229 \247\229\236 30. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	elseif job == 1 then  
 		GiveItem ( role , 0 , 12  , 1 , 95 ) 
@@ -7946,11 +7591,12 @@ function ItemUse_XRBOX5( role, Item )
 			GiveItem ( role , 0 , 361  , 1 , 95 )
 		end
 	else 
-		SystemNotice(role ,"Class mismatch. Item can only be used after basic class selection!")
+		SystemNotice(role ,"\194\229\249\252 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\224 \242\238\235\252\234\238 \239\238\241\235\229 \226\251\225\238\240\224 \238\241\237\238\226\237\238\227\238 \234\235\224\241\241\224!")
 		UseItemFailed ( role )	
 	end
 end
-----------------------------------+6РВИЛ±¦Пд
+
+--Сундук руководства (ID 0442)
 function ItemUse_XRBOX6( role, Item )
 	local job = GetChaAttr(role, ATTR_JOB)
 	local lv = GetChaAttr(role, ATTR_LV) 
@@ -7958,78 +7604,64 @@ function ItemUse_XRBOX6( role, Item )
         local cha_type = GetChaTypeID ( role )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 2 then
-		SystemNotice(role ,"To open a Newbie Chest requires 2 empty slots")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \240\243\234\238\226\238\228\241\242\226\224 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 2 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	if lv < 35 then
-		SystemNotice(role ,"Currently lower than Lv 35. Unable to use item!")
+		SystemNotice(role ,"\194\224\248 \243\240\238\226\237\252 \237\232\230\229 \247\229\236 35. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	elseif job == 1 or job == 2 or job == 4 or job == 5 then
 		GiveItem ( role , 0 , 443  , 1 , 4 ) 
 		GiveItem ( role , 0 , 451  , 1 , 4 ) 
-		AddMoney ( role , 0 , 200000 ) 
+		AddMoney ( role , 0 , 20000 ) 
 	else 
-		SystemNotice(role ,"Class mismatch. Item can only be used after basic class selection!")
+		SystemNotice(role ,"\194\229\249\252 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\224 \242\238\235\252\234\238 \239\238\241\235\229 \226\251\225\238\240\224 \238\241\237\238\226\237\238\227\238 \234\235\224\241\241\224!")
 		UseItemFailed ( role )	
 	end
 end
-----------------------------------+7РВИЛ±¦Пд
+
+--Сундук развития (ID 0443)
 function ItemUse_XRBOX7( role, Item )
 	local job = GetChaAttr(role, ATTR_JOB)
 	local lv = GetChaAttr(role, ATTR_LV) 
         local cha_type = GetChaTypeID ( role )
         local cha_type = GetChaTypeID ( role )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 8 then
-		SystemNotice(role ,"To open a Newbie Chest requires 8 empty slots")
+	if Item_CanGet < 5 then
+		SystemNotice(role ,"\205\243\230\237\238 5 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \240\224\231\226\232\242\232\255")
 		UseItemFailed ( role )
 		return
 	end
 	if lv < 40 then
-		SystemNotice(role ,"Currently lower than Lv 40. Unable to use item!")
+		SystemNotice(role ,"\194\224\248 \243\240\238\226\237\252 \237\232\230\229 \247\229\236 40. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	elseif job == 9 then 
 		GiveItem ( role , 0 , 450  , 1 , 4 ) 
 		GiveItem ( role , 0 , 295  , 1 , 95 )
 		GiveItem ( role , 0 , 4  , 1 , 95 ) 
 		GiveItem ( role , 0 , 302  , 1 , 95 )
-
-	--	GiveItem ( role , 0 , 3404  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3410  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3416  , 8 , 4 )
 		local r1,r2 =MakeItem ( role , 22  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )
 	elseif job == 8 then   
 		GiveItem ( role , 0 , 450  , 1 , 4 ) 
 		GiveItem ( role , 0 , 300  , 1 , 95 )
 		GiveItem ( role , 0 , 15  , 1 , 95 ) 
 		GiveItem ( role , 0 , 301  , 1 , 95 )
-
-	--	GiveItem ( role , 0 , 3405  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3411  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3417  , 8 , 4 )
 		local r1,r2 =MakeItem ( role , 20  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )
 	elseif job == 12 then 
 		GiveItem ( role , 0 , 39  , 1 , 95 ) 
 		GiveItem ( role , 0 , 310  , 1 , 95 )
 		local r1,r2 =MakeItem ( role , 44  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )
 		GiveItem ( role , 0 , 315  , 1 , 95 )
-		GiveItem ( role , 0 , 450  , 1 , 4 )
-
-	--	GiveItem ( role , 0 , 3406  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3412  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3418  , 8 , 4 )
+		GiveItem ( role , 0 , 450  , 1 , 4 ) 
 	elseif job == 16 then 
 		GiveItem ( role , 0 , 450  , 1 , 95 )
-		GiveItem ( role , 0 , 76  , 1 , 95 )
-	--	GiveItem ( role , 0 , 3409  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3415  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3421  , 8 , 4 )
+		GiveItem ( role , 0 , 76  , 1 , 95 ) 
 		local r1,r2 =MakeItem ( role , 83  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )
 		if cha_type == 1 or cha_type == 3 then 
 			GiveItem ( role , 0 , 341  , 1 , 95 )
 			GiveItem ( role , 0 , 342  , 1 , 95 )
@@ -8040,11 +7672,8 @@ function ItemUse_XRBOX7( role, Item )
 	elseif job == 13 then    
 		GiveItem ( role , 0 , 450  , 1 , 4 ) 
 		GiveItem ( role , 0 , 100  , 1 , 95 )
-	--	GiveItem ( role , 0 , 3407  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3413  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3419  , 8 , 4 )
 		local r1,r2 =MakeItem ( role , 1440  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )	
 		if cha_type == 3 then 
 			GiveItem ( role , 0 , 370  , 1 , 95 )
 			GiveItem ( role , 0 , 378  , 1 , 95 )
@@ -8054,12 +7683,9 @@ function ItemUse_XRBOX7( role, Item )
 		end
 	elseif job == 14 then    
 		GiveItem ( role , 0 , 450  , 1 , 4 ) 
-		GiveItem ( role , 0 , 101  , 1 , 95 )
-	--	GiveItem ( role , 0 , 3408  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3414  , 8 , 4 )
-	--	GiveItem ( role , 0 , 3420  , 8 , 4 )
+		GiveItem ( role , 0 , 101  , 1 , 95 ) 
 		local r1,r2 =MakeItem ( role , 107  , 1 , 11 )
-		local Item1 = GetChaItem ( role , 2 , r2 )			--ИЎѕ«Б¶ОдЖчµАѕЯЦёХл
+		local Item1 = GetChaItem ( role , 2 , r2 )	
 		if cha_type == 3 then 
 			GiveItem ( role , 0 , 367  , 1 , 95 ) 
 			GiveItem ( role , 0 , 375  , 1 , 95 ) 
@@ -8069,11 +7695,16 @@ function ItemUse_XRBOX7( role, Item )
 		
 		end
 	else 
-		SystemNotice(role ,"Class mismatch. Item can only be used after second class advancement!")
+		SystemNotice(role ,"\194\229\249\252 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\224 \242\238\235\252\234\238 \239\238\241\235\229 \226\251\225\238\240\224 \238\241\237\238\226\237\238\227\238 \234\235\224\241\241\224!")
 		UseItemFailed ( role )	
 	end
 end
--------------------------------------------------------- --[[фХЧУ№«КЅ]]--
+
+--------------------------------------------------------------------------------------------------
+--Разное
+--------------------------------------------------------------------------------------------------
+
+--Клецка (ID 0263)
 function ItemUse_ZhongZi ( role , Item ) 
 	local hp = GetChaAttr(role, ATTR_HP)  
 	if hp <= 0 then   
@@ -8081,12 +7712,13 @@ function ItemUse_ZhongZi ( role , Item )
 	hp_resume = 1000   
 	hp = hp + hp_resume 
 	mxhp = GetChaAttr(role,ATTR_MXHP) 
-	if hp > mxhp then --јУі¬№эЧоґуhpК±·µ»ШОЄЧоґуhp
+	if hp > mxhp then 
 		hp = mxhp 
 	end 
 	SetCharaAttr(hp, role, ATTR_HP) 
 end 
------------------------------------------------------------- --[[РЫ»ЖѕЖ№«КЅ]]--
+
+--Веселящее вино (ID 0264)
 function ItemUse_XiongHJ ( role , Item ) 
 	local statelv = 1
 	local statetime = 1800
@@ -8095,12 +7727,13 @@ function ItemUse_XiongHJ ( role , Item )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_PKSFYS , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end 
----------------------------------------------------------- --[[°¬ІЭ№«КЅ]]--
+
+--Небесный клевер (ID 0265)
 function ItemUse_AiCao ( role , Item )  
 	local statelv = 1
 	local statetime = 180
@@ -8109,20 +7742,18 @@ function ItemUse_AiCao ( role , Item )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_PKSBYS , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end 
 
-
-
-------------------------------------------- ·зАЧ±¦Пд
+--Кровожадный сундук (ID 0459)
 function ItemUse_FLeiBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	local BNUM = B1+B2+B3+B4+B5+B6+B7+B8+B9+B10+B11+B12+B13+B14+B15
 	if Item_CanGet < BNUM then
-		SystemNotice(role ,"To open a Tempest Chest requires"..BNUM.."space ")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \202\240\238\226\238\230\224\228\237\251\233 \241\243\237\228\243\234 \242\240\229\225\243\229\242\241\255"..BNUM.."\241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229 ")
 		UseItemFailed ( role )
 		return
 	end
@@ -8152,28 +7783,28 @@ function ItemUse_FLeiBOX( role , Item )
 	GiveItem ( role , 0 , A24 , B24 , 4 )
 end
 	 
-----------------------------------------------і¬ј¶іиОп±¦Пд
+--Суп перерождения (ID 2315)
 function ItemUse_CJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <1 then
-		SystemNotice(role ,"To open a Chest requires 1 empty slot")
+		SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \209\243\239 \239\229\240\229\240\238\230\228\229\237\232\255")
 		UseItemFailed ( role )
 		return
 	end
 	local r1,r2 =MakeItem ( role , C1  , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
-	local Item_newJLID = GetItemID ( Item_newJL )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )
+	local Item_newJLID = GetItemID ( Item_newJL )
 
 
-	local str_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STR )       --Б¦Бї
-	local con_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_CON )       --МеЦК
-	local agi_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_AGI )       --ЧЁЧў
-	local dex_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_DEX )       --ГфЅЭ
-	local sta_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STA )       --ѕ«Йс
+	local str_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STR )
+	local con_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_CON )
+	local agi_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_AGI )
+	local dex_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_DEX )
+	local sta_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STA )
 
 	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
 	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )	--Get Num Part 1 µЅ Part 7
+	local Part1_JL = GetNum_Part1 ( Num_JL )
 	local Part2_JL = GetNum_Part2 ( Num_JL )	
 	local Part3_JL = GetNum_Part3 ( Num_JL )
 	local Part4_JL = GetNum_Part4 ( Num_JL )
@@ -8182,7 +7813,7 @@ function ItemUse_CJBOX( role , Item )
 	local Part7_JL = GetNum_Part7 ( Num_JL )
 	if Item_newJLID==231 or Item_newJLID==232 or Item_newJLID==233 or Item_newJLID==234 or Item_newJLID==235  or Item_newJLID==236  or Item_newJLID==237  or Item_newJLID==681 then
 		Part1_JL=1
-		Num_JL = SetNum_Part1 ( Num_JL , 1 ) ----------¶юЧЄ±кјЗ
+		Num_JL = SetNum_Part1 ( Num_JL , 1 )
 		SetItemForgeParam ( Item_newJL , 1 , Num_JL )
 	end
 	str_JLone	= N1
@@ -8209,16 +7840,15 @@ function ItemUse_CJBOX( role , Item )
 	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY ) 	
 	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
 	local cha_name = GetChaDefaultName ( role )
-	--LG( "star_JLZS_lg" ,cha_name,Item_JLone_ID , lv_JLone , str_JLone , con_JLone , agi_JLone , dex_JLone , sta_JLone , Item_JLother_ID , lv_JLother  , str_JLother , con_JLother , agi_JLother , dex_JLother , sta_JLother )
 	LG( "star_CJBOX" ,cha_name, C1 , N1 , N2 ,  N3 , N4 , N5 )
 
 end
 
-----------------------------------------------УВХЯ±¦Пд
+--Сундук Чемпиона (ID 0460)
 function ItemUse_YZheBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 8 then
-		SystemNotice(role ,"To open a Champion's Chest requires 8 empty slots")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \215\229\236\239\232\238\237\224 \242\240\229\225\243\229\242\241\255 8 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -8264,12 +7894,17 @@ function ItemUse_YZheBOX( role , Item )
 	end
 end
 
---ID3094	Усилитель стремлений
+--------------------------------------------------------------------------------------------------
+--Предметы-множители рейтов
+--------------------------------------------------------------------------------------------------
+
+--Усилитель стремлений (ID 3094)
 function ItemUse_MoreExpGzA( role , Item )
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\211\241\232\235\232\242\229\235\252 \241\242\240\229\236\235\229\237\232\233 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -8282,27 +7917,27 @@ function ItemUse_MoreExpGzA( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Усилителя стремлений" )
 end
 
---ID3095	Супер Усилитель стремлений
+--Супер Усилитель стремлений (ID 3095)
 function ItemUse_MoreExpGzLv3A( role , Item )
 	local Lv = Lv( role )
 	if Lv < 60 then
-		SystemNotice(role ,"Супер Усилитель стремлений могут использовать только игроки выше 60 уровня.")
+		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 60 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \209\243\239\229\240 \211\241\232\235\232\242\229\235\252 \241\242\240\229\236\235\229\237\232\233")
 		UseItemFailed ( role )
 		return
 	end
 
 	local statelv = 3
+	
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\209\243\239\229\240 \211\241\232\235\232\242\229\235\252 \241\242\240\229\236\235\229\237\232\233 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	local statetime = 1800
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
@@ -8311,80 +7946,20 @@ function ItemUse_MoreExpGzLv3A( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Супер Усилителя стремлений" )
+	SystemNotice ( role ,"\207\238\247\243\226\241\242\226\243\233 \253\244\244\229\234\242 \238\242 \209\243\239\229\240 \211\241\232\235\232\242\229\235\255 \241\242\240\229\236\235\229\237\232\233" )
 end
 
---ID5694	3,5х-Усилитель стремлений
-function ItemUse_MoreExpGzLv3x5A( role , Item )
-	local Lv = Lv( role )
-	if Lv < 80 then
-		SystemNotice(role ,"3,5х-Усилитель стремлений могут использовать только игроки выше 80 уровня.")
-		UseItemFailed ( role )
-		return
-	end
-
-	local statelv = 5
-
-	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
-		UseItemFailed ( role )
-		return
-	end
-
-	local statetime = 1800
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
-	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
-	end
-	SystemNotice ( role ,"Почувствуй эффект от 3,5х-Усилителя стремлений" )
-end
-
---ID5695	4х-Усилитель стремлений
-function ItemUse_MoreExpGzLv4A( role , Item )
-	local Lv = Lv( role )
-	if Lv < 90 then
-		SystemNotice(role ,"4х-Усилитель стремлений могут использовать только игроки выше 80 уровня.")
-		UseItemFailed ( role )
-		return
-	end
-
-	local statelv = 6
-
-	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
-		UseItemFailed ( role )
-		return
-	end
-
-	local statetime = 1800
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
-	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
-	end
-	SystemNotice ( role ,"Почувствуй эффект от 4х-Усилителя стремлений" )
-end
-
---ID3096	Усилитель удачи
+--Усилитель удачи (ID 3096)
 function ItemUse_MoreItemGzA( role , Item )
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
-
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\211\241\232\235\232\242\229\235\252 \243\228\224\247\232 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
-
+	
 	local statetime = 1800
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
@@ -8393,24 +7968,24 @@ function ItemUse_MoreItemGzA( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Усилителя удачи" )
 end
 
---ID3097	Большой усилитель удачи
+--Большой усилитель удачи (ID 3097)
 function ItemUse_MoreItemGzLv3A( role , Item )
 	local Lv = Lv( role )
 	if Lv < 60 then
-		SystemNotice(role ,"Большой усилитель удачи могут использовать только игроки выше 60 уровня.")
+		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 60 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \193\238\235\252\248\238\233 \243\241\232\235\232\242\229\235\252 \243\228\224\247\232")
 		UseItemFailed ( role )
 		return
 	end
 
-	local statelv = 3
 
+	local statelv = 3	
+	
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
-
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\193\238\235\252\248\238\233 \243\241\232\235\232\242\229\235\252 \243\228\224\247\232 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -8420,38 +7995,43 @@ function ItemUse_MoreItemGzLv3A( role , Item )
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
-
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Почувствуй эффект от Большого усилителя удачи" )
+	SystemNotice ( role ,"\207\238\247\243\226\241\242\226\243\233 \253\244\244\229\234\242 \238\242 \193\238\235\252\248\238\227\238 \243\241\232\235\232\242\229\235\255 \243\228\224\247\232" )
 end
 
--------------------------------------ЗїБ¦МеБ¦»ЦёґјБ
+--------------------------------------------------------------------------------------------------
+--Зелья\Элексиры
+--------------------------------------------------------------------------------------------------
+
+--Фляга восстановления телосложения (ID 3098)
 function ItemUse_TLHFJA( role , Item )
 	local hp = GetChaAttr(role, ATTR_HP) 
 	hp_resume = 1000 
 	
 	hp = hp + hp_resume 
 	mxhp = GetChaAttr(role,ATTR_MXHP) 
-	if hp > mxhp then --јУі¬№эЧоґуspК±·µ»ШОЄЧоґуsp
+	if hp > mxhp then
 		hp = mxhp 
 	end 
 	SetCharaAttr(hp, role, ATTR_HP)
 end
-------------------------------------SPЙсПЙЛ®
+
+--SP Святая вода (ID 3099)
 function ItemUse_TMLGZA( role , Item ) 
 	local sp = GetChaAttr(role, ATTR_SP) 
 	sp_resume = 150 
 	
 	sp = sp + sp_resume 
 	mxsp = GetChaAttr(role,ATTR_MXSP) 
-	if sp > mxsp then --јУі¬№эЧоґуspК±·µ»ШОЄЧоґуsp
+	if sp > mxsp then 
 		sp = mxsp 
 	end 
 	SetCharaAttr(sp, role, ATTR_SP) 
 end 
----------------------------------------------РЫКЁДЈДвТ©јБ( str )
+
+--Эликсир льва (ID 3100)
 function ItemUse_SPXsyjA( role , Item )
 	
 	local OtherStateLv = 0
@@ -8472,7 +8052,7 @@ function ItemUse_SPXsyjA( role , Item )
 
 
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242 \228\224\237\237\238\227\238 \231\229\235\252\255 \237\229 \241\238\247\232\242\224\229\242\241\255 \241 \253\244\244\229\234\242\224\236\232 \238\242 \228\240\243\227\232\245 \231\229\235\232\233")
 		UseItemFailed ( role )
 		return
 	end	
@@ -8480,7 +8060,7 @@ function ItemUse_SPXsyjA( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -8491,7 +8071,8 @@ function ItemUse_SPXsyjA( role , Item )
 	AddState( role , role , STATE_YSLLQH , statelv , statetime )
 
 end
------------------------------------------------БйєпДЈДвТ©јБ( agi )
+
+--Эликсир  Обезьяны (ID 3101)
 function ItemUse_SPLhyjA( role , Item )
 	local OtherStateLv = 0
 	local i = 0
@@ -8508,10 +8089,8 @@ function ItemUse_SPLhyjA( role , Item )
 		end
 	end
 
-
-
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242 \228\224\237\237\238\227\238 \231\229\235\252\255 \237\229 \241\238\247\232\242\224\229\242\241\255 \241 \253\244\244\229\234\242\224\236\232 \238\242 \228\240\243\227\232\245 \231\229\235\232\233")
 		UseItemFailed ( role )
 		return
 	end
@@ -8519,7 +8098,7 @@ function ItemUse_SPLhyjA( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -8530,7 +8109,7 @@ function ItemUse_SPLhyjA( role , Item )
 
 end
 
-------------------------------------------------УҐСЫДЈДвТ©јБ( dex )
+--Эликсир Орла (ID 3103)
 function ItemUse_SPYyyjA( role , Item )
 	local OtherStateLv = 0
 	local i = 0
@@ -8550,7 +8129,7 @@ function ItemUse_SPYyyjA( role , Item )
 
 
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242 \228\224\237\237\238\227\238 \231\229\235\252\255 \237\229 \241\238\247\232\242\224\229\242\241\255 \241 \253\244\244\229\234\242\224\236\232 \238\242 \228\240\243\227\232\245 \231\229\235\232\233")
 		UseItemFailed ( role )
 		return
 	end
@@ -8558,7 +8137,7 @@ function ItemUse_SPYyyjA( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -8570,7 +8149,7 @@ function ItemUse_SPYyyjA( role , Item )
 
 end
 
------------------------------------------------------ВщЕЈДЈДвТ©јБ( con )
+--Эликсир быка (ID 3102)
 function ItemUse_SPMnyjA( role , Item )
 	
 	local OtherStateLv = 0
@@ -8591,7 +8170,7 @@ function ItemUse_SPMnyjA( role , Item )
 
 
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242 \228\224\237\237\238\227\238 \231\229\235\252\255 \237\229 \241\238\247\232\242\224\229\242\241\255 \241 \253\244\244\229\234\242\224\236\232 \238\242 \228\240\243\227\232\245 \231\229\235\232\233")
 		UseItemFailed ( role )
 		return
 	end
@@ -8599,7 +8178,7 @@ function ItemUse_SPMnyjA( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -8611,7 +8190,7 @@ function ItemUse_SPMnyjA( role , Item )
 
 end
 
-------------------------------------------------КҐБйДЈДвТ©јБ( sta )
+--Эликсир души (ID 3104)
 function ItemUse_SPSlyjA( role , Item )
 	
 	local OtherStateLv = 0
@@ -8631,7 +8210,7 @@ function ItemUse_SPSlyjA( role , Item )
 
 
 	if OtherStateLv > 0 then
-		SystemNotice(role ,"Зелья дающие бонус к характеристикам, складываться не могут!")
+		SystemNotice(role ,"\221\244\244\229\234\242 \228\224\237\237\238\227\238 \231\229\235\252\255 \237\229 \241\238\247\232\242\224\229\242\241\255 \241 \253\244\244\229\234\242\224\236\232 \238\242 \228\240\243\227\232\245 \231\229\235\232\233")
 		UseItemFailed ( role )
 		return
 	end
@@ -8639,7 +8218,7 @@ function ItemUse_SPSlyjA( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -8651,24 +8230,23 @@ function ItemUse_SPSlyjA( role , Item )
 
 end
 
---------------------------------РРЧЯИу»¬јБ
-
+--Зелье скольжения (ID 3105)
 function ItemUse_MspdYSA ( role , Item )
 	local statelv = 1
 	local statetime = 1800
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
-		Rem_State_StarUnnormal ( role )
 		AddState( role , role , STATE_YSMspd , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 
 end
---------------------------------ЗбЧ°Т©Л® ґу·щМбёЯРРЧЯЛЩ¶ИРЎ·щЅµµН·АУщµДµАѕЯіЦРшК±јд15·ЦЦУ
+
+--Зелье легкости (ID 0850)
 function ItemUse_MspdYSB ( role , Item )
 	local statelv = 1
 	local statetime = 900
@@ -8678,12 +8256,13 @@ function ItemUse_MspdYSB ( role , Item )
 		Rem_State_StarUnnormal ( role )
 		AddState( role , role , STATE_QINGZ , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
--------------------------------------ХЅґ¬Ч°јЧ
+
+--Корабельная броня (ID3106)
 function ItemUse_GJZhuangJiaA ( role , Item )
 	local statelv = 1
 	local statetime = 1800
@@ -8693,13 +8272,14 @@ function ItemUse_GJZhuangJiaA ( role , Item )
 	if Cha_Boat ~=  nil then
 		AddState( Cha_Boat , Cha_Boat , STATE_YSBoatDEF , statelv , statetime )
 	else
-		SystemNotice( role , "Использование возможно только во время плавания. " )
+		SystemNotice( role , "\204\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238 \242\238\235\252\234\238 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 
 end
------------------------------------ФЄПьЧЯВнµЖ
+
+--Фестивальная лампа (ID 3107)
 function ItemUse_DenglongA ( role , Item )
 	local statelv = 1
 	local statetime = 900
@@ -8708,12 +8288,13 @@ function ItemUse_DenglongA ( role , Item )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_DENGLONG , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
------------------------------------И«ЙнЧ°јЧ ґу·щМбёЯ·АУщБ¦РЎ·щЅµµН№Ґ»чБ¦µДµАѕЯіЦРшК±јд15·ЦЦУ
+
+--Полный доспех (ID 0852)
 function ItemUse_DenglongB ( role , Item )
 	local statelv = 1
 	local statetime = 900
@@ -8723,14 +8304,17 @@ function ItemUse_DenglongB ( role , Item )
 		Rem_State_StarUnnormal ( role )
 		AddState( role , role , STATE_QUANS , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
 
---АЧцЄ±¤»ъЖ±
+--------------------------------------------------------------------------------------------------
+--Билеты
+--------------------------------------------------------------------------------------------------
 
+--Пропуск в Громоград (ID 3048)
 function Jz_Script_ltcsA(role, Item )
 	local i = CheckBagItem(role,3048)
 	local k = ChaIsBoat(role)
@@ -8739,7 +8323,7 @@ function Jz_Script_ltcsA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -8757,9 +8341,7 @@ function Jz_Script_ltcsA(role, Item )
 		
 end
 
-
-
---АЧцЄ±¤ѕьёЫ»ъЖ±
+--Следуй в порт Громограда (ID 3049)
 function Jz_Script_ltjgcsA(role, Item )
 	local i = CheckBagItem(role,3049)
 	local k = ChaIsBoat(role)
@@ -8768,7 +8350,7 @@ function Jz_Script_ltjgcsA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -8786,11 +8368,8 @@ function Jz_Script_ltjgcsA(role, Item )
 		
 end
 
-
---КҐС©ЙЅ»ъЖ±
-
+--Пропуск к Священной Снежной горе (ID 3050)
 function Jz_Script_sxscsA(role, Item )
-
 	local i = CheckBagItem(role,3050)
 	local k = ChaIsBoat(role)
 	local hp = Hp(role)
@@ -8798,7 +8377,7 @@ function Jz_Script_sxscsA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -8815,8 +8394,8 @@ function Jz_Script_sxscsA(role, Item )
 	end
 		
 end
---Аµ°ІЙ­БЦІ№ёшХѕ»ъЖ±
 
+--Пропуск в Андийский лес (ID 3051)
 function Jz_Script_laslcsA(role, Item )
 	local i = CheckBagItem(role,3051)
 	local k = ChaIsBoat(role)
@@ -8825,7 +8404,7 @@ function Jz_Script_laslcsA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -8843,7 +8422,7 @@ function Jz_Script_laslcsA(role, Item )
 		
 end
 
---ЙіИЄІ№ёшХѕ»ъЖ±
+--Пропуск в Оазис (ID 3052)
 function Jz_Script_sqcsA(role, Item )
 	local i = CheckBagItem(role,3052)
 	local k = ChaIsBoat(role)
@@ -8852,7 +8431,7 @@ function Jz_Script_sqcsA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -8870,8 +8449,7 @@ function Jz_Script_sqcsA(role, Item )
 		
 end
 
---±щј«І№ёшХѕ»ъЖ±
-
+--Пропуск к Ледяному шипу (ID 3053)
 function Jz_Script_bjcsA(role, Item )
 	local i = CheckBagItem(role,3053)
 	local k = ChaIsBoat(role)
@@ -8880,7 +8458,7 @@ function Jz_Script_bjcsA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -8898,8 +8476,7 @@ function Jz_Script_bjcsA(role, Item )
 		
 end
 
---јЕДЇЦ®ЛюИлїЪ»ъЖ±
-
+--Пропуск в Одинокую башню (ID 3054)
 function Jz_Script_jmztcsA(role, Item )
 	local i = CheckBagItem(role,3054)
 	local k = ChaIsBoat(role)
@@ -8908,7 +8485,7 @@ function Jz_Script_jmztcsA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -8926,7 +8503,7 @@ function Jz_Script_jmztcsA(role, Item )
 		
 end
 
---ЙіїЯИлїЪ»ъЖ±
+--Часть защиты (ID 3055)
 function Jz_Script_scrkcsA(role, Item )
 	local i = CheckBagItem(role,3055)
 	local k = ChaIsBoat(role)
@@ -8935,7 +8512,7 @@ function Jz_Script_scrkcsA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -8953,8 +8530,7 @@ function Jz_Script_scrkcsA(role, Item )
 		
 end
 
---·Пїу2Іг»ъЖ±
-
+--Проход в Заброшенные шахты 2 (ID 3056)
 function Jz_Script_fk2csA(role, Item )
 	local i = CheckBagItem(role,3056)
 	local k = ChaIsBoat(role)
@@ -8963,7 +8539,7 @@ function Jz_Script_fk2csA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -8981,8 +8557,7 @@ function Jz_Script_fk2csA(role, Item )
 		
 end
 
---Тшїу2Іг»ъЖ±
-
+--Пропуск в Серебряную шахту 2 (ID 3057)
 function Jz_Script_yk2csA(role, Item )
 	local i = CheckBagItem(role,3057)
 	local k = ChaIsBoat(role)
@@ -8991,7 +8566,7 @@ function Jz_Script_yk2csA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -9009,8 +8584,7 @@ function Jz_Script_yk2csA(role, Item )
 		
 end
 
---Тшїу3Іг»ъЖ±
-
+--Пропуск в Серебряную шахту 3 (ID 3058)
 function Jz_Script_yk3csA(role, Item )
 	local i = CheckBagItem(role,3058)
 	local k = ChaIsBoat(role)
@@ -9019,7 +8593,7 @@ function Jz_Script_yk3csA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -9037,8 +8611,7 @@ function Jz_Script_yk3csA(role, Item )
 		
 end
 
---јЕДЇЦ®Лю2»ъЖ±
-
+--Билет в Одинокую башню 2 (ID 3059)
 function Jz_Script_jmzt2csA(role, Item )
 	local i = CheckBagItem(role,3059)
 	local k = ChaIsBoat(role)
@@ -9047,7 +8620,7 @@ function Jz_Script_jmzt2csA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -9064,8 +8637,8 @@ function Jz_Script_jmzt2csA(role, Item )
 	end
 		
 end
---јЕДЇЦ®Лю3»ъЖ±
 
+--Пропуск в Одинокую башню 3 (ID 3060)
 function Jz_Script_jmzt3csA(role, Item )
 	local i = CheckBagItem(role,3060)
 	local k = ChaIsBoat(role)
@@ -9074,7 +8647,7 @@ function Jz_Script_jmzt3csA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -9091,7 +8664,8 @@ function Jz_Script_jmzt3csA(role, Item )
 	end
 		
 end
---јЕДЇЦ®Лю4»ъЖ±
+
+--Пропуск в Одинокую башню 4 (ID 3070)
 function Jz_Script_jmzt4csA(role, Item )
 	local i = CheckBagItem(role,3070)
 	local k = ChaIsBoat(role)
@@ -9100,7 +8674,7 @@ function Jz_Script_jmzt4csA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -9117,8 +8691,8 @@ function Jz_Script_jmzt4csA(role, Item )
 	end
 		
 end
---јЕДЇЦ®Лю5»ъЖ±
 
+--Пропуск в Одинокую башню 5 (ID 3071)
 function Jz_Script_jmzt5csA(role, Item )
 	local i = CheckBagItem(role,3071)
 	local k = ChaIsBoat(role)
@@ -9127,7 +8701,7 @@ function Jz_Script_jmzt5csA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -9144,7 +8718,8 @@ function Jz_Script_jmzt5csA(role, Item )
 	end
 		
 end
---јЕДЇЦ®Лю6»ъЖ±
+
+--Пропуск в Одинокую башню 6 (ID 3072)
 function Jz_Script_jmzt6csA(role, Item )
 	local i = CheckBagItem(role,3072)
 	local k = ChaIsBoat(role)
@@ -9153,7 +8728,7 @@ function Jz_Script_jmzt6csA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -9171,8 +8746,7 @@ function Jz_Script_jmzt6csA(role, Item )
 		
 end
 
---·Пїу1Іг»ъЖ±
-
+--Пропуск в Заброшенную шахту 1 (ID 3073)
 function Jz_Script_fk1csA(role, Item )
 	local i = CheckBagItem(role,3073)
 	local k = ChaIsBoat(role)
@@ -9181,7 +8755,7 @@ function Jz_Script_fk1csA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -9198,7 +8772,8 @@ function Jz_Script_fk1csA(role, Item )
 	end
 		
 end
-----ґє·зХтЛНѕнЦб-------------------------------------------------------------------------------------------------------------------------------------
+
+--Пропуск в Весноград (ID 3076)
 function Jz_Script_cfzsA(role, Item )
 	local i = CheckBagItem(role,3076)
 	local k = ChaIsBoat(role)
@@ -9207,7 +8782,7 @@ function Jz_Script_cfzsA(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -9224,34 +8799,40 @@ function Jz_Script_cfzsA(role, Item )
 	end
 		
 end
----------------єЪБъПдЧУК№УГ-------------------
+
+--------------------------------------------------------------------------------------------------
+--Черный дракон алтарь\Вещи для распечатки
+--------------------------------------------------------------------------------------------------
+
+--Черный дракон Алтарь (ID 0266)
 function ItemUse_CiChang( role, Item )
-	local Elf_URE = GetItemAttr(Item,ITEMATTR_URE) --µ±З°ДНѕГјЗВјКЈУа·вУЎµгКэ
-	local Elf_EXP = GetItemAttr(Item,ITEMATTR_ENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
+	local Elf_URE = GetItemAttr(Item,ITEMATTR_URE)
+	local Elf_EXP = GetItemAttr(Item,ITEMATTR_ENERGY)
 	if Elf_URE ~= 0 then
-		SystemNotice(role ,"Seal has not been broken")
+		SystemNotice(role ,"\207\229\247\224\242\252 \237\229 \225\251\235\224 \241\237\255\242\224")
 		UseItemFailed ( role )
 		return
 	end
 	if Elf_EXP >9 then
-		SystemNotice(role ,"Cursed points higher than 9. Unable to open chest")
+		SystemNotice(role ,"\206\247\234\238\226 \239\240\238\234\235\255\242\232\233 \225\238\235\252\248\229 \247\229\236 9. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \224\235\242\224\240\252")
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use item")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242")
+
 		UseItemFailed ( role )
 		return
 	end
-	local sta = GetItemAttr( Item ,ITEMATTR_VAL_STA )       --ѕ«Йс
+	local sta = GetItemAttr( Item ,ITEMATTR_VAL_STA )
 	if sta == 0 then
-		SystemNotice(role ,"Not yet put in target item, use item failed.")
+		SystemNotice(role ,"\205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \224\235\242\224\240\252.")
 		UseItemFailed ( role )
 		return
 	end
 	local cha_name = GetChaDefaultName ( role ) 
-	if sta == 1 then ---єЛРДТ»866єЪБъЦ®РД----------ёшєЪБъЦ®Зы
+	if sta == 1 then
 		if Elf_EXP == 0 then
 		GiveItem ( role , 0 , 845  , 1 , 20  )  		
 		end
@@ -9282,11 +8863,11 @@ function ItemUse_CiChang( role, Item )
 		if Elf_EXP == 9 then
 		GiveItem ( role , 0 , 845  , 1 , 12  )  		
 		end
-		local message ="Black Dragon Altar has been unsealed! ".. cha_name.." obtains Black Dragon Torso!"  
+		local message ="\215\229\240\237\251\233 \196\240\224\234\238\237 \192\235\242\224\240\252 \225\251\235 \240\224\241\239\229\247\224\242\224\237! ".. cha_name.." \239\238\235\243\247\232\235 \210\240\243\239 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224!" 		
 		Notice ( message )
-		LG("HeiLongJiTan","Character name as",cha_name,"'s Cursed points is now",Elf_EXP," Under this situation, you open the Black Dragon Altar and obtain Black Dragon Torso")
+		LG("HeiLongJiTan","\200\236\255 \239\229\240\241\238\237\224\230\224",cha_name," \207\240\238\234\235\255\242\251\245 \239\243\237\234\242\238\226",Elf_EXP," \207\238\241\235\229 \238\242\234\240\251\242\232\255 \192\235\242\224\240\255 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \194\251 \239\238\235\243\247\232\235\232 \210\240\243\239 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224")
 	end
-	if sta == 2 then ---єЛРД¶ю865єЪБъЦ®»к---------------ёшєЪБъЦ®Тн
+	if sta == 2 then
 		if Elf_EXP == 0 then
 		GiveItem ( role , 0 , 847  , 1 , 20  )  		
 		end
@@ -9317,11 +8898,11 @@ function ItemUse_CiChang( role, Item )
 		if Elf_EXP == 9 then
 		GiveItem ( role , 0 , 847  , 1 , 2  )  		
 		end
-		local message ="Black Dragon Altar has been unsealed! ".. cha_name.."obtained Black Dragon Wings!"  
+		local message ="\215\229\240\237\251\233 \196\240\224\234\238\237 \192\235\242\224\240\252 \225\251\235 \240\224\241\239\229\247\224\242\224\237! ".. cha_name.." \239\238\235\243\247\232\235 \202\240\251\235\238 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224!"  
 		Notice ( message )
-		LG("HeiLongJiTan","Character name as",cha_name,"'s Cursed points is now",Elf_EXP,"Under this situation, you opened Black Dragon Altar and obtain Black Dragon Wings")
+		LG("HeiLongJiTan","\200\236\255 \239\229\240\241\238\237\224\230\224",cha_name," \207\240\238\234\235\255\242\251\245 \239\243\237\234\242\238\226",Elf_EXP," \207\238\241\235\229 \238\242\234\240\251\242\232\255 \192\235\242\224\240\255 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \194\251 \239\238\235\243\247\232\235\232 \202\240\251\235\238 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224")
 	end
-	if sta == 3 then ---єЛРДИэ864єЪБъЦ®Н«---------------ёшєЪБъЦ®Ч¦
+	if sta == 3 then
 		if Elf_EXP == 0 then
 		GiveItem ( role , 0 , 846  , 1 , 20  )  		
 		end
@@ -9352,11 +8933,11 @@ function ItemUse_CiChang( role, Item )
 		if Elf_EXP == 9 then
 		GiveItem ( role , 0 , 846  , 1 , 2  )  		
 		end
-		local message ="Black Dragon Altar has been unsealed! ".. cha_name.." obtains Black Dragon Claw!"  
+		local message ="\215\229\240\237\251\233 \196\240\224\234\238\237 \192\235\242\224\240\252 \225\251\235 \240\224\241\239\229\247\224\242\224\237! ".. cha_name.." \239\238\235\243\247\232\235 \202\238\227\238\242\252 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224!"   
 		Notice ( message )
-		LG("HeiLongJiTan","Character name as",cha_name,"'s Cursed points is now",Elf_EXP,"Under this situation, you open Black Dragon Altar and obtain Black Dragon Claw")
+		LG("HeiLongJiTan","\200\236\255 \239\229\240\241\238\237\224\230\224",cha_name," \207\240\238\234\235\255\242\251\245 \239\243\237\234\242\238\226",Elf_EXP," \207\238\241\235\229 \238\242\234\240\251\242\232\255 \192\235\242\224\240\255 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \194\251 \239\238\235\243\247\232\235\232 \202\238\227\238\242\252 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224")
 	end
-	if sta == 4 then ---єЛРДИэёшєЪБъЦ®КЧ
+	if sta == 4 then
 		if Elf_EXP == 0 then
 		GiveItem ( role , 0 , 848  , 1 , 20  )  		
 		end
@@ -9387,43 +8968,44 @@ function ItemUse_CiChang( role, Item )
 		if Elf_EXP == 9 then
 		GiveItem ( role , 0 , 848  , 1 , 2  )  		
 		end
-		local message ="Black Dragon Altar has been unsealed! ".. cha_name.." obtains Black Dragon Helm!"  
+		local message ="\215\229\240\237\251\233 \196\240\224\234\238\237 \192\235\242\224\240\252 \225\251\235 \240\224\241\239\229\247\224\242\224\237! ".. cha_name.." \239\238\235\243\247\232\235 \216\235\229\236 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224!"  
 		Notice ( message )
-		LG("HeiLongJiTan","Character name as",cha_name,"'s Cursed points is now",Elf_EXP,"Under this situation, you open the Black Dragon Altar and obtain Black Dragon Helm")
+		LG("HeiLongJiTan","\200\236\255 \239\229\240\241\238\237\224\230\224",cha_name," \207\240\238\234\235\255\242\251\245 \239\243\237\234\242\238\226",Elf_EXP," \207\238\241\235\229 \238\242\234\240\251\242\232\255 \192\235\242\224\240\255 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \194\251 \239\238\235\243\247\232\235\232 \216\235\229\236 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224")
 	end
 	if Elf_EXP ~=0 then
-		SystemNotice(role ,"Remaining Cursed points has damage the quality of Black Dragon equipment")
+		SystemNotice(role ,"\206\241\242\224\226\248\232\229\241\255 \238\247\234\232 \239\240\238\234\235\255\242\232\233 \231\224\236\229\242\237\238 \241\237\232\231\232\235\232 \234\224\247\229\241\242\226\238 \209\237\224\240\255\230\229\237\232\255 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224")
 	end
 end
----------------єЛРДК№УГ-----------------------sta = GetItemAttr( Item_Traget ,ITEMATTR_VAL_STA )       --ѕ«Йс
+
+--Глаз черного дракона\Душа Черного дракона\Сердце черного дракона (ID 0864\0865\0866)
 function ItemUse_hexin ( role , Item , Item_Traget ) 
 	local Item_Traget_ID = GetItemID ( Item_Traget )
 	local Item_ID = GetItemID ( Item )		
-	local sta = GetItemAttr( Item_Traget ,ITEMATTR_VAL_STA )       --ѕ«Йс
+	local sta = GetItemAttr( Item_Traget ,ITEMATTR_VAL_STA )
 	if Item_Traget_ID ~= 266 then
-		SystemNotice(role ,"Please place the sacrificial item on the altar")
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \239\238\236\229\241\242\232\242\229 \230\229\240\242\226\229\237\237\251\233 \239\240\229\228\236\229\242 \237\224 \224\235\242\224\240\252")
 		UseItemFailed ( role )
 		return
 	end
 	if sta==1 and Item_ID == 866 then
-		SystemNotice(role ,"You have used a Heart of Black Dragon as a sacrificial item")
+		SystemNotice(role ,"\194\251 \232\241\239\238\235\252\231\238\226\224\235\232 \209\229\240\228\246\229 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \234\224\234 \230\229\240\242\226\229\237\237\251\233 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return	
 	end
 	if sta==2 and Item_ID == 865 then
-		SystemNotice(role ,"You have used Soul of Black Dragon as a sacrificial item")
+		SystemNotice(role ,"\194\251 \232\241\239\238\235\252\231\238\226\224\235\232 \196\243\248\243 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \234\224\234 \230\229\240\242\226\229\237\237\251\233 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return	
 	end
 	if sta==3 and Item_ID == 864 then
-		SystemNotice(role ,"You have used Eye of Black Dragon as a sacrificial item")
+		SystemNotice(role ,"\194\251 \232\241\239\238\235\252\231\238\226\224\235\232 \195\235\224\231 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \234\224\234 \230\229\240\242\226\229\237\237\251\233 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return	
 	end
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -9431,19 +9013,19 @@ function ItemUse_hexin ( role , Item , Item_Traget )
 		local Item_Traget_Type = GetItemType ( Item_Traget )
 		local cha_name = GetChaDefaultName ( role ) 
 		if Item_type == 49 and Item_Traget_Type == 65 then
-				if Item_ID == 866 then						---єЛРДA
+				if Item_ID == 866 then
 				sta =1
-				SystemNotice( role , "Use Heart of Black Dragon as a sacrificial item and obtain Black Dragon Torso" )
+				SystemNotice( role , "\200\241\239\238\235\252\231\243\233\242\229 \209\229\240\228\246\229 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \234\224\234 \230\229\240\242\226\229\237\237\251\233 \239\240\229\228\236\229\242 \232 \239\238\235\243\247\232\242\229 \210\240\243\239 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224" )
 				LG("HeiLongJiTan_HeXin","Character name as",cha_name,"player used Heart of Black Dragon as sacrificial item")
-				elseif Item_ID == 865 then						---єЛРДB
+				elseif Item_ID == 865 then
 				sta =2
-				SystemNotice( role , "Use Soul of Black Dragon as a sacrificial item and obtain Black Dragon Wings" )
+				SystemNotice( role , "\200\241\239\238\235\252\231\243\233\242\229 \196\243\248\243 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \234\224\234 \230\229\240\242\226\229\237\237\251\233 \239\240\229\228\236\229\242 \232 \239\238\235\243\247\232\242\229 \202\240\251\235\238 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224" )
 				LG("HeiLongJiTan_HeXin","Character name as",cha_name,"player used Soul of Black Dragon as a sacrificial item")
-				elseif Item_ID == 864 then						---єЛРДC
+				elseif Item_ID == 864 then
 				sta =3
-				SystemNotice( role , "Use Eye of Black Dragon as a sacrificial item to obtain Black Dragon Claw" )
+				SystemNotice( role , "\200\241\239\238\235\252\231\243\233\242\229 \195\235\224\231 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224 \234\224\234 \230\229\240\242\226\229\237\237\251\233 \239\240\229\228\236\229\242 \232 \239\238\235\243\247\232\242\229 \202\238\227\238\242\252 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224" )
 				LG("HeiLongJiTan_HeXin","Character name as",cha_name,"player used Eye of Black Dragon as a sacrificial item")
-				elseif Item_ID == 275 then						---єЛРДD
+				elseif Item_ID == 275 then
 				sta =4
 				else 
 						UseItemFailed ( role )
@@ -9452,32 +9034,33 @@ function ItemUse_hexin ( role , Item , Item_Traget )
 				SetItemAttr( Item_Traget ,ITEMATTR_VAL_STA ,sta )
 		end 
 end
----------------СЧЦ®Б¦К№УГ--------------------------str = GetItemAttr( Item_Traget ,ITEMATTR_VAL_STR )       --Б¦Бї
+
+--Огнетворная сила (ID 0267)
 function ItemUse_HZLi ( role , Item , Item_Traget ) 
 	local Item_ID = GetItemID ( Item_Traget )
 	if Item_ID ~= 266 then
-		SystemNotice(role ,"Please place the Power of Flame on the altar")
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \239\238\236\229\241\242\232\242\229 \206\227\237\229\242\226\238\240\237\243\254 \241\232\235\243 \237\224 \224\235\242\224\240\252")
 		UseItemFailed ( role )
 		return
 	end
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 		local Item_type = GetItemType ( Item )
 		local Item_Traget_Type = GetItemType ( Item_Traget )
 		if Item_type == 66 and Item_Traget_Type == 65  then
-				local str = GetItemAttr( Item_Traget ,ITEMATTR_VAL_STR )       --Б¦Бї
+				local str = GetItemAttr( Item_Traget ,ITEMATTR_VAL_STR )
 				if str >= 5 then
 					UseItemFailed ( role )
 				return
 				end
 				local rad = math.random ( 1, 100 )
 				 if rad<=50 then
-					local Elf_URE = GetItemAttr(Item_Traget,ITEMATTR_URE) --µ±З°ДНѕГјЗВјКЈУа·вУЎµгКэ
+					local Elf_URE = GetItemAttr(Item_Traget,ITEMATTR_URE)
 					str = str + 1
 					if Elf_URE >= 50 then
 					Elf_URE = Elf_URE-50
@@ -9485,45 +9068,43 @@ function ItemUse_HZLi ( role , Item , Item_Traget )
 					SetItemAttr( Item_Traget ,ITEMATTR_VAL_STR ,str )
 					SetItemAttr( Item_Traget ,ITEMATTR_URE ,Elf_URE )
 				else 
-				local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
-				local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
+				local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY)
+				local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY)
 					Elf_MaxEXP = Elf_MaxEXP + 1
 					Elf_EXP = Elf_EXP + 1
-					SystemNotice( role , "Unfortunately, the Altar has been cursed by the soul of the black dragon" ) 
+					SystemNotice( role , "\202 \241\238\230\224\235\229\237\232\254, \192\235\242\224\240\252 \225\251\235 \239\240\238\234\235\255\242 \228\243\248\238\233 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224" ) 
 					SetItemAttr( Item_Traget ,ITEMATTR_MAXENERGY ,Elf_MaxEXP )
 					SetItemAttr( Item_Traget ,ITEMATTR_ENERGY ,Elf_EXP )
 				end 
 		end 
 end
 
-
----------------±щЦ®Б¦К№УГ-------------------------con = GetItemAttr( Item_Traget ,ITEMATTR_VAL_CON )       --МеЦК
-
+--Сила Мороза (ID 0270)
 function ItemUse_BZLi ( role , Item , Item_Traget ) 
 	local Item_ID = GetItemID ( Item_Traget )
 	if Item_ID ~= 266 then
-		SystemNotice(role ,"Place Power of Frost on the altar")
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \239\238\236\229\241\242\232\242\229 \209\232\235\243 \204\238\240\238\231\224 \237\224 \224\235\242\224\240\252")
 		UseItemFailed ( role )
 		return
 	end
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 		local Item_type = GetItemType ( Item )
 		local Item_Traget_Type = GetItemType ( Item_Traget )
 		if Item_type == 66 and Item_Traget_Type == 65 then
-				local con = GetItemAttr( Item_Traget ,ITEMATTR_VAL_CON )       --МеЦК
+				local con = GetItemAttr( Item_Traget ,ITEMATTR_VAL_CON )
 				if con >= 5 then
 					UseItemFailed ( role )
 				return
 				end
 				local rad = math.random ( 1, 100 )
 				 if rad<=50 then
-					local Elf_URE = GetItemAttr(Item_Traget,ITEMATTR_URE) --µ±З°ДНѕГјЗВјКЈУа·вУЎµгКэ
+					local Elf_URE = GetItemAttr(Item_Traget,ITEMATTR_URE)
 					con = con + 1
 					if Elf_URE >= 50 then
 					Elf_URE = Elf_URE-50
@@ -9531,42 +9112,43 @@ function ItemUse_BZLi ( role , Item , Item_Traget )
 					SetItemAttr( Item_Traget ,ITEMATTR_VAL_CON ,con )
 					SetItemAttr( Item_Traget ,ITEMATTR_URE ,Elf_URE )
 				else 
-				local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
-				local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
+				local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY)
+				local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY)
 					Elf_MaxEXP = Elf_MaxEXP + 1
 					Elf_EXP = Elf_EXP + 1
-					SystemNotice( role , "Unfortunately, the Altar has been cursed by the soul of the black dragon" ) 
+					SystemNotice( role , "\202 \241\238\230\224\235\229\237\232\254, \192\235\242\224\240\252 \225\251\235 \239\240\238\234\235\255\242 \228\243\248\238\233 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224" ) 
 					SetItemAttr( Item_Traget ,ITEMATTR_MAXENERGY ,Elf_MaxEXP )
 					SetItemAttr( Item_Traget ,ITEMATTR_ENERGY ,Elf_EXP )
 				end 
 		end 
 end
-----------------·зЦ®Б¦К№УГ---------------------------agi = GetItemAttr( Item_Traget ,ITEMATTR_VAL_AGI )       --ГфЅЭ
+
+--Мощь ветра (ID 0268)
 function ItemUse_FZLi( role , Item , Item_Traget ) 
 	local Item_ID = GetItemID ( Item_Traget )
 	if Item_ID ~= 266 then
-		SystemNotice(role ,"Please place the Power of Wind on the altar")
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \239\238\236\229\241\242\232\242\229 \204\238\249\252 \226\229\242\240\224 \237\224 \224\235\242\224\240\252")
 		UseItemFailed ( role )
 		return
 	end
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
 		local Item_type = GetItemType ( Item )
 		local Item_Traget_Type = GetItemType ( Item_Traget )
 		if Item_type == 66 and Item_Traget_Type == 65 then
-				local agi = GetItemAttr( Item_Traget ,ITEMATTR_VAL_AGI )       --ГфЅЭ
+				local agi = GetItemAttr( Item_Traget ,ITEMATTR_VAL_AGI )
 					if agi >= 5 then
 					UseItemFailed ( role )
 					return
 					end
 				local rad = math.random ( 1, 100 )
 				 if rad<=50 then
-					local Elf_URE = GetItemAttr(Item_Traget,ITEMATTR_URE) --µ±З°ДНѕГјЗВјКЈУа·вУЎµгКэ
+					local Elf_URE = GetItemAttr(Item_Traget,ITEMATTR_URE)
 					agi = agi + 1
 					if Elf_URE >= 50 then
 					Elf_URE = Elf_URE-50
@@ -9574,43 +9156,43 @@ function ItemUse_FZLi( role , Item , Item_Traget )
 					SetItemAttr( Item_Traget ,ITEMATTR_VAL_AGI ,agi )
 					SetItemAttr( Item_Traget ,ITEMATTR_URE ,Elf_URE )
 				else 
-				local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
-				local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
+				local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY)
+				local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY)
 					Elf_MaxEXP = Elf_MaxEXP + 1
 					Elf_EXP = Elf_EXP + 1
-					SystemNotice( role , "Unfortunately, the Altar has been cursed by the soul of the black dragon" ) 
+					SystemNotice( role , "\202 \241\238\230\224\235\229\237\232\254, \192\235\242\224\240\252 \225\251\235 \239\240\238\234\235\255\242 \228\243\248\238\233 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224" ) 
 					SetItemAttr( Item_Traget ,ITEMATTR_MAXENERGY ,Elf_MaxEXP )
 					SetItemAttr( Item_Traget ,ITEMATTR_ENERGY ,Elf_EXP )
 				end 
 		end 
 end
 
-----------------АЧЦ®Б¦К№УГ---------------------------dex = GetItemAttr( Item_Traget ,ITEMATTR_VAL_DEX )       --ЧЁЧў
+--Сила грома (ID 0269)
 function ItemUse_LZli ( role , Item , Item_Traget ) 
 	local Item_ID = GetItemID ( Item_Traget )
 	if Item_ID ~= 266 then
-		SystemNotice(role ,"Please place Power of Thunder on the altar")
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224, \239\238\236\229\241\242\232\242\229 \209\232\235\243 \227\240\238\236\224 \237\224 \224\235\242\224\240\252")
 		UseItemFailed ( role )
 		return
 	end
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
 		local Item_type = GetItemType ( Item )
 		local Item_Traget_Type = GetItemType ( Item_Traget )
 		if Item_type == 66 and Item_Traget_Type == 65 then
-				local dex = GetItemAttr( Item_Traget ,ITEMATTR_VAL_DEX )       --Б¦Бї
+				local dex = GetItemAttr( Item_Traget ,ITEMATTR_VAL_DEX )
 					if dex >= 5 then
 					UseItemFailed ( role )
 					return
 					end
 				local rad = math.random ( 1, 100 )
 				 if rad<=50 then
-					local Elf_URE = GetItemAttr(Item_Traget,ITEMATTR_URE) --µ±З°ДНѕГјЗВјКЈУа·вУЎµгКэ
+					local Elf_URE = GetItemAttr(Item_Traget,ITEMATTR_URE)
 					dex = dex + 1
 					if Elf_URE >= 50 then
 					Elf_URE = Elf_URE-50
@@ -9618,30 +9200,30 @@ function ItemUse_LZli ( role , Item , Item_Traget )
 					SetItemAttr( Item_Traget ,ITEMATTR_VAL_DEX ,dex )
 					SetItemAttr( Item_Traget ,ITEMATTR_URE ,Elf_URE )
 				else 
-				local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
-				local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
+				local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY)
+				local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY)
 					Elf_MaxEXP = Elf_MaxEXP + 1
 					Elf_EXP = Elf_EXP + 1
-					SystemNotice( role , "Unfortunately, the Altar has been cursed by the soul of the black dragon" ) 
+					SystemNotice( role , "\202 \241\238\230\224\235\229\237\232\254, \192\235\242\224\240\252 \225\251\235 \239\240\238\234\235\255\242 \228\243\248\238\233 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224" ) 
 					SetItemAttr( Item_Traget ,ITEMATTR_MAXENERGY ,Elf_MaxEXP )
 					SetItemAttr( Item_Traget ,ITEMATTR_ENERGY ,Elf_EXP )
 				end 
 		end 
 end
-----------------МмК№ч»ЧУК№УГ-------------------------
+
+--Ангельские кости (ID 0271)
 function ItemUse_ZhuFu ( role , Item , Item_Traget ) 
 	local Item_ID = GetItemID ( Item_Traget )
 	if Item_ID ~= 266 then
-		SystemNotice(role ,"Please confirm to use Angelic Dice")
+		SystemNotice(role ,"\207\238\230\224\235\243\233\241\242\224 \239\238\228\242\226\229\240\228\232\242\229 \232\241\239\238\235\252\231\238\226\224\237\232\229 \192\237\227\229\235\252\241\234\232\245 \202\238\241\242\229\233")
 		UseItemFailed ( role )
 		return
 	end
-	local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY) --µ±З°ДЬБїјЗВјЧзЦдµгКэ
-	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) --ЧоґуДЬБїјЗВјЧзЦдµгКэ
+	local Elf_EXP = GetItemAttr(Item_Traget,ITEMATTR_ENERGY)
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY)
 
-	if Elf_EXP ==0 then
+	if Elf_EXP == 0 then
 		UseItemFailed ( role )
-		
 		return
 	end
 	local rad = math.random ( 1, 100 )
@@ -9650,7 +9232,7 @@ function ItemUse_ZhuFu ( role , Item , Item_Traget )
 		if rad <= 30 then
 			Elf_EXP = Elf_EXP -1
 		else
-			SystemNotice(role ,"The angelic dice you used was of bad quality, the curse was not lifted.")
+			SystemNotice(role ,"\192\237\227\229\235\252\241\234\232\229 \234\238\241\242\232, \234\238\242\238\240\251\229 \194\251 \232\241\239\238\235\252\231\238\226\224\235\232, \232\236\229\235\232 \239\235\238\245\238\229 \234\224\247\229\241\242\226\238, \239\240\238\234\235\255\242\232\229 \237\229 \225\251\235\238 \241\237\255\242\238.")
 		end
 	end
 
@@ -9658,7 +9240,7 @@ function ItemUse_ZhuFu ( role , Item , Item_Traget )
 		if rad <= 50 then
 			Elf_EXP = Elf_EXP -1
 		else
-			SystemNotice(role ,"The angelic dice you used was of bad quality, the curse was not lifted.")
+			SystemNotice(role ,"\192\237\227\229\235\252\241\234\232\229 \234\238\241\242\232, \234\238\242\238\240\251\229 \194\251 \232\241\239\238\235\252\231\238\226\224\235\232, \232\236\229\235\232 \239\235\238\245\238\229 \234\224\247\229\241\242\226\238, \239\240\238\234\235\255\242\232\229 \237\229 \225\251\235\238 \241\237\255\242\238.")
 		end
 	end
 
@@ -9666,7 +9248,7 @@ function ItemUse_ZhuFu ( role , Item , Item_Traget )
 		if rad <= 80 then
 			Elf_EXP = Elf_EXP -1
 		else
-			SystemNotice(role ,"The angelic dice you used was of bad quality, the curse was not lifted.")
+			SystemNotice(role ,"\192\237\227\229\235\252\241\234\232\229 \234\238\241\242\232, \234\238\242\238\240\251\229 \194\251 \232\241\239\238\235\252\231\238\226\224\235\232, \232\236\229\235\232 \239\235\238\245\238\229 \234\224\247\229\241\242\226\238, \239\240\238\234\235\255\242\232\229 \237\229 \225\251\235\238 \241\237\255\242\238.")
 		end
 	end
 
@@ -9678,7 +9260,11 @@ function ItemUse_ZhuFu ( role , Item , Item_Traget )
 	SetItemAttr( Item_Traget ,ITEMATTR_MAXENERGY ,Elf_EXP )
 end
 
---ID1094	Посылка с удачным подарком
+--------------------------------------------------------------------------------------------------
+--Мешочки\Гран-при
+--------------------------------------------------------------------------------------------------
+
+--Посылка с удачным подарком (ID 1094)
 function ItemUse_YiYuanHaoYunBOX ( role , Item )
 	local Percentage = Percentage_Random ( 0.1 )
 			if Percentage == 1 then
@@ -9691,15 +9277,9 @@ function ItemUse_YiYuanHaoYunBOX ( role , Item )
 				local item_quality = BoxXiang_YiYuanBOX_Qua
 				local General = 0  
 				local ItemId = 0 
-			--	local Item_CanGet = GetChaFreeBagGridNum ( role )
-				
-			--	if Item_CanGet <= 1 then
-			--		SystemNotice(role ,"Insufficient space in inventory. Unable to use Prosperous Packet")
-			--		UseItemFailed ( role )
-			--		return
-			--	end
+
 				for i = 1 , maxitem , 1 do 
-					General = item_type_rad [ i ] + General
+					General = item_type_rad [ i ] + General		
 				end 
 				local a = math.random ( 1, General )
 				local b = 0
@@ -9747,18 +9327,18 @@ function ItemUse_YiYuanHaoYunBOX ( role , Item )
 					if ItemId == GoodItem[Good_C] then
 						local itemname = GetItemName ( ItemId ) 
 						local cha_name = GetChaDefaultName ( role ) 
-						local message = cha_name.." opens a Lucky Packet and obtain"..itemname  
+						local message = cha_name.." \238\242\234\240\251\226\224\229\242 \207\238\241\251\235\234\243 \241 \243\228\224\247\237\251\236 \239\238\228\224\240\234\238\236 \232 \239\238\235\243\247\224\229\242"..itemname  
 						Notice ( message )
 					end
 				end
 			end 
 	end
 
----------------МШµИЅ±
+--Гран-при (ID 0272)
 function ItemUse_tedengjiang ( role , Item )
 local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 3 then
-		SystemNotice(role ,"Недостаточно места в инвентаре")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -9766,30 +9346,29 @@ local Item_CanGet = GetChaFreeBagGridNum ( role )
 	GiveItem ( role , 0 , 846  , 1 , 16  )  
 	GiveItem ( role , 0 , 847  , 1 , 16  ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." opens the Grand Prize and obtain Black Dragon set"
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \195\240\224\237-\239\240\232 \232 \239\238\235\243\247\224\229\242 \209\237\224\240\255\230\229\237\232\229 \215\229\240\237\238\227\238 \196\240\224\234\238\237\224"
 		Notice ( message )
 end
 
-
------------------------Т»µИЅ±
+--Первый приз ID 0273)
 function ItemUse_yidengjiang ( role , Item )
 local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 1 then
-		SystemNotice(role ,"Недостаточно места в инвентаре")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0853  , 1 , 4 ) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." opens the First Prize and obtain a Happy Holiday Magazine" 
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \207\229\240\226\251\233 \239\240\232\231 \232 \239\238\235\243\247\224\229\242 \198\243\240\237\224\235 \241\247\224\241\242\235\232\226\251\233 \238\242\228\251\245" 
 		Notice ( message )
 end
 
----------------------------¶юµИЅ±
+--Второй приз (ID 0274)
 function ItemUse_erdengjiang ( role , Item )
 local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 14 then
-		SystemNotice(role ,"Недостаточно места в инвентаре")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -9831,16 +9410,15 @@ local Item_CanGet = GetChaFreeBagGridNum ( role )
 	GiveItem ( role , 0 , 5038  , 1 , 4 )
 	end
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." opens the Second Prize and obtain 10 Strengthening Crystal and 1 set of Apparel"   
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \194\242\238\240\238\233 \239\240\232\231 \232 \239\238\235\243\247\224\229\242 10 \211\241\232\235\232\226\224\254\249\232\245 \234\240\232\241\242\224\235\235\238\226 \232 1 \237\224\225\238\240 \243\234\240\224\248\229\237\232\233"   
 		Notice ( message )
 end
 
-	
---------------------------ИэµИЅ±
+--Приз за третье место (ID 0275)
 function ItemUse_sandengjiang ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 2 then
-		SystemNotice(role ,"Недостаточно места в инвентаре")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -9853,7 +9431,7 @@ function ItemUse_sandengjiang ( role , Item )
 	end
 end
 
---ID1095	Посылка 99
+--Посылка 99 (ID 1095)
 function ItemUse_BaoZhaBOX ( role , Item )
 	local item_type = BoxXiang_BaoZhaBOX
 	local item_type_rad = BoxXiang_BaoZhaBOX_Rad
@@ -9863,19 +9441,14 @@ function ItemUse_BaoZhaBOX ( role , Item )
 	local General = 0  
 	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-		
-	--if Item_CanGet <= 1 then
-		--SystemNotice(role ,"Insufficient space in inventory. Unable to use Prosperous Packet")
-		--UseItemFailed ( role )
-		--return
-	--end
+
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
 	local d = 0 
-	local c = -1
+	local c = -1	
 	for k = 1 , maxitem , 1 do
 		d = item_type_rad [ k ] + b
 
@@ -9919,22 +9492,22 @@ function ItemUse_BaoZhaBOX ( role , Item )
 		if ItemId == GoodItem[Good_C] then
 			local itemname = GetItemName ( ItemId ) 
 			local cha_name = GetChaDefaultName ( role ) 
-			local message = cha_name.." opens a 99 Parcel and obtain "..itemname  
+			local message = cha_name.." \238\242\234\240\251\226\224\229\242 \207\238\241\251\235\234\243 99 \232 \239\238\235\243\247\224\229\242 "..itemname  
 			Notice ( message )
 		end
 	end
 end
 
--------------------------------------ТхСфОеРРВЦ»ШЛю
+--Пагона реинкарнации (ID 0240)
 function ItemUse_wxlh( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <1 then
-		SystemNotice(role ,"To open a Chest requires 1 empty slot")
+		SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	local r1,r2 =MakeItem ( role , SI  , SN , SE )
-	local Item_star = GetChaItem ( role , 2 , r2 )			--ИЎµАѕЯЦёХл
+	local Item_star = GetChaItem ( role , 2 , r2 )
 	local num={}
 	local numAttr={}
 	local b = 0
@@ -9944,13 +9517,12 @@ function ItemUse_wxlh( role , Item )
 		numAttr [b]=0
 	end
 	b = 0
-	for i=1,47,1 do		---------------ИЎµЅµАѕЯµДИ«ІїКµАэ»ЇКфРФ
-		a [i]=GetItemAttr ( Item_star , i )
+	for i=1,47,1 do
+	    a [i]=GetItemAttr ( Item_star , i )
 		if a [i]~=0 then
-	--		SystemNotice( role , a [i] )
 				b = b + 1
-				num [b]=i    -------------num [b]јЗВјКµАэ»ЄКфРФµД±аєЕ
-				numAttr [b]=a[i] ------------ПЦУРµДёчКµАэ»ЇКфРФЦµ
+				num [b]=i
+				numAttr [b]=a[i]
 		end
 	end
 	SetItemAttr ( Item_star ,num [1] , SA1 )
@@ -9960,21 +9532,21 @@ function ItemUse_wxlh( role , Item )
 	SetItemAttr ( Item_star ,num [5] , SA5)
 
 end
-----------------------------------ёЯј¶ЅдЦё¶Т»»
+
+--------------------------------------------------------------------------------------------------
+--Расписки на уникальные кольца
+--------------------------------------------------------------------------------------------------
+
+--Расписка на уникальное кольцо ID 0580)
 function ItemUse_Sjz( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 5 then
-		SystemNotice(role ,"Inventory requires at least 5 empty slots to use Unique Ring Voucher")
+		SystemNotice(role ,"\215\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \243\237\232\234\224\235\252\237\238\229 \234\238\235\252\246\238 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 5 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	local rad = math.random ( 1, 5 )
 	if rad ==1 then
-	--ОА±шµДјбіЦ
-	--№ЕКчЗтёщ
-	--Б¦Бї·вУЎ
-	--АЧЦ®ґё
-	--±ИМШµДєф»Ѕ
 	GiveItem ( role , 0 , 281  , 1 , 4 )	
 	GiveItem ( role , 0 , 286  , 1 , 4 )	
 	GiveItem ( role , 0 , 324  , 1 , 4 )	
@@ -9982,11 +9554,6 @@ function ItemUse_Sjz( role , Item )
 	GiveItem ( role , 0 , 387  , 1 , 4 )	
 	end
 	if rad ==2 then
-	--µБФфµДїъМЅ
-	--ОеФВЦ®·з
-	--УДАЗ»·їЫ
-	--ЙБµзЦ®СЫ
-	--°¬О¬¶ыЦ®ОЗ
 	GiveItem ( role , 0 , 282  , 1 , 4 )	
 	GiveItem ( role , 0 , 287  , 1 , 4 )	
 	GiveItem ( role , 0 , 327  , 1 , 4 )	
@@ -9994,11 +9561,6 @@ function ItemUse_Sjz( role , Item )
 	GiveItem ( role , 0 , 414  , 1 , 4 )		
 	end
 	if rad ==3 then
-	--БФКЦЦ®Б¦
-	--ѕ«БйµДТАБµ
-	--БъТнЦё»·
-	--№вЦ®Тн
-	--АЧЕ·µД·ЯЕ­
 	GiveItem ( role , 0 , 283  , 1 , 4 )	
 	GiveItem ( role , 0 , 288  , 1 , 4 )	
 	GiveItem ( role , 0 , 328  , 1 , 4 )	
@@ -10006,11 +9568,6 @@ function ItemUse_Sjz( role , Item )
 	GiveItem ( role , 0 , 415  , 1 , 4 )	
 	end
 	if rad ==4 then
-	--РЕНЅЦ®»·
-	--їаРРЙ®
-	--¶АЅЗКЮµДЧЈёЈ
-	--іїЦУ
-	--РЎЙЅіµµДЗёТв
 	GiveItem ( role , 0 , 284  , 1 , 4 )	
 	GiveItem ( role , 0 , 524  , 1 , 4 )	
 	GiveItem ( role , 0 , 329  , 1 , 4 )	
@@ -10018,11 +9575,6 @@ function ItemUse_Sjz( role , Item )
 	GiveItem ( role , 0 , 416  , 1 , 4 )		
 	end
 	if rad ==5 then
-	--Бй»·
-	--КҐ»·
-	--МмК№µД±ЇГщ
-	--МмфҐ
-	--КҐЕ®µД·оПЧ
 	GiveItem ( role , 0 , 285  , 1 , 4 )	
 	GiveItem ( role , 0 , 321  , 1 , 4 )	
 	GiveItem ( role , 0 , 330  , 1 , 4 )	
@@ -10030,21 +9582,17 @@ function ItemUse_Sjz( role , Item )
 	GiveItem ( role , 0 , 417  , 1 , 4 )			
 	end
 end
-----------------------------------ёЯј¶ПоБґ¶Т»»
+
+--Расписка на уникальное ожерелье (ID 0581)
 function ItemUse_Sxl( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 5 then
-		SystemNotice(role ,"Inventory requires at least 5 empty slots to use Unique Necklace Voucher")
+		SystemNotice(role ,"\215\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \243\237\232\234\224\235\252\237\238\229 \238\230\229\240\229\235\252\229 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 5 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	local rad = math.random ( 1, 2 )
 	if rad ==1 then
-	--М«СфКЇЧ№ЧУ
-	--єЪТ«КЇµДЙБ№в
-	--Н»·з
-	--їмІЅГ°ПХХЯ
-	--РДБйУА¶Ї»ъ
 	GiveItem ( role , 0 , 418  , 1 , 4 )	
 	GiveItem ( role , 0 , 420  , 1 , 4 )	
 	GiveItem ( role , 0 , 739  , 1 , 4 )	
@@ -10052,11 +9600,6 @@ function ItemUse_Sxl( role , Item )
 	GiveItem ( role , 0 , 495  , 1 , 4 )		
 	end
 	if rad ==2 then
-	--°ЧЅрПоБґ
-	--·зЦ®РЕК№
-	--±щѕ§ПЙЧУ
-	--ГФ№¬МЅЛчХЯ
-	--МмУУµДґпИЛ
 	GiveItem ( role , 0 , 419  , 1 , 4 )	
 	GiveItem ( role , 0 , 421  , 1 , 4 )	
 	GiveItem ( role , 0 , 461  , 1 , 4 )	
@@ -10064,21 +9607,17 @@ function ItemUse_Sxl( role , Item )
 	GiveItem ( role , 0 , 497  , 1 , 4 )		
 	end
 end
-----------------------------------ёЯј¶±ґїЗ¶Т»»
+
+--Расписка на уникальный коралл (ID 0582)
 function ItemUse_Sbk( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 5 then
-		SystemNotice(role ,"Inventory requires at least 5 empty slots to use Unique Coral Voucher")
+		SystemNotice(role ,"\215\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \243\237\232\234\224\235\252\237\251\233 \234\238\240\224\235\235 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 5 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	local rad = math.random ( 1, 2 )
 	if rad ==1 then
-	--С§НЅУГАЧ±ґ
-	--НЁУГРНАЧ±ґ
-	--ЦРј¶АЧЦ®±ґ
-	--ёЯј¶АЧЦ®±ґ
-	--АЧЙс±ґ2006
 	GiveItem ( role , 0 , 498  , 1 , 4 )	
 	GiveItem ( role , 0 , 503  , 1 , 4 )	
 	GiveItem ( role , 0 , 504  , 1 , 4 )	
@@ -10086,11 +9625,6 @@ function ItemUse_Sbk( role , Item )
 	GiveItem ( role , 0 , 506  , 1 , 4 )		
 	end
 	if rad ==2 then
-	--С§НЅУГ·з±ґ  
-	--НЁУГРН·з±ґ  
-	--ЦРј¶·зЦ®±ґ  
-	--ёЯј¶·зЦ®±ґ  
-	--·зЙс±ґ2006 
 	GiveItem ( role , 0 , 508  , 1 , 4 )	
 	GiveItem ( role , 0 , 509  , 1 , 4 )	
 	GiveItem ( role , 0 , 510  , 1 , 4 )	
@@ -10098,7 +9632,12 @@ function ItemUse_Sbk( role , Item )
 	GiveItem ( role , 0 , 523  , 1 , 4 )		
 	end
 end
-----ПДµє·Й»ъЖ±-------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------
+--Билеты
+--------------------------------------------------------------------------------------------------
+
+--Пропуск на остров Лета (ID 0563)
 function Jz_Script_xdfjp(role, Item )
 	local i = CheckBagItem(role,563)
 	local k = ChaIsBoat(role)
@@ -10107,7 +9646,7 @@ function Jz_Script_xdfjp(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -10125,7 +9664,7 @@ function Jz_Script_xdfjp(role, Item )
 		
 end
 
-----Зпµє·Й»ъЖ±-------------------------------------------------------------------------------------------------------------------------------------
+--Пропуск на остров Осени (ID 0583)
 function Jz_Script_qdfjp(role, Item )
 	local i = CheckBagItem(role,583)
 	local k = ChaIsBoat(role)
@@ -10134,7 +9673,7 @@ function Jz_Script_qdfjp(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -10151,25 +9690,26 @@ function Jz_Script_qdfjp(role, Item )
 	end
 		
 end
-----і¬ИЛ°ф°фМЗ-------------------------------------------------------------------------------------------------------------------------------------
+
+--Суперледенец (ID 0584)
 function ItemUse_Crbbt(role, Item )
---	SystemNotice(role ,"The item has gone rusty and has lost its effect, don't be too sad")
 	local statelv = 1
 	local statetime = 20
 	AddState( role , role , STATE_CJBBT , statelv , statetime )
 end
-----ѕЮИЛЗЙїЛБ¦-------------------------------------------------------------------------------------------------------------------------------------
+
+--Огромная шоколадка (ID 0585)
 function ItemUse_Jrqkl(role, Item )
---	SystemNotice(role ,"The item has gone rusty and has lost its effect, don't be too sad")
 	local statelv = 1
 	local statetime = 20
 	AddState( role , role , STATE_JRQKL , statelv , statetime )
 end
---ЦЬЛкЙъИХ
+
+--Юбилейный сундук (ID 1096)
 function ItemUse_ZhouSuiBOX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 2 then
-		SystemNotice(role ,"Insufficient space in inventory. Unable to open Birthday Package")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \222\225\232\235\229\233\237\251\233 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -10183,7 +9723,7 @@ function ItemUse_ZhouSuiBOX ( role , Item )
 	local ItemId = 0 
 	
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -10208,32 +9748,39 @@ function ItemUse_ZhouSuiBOX ( role , Item )
 	GiveItem ( role , 0 , ItemId , ItemCount , item_quality )
 	if ItemId ==  0853 then
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." opens Anniversary Chest and obtain Happy Holiday Magazine" 
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \222\225\232\235\229\233\237\251\233 \241\243\237\228\243\234 \232 \239\238\235\243\247\224\229\242 \198\243\240\237\224\235 \209\247\224\241\242\235\232\226\251\233 \206\242\228\251\245" 
 	Notice ( message )
 	end
 end
--------------------------------°ЩНтґуі®ItemUse_CZHe
+
+--Купюра достоинством миллион долларов (ID 0854)
 function ItemUse_CZHe( role , Item ) 							
  	local Money_add = 1000000
 	local Money_Have = GetChaAttr ( role , ATTR_GD )
 	if Money_Have>=999900000 then
-		SystemNotice (role, "Your account is saturated. Unable to use item")
+		SystemNotice (role, "\211 \194\224\241 \241\235\232\248\234\238\236 \236\237\238\227\238 \231\238\235\238\242\224. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return	
 	end
 	AddMoney ( role , 0 , Money_add )
 end 
------------------------------------Д¦¶№РЎЧУѕ«Бйµ°ItemUse_MDXZJLD
+
+--------------------------------------------------------------------------------------------------
+--Яйца фей и Билет в карибское путешествие
+--------------------------------------------------------------------------------------------------
+
+--Яйцо Мордо (ID 0679)
 function ItemUse_MDXZJLD ( role, Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory space. Unable to use pet egg")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \223\233\246\238 \204\238\240\228\238")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 680  , 1 , 4 ) 
 end
-----јУАХ±И№Ы№вЖ±-------------------------------------------------------------------------------------------------------------------------------------
+
+--Билет в карибское путешествие (ID 2445)
 function Jz_Script_jialebi(role, Item )
 	local i = CheckBagItem(role,2445)
 	local k = ChaIsBoat(role)
@@ -10242,7 +9789,7 @@ function Jz_Script_jialebi(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -10259,16 +9806,17 @@ function Jz_Script_jialebi(role, Item )
 	end
 		
 end
-----------------------------------ФЛЦ®ѕ«Бйµ°
+
+--Яйцо Удачи (ID 0571)
 function ItemUse_YZJLD( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Egg of Luck")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \223\233\246\238 \211\228\224\247\232")
 		UseItemFailed ( role )
 		return
 	end
 	local Num_newJL = GetItemForgeParam ( Item , 1 )
-	local Part1_newJL = GetNum_Part1 ( Num_newJL )	--Get Num Part 1 µЅ Part 7
+	local Part1_newJL = GetNum_Part1 ( Num_newJL )
 	local Part2_newJL = GetNum_Part2 ( Num_newJL )	
 	local Part3_newJL = GetNum_Part3 ( Num_newJL )
 
@@ -10308,7 +9856,7 @@ function ItemUse_YZJLD( role , Item )
 		end
 	end
 	local r1,r2 =MakeItem ( role , 231  , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STR , new_str )
 	SetItemAttr( Item_newJL , ITEMATTR_VAL_DEX , new_dex )	 
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STA , new_sta )
@@ -10317,16 +9865,17 @@ function ItemUse_YZJLD( role , Item )
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY ) 	
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
 end
-----------------------------------МеЦ®ѕ«Бйµ°
+
+--Яйцо телосложения (ID 0572)
 function ItemUse_TZJLD( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Egg of Constitution")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \223\233\246\238 \242\229\235\238\241\235\238\230\229\237\232\255")
 		UseItemFailed ( role )
 		return
 	end
 	local Num_newJL = GetItemForgeParam ( Item , 1 )
-	local Part1_newJL = GetNum_Part1 ( Num_newJL )	--Get Num Part 1 µЅ Part 7
+	local Part1_newJL = GetNum_Part1 ( Num_newJL )
 	local Part2_newJL = GetNum_Part2 ( Num_newJL )	
 	local Part3_newJL = GetNum_Part3 ( Num_newJL )
 
@@ -10366,7 +9915,7 @@ function ItemUse_TZJLD( role , Item )
 		end
 	end
 	local r1,r2 =MakeItem ( role , 233  , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )	
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STR , new_str )
 	SetItemAttr( Item_newJL , ITEMATTR_VAL_DEX , new_dex )	 
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STA , new_sta )
@@ -10375,16 +9924,17 @@ function ItemUse_TZJLD( role , Item )
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY ) 	
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
 end
-----------------------------------Б¦Ц®ѕ«Бйµ°
+
+--Яйцо Силы (ID 0573)
 function ItemUse_LZJLD( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Egg of Strength")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \223\233\246\238 \209\232\235\251")
 		UseItemFailed ( role )
 		return
 	end
 	local Num_newJL = GetItemForgeParam ( Item , 1 )
-	local Part1_newJL = GetNum_Part1 ( Num_newJL )	--Get Num Part 1 µЅ Part 7
+	local Part1_newJL = GetNum_Part1 ( Num_newJL )
 	local Part2_newJL = GetNum_Part2 ( Num_newJL )	
 	local Part3_newJL = GetNum_Part3 ( Num_newJL )
 
@@ -10424,7 +9974,7 @@ function ItemUse_LZJLD( role , Item )
 		end
 	end
 	local r1,r2 =MakeItem ( role , 232  , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STR , new_str )
 	SetItemAttr( Item_newJL , ITEMATTR_VAL_DEX , new_dex )	 
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STA , new_sta )
@@ -10433,16 +9983,17 @@ function ItemUse_LZJLD( role , Item )
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY ) 	
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
 end
-----------------------------------ЙсЦ®ѕ«Бйµ°
+
+--Яйцо Духа (ID 0574)
 function ItemUse_SZJLD( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Egg of Spirit")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \223\233\246\238 \196\243\245\224")
 		UseItemFailed ( role )
 		return
 	end
 	local Num_newJL = GetItemForgeParam ( Item , 1 )
-	local Part1_newJL = GetNum_Part1 ( Num_newJL )	--Get Num Part 1 µЅ Part 7
+	local Part1_newJL = GetNum_Part1 ( Num_newJL )
 	local Part2_newJL = GetNum_Part2 ( Num_newJL )	
 	local Part3_newJL = GetNum_Part3 ( Num_newJL )
 
@@ -10482,7 +10033,7 @@ function ItemUse_SZJLD( role , Item )
 		end
 	end
 	local r1,r2 =MakeItem ( role , 234  , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STR , new_str )
 	SetItemAttr( Item_newJL , ITEMATTR_VAL_DEX , new_dex )	 
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STA , new_sta )
@@ -10491,16 +10042,17 @@ function ItemUse_SZJLD( role , Item )
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY ) 	
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
 end
-----------------------------------ЧЁЦ®ѕ«Бйµ°
+
+--Яйцо Точности (ID 0575)
 function ItemUse_ZZJLD( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Egg of Accuracy")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \223\233\246\238 \210\238\247\237\238\241\242\232")
 		UseItemFailed ( role )
 		return
 	end
 	local Num_newJL = GetItemForgeParam ( Item , 1 )
-	local Part1_newJL = GetNum_Part1 ( Num_newJL )	--Get Num Part 1 µЅ Part 7
+	local Part1_newJL = GetNum_Part1 ( Num_newJL )
 	local Part2_newJL = GetNum_Part2 ( Num_newJL )	
 	local Part3_newJL = GetNum_Part3 ( Num_newJL )
 
@@ -10540,7 +10092,7 @@ function ItemUse_ZZJLD( role , Item )
 		end
 	end
 	local r1,r2 =MakeItem ( role , 235  , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STR , new_str )
 	SetItemAttr( Item_newJL , ITEMATTR_VAL_DEX , new_dex )	 
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STA , new_sta )
@@ -10549,16 +10101,17 @@ function ItemUse_ZZJLD( role , Item )
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY ) 	
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
 end
-----------------------------------ГфЦ®ѕ«Бйµ°
+
+--Яйцо ловкости (ID 0576)
 function ItemUse_MZJLD( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Egg of Agility")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \223\233\246\238 \203\238\226\234\238\241\242\232")
 		UseItemFailed ( role )
 		return
 	end
 	local Num_newJL = GetItemForgeParam ( Item , 1 )
-	local Part1_newJL = GetNum_Part1 ( Num_newJL )	--Get Num Part 1 µЅ Part 7
+	local Part1_newJL = GetNum_Part1 ( Num_newJL )
 	local Part2_newJL = GetNum_Part2 ( Num_newJL )	
 	local Part3_newJL = GetNum_Part3 ( Num_newJL )
 
@@ -10598,7 +10151,7 @@ function ItemUse_MZJLD( role , Item )
 		end
 	end
 	local r1,r2 =MakeItem ( role , 236  , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STR , new_str )
 	SetItemAttr( Item_newJL , ITEMATTR_VAL_DEX , new_dex )	 
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STA , new_sta )
@@ -10607,16 +10160,17 @@ function ItemUse_MZJLD( role , Item )
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY ) 	
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
 end
-----------------------------------Р°Ц®ѕ«Бйµ°
+
+--Яйцо Зла (ID 0577)
 function ItemUse_XZJLD( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Egg of Evil")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \223\233\246\238 \199\235\224")
 		UseItemFailed ( role )
 		return
 	end
 	local Num_newJL = GetItemForgeParam ( Item , 1 )
-	local Part1_newJL = GetNum_Part1 ( Num_newJL )	--Get Num Part 1 µЅ Part 7
+	local Part1_newJL = GetNum_Part1 ( Num_newJL )
 	local Part2_newJL = GetNum_Part2 ( Num_newJL )	
 	local Part3_newJL = GetNum_Part3 ( Num_newJL )
 
@@ -10656,7 +10210,7 @@ function ItemUse_XZJLD( role , Item )
 		end
 	end
 	local r1,r2 =MakeItem ( role , 237  , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STR , new_str )
 	SetItemAttr( Item_newJL , ITEMATTR_VAL_DEX , new_dex )	 
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STA , new_sta )
@@ -10665,11 +10219,12 @@ function ItemUse_XZJLD( role , Item )
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY ) 	
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
 end
------------Д¦¶№РЎЧУ¶юКАѕ«Бйµ°
+
+--Яйцо Мордо Младшего (ID 0910)
 function ItemUse_MDXZESJLD( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Egg of Mordo")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \223\233\246\238 \204\238\240\228\238 \204\235\224\228\248\229\227\238")
 		UseItemFailed ( role )
 		return
 	end
@@ -10689,7 +10244,7 @@ function ItemUse_MDXZESJLD( role , Item )
 	end	  
 	GiveItem ( role , 0 , 609  , 1 , 4 ) 
 	local r1,r2 =MakeItem ( role , 681  , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STR , new_str )
 	SetItemAttr( Item_newJL , ITEMATTR_VAL_DEX , new_dex )	 
 	SetItemAttr ( Item_newJL , ITEMATTR_VAL_STA , new_sta )
@@ -10699,8 +10254,12 @@ function ItemUse_MDXZESJLD( role , Item )
 	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
 end
 
---ID0239	Начальное Владение феей
-function Sk_Script_CJJLFT( role , Item )
+--------------------------------------------------------------------------------------------------
+--Поссешны
+--------------------------------------------------------------------------------------------------
+
+--Фея нач. ур. (ID 0239)
+function Sk_Script_CJJLFT( role , Item ) 							
  	local sk_add = SK_JLFT  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv >= 1  then 
@@ -10708,35 +10267,35 @@ function Sk_Script_CJJLFT( role , Item )
 		return 
 	end 
 	a = AddChaSkill ( role , sk_add, 1 , 1 , 0 ) 
-	if a == 0 then 
+	if a== 0 then 
 		UseItemFailed ( role )  
 		return 
-	end
-end
+	end 
+end 
 
---ID0608	Стандартное Владение Феей
-function Sk_Script_ZJJLFT ( role , Item )
-	local sk_add = SK_JLFT  
+ --Обычная фея (ID 0608)
+function Sk_Script_ZJJLFT ( role , Item ) 							
+  	local sk_add = SK_JLFT  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv >= 2 then 
 		UseItemFailed ( role )  
 		return 
-	end
-	a = AddChaSkill ( role , sk_add, 2 , 1 , 0 )
+	end 
+	a = AddChaSkill ( role , sk_add, 2 , 1 , 0 ) 
 	if a== 0 then 
 		UseItemFailed ( role )  
 		return 
-	end
+	end 
 end 
 
---ID0609	Продвинутое Владение Феей
-function Sk_Script_GJJLFT( role , Item )
- 	local sk_add = SK_JLFT  
+ --Опытная фея (ID 0609)
+function Sk_Script_GJJLFT( role , Item ) 							
+   	local sk_add = SK_JLFT  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv >= 3  then 
 		UseItemFailed ( role )  
 		return 
-	end
+	end 
 	a = AddChaSkill ( role , sk_add, 3 , 1 , 0 ) 
 	if a== 0 then 
 		UseItemFailed ( role )  
@@ -10744,545 +10303,479 @@ function Sk_Script_GJJLFT( role , Item )
 	end 
 end 
 
---ID0276	Огромный Фрукт снежного дракона
+--------------------------------------------------------------------------------------------------
+--Большие фрукты фей
+--------------------------------------------------------------------------------------------------
+
+--Огромный Фрукт снежного дракона (ID 0276)
 function ItemUse_CJ_longguo( role , Item , Item_Traget ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Огромный Фрукт снежного дракона(Сила +2)!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Str_1 ( role , Item_Num , Item_Traget )
-				end 
-		end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY)
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 50 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \212\240\243\234\242\238\236 \209\237\229\230\237\238\227\238 \196\240\224\234\238\237\224" ) 
+				UseItemFailed ( role )
+			else
+			Lvup_Str_1 ( role , Item_Num , Item_Traget )
+			end 
+	end 
 end
 
---ID0277	Огромная Ледяная слива
+--Огромная Ледяная слива (ID 0277)
 function ItemUse_CJ_koumei ( role , Item , Item_Traget ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Огромной Ледяной сливой(Ловкость +2)!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Agi_1 ( role , Item_Num , Item_Traget )
-				end 
-		end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 50 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\238\233 \203\229\228\255\237\238\233 \241\235\232\226\238\233" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Agi_1 ( role , Item_Num , Item_Traget ) 
+			end 
+	end 
 end
 
---ID0278	Огромный Фишфлос с Зефира
+--Огромный Фишфлос с Зефира (ID 0278)
 function ItemUse_CJ_yusi ( role , Item , Item_Traget ) 
+
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )  
 		UseItemFailed ( role ) 
 		return 
 	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Огромным Фишфлосом с Зефира(Точность +2)!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Dex_1 ( role , Item_Num , Item_Traget )
-				end 
-		end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 50 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+	if Item_type == 58 and Item_Traget_Type == 59  then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\251\236 \212\232\248\244\235\238\241\238\236 \241 \199\229\244\232\240\224" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Dex_1 ( role , Item_Num , Item_Traget ) 
+			end 
+	end 
 end
 
---ID0279	Огромное Серебряное манго
+--Огромное Серебряное манго (ID 0279)
 function ItemUse_CJ_guopu ( role , Item , Item_Traget ) 
+
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )  
 		UseItemFailed ( role ) 
 		return 
 	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Огромным Серебряным манго(Телосложение +2)!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Con_1 ( role , Item_Num , Item_Traget )
-				end 
-		end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 50 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\251\236 \209\229\240\229\225\240\255\237\251\236 \236\224\237\227\238" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Con_1 ( role , Item_Num , Item_Traget )
+			end 
+	end 
 end
 
---ID0280	Огромный шайтанский бисквит
+--Большой шайтанский бисквит (ID 0280)
 function ItemUse_CJ_mibing ( role , Item , Item_Traget ) 
+
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )  
 		UseItemFailed ( role ) 
 		return 
 	end 
-	local ret = CheckJingLingLv( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Огромным шайтанским бисквитом(Дух +2)!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Sta_1 ( role , Item_Num , Item_Traget )
-				end
-		end 
-end
-
-
---ID7003	Улучшенный Фрукт Силы
-function ItemUse_Great_Strup( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 50 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+	if Item_type == 58 and Item_Traget_Type == 59  then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \193\238\235\252\248\232\236 \216\224\233\242\224\237\241\234\232\236 \225\232\241\234\226\232\242\238\236" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Sta_1 ( role , Item_Num , Item_Traget )
+			end  			
 	end 
-	local ret = CheckJingLingLv1( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Улучшенным Фруктом Силы!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Str ( role , Item_Num , Item_Traget )
-				end
-		end 
 end
 
---ID7004	Улучшенный Фрукт Ловкости
-function ItemUse_Great_Agiup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv1( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Улучшенным Фруктом Ловкости!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Agi ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---ID7005	Улучшенный Фрукт Точности
-function ItemUse_Great_Dexup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv1( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Улучшенным Фруктом Точности!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Dex ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---ID7006	Улучшенный Фрукт Телосложения
-function ItemUse_Great_Conup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv1( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Улучшенным Фруктом Телосложения!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Con ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---ID7007	Улучшенный Фрукт Духа
-function ItemUse_Great_Staup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv1( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Улучшенным Фруктом Духа!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Sta ( role , Item_Num , Item_Traget )
-				end
-		end 
-end
-
-
---ID7008	Супер Фрукт Силы
-function ItemUse_Super_Strup( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv2( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				if Item_bg ~= Item_Traget then
-					SystemNotice(role , "Фея должна находится во 2 слоте первого ряда, что бы покормить ее Супер Фруктом Силы!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Str ( role , Item_Num , Item_Traget )
-				end
-		end 
-end
-
---ID7009	Супер Фрукт Ловкости
-function ItemUse_Super_Agiup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv2( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				if Item_bg ~= Item_Traget then
-					SystemNotice(role , "Фея должна находится во 2 слоте первого ряда, что бы покормить ее Супер Фруктом Ловкости!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Agi ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---ID7010	Супер Фрукт Точности
-function ItemUse_Super_Dexup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv2( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				if Item_bg ~= Item_Traget then
-					SystemNotice(role , "Фея должна находится во 2 слоте первого ряда, что бы покормить ее Супер Фруктом Точности!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Dex ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---ID7011	Супер Телосложения
-function ItemUse_Super_Conup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv2( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				if Item_bg ~= Item_Traget then
-					SystemNotice(role , "Фея должна находится во 2 слоте первого ряда, что бы покормить ее Супер Фруктом Телосложения!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Con ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---ID7012	Супер Фрукт Духа
-function ItemUse_Super_Staup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv2( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				if Item_bg ~= Item_Traget then
-					SystemNotice(role , "Фея должна находится во 2 слоте первого ряда, что бы покормить ее Супер Фруктом Духа!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Sta ( role , Item_Num , Item_Traget )
-				end
-		end 
-end
-
-
---ID0578	Фрукт роста
+--Фрукт роста (Id 0578)
 function ItemUse_JLJSGz( role , Item )
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_JLJSGZ)
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "Cannot use while sailing" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
 	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+		SystemNotice ( role , "Эфект от фрукта еще работает. " )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 900
 	AddState( role , role , STATE_JLJSGZ , statelv , statetime )
 end
----------------------70ј¶·вУЎЧПОд±¦Пд
+
+--Огромный Фрукт снежного дракона до 100лв (ID 7550)
+function ItemUse_CJ_longguo2( role , Item , Item_Traget ) 
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY)
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 100 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \212\240\243\234\242\238\236 \209\237\229\230\237\238\227\238 \196\240\224\234\238\237\224" ) 
+				UseItemFailed ( role )
+			else
+			Lvup_Str_1 ( role , Item_Num , Item_Traget )
+			end 
+	end 
+end
+
+--Огромная Ледяная слива до 100лв (ID 7551)
+function ItemUse_CJ_koumei2 ( role , Item , Item_Traget ) 
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 100 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\238\233 \203\229\228\255\237\238\233 \241\235\232\226\238\233" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Agi_1 ( role , Item_Num , Item_Traget ) 
+			end 
+	end 
+end
+
+--Огромный Фишфлос с Зефира до 100лв (ID 7552)
+function ItemUse_CJ_yusi2 ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 100 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+	if Item_type == 58 and Item_Traget_Type == 59  then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\251\236 \212\232\248\244\235\238\241\238\236 \241 \199\229\244\232\240\224" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Dex_1 ( role , Item_Num , Item_Traget ) 
+			end 
+	end 
+end
+
+--Огромное Серебряное манго до 100лв (ID 7553)
+function ItemUse_CJ_guopu2 ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 100 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\251\236 \209\229\240\229\225\240\255\237\251\236 \236\224\237\227\238" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Con_1 ( role , Item_Num , Item_Traget )
+			end 
+	end 
+end
+
+--Большой шайтанский бисквит до 100лв (ID 7554)
+function ItemUse_CJ_mibing2 ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 100 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+	if Item_type == 58 and Item_Traget_Type == 59  then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \193\238\235\252\248\232\236 \216\224\233\242\224\237\241\234\232\236 \225\232\241\234\226\232\242\238\236" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Sta_1 ( role , Item_Num , Item_Traget )
+			end			
+	end 
+end
+
+
+--------------------------------------------------------------------------------------------------
+--Сундуки
+--------------------------------------------------------------------------------------------------
+
+--Пурпурный сундук Ведьмы 70 ур. (ID 0322)
 function ItemUse_70FYZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Seal Master Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \194\229\228\252\236\251 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 4204  , 1 , 22) 
 end
----------------------70ј¶ѕЮЅЈЧПОд±¦Пд
+
+--Пурпурный сундук Чемпиона 70 ур. (ID 0525)
 function ItemUse_70JJZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Champion Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \215\229\236\239\232\238\237\224 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1375 , 1 , 22) 
 end
----------------------70ј¶Л«ЅЈЧПОд±¦Пд
+
+--Пурпурный сундук Воителя 70 ур. (ID 0613)
 function ItemUse_70SJZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Crusader Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \194\238\232\242\229\235\255 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1394 , 1 , 22) 
 end
----------------------70ј¶ѕС»чЧПОд±¦Пд
 
+--Пурпурный сундук Стрелка 70 ур. (ID 0614)
 function ItemUse_70JUJZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Sharpshooter Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \209\242\240\229\235\234\224 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 42 , 1 , 22) 
 end
 
----------------------70ј¶єЅєЈЧПОд±¦Пд
+--Пурпурный сундук покорителя морей 70 ур. (ID 0615)
 function ItemUse_70HHZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Voyager Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \239\238\234\238\240\232\242\229\235\255 \236\238\240\229\233 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1421 , 1 , 22) 
 end
----------------------70ј¶КҐЦ°ЧПОд±¦Пд
+
+--Пурпурный сундук Целительницы 70 ур. (ID 0616)
 function ItemUse_70SZZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Cleric Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \214\229\235\232\242\229\235\252\237\232\246\251 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 4198 , 1 , 22) 
 end
----------------------50ј¶Л«ЅЈ±¦Пд
+
+--Сундук воителя 50 ур. (ID 0617)
 function ItemUse_50SJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Crusader Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \226\238\232\242\229\235\255 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11290,11 +10783,12 @@ function ItemUse_50SJBOX( role , Item )
 	GiveItem ( role , 0 , 0475 , 1 , 22) 
 	GiveItem ( role , 0 , 0651 , 1 , 22) 
 end
---------------------60ј¶Л«ЅЈ±¦Пд
+
+--Сундук воителя 60 ур. (ID 0618)
 function ItemUse_60SJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Crusader Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \226\238\232\242\229\235\255 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11302,11 +10796,12 @@ function ItemUse_60SJBOX( role , Item )
 	GiveItem ( role , 0 , 0480 , 1 , 22) 
 	GiveItem ( role , 0 , 0656 , 1 , 22) 
 end
---------------------70ј¶Л«ЅЈ±¦Пд
+
+--Сундук воителя 70 ур. (ID 0619)
 function ItemUse_70SJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Crusader Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \226\238\232\242\229\235\255 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11314,33 +10809,36 @@ function ItemUse_70SJBOX( role , Item )
 	GiveItem ( role , 0 , 4166 , 1 , 22) 
 	GiveItem ( role , 0 , 4182 , 1 , 22) 
 end
---------------------50ј¶ѕЮЅЈ±¦Пд
+
+--Сундук Чемпиона 50 ур. (ID 0620)
 function ItemUse_50JJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Champion Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \215\229\236\239\232\238\237\224 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0229 , 1 , 22) 
 	GiveItem ( role , 0 , 653 , 1 , 22)  
 end
---------------------60ј¶ѕЮЅЈ±¦Пд
+
+--Сундук Чемпиона 60 ур. (ID 0621)
 function ItemUse_60JJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Champion Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \215\229\236\239\232\238\237\224 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0230 , 1 , 22) 
 	GiveItem ( role , 0 , 477 , 1 , 22)  
 end
---------------------70ј¶ѕЮЅЈ±¦Пд
+
+--Сундук Чемпиона 70 ур. (ID 0622)
 function ItemUse_70JJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Champion Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \215\229\236\239\232\238\237\224 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11348,11 +10846,12 @@ function ItemUse_70JJBOX( role , Item )
 	GiveItem ( role , 0 , 653 , 1 , 22)  
 	GiveItem ( role , 0 , 477 , 1 , 22)
 end
---------------------50ј¶КҐЦ°±¦Пд
+
+--Сундук Целительницы 50 ур. (ID 0623)
 function ItemUse_50SZBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Cleric Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \214\229\235\232\242\229\235\252\237\232\246\251 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11360,11 +10859,12 @@ function ItemUse_50SZBOX( role , Item )
 	GiveItem ( role , 0 , 0547 , 1 , 22)  
 	GiveItem ( role , 0 , 0723 , 1 , 22) 
 end
---------------------60ј¶КҐЦ°±¦Пд
+
+--Сундук Целительницы 60 ур. (ID 0624)
 function ItemUse_60SZBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Cleric Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \214\229\235\232\242\229\235\252\237\232\246\251 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11372,11 +10872,12 @@ function ItemUse_60SZBOX( role , Item )
 	GiveItem ( role , 0 , 0570 , 1 , 22)  
 	GiveItem ( role , 0 , 0746 , 1 , 22) 
 end
---------------------70ј¶КҐЦ°±¦Пд
+
+--Сундук целительницы 70 ур. (ID 0625)
 function ItemUse_70SZBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Cleric Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \214\229\235\232\242\229\235\252\237\232\246\251 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11384,11 +10885,12 @@ function ItemUse_70SZBOX( role , Item )
 	GiveItem ( role , 0 , 4175 , 1 , 22)  
 	GiveItem ( role , 0 , 4191 , 1 , 22) 
 end
---------------------50ј¶°¬ГЧКҐЦ°±¦Пд
+
+--Сундук Ами Целительницы 50 ур. (ID 0626)
 function ItemUse_50AMSZBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Ami Cleric Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \192\236\232 \214\229\235\232\242\229\235\252\237\232\246\251 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11397,11 +10899,12 @@ function ItemUse_50AMSZBOX( role , Item )
 	GiveItem ( role , 0 , 0734 , 1 , 22) 
 	GiveItem ( role , 0 , 2204 , 1 , 22) 
 end
---------------------60ј¶°¬ГЧКҐЦ°±¦Пд
+
+--Сундук Ами Целительницы 60 ур. (ID 0627)
 function ItemUse_60AMSZBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60Ami Cleric Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \192\236\232 \214\229\235\232\242\229\235\252\237\232\246\251 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11410,11 +10913,12 @@ function ItemUse_60AMSZBOX( role , Item )
 	GiveItem ( role , 0 , 0745 , 1 , 22) 
 	GiveItem ( role , 0 , 2215 , 1 , 22) 
 end
---------------------70ј¶°¬ГЧКҐЦ°±¦Пд
+
+--Сундук Целительницы Ами 70 ур. (ID 0628)
 function ItemUse_70AMSZBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Ami Cleric Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \192\236\232 \214\229\235\232\242\229\235\252\237\232\246\251 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11422,11 +10926,12 @@ function ItemUse_70AMSZBOX( role , Item )
 	GiveItem ( role , 0 , 4176 , 1 , 22)  
 	GiveItem ( role , 0 , 4192 , 1 , 22)  
 end
---------------------50ј¶°¬ГЧ·вУЎ±¦Пд
+
+--Сундук Ами Ведьмы 50 ур. (ID 0629)
 function ItemUse_50AMFYBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Ami Seal Master Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \192\236\232 \194\229\228\252\236\251 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11435,11 +10940,12 @@ function ItemUse_50AMFYBOX( role , Item )
 	GiveItem ( role , 0 , 0737 , 1 , 22) 
 	GiveItem ( role , 0 , 2207 , 1 , 22) 
 end
---------------------60ј¶°¬ГЧ·вУЎ±¦Пд
+
+--Сундук Ами Ведьмы 60 ур. (ID 0630)
 function ItemUse_60AMFYBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Ami Seal Master Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \192\236\232 \194\229\228\252\236\251 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11448,11 +10954,12 @@ function ItemUse_60AMFYBOX( role , Item )
 	GiveItem ( role , 0 , 0716 , 1 , 22) 
 	GiveItem ( role , 0 , 2201 , 1 , 22) 
 end
---------------------70ј¶°¬ГЧ·вУЎ±¦Пд
+
+--Ведьмовской сундук Ами 70 ур. (ID 0631)
 function ItemUse_70AMFYBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Ami Seal Master Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \192\236\232 \194\229\228\252\236\251 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11460,11 +10967,12 @@ function ItemUse_70AMFYBOX( role , Item )
 	GiveItem ( role , 0 , 4180 , 1 , 22)  
 	GiveItem ( role , 0 , 4196 , 1 , 22) 
 end
---------------------50ј¶°¬єЅєЈУЎ±¦Пд
+
+--Сундук Покорителя морей Ами 50 ур. (ID 0632)
 function ItemUse_50AMHHBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Ami Voyager Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \207\238\234\238\240\232\242\229\235\255 \236\238\240\229\233 \192\236\232 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11473,11 +10981,12 @@ function ItemUse_50AMHHBOX( role , Item )
 	GiveItem ( role , 0 , 0707 , 1 , 22) 
 	GiveItem ( role , 0 , 2192 , 1 , 22) 
 end
---------------------60ј¶°¬єЅєЈУЎ±¦Пд
+
+--Сундук покорителя морей Ами 60 ур. (ID 0633)
 function ItemUse_60AMHHBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Ami Voyager Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \207\238\234\238\240\232\242\229\235\255 \236\238\240\229\233 \192\236\232 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11486,11 +10995,12 @@ function ItemUse_60AMHHBOX( role , Item )
 	GiveItem ( role , 0 , 0710 , 1 , 22) 
 	GiveItem ( role , 0 , 2195 , 1 , 22) 
 end
---------------------70ј¶°¬єЅєЈУЎ±¦Пд
+
+--Сундук покорителя морей Ами 70 ур. (ID 0634)
 function ItemUse_70AMHHBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Ami Voyager Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \207\238\234\238\240\232\242\229\235\255 \236\238\240\229\233 \192\236\232 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11498,11 +11008,12 @@ function ItemUse_70AMHHBOX( role , Item )
 	GiveItem ( role , 0 , 4172 , 1 , 22)  
 	GiveItem ( role , 0 , 4188 , 1 , 22)  
 end
---------------------50ј¶ѕС»ч±¦Пд
+
+--Сундук Стрелка 50 ур. (ID 0671)
 function ItemUse_50JUJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Sharpshooter Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \209\242\240\229\235\234\224 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11510,11 +11021,12 @@ function ItemUse_50JUJBOX( role , Item )
 	GiveItem ( role , 0 , 0488 , 1 , 22)  
 	GiveItem ( role , 0 , 0664 , 1 , 22) 
 end
---------------------60ј¶ѕС»ч±¦Пд
+
+--Сундук Стрелка 60 ур. (ID 0673)
 function ItemUse_60JUJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Sharpshooter Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \209\242\240\229\235\234\224 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11522,11 +11034,12 @@ function ItemUse_60JUJBOX( role , Item )
 	GiveItem ( role , 0 , 0493 , 1 , 22)  
 	GiveItem ( role , 0 , 0669 , 1 , 22) 
 end
---------------------70ј¶ѕС»ч±¦Пд
+
+--Сундук Стрелка 70 ур (ID 0674)
 function ItemUse_70JUJBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Sharpshooter Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \209\242\240\229\235\234\224 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11534,11 +11047,12 @@ function ItemUse_70JUJBOX( role , Item )
 	GiveItem ( role , 0 , 4168 , 1 , 22)  
 	GiveItem ( role , 0 , 4184 , 1 , 22) 
 end
---------------------50ј¶єЅєЈ±¦Пд
+
+--Сундук Покорителя морей 50 ур. (ID 0676)
 function ItemUse_50HHBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Voyager Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \207\238\234\238\240\232\242\229\235\255 \236\238\240\229\233 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11546,11 +11060,12 @@ function ItemUse_50HHBOX( role , Item )
 	GiveItem ( role , 0 , 0521 , 1 , 22)  
 	GiveItem ( role , 0 , 0697 , 1 , 22) 
 end
---------------------60ј¶єЅєЈ±¦Пд
+
+--Сундук Покорителя морей 60 ур. (ID 0686)
 function ItemUse_60HHBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Voyager Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \207\238\234\238\240\232\242\229\235\255 \236\238\240\229\233 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11558,11 +11073,12 @@ function ItemUse_60HHBOX( role , Item )
 	GiveItem ( role , 0 , 0520 , 1 , 22)  
 	GiveItem ( role , 0 , 0696 , 1 , 22) 
 end
---------------------70ј¶єЅєЈ±¦Пд
+
+--Сундук Покорителя морей 70 ур. (ID 0698)
 function ItemUse_70HHBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Voyager Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \207\238\234\238\240\232\242\229\235\255 \236\238\240\229\233 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11570,11 +11086,12 @@ function ItemUse_70HHBOX( role , Item )
 	GiveItem ( role , 0 , 4171 , 1 , 22)  
 	GiveItem ( role , 0 , 4187 , 1 , 22) 
 end
---------------------50ј¶·вУЎ±¦Пд
+
+--Сундук Ведьмы 50 ур. (ID 0699)
 function ItemUse_50FYBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Seal Master Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \194\229\228\252\236\251 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11582,11 +11099,12 @@ function ItemUse_50FYBOX( role , Item )
 	GiveItem ( role , 0 , 0545 , 1 , 22)  
 	GiveItem ( role , 0 , 0721 , 1 , 22) 
 end
---------------------60ј¶·вУЎ±¦Пд
+
+--Сундук Ведьмы 60 ур. (ID 0700)
 function ItemUse_60FYBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Seal Master Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \194\229\228\252\236\251 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11594,11 +11112,12 @@ function ItemUse_60FYBOX( role , Item )
 	GiveItem ( role , 0 , 0553 , 1 , 22)  
 	GiveItem ( role , 0 , 0729 , 1 , 22) 
 end
---------------------70ј¶·вУЎ±¦Пд
+
+--Сундук Ведьмы 70 ур. (ID 0701)
 function ItemUse_70FYBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 70 Seal Master Chest")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \194\229\228\252\236\251 70 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -11606,7 +11125,12 @@ function ItemUse_70FYBOX( role , Item )
 	GiveItem ( role , 0 , 4179 , 1 , 22)  
 	GiveItem ( role , 0 , 4195 , 1 , 22) 
 end
---98МмМГ°ь
+
+--------------------------------------------------------------------------------------------------
+--Райский мешочек
+--------------------------------------------------------------------------------------------------
+
+--Райский мешочек (ID 1119)
 function ItemUse_98BOX ( role , Item )
 			local item_type = BaoXiang_98BOX
 			local item_type_rad = BaoXiang_98BOX_Rad 
@@ -11619,12 +11143,12 @@ function ItemUse_98BOX ( role , Item )
 		local Item_CanGet = GetChaFreeBagGridNum ( role )
 		
 		if Item_CanGet <= 0 then
-			SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+			SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \208\224\233\241\234\232\233 \236\229\248\238\247\229\234")
 			UseItemFailed ( role )
 			return
 		end
 				for i = 1 , maxitem , 1 do 
-					General = item_type_rad [ i ] + General
+					General = item_type_rad [ i ] + General		
 				end 
 				local a = math.random ( 1, General )
 				local b = 0
@@ -11666,256 +11190,290 @@ function ItemUse_98BOX ( role , Item )
 					if ItemId == GoodItem[Good_C] then
 						local itemname = GetItemName ( ItemId ) 
 						local cha_name = GetChaDefaultName ( role ) 
-						local message = cha_name.." opens a Paradise Pouch and obtain "..itemname  
+						local message = cha_name.." \238\242\234\240\251\226\224\229\242 \208\224\233\241\234\232\233 \236\229\248\238\247\229\234 \232 \239\238\235\243\247\224\229\242 "..itemname  
 						Notice ( message )
 					end
 				end
 	
 	end
---------------------БТСЧКЇ¶Т»»ИЇ
+
+--------------------------------------------------------------------------------------------------
+--Расписки на самоцветы
+--------------------------------------------------------------------------------------------------
+
+--Расписка на Огненный самоцвет (ID 0856)
 function ItemUse_lieyanBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Fiery Gem Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \206\227\237\229\237\237\251\233 \241\224\236\238\246\226\229\242")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0878 , 1 , 4) 
 end
---------------------ЦЛСжКЇ¶Т»»ИЇ
+
+--Расписка на Самоцвет Ярости (ID 0857)
 function ItemUse_zhiyanBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Furious Gem Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \209\224\236\238\246\226\229\242 \223\240\238\241\242\232")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0879 , 1 , 4) 
 end
---------------------»рТ©КЇ¶Т»»ИЇ
+
+--Расписка на Разрыв-самоцвет (ID 0858)
 function ItemUse_huoyaoBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Explosive Gem Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \208\224\231\240\251\226\237\238\233 \241\224\236\238\246\226\229\242")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0880 , 1 , 4) 
 end
---------------------Вки§КЇ¶Т»»ИЇ
+
+--Расписка на Люстриновый самоцвет (ID 0859)
 function ItemUse_manaoBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lustrious Gem Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \203\254\241\242\240\232\237\238\226\251\233 \241\224\236\238\246\226\229\242")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0881 , 1 , 4) 
 end
---------------------КҐ№вКЇ¶Т»»ИЇ
+
+--Расписка на Самоцвет Духа (ID 0911)
 function ItemUse_shengguangBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Spirit Gem Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \209\224\236\238\246\226\229\242 \196\243\245\224")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0887 , 1 , 4) 
 end
---------------------ФВЦ®РД¶Т»»ИЇ
+
+--Расписка на Блестящий самоцвет (ID 0915)
 function ItemUse_yuezhixinBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Shining Gem Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \193\235\229\241\242\255\249\232\233 \241\224\236\238\246\226\229\242")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0883 , 1 , 4) 
 end
---------------------є®Ус¶Т»»ИЇ
+
+--Расписка на Сияющий самоцвет (ID 0914)
 function ItemUse_hanyuBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Glowing Gem Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \209\232\255\254\249\232\233 \241\224\236\238\246\226\229\242")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0882 , 1 , 4) 
 end
---------------------·зБйКЇ¶Т»»ИЇ
+
+--Расписка на Самоцвет Ветра (ID 0918)
 function ItemUse_fenglingBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Gem of the Wind Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \209\224\236\238\246\226\229\242 \194\229\242\240\224")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0860 , 1 , 4) 
 end
---------------------ПЙБйКЇ¶Т»»ИЇ
+
+--Расписка на Теневой самоцвет (ID 0916)
 function ItemUse_xianlingBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Shadow Gem Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \210\229\237\229\226\238\233 \241\224\236\238\246\226\229\242")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0884 , 1 , 4) 
 end
---------------------УҐСЫКЇ¶Т»»ИЇ
+
+--Расписка на Самоцвет удара (ID 0919)
 function ItemUse_yingyanBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Gem of Striking Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \209\224\236\238\246\226\229\242 \243\228\224\240\224")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0861 , 1 , 4) 
 end
---------------------СТУс¶Т»»ИЇ
+
+--Расписка на Самоцвет колосса (ID 0920)
 function ItemUse_yanyuBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Gem of Colossus Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \209\224\236\238\246\226\229\242 \234\238\235\238\241\241\224")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0862 , 1 , 4) 
 end
---------------------СЧУс¶Т»»ИЇ
+
+--Расписка на Самоцвет Ярости (ID 0921)
 function ItemUse_tanyuBook( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Gem of Rage Voucher")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \208\224\241\239\232\241\234\243 \237\224 \209\224\236\238\246\226\229\242 \223\240\238\241\242\232")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0863 , 1 , 4) 
 end
---------------------50ј¶Л«ЅЈЧПОд±¦Пд
+
+--------------------------------------------------------------------------------------------------
+--Сундуки
+--------------------------------------------------------------------------------------------------
+
+--Пурпурный сундук Воителя 50 ур. (ID 0939)
 function ItemUse_50SJZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Crusader Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \194\238\232\242\229\235\255 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1392 , 1 , 22) 
 end
---------------------50ј¶ѕЮЅЈЧПОд±¦Пд
+
+--Пурпурный сундук Чемпиона 50 ур. (ID 0940)
 function ItemUse_50JJZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Champion Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \215\229\236\239\232\238\237\224 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1373 , 1 , 22) 
 end
---------------------50ј¶ѕС»чЧПОд±¦Пд
+
+--Пурпурный сундук Стрелка 50 ур. (ID 0941)
 function ItemUse_50JUJZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Sharpshooter Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \209\242\240\229\235\234\224 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0040 , 1 , 22) 
 end
---------------------50ј¶єЅєЈЧПОд±¦Пд
+
+--Пурпурный сундук Покорителя морей 50 ур.(ID 0942)
 function ItemUse_50HHZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Voyager Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \207\238\234\238\240\232\242\229\235\255 \236\238\240\229\233 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1419 , 1 , 22) 
 end
---------------------50ј¶КҐЦ°ЧПОд±¦Пд
+
+--Пурпурный сундук Целительницы 50 ур. (ID 0943)
 function ItemUse_50SZZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Cleric Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \214\229\235\232\242\229\235\252\237\232\246\251 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0103 , 1 , 22) 
 end
---------------------50ј¶·вУЎЧПОд±¦Пд
+
+--Пурпурный сундук Ведьмы 50 ур. (ID 0944)
 function ItemUse_50FYZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 50 Seal Master Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \194\229\228\252\236\251 50 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0102 , 1 , 22) 
 end
 
-
-
---------------------60ј¶Л«ЅЈЧПОд±¦Пд
+--Пурпурный сундук Воителя 60 ур. (ID 0945)
 function ItemUse_60SJZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Crusader Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \194\238\232\242\229\235\255 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1393 , 1 , 22) 
 end
---------------------60ј¶ѕЮЅЈЧПОд±¦Пд
+
+--Пурпурный сундук Чемпиона 60 ур. (ID 0946)
 function ItemUse_60JJZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Champion Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \215\229\236\239\232\238\237\224 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1374 , 1 , 22) 
 end
---------------------60ј¶ѕС»чЧПОд±¦Пд
+
+--Пурпурный сундук Стрелка 60 ур. (ID 0947
 function ItemUse_60JUJZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Sharpshooter Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \209\242\240\229\235\234\224 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 0041 , 1 , 22) 
 end
---------------------60ј¶єЅєЈЧПОд±¦Пд
+
+--Пурпурный сундук Покорителя морей 60 ур. (ID 0950)
 function ItemUse_60HHZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Voyager Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \207\238\234\238\240\232\242\229\235\255 \236\238\240\229\233 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1420 , 1 , 22) 
 end
---------------------60ј¶КҐЦ°ЧПОд±¦Пд
+
+--Пурпурный сундук Целительницы 60 ур. (ID 0951)
 function ItemUse_60SZZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Cleric Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \214\229\235\232\242\229\235\252\237\232\246\251 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 4303 , 1 , 22) 
 end
---------------------60ј¶·вУЎЧПОд±¦Пд
+
+--Пурпурный сундук Ведьмы 60 ур. (ID 0952)
 function ItemUse_60FYZWBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient slot in inventory. Failed to use Lv 60 Seal Master Chest of Magenta")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \207\243\240\239\243\240\237\251\233 \241\243\237\228\243\234 \194\229\228\252\236\251 60 \243\240\238\226\237\255")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 4300 , 1 , 22) 
 end
---------------------ґїХжЦ®РДЈ¬ЦШЙъЦ®РД
+
+--------------------------------------------------------------------------------------------------
+--Разное
+--------------------------------------------------------------------------------------------------
+
+--Сердце Невинности (ID 1009)
 function ItemUse_CZZX( role , Item )
 	local statelv = 1
 	local statetime = 30
@@ -11924,14 +11482,13 @@ function ItemUse_CZZX( role , Item )
 	if Item_ID~=1013 then
 		GiveItem ( role , 0 , 1010 , 1 , 4)
 	end
---		SystemNotice( role , "ёГОпЖ·ТС±»ІЎ¶ѕёЇКґ,І»ДЬК№УГ." )
---		UseItemFailed ( role )
 end
---------------------»Ф»НАсЕЪ
+
+--Грандиозный салют (ID 1011)
 function ItemUse_HHLP( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -11948,18 +11505,10 @@ function ItemUse_HHLP( role , Item )
 	if CheckDateNum >= 10122  and CheckDateNum <= 10123 then
 		ItemUse_XNBOX ( role , Item )
 
-
-	--if CheckDateNum >= 100122  and CheckDateNum <= 100123 then
-		--star=1
-	--end
-	--if CheckDateNum >= 100622  and CheckDateNum <= 100623 then
-		--star=1
-	--end
-	--if star ==1 then
-		--ItemUse_BaoZhaBOX ( role , Item )	
 	end
 end
---------------------ёВДЙЦ®Йс
+
+--Неизвестно (ID n\a)
 function ItemUse_GNZS( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
@@ -11969,12 +11518,13 @@ function ItemUse_GNZS( role , Item )
 		attr_sta = attr_sta + sta_extre 
 		SetCharaAttr( attr_sta, role, ATTR_STA )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
---------------------јјДЬѕ«Бйµ°
+
+--Загадочное яйцо феи (ID 1015)
 function ItemUse_JNJLD( role , Item )
 	local star=math.random ( 1, 10 )
 	local r1 = 0
@@ -12000,9 +11550,9 @@ function ItemUse_JNJLD( role , Item )
 	else  
 		r1,r2=MakeItem( role , 199 , 1 , 4)
 	end
-	local Item_newJL = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
+	local Item_newJL = GetChaItem ( role , 2 , r2 )
 	local Num_newJL = GetItemForgeParam ( Item_newJL , 1 )
-	local Part1_newJL = GetNum_Part1 ( Num_newJL )	--Get Num Part 1 µЅ Part 7
+	local Part1_newJL = GetNum_Part1 ( Num_newJL )
 	local Part2_newJL = GetNum_Part2 ( Num_newJL )	
 	local Part3_newJL = GetNum_Part3 ( Num_newJL )
 	local Part4_newJL = GetNum_Part4 ( Num_newJL )
@@ -12027,62 +11577,102 @@ function ItemUse_JNJLD( role , Item )
 	Num_newJL = SetNum_Part7 ( Num_newJL , 1 )
 	SetItemForgeParam ( Item_newJL , 1 , Num_newJL )
 end
------------------------------------------------------------
---№ЦОпХЩ»Ѕ
+
+--Свиток призыва Богини (ID 1014)
 function ItemUse_NSSN ( role , Item  )
-	local cha_name = GetChaDefaultName ( role )
-	LG( "KaiXiaoBaoDeSB" ,cha_name )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local star = 0
 	star =IsChaInRegion( role, 2 )
 	if star == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \226\251\231\226\224\242\252 \193\238\227\232\237\254 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local x, y = GetChaPos(role)
 	local MonsterID = 857
-	local Refresh = 3700					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 3600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 3700
+	local life = 3600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
 	SetChaLifeTime( new, life )
 end
------------------------------------------------------------
-----јУДЙ±¦Пд
+
+--Мешочек Богини (ID 1016)
+function ItemUse_NSDXB ( role , Item )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \204\229\248\238\247\229\234 \193\238\227\232\237\232")
+		UseItemFailed ( role )
+		return
+	end
+	local star=math.random ( 1, 12 )
+	local r1 = 0
+	local r2 = 0
+	if star==1 then
+		r1,r2=MakeItem( role , 619 , 1 , 4)
+	elseif star==2 then
+		r1,r2=MakeItem( role , 625 , 1 , 4)
+	elseif  star==3 then
+		r1,r2=MakeItem( role , 628 , 1 , 4)
+	elseif  star==4 then
+		r1,r2=MakeItem( role , 631 , 1 , 4)
+	elseif  star==5 then
+		r1,r2=MakeItem( role , 634 , 1 , 4)
+	elseif  star==6 then
+		r1,r2=MakeItem( role , 674 , 1 , 4)
+	elseif  star==7 then
+		r1,r2=MakeItem( role , 698 , 1 , 4)
+	elseif  star==8 then
+		r1,r2=MakeItem( role , 701 , 1 , 4)
+	else 
+		local eleven =math.random ( 2530, 2548 )
+		r1,r2=MakeItem( role , eleven , 1 , 4)
+	end
+	local Item_new = GetChaItem ( role , 2 , r2 )
+	local Item_ID = GetItemID ( Item_new )
+	local itemname = GetItemName (Item_ID) 
+	local cha_name = GetChaDefaultName ( role ) 
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \204\229\248\238\247\229\234 \193\238\227\232\237\232 \232 \239\238\235\243\247\224\229\242 "..itemname   
+	Notice ( message )
+end
+
+--Аскаронский сундук (ID 1017)
 function ItemUse_JaNaBox ( role , Item ) 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \192\241\234\224\240\238\237\241\234\232\233 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 1012 , 1 , 4) 			
 	local itemname = GetItemName (1012) 
 	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." opens Chest of Ascaron and obtain "..itemname  
+	local message = cha_name.." \238\242\234\240\251\226\224\229\242 \192\241\234\224\240\238\237\241\234\232\233 \241\243\237\228\243\234 \232 \239\238\235\243\247\224\229\242 "..itemname  
 	Notice ( message )
 end
 
+--------------------------------------------------------------------------------------------------
+--Черный рынок
+--------------------------------------------------------------------------------------------------
 
---------єЪКРЙМИЛєЪКРЧ°±ё--Leo
+--Неизвестно (ID n\a)
 function gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	local cha_name = GetChaDefaultName ( role ) 
 	local General = 0  
 	local ItemId = 0 
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -12132,16 +11722,15 @@ function gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_q
 	for Good_C = 0 , 4 , 1 do
 		if ItemId == GoodItem[Good_C] then
 			local itemname = GetItemName ( ItemId ) 
-			local message = cha_name.." opens a Black Market Equipment and obtain "..itemname  
+			local message = cha_name.." \238\242\234\240\251\226\224\229\242 \209\237\224\240\255\230\229\237\232\229 \215\229\240\237\251\233 \208\251\237\238\234 \232 \239\238\235\243\247\224\229\242 "..itemname  
 			Notice ( message )
 		end
 	end
-	--LG( "HeiShiZhangBei_XinXi" , cha_name , ItemId )
 
 	return 1
 end
 
---УОБъ±¦Пд24РН
+--Снаряжение Черный рынок (ID 3302 - 3334_
 function ItemUse_jsyla( role , Item )
 	local item_quality =BaoXiang_jsyla_Qua
 	local maxitem = BaoXiang_jsyla_Mxcount
@@ -12152,8 +11741,6 @@ function ItemUse_jsyla( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---УОБъ±¦Пд23РН
 function ItemUse_jsylb( role , Item )
 	local item_quality =BaoXiang_jsylb_Qua
 	local maxitem =BaoXiang_jsylb_Mxcount
@@ -12164,8 +11751,6 @@ function ItemUse_jsylb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФЦ®АыИР±¦Пд24РН
 function ItemUse_jsmzlra( role , Item )
 	local item_quality =BaoXiang_jsmzlra_Qua
 	local maxitem =BaoXiang_jsmzlra_Mxcount
@@ -12176,8 +11761,6 @@ function ItemUse_jsmzlra( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФЦ®АыИР±¦Пд23РН
 function ItemUse_jsmzlrb( role , Item )
 	local item_quality =BaoXiang_jsmzlrb_Qua
 	local maxitem =BaoXiang_jsmzlrb_Mxcount
@@ -12188,8 +11771,6 @@ function ItemUse_jsmzlrb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ѕЮгЪ±¦Пд24РН
 function ItemUse_jsjqa( role , Item )
 	local item_quality =BaoXiang_jsjqa_Qua
 	local maxitem =BaoXiang_jsjqa_Mxcount
@@ -12200,8 +11781,6 @@ function ItemUse_jsjqa( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ѕЮгЪ±¦Пд23РН
 function ItemUse_jsjqb( role , Item )
 	local item_quality =BaoXiang_jsjqb_Qua
 	local maxitem =BaoXiang_jsjqb_Mxcount
@@ -12212,8 +11791,6 @@ function ItemUse_jsjqb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФЦ®ІГѕц±¦Пд24РН
 function ItemUse_jsmzcja( role , Item )
 	local item_quality =BaoXiang_jsmzcja_Qua
 	local maxitem =BaoXiang_jsmzcja_Mxcount
@@ -12224,8 +11801,6 @@ function ItemUse_jsmzcja( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФЦ®ІГѕц±¦Пд23РН
 function ItemUse_jsmzcjb( role , Item )
 	local item_quality =BaoXiang_jsmzcjb_Qua
 	local maxitem =BaoXiang_jsmzcjb_Mxcount
@@ -12236,8 +11811,6 @@ function ItemUse_jsmzcjb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---Л«ЅЈїшјЧ±¦Пд24РН
 function ItemUse_jssjkja( role , Item )
 	local item_quality =BaoXiang_jssjkja_Qua
 	local maxitem =BaoXiang_jssjkja_Mxcount
@@ -12248,8 +11821,6 @@ function ItemUse_jssjkja( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---Л«ЅЈїшјЧ±¦Пд23РН
 function ItemUse_jssjkjb( role , Item )
 	local item_quality =BaoXiang_jssjkjb_Qua
 	local maxitem =BaoXiang_jssjkjb_Mxcount
@@ -12260,8 +11831,6 @@ function ItemUse_jssjkjb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ѕС»чїшјЧ±¦Пд24РН
 function ItemUse_jszjkja( role , Item )
 	local item_quality =BaoXiang_jszjkja_Qua
 	local maxitem =BaoXiang_jszjkja_Mxcount
@@ -12272,8 +11841,6 @@ function ItemUse_jszjkja( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ѕС»чїшјЧ±¦Пд23РН
 function ItemUse_jszjkjb( role , Item )
 	local item_quality =BaoXiang_jszjkjb_Qua
 	local maxitem =BaoXiang_jszjkjb_Mxcount
@@ -12284,8 +11851,6 @@ function ItemUse_jszjkjb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---КҐЦ°їшјЧ±¦Пд24РН
 function ItemUse_jsszkja( role , Item )
 	local item_quality =BaoXiang_jsszkja_Qua
 	local maxitem =BaoXiang_jsszkja_Mxcount
@@ -12296,8 +11861,6 @@ function ItemUse_jsszkja( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---КҐЦ°їшјЧ±¦Пд23РН
 function ItemUse_jsszkjb( role , Item )
 	local item_quality =BaoXiang_jsszkjb_Qua
 	local maxitem =BaoXiang_jsszkjb_Mxcount
@@ -12308,8 +11871,6 @@ function ItemUse_jsszkjb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---·вУЎїшјЧ±¦Пд24РН
 function ItemUse_jsfykja( role , Item )
 	local item_quality =BaoXiang_jsfykja_Qua
 	local maxitem =BaoXiang_jsfykja_Mxcount
@@ -12320,8 +11881,6 @@ function ItemUse_jsfykja( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---·вУЎїшјЧ±¦Пд23РН
 function ItemUse_jsfykjb( role , Item )
 	local item_quality =BaoXiang_jsfykjb_Qua
 	local maxitem =BaoXiang_jsfykjb_Mxcount
@@ -12332,8 +11891,6 @@ function ItemUse_jsfykjb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---єЅєЈїшјЧ±¦Пд24РН
 function ItemUse_jshhkja( role , Item )
 	local item_quality =BaoXiang_jshhkja_Qua
 	local maxitem =BaoXiang_jshhkja_Mxcount
@@ -12344,8 +11901,6 @@ function ItemUse_jshhkja( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---єЅєЈїшјЧ±¦Пд23РН
 function ItemUse_jshhkjb( role , Item )
 	local item_quality =BaoXiang_jshhkjb_Qua
 	local maxitem =BaoXiang_jshhkjb_Mxcount
@@ -12356,8 +11911,6 @@ function ItemUse_jshhkjb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ѕЮЅЈїшјЧ±¦Пд24РН
 function ItemUse_jsjjkja( role , Item )
 	local item_quality =BaoXiang_jsjjkja_Qua
 	local maxitem =BaoXiang_jsjjkja_Mxcount
@@ -12368,8 +11921,6 @@ function ItemUse_jsjjkja( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ѕЮЅЈїшјЧ±¦Пд23РН
 function ItemUse_jsjjkjb( role , Item )
 	local item_quality =BaoXiang_jsjjkjb_Qua
 	local maxitem =BaoXiang_jsjjkjb_Mxcount
@@ -12380,8 +11931,6 @@ function ItemUse_jsjjkjb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---єЪБъЦ®Зы±¦Пд24РН
 function ItemUse_jshlza( role , Item )
 	local item_quality =BaoXiang_jshlza_Qua
 	--local 
@@ -12393,8 +11942,6 @@ function ItemUse_jshlza( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---єЪБъЦ®Зы±¦Пд23РН
 function ItemUse_jshlzb( role , Item )
 	local item_quality =BaoXiang_jshlzb_Qua
 	local maxitem =BaoXiang_jshlzb_Mxcount
@@ -12405,8 +11952,6 @@ function ItemUse_jshlzb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---єЪБъЦ®КЧ±¦Пд24РН
 function ItemUse_jshlta( role , Item )
 	local item_quality =BaoXiang_jshlta_Qua
 	local maxitem =BaoXiang_jshlta_Mxcount
@@ -12417,8 +11962,6 @@ function ItemUse_jshlta( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---єЪБъЦ®Ч¦±¦Пд24РН
 function ItemUse_jshlsa( role , Item )
 	local item_quality =BaoXiang_jshlsa_Qua
 	local maxitem =BaoXiang_jshlsa_Mxcount
@@ -12429,8 +11972,6 @@ function ItemUse_jshlsa( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---єЪБъЦ®Ч¦±¦Пд23РН
 function ItemUse_jshlsb( role , Item )
 	local item_quality =BaoXiang_jshlsb_Qua
 	local maxitem =BaoXiang_jshlsb_Mxcount
@@ -12441,8 +11982,6 @@ function ItemUse_jshlsb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---єЪБъЦ®Тн±¦Пд24РН
 function ItemUse_jshlya( role , Item )
 	local item_quality =BaoXiang_jshlya_Qua
 	local maxitem =BaoXiang_jshlya_Mxcount
@@ -12453,8 +11992,6 @@ function ItemUse_jshlya( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---єЪБъЦ®Тн±¦Пд23РН
 function ItemUse_jshlyb( role , Item )
 	local item_quality =BaoXiang_jshlyb_Qua
 	local maxitem =BaoXiang_jshlyb_Mxcount
@@ -12465,8 +12002,6 @@ function ItemUse_jshlyb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФ»ГЦ®ґМ±¦Пд24РН
 function ItemUse_jsmhzca( role , Item )
 	local item_quality =BaoXiang_jsmhzca_Qua
 	local maxitem =BaoXiang_jsmhzca_Mxcount
@@ -12477,8 +12012,6 @@ function ItemUse_jsmhzca( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФ»ГЦ®ґМ±¦Пд23РН
 function ItemUse_jsmhzcb( role , Item )
 	local item_quality =BaoXiang_jsmhzcb_Qua
 	local maxitem =BaoXiang_jsmhzcb_Mxcount
@@ -12489,8 +12022,6 @@ function ItemUse_jsmhzcb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФЦд·ЁХИ±¦Пд24РН
 function ItemUse_jsmzfza( role , Item )
 	local item_quality =BaoXiang_jsmzfza_Qua
 	local maxitem =BaoXiang_jsmzfza_Mxcount
@@ -12501,8 +12032,6 @@ function ItemUse_jsmzfza( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФЦд·ЁХИ±¦Пд23РН
 function ItemUse_jsmzfzb( role , Item )
 	local item_quality =BaoXiang_jsmzfzb_Qua
 	local maxitem =BaoXiang_jsmzfza_Mxcount
@@ -12513,8 +12042,6 @@ function ItemUse_jsmzfzb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФ·ЁЦ®ХИ±¦Пд24РН
 function ItemUse_jsmfzza( role , Item )
 	local item_quality =BaoXiang_jsmfzza_Qua
 	local maxitem =BaoXiang_jsmfzza_Mxcount
@@ -12525,8 +12052,6 @@ function ItemUse_jsmfzza( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФ·ЁЦ®ХИ±¦Пд23РН
 function ItemUse_jsmfzzb( role , Item )
 	local item_quality =BaoXiang_jsmfzzb_Qua
 	local maxitem =BaoXiang_jsmfzzb_Mxcount
@@ -12537,8 +12062,6 @@ function ItemUse_jsmfzzb( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
-
---ГФЦ®і¤З№±¦Пд24РН
 function ItemUse_jsmzcqa( role , Item )
 	local item_quality =BaoXiang_jsmzcqa_Qua
 	local maxitem =BaoXiang_jsmzcqa_Mxcount
@@ -12549,7 +12072,6 @@ function ItemUse_jsmzcqa( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
---ГФЦ®і¤З№±¦Пд23РН
 function ItemUse_jsmzcqa( role , Item )
 	local item_quality =BaoXiang_jsmzcqa_Qua
 	local maxitem =BaoXiang_jsmzcqa_Mxcount
@@ -12560,52 +12082,72 @@ function ItemUse_jsmzcqa( role , Item )
 	local ret = gogogo(role,Item,item_type,item_type_rad,item_type_count,maxitem,item_quality)
 end
 
+--------------------------------------------------------------------------------------------------
+--Разное
+--------------------------------------------------------------------------------------------------
 
---ГФДгєЪБъ°ь
+--Мешочек Черного дракона (ID 1019)
+function ItemUse_minibh( role , Item )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet < 1 then
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \204\229\248\238\247\229\234 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
+		UseItemFailed ( role )
+		return
+	end
+	local cha_name = GetChaDefaultName ( role ) 
+	local star=math.random ( 1, 10000 )
+	if star==1 then
+		GiveItem ( role , 0 , 272  , 1 , 4  )
+		local message = cha_name.." \238\242\234\240\251\226\224\229\242 \204\229\248\238\247\229\234 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224 \232 \239\238\235\243\247\224\229\242 \195\240\224\237-\239\240\232: \209\237\224\240\255\230\229\237\232\229 \247\229\240\237\238\227\238 \228\240\224\234\238\237\224" 
+		Notice ( message )
+	elseif star>1 and star<=51 then
+		GiveItem ( role , 0 , 273  , 1 , 4  ) 
+		local message1 = cha_name.." \238\242\234\240\251\226\224\229\242 \204\229\248\238\247\229\234 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224 \232 \239\238\235\243\247\224\229\242 \207\229\240\226\251\233 \239\240\232\231: \198\243\240\237\224\235 \209\247\224\241\242\235\232\226\251\233 \206\242\228\251\245" 
+		Notice ( message1 )
+	elseif star>51 and star<1652 then
+		GiveItem ( role , 0 , 274  , 1 , 4  ) 
+	else
+		GiveItem ( role , 0 , 275  , 1 , 4  ) 
+	end
+end
 
---їЁА­µДК¤Аы
+--Победа богини Кары (ID 1021)
 function ItemUse_kala( role , Item )
---	SystemNotice(role ,"The time has lots its effect after being abandon for too long, don't be too sad.")
 	local statelv = 1
 	local statetime = 20
 	AddState( role , role , STATE_KALA , statelv , statetime )
 end
------------------------------------------------------------
---№ЦОпХЩ»Ѕ
+
+--Запачканная История Болезни (ID 1027)
 function ItemUse_MHDYSD ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local star = 0
 	star =IsChaInRegion( role, 2 )
 	if star == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \226\251\231\226\224\242\252 \236\238\237\241\242\240\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
 		return
 	end
-	--local pet_num = GetPetNum(role)
-	--if pet_num > 1 then
-	--	SystemNotice( role , "You have reached the maximum number of pets!" )
-	--	return
-	--end
+
 	local x, y = GetChaPos(role)
 	local MonsterID = 858
-	local Refresh = 190					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 180000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 190
+	local life = 180000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
-	--SetChaHost(new,role)
 	SetChaLifeTime( new, life )
-	--SetChaTarget(new, role)
 end
-----------Д§»ГЕ®ЙсїЁ
+
+--Карта зачарованной Богини (ID 1036)
 function ItemUse_mohuan( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 1 then
-		SystemNotice(role ,"Inventory requires at least 1 empty slot")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \202\224\240\242\243 \231\224\247\224\240\238\226\224\237\237\238\233 \193\238\227\232\237\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -12614,15 +12156,15 @@ function ItemUse_mohuan( role , Item )
 	SystemNotice(role ,"star=="..star)
 	if star<=8 then
 		GiveItem ( role , 0 , 1014  , 1 , 4  )
-		local message = cha_name.." opens a Enchanting Goddess Card and obtained Goddess's Trainee Ceremony" 
+		local message = cha_name.." \232\241\239\238\235\252\231\243\229\242 \202\224\240\242\243 \231\224\247\224\240\238\226\224\237\237\238\233 \193\238\227\232\237\232 \232 \239\238\235\243\247\224\229\242 \209\226\232\242\238\234 \239\240\232\231\251\226\224 \193\238\227\232\237\232" 
 		Notice ( message )
 	elseif star>=9 and star<=17 then
 		GiveItem ( role , 0 , 271, 1 , 4  ) 
-		local message1 = cha_name.." opens an Enchanting Goddess Card and obtained Angelic Dice" 
+		local message2 = cha_name.." \232\241\239\238\235\252\231\243\229\242 \202\224\240\242\243 \231\224\247\224\240\238\226\224\237\237\238\233 \193\238\227\232\237\232 \232 \239\238\235\243\247\224\229\242 \192\237\227\229\235\252\241\234\232\229 \234\238\241\242\232" 
 		Notice ( message1 )
 	elseif star>=18 and star<=27 then
 		GiveItem ( role , 0 , 1012, 1 , 4  ) 
-		local message3 = cha_name.." opens Enchanting Goddess Card and obtain a Gem of Soul" 
+		local message3 = cha_name.." \232\241\239\238\235\252\231\243\229\242 \202\224\240\242\243 \231\224\247\224\240\238\226\224\237\237\238\233 \193\238\227\232\237\232 \232 \239\238\235\243\247\224\229\242 \192\241\234\224\240\238\237\241\234\232\233 \241\243\237\228\243\234" 
 		Notice ( message3 )
 	elseif star>=28 and star<=227 then
 		GiveItem ( role , 0 , 3886, 1 , 4  ) 
@@ -12630,11 +12172,12 @@ function ItemUse_mohuan( role , Item )
 		GiveItem ( role , 0 , 3830, 5 , 4  ) 
 	end
 end
-----------Д§»ГЧЦДёїЁ±¦Пд
+
+--Сундук колдовской карты (ID 1035)
 function ItemUse_MoHuanBox( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet < 1 then
-		SystemNotice(role ,"Inventory requires at least 1 empty slot")
+		SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \234\238\235\228\238\226\241\234\238\233 \234\224\240\242\251")
 		UseItemFailed ( role )
 		return
 	end
@@ -12648,13 +12191,18 @@ function ItemUse_MoHuanBox( role , Item )
 	else
 		local star=math.random ( 3850, 3875 )
 		if star==3858 or star==3864 or star==3866  then
-			GiveItem ( role , 0 , 3850  , 1 , 4  )
+			GiveItem ( role , 0 , 3850  , 1 , 4  ) 
 		else 
 			GiveItem ( role , 0 , star  , 1 , 4  ) 			
 		end
 	end
 end
------------------------------------------іхј¶ѕ«БйЧФ±¬
+
+--------------------------------------------------------------------------------------------------
+--Самоуничтожение
+--------------------------------------------------------------------------------------------------
+
+--Самоуничтожение нач. ур. (Id 0610)
 function Sk_Script_CJJLZB( role , Item ) 							
  	local sk_add = SK_JLZB  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -12668,9 +12216,10 @@ function Sk_Script_CJJLZB( role , Item )
 		return 
 	end 
 end 
- -----------------------------------------ЦРј¶ѕ«БйЧФ±¬
+
+ --Обычное Самоуничтожение (ID 0611)
 function Sk_Script_ZJJLZB ( role , Item ) 							
-	local sk_add = SK_JLZB
+  	local sk_add = SK_JLZB
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv >= 2 then 
 		UseItemFailed ( role )  
@@ -12682,9 +12231,10 @@ function Sk_Script_ZJJLZB ( role , Item )
 		return 
 	end 
 end 
- -----------------------------------------ёЯј¶ѕ«БйЧФ±¬
+
+ --Самоуничтожение выс. ур. (ID 0612)
 function Sk_Script_GJJLZB( role , Item ) 							
- 	local sk_add = SK_JLZB  
+   	local sk_add = SK_JLZB  
 	local form_sklv = GetSkillLv( role , sk_add ) 
 	if form_sklv >= 3  then 
 		UseItemFailed ( role )  
@@ -12696,11 +12246,16 @@ function Sk_Script_GJJLZB( role , Item )
 		return 
 	end 
 end 
----------------------------ДЈєэµДНјЦЅ
+
+--------------------------------------------------------------------------------------------------
+--Чертежи (ID 1000 - 1003)
+--------------------------------------------------------------------------------------------------
+
+--Чертеж Пачкули (ID 1000)
 function ItemUse_MHDTZ( role , Item ) 							
  	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 1 then
-		SystemNotice(role ,"To open Blurry Blueprint requires at least 1 empty inventory slot")
+		SystemNotice(role ,"\215\242\238\225\251 \240\224\241\239\229\247\224\242\224\242\252 \247\229\240\242\229\230 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end  	
@@ -12710,21 +12265,21 @@ function ItemUse_MHDTZ( role , Item )
 	local Itemnew_ID=2300
 	local rad_ID=math.random ( 1, 100 )
 	if rad_ID<=40 then
-		Itemnew_ID=2300  --------ЦЖФмНјЦЅ
+		Itemnew_ID=2300 
 	elseif rad_ID>=41 and rad_ID<=81 then
-		Itemnew_ID=2302  --------ЕлвїНјЦЅ
+		Itemnew_ID=2302
 	else
-		Itemnew_ID=2301  --------ЦэФмНјЦЅ
+		Itemnew_ID=2301
 	end
 	r1, r2 = MakeItem ( role , Itemnew_ID  , 1 , 4 )
 	local Itemnew = GetChaItem ( role , 2 , r2 )
 
 
 	local rad_energy=math.random ( 1, 100 )
-	local energy = 1--------РВКЦј¶НјЦЅ
-	if item_ID==1000 then-------РВКЦј¶ДЈєэНјЦЅ
+	local energy = 1
+	if item_ID==1000 then
 		energy=1
-	elseif item_ID==1001 then -------іхј¶ДЈєэНјЦЅ
+	elseif item_ID==1001 then
 		if rad_energy<=5 then
 			energy=4
 		elseif  rad_energy<=30 and rad_energy>=6 then
@@ -12732,7 +12287,7 @@ function ItemUse_MHDTZ( role , Item )
 		else
 			energy=2
 		end
-	elseif item_ID==1002 then -------ЦРј¶ДЈєэНјЦЅ
+	elseif item_ID==1002 then
 		if rad_energy<=5 then
 			energy=6
 		elseif  rad_energy<=30 and rad_energy>=6 then
@@ -12740,8 +12295,8 @@ function ItemUse_MHDTZ( role , Item )
 		else
 			energy=4
 		end
-	elseif item_ID==1003 then -------ёЯј¶ДЈєэНјЦЅ
-		if rad_energy<=5 and Itemnew_ID~=2301 then------------ЦэФмІ»Іъіц80ј¶ОпЖ·
+	elseif item_ID==1003 then
+		if rad_energy<=5 and Itemnew_ID~=2301 then
 			energy=8
 		elseif  rad_energy<=30 and rad_energy>=6 then
 			energy=7
@@ -12749,32 +12304,26 @@ function ItemUse_MHDTZ( role , Item )
 			energy=6
 		end
 	end	
-	--SystemNotice(role ,"item_ID=="..item_ID)
-	--SystemNotice(role ,"rad_energy=="..rad_energy)
-	--SystemNotice(role ,"energy=="..energy)
 
-	local final_ID=1849 --------Д¬ИПµ°ёв
-	local final_LV=20 --------Д¬ИП20
-	local final_ID1=3116 --------Д¬ИПѕ«Бй№ы
-	local final_ID2=3116 --------Д¬ИПѕ«Бй№ы
-	local final_ID3=3116 --------Д¬ИПѕ«Бй№ы
-	------КЧПИИЎµЅЙъіЙОпЖ·µДID
+	local final_ID=1849 
+	local final_LV=20
+	local final_ID1=3116
+	local final_ID2=3116
+	local final_ID3=3116
 	local General = 0  
 	local ItemId =3124
-	if Itemnew_ID==2300 then -----ЦЖФм
+	if Itemnew_ID==2300 then
 		local STAR_BEGIN=ZHIZAO_Mxcount*(energy-1)/10+1
 		local STAR_END=ZHIZAO_Mxcount*energy/10
-	--SystemNotice(role ,"STAR_BEGIN=="..STAR_BEGIN)
-	--SystemNotice(role ,"STAR_END=="..STAR_END)
 
 		for i = STAR_BEGIN , STAR_END , 1 do 
-			  General = ZHIZAO__Rad[ i ] + General
+		    General = ZHIZAO__Rad[ i ] + General		
 		end 
 		local a = math.random ( 1, General )
 		local b = 0
 		local d = 0 
 		local k = 0 
-		local c = -1		
+		local c = -1
 		for k = STAR_BEGIN , STAR_END , 1 do
 			d = ZHIZAO__Rad[ k ] + b
 			if a <= d and a > b then
@@ -12786,9 +12335,6 @@ function ItemUse_MHDTZ( role , Item )
 		if c == -1 then
 			c =STAR_BEGIN
 		end
-	--SystemNotice(role ,"c=="..c)
-
-		--local rad_num1=math.random ( 1, 280 )
 		final_ID=ZHIZAO_ID[c]
 		final_LV=ZHIZAO_LV[c]
 		final_ID1=ZHIZAO_ID1[c]
@@ -12796,7 +12342,7 @@ function ItemUse_MHDTZ( role , Item )
 		final_ID3=ZHIZAO_ID3[c]
 
 	end
-	if Itemnew_ID==2301 then -----ЦэФм
+	if Itemnew_ID==2301 then
 		local STAR_BEGIN=1
 		local STAR_END=77
 		if energy==1 then
@@ -12819,23 +12365,20 @@ function ItemUse_MHDTZ( role , Item )
 			STAR_END=732
 		elseif energy==7 then
 			STAR_BEGIN=733
-			STAR_END=871--------872ТФєуДїЗ°УРОКМв
+			STAR_END=871
 		elseif energy==8 then
 			STAR_BEGIN=895
 			STAR_END=902
 		end
-		--SystemNotice( role ,"energy=="..energy)
-		--SystemNotice( role ,"STAR_BEGIN=="..STAR_BEGIN)
-		--SystemNotice( role ,"STAR_END=="..STAR_END)
 
 		for i = STAR_BEGIN , STAR_END , 1 do 
-			  General = ZHUZAO__Rad[ i ] + General
+		    General = ZHUZAO__Rad[ i ] + General		
 		end 
 		local a = math.random ( 1, General )
 		local b = 0
 		local d = 0 
 		local k = 0 
-		local c = -1		
+		local c = -1
 		for k = STAR_BEGIN , STAR_END , 1 do
 			d = ZHUZAO__Rad[ k ] + b
 			if a <= d and a > b then
@@ -12847,7 +12390,6 @@ function ItemUse_MHDTZ( role , Item )
 		if c == -1 then
 			c =STAR_BEGIN
 		end
-		--local rad_num2=math.random ( 1, 906 )
 		final_ID=ZHUZAO_ID[c]
 		final_LV=ZHUZAO_LV[c]
 		final_ID1=ZHUZAO_ID1[c]
@@ -12861,9 +12403,8 @@ function ItemUse_MHDTZ( role , Item )
 				check=1
 			end
 		end
-		--SystemNotice( role ,"check=="..check)
 
-		if  check==1 then-----------------ЦэФмОдЖч»тЧ°±ёК±
+		if  check==1 then
 			local check_rad=math.random ( 1, 1000 )
 			if check_rad==1 then
 				final_LV=70
@@ -12883,17 +12424,14 @@ function ItemUse_MHDTZ( role , Item )
 			if final_LV>70 then
 				final_LV=70
 			end
-			--SystemNotice( role ,"check_energy=="..energy)
 
 			if final_LV~=10 and final_LV~=0 then
 				local tmd=(energy-1)*6+final_LV*0.1-1
-			--SystemNotice( role ,"tmd=="..tmd)
 				final_ID3=TESHU_ID[tmd]
-			--SystemNotice( role ,"TESHU_ID[tmd]=="..TESHU_ID[tmd])
 			end
 		end
 	end
-	if Itemnew_ID==2302 then -----Елвї
+	if Itemnew_ID==2302 then
 		local STAR_BEGIN=1
 		local STAR_END=80
 		if energy==1 then
@@ -12916,16 +12454,16 @@ function ItemUse_MHDTZ( role , Item )
 			STAR_END=36
 		else
 			STAR_BEGIN=energy+30
-			STAR_END=energy+30    
+			STAR_END=energy+30             
 		end
 		for i = STAR_BEGIN , STAR_END , 1 do 
-			  General = ZHIZAO__Rad[ i ] + General
+		    General = ZHIZAO__Rad[ i ] + General		
 		end 
 		local a = math.random ( 1, General )
 		local b = 0
 		local d = 0 
 		local k = 0 
-		local c = -1		
+		local c = -1
 		for k = STAR_BEGIN , STAR_END , 1 do
 			d = PENGREN__Rad[ k ] + b
 			if a <= d and a > b then
@@ -12937,61 +12475,59 @@ function ItemUse_MHDTZ( role , Item )
 		if c == -1 then
 			c =STAR_BEGIN
 		end
-		--local rad_num3=math.random ( 1, 40 )
 		final_ID=PENGREN_ID[c]
 		final_LV=PENGREN_LV[c]
 		final_ID1=PENGREN_ID1[c]
 		final_ID2=PENGREN_ID2[c]
 		final_ID3=PENGREN_ID3[c]		
 	end
-	--SystemNotice(role ,"Blueprint level energy=="..energy)
 
 	local star_number=energy*10
 	local yingbi_num=math.random ( 10, star_number )
 	if energy<=3 then
-		SetItemAttr(Itemnew, ITEMATTR_MAXURE, energy )--ѕ«БйУІ±ТРиЗу
-		SetItemAttr(Itemnew, ITEMATTR_URE, energy )--НјЦЅµИј¶		
+		SetItemAttr(Itemnew, ITEMATTR_MAXURE, energy )
+		SetItemAttr(Itemnew, ITEMATTR_URE, energy )		
 	else
-		SetItemAttr(Itemnew, ITEMATTR_MAXURE, yingbi_num )--ѕ«БйУІ±ТРиЗу
-		SetItemAttr(Itemnew, ITEMATTR_URE, energy )--НјЦЅµИј¶
+		SetItemAttr(Itemnew, ITEMATTR_MAXURE, yingbi_num )
+		SetItemAttr(Itemnew, ITEMATTR_URE, energy )
 	end
 	local sta =math.random ( 1, 10 )
-	if Itemnew_ID==2301 then-------------ЦэФмНјЦЅК№УГґОКэјх°л
+	if Itemnew_ID==2301 then
 		sta=sta*0.5
 		sta=math.max(1,sta)
 	end
-	SetItemAttr(Itemnew, ITEMATTR_VAL_STA, sta )--НјЦЅК№УГґОКэ
-	--SetItemAttr(Itemnew, ITEMATTR_MAXURE, maxure )--НјЦЅК№УГґОКэ
+	SetItemAttr(Itemnew, ITEMATTR_VAL_STA, sta )
 	local qulity=math.floor(final_LV*0.1)+100
-	SetItemAttr(Itemnew, ITEMATTR_MAXENERGY, qulity )--ЦКБї
+	SetItemAttr(Itemnew, ITEMATTR_MAXENERGY, qulity )
 
-	local ure=10-final_LV*0.1-------------ТЄПФКѕіЙ°Щ·Ц±И
-	SetItemAttr(Itemnew, ITEMATTR_ENERGY, ure )--»щ±ѕіЙ№¦ВК
-	--SetItemAttr(Itemnew, ITEMATTR_URE, ure )--»щ±ѕіЙ№¦ВК
+	local ure=10-final_LV*0.1
+	SetItemAttr(Itemnew, ITEMATTR_ENERGY, ure )
 
-	SetItemAttr(Itemnew, ITEMATTR_VAL_STR, final_ID1 )--РиЗуµАѕЯ1ID
-	SetItemAttr(Itemnew, ITEMATTR_VAL_CON, final_ID2 )--РиЗуµАѕЯ2ID
-	SetItemAttr(Itemnew, ITEMATTR_VAL_DEX, final_ID3 )--РиЗуµАѕЯ3ID
-	SetItemAttr(Itemnew, ITEMATTR_VAL_AGI, final_ID )--ЙъіЙОпЖ·ID
+	SetItemAttr(Itemnew, ITEMATTR_VAL_STR, final_ID1 )
+	SetItemAttr(Itemnew, ITEMATTR_VAL_CON, final_ID2 )
+	SetItemAttr(Itemnew, ITEMATTR_VAL_DEX, final_ID3 )
+	SetItemAttr(Itemnew, ITEMATTR_VAL_AGI, final_ID )
 
 	local Num_new = GetItemForgeParam ( Itemnew , 1 )
 	local Part2_new = GetNum_Part2 ( Num_new )	
 	local Part4_new = GetNum_Part4 ( Num_new )
 	local Part6_new = GetNum_Part6 ( Num_new )
-	Part2_new = math.random ( 3, 10 )					--РиЗуµАѕЯ1КэБї 
-	Part4_new = math.random ( 2, 6 )					--РиЗуµАѕЯ2КэБї
-	Part6_new = math.random ( 1, 2 )					--РиЗуµАѕЯ3КэБї
-	Part6_new = Part6_new*math.max(1,(energy-2))					--РиЗуµАѕЯ3КэБї
+	Part2_new = math.random ( 3, 20 ) 
+	Part4_new = math.random ( 2, 9 )
+	Part6_new = math.random ( 1, 3 )
+	Part6_new = Part6_new*math.max(1,(energy-2))
 	Num_new = SetNum_Part2 ( Num_new , Part2_new )
 	Num_new = SetNum_Part4 ( Num_new , Part4_new )
 	Num_new = SetNum_Part6 ( Num_new , Part6_new )
 	SetItemForgeParam ( Itemnew , 1 , Num_new )
 
 end 
---Sk_Script_GS
---Sk_Script_NK
---Sk_Script_JQ
------------------------------------------Sk_Script_DBs
+
+--------------------------------------------------------------------------------------------------
+--Навыки "Дурак"
+--------------------------------------------------------------------------------------------------
+
+--Навык - Очищение (Id 1037)
 function Sk_Script_DBs( role , Item ) 							
  	local sk_add = SK_JLTX1  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -13005,7 +12541,8 @@ function Sk_Script_DBs( role , Item )
 		return 
 	end 
 end 
------------------------------------------Sk_Script_NKs
+
+--Навык - Белье (ID1038)
 function Sk_Script_NKs( role , Item ) 							
  	local sk_add = SK_JLTX2  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -13019,7 +12556,8 @@ function Sk_Script_NKs( role , Item )
 		return 
 	end 
 end 
------------------------------------------Sk_Script_XZs
+
+--Навык - одевание (ID 1039)
 function Sk_Script_XZs( role , Item ) 							
  	local sk_add = SK_JLTX3  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -13033,7 +12571,8 @@ function Sk_Script_XZs( role , Item )
 		return 
 	end 
 end 
------------------------------------------Sk_Script_JQs
+
+--Навык - Денежный дождь (ID 1129)
 function Sk_Script_JQs( role , Item ) 							
  	local sk_add = SK_JLTX4  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -13047,7 +12586,8 @@ function Sk_Script_JQs( role , Item )
 		return 
 	end 
 end 
------------------------------------------Sk_Script_BCs
+
+--Навык - Дурак (ID 1130)
 function Sk_Script_BCs( role , Item ) 							
  	local sk_add = SK_JLTX5  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -13061,7 +12601,8 @@ function Sk_Script_BCs( role , Item )
 		return 
 	end 
 end 
------------------------------------------Sk_Script_BSs
+
+--Навык - Превосходство (ID 1131)
 function Sk_Script_BSs( role , Item ) 							
  	local sk_add = SK_JLTX6  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -13075,7 +12616,8 @@ function Sk_Script_BSs( role , Item )
 		return 
 	end 
 end 
------------------------------------------Sk_Script_PZs
+
+--Навык - Немой (ID 1132)
 function Sk_Script_PZs( role , Item ) 							
  	local sk_add = SK_JLTX7  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -13089,7 +12631,8 @@ function Sk_Script_PZs( role , Item )
 		return 
 	end 
 end 
------------------------------------------Sk_Script_SZs
+
+--Навык - Немой (ID 1133)
 function Sk_Script_SZs( role , Item ) 							
  	local sk_add = SK_JLTX8  
 	local form_sklv = GetSkillLv( role , sk_add ) 
@@ -13103,30 +12646,33 @@ function Sk_Script_SZs( role , Item )
 		return 
 	end 
 end 
---------------------------НЕ¶УЦ®РЗ
+
+--------------------------------------------------------------------------------------------------
+--Предметы для новичков
+--------------------------------------------------------------------------------------------------
+
+--Сундук Звезды единства (ID 1033)
 function ItemUse_TunDuiZhiXing( role , Item ) 							
- 	local r1 = 0
+   	local r1 = 0
 	local r2 = 0
 	r1, r2 = MakeItem ( role , 1034 , 1 , 4 )
 	local Itemnew = GetChaItem ( role , 2 , r2 )
-	--SetItemAttr(Itemnew, ITEMATTR_ENERGY, 100 )--µ±З°ґжґўѕ­Сй
-	--SetItemAttr(Itemnew, ITEMATTR_MAXENERGY, 201000 )--ЧоёЯґжґўѕ­Сй
-	SetItemAttr(Itemnew, ITEMATTR_URE, 100 )--µ±З°ґжґўѕ­Сй
-	SetItemAttr(Itemnew, ITEMATTR_MAXURE, 20100 )--ЧоёЯґжґўѕ­Сй
+	SetItemAttr(Itemnew, ITEMATTR_URE, 100 )
+	SetItemAttr(Itemnew, ITEMATTR_MAXURE, 20100 )
 end 
 
---ID1128	Мини-усилитель натиска
+--Мини-усилитель натиска (ID 1128)
 function ItemUse_WeiXing( role , Item )
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local lv_star = GetChaAttr( role , ATTR_LV) 
 	if lv_star > 40 then
-		SystemNotice ( role , "Данный усилитель предназначен только для игроков до 40 ур." )
+		SystemNotice ( role , "\221\244\244\229\234\242\232\226\237\238 \242\238\235\252\234\238 \228\235\255 \232\227\240\238\234\238\226 \243\240\238\226\237\255 40 \232 \237\232\230\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -13138,303 +12684,31 @@ function ItemUse_WeiXing( role , Item )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
 	end
-	SystemNotice ( role , "Почувствуй эффект Мини-усилителя натиска" )
 end
 
-----------------------------------------------------
-function ItemUse_JLZhiZ_CJ ( role , Item , Item_Traget )   --іхј¶ѕ«БйЦЖФмКх
+--------------------------------------------------------------------------------------------------
+--Мирные навыки для фей
+--------------------------------------------------------------------------------------------------
+
+--Производство фей нач. ур. (ID 1055)
+function ItemUse_JLZhiZ_CJ ( role , Item , Item_Traget )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 		local Item_type =  GetItemType ( Item )
 		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 1		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 13		--ТЄФцјУµДSkill ±аєЕ
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 1
+		local SkillNum = 13
 
 		if Item_type == 58 and Item_Traget_Type == 59 then
 			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
 			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLZhiZ_ZJ ( role , Item , Item_Traget )   --ЦРј¶ѕ«БйЦЖФмКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 2		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 13		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLZhiZ_GJ ( role , Item , Item_Traget )   --ёЯј¶ѕ«БйЦЖФмКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 3		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 13		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLZhuZ_CJ ( role , Item , Item_Traget )   --іхј¶ѕ«БйЦэФмКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 1		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 14		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLZhuZ_ZJ ( role , Item , Item_Traget )   --ЦРј¶ѕ«БйЦэФмКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 2		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 14		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLZhuZ_GJ ( role , Item , Item_Traget )   --ёЯј¶ѕ«БйЦэФмКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 3		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 14		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLFenJ_CJ ( role , Item , Item_Traget )   --іхј¶ѕ«Бй·ЦЅвКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 1		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 15		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLFenJ_ZJ ( role , Item , Item_Traget )   --ЦРј¶ѕ«Бй·ЦЅвКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 2		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 15		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLFenJ_GJ ( role , Item , Item_Traget )   --ёЯј¶ѕ«Бй·ЦЅвКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 3		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 15		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLPengR_CJ ( role , Item , Item_Traget )   --іхј¶ѕ«БйЕлвїКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 1		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 16		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLPengR_ZJ ( role , Item , Item_Traget )   --ЦРј¶ѕ«БйЕлвїКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 2		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 16		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
-				UseItemFailed ( role )
-			else
-				AddElfSkill ( Item_Traget , SkillType , SkillNum )
-			end
-		end
-end
-----------------------------------------------------
-function ItemUse_JLPengR_GJ ( role , Item , Item_Traget )   --ёЯј¶ѕ«БйЕлвїКх
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	 --ѕ«Бй32О»јјДЬРЕПўКэѕЭ
-		local SkillType = 3		--ТЄФцјУµД Skill АаРН
-		local SkillNum = 16		--ТЄФцјУµДSkill ±аєЕ
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-			if Check == 1 then
-				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
 				UseItemFailed ( role )
 			else
 				AddElfSkill ( Item_Traget , SkillType , SkillNum )
@@ -13442,226 +12716,529 @@ function ItemUse_JLPengR_GJ ( role , Item , Item_Traget )   --ёЯј¶ѕ«БйЕлвїКх
 		end
 end
 
---ID1134	Сундук Хаоса
+--Изготовление фей станд. ур. (ID 1056)
+function ItemUse_JLZhiZ_ZJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 2
+		local SkillNum = 13
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Производство фей выс. ур. (ID 1057)
+function ItemUse_JLZhiZ_GJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 3
+		local SkillNum = 13
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Изготовление фей нач. ур. (ID 1058)
+function ItemUse_JLZhuZ_CJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 1
+		local SkillNum = 14
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Изготовление фей станд. ур. (ID 1059)
+function ItemUse_JLZhuZ_ZJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 2
+		local SkillNum = 14
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Ремесло фей выс. ур. (ID 1060)
+function ItemUse_JLZhuZ_GJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 3
+		local SkillNum = 14
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Анализ ручных фей для начинающих (ID 1061)
+function ItemUse_JLFenJ_CJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 1
+		local SkillNum = 15
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Обычный анализ ручных фей (ID 1062)
+function ItemUse_JLFenJ_ZJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 2
+		local SkillNum = 15
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Анализ фей выс. ур. (ID 1063)
+function ItemUse_JLFenJ_GJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" ) 
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 3
+		local SkillNum = 15
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Кулинария нач. ур. для ручных фей (ID 1064)
+function ItemUse_JLPengR_CJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 1
+		local SkillNum = 16
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Обычная кулинария фей (ID 1065)
+function ItemUse_JLPengR_ZJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 2
+		local SkillNum = 16
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" )  
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Кулинария высшего уровня для ручных фей (ID 1066)
+function ItemUse_JLPengR_GJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local SkillType = 3
+		local SkillNum = 16
+
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "\212\229\255 \243\230\229 \232\236\229\229\242 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				UseItemFailed ( role )
+			else
+				AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--------------------------------------------------------------------------------------------------
+--Сундук Хаоса
+--------------------------------------------------------------------------------------------------
+
+--Сундук Хаоса (ID 1134)
 function ItemUse_FightingBox( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 2 then
-		SystemNotice(role ,"Необходимо минимум 2 свободных слота, чтобы открыть Сундук Хаоса ")
+		SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 2 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \213\224\238\241\224")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 2610  , 1 , 4 )
 	local rad = math.random ( 1, 3 )
 	if rad ==1 then
-		GiveItem ( role , 0 , 1124  , 1 , 19 )
+	GiveItem ( role , 0 , 1124  , 1 , 15 )	
 	end
 	
 	if rad ==2 then
-		GiveItem ( role , 0 , 1125  , 1 , 20 )
+	GiveItem ( role , 0 , 1125  , 1 , 15 )	
 	end
 	
 	if rad ==3 then
-		GiveItem ( role , 0 , 1126  , 1 , 15 )
+	GiveItem ( role , 0 , 1126  , 1 , 15 )	
 	end
-
 end
 
---ID4019	Паровое судно Треска
+--------------------------------------------------------------------------------------------------
+--Кулинария
+--------------------------------------------------------------------------------------------------
+
+--Паровое судно Треска (ID 4019)
 function ItemUse_XUEYU( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 900
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------ґдЦс»ЁБіцаЈєЧоґуHP+400Ј¬ОпБ¦µЦї№+2Ј¬К±јд10·ЦЦУ
+
+--Осетрина с бамбуком (ID 4020)
 function ItemUse_CUIZHU( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv = 2
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 600
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------»ШПгЙдЛ®УгЈєЧоґуHP+900Ј¬ОпБ¦µЦї№+2Ј¬К±јд10·ЦЦУ
+
+--Вкусная рыба-шар (ID4021)
 function ItemUse_HUIXIANG( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv = 3
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 600
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------УіФВцаУгМАЈєЧоґуHP+1600Ј¬ОпБ¦µЦї№+3Ј¬К±јд8·ЦЦУ
+
+--Суп из осетра (ID 4022)
 function ItemUse_YINGYUE( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv = 4
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime =480
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------АЛ±ґмРјеёюЈєЧоґуHP+2500Ј¬ОпБ¦µЦї№+3Ј¬К±јд8·ЦЦУ
+
+--Суп из жареных устриц (ID 4023)
 function ItemUse_LANGBEI( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv =5
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 480
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------РЎРЎМшПєЅИЈєЧоґуHP+3600Ј¬ОпБ¦µЦї№+4Ј¬К±јд6·ЦЦУ
+
+--Креветочная пышка (ID 4024)
 function ItemUse_XIAOXIAO( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv = 6
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 360
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------»ўЖ¤Уг№ЗЛЦЈєЧоґуHP+4900Ј¬ОпБ¦µЦї№+5Ј¬К±јд5·ЦЦУ
+
+--Обломок кости рыбы-тигра (ID 4025)
 function ItemUse_HUPI( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv =7
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 300
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------ТшцЮєЈПК·№ЈєЧоґуHP+6400Ј¬ОпБ¦µЦї№+6Ј¬К±јд3·ЦЦУ
+
+--Рис с рыбой-химерой (ID 4026)
 function ItemUse_YINJIAO( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )  
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv = 8
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 180
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------МХНБНшОЖцЊЈєЧоґуHP+8100Ј¬ОпБ¦µЦї№+6Ј¬К±јд3·ЦЦУ
+
+--Глина для изготовления фарфора (ID 4027)
 function ItemUse_TAOTU( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )  
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv = 9
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 180
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------°ЩНтїѕУгібЈєЧоґуHP+10000Ј¬ОпБ¦µЦї№+8Ј¬К±јд1·ЦЦУ
+
+--Барбекю из акульего плавника (ID 4028)
 function ItemUse_BAIWANG( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )  
 		UseItemFailed ( role ) 
 		return 
 	end 
 	local statelv = 10
 	local ChaStateLv = GetChaStateLv ( role , STATE_XUEYU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime =60
 	AddState( role , role , STATE_XUEYU , statelv , statetime )
 end 
----------------------------------- ВшН·ЈєHP+200Ј¬№Ґ»чБ¦+50Ј¬К±јд15·ЦЦУ
+
+--Парная булочка (ID 1078)
 function ItemUse_MANTOU( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13675,20 +13252,21 @@ function ItemUse_MANTOU( role , Item )
 	SetCharaAttr(hp, role, ATTR_HP) 
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_MANTOU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 900
 	AddState( role , role , STATE_MANTOU , statelv , statetime )
 end 
----------------------------------°ьЧУЈєHP+400Ј¬№Ґ»чБ¦+150Ј¬К±јд10·ЦЦУ
+
+--Булочка (ID 1079)
 function ItemUse_BAOZI( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13702,20 +13280,21 @@ function ItemUse_BAOZI( role , Item )
 	SetCharaAttr(hp, role, ATTR_HP) 
 	local statelv = 2
 	local ChaStateLv = GetChaStateLv ( role , STATE_MANTOU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime =600
 	AddState( role , role , STATE_MANTOU , statelv , statetime )
 end 
----------------------------------ґу±эЈєHP+600Ј¬№Ґ»чБ¦+250Ј¬К±јд7·ЦЦУ
+
+--Бисквит (ID 1080)
 function ItemUse_DABING( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13729,20 +13308,21 @@ function ItemUse_DABING( role , Item )
 	SetCharaAttr(hp, role, ATTR_HP) 
 	local statelv = 3
 	local ChaStateLv = GetChaStateLv ( role , STATE_MANTOU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 420
 	AddState( role , role , STATE_MANTOU , statelv , statetime )
 end 
----------------------------------УНМхЈєHP+800Ј¬№Ґ»чБ¦+350Ј¬К±јд5·ЦЦУ
+
+--Поджаренная лепешка (ID 1082)
 function ItemUse_YOUTIAO( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13756,20 +13336,21 @@ function ItemUse_YOUTIAO( role , Item )
 	SetCharaAttr(hp, role, ATTR_HP) 
 	local statelv = 4
 	local ChaStateLv = GetChaStateLv ( role , STATE_MANTOU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime =300
 	AddState( role , role , STATE_MANTOU , statelv , statetime )
 end 
----------------------------------ґєѕнЈєHP+1000Ј¬№Ґ»чБ¦+450Ј¬К±јд2·ЦЦУ
+
+--Весноградский свиток (ID 1083)
 function ItemUse_CHUNJUAN( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13783,20 +13364,21 @@ function ItemUse_CHUNJUAN( role , Item )
 	SetCharaAttr(hp, role, ATTR_HP) 
 	local statelv = 5
 	local ChaStateLv = GetChaStateLv ( role , STATE_MANTOU )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 120
 	AddState( role , role , STATE_MANTOU , statelv , statetime )
 end 
----------------------------------Е®¶щємЈєSP+100Ј¬ѕ«Йс+5Ј¬К±јд15·ЦЦУ
+
+--Вино девы (ID 1084)
 function ItemUse_NVER( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13810,20 +13392,21 @@ function ItemUse_NVER( role , Item )
 	SetCharaAttr(sp, role, ATTR_SP) 
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_NVER )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 900
 	AddState( role , role , STATE_NVER , statelv , statetime )
 end 
----------------------------------ЧґФЄємЈєSP+200Ј¬ѕ«Йс+10Ј¬К±јд10·ЦЦУ
+
+--Вино ученых (ID 1085)
 function ItemUse_ZHUANGYUAN( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13837,20 +13420,21 @@ function ItemUse_ZHUANGYUAN( role , Item )
 	SetCharaAttr(sp, role, ATTR_SP) 
 	local statelv = 2
 	local ChaStateLv = GetChaStateLv ( role , STATE_NVER )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 600
 	AddState( role , role , STATE_NVER , statelv , statetime )
 end 
----------------------------------¶ЕїµЈєSP+300Ј¬ѕ«Йс+15Ј¬К±јд7·ЦЦУ
+
+--Дукановое вино (ID 1088)
 function ItemUse_DUKANG( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13864,20 +13448,21 @@ function ItemUse_DUKANG( role , Item )
 	SetCharaAttr(sp, role, ATTR_SP) 
 	local statelv = 3
 	local ChaStateLv = GetChaStateLv ( role , STATE_NVER )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 420
 	AddState( role , role , STATE_NVER , statelv , statetime )
 end 
----------------------------------Г©МЁЈєSP+400Ј¬ѕ«Йс+20Ј¬К±јд5·ЦЦУ
+
+--Вино мао (ID 1087)
 function ItemUse_MAOTAI( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13891,20 +13476,21 @@ function ItemUse_MAOTAI( role , Item )
 	SetCharaAttr(sp, role, ATTR_SP) 
 	local statelv = 4
 	local ChaStateLv = GetChaStateLv ( role , STATE_NVER )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 300
 	AddState( role , role , STATE_NVER , statelv , statetime )
 end 
----------------------------------ИЛІОѕЖЈєSP+500Ј¬ѕ«Йс+25Ј¬К±јд3·ЦЦУ
+
+--Вино с женьшенем (ID 1089)
 function ItemUse_RENSHEN( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13918,20 +13504,21 @@ function ItemUse_RENSHEN( role , Item )
 	SetCharaAttr(sp, role, ATTR_SP) 
 	local statelv = 5
 	local ChaStateLv = GetChaStateLv ( role , STATE_NVER )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 180
 	AddState( role , role , STATE_NVER , statelv , statetime )
 end 
----------------------------------»ў№ЗѕЖЈєSP+600Ј¬ѕ«Йс+30Ј¬К±јд2·ЦЦУ
+
+--Тоник из тигриной кости (ID 1090)
 function ItemUse_HUGU( role , Item ) 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать в море" ) 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role ) 
 		return 
 	end 
@@ -13945,19 +13532,24 @@ function ItemUse_HUGU( role , Item )
 	SetCharaAttr(sp, role, ATTR_SP) 
 	local statelv = 6
 	local ChaStateLv = GetChaStateLv ( role , STATE_NVER )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "You have used a higher level item of the same kind. Please try again later" )
+	if ChaStateLv > statelv then
+		SystemNotice ( role , "\194\251 \243\230\229 \232\241\239\238\235\252\231\238\226\224\235\232 \234\243\235\232\237\224\240\232\254 \225\238\235\229\229 \226\251\241\238\234\238\227\238 \243\240\238\226\237\255. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local statetime = 120
 	AddState( role , role , STATE_NVER , statelv , statetime )
 end 
--------------------РВКЅД¦Б¦їбЧ°±¦Пд
+
+--------------------------------------------------------------------------------------------------
+--Сундуки
+--------------------------------------------------------------------------------------------------
+
+--Сундук с современными украшениями (ID 2224)
 function ItemUse_MOLIBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet < 4 then
-		SystemNotice(role ,"You need at least 4 empty inventory slots to open the Chest")
+		SystemNotice(role ,"\194\224\236 \237\243\230\237\238 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -14014,11 +13606,9 @@ function ItemUse_MOLIBOX( role , Item )
 	GiveItem ( role , 0 , 5152  , 1 , 4 ) 
 	GiveItem ( role , 0 , 5153  , 1 , 4 )
 	end
-	--local cha_name = GetChaDefaultName ( role ) 
-	--local message = cha_name.." opens Apparel Chest and obtain 1 apparel set"   
-	--Notice ( message )
 end
 
+--Сундук интриги (ID 0024)
 function ItemUse_IDBOX(role, Item )
 	local lv = GetChaAttr(role, ATTR_LV)
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
@@ -14026,46 +13616,50 @@ function ItemUse_IDBOX(role, Item )
 	local count = 1
 	
 	if lv < 60 then
-		SystemNotice( role ,"Currently lower then Lv 60. Item usage failed!")
+		SystemNotice( role ,"\194\224\248 \243\240\238\226\229\237\252 \237\232\230\229 \247\229\236 60. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	else
-		SystemNotice(role,"Event have ended, Thank You for your participation. Please refer to Pirate King Online official website for future events!")
+		SystemNotice(role,"\221\226\229\237\242 \231\224\234\238\237\247\232\235\241\255, \209\239\224\241\232\225\238 \194\224\236 \231\224 \243\247\224\241\242\232\229. \207\238\230\224\235\243\233\241\242\224, \231\224\233\228\232\242\229 \237\224 \244\238\240\243\236 \194\224\248\229\227\238 \241\229\240\226\229\240\224, \247\242\238\225\251 \243\231\237\224\242\252 \225\235\232\230\224\233\248\232\229 \241\238\225\251\242\232\255!")
 	end
 end 
 
-------
--- Бонус Книги чести ID=2816
-------
+--Бонус Книги чести (ID 2816)
 function ItemUse_HonorPoint (role, Item )
 	local HonorBook_Num = 0
 	local HonorBook_Num = CheckBagItem( role,3849 )
-	if HonorBook_Num < 1 then
-		SystemNotice( role , "У вас нет Медали отваги")
+		if HonorBook_Num < 1 then
+		SystemNotice( role , "\211 \194\224\241 \237\229\242 \204\229\228\224\235\232 \206\242\226\224\227\232")
 		return 0
-	end
+		end
 	local Book2 =  GetChaItem2 ( role , 2 , 3849 )
 	local HonorPoint=GetItemAttr ( Book2 , ITEMATTR_VAL_STR)
+	
 	local HonorPoint_X=HonorPoint+100
 	SetItemAttr ( Book2 , ITEMATTR_VAL_STR,HonorPoint_X)
+	
 end
 
-------
--- Книга бонусов Хаоса ID=2951
-------
+--Книга бонусов Хаоса (ID 2951)
 function ItemUse_FightingPoint (role, Item )
 	local HonorBook_Num = 0
 	local HonorBook_Num = CheckBagItem( role,3849 )
-	if HonorBook_Num < 1 then
-		SystemNotice( role , "У вас нет Медали отваги")
+		if HonorBook_Num < 1 then
+		SystemNotice( role , "\211 \194\224\241 \237\229\242 \204\229\228\224\235\232 \206\242\226\224\227\232")
 		return 0
-	end
+		end
 	local Book2 =  GetChaItem2 ( role , 2 , 3849 )
 	local FightingPoint=GetItemAttr ( Book2 , ITEMATTR_MAXENERGY)
-	local FightingPoint_X=FightingPoint+10
+	
+	local FightingPoint_X=FightingPoint+100
 	SetItemAttr ( Book2 , ITEMATTR_MAXENERGY,FightingPoint_X)
+	
 end
 
-----------------------------[[ГАО¶»рј¦Ив]]--
+--------------------------------------------------------------------------------------------------
+--Рождество
+--------------------------------------------------------------------------------------------------
+
+--Вкусное индюшачье мясо (ID 2895)
 function ItemUse_MWHJ ( role , Item )  
 	local el_exp = GetChaAttr(role, ATTR_CEXP)
 	local exp1=el_exp
@@ -14078,21 +13672,22 @@ function ItemUse_MWHJ ( role , Item )
 	end
 	SetCharaAttr(el_exp, role, ATTR_CEXP) 
 end 
-------------------------КҐµ®ґуІН
+
+--Праздничный обед (ID 2898)
 function ItemUse_SDDC ( role , Item )
 	local Cha_Boat = 0
 	local charLv=Lv ( role )
 	local dif_exp_one = DEXP[charLv+1]
 	local dif_exp_three = DEXP[charLv+3]
 	local dif_exp_five = DEXP[charLv+5]
-	local Exp_star=GetChaAttr (  role , ATTR_CEXP )----------µ±З°µИј¶ѕ­Сй
+	local Exp_star=GetChaAttr (  role , ATTR_CEXP )
 	local dif_exp_half = (DEXP[charLv+1] - DEXP[charLv])*0.5 +  Exp_star +10
 	local dif_exp_thalf = (DEXP[charLv+1] - DEXP[charLv])*0.3  +  Exp_star + 10
 	local dif_exp_thalf_b = dif_exp_thalf - DEXP[charLv+1]
-	local dif_exp_thalf_c = (DEXP[charLv+1] - DEXP[charLv])*0.01+Exp_star ----------------
+	local dif_exp_thalf_c = (DEXP[charLv+1] - DEXP[charLv])*0.01+Exp_star
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" ) 
 		UseItemFailed ( role )
 		return
 	elseif charLv>=1 and charLv<=9 then
@@ -14111,15 +13706,15 @@ function ItemUse_SDDC ( role , Item )
 			dif_exp_thalf = dif_exp_thalf_b*0.02 + DEXP[charLv+1]
 			SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf )
 	elseif charLv>=86 then
-		SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf_c )-------------
-		--SystemNotice( role , "Players above Lv 86 will obtain 1% experience upon usage" )--------------
+		SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf_c )
 	end
 end
-------------------------------------№ЦОпХЩ»ЅИЇ--Л«»ч»сµГЛДёцХЩ»ЅИЇ
+
+--Свиток призвания чудища (ID 2900)
 function ItemUse_GWZHQ ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <=3 then
-		SystemNotice(role ,"Not enough slots. You need at least 4 empty slots. Failed to open Posh Christmas Box")
+		SystemNotice(role ,"\205\229 \245\226\224\242\224\229\242 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229. \194\224\236 \237\243\230\237\238 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \209\226\232\242\238\234 \239\240\232\231\226\224\237\232\255 \247\243\228\232\249\224")
 		UseItemFailed ( role )
 		return
 	end
@@ -14128,18 +13723,19 @@ function ItemUse_GWZHQ ( role , Item )
 	GiveItem ( role , 0 , 2890  , 1 , 4)
 	GiveItem ( role , 0 , 2891  , 1 , 4)
 end
----------------------------------»рј¦ХЩ»ЅИЇ--Л«»чХЩ»Ѕ»рј¦іиОп
+
+--Свиток вызова индюшки (ID 2888)
 function ItemUse_HJZHQ ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Not usable on the sea." )
+		SystemNotice( role , "\205\229 \227\238\228\232\242\241\255 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229." )
 		UseItemFailed ( role )
 		return
 	end
 	local pet_num = GetPetNum(role)
 	if pet_num >= 5 then
-		SystemNotice( role , "Max of limit of 5 pets reached. Please try again later!" )
+		SystemNotice( role , "\199\224 \240\224\231 \236\224\234\241\232\236\243\236 \236\238\230\237\238 \226\251\231\226\224\242\252 5 \240\243\247\237\251\245 \230\232\226\238\242\237\251\245. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229!" )
 		UseItemFailed ( role )
 		return
 	end
@@ -14148,9 +13744,9 @@ function ItemUse_HJZHQ ( role , Item  )
 	y_resume = 5
 	x = x + x_resume
 	y = y + y_resume
-	local MonsterID =930     -------------------Г»Г«»рј¦
-	local Refresh = 1800					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 1800000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local MonsterID =930
+	local Refresh = 1800
+	local life = 1800000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
 	SetChaHost(new,role)
 	SetChaLifeTime( new, life )
@@ -14158,19 +13754,18 @@ function ItemUse_HJZHQ ( role , Item  )
 	PlayEffect( new, 361 )
 end
 
-------------------------------чзВ№ХЩ»ЅИЇ--Л«»чХЩ»ЅчзВ№
-
+--Свиток вызова Северного оленя (ID 2889)
 function ItemUse_MLZHQ ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Not usable on the sea." )
+		SystemNotice( role , "\205\229 \227\238\228\232\242\241\255 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229." )
 		UseItemFailed ( role )
 		return
 	end
 	local pet_num = GetPetNum(role)
 	if pet_num >= 5 then
-		SystemNotice( role , "Max of limit of 5 pets reached. Please try again later!" )
+		SystemNotice( role , "\199\224 \240\224\231 \236\224\234\241\232\236\243\236 \236\238\230\237\238 \226\251\231\226\224\242\252 5 \240\243\247\237\251\245 \230\232\226\238\242\237\251\245. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229!" )
 		UseItemFailed ( role )
 		return
 	end
@@ -14179,27 +13774,28 @@ function ItemUse_MLZHQ ( role , Item  )
 	y_resume = 5
 	x = x + x_resume
 	y = y + y_resume
-	local MonsterID =931-----------------------чзВ№
-	local Refresh = 3600					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 3600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local MonsterID =931
+	local Refresh = 3600
+	local life = 3600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
 	SetChaHost(new,role)
 	SetChaLifeTime( new, life )
 	SetChaTarget(new, role)
 	PlayEffect( new, 361 )
 end
------------------------------------С©ИЛХЩ»ЅИЇ--Л«»чХЩ»ЅС©ИЛ
+
+--Свиток вызова Снежного человека (ID 2890)
 function ItemUse_XRZHQ ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Not usable on the sea." )
+		SystemNotice( role , "\205\229 \227\238\228\232\242\241\255 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229." )
 		UseItemFailed ( role )
 		return
 	end
 	local pet_num = GetPetNum(role)
 	if pet_num >= 5 then
-		SystemNotice( role , "Max of limit of 5 pets reached. Please try again later!" )
+		SystemNotice( role , "\199\224 \240\224\231 \236\224\234\241\232\236\243\236 \236\238\230\237\238 \226\251\231\226\224\242\252 5 \240\243\247\237\251\245 \230\232\226\238\242\237\251\245. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229!" )
 		UseItemFailed ( role )
 		return
 	end
@@ -14208,9 +13804,9 @@ function ItemUse_XRZHQ ( role , Item  )
 	y_resume = 5
 	x = x + x_resume
 	y = y + y_resume
-	local MonsterID =932-----------------------------КҐµ®АПИЛ
-	local Refresh = 7200					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 7200000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local MonsterID =932
+	local Refresh = 7200
+	local life = 7200000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
 	SetChaHost(new,role)
 	SetChaLifeTime( new, life )
@@ -14218,19 +13814,18 @@ function ItemUse_XRZHQ ( role , Item  )
 	PlayEffect( new, 361 )
 end
 
---------------------------------------------------КҐµ®АПИЛХЩ»ЅИЇ--Л«»чХЩ»ЅКҐµ®АПИЛ
-
+--Свиток вызова Деда Мороза (ID 2891)
 function ItemUse_SDZHQ ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Not usable on the sea." )
+		SystemNotice( role , "\205\229 \227\238\228\232\242\241\255 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229." )
 		UseItemFailed ( role )
 		return
 	end
 	local pet_num = GetPetNum(role)
 	if pet_num >= 5 then
-		SystemNotice( role , "Max of limit of 5 pets reached. Please try again later!" )
+		SystemNotice( role , "\199\224 \240\224\231 \236\224\234\241\232\236\243\236 \236\238\230\237\238 \226\251\231\226\224\242\252 5 \240\243\247\237\251\245 \230\232\226\238\242\237\251\245. \207\238\230\224\235\243\233\241\242\224, \239\238\239\240\238\225\243\233\242\229 \239\238\231\230\229!" )
 		UseItemFailed ( role )
 		return
 	end
@@ -14239,20 +13834,21 @@ function ItemUse_SDZHQ ( role , Item  )
 	y_resume = 5
 	x = x + x_resume
 	y = y + y_resume
-	local MonsterID =929-----------------------------КҐµ®АПИЛ
-	local Refresh = 10800					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 10800000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local MonsterID =929
+	local Refresh = 10800
+	local life = 10800000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
 	SetChaHost(new,role)
 	SetChaLifeTime( new, life )
 	SetChaTarget(new, role)
 	PlayEffect( new, 361 )
 end
----------------------------------------------КҐµ®ґуАс°ь--Л«»ч»сµГТ»ПµБРµАѕЯ
+
+--Рождественский подарок (ID 2897)
 function ItemUse_SDDLB ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <=5 then
-		SystemNotice(role ,"You require at least 6 empty inventory slots. Failed to open Christmas Box.")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \208\238\230\228\229\241\242\226\229\237\241\234\232\233 \239\238\228\224\240\238\234 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 6 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \208\238\230\228\229\241\242\226\229\237\241\234\232\233 \239\238\228\224\240\238\234.")
 		UseItemFailed ( role )
 		return
 	end
@@ -14264,8 +13860,11 @@ function ItemUse_SDDLB ( role , Item )
 	GiveItem ( role , 0 , 2896  , 99 , 4) 
 end
 
+--------------------------------------------------------------------------------------------------
+--Билеты
+--------------------------------------------------------------------------------------------------
 
---ID2446	Пропуск на событие (Остров Скелетов)
+--Пропуск на событие (Остров Скелетов) (ID 2446)
 function TW_Ticket_Script1(role, Item )
 	local i = CheckBagItem(role,2446)
 	local k = ChaIsBoat(role)
@@ -14274,7 +13873,7 @@ function TW_Ticket_Script1(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -14289,35 +13888,10 @@ function TW_Ticket_Script1(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---ID7706	Пропуск к Кракену
-function TW_Ticket_Kraken(role, Item )
-	local i = CheckBagItem(role,7706)
-	local k = ChaIsBoat(role)
-	local hp = Hp(role)
-	local mxhp = Mxhp(role)
-	local sp = Sp(role)
-	local mxsp = Mxsp(role)
-	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
-		UseItemFailed ( role )
-		return
-	end 
-	if k == 0 then
-		if i > 0 then
-			local j = DelBagItem(role,7706,1)
-			if j == 1 then
-				GoTo( role, 368, 164, "jialebi")
-				return
-			end
-		end
-	else
-		UseItemFailed ( role )
-	end
-end
-
---ID2447	Пропуск на Остров Скелетов
+--Пропуск на Остров Скелетов? (ID 2447)
 function TW_Ticket_Script2(role, Item )
 	local i = CheckBagItem(role,2447)
 	local k = ChaIsBoat(role)
@@ -14326,7 +13900,7 @@ function TW_Ticket_Script2(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -14341,9 +13915,10 @@ function TW_Ticket_Script2(role, Item )
 	else
 		UseItemFailed ( role )
 	end
+		
 end
 
---------------------------------------------------------МЁНе»ъЖ±3
+--Пропуск на Базу Флота (ID 2491)
 function TW_Ticket_Script3(role, Item )
 	local i = CheckBagItem(role,2491)
 	local k = ChaIsBoat(role)
@@ -14352,7 +13927,7 @@ function TW_Ticket_Script3(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -14370,7 +13945,11 @@ function TW_Ticket_Script3(role, Item )
 		
 end
 
---ID2893	Изысканная подарочная коробка
+--------------------------------------------------------------------------------------------------
+--Новый год
+--------------------------------------------------------------------------------------------------
+
+--Изысканная подарочная коробка (ID 2893)
 function ItemUse_JMSDBOX ( role , Item )
 	local item_type = BoxXiang_BaoZhaBOX
 	local item_type_rad = BoxXiang_BaoZhaBOX_Rad
@@ -14382,12 +13961,12 @@ function ItemUse_JMSDBOX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 		
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Not enough slots. Fail to open Posh Christmas Box")
+		SystemNotice(role ,"\205\229 \245\226\224\242\224\229\242 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \200\231\251\241\234\224\237\237\243\254 \239\238\228\224\240\238\247\237\243\254 \234\238\240\238\225\234\243")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -14436,17 +14015,17 @@ function ItemUse_JMSDBOX ( role , Item )
 		if ItemId == GoodItem[Good_C] then
 			local itemname = GetItemName ( ItemId ) 
 			local cha_name = GetChaDefaultName ( role ) 
-			local message = cha_name.." opens a Posh Christmas Box and obtained "..itemname  
+			local message = cha_name.." \238\242\234\240\251\226\224\229\242 \200\231\251\241\234\224\237\237\243\254 \239\238\228\224\240\238\247\237\243\254 \234\238\240\238\225\234\243 \232 \239\238\235\243\247\224\229\242 "..itemname    
 			Notice ( message )
 		end
 	end
 end
 
---ID2304	Новогодний фейерверк
+--Новогодний фейерверк (ID 2304)
 function ItemUse_XNLP( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -14462,7 +14041,7 @@ function ItemUse_XNLP( role , Item )
 		ItemUse_XINBOX ( role , Item )	
 	end
 end
---дополнение к ID2304	Новогодний фейерверк
+
 function ItemUse_XINBOX ( role , Item )
 	local item_type = BoxXiang_BaoZhaBOX
 	local item_type_rad = BoxXiang_BaoZhaBOX_Rad
@@ -14474,12 +14053,12 @@ function ItemUse_XINBOX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 		
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory slot. Usage of Grandiose Salute failed.")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \205\238\226\238\227\238\228\237\232\233 \244\229\233\229\240\226\229\240\234.")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -14528,24 +14107,24 @@ function ItemUse_XINBOX ( role , Item )
 		if ItemId == GoodItem[Good_C] then
 			local itemname = GetItemName ( ItemId ) 
 			local cha_name = GetChaDefaultName ( role ) 
-			local message = cha_name.." uses Grandiose Salute and obtained "..itemname  
+			local message = cha_name.." \232\241\239\238\235\252\231\243\229\242 \205\238\226\238\227\238\228\237\232\233 \244\229\233\229\240\226\229\240\234 \232 \239\238\235\243\247\224\229\242 "..itemname  
 			Notice ( message )
 		end
 	end
 end
 
--------------------РВДк±¦Пд
+--Новогодний сундук (ID 2307)
 function ItemUse_XNBOX( role , Item )
 		
 	local lv = GetChaAttr(role, ATTR_LV)
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if lv < 40 then
-		SystemNotice( role ,"Currently lower than Lv 40. Unable to use item!")
+		SystemNotice( role ,"\194\224\248 \243\240\238\226\229\237\252 \237\232\230\229 \247\229\236 40. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	return
 	end
 	if Item_CanGet < 1 then
-		SystemNotice(role ,"You need at least 1 free slot to open chest")
+		SystemNotice(role ,"\194\224\236 \237\243\230\237\224 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \205\238\226\238\227\238\228\237\232\233 \241\243\237\228\243\234")
 		UseItemFailed ( role )
 		return
 	end
@@ -14564,25 +14143,26 @@ function ItemUse_XNBOX( role , Item )
 	end
 end
 
-------------------------------------КэЧЦ·ў
+--Номер билета (ID 2305)
 function ItemUse_SZF ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )	
 	if Item_CanGet <1 then
-		SystemNotice(role ,"Unable to use Pirate Voucher 8. Requires at least 1 empty inventory slot")
+		SystemNotice(role ,"\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \205\238\236\229\240 \225\232\235\229\242\224. \205\243\230\229\237 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
 	GiveItem ( role , 0 , 2306  , 1 , 4)
 	local cha_name = GetChaDefaultName ( role ) 
-			local message ="Congratulations" ..cha_name.."Obtained 3k RMB worth of IPOD prizes" 
+			local message ="\207\238\231\228\240\224\226\235\229\237\232\255" ..cha_name.."\239\238\235\243\247\232\235 \240\224\241\239\232\241\234\243 \237\224 IPOD" 
 			Notice ( message )
 	
 end
-----------------------------------------------КЇН·јЗ
+
+--Камень памяти (ID 2314)
 function ItemUse_ShiTouJi( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	if Item_CanGet <1 then
-		SystemNotice(role ,"To open a Chest requires 1 empty slot")
+		SystemNotice(role ,"\215\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \202\224\236\229\237\252 \239\224\236\255\242\232 \237\243\230\229\237 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -14597,21 +14177,25 @@ function ItemUse_ShiTouJi( role , Item )
 	LG( "star_stonebox" ,cha_name, STONE_ID , STONE_LV )
 end
 
--------------------Б·П°УГЙі°ьLv1
+--------------------------------------------------------------------------------------------------
+--Производство
+--------------------------------------------------------------------------------------------------
+
+--Мешок с песком 1 ур. (ID 1145)
 function ItemUse_ShaBao1(role , Item)
 local Cha_Boat = 0
       Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Training in Safe Zone? Dream on!" )
+		SystemNotice( role , "\210\240\229\237\232\240\238\226\234\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229? \221\242\238 \236\229\247\242\224!" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 		local x, y = GetChaPos(role)
 		local x_move=5
@@ -14619,87 +14203,83 @@ local Cha_Boat = 0
 		x=x_move+x
 		y=y_move+y
 		local MonsterID = 937
-       local Refresh = 1900000						  
+                local Refresh = 1900000				        
 		local life = 1800000						
 		local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 		SetChaLifeTime( new, life )
 end
 
-
--------------------Б·П°УГЙі°ьLv2
+--Мешок с песком 2 ур. (ID 2729)
 function ItemUse_ShaBao2(role , Item)
 local Cha_Boat = 0
       Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Training in Safe Zone? Dream on!" )
+		SystemNotice( role , "\210\240\229\237\232\240\238\226\234\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229? \221\242\238 \236\229\247\242\224!" )
 		UseItemFailed ( role )
-       return
+                return
 	end
-		    local x, y = GetChaPos(role)
+	        local x, y = GetChaPos(role)
 		local x_move=5
 		local y_move=5
 		x=x_move+x
 		y=y_move+y
 		local MonsterID = 938
-       local Refresh = 1900000						  
+                local Refresh = 1900000				        
 		local life = 1800000						
 		local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 		SetChaLifeTime( new, life )
 end
 
-
--------------------Б·П°УГЙі°ьLv3
-
+--Мешок с песком 3 ур. (ID 2753)
 function ItemUse_ShaBao3(role , Item)
 local Cha_Boat = 0
       Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Training in Safe Zone? Dream on!" )
+		SystemNotice( role , "\210\240\229\237\232\240\238\226\234\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229? \221\242\238 \236\229\247\242\224!" )
 		UseItemFailed ( role )
-       return
+                return
 	end
-		    local x, y = GetChaPos(role)
+	        local x, y = GetChaPos(role)
 		local x_move=5
 		local y_move=5
 		x=x_move+x
 		y=y_move+y
 		local MonsterID = 939
-       local Refresh = 1900000						  
+                local Refresh = 1900000				        
 		local life = 1800000						
 		local new = CreateChaX( MonsterID , x , y , 145 , Refresh , role )
 		SetChaLifeTime( new, life )
 end
 
-
--------------------Б·П°УГЙі°ьLv4
+--Мешок с песком 4 ур. (ID 2777)
 function ItemUse_ShaBao4(role , Item)
 local Cha_Boat = 0
       Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Training in Safe Zone? Dream on!" )
+		SystemNotice( role , "\210\240\229\237\232\240\238\226\234\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229? \221\242\238 \236\229\247\242\224!" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 		local x, y = GetChaPos(role)
 		local x_move=5
@@ -14707,28 +14287,27 @@ local Cha_Boat = 0
 		x=x_move+x
 		y=y_move+y
 		local MonsterID = 940
-       local Refresh = 1900000						  
+                local Refresh = 1900000				        
 		local life = 1800000						
 		local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 		SetChaLifeTime( new, life )
 end
 
-
--------------------Б·П°УГЙі°ьLv5
+--Мешок с песком 5 ур. (ID 2801)
 function ItemUse_ShaBao5(role , Item)
 local Cha_Boat = 0
       Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Training in Safe Zone? Dream on!" )
+		SystemNotice( role , "\210\240\229\237\232\240\238\226\234\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229? \221\242\238 \236\229\247\242\224!" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 		local x, y = GetChaPos(role)
 		local x_move=5
@@ -14736,61 +14315,51 @@ local Cha_Boat = 0
 		x=x_move+x
 		y=y_move+y
 		local MonsterID = 941
-       local Refresh = 1900000						  
+                local Refresh = 1900000				        
 		local life = 1800000						
 		local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 		SetChaLifeTime( new, life )
 end
 
-------------------Р°¶с·ўЙъЖчLv1
+--Генератор зла 1 ур. (ID 1144)
 function ItemUse_FaSheng1(role,Item)
 local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
         local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		  SystemNotice( role , "Summon a monster in a safe zone? Please be considerate!" )
-		  UseItemFailed ( role )
+	      SystemNotice( role , "\194\251\231\238\226 \236\238\237\241\242\240\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229? \207\238\230\224\235\243\233\241\242\224, \225\243\228\252\242\229 \226\237\232\236\224\242\229\235\252\237\251!" )
+	      UseItemFailed ( role )
 	return
 	end
 	local radID = math.random ( 1,8 )
 	local MonsterID = 0
---	local Monster_GetID = {}
---		Monster_GetID[1] = 841
---		Monster_GetID[2] = 842
---		Monster_GetID[3] = 843
---		Monster_GetID[4] = 844
---		Monster_GetID[5] = 845
---		Monster_GetID[6] = 846
---		Monster_GetID[7] = 229
---		Monster_GetID[8] = 274
---        
 
 	  if radID == 1   then
-		   MonsterID = 841
-		   
+	       MonsterID = 841
+	       
 	  elseif radID == 2 then
-		   MonsterID = 842
-	  
+	       MonsterID = 842
+	           
 	  elseif radID == 3 then
-		   MonsterID = 843
+	       MonsterID = 843
 
 	  elseif radID == 4 then
-		   MonsterID = 843
+	       MonsterID = 843
 
 	  elseif radID == 5 then
-		   MonsterID = 845
+	       MonsterID = 845
 	  elseif radID == 6 then
-		   MonsterID = 846
+	       MonsterID = 846
 	  elseif radID == 7 then
-		   MonsterID = 229
+	       MonsterID = 229
 	  elseif radID == 8 then
-		   MonsterID = 274
+	       MonsterID = 274
 
 	  end
 		
@@ -14799,47 +14368,31 @@ local Cha_Boat = 0
 		local y_move=5
 		x=x_move+x
 		y=y_move+y
-       local Refresh = 3700000					 --ЦШЙъК±јдЈ¬ГлµҐО»
-		local life =  3600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+                local Refresh = 3700000
+		local life =  3600000
 		local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
 		SetChaLifeTime( new, life )
 end
-------------------Р°¶с·ўЙъЖчLv2
 
+--Генератор зла 2 ур. (ID 2728)
 function ItemUse_FaSheng2(role,Item)
 local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
         local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then	
-		  SystemNotice( role , "Summon a monster in a safe zone? Please be considerate!" )
-		  UseItemFailed ( role )
+	      SystemNotice( role , "\194\251\231\238\226 \236\238\237\241\242\240\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229? \207\238\230\224\235\243\233\241\242\224, \225\243\228\252\242\229 \226\237\232\236\224\242\229\235\252\237\251!" )
+	      UseItemFailed ( role )
 	return
 	end
 	local radID = math.random ( 1,15 )
 	local MonsterID = 0
---	local Monster_GetID = {}
---
---       Monster_GetID[1] = 847      
---		Monster_GetID[2] = 848
---		Monster_GetID[3] = 849
---		Monster_GetID[4] = 850
---		Monster_GetID[5] = 851
---		Monster_GetID[6] = 852
---		Monster_GetID[7] = 211
---		Monster_GetID[8] = 706
---		Monster_GetID[9] = 673
---		Monster_GetID[10] = 690
---		Monster_GetID[11] = 691
---		Monster_GetID[12] = 692
---		Monster_GetID[13] = 693
---		Monster_GetID[14] = 106
---		Monster_GetID[15] = 289
+
 
 		local x, y = GetChaPos(role)
 		local x_move=5
@@ -14847,517 +14400,422 @@ local Cha_Boat = 0
 		x=x_move+x
 		y=y_move+y
 	  if radID == 1 then
-		  MonsterID = 847
+	      MonsterID = 847
 	  elseif radID == 2 then
-		  MonsterID = 848
+	      MonsterID = 848
 	  elseif radID == 3 then 
-		  MonsterID = 849
+	      MonsterID = 849
 	  elseif radID == 4 then 
-		  MonsterID = 850
- elseif radID == 5 then
-		  MonsterID = 851
-		elseif radID == 6 then
-		  MonsterID = 852
-		elseif radID == 7 then
-		  MonsterID = 211
-		elseif radID == 8 then
-		  MonsterID = 706
-		elseif radID == 9 then
-		  MonsterID = 673
-		elseif radID == 10 then
-		  MonsterID = 690
-		elseif radID == 11 then
-		  MonsterID = 691
-		elseif radID == 12 then
-		  MonsterID = 692
-		elseif radID == 13 then
-		  MonsterID = 693
-		elseif radID == 14 then
-		  MonsterID = 106
-		elseif radID == 15 then
-		  MonsterID = 289
+	      MonsterID = 850
+          elseif radID == 5 then
+	      MonsterID = 851
+	    elseif radID == 6 then
+	      MonsterID = 852
+	    elseif radID == 7 then
+	      MonsterID = 211
+	    elseif radID == 8 then
+	      MonsterID = 706
+	    elseif radID == 9 then
+	      MonsterID = 673
+	    elseif radID == 10 then
+	      MonsterID = 690
+	    elseif radID == 11 then
+	      MonsterID = 691
+	    elseif radID == 12 then
+	      MonsterID = 692
+	    elseif radID == 13 then
+	      MonsterID = 693
+	    elseif radID == 14 then
+	      MonsterID = 106
+	    elseif radID == 15 then
+	      MonsterID = 289
 	  end
-		local Refresh = 3700000						  --ЦШЙъК±јдЈ¬ГлµҐО»
-		local life = 3600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+		local Refresh = 3700000
+		local life = 3600000
 		local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 		SetChaLifeTime( new, life )
 end
-------------------Р°¶с·ўЙъЖчLv3
+
+--Генератор зла 3 ур. (ID 2752)
 function ItemUse_FaSheng3(role,Item)
 local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
         local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then	
-		  SystemNotice( role , "Summon a monster in a safe zone? Please be considerate!" )
-		  UseItemFailed ( role )
+	      SystemNotice( role , "\194\251\231\238\226 \236\238\237\241\242\240\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229? \207\238\230\224\235\243\233\241\242\224, \225\243\228\252\242\229 \226\237\232\236\224\242\229\235\252\237\251!" )
+	      UseItemFailed ( role )
 	return
 	end
 	local radID = math.random ( 1,7 )
 	local MonsterID = 0
---	local Monster_GetID = {}
---		Monster_GetID[1] = 757
---		Monster_GetID[2] = 679
---		Monster_GetID[3] = 678
---		Monster_GetID[4] = 707
---		Monster_GetID[5] = 708
---		Monster_GetID[6] = 776
---		Monster_GetID[7] = 74
+
 		 
-       local x, y = GetChaPos(role)
+                local x, y = GetChaPos(role)
 		local x_move=5
 		local y_move=5
 		x=x_move+x
 		y=y_move+y
 	  if radID == 1 then
-		   MonsterID = 757       
+	       MonsterID = 757       
 	  elseif radID == 2 then
-		   MonsterID = 679        
-	  elseif radID == 3 then  
-		   MonsterID = 678
-	  elseif radID == 4 then  
-		   MonsterID = 707      
+	       MonsterID = 679                          
+	  elseif radID == 3 then                    
+	       MonsterID = 678                           
+	  elseif radID == 4 then                    
+	       MonsterID = 707      
 	  elseif radID == 5 then
-		   MonsterID = 708        
- elseif radID == 6 then
-		   MonsterID = 776
- elseif radID == 7 then
-		   MonsterID = 74   
+	       MonsterID = 708                          
+          elseif radID == 6 then
+	       MonsterID = 776                           
+          elseif radID == 7 then
+	       MonsterID = 74   
 	  end
-		local Refresh = 7300000						  --ЦШЙъК±јдЈ¬ГлµҐО»
-		local life = 7200000     				--ЙъГьК±јдЈ¬єБГлµҐО»
+		local Refresh = 7300000
+		local life = 7200000
 		local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 		SetChaLifeTime( new, life )
 end
-------------------Р°¶с·ўЙъЖчLv4
+
+--Генератор зла 4 ур. (ID 2776)
 function ItemUse_FaSheng4(role,Item)
 local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
         local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then	
-		  SystemNotice( role , "Summon a monster in a safe zone? Please be considerate!" )
-		  UseItemFailed ( role )
+	      SystemNotice( role , "\194\251\231\238\226 \236\238\237\241\242\240\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229? \207\238\230\224\235\243\233\241\242\224, \225\243\228\252\242\229 \226\237\232\236\224\242\229\235\252\237\251!" )
+	      UseItemFailed ( role )
 	return
 	end
 	local radID = math.random ( 1,5 )
 	local MonsterID = 0
 	local Refresh = 0
 	local life = 0
---	local Monster_GetID = {}
---		Monster_GetID[1] = 952
---		Monster_GetID[2] = 805
---		Monster_GetID[3] = 807
---		Monster_GetID[4] = 786
---		Monster_GetID[5] = 788
---		
-       local x, y = GetChaPos(role)
+	
+                local x, y = GetChaPos(role)
 		local x_move=5
 		local y_move=5
 		x=x_move+x
 		y=y_move+y
 	  if radID == 1 then
-		  MonsterID = 952        
+	      MonsterID = 952        
 	  elseif radID == 2 then
-		  MonsterID = 805        
-	  elseif radID == 3 then  
-		  MonsterID = 807
-	  elseif radID == 4 then  
-		  MonsterID = 786      
+	      MonsterID = 805                          
+	  elseif radID == 3 then                    
+	      MonsterID = 807                           
+	  elseif radID == 4 then                    
+	      MonsterID = 786      
 	  elseif radID == 5 then
-		  MonsterID = 788
+	      MonsterID = 788                           
 	  end
-		   
-		   if MonsterID == 952 then 
-	 Refresh = 10900000
-	 life = 10800000
-		   else
-			Refresh = 7300000     					  --ЦШЙъК±јдЈ¬ГлµҐО»
-			life = 7200000					--ЙъГьК±јдЈ¬єБГлµҐО»
-		   end
-	 local new = CreateChaX( MonsterID , x , y , 145 , Refresh ,role)
+	       
+	       if MonsterID == 952 then 
+	          Refresh = 10900000
+	          life = 10800000
+	       else
+		  Refresh = 7300000
+		  life = 7200000
+	       end
+	          local new = CreateChaX( MonsterID , x , y , 145 , Refresh ,role)
 		SetChaLifeTime( new, life )
 end
 
---------------------Р°¶с·ўЙъЖчLv5
---function ItemUse_FaSheng5(role,Item)
---local Cha_Boat = 0
---	Cha_Boat = GetCtrlBoat ( role )
---	if Cha_Boat ~=  nil then
---		SystemNotice( role , "Невозможно использовать в море" )
---		UseItemFailed ( role )
---		return
---	end
---        local reg = 0
---		  reg =IsChaInRegion( role, 2 )
---	if reg == 1 then	
---		  SystemNotice( role , "Summon a monster in a safe zone? Please be considerate!" )
---		  UseItemFailed ( role )
---	return
---	end
---	local radID = math.random ( 1,30 )
---	local MonsterID = 0
---	local Refresh = 0
---	local life = 0
---	local Monster_GetID = {}
---		Monster_GetID[1] = 229 
---		Monster_GetID[2] = 211
---		Monster_GetID[3] = 99
---		Monster_GetID[4] = 673
---		Monster_GetID[5] = 786
---		Monster_GetID[6] = 757
---		Monster_GetID[7] = 263
---		Monster_GetID[8] = math.random ( 678 , 679 )
---       Monster_GetID[9] = math.random ( 841 , 852 )
---		Monster_GetID[10] = math.random ( 690 , 693 )
---		Monster_GetID[11] = math.random ( 706, 708 )
---		Monster_GetID[12] = 952
---		Monster_GetID[13] = 805
---		Monster_GetID[14] = 807
---		
---       local x, y = GetChaPos(role)
---		local x_move=5
---		local y_move=5
---		x=x_move+x
---		y=y_move+y
---	  if radID == 1 or  radID ==2 then
---		  MonsterID = Monster_GetID[8]        ----------5%
---	  elseif radID == 3 or  radID ==4 then
---		  MonsterID = 786        
---	  elseif radID == 5 or  radID ==6 then  
---		  MonsterID = 673
---	  elseif radID == 7 or  radID ==8 then  
---		  MonsterID = 757      
---	  elseif radID == 9 or  radID ==10 then
---		  MonsterID = 263----------10%
--- elseif radID == 11 or  radID ==12 then
---		  MonsterID = 211
--- elseif radID == 13 or  radID ==14 then
---		  MonsterID = 99
---	  elseif radID == 15 or  radID ==16 then
---		  MonsterID = 229
---	  elseif radID == 17 or  radID ==18 or  radID ==19 then   ----------15%
---     MonsterID = Monster_GetID[9]
---	  elseif radID == 20 or  radID ==21 then
---		  MonsterID = Monster_GetID[10]
--- elseif radID == 22 or radID ==23 or radID ==24 then
---		  MonsterID = Monster_GetID[11]
---	  elseif radID == 25 or  radID ==26 then
---		  MonsterID = Monster_GetID[12]
---	  elseif radID == 27 or  radID ==28 then
---		  MonsterID = Monster_GetID[13]
--- elseif radID == 29 or  radID ==30 then
---		  MonsterID = Monster_GetID[14]
---	  end
---		   
---		   if MonsterID == Monster_GetID[12] then 
---	 Refresh = 10900000
---	 life = 10800000
---		   else
---			Refresh = 7300000     					  --ЦШЙъК±јдЈ¬ГлµҐО»
---			life = 7200000					--ЙъГьК±јдЈ¬єБГлµҐО»
---		   end
---	 local new = CreateChaX( MonsterID , x , y , 145 , Refresh ,role)
---		SetChaLifeTime( new, life )
---end
-
---Л®АЧLV1-----------------------------------------------------------
-
+--Водяная мина, 1 ур. (ID 2678)
 function ItemUse_SL1 ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
-		SystemNotice( role , "Can only be used on the sea." )
+		SystemNotice( role , "\204\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238 \242\238\235\252\234\238 \226 \236\238\240\229." )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \194\238\228\255\237\243\254 \236\232\237\243 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	local x,y = GetChaPos(Cha_Boat)
 	local x_move=0
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 1200
-		   y_move = 0
+	       x_move = 1200
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=1200
-		   y_move=-1200
+	       x_move=1200
+	       y_move=-1200
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-1000
+	       x_move=0
+	       y_move=-1000
 	 elseif fx_move == 4 then
-		   x_move=-1000
-		   y_move=-1000
+	       x_move=-1000
+	       y_move=-1000
 	 elseif fx_move == 5 then
-		   x_move=1000
-		   y_move=0
+	       x_move=1000
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-1000
-		   y_move=1000
+	       x_move=-1000
+	       y_move=1000
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=1000
+	       x_move=0
+	       y_move=1000
 	 else  x_move=1000
-		   y_move=1000
+	       y_move=1000
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 
 	local MonsterID = 942
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,Cha_Boat )
 	SetChaLifeTime( new, life )
 end
---Л®АЧLV2-----------------------------------------------------------
 
+--Водяная мина 2 ур. (ID 2742)
 function ItemUse_SL2 ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
-		SystemNotice( role , "Can only be used on the sea." )
+		SystemNotice( role , "\204\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238 \242\238\235\252\234\238 \226 \236\238\240\229." )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \194\238\228\255\237\243\254 \236\232\237\243 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	local x,y = GetChaPos(Cha_Boat)
 	local x_move=0
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 1200
-		   y_move = 0
+	       x_move = 1200
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=1200
-		   y_move=-1200
+	       x_move=1200
+	       y_move=-1200
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-1000
+	       x_move=0
+	       y_move=-1000
 	 elseif fx_move == 4 then
-		   x_move=-1000
-		   y_move=-1000
+	       x_move=-1000
+	       y_move=-1000
 	 elseif fx_move == 5 then
-		   x_move=1000
-		   y_move=0
+	       x_move=1000
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-1000
-		   y_move=1000
+	       x_move=-1000
+	       y_move=1000
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=1000
+	       x_move=0
+	       y_move=1000
 	 else  x_move=1000
-		   y_move=1000
+	       y_move=1000
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 	local MonsterID = 943
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,Cha_Boat )
 	SetChaLifeTime( new, life )
 end
---Л®АЧLV3-----------------------------------------------------------
 
+--Водяная мина 3 ур. (ID 2766)
 function ItemUse_SL3 ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
-		SystemNotice( role , "Can only be used on the sea." )
+		SystemNotice( role , "\204\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238 \242\238\235\252\234\238 \226 \236\238\240\229." )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \194\238\228\255\237\243\254 \236\232\237\243 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	local x,y = GetChaPos(Cha_Boat)
 	local x_move=0
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 1200
-		   y_move = 0
+	       x_move = 1200
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=1200
-		   y_move=-1200
+	       x_move=1200
+	       y_move=-1200
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-1000
+	       x_move=0
+	       y_move=-1000
 	 elseif fx_move == 4 then
-		   x_move=-1000
-		   y_move=-1000
+	       x_move=-1000
+	       y_move=-1000
 	 elseif fx_move == 5 then
-		   x_move=1000
-		   y_move=0
+	       x_move=1000
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-1000
-		   y_move=1000
+	       x_move=-1000
+	       y_move=1000
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=1000
+	       x_move=0
+	       y_move=1000
 	 else  x_move=1000
-		   y_move=1000
+	       y_move=1000
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 	local MonsterID = 944
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,Cha_Boat )
 	SetChaLifeTime( new, life )
 end
---Л®АЧLV4-----------------------------------------------------------
 
+--Водяная мина 4 ур. (ID 2790)
 function ItemUse_SL4 ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
-		SystemNotice( role , "Can only be used on the sea." )
+		SystemNotice( role , "\204\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238 \242\238\235\252\234\238 \226 \236\238\240\229." )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \194\238\228\255\237\243\254 \236\232\237\243 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	local x,y = GetChaPos(Cha_Boat)
 	local x_move=0
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 1200
-		   y_move = 0
+	       x_move = 1200
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=1200
-		   y_move=-1200
+	       x_move=1200
+	       y_move=-1200
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-1000
+	       x_move=0
+	       y_move=-1000
 	 elseif fx_move == 4 then
-		   x_move=-1000
-		   y_move=-1000
+	       x_move=-1000
+	       y_move=-1000
 	 elseif fx_move == 5 then
-		   x_move=1000
-		   y_move=0
+	       x_move=1000
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-1000
-		   y_move=1000
+	       x_move=-1000
+	       y_move=1000
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=1000
+	       x_move=0
+	       y_move=1000
 	 else  x_move=1000
-		   y_move=1000
+	       y_move=1000
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 
 	local MonsterID = 945
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,Cha_Boat )
 	SetChaLifeTime( new, life )
 end
---Л®АЧLV5-----------------------------------------------------------
 
+--Водяная мина 5 ур. (ID 2814
 function ItemUse_SL5 ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
-		SystemNotice( role , "Can only be used on the sea." )
+		SystemNotice( role , "\204\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238 \242\238\235\252\234\238 \226 \236\238\240\229." )
 		UseItemFailed ( role )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \194\238\228\255\237\243\254 \236\232\237\243 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	local x,y = GetChaPos(Cha_Boat)
 	local x_move=0
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 1200
-		   y_move = 0
+	       x_move = 1200
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=1200
-		   y_move=-1200
+	       x_move=1200
+	       y_move=-1200
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-1000
+	       x_move=0
+	       y_move=-1000
 	 elseif fx_move == 4 then
-		   x_move=-1000
-		   y_move=-1000
+	       x_move=-1000
+	       y_move=-1000
 	 elseif fx_move == 5 then
-		   x_move=1000
-		   y_move=0
+	       x_move=1000
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-1000
-		   y_move=1000
+	       x_move=-1000
+	       y_move=1000
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=1000
+	       x_move=0
+	       y_move=1000
 	 else  x_move=1000
-		   y_move=1000
+	       y_move=1000
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 
 	local MonsterID = 946
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,Cha_Boat )
 
 	SetChaLifeTime( new, life )
 end
 
---ЧФ±¬ГаСтLV1-----------------------------------------------------------
-
+--Взрывной ягненок ур. 1 (ID 2372)
 function ItemUse_ZBML1 ( role , Item  )
  
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( Cha_Boat , "Not usable on the sea" )
+		SystemNotice( Cha_Boat , "\205\229\227\238\228\237\238 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229" )
 		UseItemFailed ( Cha_Boat )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "Невозможно ипользовать в безопасной зоне " )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	
 	local x,y = GetChaPos(role)
@@ -15365,54 +14823,54 @@ function ItemUse_ZBML1 ( role , Item  )
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 800
-		   y_move = 0
+	       x_move = 800
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=800
-		   y_move=-800
+	       x_move=800
+	       y_move=-800
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-800
+	       x_move=0
+	       y_move=-800
 	 elseif fx_move == 4 then
-		   x_move=-800
-		   y_move=-800
+	       x_move=-800
+	       y_move=-800
 	 elseif fx_move == 5 then
-		   x_move=800
-		   y_move=0
+	       x_move=800
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-800
-		   y_move=800
+	       x_move=-800
+	       y_move=800
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=800
+	       x_move=0
+	       y_move=800
 	 else  x_move=800
-		   y_move=800
+	       y_move=800
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 	local MonsterID = 947
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 	SetChaLifeTime( new, life )
 end
---ЧФ±¬ГаСтLV2-----------------------------------------------------------
 
+--Взрывающаяся овца 2 ур. (ID 2373)
 function ItemUse_ZBML2 ( role , Item  )
  
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( Cha_Boat , "Not usable on the sea" )
+		SystemNotice( Cha_Boat , "\205\229\227\238\228\237\238 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229" )
 		UseItemFailed ( Cha_Boat )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	
 	local x,y = GetChaPos(role)
@@ -15420,54 +14878,54 @@ function ItemUse_ZBML2 ( role , Item  )
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 800
-		   y_move = 0
+	       x_move = 800
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=800
-		   y_move=-800
+	       x_move=800
+	       y_move=-800
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-800
+	       x_move=0
+	       y_move=-800
 	 elseif fx_move == 4 then
-		   x_move=-800
-		   y_move=-800
+	       x_move=-800
+	       y_move=-800
 	 elseif fx_move == 5 then
-		   x_move=800
-		   y_move=0
+	       x_move=800
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-800
-		   y_move=800
+	       x_move=-800
+	       y_move=800
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=800
+	       x_move=0
+	       y_move=800
 	 else  x_move=800
-		   y_move=800
+	       y_move=800
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 	local MonsterID = 948
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 	SetChaLifeTime( new, life )
 end
---ЧФ±¬ГаСтLV3-----------------------------------------------------------
 
+--Взрывающаяся овца 3 ур. (ID 2375)
 function ItemUse_ZBML3 ( role , Item  )
  
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( Cha_Boat , "Not usable on the sea" )
+		SystemNotice( Cha_Boat , "\205\229\227\238\228\237\238 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229" )
 		UseItemFailed ( Cha_Boat )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	
 	local x,y = GetChaPos(role)
@@ -15475,54 +14933,54 @@ function ItemUse_ZBML3 ( role , Item  )
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 800
-		   y_move = 0
+	       x_move = 800
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=800
-		   y_move=-800
+	       x_move=800
+	       y_move=-800
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-800
+	       x_move=0
+	       y_move=-800
 	 elseif fx_move == 4 then
-		   x_move=-800
-		   y_move=-800
+	       x_move=-800
+	       y_move=-800
 	 elseif fx_move == 5 then
-		   x_move=800
-		   y_move=0
+	       x_move=800
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-800
-		   y_move=800
+	       x_move=-800
+	       y_move=800
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=800
+	       x_move=0
+	       y_move=800
 	 else  x_move=800
-		   y_move=800
+	       y_move=800
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 	local MonsterID = 949
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 	SetChaLifeTime( new, life )
 end
---ЧФ±¬ГаСтLV4-----------------------------------------------------------
 
+--Взрывающаяся овца 4 ур. (ID 2379)
 function ItemUse_ZBML4 ( role , Item  )
  
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( Cha_Boat , "Not usable on the sea" )
+		SystemNotice( Cha_Boat , "\205\229\227\238\228\237\238 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229" )
 		UseItemFailed ( Cha_Boat )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	
 	local x,y = GetChaPos(role)
@@ -15530,54 +14988,54 @@ function ItemUse_ZBML4 ( role , Item  )
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 800
-		   y_move = 0
+	       x_move = 800
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=800
-		   y_move=-800
+	       x_move=800
+	       y_move=-800
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-800
+	       x_move=0
+	       y_move=-800
 	 elseif fx_move == 4 then
-		   x_move=-800
-		   y_move=-800
+	       x_move=-800
+	       y_move=-800
 	 elseif fx_move == 5 then
-		   x_move=800
-		   y_move=0
+	       x_move=800
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-800
-		   y_move=800
+	       x_move=-800
+	       y_move=800
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=800
+	       x_move=0
+	       y_move=800
 	 else  x_move=800
-		   y_move=800
+	       y_move=800
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 	local MonsterID = 950
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 	SetChaLifeTime( new, life )
 end
---ЧФ±¬ГаСтLV5-----------------------------------------------------------
 
+--Взрывная овечка 5 ур. (ID 2380)
 function ItemUse_ZBML5 ( role , Item  )
  
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( Cha_Boat , "Not usable on the sea" )
+		SystemNotice( Cha_Boat , "\205\229\227\238\228\237\238 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229" )
 		UseItemFailed ( Cha_Boat )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
 	
 	local x,y = GetChaPos(role)
@@ -15585,53 +15043,58 @@ function ItemUse_ZBML5 ( role , Item  )
 	local y_move=0
         local fx_move = math.random ( 1,8 )
 	   if  fx_move == 1 then
-		   x_move = 800
-		   y_move = 0
+	       x_move = 800
+	       y_move = 0
 	 elseif fx_move == 2 then
-		   x_move=800
-		   y_move=-800
+	       x_move=800
+	       y_move=-800
 	 elseif fx_move == 3 then
-		   x_move=0
-		   y_move=-800
+	       x_move=0
+	       y_move=-800
 	 elseif fx_move == 4 then
-		   x_move=-800
-		   y_move=-800
+	       x_move=-800
+	       y_move=-800
 	 elseif fx_move == 5 then
-		   x_move=800
-		   y_move=0
+	       x_move=800
+	       y_move=0
 	 elseif fx_move == 6 then
-		   x_move=-800
-		   y_move=800
+	       x_move=-800
+	       y_move=800
 	 elseif fx_move == 7 then
-		   x_move=0
-		   y_move=800
+	       x_move=0
+	       y_move=800
 	 else  x_move=800
-		   y_move=800
+	       y_move=800
 	 end
-		  x =x_move + x
-		  y =y_move + y
+	      x =x_move + x
+	      y =y_move + y
 	local MonsterID = 951
-	local Refresh = 700000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 700000
+	local life = 600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 	SetChaLifeTime( new, life )
 end
 
-----------------------------------ЗйФµ±¦єР
+--------------------------------------------------------------------------------------------------
+--Свадьба
+--------------------------------------------------------------------------------------------------
+
+--Сундук судьбы (ID 2916)
 function ItemUse_LoveBox( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 1 then
-		SystemNotice(role ,"You need at least 1 free slot to open Chest of Fate")
+		SystemNotice(role ,"\215\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242 \242\240\229\225\243\229\242\241\255 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
+		UseItemFailed ( role )
 		UseItemFailed ( role )
 		return
 	end
 	local cha_type = GetChaTypeID ( role ) 
 	local count = 0
 	if cha_type == 3 or cha_type == 4 then 
-		   count =1
+	       count =1
 	end
 	if cha_type == 1 or cha_type == 2 then
-		   count =2
+	       count =2
 	end
 	local el = math.random ( 1, 35 )
 	if   count == 1 then
@@ -15639,124 +15102,101 @@ function ItemUse_LoveBox( role , Item )
 			local r1 = 0
 			local r2 = 0	
 			r1,r2 =MakeItem ( role , 2902  , 1 , 4 )
-			local Item_girl = GetChaItem ( role , 2 , r2 )			--ИЎЕ®РФµАѕЯЦёХл
+			local Item_girl = GetChaItem ( role , 2 , r2 )
 			local new_el=math.random ( 1, 200 )
 			SetItemAttr ( Item_girl , ITEMATTR_VAL_STR , new_el )	
 		else
 			local el1 = math.random ( 1, 12 )
 			if el1==1  then
-				GiveItem ( role , 0 , 3343  , 1 , 4 ) ---------------Гµ№е»Ё
+				GiveItem ( role , 0 , 3343  , 1 , 4 )
 			elseif el1==2 then
-				GiveItem ( role , 0 , 3077  , 1 , 4 )------------МрГЫЗЙїЛБ¦	
+				GiveItem ( role , 0 , 3077  , 1 , 4 )
 			else
-				local EID = math.random ( 4264, 4273 )----------10ёц±нЗй
+				local EID = math.random ( 4264, 4273 )
 				GiveItem ( role , 0 , EID  , 1 , 4 )
 			end
 		end
 	end
 	local el2= math.random ( 1, 7 )
 	if   count == 2 then
-			--SystemNotice(role ,"count=="..count)
 		if el2==7 then
 			local r1 = 0
 			local r2 = 0	
 				r1,r2 =MakeItem ( role , 2903  , 1 , 4 )
-			local Item_boy = GetChaItem ( role , 2 , r2 )			--ИЎДРРФµАѕЯЦёХл
+			local Item_boy = GetChaItem ( role , 2 , r2 )
 			local new_el=math.random ( 1, 1000 )
-			--SystemNotice(role ,"new_el=="..new_el)
 			SetItemAttr( Item_boy , ITEMATTR_VAL_STR , new_el )
 		else
 			local el3 = math.random ( 1, 12 )
 			if el3==1  then
-				GiveItem ( role , 0 , 3343  , 1 , 4 ) ---------------Гµ№е»Ё
+				GiveItem ( role , 0 , 3343  , 1 , 4 )
 			elseif el3==2 then
-				GiveItem ( role , 0 , 3077  , 1 , 4 )------------МрГЫЗЙїЛБ¦	
+				GiveItem ( role , 0 , 3077  , 1 , 4 )
 			else
-				local EID = math.random ( 4264, 4273 )----------10ёц±нЗй
+				local EID = math.random ( 4264, 4273 )
 				GiveItem ( role , 0 , EID  , 1 , 4 )
 			end
 		end
 	end
 end
 
-
-------------------------Ас·ю±¦ПдЈєЛ«»чЈ¬ёщѕЭЅЗЙ«ёшУиµАѕЯ
-
+--Сундук платья (ID 2915)
 function ItemUse_MarryBox ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 4 then
-		SystemNotice(role ,"you need at least 4 free slot to open Chest of Gown")
+		SystemNotice(role ,"\194\224\236 \237\243\230\237\238 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \239\235\224\242\252\255")
 		UseItemFailed ( role )
 		return
 	end
 	local cha_type = GetChaTypeID ( role ) 
 	if cha_type == 3  then 
-		   GiveItem ( role , 0 , 5244  , 1 , 4 )
-		   GiveItem ( role , 0 , 5245  , 1 , 4 )
-		   GiveItem ( role , 0 , 5246  , 1 , 4 )
-		   GiveItem ( role , 0 , 5247  , 1 , 4 )
+	       GiveItem ( role , 0 , 5244  , 1 , 4 )
+	       GiveItem ( role , 0 , 5245  , 1 , 4 )
+	       GiveItem ( role , 0 , 5246  , 1 , 4 )
+	       GiveItem ( role , 0 , 5247  , 1 , 4 )
 	elseif cha_type == 4  then 
-		   GiveItem ( role , 0 , 5252  , 1 , 4 )
-		   GiveItem ( role , 0 , 5253  , 1 , 4 )
-		   GiveItem ( role , 0 , 5254  , 1 , 4 )
-		   GiveItem ( role , 0 , 5255  , 1 , 4 )
+	       GiveItem ( role , 0 , 5252  , 1 , 4 )
+	       GiveItem ( role , 0 , 5253  , 1 , 4 )
+	       GiveItem ( role , 0 , 5254  , 1 , 4 )
+	       GiveItem ( role , 0 , 5255  , 1 , 4 )
 	elseif cha_type == 1 then 
-		   GiveItem ( role , 0 , 5221  , 1 , 4 )
-		   GiveItem ( role , 0 , 5222  , 1 , 4 )
-		   GiveItem ( role , 0 , 5223  , 1 , 4 )
+	       GiveItem ( role , 0 , 5221  , 1 , 4 )
+	       GiveItem ( role , 0 , 5222  , 1 , 4 )
+	       GiveItem ( role , 0 , 5223  , 1 , 4 )
 	elseif cha_type == 2 then 
-		   GiveItem ( role , 0 , 5238  , 1 , 4 )
-		   GiveItem ( role , 0 , 5239  , 1 , 4 )
-		   GiveItem ( role , 0 , 5240  , 1 , 4 )
+	       GiveItem ( role , 0 , 5238  , 1 , 4 )
+	       GiveItem ( role , 0 , 5239  , 1 , 4 )
+	       GiveItem ( role , 0 , 5240  , 1 , 4 )
 	end
 end
-		----------------------------------јСИЛ¶ЇЗйАсєР
+
+--Подарок Красоты (ID 2904)
 function ItemUse_JRDQBox( role , Item )
---	local Now_Day = os.date("%d")
---	local Now_Month = os.date("%m")
---	local Now_Time = os.date("%H")
---	local NowTimeNum = tonumber(Now_Time)
---	local NowDayNum = tonumber(Now_Day)
---	local NowMonthNum = tonumber(Now_Month)
---	local CheckDateNum = NowMonthNum * 10000 + NowDayNum * 100 + NowTimeNum
---	
---	if CheckDateNum < 021609  then
---		SystemNotice ( role , "Please use the item between 16th Febuary 9.00am and 16th Febuary 24.00pm" )
---		UseItemFailed ( role )
---		return
---	end
---	
---	if CheckDateNum > 021700 then
---		SystemNotice ( role , "Santa Claus has left. Please wait for next year" )
---		UseItemFailed ( role )
---		return
---	end
---
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 10 then
-		SystemNotice(role ,"To open Gift of the Beauty requires at least 10 empty inventory slots")
+		SystemNotice(role ,"\194\224\236 \237\243\230\237\238 10 \241\226\238\225\238\228\237\251\245 \241\235\238\242\238\226 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \207\238\228\224\240\238\234 \202\240\224\241\238\242\251")
 		UseItemFailed ( role )
 		return
 	end
 	local cha_type = GetChaTypeID ( role ) 
 	 if cha_type ==1 or cha_type ==2 then
-	 SystemNotice(role ,"Gift of the Beauty can only be opened by female")
+	 SystemNotice(role ,"\207\238\228\224\240\238\234 \202\240\224\241\238\242\251 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237 \242\238\235\252\234\238 \239\229\240\241\238\237\224\230\224\236\232 \230\229\237\241\234\238\227\238 \239\238\235\224")
 	UseItemFailed ( role )
 		return
 	end 
 	
 	local el = math.random ( 1, 100 )
 	if  el>=1 and el<=20 then
-	GiveItem ( role , 0 , 3343  , 1 , 4 )----------Гµ№е»Ё
+	GiveItem ( role , 0 , 3343  , 1 , 4 )
 	elseif  el>=21 and el<=40 then
 	GiveItem ( role , 0 , 3354  , 1 , 4 )
 	GiveItem ( role , 0 , 3355  , 1 , 4 )
 	GiveItem ( role , 0 , 3356  , 1 , 4 )
 	GiveItem ( role , 0 , 3357  , 1 , 4 )
 	GiveItem ( role , 0 , 3358  , 1 , 4 )
-	GiveItem ( role , 0 , 3359  , 1 , 4 )----------РДРНАс»Ё 
+	GiveItem ( role , 0 , 3359  , 1 , 4 )
 	elseif el>=41 and el<=45 then
-	GiveItem ( role , 0 , 937  , 1 , 4 ) -----------МмК№Ц®Тн
+	GiveItem ( role , 0 , 937  , 1 , 4 )
 	elseif el>=46 and el<=65 then
 	GiveItem ( role , 0 , 4264  , 1 , 4 )
 	GiveItem ( role , 0 , 4265  , 1 , 4 )
@@ -15767,53 +15207,31 @@ function ItemUse_JRDQBox( role , Item )
 	GiveItem ( role , 0 , 4270  , 1 , 4 )
 	GiveItem ( role , 0 , 4271  , 1 , 4 )
 	GiveItem ( role , 0 , 4272  , 1 , 4 )
-	GiveItem ( role , 0 , 4273  , 1 , 4 )---------------10ёц±нЗй
+	GiveItem ( role , 0 , 4273  , 1 , 4 )
 	elseif el>=66 and el<=75 then
-	GiveItem ( role , 0 , 3094  , 3 , 4 )------------Е¬Б¦Фц·щЖч3ёц
+	GiveItem ( role , 0 , 3094  , 3 , 4 )
 	elseif el>=76 and el<=85 then
-	GiveItem ( role , 0 , 855  , 10 , 4 ) -----------ѕ«БйУІ±Т
+	GiveItem ( role , 0 , 855  , 10 , 4 )
 	elseif el>=86 and el<87 then
-	GiveItem ( role , 0 , 1012  , 1 , 4 ) -----------јУДЙЦ®Йс1ёц
+	GiveItem ( role , 0 , 1012  , 1 , 4 )
 	elseif el>=87 and el<89 and cha_type == 3  then 
 	GiveItem ( role , 0 , 5244  , 1 , 4 )
 	GiveItem ( role , 0 , 5245  , 1 , 4 )
 	GiveItem ( role , 0 , 5246  , 1 , 4 )
-	GiveItem ( role , 0 , 5247  , 1 , 4 ) -----------РВДпЧ°
+	GiveItem ( role , 0 , 5247  , 1 , 4 )
 	elseif el>=89 and el<=90 and cha_type == 4 then
 	GiveItem ( role , 0 , 5252  , 1 , 4 )
 	GiveItem ( role , 0 , 5253  , 1 , 4 )
 	GiveItem ( role , 0 , 5254  , 1 , 4 )
-	GiveItem ( role , 0 , 5255  , 1 , 4 ) -----------»йДпЧ°
+	GiveItem ( role , 0 , 5255  , 1 , 4 )
 	else
-	local EID = math.random ( 1808, 1811 )----------·ўРНКй
+	local EID = math.random ( 1808, 1811 )
 	GiveItem ( role , 0 , EID  , 1 , 4 )
 	end
 end
 
-
-----------------------------------ІЕїЎ¶ЇЗйАсєР
+--Подарок Ханка (ID 2905)
 function ItemUse_CJDQBox( role , Item )
-
---	local Now_Day = os.date("%d")
---	local Now_Month = os.date("%m")
---	local Now_Time = os.date("%H")
---	local NowTimeNum = tonumber(Now_Time)
---	local NowDayNum = tonumber(Now_Day)
---	local NowMonthNum = tonumber(Now_Month)
---	local CheckDateNum = NowMonthNum * 10000 + NowDayNum * 100 + NowTimeNum
---	
---	if CheckDateNum < 021609  then
---		SystemNotice ( role , "Please use the item between 16th Febuary 9.00am and 16th Febuary 24.00pm" )
---		UseItemFailed ( role )
---		return
---	end
---	
---	if CheckDateNum > 021700 then
---		SystemNotice ( role , "Please wait for next year" )
---		UseItemFailed ( role )
---		return
---	end
-	
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 10 then
 		SystemNotice(role ,"you need at least 10 free slot to open Gift of the Hunk")
@@ -15822,22 +15240,22 @@ function ItemUse_CJDQBox( role , Item )
 	end
 	local cha_type = GetChaTypeID ( role ) 
 	 if cha_type ==3 or cha_type ==4 then
-		SystemNotice(role ,"Gift of the Hunk can only be opened by male characters")
+		SystemNotice(role ,"\207\238\228\224\240\238\234 \213\224\237\234\224 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237 \242\238\235\252\234\238 \239\229\240\241\238\237\224\230\224\236\232 \236\243\230\241\234\238\227\238 \239\238\235\224")
 		UseItemFailed ( role )
 		return
 	end
 	local el = math.random ( 1, 100 )
 	if  el>=1 and el<=20 then
-	GiveItem ( role , 0 , 3077  , 1 , 4 )----------МрГЫЗЙїЛБ¦
+	GiveItem ( role , 0 , 3077  , 1 , 4 )
 	elseif  el>=21 and el<=40 then
 	GiveItem ( role , 0 , 3354  , 1 , 4 )
 	GiveItem ( role , 0 , 3355  , 1 , 4 )
 	GiveItem ( role , 0 , 3356  , 1 , 4 )
 	GiveItem ( role , 0 , 3357  , 1 , 4 )
 	GiveItem ( role , 0 , 3358  , 1 , 4 )
-	GiveItem ( role , 0 , 3359  , 1 , 4 )----------РДРНАс»Ё 
+	GiveItem ( role , 0 , 3359  , 1 , 4 )
 	elseif el>=41 and el<=45 then
-	GiveItem ( role , 0 , 0936  , 1 , 4 ) -----------µыТн
+	GiveItem ( role , 0 , 0936  , 1 , 4 ) 
 	elseif el>=46 and el<=65 then
 	GiveItem ( role , 0 , 4264  , 1 , 4 )
 	GiveItem ( role , 0 , 4265  , 1 , 4 )
@@ -15848,28 +15266,28 @@ function ItemUse_CJDQBox( role , Item )
 	GiveItem ( role , 0 , 4270  , 1 , 4 )
 	GiveItem ( role , 0 , 4271  , 1 , 4 )
 	GiveItem ( role , 0 , 4272  , 1 , 4 )
-	GiveItem ( role , 0 , 4273  , 1 , 4 )---------------10ёц±нЗй
+	GiveItem ( role , 0 , 4273  , 1 , 4 )
 	elseif el>=66 and el<=75 then
-	GiveItem ( role , 0 , 3094  , 3 , 4 )------------Е¬Б¦Фц·щЖч3ёц
+	GiveItem ( role , 0 , 3094  , 3 , 4 )
 	elseif el>=76 and el<=85 then
-	GiveItem ( role , 0 , 855  , 10 , 4 ) -----------ѕ«БйУІ±Т
+	GiveItem ( role , 0 , 855  , 10 , 4 )
 	elseif el>=86 and el<87 then
-	GiveItem ( role , 0 , 0862  , 1 , 4 ) -----------СТУс1ёц
+	GiveItem ( role , 0 , 0862  , 1 , 4 )
 	elseif el>=87 and el<89 and cha_type == 1  then 
 	GiveItem ( role , 0 , 5221  , 1 , 4 )
 	GiveItem ( role , 0 , 5222  , 1 , 4 )
-	GiveItem ( role , 0 , 5223  , 1 , 4 ) -----------Т№№уЧеЧ°
+	GiveItem ( role , 0 , 5223  , 1 , 4 )
 	elseif el>=89 and el<=90 and cha_type == 2 then
 	GiveItem ( role , 0 , 5238  , 1 , 4 )
 	GiveItem ( role , 0 , 5239  , 1 , 4 )
-	GiveItem ( role , 0 , 5240  , 1 , 4 )-----------єЪЅрЧ°
+	GiveItem ( role , 0 , 5240  , 1 , 4 )
 	else
-	local EID = math.random ( 1808, 1811 )----------·ўРНКй
+	local EID = math.random ( 1808, 1811 )
 	GiveItem ( role , 0 , EID  , 1 , 4 )
 	end
 end
 
---ID2906	Свадебные сладости
+--Свадебные сладости (ID 2906)
 function ItemUse_XTBOX ( role , Item )
 	local item_type = BoxXiang_BaoZhaBOX
 	local item_type_rad = BoxXiang_BaoZhaBOX_Rad
@@ -15881,12 +15299,12 @@ function ItemUse_XTBOX ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 		
 	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Insufficient inventory slots. Failed to use Wedding Candy")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \209\226\224\228\229\225\237\251\229 \209\235\224\228\238\241\242\232")
 		UseItemFailed ( role )
 		return
 	end
 	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General
+		General = item_type_rad [ i ] + General		
 	end 
 	local a = math.random ( 1, General )
 	local b = 0
@@ -15935,72 +15353,70 @@ function ItemUse_XTBOX ( role , Item )
 		if ItemId == GoodItem[Good_C] then
 			local itemname = GetItemName ( ItemId ) 
 			local cha_name = GetChaDefaultName ( role ) 
-			local message = cha_name.." uses a Wedding Candy and obtained "..itemname  
+			local message = cha_name.." \232\241\239\238\235\252\231\243\229\242 \209\226\224\228\229\225\237\251\229 \241\235\224\228\238\241\242\232 \232 \239\238\235\243\247\224\229\242 "..itemname  
+
 			Notice ( message )
 		end
 	end
 end
 
--------------------»йЗмґуАсєР
+--Пакет со свадебными подарками (ID 2907)
 function ItemUse_HQBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 4 then
-		SystemNotice(role ,"You need at least 3 free slots to open Wedding Gift Parcel")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \241\226\238\225\238\228\237\238\227\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \210\240\229\225\243\229\242\241\255 3 \241\226\238\225\238\228\237\251\245 \255\247\229\233\234\232 \226 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \207\224\234\229\242 \241\238 \241\226\224\228\229\225\237\251\236\232 \239\238\228\224\240\234\224\236\232")
 		UseItemFailed ( role )
 		return
 	end
 	local el = math.random ( 1, 100 )
 	if  el>=1 and el<=20 then
-	GiveItem ( role , 0 , 1012  , 1 , 4 ) -------------јУДЙЦ®Йс
+	GiveItem ( role , 0 , 1012  , 1 , 4 )
 	elseif el>=21 and el<=40 then
-	GiveItem ( role , 0 , 1016  , 1 , 4 ) ---------------Е®ЙсРЎ°ь
+	GiveItem ( role , 0 , 1016  , 1 , 4 )
 	elseif el>=41 and el<60 then
-	GiveItem ( role , 0 , 0333  , 1 , 4 ) ----------------ёЯј¶±¦КЇ¶Т»»ИЇ
+	GiveItem ( role , 0 , 0333  , 1 , 4 )
 	elseif el>=61 and el<=100 then
-	GiveItem ( role , 0 , 0273  , 1 , 4 )-----------------Т»µИЅ±	
+	GiveItem ( role , 0 , 0273  , 1 , 4 )	
 	end
 end
 
------------------------------------РТФЛЦн±¦ПдЈєСТУсЎўСЧУсЎўУҐСЫКЇЎў·пБйКЇЎўјУДЙЦ®ЙсЎўЕ®ЙсРЎ°ь
-
+--Сундук счастливой хрюшки (ID 2909)
 function ItemUse_XYPIGBOX( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 1 then
-		SystemNotice(role ,"You need at least 4 empty slots to open Lucky Piggy Chest")
+		SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \241\247\224\241\242\235\232\226\238\233 \245\240\254\248\234\232")
 		UseItemFailed ( role )
 		return
 	end
 	local el = math.random ( 1, 100 )
 	if  el>=1 and el<=4 then
-	GiveItem ( role , 0 , 1012  , 1 , 4 ) -------------јУДЙЦ®Йс
+	GiveItem ( role , 0 , 1012  , 1 , 4 )
 	elseif el==5  then
-	GiveItem ( role , 0 , 1016  , 1 , 4 ) ---------------Е®ЙсРЎ°ь
+	GiveItem ( role , 0 , 1016  , 1 , 4 )
 	elseif el>=6 and el<=30 then
-	GiveItem ( role , 0 , 0861  , 1 , 4 ) ----------------УҐСЫКЇ
+	GiveItem ( role , 0 , 0861  , 1 , 4 )
 	elseif el>=31 and el<=60 then
-	GiveItem ( role , 0 , 885  , 1 , 4 )-----------------ѕ«Б¶КЇ
+	GiveItem ( role , 0 , 885  , 1 , 4 )
 	elseif el>=61 and el<=75 then
-	GiveItem ( role , 0 , 0860  , 1 , 4 ) ---------------·пБйКЇ
+	GiveItem ( role , 0 , 0860  , 1 , 4 )
 	elseif el>=76 and el<=88 then
-	GiveItem ( role , 0 , 0862  , 1 , 4 ) ----------------СТУс
+	GiveItem ( role , 0 , 0862  , 1 , 4 )
 	elseif el>=89 and el<=100 then
-	GiveItem ( role , 0 , 0863  , 1 , 4 )-----------------СЧУс
+	GiveItem ( role , 0 , 0863  , 1 , 4 )
 	end
 end
 
-
------------------------------С№Лк°ьЈєС№Лк°ьЦ»УРФЪіэП¦Т№ЈЁ2ФВ17ИХНн23:00--2ФВ18ИХБиіїЈ±µгЈ©ґтїЄІЕ»бУРР§
-----------------------------------------------------------------------------------С№Лк°ь
+--Мешок благополучия пиратии (ID 2910)
 function ItemUse_YSB( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 1 then
-		SystemNotice(role ,"You need at least 1 empty slots to open Auspicious Bag")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\243\230\229\237 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \204\229\248\238\234 \225\235\224\227\238\239\238\235\243\247\232\255 \239\232\240\224\242\232\232")
 		UseItemFailed ( role )
 		return
 	end
@@ -16015,45 +15431,44 @@ function ItemUse_YSB( role , Item )
 	if CheckDateNum >= 21723  and CheckDateNum <= 21801 then
 		ItemUse_YSBOX ( role , Item )
 	else 
-		SystemNotice(role ,"It is not time yet. Do not try to cheat!")
+		SystemNotice(role ,"\194\240\229\236\255 \229\249\229 \237\229 \239\240\232\248\235\238. \205\229 \239\251\242\224\233\241\255 \236\229\237\255 \238\225\236\224\237\243\242\252!")
 		UseItemFailed ( role )
 		return
 	end
 end
+
+--------------------------------------------------------------------------------------------------
+--Абаддон
+--------------------------------------------------------------------------------------------------
+
 function ItemUse_YSBOX ( role , Item )
 	local el = math.random ( 1, 1000 )
 	if  el>=1 and el<=5 then
-		GiveItem ( role , 0 , 1012  , 1 , 4 ) -------------јУДЙЦ®Йс        0.5
-	elseif el>=6 and el<=10 then
-		GiveItem ( role , 0 , 1016  , 1 , 4 ) ---------------Е®ЙсРЎ°ь       0.5
-	elseif el>=11 and el<=20 then
-		GiveItem ( role , 0 , 0860  , 1 , 4 ) ---------------·зБй1
-	elseif el>=21 and el<=30 then
-		GiveItem ( role , 0 , 0861  , 1 , 4 ) ----------------УҐСЫКЇ     1
-	elseif el>=31 and el<40 then
-		GiveItem ( role , 0 , 0862  , 1 , 4 ) ----------------СТУс       1
-	elseif el>=41 and el<=50 then
-		GiveItem ( role , 0 , 0863  , 1 , 4 )-----------------СЧУс       1
-	elseif el>=51 and el<=270 then
-		GiveItem ( role , 0 , 855  , 99 , 4 )-----------------ѕ«БйУІ±Т       22
-	elseif el>=271 and el<=500 then
-		GiveItem ( role , 0 , 0227  , 5 , 4 )-----------------КШ»¤ѕ«БйЛЗБП    23
-	elseif el>=501 and el<=750 then
-		GiveItem ( role , 0 , 3096  , 3 , 4 )-----------------ІЖё»Фц·щЖч3ёц   25
-	elseif el>=751 and el<=1000 then
-		GiveItem ( role , 0 , 3094  , 3 , 4 )-----------------Е¬Б¦Фц·щЖч3ёц   25
-	end
+		GiveItem ( role , 0 , 1012  , 1 , 4 )
+	elseif el>=6 and el<=206 then
+		GiveItem ( role , 0 , 0860  , 1 , 4 )
+	elseif el>=207 and el<=407 then
+		GiveItem ( role , 0 , 0861  , 1 , 4 )
+	elseif el>=408 and el<=608 then
+		GiveItem ( role , 0 , 0862  , 1 , 4 )
+	elseif el>=609 and el<=810 then
+		GiveItem ( role , 0 , 0863  , 1 , 4 )
+	elseif el>=811 and el<=1000 then
+
 end
-function ItemUse_Hadisi( role , Item )		----------№юµПЛ№ТЕОп
+end
+
+--Сундук Хардина (ID 2836)
+function ItemUse_Hadisi( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 4 then
-		SystemNotice(role ,"You need at least 3 empty slots to open Chest of Hardin")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \202\224\234 \236\232\237\232\236\243\236 \237\243\230\237\238 3 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \213\224\240\228\232\237\224")
 		UseItemFailed ( role )
 		return
 	end
@@ -16061,28 +15476,18 @@ function ItemUse_Hadisi( role , Item )		----------№юµПЛ№ТЕОп
 	GiveItem ( role , 0 , 2818  , 1 , 4 )
 	GiveItem ( role , 0 , 2819  , 1 , 4 )
 end
-function ItemUse_MG ( role , Item )
-	local hp = GetChaAttr(role, ATTR_HP) 
-	if hp <= 0 then 
-	end 
-	hp_resume = 35  
-	hp = hp + hp_resume 
-	mxhp = GetChaAttr(role,ATTR_MXHP) 
-	if hp > mxhp then 
-		hp = mxhp 
-	end 
-	SetCharaAttr(hp, role, ATTR_HP) 
-end 
-function ItemUse_Anhei( role , Item )		----------°µєЪєРЧУ
+
+--Сундук Тьмы (ID 2837)
+function ItemUse_Anhei( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 4 then
-		SystemNotice(role ,"You need at least 3 empty slots to open Chest of Darkness")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \202\224\234 \236\232\237\232\236\243\236 \237\243\230\237\238 3 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \210\252\236\251")
 		UseItemFailed ( role )
 		return
 	end
@@ -16090,16 +15495,18 @@ function ItemUse_Anhei( role , Item )		----------°µєЪєРЧУ
 	GiveItem ( role , 0 , 2821  , 1 , 4 )
 	GiveItem ( role , 0 , 2822  , 1 , 4 )
 end
-function ItemUse_Diyu( role , Item )		----------µШУь°ьё¤
+
+--Сундук Абаддона (ID 2838)
+function ItemUse_Diyu( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 4 then
-		SystemNotice(role ,"To open a Chest of Abaddon requires at least 3 empty inventory slots")
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \202\224\234 \236\232\237\232\236\243\236 \237\243\230\237\238 3 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \192\225\224\228\228\238\237\224")
 		UseItemFailed ( role )
 		return
 	end
@@ -16107,16 +15514,18 @@ function ItemUse_Diyu( role , Item )		----------µШУь°ьё¤
 	GiveItem ( role , 0 , 2824  , 1 , 4 )
 	GiveItem ( role , 0 , 2825  , 1 , 4 )
 end
-function ItemUse_Xiuluo( role , Item )		----------РЮВЮПдЧУ
+
+--Сундук Асуры (ID 2839)
+function ItemUse_Xiuluo( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 4 then
-		SystemNotice(role ,"You need at least 3 free slots to open Chest of Asura")
+		SystemNotice(role ,"\194\224\236 \237\243\230\237\238 3 \241\226\238\225\238\228\237\251\229 \255\247\229\233\234\232 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \192\241\243\240\251")
 		UseItemFailed ( role )
 		return
 	end
@@ -16124,16 +15533,18 @@ function ItemUse_Xiuluo( role , Item )		----------РЮВЮПдЧУ
 	GiveItem ( role , 0 , 2827  , 1 , 4 )
 	GiveItem ( role , 0 , 2828  , 1 , 4 )
 end
-function ItemUse_Youming( role , Item )	----------УДЪ¤±¦ІШ
+
+--Сундук Бездны (ID 2840)
+function ItemUse_Youming( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 4 then
-		SystemNotice(role ,"You need at least 3 empty slots to open Chest of Abyss")
+		SystemNotice(role ,"\194\224\236 \237\243\230\237\238 3 \241\226\238\225\238\228\237\251\229 \255\247\229\233\234\232 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \193\229\231\228\237\251")
 		UseItemFailed ( role )
 		return
 	end
@@ -16141,16 +15552,18 @@ function ItemUse_Youming( role , Item )	----------УДЪ¤±¦ІШ
 	GiveItem ( role , 0 , 2830  , 1 , 4 )
 	GiveItem ( role , 0 , 2831  , 1 , 4 )
 end
-function ItemUse_Minghe( role , Item )		----------Ъ¤єУРЎ°ь
+
+--Сундук Стикса (ID 2841)
+function ItemUse_Minghe( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 4 then
-		SystemNotice(role ,"You need at least 3 empty inventory slots to open Chest of Styx")
+		SystemNotice(role ,"\194\224\236 \237\243\230\237\238 3 \241\226\238\225\238\228\237\251\229 \255\247\229\233\234\232 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \209\242\232\234\241\224 ")
 		UseItemFailed ( role )
 		return
 	end
@@ -16158,16 +15571,18 @@ function ItemUse_Minghe( role , Item )		----------Ъ¤єУРЎ°ь
 	GiveItem ( role , 0 , 2833  , 1 , 4 )
 	GiveItem ( role , 0 , 2834  , 1 , 4 )
 end
-function ItemUse_Sishen( role , Item )		----------ЛАЙсІШК¬ґ¦
+
+--Скелет Смерти (ID 2842)
+function ItemUse_Sishen( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 2 then
-		SystemNotice(role ,"To open the Carcass of Death requires at least 1 empty inventory slot")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \209\234\229\235\229\242 \209\236\229\240\242\232 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
@@ -16175,7 +15590,7 @@ function ItemUse_Sishen( role , Item )		----------ЛАЙсІШК¬ґ¦
 	local lv = GetChaAttr(role, ATTR_LV) 
 	local star_rad=math.random ( 1, 2 )
 	if lv < 40 then
-		SystemNotice(role ,"Currently lower than Lv 40. Unable to use item!")
+		SystemNotice(role ,"\194\224\248 \243\240\238\226\229\237\252 \237\232\230\229 \247\229\236 40. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242!")
 		UseItemFailed ( role )	
 	elseif job == 9 then 
 		if star_rad==1 then
@@ -16219,32 +15634,35 @@ function ItemUse_Sishen( role , Item )		----------ЛАЙсІШК¬ґ¦
 			GiveItem ( role , 0 , 2344  , 1 , 4 ) 
 		end
 	else 
-		SystemNotice(role ,"Class mismatch. Item can only be used after second class advancement!")
+		SystemNotice(role ,"\207\240\229\228\236\229\242 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237 \242\238\235\252\234\238 \239\238\241\235\229 \226\251\225\238\240\224 \226\242\238\240\238\227\238 \238\241\237\238\226\237\238\227\238 \234\235\224\241\241\224!")
 		UseItemFailed ( role )	
 	end
 end
-function ItemUse_Zhenheilong( role , Item )	----------ХжєЪБъ±¦Пд
+
+--Законный сундук Черного дракона (ID 2843)
+function ItemUse_Zhenheilong( role , Item )
 	local Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 5 then
-		SystemNotice(role ,"You need at least 4 empty slots to open Rightful Chest of Black Dragon")
+		SystemNotice(role ,"\215\242\238\225\251 \238\242\234\240\251\242\252 \199\224\234\238\237\237\251\233 \241\243\237\228\243\234 \215\229\240\237\238\227\238 \228\240\224\234\238\237\224 \239\238 \234\240\224\233\237\229\233 \236\229\240\229 \242\240\229\225\243\229\242\241\255 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
-	GiveItem ( role , 0 , 2367  , 1 , 16 ) 
-	GiveItem ( role , 0 , 2368  , 1 , 16 ) 
-	GiveItem ( role , 0 , 2369  , 1 , 16 )
+	GiveItem ( role , 0 , 2367  , 1 , 20 ) 
+	GiveItem ( role , 0 , 2368  , 1 , 20 ) 
+	GiveItem ( role , 0 , 2369  , 1 , 20 )
         local cha_type = GetChaTypeID ( role )
 	if cha_type == 4 then 
-		GiveItem ( role , 0 , 2370  , 1 , 16 )		
+		GiveItem ( role , 0 , 2370  , 1 , 20 )		
 	end
 end
---µШУьЛДІг»ъЖ±
+
+--Проход в Абаддон 4 (ID 2844)
 function Jz_Script_4thDy(role, Item )
 	local i = CheckBagItem(role,2844)
 	local k = ChaIsBoat(role)
@@ -16253,7 +15671,7 @@ function Jz_Script_4thDy(role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -16261,7 +15679,7 @@ function Jz_Script_4thDy(role, Item )
 		if i > 0 then
 			local j = DelBagItem(role,2844,1)
 			if j == 1 then
-				MoveCity(role,"Caribbean Abaddon 4")
+				MoveCity(role,"Abaddon 4")
 				return
 			end
 		end
@@ -16271,21 +15689,205 @@ function Jz_Script_4thDy(role, Item )
 		
 end
 
---ID2941	Карта перерождения
+--Бремя Смерти (ID 2919)
+function ItemUse_DathBagA(role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \194\224\236 \237\243\230\237\224 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \193\240\229\236\255 \209\236\229\240\242\232")
+		UseItemFailed ( role )
+		return
+	end
+	local star_rad=math.random ( 1, 4 )
+	if star_rad==4 then
+		GiveItem ( role , 0 , 2846  , 1 , 16 ) 
+	else
+		GiveItem ( role , 0 , 2928  , 1 , 16 ) 
+	end
+end
+
+--Бремя Смерти (ID 2920)
+function ItemUse_DathBagB(role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \194\224\236 \237\243\230\237\224 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \193\240\229\236\255 \209\236\229\240\242\232")
+		UseItemFailed ( role )
+		return
+	end
+	local star_rad=math.random ( 1, 4 )
+	if star_rad==4 then
+		GiveItem ( role , 0 , 2847  , 1 , 16 ) 
+	else
+		GiveItem ( role , 0 , 2929  , 1 , 16 ) 
+	end
+end
+
+--Бремя Смерти (ID 2921)
+function ItemUse_DathBagC(role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \194\224\236 \237\243\230\237\224 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \193\240\229\236\255 \209\236\229\240\242\232")
+		UseItemFailed ( role )
+		return
+	end
+	local star_rad=math.random ( 1, 4 )
+	if star_rad==4 then
+		GiveItem ( role , 0 , 2848  , 1 , 16 ) 
+	else
+		GiveItem ( role , 0 , 2927  , 1 , 16 ) 
+	end
+end
+
+--Бремя Смерти (ID 2922)
+function ItemUse_DathBagD(role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \194\224\236 \237\243\230\237\224 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \193\240\229\236\255 \209\236\229\240\242\232")
+		UseItemFailed ( role )
+		return
+	end
+	local star_rad=math.random ( 1, 4 )
+	if star_rad==4 then
+		GiveItem ( role , 0 , 2849  , 1 , 16 ) 
+	else
+		GiveItem ( role , 0 , 2927  , 1 , 16 ) 
+	end
+end
+
+--Бремя Смерти (ID 2923)
+function ItemUse_DathBagE(role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \194\224\236 \237\243\230\237\224 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \193\240\229\236\255 \209\236\229\240\242\232")
+		UseItemFailed ( role )
+		return
+	end
+	local star_rad=math.random ( 1, 4 )
+	if star_rad==4 then
+		GiveItem ( role , 0 , 2850  , 1 , 16 ) 
+	else
+		GiveItem ( role , 0 , 2929  , 1 , 16 ) 
+	end
+end
+
+--Бремя Смерти (ID 2924)
+function ItemUse_DathBagF(role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \194\224\236 \237\243\230\237\224 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \193\240\229\236\255 \209\236\229\240\242\232")
+		UseItemFailed ( role )
+		return
+	end
+	local star_rad=math.random ( 1, 4 )
+	if star_rad==4 then
+		GiveItem ( role , 0 , 2851  , 1 , 16 ) 
+	else
+		GiveItem ( role , 0 , 2931  , 1 , 16 ) 
+	end
+end
+
+--Бремя Смерти (ID 2925)
+function ItemUse_DathBagG(role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \194\224\236 \237\243\230\237\224 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \193\240\229\236\255 \209\236\229\240\242\232")
+		UseItemFailed ( role )
+		return
+	end
+	local star_rad=math.random ( 1, 4 )
+	if star_rad==4 then
+		GiveItem ( role , 0 , 2852  , 1 , 16 ) 
+	else
+		GiveItem ( role , 0 , 2932  , 1 , 16 ) 
+	end
+end
+
+--Бремя Смерти (ID 2926)
+function ItemUse_DathBagH(role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \194\224\236 \237\243\230\237\224 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \194\224\248\229\236 \240\254\234\231\224\234\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \193\240\229\236\255 \209\236\229\240\242\232")
+		UseItemFailed ( role )
+		return
+	end
+	local star_rad=math.random ( 1, 4 )
+	if star_rad==4 then
+		GiveItem ( role , 0 , 2930  , 1 , 16 ) 
+	else
+		GiveItem ( role , 0 , 2930  , 1 , 16 ) 
+	end
+end
+
+--------------------------------------------------------------------------------------------------
+--Карта перерождения
+--------------------------------------------------------------------------------------------------
+
+--Карта перерождения (ID 2941)
 function ItemUse_ZSCard(role, Item )
 	local i = CheckBagItem(role,2941)
 	local k = ChaIsBoat(role)
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	local charLv=Lv ( role )
 	if Item_CanGet < 1 then
-		SystemNotice(role ,"Чтобы использовать Карту перерождения нужен 1 свободный слот в Вашем инвентаре")
+		SystemNotice(role ,"\215\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \202\224\240\242\243 \239\229\240\229\240\238\230\228\229\237\232\255 \237\243\230\229\237 1 \241\226\238\225\238\228\237\251\233 \241\235\238\242 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229")
 		UseItemFailed ( role )
 		return
 	end
-	if k == 0 then
+	if charLv<=1  then
+		SystemNotice( role , "\194\251 \228\238\235\230\237\251 \225\251\242\252 \243\240\238\226\237\255 75 \232\235\232 \226\251\248\229, \247\242\238\225\251 \232\241\239\238\235\252\231\238\226\224\242\252 \202\224\240\242\243 \239\229\240\229\240\238\230\228\229\237\232\255" )
+		UseItemsFailed ( role )
+		return
+	elseif k == 0 then
 		if i > 0 then
-			local j = DelBagItem(role,2941,1)
+			local j = DelBagItem(role,2941,1) -- карта перерождения
 			if j == 1 then
-				SystemNotice(role, "Вы успешно применили Карту перерождения, пожалуйста найдите Ангела перерождения и следуйте дальнейшим инструкциям.")
 				GiveItem ( role , 0 , 2235 , 1 , 42)
 				GoTo( role,  1750 , 909 , "jialebi")
 				return
@@ -16294,30 +15896,36 @@ function ItemUse_ZSCard(role, Item )
 	else
 		UseItemsFailed ( role )
 	end
+		
 end
------------єЈѕьєЈµБКШ»¤ЙсХЩ»ЅИЇ--------------------
+
+--------------------------------------------------------------------------------------------------
+--Священная война
+--------------------------------------------------------------------------------------------------
+
+--Свиток призыва хранителя (ID 2381)
 function ItemUse_SummonBigBOSS(role, Item )
 local map_name_role = GetChaMapName ( role )
 local Cha_Boat = 0
       Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( Cha_Boat , "Not usable on the sea" )
+		SystemNotice( Cha_Boat , "\205\229\227\238\228\237\238 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229" )
 		UseItemFailed ( Cha_Boat )
 		return
 	end
 	local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	end
    if  map_name_role == "guildwar" then
 	local x,y = GetChaPos(role)
 	if GetChaGuildID(role) <= 100 and GetChaGuildID(role) > 0 then
 	local MonsterID = 1007
-	local Refresh = 1300					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 1200000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 1300
+	local life = 1200000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 	SetChaLifeTime( new, life )
 	SetChaSideID(new,1)
@@ -16325,8 +15933,8 @@ local Cha_Boat = 0
 
 	if GetChaGuildID(role) > 100 and GetChaGuildID(role) <= 200 then
 	local MonsterID = 1008
-	local Refresh = 1300					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 1200000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 1300
+	local life = 1200000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 	SetChaLifeTime( new, life )
 	SetChaSideID(new,2)
@@ -16336,8 +15944,8 @@ local Cha_Boat = 0
     local x,y = GetChaPos(role)
 	if GetChaGuildID(role) <= 100 and GetChaGuildID(role) > 0 then
 	local MonsterID = 1007
-	local Refresh = 1300					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 12600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 1300
+	local life = 12600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 	SetChaLifeTime( new, life )
 	SetChaSideID(new,1)
@@ -16345,43 +15953,41 @@ local Cha_Boat = 0
 
 	if GetChaGuildID(role) > 100 and GetChaGuildID(role) <= 200 then
 	local MonsterID = 1008
-	local Refresh = 1300					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 1200000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 1300
+	local life = 1200000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh,role )
 	SetChaLifeTime( new, life )
 	SetChaSideID(new,2)
 	end
     else 
-        SystemNotice( role , "This ticket can only be used in Sacred War map" )
+        SystemNotice( role , "\221\242\238\242 \239\240\229\228\236\229\242 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237 \242\238\235\252\234\238 \237\224 \242\229\240\240\232\242\238\240\232\232 \209\226\255\249\229\237\237\238\233 \194\238\233\237\251" )
         UseItemFailed ( role )
         return
     end
 
 end
 
-
-----------------------µсПс»ъЖ±---------------------
+--Проход к статуе (ID 2986)
 function ItemUse_moveDX(role, Item)
 local i = CheckBagItem(role,2986)
---local k = ChaIsBoat(role)
  local Cha_Boat = 0
        Cha_Boat = GetCtrlBoat ( role )
 	 if Cha_Boat ~=  nil then
-		SystemNotice( Cha_Boat , "Not usable on the sea" )
+		SystemNotice( Cha_Boat , "\205\229\227\238\228\237\238 \234 \232\241\239\238\235\252\231\238\226\224\237\232\254 \237\224 \236\238\240\229" )
 		UseItemFailed ( Cha_Boat )
 		return
 	 end
 	 local reg = 0
-		  reg =IsChaInRegion( role, 2 )
+	      reg =IsChaInRegion( role, 2 )
 	 if reg == 1 then
-		SystemNotice( role , "Unable to use in Safe Zone" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
-       return
+                return
 	 end
 
 
  if GetChaGuildID(role) == 0 then
-    SystemNotice( role , "You do not have a guild. Unable to use the pass" )
+    SystemNotice( role , "\194\251 \237\229 \241\238\241\242\238\232\242\229 \237\232 \226 \238\228\237\238\233 \244\240\224\234\246\232\232. \207\229\240\229\236\229\249\229\237\232\229 \237\229\226\238\231\236\238\230\237\238" )
     UseItemFailed ( role )
     return
  end
@@ -16409,13 +16015,13 @@ if map_name_role =="guildwar" then
 	 
 	 else
 			UseItemFailed ( role )
-				  
+			    
 	 end
 
 elseif map_name_role =="guildwar2" then
 
 	 if GetChaGuildID(role) <= 100 and GetChaGuildID(role) > 0 and map_name_role =="guildwar2"  then
-				 if i > 0 then
+		       if i > 0 then
 				local j = DelBagItem(role,2986,1)
 				if j == 1 then
 					MoveTo( role,  305, 87,  "guildwar2" )
@@ -16436,93 +16042,99 @@ elseif map_name_role =="guildwar2" then
 			UseItemFailed ( role )
 		
    
-end
+         end
 
 else
-        SystemNotice( role , "This ticket can only be used in Sacred War map" )
+        SystemNotice( role , "\221\242\238\242 \225\232\235\229\242 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237 \242\238\235\252\234\238 \237\224 \242\229\240\240\232\242\238\240\232\232 \209\226\255\249\229\237\237\238\233 \194\238\233\237\251" )
         UseItemFailed ( role )
         return
    end        
 end
 
-
-------------------------°ЧСтґ¬і¤±¦ПдЈєЛ«»чЈ¬ёщѕЭЅЗЙ«ёшУиµАѕЯ
-
+--------------------------------------------------------------------------------------------------
+--Разное
+--------------------------------------------------------------------------------------------------
+--Сундук с украшениями капитана овна (ID 2955)
 function ItemUse_CZBox ( role , Item )
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
 	 if Item_CanGet < 4 then
-		SystemNotice(role ,"To open a Aries Apparel Chest requires at least 4 empty inventory slots")
+		SystemNotice(role ,"\205\243\230\237\238 4 \241\226\238\225\238\228\237\251\245 \241\235\238\242\224 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \241 \243\234\240\224\248\229\237\232\255\236\232 \234\224\239\232\242\224\237\224 \238\226\237\224")
 		UseItemFailed ( role )
 		return
 	end
 	local cha_type = GetChaTypeID ( role ) 
 	if cha_type == 3  then 
-		 
-		   GiveItem ( role , 0 , 5349  , 1 , 4 )
-		   GiveItem ( role , 0 , 5350  , 1 , 4 )
-		   GiveItem ( role , 0 , 5351  , 1 , 4 )
+	     
+	       GiveItem ( role , 0 , 5349  , 1 , 4 )
+	       GiveItem ( role , 0 , 5350  , 1 , 4 )
+	       GiveItem ( role , 0 , 5351  , 1 , 4 )
 	elseif cha_type == 4  then 
-		   GiveItem ( role , 0 , 5352  , 1 , 4 )
-		   GiveItem ( role , 0 , 5353  , 1 , 4 )
-		   GiveItem ( role , 0 , 5354  , 1 , 4 )
-		   GiveItem ( role , 0 , 5355  , 1 , 4 )
+	       GiveItem ( role , 0 , 5352  , 1 , 4 )
+	       GiveItem ( role , 0 , 5353  , 1 , 4 )
+	       GiveItem ( role , 0 , 5354  , 1 , 4 )
+	       GiveItem ( role , 0 , 5355  , 1 , 4 )
 	elseif cha_type == 1 then 
-		  
-		   GiveItem ( role , 0 , 5341  , 1 , 4 )
-		   GiveItem ( role , 0 , 5342  , 1 , 4 )
-		   GiveItem ( role , 0 , 5343  , 1 , 4 )
+	      
+	       GiveItem ( role , 0 , 5341  , 1 , 4 )
+	       GiveItem ( role , 0 , 5342  , 1 , 4 )
+	       GiveItem ( role , 0 , 5343  , 1 , 4 )
 	elseif cha_type == 2 then 
-		   
-		   GiveItem ( role , 0 , 5345  , 1 , 4 )
-		   GiveItem ( role , 0 , 5346  , 1 , 4 )
-		   GiveItem ( role , 0 , 5347  , 1 , 4 )
+	       
+	       GiveItem ( role , 0 , 5345  , 1 , 4 )
+	       GiveItem ( role , 0 , 5346  , 1 , 4 )
+	       GiveItem ( role , 0 , 5347  , 1 , 4 )
 	end
 end
 
 
-------------------------УЮИЛЅЪАсОп----------2953----------itemeffect
+--Первоапрельский подарок (ID 2953)
 function ItemUse_Foolish ( role , Item )
 	local charLv=Lv ( role )
 	local Cha_Boat = 0
 		Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
-	local Exp_el=GetChaAttr (  role , ATTR_CEXP )----------µ±З°µИј¶ѕ­Сй
-	local dif_exp_thalf_c = (DEXP[charLv+1] - DEXP[charLv])*0.03+Exp_el ----------------
-		SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf_c )-------------
-		--SystemNotice( role , "Use April's Fool Gift to obtain 3 percent experience points" )--------------
+	local Exp_el=GetChaAttr (  role , ATTR_CEXP )
+	local dif_exp_thalf_c = (DEXP[charLv+1] - DEXP[charLv])*0.03+Exp_el
+		SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf_c )
+
 end
----------------------------ХЩ»Ѕ°ЧСтКШ»¤ХЯ
+
+--Свиток хранителя Белой овцы (ID 2990)
 function ItemUse_BYSHJZ ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local star = 0
 	star =IsChaInRegion( role, 2 )
 	if star == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \226\251\231\226\224\242\252 \236\238\237\241\242\240\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local x, y = GetChaPos(role)
 	local MonsterID = 1009
-	local Refresh = 3700					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 3600000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local Refresh = 3700
+	local life = 3600000
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
 	SetChaLifeTime( new, life )
 end
 
---ID2956	Книга навыков перерожденного (Воитель)
-function Sk_Script_Wyz ( role , Item )
+--------------------------------------------------------------------------------------------------
+--Книги навыков перерождения
+--------------------------------------------------------------------------------------------------
+--Книга навыков перерожденного Воителя (ID 2956)
+function Sk_Script_Wyz ( role , Item ) 											
 	local sk_add = SK_WYZ 
-	local form_sklv = GetSkillLv( role , sk_add )  
+	local form_sklv = GetSkillLv( role , sk_add ) 
+	  
 	if form_sklv >= 1  then 
 		UseItemFailed ( role )  
 		return 
@@ -16539,10 +16151,11 @@ function Sk_Script_Wyz ( role , Item )
 	end 
 end 
 
---ID2957	Книга навыков перерожденного (Чемпион)
-function Sk_Script_Bsj ( role , Item )
+--Книга навыков перерожденного Чемпиона (ID 2957)
+function Sk_Script_Bsj ( role , Item ) 											
 	local sk_add = SK_BSJ 
-	local form_sklv = GetSkillLv( role , sk_add )
+	local form_sklv = GetSkillLv( role , sk_add ) 
+
 	if form_sklv >= 1  then 
 		UseItemFailed ( role )  
 		return 
@@ -16559,10 +16172,11 @@ function Sk_Script_Bsj ( role , Item )
 	end 
 end 
 
---ID2958	Книга навыков перерожденной (Колдунья)
-function Sk_Script_Emzz ( role , Item )
+--Книга навыков перерожденной колдуньи (ID 2958)
+function Sk_Script_Emzz ( role , Item ) 											
 	local sk_add = SK_EMZZ 
-	local form_sklv = GetSkillLv( role , sk_add )
+	local form_sklv = GetSkillLv( role , sk_add ) 
+
 	if form_sklv >= 1  then 
 		UseItemFailed ( role )  
 		return 
@@ -16577,18 +16191,14 @@ function Sk_Script_Emzz ( role , Item )
 		UseItemFailed ( role )  
 		return 
 	end 
-end
+end 
 
---ID2959	Книга навыков перерожденной (Целительница)
-function Sk_Script_Sssp ( role , Item )
+--Книга навыков перерожденной Целительницы (ID 2959)
+function Sk_Script_Sssp ( role , Item ) 											
 	local sk_add = SK_SSSP 
-	local form_sklv = GetSkillLv( role , sk_add )
+	local form_sklv = GetSkillLv( role , sk_add ) 
+
 	if form_sklv >= 1  then 
-		UseItemFailed ( role )  
-		return 
-	end
-	local zs_exp = GetChaAttr ( role , ATTR_CSAILEXP )
-	if zs_exp <= 0 then
 		UseItemFailed ( role )  
 		return 
 	end
@@ -16604,30 +16214,11 @@ function Sk_Script_Sssp ( role , Item )
 	end 
 end 
 
---ID2960	Книга навыков перерожденного (Покоритель морей)
-function Sk_Script_Cyn ( role , Item )
+-- Книга навыков перерожденного покорителя морей (ID 2960)
+function Sk_Script_Cyn ( role , Item ) 											
 	local sk_add = SK_CYN 
-	local form_sklv = GetSkillLv( role , sk_add )
-	if form_sklv >= 1  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	local zs_exp = GetChaAttr ( role , ATTR_CSAILEXP )
-	if zs_exp <= 0 then
-		UseItemFailed ( role )  
-		return 
-	end
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 0 ) 
-	if a == 0 then 
-		UseItemFailed ( role )  
-		return 
-	end 
-end 
+	local form_sklv = GetSkillLv( role , sk_add ) 
 
---ID2961	Книга навыков перерожденного (Стрелок)
-function Sk_Script_Hlp ( role , Item )
-	local sk_add = SK_HLP 
-	local form_sklv = GetSkillLv( role , sk_add )
 	if form_sklv >= 1  then 
 		UseItemFailed ( role )  
 		return 
@@ -16642,15 +16233,36 @@ function Sk_Script_Hlp ( role , Item )
 		UseItemFailed ( role )  
 		return 
 	end 
-end
+end 
 
--------------------------Ж·ЕЖµ°ёв
+-- Книга навыков перерожденного стрелка (ID 2961)
+function Sk_Script_Hlp ( role , Item ) 											
+	local sk_add = SK_HLP 
+	local form_sklv = GetSkillLv( role , sk_add ) 
+
+	if form_sklv >= 1  then 
+		UseItemFailed ( role )  
+		return 
+	end 
+	local zs_exp = GetChaAttr ( role , ATTR_CSAILEXP )
+	if zs_exp <= 0 then
+		UseItemFailed ( role )  
+		return 
+	end
+	a = AddChaSkill ( role , sk_add, 1 , 1 , 0 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end 
+
+-- Знаменитый кекс (ID 2988)
 function ItemUse_NiceCake (role, Item )
 
 	local HonorBook_Num = 0
 	local HonorBook_Num = CheckBagItem( role,3849 )
 		if HonorBook_Num < 1 then
-		SystemNotice( role , "You do not have Mark of Honor")
+		SystemNotice( role , "\211 \194\224\241 \237\229\242 \236\229\228\224\235\232 \238\242\226\224\227\232")
 		UseItemFailed ( role )
 		return 0
 		end
@@ -16667,403 +16279,23 @@ function ItemUse_NiceCake (role, Item )
 		SetCharaAttr(el_fame, role, ATTR_FAME) 
 
 		else 
-		SystemNotice( role , "Your Honor or Reputation points are too high. This cake can no longer satisfied you")
+		SystemNotice( role , "\211 \194\224\241 \241\235\232\248\234\238\236 \236\237\238\227\238 \238\247\234\238\226 \247\229\241\242\232 \232\235\232 \240\229\239\243\242\224\246\232\232. \221\242\238\242 \239\232\240\238\227 \225\238\235\252\248\229 \237\229 \243\228\238\226\235\229\242\226\238\240\232\242 \194\224\241")
 		UseItemFailed ( role )
 		end
 end
 
--------------------QQ±¦Пд
---function ItemUse_QQBOX( role , Item )
-	
-	--local cha_name = GetChaDefaultName ( role )
-	--local cha_num = GetActName(role)	
-	--local lv = GetChaAttr(role, ATTR_LV)
-	--local Item_CanGet = GetChaFreeBagGridNum ( role )
-	--if lv < 40 then
-		--SystemNotice( role ,"Currently lower than Lv 40. Unable to use item!")
-		--UseItemFailed ( role )	
-	--return
-	--end
-	
-	--local BorG = 0 
-	--local cha_type = GetChaTypeID ( role ) 
-	--if cha_type == 1  or cha_type == 2 then 
-		--BorG=1
-	--elseif cha_type == 3  or cha_type == 4 then
-		--BorG=2
-	--end
-	
-	--LG( "QQ" , "Player"..cha_name.."Open QQ Chest", "yes"..BorG.."character","Account is"..cha_num)
---end
-
-----------------------------------------------јО±ц±¦Пд
---function ItemUse_JBBOX( role , Item )
---	local Item_CanGet = GetChaFreeBagGridNum ( role )
---	if Item_CanGet <1 then
---		SystemNotice(role ,"To open a Chest requires 1 empty slot")
---		UseItemFailed ( role )
---		return
---	end
---	local r1,r2 =MakeItem ( role , 3078  , 1 , 4 )-------Злјн
---	local Item_el = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
---
---	local item_old = GetChaItem2 ( role , 2 , 3066 )---------ЅММГК№УГЦ¤Кй
---
---	local old_month = GetItemAttr(item_old, ITEMATTR_VAL_STA)		-------------ФВ 	
---	local old_day = GetItemAttr(item_old, ITEMATTR_VAL_STR)			-------------ИХ  
---	local old_hour = GetItemAttr(item_old, ITEMATTR_VAL_CON)			-------------К±   
---	local old_miniute = GetItemAttr(item_old, ITEMATTR_VAL_DEX)		-------------·Ц   
---	
---	--SystemNotice ( role , "old_month=="..old_month )
---	--SystemNotice ( role , "old_day=="..old_day )       
---	--SystemNotice ( role , "old_hour=="..old_hour )    
---	--SystemNotice ( role , "old_miniute=="..old_miniute)
---
---	SetItemAttr(Item_el, ITEMATTR_VAL_STA, old_month )	-------------ФВ 	
---	SetItemAttr(Item_el, ITEMATTR_VAL_STR, old_day )		-------------ИХ  
---	SetItemAttr(Item_el, ITEMATTR_VAL_CON, old_hour )		-------------К± 
---	SetItemAttr(Item_el, ITEMATTR_VAL_DEX, old_miniute )	-------------·Ц
---
---	local old_month2 = GetItemAttr(Item_el, ITEMATTR_VAL_STA)		-------------ФВ 	
---	local old_day2 = GetItemAttr(Item_el, ITEMATTR_VAL_STR)			-------------ИХ  
---	local old_hour2 = GetItemAttr(Item_el, ITEMATTR_VAL_CON)			-------------К±   
---	local old_miniute2 = GetItemAttr(Item_el, ITEMATTR_VAL_DEX)		-------------·Ц 
---
---	--SystemNotice ( role , "old_month2=="..old_month2 )
---	--SystemNotice ( role , "old_day2=="..old_day2 )       
---	--SystemNotice ( role , "old_hour2=="..old_hour2 )    
---	--SystemNotice ( role , "old_miniute2=="..old_miniute2)
---
---	SynChaKitbag(role,13)
---
---end
---
---
---------------------АЛВюСМ»Ё
---function ItemUse_LMYH ( role , Item )
---	local Cha_Boat = GetCtrlBoat ( role )
---	if Cha_Boat ~=  nil then
---		SystemNotice( role , "Невозможно использовать в море" )
---		UseItemFailed ( role )
---		return
---	end
---end
---
---------------------ѕЮПмСМ»Ё
---function ItemUse_JXYH ( role , Item )
---	local Cha_Boat = GetCtrlBoat ( role )
---	if Cha_Boat ~=  nil then
---		SystemNotice( role , "Невозможно использовать в море" )
---		UseItemFailed ( role )
---		return
---	end
---end
---
---------------------єА»ЄСМ»Ё
---function ItemUse_HHLH ( role , Item )
---	local Cha_Boat = GetCtrlBoat ( role )
---	if Cha_Boat ~=  nil then
---		SystemNotice( role , "Невозможно использовать в море" )
---		UseItemFailed ( role )
---		return
---	end
---end
---
----------ЅММГК№УГЦ¤Кй
---function Jz_Script_jtsyzs (role, Item )
---	--SystemNotice ( role , "Invitation Invitation Invitation" )
---	local Now_Day = os.date("%d")
---	local Now_Month = os.date("%m")
---	local Now_Time = os.date("%H")
---	--SystemNotice ( role , "Wahaha" )
---	local NowMniuteNum= os.date("%M")	-------------·Ц
---	local NowMiniuteNum= tonumber(Now_Miniute)	 	-------------·Ц
---	local NowTimeNum = tonumber(Now_Time)
---	--SystemNotice ( role , "huhuhuhu" )
---	local NowDayNum = tonumber(Now_Day)
---	--SystemNotice ( role , "hehehehe" )
---	local NowMonthNum = tonumber(Now_Month)
---	--SystemNotice ( role , "kekekeke" )
---	local CheckDateNum = NowMonthNum * 1000000 + NowDayNum * 10000 + NowTimeNum*100+NowMniuteNum
---	--SystemNotice ( role , "timing is now"..CheckDateNum)
---	--local old_type = GetItemAttr(item_old, ITEMATTR_MAXENERGY)	----------------·ЁКЅЅММГ
---
---	local item_old = GetChaItem2 ( role , 2 , 3078 )---------Злјн
---	local old_month = GetItemAttr(item_old, ITEMATTR_VAL_STA)		-------------ФВ 	
---	local old_day = GetItemAttr(item_old, ITEMATTR_VAL_STR)			-------------ИХ  
---	local old_hour = GetItemAttr(item_old, ITEMATTR_VAL_CON)			-------------К± 
---	local old_miniute = GetItemAttr(item_old, ITEMATTR_VAL_DEX)  
---	 
---
---	local CheckBook1Num = old_month * 1000000 + old_day * 10000 + old_hour*100+old_miniute
---	--SystemNotice ( role , "CheckBook1Num"..CheckBook1Num)
---	local CheckBook2Num = old_month * 1000000 + old_day * 10000 + (old_hour+2)*100+old_miniute
---	--SystemNotice ( role , "CheckBook2Num"..CheckBook2Num)
---	
---	if CheckDateNum < CheckBook1Num then
---		SystemNotice ( role , "Please be patient, Church is not opened yet. Please come back according to the time listed" )
---		UseItemFailed ( role )
---		return
---	end
---	--SystemNotice ( role , "Mother")
---	if CheckDateNum > CheckBook2Num then
---		SystemNotice ( role , "The wedding you want to visit is already finished, too bad" )
---		UseItemFailed ( role )
---		return
---	end
---	--SystemNotice ( role , "Father")
---
---	local i = CheckBagItem(role,3066)----ЅММГК№УГЦ¤Кй
---	local k = ChaIsBoat(role)
---	local hp = Hp(role)
---	local mxhp = Mxhp(role)
---	local sp = Sp(role)
---	local mxsp = Mxsp(role)
---	if sp < mxsp or hp < mxhp then 
---		SystemNotice (role, "Visiting the church is a tiring process, please keep your hp and sp at 100%")
---		UseItemFailed ( role )
---		return
---	end 
---	if k == 0 then
---		if i > 0 then
---			local j = DelBagItem(role,3066,1)-------ЅММГК№УГЦ¤Кй
---			--if j == 1 and old_type=1 then
---				--MoveCity(role,"French Wedding Hall")
---			--elseif	j == 1 and old_type=2 then
---				--MoveCity(role,"Chinese style church")
---			if j == 1 then-------------elseif	j == 1 and old_type=3 then
---				MoveCity(role,"Church")
---				--SystemNotice ( role , "Grandfather")
---			--elseif	j == 1 and old_type=4 then
---				--MoveCity(role,"Ground type Church")
---			end
---		end
---	else
---		UseItemFailed ( role )
---	end
---	--SystemNotice ( role , "Granny")	
---end
---
---
---------------Злјн
---function Jz_Script_qj (role, Item )
---	--SystemNotice ( role , "Invitation Invitation Invitation" )
---	local Now_Day = os.date("%d")
---	local Now_Month = os.date("%m")
---	local Now_Time = os.date("%H")
---	--SystemNotice ( role , "Wahaha" )
---	local NowMniuteNum= os.date("%M")	-------------·Ц
---	local NowMiniuteNum= tonumber(Now_Miniute)	 	-------------·Ц
---	local NowTimeNum = tonumber(Now_Time)
---	--SystemNotice ( role , "huhuhuhu" )
---	local NowDayNum = tonumber(Now_Day)
---	--SystemNotice ( role , "hehehehe" )
---	local NowMonthNum = tonumber(Now_Month)
---	--SystemNotice ( role , "kekekeke" )
---	local CheckDateNum = NowMonthNum * 1000000 + NowDayNum * 10000 + NowTimeNum*100+NowMniuteNum
---	--SystemNotice ( role , "timing is now"..CheckDateNum)
---	--local old_type = GetItemAttr(item_old, ITEMATTR_MAXENERGY)	----------------·ЁКЅЅММГ
---
---	local item_old = GetChaItem2 ( role , 2 , 3078 )-----Злјн
---	local old_month = GetItemAttr(item_old, ITEMATTR_VAL_STA)		-------------ФВ 	
---	local old_day = GetItemAttr(item_old, ITEMATTR_VAL_STR)			-------------ИХ  
---	local old_hour = GetItemAttr(item_old, ITEMATTR_VAL_CON)			-------------К± 
---	local old_miniute = GetItemAttr(item_old, ITEMATTR_VAL_DEX)  
---	 
---
---	local CheckBook1Num = old_month * 1000000 + old_day * 10000 + old_hour*100+old_miniute
---	--SystemNotice ( role , "CheckBook1Num"..CheckBook1Num)
---	local CheckBook2Num = old_month * 1000000 + old_day * 10000 + (old_hour+2)*100+old_miniute
---	--SystemNotice ( role , "CheckBook2Num"..CheckBook2Num)
---	
---	if CheckDateNum < CheckBook1Num then
---		SystemNotice ( role , "Please be patient, Church is not opened yet. Please come back according to the time listed" )
---		UseItemFailed ( role )
---		return
---	end
---	--SystemNotice ( role , "Mother")
---	if CheckDateNum > CheckBook2Num then
---		SystemNotice ( role , "The wedding you want to visit is already finished, too bad" )
---		UseItemFailed ( role )
---		return
---	end
---	--SystemNotice ( role , "Father")
---
---	local i = CheckBagItem(role,3078)
---	local k = ChaIsBoat(role)
---	local hp = Hp(role)
---	local mxhp = Mxhp(role)
---	local sp = Sp(role)
---	local mxsp = Mxsp(role)
---	if sp < mxsp or hp < mxhp then 
---		SystemNotice (role, "Visiting the church is a tiring process, please keep your hp and sp at 100%")
---		UseItemFailed ( role )
---		return
---	end 
---	if k == 0 then
---		if i > 0 then
---			local j = DelBagItem(role,3078,1)
---			--if j == 1 and old_type=1 then
---				--MoveCity(role,"French Wedding Hall")
---			--elseif	j == 1 and old_type=2 then
---				--MoveCity(role,"Chinese style church")
---			if j == 1 then-------------elseif	j == 1 and old_type=3 then
---				MoveCity(role,"Church")
---				--SystemNotice ( role , "Grandfather")
---			--elseif	j == 1 and old_type=4 then
---				--MoveCity(role,"Ground type Church")
---			end
---		end
---	else
---		UseItemFailed ( role )
---	end
---	--SystemNotice ( role , "Granny")	
---end
------------------------------ХЩ»Ѕ»йАсМФЖш№н
---function ItemUse_FLOWER ( role , Item  )
---	local Cha_Boat = 0
---	Cha_Boat = GetCtrlBoat ( role )
---	if Cha_Boat ~=  nil then
---		SystemNotice( role , "Невозможно использовать в море" )
---		UseItemFailed ( role )
---		return
---	end
---
---	local el = 0
---	el =IsChaInRegion( role, 2 )
---	if el == 1 then
---		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
---		UseItemFailed ( role )
---		return
---	end
---	local x, y = GetChaPos(role)
---	local MonsterID = 1037
---	local Refresh = 7300					--ЦШЙъК±јдЈ¬ГлµҐО»
---	local life = 7200000					--ЙъГьК±јдЈ¬єБГлµҐО»
---	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
---	SetChaLifeTime( new, life )
---end
---
---
------------------------------ЖшЗтУОП·ИЇ
---function ItemUse_QQ ( role , Item  )
---	local Cha_Boat = 0
---	Cha_Boat = GetCtrlBoat ( role )
---	if Cha_Boat ~=  nil then
---		SystemNotice( role , "Невозможно использовать в море" )
---		UseItemFailed ( role )
---		return
---	end
---
---	local el = 0
---	el =IsChaInRegion( role, 2 )
---	if el == 1 then
---		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
---		UseItemFailed ( role )
---		return
---	end
---	local x, y = GetChaPos(role)
---	local MonsterID = 1036
---	local Refresh = 60					--ЦШЙъК±јдЈ¬ГлµҐО»
---	local life = 7200000					--ЙъГьК±јдЈ¬єБГлµҐО»
---	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
---	SetChaLifeTime( new, life )
---end
-----ТБКЅЅММГІО№ЫГЕЖ±
---function Jz_Script_yszs (role, Item )
---	
---	local Now_Week = os.date("%w")
---	local Now_WeekNum = tonumber(Now_Week)
---	local Now_Time = os.date("%H")
---	local Now_TimeNum = tonumber(Now_Time)
---	local Now_Miniute= os.date("%M")	
---	local Now_Miniute= tonumber(Now_Miniute)
---	local CheckDateNum = Now_WeekNum * 10000 + Now_TimeNum * 100+Now_Miniute
---
---	if CheckDateNum < 11700  then
---		SystemNotice ( role , "Please be patient, church is not opened yet. Please come back on Monday night from 17:00 ~ 17:30pm" )
---		UseItemFailed ( role )
---		return
---	end
---	
---	if CheckDateNum > 11730 then
---		SystemNotice ( role , "Church is now closed, please wait until next Monday night" )
---		UseItemFailed ( role )
---		return
---	end
---
---	local i = CheckBagItem(role,3024)
---	local k = ChaIsBoat(role)
---	local hp = Hp(role)
---	local mxhp = Mxhp(role)
---	local sp = Sp(role)
---	local mxsp = Mxsp(role)
---	if sp < mxsp or hp < mxhp then 
---		SystemNotice (role, "Visiting the church is a tiring process, please keep your hp and sp at 100%")
---		UseItemFailed ( role )
---		return
---	end 
---	if k == 0 then
---		if i > 0 then
---			local j = DelBagItem(role,3024,1)
---			if j == 1 then
---				MoveCity(role,"Church")
---				return
---			end
---		end
---	else
---		UseItemFailed ( role )
---	end
---		
---end
--------------------------------єм°ьЈєєм°ьЦ»УРФЪЈЁГїЦЬБщ\ИХНн18:00--22Јє10Ј©ґтїЄІЕ»бУРР§
---
---function ItemUse_RedBox( role , Item )
---	local Cha_Boat = GetCtrlBoat ( role )
---	if Cha_Boat ~=  nil then
---		SystemNotice( role , "Невозможно использовать в море" )
---		UseItemFailed ( role )
---		return
---	end
---	local Item_CanGet = GetChaFreeBagGridNum ( role )
---	 if Item_CanGet < 1 then
---		SystemNotice(role ,"You need at least 1 empty slots to open Auspicious Bag")
---		UseItemFailed ( role )
---		return
---	end
---	local now_week= os.date("%w")		-------------РЗЖЪјёЈЁК®ЅшЦЖЈ© 
---	local now_hour= os.date("%H")		-------------К± 
---	local now_miniute= os.date("%M")	-------------·Ц
---	now_week= tonumber(now_week)
---	now_hour= tonumber(now_hour)		
---	now_miniute= tonumber(now_miniute)
---	local CheckDateNum = now_hour*100 +now_miniute
---	--Notice("CheckDateNum = "..CheckDateNum)
---      if now_week==6 or now_week==0 then
---		
---		if 1800<=CheckDateNum and  CheckDateNum<=2210 then
---		--SystemNotice( role , "Use YSBOX" )
---		ItemUse_YSBOX ( role , Item )
---		else 
---		SystemNotice(role ,"It is not time yet. Do not try to cheat!")
---		UseItemFailed ( role )
---		return
---		end
---	end
---end
-
---ID 3039	Машина прогресса
+-- Неизвестно (n\a)
 function ItemUse_TJQ ( role , Item )
 	local lv= GetChaAttr(role, ATTR_LV) 
 	if lv >70 then
-		SystemNotice ( role , "Машину прогресса могут использовать только игроки не достигшие 70 уровня." )
+		SystemNotice ( role , "\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 70 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242" )
 		UseItemFailed ( role )
-		return
+		return	
 	end
 	local statelv = 4
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
+	if ChaStateLv > statelv then
+		SystemNotice(role ,"\221\244\244\229\234\242\251 \238\242 \228\240\243\227\232\245 \231\229\235\232\233 \237\229 \241\238\247\232\242\224\254\242\241\255")
 		UseItemFailed ( role )
 		return
 	end
@@ -17073,633 +16305,32 @@ function ItemUse_TJQ ( role , Item )
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
 	else
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
 end
-
-------------------------ЅрЕЈґ¬і¤±¦ПдЈєЛ«»чЈ¬ёщѕЭЅЗЙ«ёшУиµАѕЯ
-
-function ItemUse_JNCZBox ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 4 then
-		SystemNotice(role ,"You need at least 4 space to use the Taurus Apparel Chest")
-		UseItemFailed ( role )
-		return
-	end
-	local cha_type = GetChaTypeID ( role ) 
-	if cha_type == 3  then 
-		 
-		   GiveItem ( role , 0 , 5364  , 1 , 4 )
-		   GiveItem ( role , 0 , 5365  , 1 , 4 )
-		   GiveItem ( role , 0 , 5366  , 1 , 4 )
-		   GiveItem ( role , 0 , 5367  , 1 , 4 )
-	elseif cha_type == 4  then 
-
-		   GiveItem ( role , 0 , 5368  , 1 , 4 )
-		   GiveItem ( role , 0 , 5369  , 1 , 4 )
-		   GiveItem ( role , 0 , 5370  , 1 , 4 )
-		   GiveItem ( role , 0 , 5371  , 1 , 4 )
-	elseif cha_type == 1 then 
-		  
-		   GiveItem ( role , 0 , 5356  , 1 , 4 )
-		   GiveItem ( role , 0 , 5357  , 1 , 4 )
-		   GiveItem ( role , 0 , 5358  , 1 , 4 )
-		   GiveItem ( role , 0 , 5359  , 1 , 4 )
-	elseif cha_type == 2 then 
-
-		   GiveItem ( role , 0 , 5360  , 1 , 4 )
-		   GiveItem ( role , 0 , 5361  , 1 , 4 )
-		   GiveItem ( role , 0 , 5362  , 1 , 4 )
-		   GiveItem ( role , 0 , 5363  , 1 , 4 )
-	end
-end
-
-
----------------------------ХЩ»ЅЅрЕЈКШ»¤ХЯ
-function ItemUse_JNSHZ ( role , Item  )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local el = 0
-	el =IsChaInRegion( role, 2 )
-	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
-		UseItemFailed ( role )
-		return
-	end
-	local x, y = GetChaPos(role)
-	local MonsterID = 1038
-	local Refresh = 10900					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 3600000					--ЙъГьК±јдЈ¬єБГлµҐО»
-	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
-	SetChaLifeTime( new, life )
-end
-
---ЕґГЧфХ
-function ItemUse_NMZ ( role , Item )
-	SystemNotice(role ,"The item has gone rusty and has lost its effect, don't be too sad")
-  	--local hp = GetChaAttr(role, ATTR_HP) 
-	--local mxhp = GetChaAttr(role,ATTR_MXHP) 	
-	--hp = hp + 0.35*mxhp 
-
-	--if hp > mxhp then 
-		--hp = mxhp 
-	--end 
-	--SetCharaAttr(hp, role, ATTR_HP)
-
-end
-
-
-------------------------------¶№ЙіфХЈєРРЧЯЛЩ¶ИФЪ15·ЦЦУДЪУРЅПґуМбЙэР§№ы
-function ItemUse_DSZ ( role , Item )
-	SystemNotice(role ,"The item has gone rusty and has lost its effect, don't be too sad")
-	--local statelv = 1
-	--local statetime = 900
-	--local Cha_Boat = 0
-	--Cha_Boat = GetCtrlBoat ( role )
-	--if Cha_Boat ==  nil then
-		--Rem_State_StarUnnormal ( role )----------
-		--AddState( role , role , STATE_DSZ , statelv , statetime )
-	--else
-		--SystemNotice( role , "Невозможно использовать в море" )
-		--UseItemFailed ( role )
-		--return
-	--end
-end
-
--------------------------------µ°»ЖфХ: ·АУщБ¦ФЪ10·ЦЦУДЪМбЙэ60µг
-function ItemUse_DHZ ( role , Item )
-	SystemNotice(role ,"The item has gone rusty and has lost its effect, don't be too sad")
-	--local statelv = 1
-	--local statetime = 600
-	--local Cha_Boat = 0
-	--Cha_Boat = GetCtrlBoat ( role )
-
-	--if Cha_Boat ==  nil then
-		--AddState( role , role , STATE_DHZ , statelv , statetime )
-	--else
-		--SystemNotice( role , "Невозможно использовать в море" )
-		--UseItemFailed ( role )
-		--return
-	--end
-end
-----------------------------ОВЗйфХЧУ
-function ItemUse_WQZZ ( role , Item )
-	SystemNotice(role ,"The item has gone rusty and has lost its effect, don't be too sad")
-	--local el_exp = GetChaAttr(role, ATTR_CEXP)
-	--local exp1=el_exp
-	--local charLv=Lv ( role )
-	--local exp_resume = 50
-	--local	exp_resume_1= 1
-	--el_exp = el_exp + exp_resume
-	-- if charLv>=80 then	
-		--el_exp = exp1 + exp_resume_1
-	--end
-	--SetCharaAttr(el_exp, role, ATTR_CEXP) 
-end 
-
----------------------------ХЩ»ЅєЪБъ»ГМе
-function ItemUse_HLHT ( role , Item  )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local el = 0
-	el =IsChaInRegion( role, 2 )
-	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
-		UseItemFailed ( role )
-		return
-	end
-	local x, y = GetChaPos(role)
-	local MonsterID = 952---------єЪБъ»ГУ°
-	local Refresh = 9000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life =9000000					--ЙъГьК±јдЈ¬єБГлµҐО»
-	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
-	SetChaLifeTime( new, life )
-end
-
----------------------------ХЩ»ЅтбтжХЅКїНіБм
-function ItemUse_XYZSTL ( role , Item  )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local el = 0
-	el =IsChaInRegion( role, 2 )
-	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
-		UseItemFailed ( role )
-		return
-	end
-	local x, y = GetChaPos(role)
-	local MonsterID = 786---------тбтжХЅКїНіБм
-	local Refresh = 9000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 9000000					--ЙъГьК±јдЈ¬єБГлµҐО»
-	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
-	SetChaLifeTime( new, life )
-end
-
----------------------------ХЩ»ЅР°¶сµДНБЦшЗхі¤
-function ItemUse_XETZQZ ( role , Item  )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local el = 0
-	el =IsChaInRegion( role, 2 )
-	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
-		UseItemFailed ( role )
-		return
-	end
-	local x, y = GetChaPos(role)
-	local MonsterID = 788---------Р°¶сµДНБЦшЗхі¤
-	local Refresh = 9000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 9000000					--ЙъГьК±јдЈ¬єБГлµҐО»
-	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
-	SetChaLifeTime( new, life )
-end
-
----------------------------ХЩ»ЅєЈµБґ¬і¤БгБг·ў
-function ItemUse_HDCZ ( role , Item  )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local el = 0
-	el =IsChaInRegion( role, 2 )
-	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
-		UseItemFailed ( role )
-		return
-	end
-	local x, y = GetChaPos(role)
-	local MonsterID = 757---------єЈµБґ¬і¤БгБг·ў
-	local Refresh = 9000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 9000000					--ЙъГьК±јдЈ¬єБГлµҐО»
-	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
-	SetChaLifeTime( new, life )
-end
-
----------------------------ХЩ»ЅєьСэ
-function ItemUse_HY ( role , Item  )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local el = 0
-	el =IsChaInRegion( role, 2 )
-	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
-		UseItemFailed ( role )
-		return
-	end
-	local x, y = GetChaPos(role)
-	local MonsterID = 761---------єьСэ
-	local Refresh = 9000					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 9000000					--ЙъГьК±јдЈ¬єБГлµҐО»
-	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
-	SetChaLifeTime( new, life )
-end
-----------РТФЛЧЦДёїЁ±¦Пд
-function ItemUse_XingYunBox( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		SystemNotice(role ,"Inventory requires at least 1 empty slot")
-		UseItemFailed ( role )
-		return
-	end
-	local el=math.random ( 1, 241920 )
-	if el==1 then
-		GiveItem ( role , 0 , 0961, 1 , 4  ) -------------c	
-	elseif el==2 then
-		GiveItem ( role , 0 , 0969, 1 , 4  ) -----------k		
-	elseif el>=3 and el<=4 then
-		GiveItem ( role , 0 , 0973, 1 , 4  )	-------------p	
-	elseif el>=5 and el<=6 then
-		GiveItem ( role , 0 , 0980, 1 , 4  )	-------------v
-	elseif el>=7 and el<=8 then
-		GiveItem ( role , 0 , 0979, 1 , 4  )	-------------u
-	else
-		local el=math.random ( 0959, 0984 )
-		if el==0961 or el==0969 or el==0973 or el==0980 or el==0979 then
-			GiveItem ( role , 0 , 0959  , 1 , 4  ) 
-		else 
-			GiveItem ( role , 0 , el , 1 , 4  ) 			
-		end
-	end
-end
-
---ID0993	Суперусилитель
-function ItemUse_CJZTQ ( role , Item )
-	local lv = GetChaAttr(role, ATTR_LV) 
-	if lv > 49 then
-		SystemNotice ( role , "Суперусилитель могут использовать только игроки не достигшие 50 уровня." )
-		UseItemFailed ( role )
-		return
-	end
-	local statelv = 8
-	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
-		UseItemFailed ( role )
-		return
-	end
-	local statetime = 900
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
-	else
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-end
-
-----------КАјН»Ф»НІКЖ±
-function ItemUse_SJHHCP( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		SystemNotice(role ,"Inventory requires at least 1 empty slot")
-		UseItemFailed ( role )
-		return
-	end
-	local star=math.random ( 1, 1000000 )
-	local el=math.random ( 1, 100 )
-
-	--SystemNotice(role ,"star=="..star)
-	--SystemNotice(role ,"el=="..el)
-	if  star==1 then
-		if el>=1 and el<=40 then
-		GiveItem ( role , 0 , 1115  , 1 , 4  )
-		elseif el>=41 and el<=65 then
-		GiveItem ( role , 0 , 1117  , 1 , 4  )
-		elseif el>=65 and el<=90 then
-		GiveItem ( role , 0 , 1118  , 1 , 4  )
-		elseif el>=91 and el<=100 then
-		GiveItem ( role , 0 , 1116  , 1 , 4  ) 
-		end
-	elseif star>1 and star<=9999 then
-		GiveItem ( role , 0 , 0273, 1 , 4  ) 
-	elseif star>=10000 and star<170000 then
-		GiveItem ( role , 0 , 2312, 30 , 4  ) 
-	elseif star>=170000 and star<=1000000 then
-		GiveItem ( role , 0 , 3877, 1 , 4  ) 
-	end
-end
-
-
-----------ЦБЧрДкКЮІКЖ±
-function ItemUse_ZZNSCP( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		SystemNotice(role ,"Inventory requires at least 1 empty slot")
-		UseItemFailed ( role )
-		return
-	end
-	local star=math.random ( 1, 1000000 )
-	local el=math.random ( 1, 100 )
-
-	--SystemNotice(role ,"star=="..star)
-	--SystemNotice(role ,"el=="..el)
-	if  star==1 then
-		if el>=1 and el<=40 then
-		GiveItem ( role , 0 , 2552  , 1 , 4  )
-		elseif el>=41 and el<=65 then
-		GiveItem ( role , 0 , 2550  , 1 , 4  )
-		elseif el>=65 and el<=90 then
-		GiveItem ( role , 0 , 2551  , 1 , 4  )
-		elseif el>=91 and el<=100 then
-		GiveItem ( role , 0 , 2549  , 1 , 4  ) 
-		end
-	elseif star>1 and star<=9999 then
-		GiveItem ( role , 0 , 0273, 1 , 4  ) 
-	elseif star>=10000 and star<170000 then
-		GiveItem ( role , 0 , 2312, 30 , 4  ) 
-	elseif star>=170000 and star<=1000000 then
-		GiveItem ( role , 0 , 3877, 1 , 4  ) 
-	end
-end
-
-----------ХжЎ¤єЪБъІКЖ±
-function ItemUse_ZHLCP( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		SystemNotice(role ,"Inventory requires at least 1 empty slot")
-		UseItemFailed ( role )
-		return
-	end
-	local star=math.random ( 1, 1000000 )
-	local el=math.random ( 1, 100 )
-
-	--SystemNotice(role ,"star=="..star)
-	--SystemNotice(role ,"el=="..el)
-	if  star==1 then
-		if el>=1 and el<=40 then
-		GiveItem ( role , 0 , 2370  , 1 , 4  )
-		elseif el>=41 and el<=65 then
-		GiveItem ( role , 0 , 2368  , 1 , 4  )
-		elseif el>=65 and el<=90 then
-		GiveItem ( role , 0 , 2369  , 1 , 4  )
-		elseif el>=91 and el<=100 then
-		GiveItem ( role , 0 , 2367  , 1 , 4  ) 
-		end
-	elseif star>1 and star<=9999 then
-		GiveItem ( role , 0 , 0273, 1 , 4  ) 
-	elseif star>=10000 and star<170000 then
-		GiveItem ( role , 0 , 2312, 30 , 4  ) 
-	elseif star>=170000 and star<=1000000 then
-		GiveItem ( role , 0 , 3877, 1 , 4  ) 
-	end
-end
-
-
-
-
-----------ѕЄКАЧЄЙъІКЖ±------rockТЄµД
-function ItemUse_JSZSCP( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		SystemNotice(role ,"Inventory requires at least 1 empty slot")
-		UseItemFailed ( role )
-		return
-	end
-	local star=math.random ( 1, 1000 )
-
-	if  star==1 then
-		GiveItem ( role , 0 , 2941, 1 , 4  ) 
-		local cha_name = GetChaDefaultName ( role ) 
-		local message = "Player"..cha_name.."ИЛЖ·±¬·ў,ґтїЄѕЄКАЧЄЙъІКЖ±ѕЄПІµШ»сµГ1ХЕЧЄЙъїЁ." 
-		Notice ( message )
-	elseif star>1 and star<=10 then
-		GiveItem ( role , 0 , 3016, 1 , 4  ) 
-		local cha_name = GetChaDefaultName ( role ) 
-		local message = "Player"..cha_name.."ИЛЖ·±¬·ў,ґтїЄѕЄКАЧЄЙъІКЖ±ѕЄПІµШ»сµГ1ХЕєЪБъ»ГМеХЩ»Ѕѕн." 
-		Notice ( message )
-	elseif star>=11 and star<190 then
-		GiveItem ( role , 0 , 0992, 1 , 4  ) 
-	elseif star>=190 and star<=1000 then
-		GiveItem ( role , 0 , 3885, 1 , 4  ) 
-	end
-end
--------------------ЧЈёЈ±¦Цй
-function ItemUse_ZFBZ( role , Item )
-	local statelv = 1
-	local statetime = 15
-	AddState( role , role , STATE_CZZX , statelv , statetime )
-end
-------------------------іЙі¤їмІН
-function ItemUse_CZKC ( role , Item )
-	local Cha_Boat = 0
-	local charLv=Lv ( role )
-	local Exp_star=GetChaAttr (  role , ATTR_CEXP )----------µ±З°µИј¶ѕ­Сй
-	local dif_exp_thalf_c = (DEXP[charLv+1] - DEXP[charLv])*0.01+Exp_star
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	if charLv<86 then
-		SystemNotice( role , "86ј¶ТФПВЅЗЙ«І»ДЬК№УГ" )
-		UseItemFailed ( role )
-		return
-	end
-	if charLv>=86 then
-		SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf_c )
-        end
-end
-------------------------Л«ЧУґ¬і¤±¦ПдЈєЛ«»чЈ¬ёщѕЭЅЗЙ«ёшУиµАѕЯ
-
-function ItemUse_SZCZBox ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 4 then
-		SystemNotice(role ,"К№УГЛ«ЧУїбЧ°±¦ПдЧоЙЩРиТЄ4ёцїХО»")
-		UseItemFailed ( role )
-		return
-	end
-	local cha_type = GetChaTypeID ( role ) 
-	if cha_type == 3  then 
-		 
-		   GiveItem ( role , 0 , 5380  , 1 , 4 )
-		   GiveItem ( role , 0 , 5381  , 1 , 4 )
-		   GiveItem ( role , 0 , 5382  , 1 , 4 )
-		   GiveItem ( role , 0 , 5383  , 1 , 4 )
-	elseif cha_type == 4  then 
-
-		   GiveItem ( role , 0 , 5384  , 1 , 4 )
-		   GiveItem ( role , 0 , 5385  , 1 , 4 )
-		   GiveItem ( role , 0 , 5386  , 1 , 4 )
-		   GiveItem ( role , 0 , 5387  , 1 , 4 )
-	elseif cha_type == 1 then 
-		  
-		   GiveItem ( role , 0 , 5372  , 1 , 4 )
-		   GiveItem ( role , 0 , 5373  , 1 , 4 )
-		   GiveItem ( role , 0 , 5374  , 1 , 4 )
-		   GiveItem ( role , 0 , 5375  , 1 , 4 )
-	elseif cha_type == 2 then 
-
-		   GiveItem ( role , 0 , 5376  , 1 , 4 )
-		   GiveItem ( role , 0 , 5377  , 1 , 4 )
-		   GiveItem ( role , 0 , 5378  , 1 , 4 )
-		   GiveItem ( role , 0 , 5379  , 1 , 4 )
-	end
-end
-
-
-
----------------------------ХЩ»ЅЛ«ЧУКШ»¤ХЯ
-function ItemUse_SZSHZ ( role , Item  )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local el = 0
-	el =IsChaInRegion( role, 2 )
-	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
-		UseItemFailed ( role )
-		return
-	end
-	local x, y = GetChaPos(role)
-	local MonsterID = 1039
-	local Refresh = 10900					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 3600000					--ЙъГьК±јдЈ¬єБГлµҐО»
-	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
-	SetChaLifeTime( new, life )
-end
-
-
-----------±ПТµЦ¤КйК№УГ
-function ItemUse_byzm ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		SystemNotice(role ,"Inventory requires at least 1 empty slot")
-		UseItemFailed ( role )
-		return
-	end
-	local cha_name = GetChaDefaultName ( role ) 
-	local star=math.random ( 1, 100 )
-	SystemNotice(role ,"star=="..star)
-	if star<=5 then
-		GiveItem ( role , 0 , 1028  , 1 , 4  )
-		local message = cha_name.."ґтїЄ±ПТµЦ¤КйѕЄПІµШ»сµГ 1їЕД¦Б¦·ыКЇ" 
-		Notice ( message )
-	elseif star>=6 and star<=20 then
-		GiveItem ( role , 0 , 885, 1 , 4  ) 
-		local message1 = cha_name.."ґтїЄ±ПТµЦ¤КйѕЄПІµШ»сµГ 1їЕѕ«Б¶КЇ" 
-		Notice ( message1 )
-	elseif star>=21 and star<=50 then
-		GiveItem ( role , 0 , 3039, 5 , 4  ) 
-		local message2 = cha_name.."ґтїЄ±ПТµЦ¤КйѕЄПІµШ»сµГ 5ёцЙэј¶НЖЅшЖч" 
-		Notice ( message2 )
-	else
-		GiveItem ( role , 0 , 227, 10 , 4  )
-		local message3 = cha_name.."ґтїЄ±ПТµЦ¤КйѕЄПІµШ»сµГ 10ёцКШ»¤ѕ«БйЛЗБП" 
-		Notice ( message3 )
-	end
-end
-------------------------їЄС§ґуАс°ьЈєЛ«»чЈ¬ёщѕЭЅЗЙ«ёшУиµАѕЯ
-
-function ItemUse_kxdlb ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 4 then
-		SystemNotice(role ,"К№УГїЄС§ґуАс°ьЧоЙЩРиТЄ4ёцїХО»")
-		UseItemFailed ( role )
-		return
-	end
-	local cha_type = GetChaTypeID ( role ) 
-	if cha_type == 3  then 
-		   GiveItem ( role , 0 , 5396  , 1 , 4 )
-		   GiveItem ( role , 0 , 5397  , 1 , 4 )
-		   GiveItem ( role , 0 , 5398  , 1 , 4 )
-		   GiveItem ( role , 0 , 5399  , 1 , 4 )
-	elseif cha_type == 4  then 
-		   GiveItem ( role , 0 , 5400  , 1 , 4 )
-		   GiveItem ( role , 0 , 5401  , 1 , 4 )
-		   GiveItem ( role , 0 , 5402  , 1 , 4 )
-		   GiveItem ( role , 0 , 5403  , 1 , 4 )
-	elseif cha_type == 1 then 
-		   GiveItem ( role , 0 , 5388  , 1 , 4 )
-		   GiveItem ( role , 0 , 5389  , 1 , 4 )
-		   GiveItem ( role , 0 , 5390  , 1 , 4 )
-		   GiveItem ( role , 0 , 5391  , 1 , 4 )
-	elseif cha_type == 2 then 
-		   GiveItem ( role , 0 , 5392  , 1 , 4 )
-		   GiveItem ( role , 0 , 5393  , 1 , 4 )
-		   GiveItem ( role , 0 , 5394  , 1 , 4 )
-		   GiveItem ( role , 0 , 5395  , 1 , 4 )
-	end
-end
-
-
--------------------------------К¤Аы±¦Пд
-function ItemUse_SLBox ( role , Item )
-	local a = math.random ( 1 , 100 )
-	local Item_ID = 0
-	if a >= 1 and a <= 50 then
-		Item_ID = 1012
-	elseif a > 50 and a <= 80 then
-		Item_ID = 271
-	else
-		Item_ID = 885
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 1 then
-		SystemNotice(role ,"К№УГК¤Аы±¦ПдЧоЙЩРиТЄ1ёцїХО»")
-		UseItemFailed ( role )
-		return
-	else
-		GiveItem ( role , 0 , Item_ID , 1 , 4 )
-	end
-end
-
---------------------------------65BOSSЧ°±ёПд
+ 
+-- Неизвестно (n\a)
 function ItemUse_65BBBox ( role , Item )
-	local job = GetChaAttr( role, ATTR_JOB) --ИЎЦ°Тµ
+	local job = GetChaAttr( role, ATTR_JOB)
         local cha_type = GetChaTypeID ( role )
 	if job == 0 then
-		SystemNotice ( role , "Ц»УРТ»ЧЄТФЙПµДЅЗЙ«ІЕїЙТФК№УГ±ѕ±¦Пд")
+		SystemNotice ( role , "\210\238\235\252\234\238 \239\232\240\224\242\251 \239\238\241\235\229 \229\227\238/\229\229 \239\240\238\228\226\232\230\229\237\232\255 \239\238 \241\235\243\230\225\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \241\243\237\228\243\234.")
 		UseItemFailed ( role )
 		return
 	else
-		if job == 12 or job == 2 then		--БФИЛ»тѕС»ч
+		if job == 12 or job == 2 then
 			GiveItem( role , 0 , 780  , 1 , 4 )
-		elseif job == 9	then			--Л«ЅЈ
+		elseif job == 9	then
 			GiveItem( role , 0 , 769  , 1 , 4 )
-		elseif job == 16 or job == 4 then	--Г°ПХ»тєЅєЈ
+		elseif job == 16 or job == 4 then
 			GiveItem( role , 0 , 806  , 1 , 4 )
-		elseif job == 8	then			--ѕЮЅЈ
+		elseif job == 8	then
 			GiveItem( role , 0 , 766  , 1 , 4 )
-		elseif job == 13 or job == 5 then	--КҐЦ°»тТ©К¦
+		elseif job == 13 or job == 5 then
 			GiveItem( role , 0 ,792  , 1 , 4 )
-		elseif job == 14 then			--·вУЎ
+		elseif job == 14 then
 			GiveItem( role , 0 , 798  , 1 , 4 )
 		elseif job == 1 then
 			if cha_type == 1 then
@@ -17712,352 +16343,171 @@ function ItemUse_65BBBox ( role , Item )
 	end
 end
 
+-- Билет на Кольцо 65 ур.
+function ItemUse_65JZDH ( role , Item )
 
----------------------ѕЮР·ґ¬і¤±¦ПдЈєЛ«»чЈ¬ёщѕЭЅЗЙ«ёшУиµАѕЯ
-
-function ItemUse_JXBox ( role , Item )
+	local item_type = BaoXiang_65JZDH
+	local item_type_rad = BaoXiang_65JZDH_Rad 
+	local item_type_count = BaoXiang_65JZDH_Count 
+	local maxitem = BaoXiang_65JZDH_Mxcount	
+	local item_quality = 4
+	local General = 0  
+	local ItemId = 0 
+	
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 4 then
-		SystemNotice(role ,"К№УГѕЮР·їбЧ°±¦ПдЧоЙЩРиТЄ4ёцїХО»")
+	
+	if Item_CanGet <= 0 then
+	SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return
 	end
-	local cha_type = GetChaTypeID ( role ) 
-	if cha_type == 3  then 
-		 
-		   GiveItem ( role , 0 , 5464  , 1 , 4 )
-		   GiveItem ( role , 0 , 5465  , 1 , 4 )
-		   GiveItem ( role , 0 , 5466  , 1 , 4 )
-		   GiveItem ( role , 0 , 5467  , 1 , 4 )
-	elseif cha_type == 4  then 
+	for i = 1 , maxitem , 1 do 
+		General = item_type_rad [ i ] + General		
+	end 
+	local a = math.random ( 1, General )
+	local b = 0
+	local d = 0 
+	local c = -1
+	for k = 1 , maxitem , 1 do
 
-		   GiveItem ( role , 0 , 5468  , 1 , 4 )
-		   GiveItem ( role , 0 , 5469  , 1 , 4 )
-		   GiveItem ( role , 0 , 5470  , 1 , 4 )
-		   GiveItem ( role , 0 , 5471  , 1 , 4 )
-	elseif cha_type == 1 then 
-		  
-		   GiveItem ( role , 0 , 5456  , 1 , 4 )
-		   GiveItem ( role , 0 , 5457  , 1 , 4 )
-		   GiveItem ( role , 0 , 5458  , 1 , 4 )
-		   GiveItem ( role , 0 , 5459  , 1 , 4 )
-	elseif cha_type == 2 then 
+		d = item_type_rad [ k ] + b
 
-		   GiveItem ( role , 0 , 5460  , 1 , 4 )
-		   GiveItem ( role , 0 , 5461  , 1 , 4 )
-		   GiveItem ( role , 0 , 5462  , 1 , 4 )
-		   GiveItem ( role , 0 , 5463  , 1 , 4 )
+		 if a <= d and a > b then
+			c = k
+
+		end 
+		b = d 
+	end 
+	if c == -1 then 
+		ItemId = 6618 
+	else 
+		ItemId = item_type [c]  
+		ItemCount = item_type_count [c] 
+	end 
+	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
+end
+
+-- Билет на Кольцо 75 ур.
+function ItemUse_75JZDH ( role , Item )
+
+	local item_type = BaoXiang_75JZDH
+	local item_type_rad = BaoXiang_75JZDH_Rad 
+	local item_type_count = BaoXiang_75JZDH_Count 
+	local maxitem = BaoXiang_75JZDH_Mxcount
+	local item_quality = 4
+	local General = 0  
+	local ItemId = 0 
+	
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	
+	if Item_CanGet <= 0 then
+	SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \239\240\229\228\236\229\242")
+		UseItemFailed ( role )
+		return
+	end
+	for i = 1 , maxitem , 1 do 
+		General = item_type_rad [ i ] + General		
+	end 
+	local a = math.random ( 1, General )
+	local b = 0
+	local d = 0 
+	local c = -1
+	for k = 1 , maxitem , 1 do
+
+		d = item_type_rad [ k ] + b
+
+		 if a <= d and a > b then
+			c = k
+
+		end 
+		b = d 
+	end 
+	if c == -1 then 
+		ItemId = 6638 
+	else 
+		ItemId = item_type [c]  
+		ItemCount = item_type_count [c] 
+	end 
+	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
+end
+
+-- Пакет
+function ItemUse_RedBox( role , Item )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 1 then
+		SystemNotice(role ,"Чтобы использовать Пакет необходимо иметь 1 свободный слот в Вашем инвентаре. ")
+		UseItemFailed ( role )
+		return
+	end
+	local rad = math.random ( 1, 5 )
+	if rad ==1 then
+	GiveItem ( role , 0 , 1012  , 1 , 4 )	
+	end
+	if rad ==2 then	
+	GiveItem ( role , 0 , 860  , 1 , 4 )	
+	end
+	if rad ==3 then	
+	GiveItem ( role , 0 , 862  , 1 , 4 )		
+	end
+	if rad ==4 then	
+	GiveItem ( role , 0 , 861  , 1 , 4 )			
+	end
+	if rad ==5 then	
+	GiveItem ( role , 0 , 863  , 1 , 4 )			
 	end
 end
 
----------------------------ХЩ»ЅѕЮР·КШ»¤ХЯ
-function ItemUse_JXSHZ ( role , Item  )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local el = 0
-	el =IsChaInRegion( role, 2 )
-	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
-		UseItemFailed ( role )
-		return
-	end
-	local x, y = GetChaPos(role)
-	local MonsterID = 1040
-	local Refresh = 10900					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 3600000					--ЙъГьК±јдЈ¬єБГлµҐО»
-	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
-	SetChaLifeTime( new, life )
-end
-
-
-
-function Sk_Script_DS ( role , Item ) 
+function ItemUse_Avgust ( role , Item )
+	local item_type = BaoXiang_Avgust 
+	local item_type_rad = BaoXiang_Avgust_Rad 
+	local item_type_count = BaoXiang_Avgust_Count 
+	local maxitem = BaoXiang_Avgust_Mxcount
+	local item_quality = BaoXiang_Avgust_Qua
+	local General = 0  
+	local ItemId = 0 
 	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		UseItemFailed ( role ) 
-		SystemNotice( role , "ДгЦБЙЩРиТЄТ»ёцїХёсАґ»сµГС§ЙъЦ¤")
-		return 
-	end 
-	local sk_add = SK_DS  
-	local form_sklv = GetSkillLv( role , sk_add ) 
-	  
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 				--С§»бјјДЬ
-	if a== 0 then 
-		UseItemFailed ( role )  
-		return 
-	end 
 	
-	local r1 = 0
-	local r2 = 0
-	r1, r2 = MakeItem ( role , 3289 , 1 , 4 )				--ёшС§ЙъЦ¤
-	local Itemnew = GetChaItem ( role , 2 , r2 )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"\205\229\228\238\241\242\224\242\238\247\237\238 \236\229\241\242\224 \226 \232\237\226\229\237\242\224\240\229. \205\229\226\238\231\236\238\230\237\238 \238\242\234\240\251\242\252 \241\243\237\228\243\234")
+		UseItemFailed ( role )
+		return
+	end
+	
+	for i = 1 , maxitem , 1 do 
+		General = item_type_rad [ i ] + General		
+	end 
+	local a = math.random ( 1, General )
+	local b = 0
+	local d = 0 
+	local c = -1
+	for k = 1 , maxitem , 1 do
 
-	SetItemAttr(Itemnew, ITEMATTR_MAXENERGY , 120)  --ЙиЦГЧоёЯґжґўѕ­Сй
-	SetItemAttr(Itemnew, ITEMATTR_ENERGY , 0 )     				 --ЙиЦГµ±З°ґжґўѕ­Сй
-	SetItemAttr(Itemnew, ITEMATTR_URE,0)								 --ЙиЦГµ±З°ґжґўС§·Ц
-	SetItemAttr(Itemnew, ITEMATTR_MAXURE,150)						--ЙиЦГµ±З°ЧоґуС§·ЦЈ¬ёГЦµФЪГїґОЙэј¶їјКФєу»б±д»Ї
-	SetItemAttr(Itemnew, ITEMATTR_FORGE,0)								--ЙиЦГС§Аъ
-	
-	LiveSkillLearnLog(role, 461)
+		d = item_type_rad [ k ] + b
+
+		 if a <= d and a > b then
+			c = k
+			break 
+		end 
+		b = d 
+
+	end 
+	if c == -1 then 
+		ItemId = 3124 
+	else 
+		ItemId = item_type [c]  
+		ItemCount = item_type_count [c] 
+	end 
+	GiveItem ( role , 0 , ItemId , ItemCount , item_quality ) 
+	local itemname = GetItemName ( ItemId ) 
+	local cha_name = GetChaDefaultName ( role )  
+	Notice ( message )
 end 
 
-function ItemUse_WisdomApple( role , Item )		-------ЦЗ»Ы№ыК№УГР§№ы
-	local Lv = Lv( role )
-	if Lv < 40 then
-		SystemNotice(role ,"Only players Lv 40 and above may use")
-		UseItemFailed ( role )
-		return
-	end
-
-	local statelv = 1
-	local ChaStateLv = GetChaStateLv ( role , STATE_APPLE )
-	
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
-		UseItemFailed ( role )
-		return
-	end
-
-	local statetime = 1800
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_APPLE , statelv , statetime )
-	else
-		UseItemFailed ( role )
-		SystemNotice( role , "єЈЙПОЮ·ЁКіУГЦЗ»Ы№ы")
-	end
-end
-
-function ItemUse_GoldApple ( role , Item )
-	local Lv = Lv( role )
-	if Lv < 60 then
-		SystemNotice(role ,"Only Lv 60 and above may use")
-		UseItemFailed ( role )
-		return
-	end
-
-	local statelv = 2
-	local ChaStateLv = GetChaStateLv ( role , STATE_APPLE )
-	
-	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Более эффективное или аналогичное средство уже используется" )
-		UseItemFailed ( role )
-		return
-	end
-
-	local statetime = 1800
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
---	SystemNotice( role , Cha_Boat )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_APPLE , statelv , statetime )
-	else
-		UseItemFailed ( role )
-		SystemNotice( role , "єЈЙПОЮ·ЁКіУГЅрЖ»№ы№ы")
-	end
-end
-
-
---------------------------------------------јО±ц±¦Пд
-function ItemUse_JBBOX( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <1 then
-		SystemNotice(role ,"To open a Chest requires 1 empty slot")
-		UseItemFailed ( role )
-		return
-	end
-	local r1,r2 =MakeItem ( role , 3078  , 1 , 4 )
-	local Item_el = GetChaItem ( role , 2 , r2 )			--ИЎРВѕ«БйµАѕЯЦёХл
-
-	local item_old = GetChaItem2 ( role , 2 , 3066 )
-
-	local old_month = GetItemAttr(item_old, ITEMATTR_VAL_STA)		-------------ФВ 	
-	local old_day = GetItemAttr(item_old, ITEMATTR_VAL_STR)			-------------ИХ  
-	local old_hour = GetItemAttr(item_old, ITEMATTR_VAL_CON)			-------------К±   
-	local old_miniute = GetItemAttr(item_old, ITEMATTR_VAL_DEX)		-------------·Ц   
-	
-	--SystemNotice ( role , "old_month=="..old_month )
-	--SystemNotice ( role , "old_day=="..old_day )       
-	--SystemNotice ( role , "old_hour=="..old_hour )    
-	--SystemNotice ( role , "old_miniute=="..old_miniute)
-
-	SetItemAttr(Item_el, ITEMATTR_VAL_STA, old_month )	-------------ФВ 	
-	SetItemAttr(Item_el, ITEMATTR_VAL_STR, old_day )		-------------ИХ  
-	SetItemAttr(Item_el, ITEMATTR_VAL_CON, old_hour )		-------------К± 
-	SetItemAttr(Item_el, ITEMATTR_VAL_DEX, old_miniute )	-------------·Ц
-
-	local old_month2 = GetItemAttr(Item_el, ITEMATTR_VAL_STA)		-------------ФВ 	
-	local old_day2 = GetItemAttr(Item_el, ITEMATTR_VAL_STR)			-------------ИХ  
-	local old_hour2 = GetItemAttr(Item_el, ITEMATTR_VAL_CON)			-------------К±   
-	local old_miniute2 = GetItemAttr(Item_el, ITEMATTR_VAL_DEX)		-------------·Ц 
-
-	--SystemNotice ( role , "old_month2=="..old_month2 )
-	--SystemNotice ( role , "old_day2=="..old_day2 )       
-	--SystemNotice ( role , "old_hour2=="..old_hour2 )    
-	--SystemNotice ( role , "old_miniute2=="..old_miniute2)
-
-	SynChaKitbag(role,13)
-
-end
-
-
-------------------АЛВюСМ»Ё
-function ItemUse_LMYH ( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-end
-
-------------------ѕЮПмСМ»Ё
-function ItemUse_JXYH ( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-end
-
-------------------єА»ЄСМ»Ё
-function ItemUse_HHLH ( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-end
-
----------ЅММГК№УГЦ¤Кй
-function Jz_Script_jtsyzs (role, Item )
-	
-	local Now_Day = os.date("%d")
-	local Now_Month = os.date("%m")
-	local Now_Time = os.date("%H")
-	local NowMniuteNum= os.date("%M")	
-	local NowMiniuteNum= tonumber(Now_Miniute)	 	
-	local NowTimeNum = tonumber(Now_Time)
-	local NowDayNum = tonumber(Now_Day)
-	local NowMonthNum = tonumber(Now_Month)
-	local CheckDateNum = NowMonthNum * 1000000 + NowDayNum * 10000 + NowTimeNum*100+NowMniuteNum
-	--SystemNotice ( role , "timing is now"..CheckDateNum)
-
-	local item_old = GetChaItem2 ( role , 2 , 3066 )----ЅММГК№УГЦ¤
-	local old_month = GetItemAttr(item_old, ITEMATTR_VAL_STA)			
-	local old_day = GetItemAttr(item_old, ITEMATTR_VAL_STR)				
-	local old_hour = GetItemAttr(item_old, ITEMATTR_VAL_CON)			 
-	local old_miniute = GetItemAttr(item_old, ITEMATTR_VAL_DEX)  
-	 
-	local CheckBook1Num = old_month * 1000000 + old_day * 10000 + old_hour*100+old_miniute
-	--SystemNotice ( role , "CheckBook1Num"..CheckBook1Num)
-	local CheckBook2Num = old_month * 1000000 + old_day * 10000 + (old_hour+2)*100+old_miniute
-	--SystemNotice ( role , "CheckBook2Num"..CheckBook2Num)
-	
-	local i = CheckBagItem(role,3066)
-	local k = ChaIsBoat(role)
-	if CheckDateNum >= CheckBook1Num  and CheckDateNum <= CheckBook2Num and k ==0 and  i >0 then
-		 DelBagItem(role,3066,1)
-		MoveCity(role,"Church")	
-	else
-		SystemNotice ( role , "ЯЧ?ДСµАКЗК±јдІ»¶Ф")
-		UseItemFailed ( role )
-	end
-end
-
-------------Злјн
-function Jz_Script_qj (role, Item )
-	--SystemNotice ( role , "Invitation Invitation Invitation" )
-	local Now_Day = os.date("%d")
-	local Now_Month = os.date("%m")
-	local Now_Time = os.date("%H")
-	--SystemNotice ( role , "Wahaha" )
-	local NowMniuteNum= os.date("%M")	-------------·Ц
-	local NowMiniuteNum= tonumber(Now_Miniute)	 	-------------·Ц
-	local NowTimeNum = tonumber(Now_Time)
-	--SystemNotice ( role , "huhuhuhu" )
-	local NowDayNum = tonumber(Now_Day)
-	--SystemNotice ( role , "hehehehe" )
-	local NowMonthNum = tonumber(Now_Month)
-	--SystemNotice ( role , "kekekeke" )
-	local CheckDateNum = NowMonthNum * 1000000 + NowDayNum * 10000 + NowTimeNum*100+NowMniuteNum
-	--SystemNotice ( role , "timing is now"..CheckDateNum)
-	--local old_type = GetItemAttr(item_old, ITEMATTR_MAXENERGY)	----------------·ЁКЅЅММГ
-
-	local item_old = GetChaItem2 ( role , 2 , 3078 )
-	local old_month = GetItemAttr(item_old, ITEMATTR_VAL_STA)		-------------ФВ 	
-	local old_day = GetItemAttr(item_old, ITEMATTR_VAL_STR)			-------------ИХ  
-	local old_hour = GetItemAttr(item_old, ITEMATTR_VAL_CON)			-------------К± 
-	local old_miniute = GetItemAttr(item_old, ITEMATTR_VAL_DEX)  
-	 
-
-	local CheckBook1Num = old_month * 1000000 + old_day * 10000 + old_hour*100+old_miniute
-	--SystemNotice ( role , "CheckBook1Num"..CheckBook1Num)
-	local CheckBook2Num = old_month * 1000000 + old_day * 10000 + (old_hour+2)*100+old_miniute
-	--SystemNotice ( role , "CheckBook2Num"..CheckBook2Num)
-	
-	if CheckDateNum < CheckBook1Num then
-		SystemNotice ( role , "Please be patient, Church is not opened yet. Please come back according to the time listed" )
-		UseItemFailed ( role )
-		return
-	end
-	--SystemNotice ( role , "Mother")
-	if CheckDateNum > CheckBook2Num then
-		SystemNotice ( role , "The wedding you want to visit is already finished, too bad" )
-		UseItemFailed ( role )
-		return
-	end
-	--SystemNotice ( role , "Father")
-
-	local i = CheckBagItem(role,3078)
-	local k = ChaIsBoat(role)
-	local hp = Hp(role)
-	local mxhp = Mxhp(role)
-	local sp = Sp(role)
-	local mxsp = Mxsp(role)
-	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Visiting the church is a tiring process, please keep your hp and sp at 100%")
-		UseItemFailed ( role )
-		return
-	end 
-	if k == 0 then
-		if i > 0 then
-			local j = DelBagItem(role,3078,1)
-			--if j == 1 and old_type=1 then
-				--MoveCity(role,"French Wedding Hall")
-			--elseif	j == 1 and old_type=2 then
-				--MoveCity(role,"Chinese style church")
-			if j == 1 then-------------elseif	j == 1 and old_type=3 then
-				MoveCity(role,"Church")
-				--SystemNotice ( role , "Grandfather")
-			--elseif	j == 1 and old_type=4 then
-				--MoveCity(role,"Ground type Church")
-			end
-		end
-	else
-		UseItemFailed ( role )
-	end
-	--SystemNotice ( role , "Granny")	
-end
----------------------------ХЩ»Ѕ»йАсМФЖш№н
 function ItemUse_FLOWER ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -18065,25 +16515,23 @@ function ItemUse_FLOWER ( role , Item  )
 	local el = 0
 	el =IsChaInRegion( role, 2 )
 	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \226\251\231\226\224\242\252 \236\238\237\241\242\240\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local x, y = GetChaPos(role)
-	local MonsterID = 1037
-	local Refresh = 7300					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 7200000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local MonsterID = 1037					-- Брачный аферист
+	local Refresh = 7300					
+	local life = 7200000					
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
 	SetChaLifeTime( new, life )
 end
 
-
----------------------------ЖшЗтУОП·ИЇ
 function ItemUse_QQ ( role , Item  )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
@@ -18091,18 +16539,19 @@ function ItemUse_QQ ( role , Item  )
 	local el = 0
 	el =IsChaInRegion( role, 2 )
 	if el == 1 then
-		SystemNotice( role , "Невозможно призвать монстра в безопасной зоне" )
+		SystemNotice( role , "\205\229\226\238\231\236\238\230\237\238 \226\251\231\226\224\242\252 \236\238\237\241\242\240\224 \226 \193\229\231\238\239\224\241\237\238\233 \199\238\237\229" )
 		UseItemFailed ( role )
 		return
 	end
 	local x, y = GetChaPos(role)
-	local MonsterID = 1036
-	local Refresh = 60					--ЦШЙъК±јдЈ¬ГлµҐО»
-	local life = 7200000					--ЙъГьК±јдЈ¬єБГлµҐО»
+	local MonsterID = 1036					-- Воздушный шар
+	local Refresh = 60					
+	local life = 7200000					
 	local new = CreateChaX( MonsterID , x , y , 145 , Refresh, role )
 	SetChaLifeTime( new, life )
 end
---ТБКЅЅММГІО№ЫГЕЖ±
+
+-- Билет на посещение Церкви
 function Jz_Script_yszs (role, Item )
 	
 	local Now_Week = os.date("%w")
@@ -18113,14 +16562,13 @@ function Jz_Script_yszs (role, Item )
 	local Now_Miniute= tonumber(Now_Miniute)
 	local CheckDateNum = Now_WeekNum * 10000 + Now_TimeNum * 100+Now_Miniute
 
-	if CheckDateNum < 11700  then
-		SystemNotice ( role , "І»ТЄЧЕј±Е¶Ј¬ЅММГ»№Г»їЄГЕЈ¬ЗлФЪГїРЗЖЪТ»НнЙП17µгµЅ17µг10·ЦЦ®јдК№УГЕ¶" )
+	if CheckDateNum < 61200  then
+		SystemNotice ( role , "Церковь еще не открылась. Приходи между 12:00 и 24:00 каждую субботу и воскресенье." )
 		UseItemFailed ( role )
 		return
 	end
 	
-	if CheckDateNum > 11710 then
-		SystemNotice ( role , "Church is now closed, please wait until next Monday night" )
+	if CheckDateNum > 72400 then
 		UseItemFailed ( role )
 		return
 	end
@@ -18132,7 +16580,7 @@ function Jz_Script_yszs (role, Item )
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Visiting the church is a tiring process, please keep your hp and sp at 100%")
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
 		UseItemFailed ( role )
 		return
 	end 
@@ -18147,257 +16595,90 @@ function Jz_Script_yszs (role, Item )
 	else
 		UseItemFailed ( role )
 	end
-		
-end
------------------------------єм°ьЈєєм°ьЦ»УРФЪЈЁГїЦЬБщ\ИХНн18:00--22Јє10Ј©ґтїЄІЕ»бУРР§
-
-function ItemUse_RedBox( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	 if Item_CanGet < 1 then
-		SystemNotice(role ,"ґтїЄєм°ьЧоЙЩРиТЄ1ёцїХО»")
-		UseItemFailed ( role )
-		return
-	end
-	local now_week= os.date("%w")		-------------РЗЖЪјёЈЁК®ЅшЦЖЈ© 
-	local now_hour= os.date("%H")		-------------К± 
-	local now_miniute= os.date("%M")	-------------·Ц
-	now_week= tonumber(now_week)
-	now_hour= tonumber(now_hour)		
-	now_miniute= tonumber(now_miniute)
-	local CheckDateNum = now_hour*100 +now_miniute
-	local flag=0
-      if now_week==6 or now_week==0 then
-		flag=1
-      end
-	if 1800<=CheckDateNum and  CheckDateNum<=2210 and flag==1 then
-		ItemUse_hongbaoBOX ( role , Item )
-	else 
-		SystemNotice(role ,"It is not time yet. Do not try to cheat!")
-		UseItemFailed ( role )
-		return
-	end
 end
 
-function ItemUse_hongbaoBOX ( role , Item )
-	local ChaName = GetChaDefaultName ( role )
-
-	local el = math.random ( 1, 1000 )
-	if  el>=1 and el<=5 then
-		GiveItem ( role , 0 , 1012  , 1 , 4 ) -------------јУДЙЦ®Йс        0.5
-			local message ="№§ПІНжјТ" ..ChaName.."ИЛЖ·±¬·ў,ґтїЄєм°ь»сµГ јУДЙЦ®Йс" 
-			Notice ( message )
-	elseif el>=6 and el<=10 then
-		GiveItem ( role , 0 , 1016  , 1 , 4 ) ---------------Е®ЙсРЎ°ь       0.5
-			local message1 ="№§ПІНжјТ" ..ChaName.."ИЛЖ·±¬·ў,ґтїЄєм°ь»сµГ Е®ЙсРЎ°ь" 
-			Notice ( message1 )
-	elseif el>=11 and el<=20 then
-		GiveItem ( role , 0 , 0860  , 1 , 4 ) ---------------·зБй1
-			local message2 ="№§ПІНжјТ" ..ChaName.."ИЛЖ·±¬·ў,ґтїЄєм°ь»сµГ ·зБйКЇ" 
-			Notice ( message2 )
-	elseif el>=21 and el<=30 then
-		GiveItem ( role , 0 , 0861  , 1 , 4 ) ----------------УҐСЫКЇ     1
-			local message3 ="№§ПІНжјТ" ..ChaName.."ИЛЖ·±¬·ў,ґтїЄєм°ь»сµГ УҐСЫКЇ" 
-			Notice ( message3 )
-	elseif el>=31 and el<40 then
-		GiveItem ( role , 0 , 0862  , 1 , 4 ) ----------------СТУс       1
-			local message4 ="№§ПІНжјТ" ..ChaName.."ИЛЖ·±¬·ў,ґтїЄєм°ь»сµГ СТУс" 
-			Notice ( message4 )
-	elseif el>=41 and el<=50 then
-		GiveItem ( role , 0 , 0863  , 1 , 4 )-----------------СЧУс       1
-			local message5 ="№§ПІНжјТ" ..ChaName.."ИЛЖ·±¬·ў,ґтїЄєм°ь»сµГ СЧУс" 
-			Notice ( message5 )
-	elseif el>=51 and el<=270 then
-		GiveItem ( role , 0 , 855  , 99 , 4 )-----------------ѕ«БйУІ±Т       22
-	elseif el>=271 and el<=500 then
-		GiveItem ( role , 0 , 0227  , 5 , 4 )-----------------КШ»¤ѕ«БйЛЗБП    23
-	elseif el>=501 and el<=750 then
-		GiveItem ( role , 0 , 3096  , 3 , 4 )-----------------ІЖё»Фц·щЖч3ёц   25
-	elseif el>=751 and el<=1000 then
-		GiveItem ( role , 0 , 3094  , 3 , 4 )-----------------Е¬Б¦Фц·щЖч3ёц   25
-	end
-end
-------------------------------------------------їЙТЙІШ±¦Нј(kokora)---------------------------------
-function ItemUse_KYCBT (role, Item)
-	local	sc = math.random ( 1,100 )
-	if  sc <=50 then
-	local cha_name = GetChaDefaultName ( role ) 
-	local message1= cha_name.."ИЛЖ·±¬·ў,ёщѕЭВеїЛІШ±¦НјМЅЛчµЅ ґ¬і¤Ц®КЧ" 
-		Notice ( message1 )
-	else 
-	local cha_name = GetChaDefaultName ( role ) 
-	local message2 = cha_name.."ИЛЖ·±¬·ў,ёщѕЭВеїЛІШ±¦НјМЅЛчµЅ ФЄЛ§Ц®КЧ" 
-		Notice ( message2 )
-	end
-end
------------------------------------------------------------kokora---------------------------------------------------------
-------------------------------------------------¶Т»»ЙсЖь±¦Пд(kokora)---------------------------------
-function ItemUse_goddessBOX (role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "іцєЈК±І»їЙК№УГЙсЖь±¦Пд" )
+-- Карта второго перерождения
+function ItemUse_ZSCard2(role, Item )
+	local i = CheckBagItem(role,6019)
+	local k = ChaIsBoat(role)
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	local charLv=Lv ( role )
+	if Item_CanGet < 1 then
+		SystemNotice(role ,"Чтобы использовать Карту второго перерождения нужен 1 свободный слот в Вашем инвентаре ")
 		UseItemFailed ( role )
 		return
 	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	 if Item_CanGet < 1 then
-		SystemNotice(role ,"ґтїЄЙсЖь±¦ПдЦБЙЩРиТЄ1ёцїХО»")
-		UseItemFailed ( role )
+	if charLv<=74  then
+		SystemNotice( role , "Вы должны быть 75 уровня или выше, чтобы использовать Карту перерождения " )
+		UseItemsFailed ( role )
 		return
-	end
-	local	sc = math.random ( 1, 43 )
-	local ItemId = 0
-	
-	if sc <=14 then	
-		local GoodItem = {}
-		GoodItem[0] = 0111   -------------ЅµД§иЖ »сµГ»ъВК14%
-		GoodItem[1] = 0150   -------------Угі¦    »сµГ»ъВК14%
-	
-		local Good_C = math.random ( 1, 2 )-1
-		ItemId = GoodItem[Good_C]
-	elseif sc <=26 then		
-		local GoodItem = {}
-		GoodItem[0] = 0109   -------------ИзТв±¦ХИ       »сµГ»ъВК12%
-		GoodItem[1] = 0115   -------------БССТ    »сµГ»ъВК12%
-		GoodItem[2] = 0117   -------------·Йєз    »сµГ»ъВК12%
-		GoodItem[3] = 0119   -------------БчРЗ»рЦй       »сµГ»ъВК12%
-	
-		local Good_C = math.random ( 1, 4 )-1
-		ItemId = GoodItem[Good_C]
-	elseif sc <=36 then
-		ItemId = 0113   -------------БъИЄ »сµГ»ъВК10%
-	else  local GoodItem = {}
-		GoodItem[0] = 0861   -------------УҐСЫКЇ »сµГ»ъВК7%
-		GoodItem[1] = 0860   -------------·зБйКЇ »сµГ»ъВК7%
-	
-		local Good_C = math.random ( 1, 2 )-1
-		ItemId = GoodItem[Good_C]
-	end
-	local itemname = GetItemName ( ItemId ) 
-	local cha_name = GetChaDefaultName ( role ) 
-	GiveItem ( role , 0 , ItemId , 1 , 94 )
-	local message = "№§ПІНжјТ" ..cha_name.."ґтїЄЙсЖь±¦Пд,ѕЄПІµД»сµГ"..itemname  
-	Notice ( message )
-end
------------------------------------------------------------kokora---------------------------------------------------------
-
-------------------------------------------------¶Т»»°ФНх±¦Пд(kokora)---------------------------------
-function ItemUse_overlordBOX (role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "іцєЈК±І»їЙК№УГ°ФНх±¦Пд" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	 if Item_CanGet < 1 then
-		SystemNotice(role ,"ґтїЄ°ФНх±¦ПдЦБЙЩРиТЄ1ёцїХО»")
-		UseItemFailed ( role )
-		return
-	end
-	local	sc = math.random ( 1, 43 )
-	local ItemId = 0
-	
-	if  sc <=14 then	
-		local GoodItem = {}
-		GoodItem[0] = 0112   -------------КФБ¶Ц®иЖ »сµГ»ъВК14%
-		GoodItem[1] = 0151   -------------¶П»к       »сµГ»ъВК14%
-	
-		local Good_C = math.random ( 1, 2 )-1
-		ItemId = GoodItem[Good_C]
-	elseif sc <=26 then		
-		local GoodItem = {}
-		GoodItem[0] = 0110   -------------І№МмЦ®ХИ       »сµГ»ъВК12%
-		GoodItem[1] = 0116   -------------ѕЮгЪ    »сµГ»ъВК12%
-		GoodItem[2] = 0118   -------------ВдИХ    »сµГ»ъВК12%
-		GoodItem[3] = 0120   -------------ЕщцЁЙсАЧ       »сµГ»ъВК12%
-	
-		local Good_C = math.random ( 1, 4 )-1
-		ItemId = GoodItem[Good_C]
-	elseif sc <=36 then
-		ItemId = 0114   -------------УОБъ »сµГ»ъВК10%
-	else local GoodItem = {}
-		GoodItem[0] = 0863   -------------СЧУс »сµГ»ъВК7%
-		GoodItem[1] = 0862   -------------СТУс »сµГ»ъВК7%
-	
-		local Good_C = math.random ( 1, 2 )-1
-		ItemId = GoodItem[Good_C]
-	end
-	local itemname = GetItemName ( ItemId ) 
-	local cha_name = GetChaDefaultName ( role ) 
-	GiveItem ( role , 0 , ItemId , 1 , 94 )
-	local message = "№§ПІНжјТ" ..cha_name.."ґтїЄ°ФНх±¦Пд,ѕЄПІµД»сµГ"..itemname  
-	Notice ( message )
-end
-
-------
--- Книга Сброса Умений (id 2216)
-------
-
-function ItemUse_XiDianBook ( role , item )
-
-	local zsskill_lv  = {}
-	zsskill_lv [0] = GetSkillLv ( role, 453 )
-	zsskill_lv [1] = GetSkillLv ( role, 454 )
-	zsskill_lv [2] = GetSkillLv ( role, 455 )
-	zsskill_lv [3] = GetSkillLv ( role, 456 )
-	zsskill_lv [4] = GetSkillLv ( role, 457 )
-	zsskill_lv [5] = GetSkillLv ( role, 458 )
-	
-	local n = 0
-	local item_canget = GetChaFreeBagGridNum ( role )
-	
-	local QLZX = GetSkillLv ( role, SK_QLZX )
-
-	if item_canget < 2 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет")
-		UseItemFailed ( role )
-	else
-		for i = 0, 5, 1 do
-			if zsskill_lv [i] >= 1 then
-				n = n+1
+	elseif k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,6019,1) 
+			if j == 1 then
+				GiveItem ( role , 0 , 5765 , 1 , 42)
+				GoTo( role,  1750 , 909 , "jialebi")
+				return
 			end
 		end
-		local cha_skill_num=GetChaAttr(role, ATTR_TP  )
-		local clear_skill_num=ClearFightSkill(role)
-		cha_skill_num=cha_skill_num+clear_skill_num
-		if n > 0 then
-			local job = GetChaAttr( role, ATTR_JOB)
-			local item_id = {}
-			item_id [8] = 2957
-			item_id [9] = 2956
-			item_id [12] = 2961
-			item_id [13] = 2959
-			item_id [14] = 2958
-			item_id [16] = 2960
-			GiveItem ( role, 0, item_id [job] , 1, 4)
-			GiveItem ( role, 0, 1572, 1, 4)
-			cha_skill_num = cha_skill_num - 2
-		end
-
-		if QLZX == 1 then
-			AddChaSkill ( role , SK_QLZX , 1 , 1 , 0 )
-		end
-
-		SetChaAttr(role, ATTR_TP ,cha_skill_num ) 
+	else
+		UseItemsFailed ( role )
 	end
 	
 end
 
+----------------------------------------
+-- Книги навыков второго перерождения --
+----------------------------------------
 
-function Sk_Script_ZSSL( role , item )
-	local sk_add = SK_ZSSL 
+-- Книга навыков второго перерождения (Воитель)
+function Sk_Script_Wyz2 ( role , Item ) 											
+	local sk_add = SK_WYZ 
 	local form_sklv = GetSkillLv( role , sk_add ) 
-	  
---	if form_sklv < 0 or form_sklv == nil then								--јјДЬµИј¶єП·ЁРФјмІй
---		return 
---	end 
-	if form_sklv >= 1  then 
+
+	if form_sklv >= 2  then 
+		UseItemFailed ( role )  
+		return 
+	end
+	local zs_exp = GetChaAttr ( role , ATTR_CSAILEXP )
+	if zs_exp <= 0 then
+		UseItemFailed ( role )  
+		return 
+	end
+	a = AddChaSkill ( role , sk_add, 2 , 2 , 0 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end
+
+-- Книга навыков второго перерождения (Чемпион)
+function Sk_Script_Bsj2 ( role , Item ) 											
+	local sk_add = SK_BSJ 
+	local form_sklv = GetSkillLv( role , sk_add ) 
+
+	if form_sklv >= 2  then 
+		UseItemFailed ( role )  
+		return 
+	end
+	local zs_exp = GetChaAttr ( role , ATTR_CSAILEXP )
+	if zs_exp <= 0 then
+		UseItemFailed ( role )  
+		return 
+	end
+	a = AddChaSkill ( role , sk_add, 2 , 2 , 0 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end 
+
+-- Книга навыков второго перерождения (Колдунья)
+function Sk_Script_Emzz2 ( role , Item ) 											
+	local sk_add = SK_EMZZ 
+	local form_sklv = GetSkillLv( role , sk_add ) 
+
+	if form_sklv >= 2  then 
 		UseItemFailed ( role )  
 		return 
 	end 
@@ -18406,16 +16687,364 @@ function Sk_Script_ZSSL( role , item )
 		UseItemFailed ( role )  
 		return 
 	end
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 0 ) 
+	a = AddChaSkill ( role , sk_add, 2 , 2 , 0 ) 
 	if a== 0 then 
 		UseItemFailed ( role )  
 		return 
 	end 
 end 
 
-------
--- Сундук с монетами фей (id 1872)
-------
+-- Книга навыков второго перерождения (Целительница)
+function Sk_Script_Sssp2 ( role , Item ) 											
+	local sk_add = SK_SSSP 
+	local form_sklv = GetSkillLv( role , sk_add ) 
+
+	if form_sklv >= 2  then 
+		UseItemFailed ( role )  
+		return 
+	end
+	local zs_exp = GetChaAttr ( role , ATTR_CSAILEXP )
+	if zs_exp <= 0 then
+		UseItemFailed ( role )  
+		return 
+	end
+	local zs_exp = GetChaAttr ( role , ATTR_CSAILEXP )
+	if zs_exp <= 0 then
+		UseItemFailed ( role )  
+		return 
+	end
+	a = AddChaSkill ( role , sk_add, 2 , 2 , 0 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end 
+
+-- Книга навыков второго перерождения (Покоритель морей)
+function Sk_Script_Cyn2 ( role , Item ) 											
+	local sk_add = SK_CYN 
+	local form_sklv = GetSkillLv( role , sk_add ) 
+
+	if form_sklv >= 2  then 
+		UseItemFailed ( role )  
+		return 
+	end 
+	local zs_exp = GetChaAttr ( role , ATTR_CSAILEXP )
+	if zs_exp <= 0 then
+		UseItemFailed ( role )  
+		return 
+	end
+	a = AddChaSkill ( role , sk_add, 2 , 2 , 0 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end 
+
+-- Книга навыков второго перерождения (Стрелок)
+function Sk_Script_Hlp2 ( role , Item ) 											
+	local sk_add = SK_HLP 
+	local form_sklv = GetSkillLv( role , sk_add ) 
+
+	if form_sklv >= 2  then 
+		UseItemFailed ( role )  
+		return 
+	end 
+	local zs_exp = GetChaAttr ( role , ATTR_CSAILEXP )
+	if zs_exp <= 0 then
+		UseItemFailed ( role )  
+		return 
+	end
+	a = AddChaSkill ( role , sk_add, 2 , 2 , 0 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end
+
+-- Покровительство Богини (ID 938)
+function Jz_Script_Nebesa(role, Item )
+	local i = CheckBagItem(role,938)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
+		UseItemFailed ( role )
+		return
+	end 
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,938,1)
+			if j == 1 then
+				GoTo( role,  1750 , 909 , "jialebi")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+	end
+end
+
+-- Расписка на 40 украшения
+function ItemUse_40ynik( role , Item )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"Чтобы использовать Расписку необходимо иметь 2 свободных слота в Вашем инвентаре. ")
+		UseItemFailed ( role )
+		return
+	end
+	local rad = math.random ( 1, 5 )
+	if rad ==1 then
+	GiveItem ( role , 0 , 324  , 1 , 4 )	
+	end
+	if rad ==2 then	
+	GiveItem ( role , 0 , 327  , 1 , 4 )	
+	end
+	if rad ==3 then	
+	GiveItem ( role , 0 , 328  , 1 , 4 )		
+	end
+	if rad ==4 then	
+	GiveItem ( role , 0 , 329  , 1 , 4 )			
+	end
+	if rad ==5 then	
+	GiveItem ( role , 0 , 330  , 1 , 4 )				
+	end
+	local rad1 = math.random ( 1, 2 )
+	if rad1 ==1 then
+		GiveItem ( role , 0 , 739  , 1 , 4 )	
+	end
+	if rad1 ==2 then	
+		GiveItem ( role , 0 , 461  , 1 , 4 )	
+	end
+end
+
+-- Расписка на 50 украшения
+function ItemUse_50ynik( role , Item )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"Чтобы использовать Расписку необходимо иметь 2 свободных слота в Вашем инвентаре. ")
+		UseItemFailed ( role )
+		return
+	end
+	local rad = math.random ( 1, 5 )
+	if rad ==1 then
+	GiveItem ( role , 0 , 349  , 1 , 4 )	
+	end
+	if rad ==2 then	
+	GiveItem ( role , 0 , 348  , 1 , 4 )	
+	end
+	if rad ==3 then	
+	GiveItem ( role , 0 , 347  , 1 , 4 )		
+	end
+	if rad ==4 then	
+	GiveItem ( role , 0 , 346  , 1 , 4 )			
+	end
+	if rad ==5 then	
+	GiveItem ( role , 0 , 334  , 1 , 4 )				
+	end
+
+
+	local rad1 = math.random ( 1, 2 )
+	if rad1 ==1 then
+		GiveItem ( role , 0 , 463  , 1 , 4 )	
+	end
+	if rad1 ==2 then	
+		GiveItem ( role , 0 , 462  , 1 , 4 )	
+	end
+end
+
+-- Расписка на 60 украшения
+function ItemUse_60ynik( role , Item )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"Чтобы использовать Расписку необходимо иметь 2 свободных слота в Вашем инвентаре. ")
+		UseItemFailed ( role )
+		return
+	end
+	local rad = math.random ( 1, 5 )
+	if rad ==1 then
+	GiveItem ( role , 0 , 414  , 1 , 4 )	
+	end
+	if rad ==2 then	
+	GiveItem ( role , 0 , 415  , 1 , 4 )	
+	end
+	if rad ==3 then	
+	GiveItem ( role , 0 , 416  , 1 , 4 )		
+	end
+	if rad ==4 then	
+	GiveItem ( role , 0 , 417  , 1 , 4 )			
+	end
+	if rad ==5 then	
+	GiveItem ( role , 0 , 387  , 1 , 4 )				
+	end
+
+	local rad1 = math.random ( 1, 2 )
+	if rad1 ==1 then
+		GiveItem ( role , 0 , 495  , 1 , 4 )	
+	end
+	if rad1 ==2 then	
+		GiveItem ( role , 0 , 497  , 1 , 4 )	
+	end
+end
+
+-- Расписка на 65 украшения
+function ItemUse_65ynik( role , Item )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"Чтобы использовать Расписку необходимо иметь 2 свободных слота в Вашем инвентаре. ")
+		UseItemFailed ( role )
+		return
+	end
+	local rad = math.random ( 1, 5 )
+	if rad ==1 then
+	GiveItem ( role , 0 , 6621  , 1 , 4 )	
+	end
+	if rad ==2 then	
+	GiveItem ( role , 0 , 6625  , 1 , 4 )	
+	end
+	if rad ==3 then	
+	GiveItem ( role , 0 , 6626  , 1 , 4 )		
+	end
+	if rad ==4 then	
+	GiveItem ( role , 0 , 6630  , 1 , 4 )			
+	end
+	if rad ==5 then	
+	GiveItem ( role , 0 , 6635  , 1 , 4 )				
+	end
+
+	local rad1 = math.random ( 1, 5 )
+	if rad1 ==1 then
+		GiveItem ( role , 0 , 6904  , 1 , 4 )	
+	end
+	if rad1 ==2 then	
+		GiveItem ( role , 0 , 6905  , 1 , 4 )	
+	end
+	if rad1 ==3 then	
+		GiveItem ( role , 0 , 6906  , 1 , 4 )	
+	end
+	if rad1 ==4 then	
+		GiveItem ( role , 0 , 6907  , 1 , 4 )	
+	end
+	if rad1 ==5 then	
+		GiveItem ( role , 0 , 6908  , 1 , 4 )	
+	end
+end
+
+-- Расписка на 75 украшения
+function ItemUse_75ynik( role , Item )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 2 then
+		SystemNotice(role ,"Чтобы использовать Расписку необходимо иметь 2 свободных слота в Вашем инвентаре. ")
+		UseItemFailed ( role )
+		return
+	end
+	local rad = math.random ( 1, 5 )
+	if rad ==1 then
+	GiveItem ( role , 0 , 6641  , 1 , 4 )	
+	end
+	if rad ==2 then	
+	GiveItem ( role , 0 , 6646  , 1 , 4 )	
+	end
+	if rad ==3 then	
+	GiveItem ( role , 0 , 6648  , 1 , 4 )		
+	end
+	if rad ==4 then	
+	GiveItem ( role , 0 , 6653  , 1 , 4 )			
+	end
+	if rad ==5 then	
+	GiveItem ( role , 0 , 6659  , 1 , 4 )				
+	end
+
+	local rad1 = math.random ( 1, 5 )
+	if rad1 ==1 then
+		GiveItem ( role , 0 , 7320  , 1 , 4 )	
+	end
+	if rad1 ==2 then	
+		GiveItem ( role , 0 , 7321  , 1 , 4 )	
+	end
+	if rad1 ==3 then	
+		GiveItem ( role , 0 , 7322  , 1 , 4 )	
+	end
+	if rad1 ==4 then	
+		GiveItem ( role , 0 , 7323  , 1 , 4 )	
+	end
+	if rad1 ==5 then	
+		GiveItem ( role , 0 , 7324  , 1 , 4 )	
+	end
+end
+
+-- Сундук с самоцветами Тьмы
+function ItemUse_newgem( role , Item )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 1 then
+		SystemNotice(role ,"Чтобы использовать Сундук с самоцветами Тьмы необходимо иметь 1 свободный слот в Вашем инвентаре. ")
+		UseItemFailed ( role )
+		return
+	end
+	local rad = math.random ( 1, 4 )
+	if rad ==1 then
+	GiveItem ( role , 0 , 7293  , 1 , 4 )	
+	end
+	if rad ==2 then	
+	GiveItem ( role , 0 , 7294  , 1 , 4 )	
+	end
+	if rad ==3 then	
+	GiveItem ( role , 0 , 7295  , 1 , 4 )		
+	end
+	if rad ==4 then	
+	GiveItem ( role , 0 , 7296  , 1 , 4 )			
+	end
+
+end
+
+-- Сундук с кольцами Тьмы
+function ItemUse_85ring( role , Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море. " )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 1 then
+		SystemNotice(role ,"Чтобы открыть Сундук с Кольцами Тьмы требуется 1 свободный слот в Вашем инвентаре. ")
+		UseItemFailed ( role )
+		return
+	end
+	local job = GetChaAttr(role, ATTR_JOB)
+	local lv = GetChaAttr(role, ATTR_LV) 
+	local star_rad=math.random ( 1, 2 )
+	if lv < 40 then
+		SystemNotice(role ,"Ваш уровень ниже чем 40. Невозможно использовать предмет. ")
+		UseItemFailed ( role )	
+	elseif job == 9 then 
+			GiveItem ( role , 0 , 2578  , 1 , 4 ) 
+
+	elseif job == 8 then   
+			GiveItem ( role , 0 , 2577  , 1 , 4 ) 
+
+	elseif job == 12 then 
+			GiveItem ( role , 0 , 2579  , 1 , 4 ) 
+
+	elseif job == 16 then 
+			GiveItem ( role , 0 , 2580  , 1 , 4 ) 
+
+	elseif job == 13 then    
+			GiveItem ( role , 0 , 2582  , 1 , 4 ) 
+
+	elseif job == 14 then    
+			GiveItem ( role , 0 , 2581  , 1 , 4 ) 
+
+	else 
+		SystemNotice(role ,"\207\240\229\228\236\229\242 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237 \242\238\235\252\234\238 \239\238\241\235\229 \226\251\225\238\240\224 \226\242\238\240\238\227\238 \238\241\237\238\226\237\238\227\238 \234\235\224\241\241\224!")
+		UseItemFailed ( role )	
+	end
+end
+
+-- Сундук с монетами фей
 function ItemUse_YingbiBox ( role , Item )
 
 	local map_name_role = GetChaMapName ( role )
@@ -18424,7 +17053,7 @@ function ItemUse_YingbiBox ( role , Item )
 		if lv >= 10 then
 			local Item_CanGet = GetChaFreeBagGridNum ( role )
 			if Item_CanGet < 4 then
-				SystemNotice(role ,"Требуется 4 свободные ячейки в инвентаре, чтобы открыть Сундук с монетами фей")
+				SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 4 \241\226\238\225\238\228\237\251\229 \255\247\229\233\234\232 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \241 \236\238\237\229\242\224\236\232 \244\229\233")
 				UseItemFailed ( role )
 				return
 			end
@@ -18433,9 +17062,9 @@ function ItemUse_YingbiBox ( role , Item )
 				PlayUseBox1[ChaName] = 0
 			end
 			local Use_Num = PlayUseBox1[ChaName]
-			local now_day= os.date("%d")
+			local now_day= os.date("%d")   
 			local now_month= os.date("%m")
-			now_month= tonumber(now_month)
+			now_month= tonumber(now_month)    
 			now_day = tonumber(now_day)
 			local Date = JNSTime_Flag[now_month]+now_day
 			local Yingbi_Num = 0
@@ -18444,25 +17073,23 @@ function ItemUse_YingbiBox ( role , Item )
 				Use_Num = Date * 10 + Time
 				Yingbi_Num = 20
 				local j = TakeItem ( role , 0 , 855 , Yingbi_Num )
-					if j == 1 then
+					if j == 1 then 
 						PlayUseBox1[ChaName] = Use_Num
 						GiveBragiItem ( role , 1 )
 						GiveItem ( role , 0 , 1872 , 1 , 4 )
 					else
 						UseItemFailed ( role )
-						SystemNotice( role, "Требуется 20 монет фей")
+						SystemNotice( role, "\210\240\229\225\243\229\242\241\255 20 \236\238\237\229\242 \244\229\233")
 					end
 			else
 				local Date_Box = math.floor ( Use_Num / 10 )
 				local a = Date - Date_Box
 				local Time = Use_Num - Date_Box * 10
-				--SystemNotice ( role , "a="..a)
 				if a == 0 then
 					Use_Num = Use_Num +1
 					local time_new = Time + 1
 					if time_new >= 1 and time_new <= 3 then
 						Yingbi_Num = (time_new*5) + 15
-						--SystemNotice ( role  , "Вы открыли Сундук с монетами фей "..time_new.." раз. Затрачено "..Yingbi_Num.." монет фей")
 						local j = TakeItem ( role , 0 , 855 , Yingbi_Num )
 						if j == 1 then
 							GiveBragiItem ( role , 1 )
@@ -18470,11 +17097,10 @@ function ItemUse_YingbiBox ( role , Item )
 							GiveItem ( role , 0 , 1872 , 1 , 4 )
 						else
 							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно монет фей")
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \236\238\237\229\242 \244\229\233")
 						end
 					elseif time_new >= 4 and time_new <= 6 then
 						Yingbi_Num = Time * 15
-						--SystemNotice ( role  , "Вы открыли Сундук с монетами фей "..time_new.." раз. Затрачено "..Yingbi_Num.." монет фей")
 						local j = TakeItem ( role , 0 , 855 , Yingbi_Num )
 						if j == 1 then
 							GiveBragiItem ( role , 2 )
@@ -18482,11 +17108,10 @@ function ItemUse_YingbiBox ( role , Item )
 							GiveItem ( role , 0 , 1872 , 1 , 4 )
 						else
 							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно монет фей")
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \236\238\237\229\242 \244\229\233")
 						end
 					else
 						Yingbi_Num = 99
-						--SystemNotice ( role  , "Вы открыли Сундук с монетами фей "..time_new.." раз. Затрачено "..Yingbi_Num.." монет фей")
 						local j = TakeItem ( role , 0 , 855 , Yingbi_Num )
 						if j == 1 then
 							GiveBragiItem ( role , 3 )
@@ -18494,17 +17119,16 @@ function ItemUse_YingbiBox ( role , Item )
 							GiveItem ( role , 0 , 1872 , 1 , 4 )
 						else
 							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно монет фей")
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \236\238\237\229\242 \244\229\233")
 						end
 					end
 				elseif a == -1 then
 					UseItemFailed ( role )
-					SystemNotice ( role , "Сундук с монетами Фей можно открывать только 10 раз в день")
+					SystemNotice ( role , "\209\243\237\228\243\234 \241 \236\238\237\229\242\224\236\232 \212\229\233 \236\238\230\237\238 \238\242\234\240\251\226\224\242\252 \242\238\235\252\234\238 10 \240\224\231 \226 \228\229\237\252")
 				else
 					local Time = 1
 					Use_Num = Date * 10 + Time
 					Yingbi_Num = 20
-					--SystemNotice ( role  , "Вы открыли Сундук с монетами фей "..time_new.." раз. Затрачено "..Yingbi_Num.." монет фей")
 					local j = TakeItem ( role , 0 , 855 , Yingbi_Num )
 					if j == 1 then
 						PlayUseBox1[ChaName] = Use_Num
@@ -18512,32 +17136,30 @@ function ItemUse_YingbiBox ( role , Item )
 						GiveItem ( role , 0 , 1872 , 1 , 4 )
 					else
 						UseItemFailed ( role )
-						SystemNotice( role, "Недостаточно монет фей")
+						SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \236\238\237\229\242 \244\229\233")
 					end
 				end
 			end
 		else
-			SystemNotice( role , "Только игроки уровня 10 и выше могут открывать Сундук с монетами Фей")
+			SystemNotice( role , "\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 10 \232 \226\251\248\229 \236\238\227\243\242 \238\242\234\240\251\226\224\242\252 \209\243\237\228\243\234 \241 \236\238\237\229\242\224\236\232 \212\229\233")
 			UseItemFailed ( role )
 		end
 	else
-		SystemNotice( role , "Сундук с монетами Фей можно открывать только на территории Великого Синего Океана")
+		SystemNotice( role , "\209\243\237\228\243\234 \241 \236\238\237\229\242\224\236\232 \212\229\233 \236\238\230\237\238 \238\242\234\240\251\226\224\242\252 \242\238\235\252\234\238 \237\224 \242\229\240\240\232\242\238\240\232\232 \194\229\235\232\234\238\227\238 \209\232\237\229\227\238 \206\234\229\224\237\224")
 		UseItemFailed ( role )
 	end
 end
 
-------
--- Запечатанный сундук фей (id 1570)
-------
+-- Запечатанный сундук фей
 function ItemUse_HuiYinBox ( role, Item )
 
 	local map_name_role = GetChaMapName ( role )
 	if map_name_role == "darkblue" then
 		local lv = GetChaAttr ( role , ATTR_LV )
-		if lv >= 45 then
+		if lv >= 60 then
 			local Item_CanGet = GetChaFreeBagGridNum ( role )
 			if Item_CanGet < 2 then
-				SystemNotice(role ,"Требуется 2 свободные ячейки в Вашем инвентаре, чтобы открыть Запечатанный сундук фей")
+				SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 2 \241\226\238\225\238\228\237\251\229 \255\247\229\233\234\232 \226 \194\224\248\229\236 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \199\224\239\229\247\224\242\224\237\237\251\233 \241\243\237\228\243\234 \244\229\233")
 				UseItemFailed ( role )
 				return
 			end
@@ -18546,22 +17168,22 @@ function ItemUse_HuiYinBox ( role, Item )
 				PlayUseBox2[ChaName] = 0
 			end
 			local Use_Num = PlayUseBox2[ChaName]
-			local now_day= os.date("%d")
+			local now_day= os.date("%d")  
 			local now_month= os.date("%m")
-			now_month= tonumber(now_month)
+			now_month= tonumber(now_month)   
 			now_day = tonumber(now_day)
 			local Date = JNSTime_Flag[now_month]+now_day
 			if Use_Num == 0 then
 				local Time = 1
 				Use_Num = Date * 10 + Time
 				local j = TakeItem ( role , 0 , 2588 , 10 )
-				if j == 1 then
+				if j == 1 then 
 					PlayUseBox2[ChaName] = Use_Num
-					GiveItem ( role , 0 , 3107 , 3 , 4 )
+					GiveItem ( role , 0 , 3107 , 1 , 4 )
 					GiveItem ( role , 0 , 1570 , 1 , 4 )
 				else
 					UseItemFailed ( role )
-					SystemNotice( role, "Недостаточно Эльфийских печатей")
+					SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \239\229\247\224\242\229\233")
 				end
 			else
 				local Date_Box = math.floor ( Use_Num / 10 )
@@ -18569,97 +17191,90 @@ function ItemUse_HuiYinBox ( role, Item )
 				local Time = Use_Num - Date_Box * 10
 				if a == 0 then
 					local time_new = Time + 1
-					-- Светильник
 					if time_new == 1 then
 						Use_Num = Use_Num + 1
 						local j = TakeItem ( role , 0 , 2588 , 10 )
-						if j == 1 then
+						if j == 1 then 
 							PlayUseBox2[ChaName] = Use_Num
-							GiveItem ( role , 0 , 3107 , 3 , 4 )
+							GiveItem ( role , 0 , 3107 , 1 , 4 )
 							GiveItem ( role , 0 , 1570 , 1 , 4 )
 						else
 							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно Эльфийских печатей")
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \239\229\247\224\242\229\233")
 						end
-					-- Экспа
 					elseif time_new == 2 then
 						Use_Num = Use_Num + 1
 						local j = TakeItem ( role , 0 , 2588 , 20 )
-						if j == 1 then
+						if j == 1 then 
 							PlayUseBox2[ChaName] = Use_Num
 							XSAddExpAll ( role , 5 , 5, 2)
 							GiveItem ( role , 0 , 1570 , 1 , 4 )
 						else
 							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно Эльфийских печатей")
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \239\229\247\224\242\229\233")
 						end
-					-- Зелье легкости
 					elseif time_new == 3 then
 						Use_Num = Use_Num + 1
 						local j = TakeItem ( role , 0 , 2588 , 30 )
-						if j == 1 then
+						if j == 1 then 
 							PlayUseBox2[ChaName] = Use_Num
 							GiveItem ( role , 0 , 850 , 1 , 4 )
 							GiveItem ( role , 0 , 1570 , 1 , 4 )
 						else
 							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно Эльфийских печатей")
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \239\229\247\224\242\229\233")
 						end
-					-- Полный доспех
 					elseif time_new == 4 then
 						Use_Num = Use_Num + 1
 						local j = TakeItem ( role , 0 , 2588 , 40 )
-						if j == 1 then
+						if j == 1 then 
 							PlayUseBox2[ChaName] = Use_Num
-							GiveItem ( role , 0 , 852 , 4 , 4 )
+							GiveItem ( role , 0 , 852 , 1 , 4 )
 							GiveItem ( role , 0 , 1570 , 1 , 4 )
 						else
 							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно Эльфийских печатей")
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \239\229\247\224\242\229\233")
 						end
-					-- Боевой строй
 					elseif time_new == 5 then
 						Use_Num = ( Date + 1 )*10
 						local j = TakeItem ( role , 0 , 2588 , 50 )
-						if j == 1 then
+						if j == 1 then 
 							PlayUseBox2[ChaName] = Use_Num
-							GiveItem ( role , 0 , 851 , 5 , 4 )
+							GiveItem ( role , 0 , 851 , 1 , 4 )
 							GiveItem ( role , 0 , 1570 , 1 , 4 )
 						else
 							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно Эльфийских печатей")
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \239\229\247\224\242\229\233")
 						end
 					end
 				elseif a == -1 then
 					UseItemFailed ( role )
-					SystemNotice ( role , "Запечатанный сундук фей можно открывать только 5 раз в день")
+					SystemNotice ( role , "\199\224\239\229\247\224\242\224\237\237\251\233 \241\243\237\228\243\234 \244\229\233 \236\238\230\237\238 \238\242\234\240\251\226\224\242\252 \242\238\235\252\234\238 5 \240\224\231 \226 \228\229\237\252")
 				else
 					local Time = 1
 					Use_Num = Date * 10 + Time
 					local j = TakeItem ( role , 0 , 2588 , 10 )
 					if j == 1 then
 						PlayUseBox2[ChaName] = Use_Num
-						GiveItem ( role , 0 , 3107 , 3 , 4 )
+						GiveItem ( role , 0 , 3107 , 1 , 4 )
 						GiveItem ( role , 0 , 1570 , 1 , 4 )
 					else
 						UseItemFailed ( role )
-						SystemNotice( role, "Недостаточно Эльфийских печатей")
+						SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \239\229\247\224\242\229\233")
 					end
 				end
 			end
 		else
-			SystemNotice( role , "Только игроки уровня 45 и выше могут открывать Запечатанный сундук фей")
+			SystemNotice( role , "\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 60 \232 \226\251\248\229 \236\238\227\243\242 \238\242\234\240\251\226\224\242\252 \199\224\239\229\247\224\242\224\237\237\251\233 \241\243\237\228\243\234 \244\229\233")
 			UseItemFailed ( role )
 		end
 	else
-		SystemNotice( role , "Запечатанный сундук фей можно открывать только на территории Великого Синего Океана")
+		SystemNotice( role , "\199\224\239\229\247\224\242\224\237\237\251\233 \241\243\237\228\243\234 \244\229\233 \236\238\230\237\238 \238\242\234\240\251\226\224\242\252 \242\238\235\252\234\238 \237\224 \242\229\240\240\232\242\238\240\232\232 \194\229\235\232\234\238\227\238 \209\232\237\229\227\238 \206\234\229\224\237\224")
 		UseItemFailed ( role )
 	end
 end
 
-------
--- Запечатанный сундук повелителя фей (id 1571)
-------
+-- Запечатанный сундук повелителя фей
 function ItemUse_HuiYinKBox ( role, Item )
 
 	local map_name_role = GetChaMapName ( role )
@@ -18668,7 +17283,7 @@ function ItemUse_HuiYinKBox ( role, Item )
 		if lv >= 70 then
 			local Item_CanGet = GetChaFreeBagGridNum ( role )
 			if Item_CanGet < 2 then
-				SystemNotice(role ,"Требуется 2 свободные ячейки в инвентаре, чтобы открыть Запечатанный сундук повелителя фей")
+				SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 2 \241\226\238\225\238\228\237\251\229 \255\247\229\233\234\232 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \199\224\239\229\247\224\242\224\237\237\251\233 \241\243\237\228\243\234 \239\238\226\229\235\232\242\229\235\255 \244\229\233")
 				UseItemFailed ( role )
 				return
 			end
@@ -18677,25 +17292,22 @@ function ItemUse_HuiYinKBox ( role, Item )
 				PlayUseBox3[ChaName] = 0
 			end
 			local Use_Num = PlayUseBox3[ChaName]
-			local now_day= os.date("%d")
+			local now_day= os.date("%d") 
 			local now_month= os.date("%m")
-			now_month= tonumber(now_month)
+			now_month= tonumber(now_month)    
 			now_day = tonumber(now_day)
 			local Date = JNSTime_Flag[now_month]+now_day
 			if Use_Num == 0 then
 				local Time = 1
 				Use_Num = Date * 10 + Time
 				local j = TakeItem ( role , 0 , 2589 , 1 )
-				if j == 1 then
+				if j == 1 then 
 					PlayUseBox3[ChaName] = Use_Num
-					GiveItem ( role , 0 , 850 , 1 , 4 )
-					GiveItem ( role , 0 , 3107 , 1 , 4 )
-					GiveItem ( role , 0 , 851 , 1 , 4 )
-					GiveItem ( role , 0 , 852 , 1 , 4 )
+					AddExpAll ( role , 1 , 1, 2 )
 					GiveItem ( role , 0 , 1571 , 1 , 4 )
 				else
 					UseItemFailed ( role )
-					SystemNotice( role, "Недостаточно Эльфийских королевских печатей")
+					SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \234\238\240\238\235\229\226\241\234\232\245 \239\229\247\224\242\229\233")
 				end
 			else
 				local Date_Box = math.floor ( Use_Num / 10 )
@@ -18706,73 +17318,790 @@ function ItemUse_HuiYinKBox ( role, Item )
 					if time_new == 1 then
 						Use_Num = Use_Num + 1
 						local j = TakeItem ( role , 0 , 2589 , 1 )
-						if j == 1 then
-							PlayUseBox3[ChaName] = Use_Num
-							GiveItem ( role , 0 , 850 , 1 , 4 )
-							GiveItem ( role , 0 , 3107 , 1 , 4 )
-							GiveItem ( role , 0 , 851 , 1 , 4 )
-							GiveItem ( role , 0 , 852 , 1 , 4 )
-							GiveItem ( role , 0 , 1571 , 1 , 4 )
-						else
-							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно Эльфийских королевских печатей")
-						end
-					elseif time_new == 2 then
-						Use_Num = ( Date + 1 ) * 10
-						local j = TakeItem ( role ,  0 , 2589 , 2 )
-						if j == 1 then
+						if j == 1 then 
 							PlayUseBox3[ChaName] = Use_Num
 							AddExpAll ( role , 1 , 1, 2 )
 							GiveItem ( role , 0 , 1571 , 1 , 4 )
 						else
 							UseItemFailed ( role )
-							SystemNotice( role, "Недостаточно Эльфийских королевских печатей")
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \234\238\240\238\235\229\226\241\234\232\245 \239\229\247\224\242\229\233")
+						end
+					elseif time_new == 2 then
+						Use_Num = ( Date + 1 ) * 10
+						local j = TakeItem ( role ,  0 , 2589 , 2 )
+						if j == 1 then 
+							PlayUseBox3[ChaName] = Use_Num
+							GiveItem ( role , 0 , 3336 , 1 , 4 )
+							GiveItem ( role , 0 , 1571 , 1 , 4 )
+						else
+							UseItemFailed ( role )
+							SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \234\238\240\238\235\229\226\241\234\232\245 \239\229\247\224\242\229\233")
 						end
 					end
 				elseif a == -1 then
 					UseItemFailed ( role )
-					SystemNotice ( role , "Запечатанный сундук повелителя фей можно открывать только 2 раза в день")
+					SystemNotice ( role , "\199\224\239\229\247\224\242\224\237\237\251\233 \241\243\237\228\243\234 \239\238\226\229\235\232\242\229\235\255 \244\229\233 \236\238\230\237\238 \238\242\234\240\251\226\224\242\252 \242\238\235\252\234\238 2 \240\224\231\224 \226 \228\229\237\252")
 				else
 					local Time = 1
 					Use_Num = Date * 10 + Time
 					local j = TakeItem ( role , 0 , 2589 , 1 )
 					if j == 1 then
 						PlayUseBox3[ChaName] = Use_Num
-						GiveItem ( role , 0 , 850 , 1 , 4 )
-						GiveItem ( role , 0 , 3107 , 1 , 4 )
-						GiveItem ( role , 0 , 851 , 1 , 4 )
-						GiveItem ( role , 0 , 852 , 1 , 4 )
+						AddExpAll ( role , 1, 1, 2 )
 						GiveItem ( role , 0 , 1571 , 1 , 4 )
 					else
 						UseItemFailed ( role )
-						SystemNotice( role, "Недостаточно Эльфийских королевских печатей")
+						SystemNotice( role, "\205\229\228\238\241\242\224\242\238\247\237\238 \221\235\252\244\232\233\241\234\232\245 \234\238\240\238\235\229\226\241\234\232\245 \239\229\247\224\242\229\233")
 					end
 				end
 			end
 		else
-			SystemNotice( role , "Только игроки уровня 70 и выше могут открывать Запечатанный сундук повелителя фей")
+			SystemNotice( role , "\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 70 \232 \226\251\248\229 \236\238\227\243\242 \238\242\234\240\251\226\224\242\252 \199\224\239\229\247\224\242\224\237\237\251\233 \241\243\237\228\243\234 \239\238\226\229\235\232\242\229\235\255 \244\229\233")
 			UseItemFailed ( role )
 		end
 	else
-		SystemNotice( role , "Запечатанный сундук повелителя фей можно открывать только на территории Великого Синего Океана")
+		SystemNotice( role , "\199\224\239\229\247\224\242\224\237\237\251\233 \241\243\237\228\243\234 \239\238\226\229\235\232\242\229\235\255 \244\229\233 \236\238\230\237\238 \238\242\234\240\251\226\224\242\252 \242\238\235\252\234\238 \237\224 \242\229\240\240\232\242\238\240\232\232 \194\229\235\232\234\238\227\238 \209\232\237\229\227\238 \206\234\229\224\237\224")
 		UseItemFailed ( role )
 	end
 end
 
+-- Фастфуд
+function ItemUse_CZKC ( role , Item )
 
---2371	Пакет Алладина
-function ItemUse_ALDXB ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно открыть сундук")
+	local Cha_Boat = 0
+	local charLv=Lv ( role )
+	local Exp_star=GetChaAttr (  role , ATTR_CEXP )
+	local dif_exp_thalf_c = (DEXP[charLv+1] - DEXP[charLv])*0.01+Exp_star
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
 		return
 	end
+	if charLv<86 or charLv>100 then
+		SystemNotice( role , "\200\227\240\238\234\232 \237\229 \236\229\237\229\229 86 \232 \237\229 \226\251\248\229 100 \243\240\238\226\237\255 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \212\224\241\242\244\243\228" )
+		UseItemFailed ( role )
+		return
+	end
+	if charLv>=86 and charLv<=100 then
+		SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf_c )
+        end
+end
 
+-- Сундук Бермудских островов
+function ItemUse_baimodabox (role, Item)
+
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )	
+	 if Item_CanGet < 1 then
+		SystemNotice(role ,"\210\240\229\225\243\229\242\241\255 1 \241\226\238\225\238\228\237\224\255 \255\247\229\233\234\224 \226 \232\237\226\229\237\242\224\240\229, \247\242\238\225\251 \238\242\234\240\251\242\252 \209\243\237\228\243\234 \193\229\240\236\243\228\241\234\232\245 \238\241\242\240\238\226\238\226")
+		UseItemFailed ( role )
+		return
+	end
+	local	sc = math.random ( 1, 100 )
+	
+	if  sc <=25 then	
+		GiveItem ( role , 0 , 1036 , 50 , 4 )
+	elseif sc <=50 then		
+		GiveItem ( role , 0 , 0578 , 99 , 4 )
+	elseif sc <=75 then
+		GiveItem ( role , 0 , 0850 , 99 , 4 )
+	else   
+		GiveItem ( role , 0 , 0852 , 99 , 4 )
+	end
+end
+
+-- Свиток вызова Печали (id 1103)
+function ItemUse_bierbec (role, Item)
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local sc = 0
+	sc =IsChaInRegion( role, 2 )
+	if sc == 1 then
+		SystemNotice( role , "Невозможно вызвать монстра в Безопасной Зоне " )
+		UseItemFailed ( role )
+		return
+	end
+	local Monsterattr = {687,686}
+	local	sc = math.random(1,2)
+	local x, y = GetChaPos( role )
+	local Refresh = 3700				
+	local life = 3600000					
+	local new = CreateChaX( Monsterattr[sc] , x , y , 145 ,  Refresh, role )
+	SetChaLifeTime( new, life )
+end
+
+-- Свиток вызова Одиночества (id 1105)
+function ItemUse_loneybec (role, Item)
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local sc = 0
+	sc =IsChaInRegion( role, 2 )
+	if sc == 1 then
+		SystemNotice( role , "Невозможно вызвать монстра в Безопасной Зоне " )
+		UseItemFailed ( role )
+		return
+	end
+	local Monsterattr = {523,524,525,36,526,527,529,35,532,532}
+	local	sc = math.random(1,10)
+	local x, y = GetChaPos( role )
+	local Refresh = 3700				
+	local life = 3600000					
+	local new = CreateChaX( Monsterattr[sc] , x , y , 145 ,  Refresh, role )
+	SetChaLifeTime( new, life )
+end
+
+-- Праздничный Салют (id 2870)
+function ItemUse_XmasQRYH ( role , Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local Now_Day = os.date("%d")
+	local Now_Month = os.date("%m")
+	local NowDayNum = tonumber(Now_Day)
+	local NowMonthNum = tonumber(Now_Month)
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет ")
+		UseItemFailed ( role )
+		return
+	end
+	if NowMonthNum == 12 and NowDayNum >= 25 and NowDayNum <= 31 then
+		local el = math.random ( 1 , 5 )
+		local Item_ID = 0
+		if el == 1 then
+			Item_ID = 3354
+		elseif el == 2 then
+			Item_ID = 3355
+		elseif el == 3 then
+			Item_ID = 3356
+		elseif el == 4 then
+			Item_ID = 3077
+		else
+			Item_ID = 3343
+		end
+		GiveItem ( role , 0 , Item_ID , 1 , 4 )
+	else
+		SystemNotice( role , "Можно использовать только во время Нового Года ")
+		UseItemFailed ( role )
+		return
+	end
+end
+
+-- Карнавальный Салют (id 2871)
+function ItemUse_XmasKHYH ( role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local Now_Day = os.date("%d")
+	local Now_Month = os.date("%m")
+	local NowDayNum = tonumber(Now_Day)
+	local NowMonthNum = tonumber(Now_Month)
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет ")
+		UseItemFailed ( role )
+		return
+	end
+	if NowMonthNum == 12 and NowDayNum >= 25 and NowDayNum <= 31 then
+		local el = math.random ( 1 , 10000 )
+		local Item_ID = 0
+		if el >= 1 and el <= 3000 then
+			Item_ID = 2999
+		elseif el >3000 and el <= 5000 then
+			Item_ID = 1870
+		elseif el > 5000 and el <= 7000 then
+			Item_ID = 0145
+		elseif el > 7000 and el <= 9000 then
+			Item_ID = 1019
+		elseif el == 9001 then
+			Item_ID = 3000
+		else
+			Item_ID = 1036
+		end
+		GiveItem ( role , 0 , Item_ID , 1 , 4 )
+	else
+		SystemNotice( role , "Можно использовать только во время Нового Года ")
+		UseItemFailed ( role )
+		return
+	end
+end
+
+-- Фейерверк Санта Клауса (id 2872)
+function ItemUse_SDLRYH ( role , Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local Now_Day = os.date("%d")
+	local Now_Month = os.date("%m")
+	local NowDayNum = tonumber(Now_Day)
+	local NowMonthNum = tonumber(Now_Month)
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет ")
+		UseItemFailed ( role )
+		return
+	end
+	if NowMonthNum == 12 and NowDayNum >= 17 and NowDayNum <= 31 then
+	local cha_name = GetChaDefaultName ( role ) 
+		local el = math.random ( 1 , 1000 )
+		local Item_ID = 0
+		local Item_Num = 0
+		if el >= 1 and el <= 500 then
+			Item_ID = 227
+			Item_Num = 5
+		elseif el == 501 then
+			Item_ID = 1014
+			Item_Num = 1
+		else
+			Item_ID = 3834
+			Item_Num = 5
+		end
+		GiveItem ( role , 0 , Item_ID , Item_Num , 4 )
+		Notice ( cha_name.." Использует Фейерверк Санта Клауса и получает Рождественский подарок!")
+	else
+		SystemNotice( role , "Можно использовать только во время Нового Года ")
+		UseItemFailed ( role )
+		return
+	end
+end
+
+-- Рождественский Салют (id 2873)
+function ItemUse_MCYH ( role , Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local Now_Day = os.date("%d")
+	local Now_Month = os.date("%m")
+	local NowDayNum = tonumber(Now_Day)
+	local NowMonthNum = tonumber(Now_Month)
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет ")
+		UseItemFailed ( role )
+		return
+	end
+	if NowMonthNum == 12 and NowDayNum >= 17 and NowDayNum <= 31 then
+	local cha_name = GetChaDefaultName ( role ) 
+		local el = math.random ( 1 , 100 )
+		local Item_ID = 0
+		local Item_Num = 0
+		if el >= 1 and el <= 40 then
+			Item_ID = 849
+			Item_Num = 5
+		elseif el > 40 and el <= 65 then
+			Item_ID = 3097
+			Item_Num = 2
+		elseif el > 65 and el <= 90 then
+			Item_ID = 3096
+			Item_Num = 4
+		else
+			Item_ID = 3909
+			Item_Num = 1
+		end
+		GiveItem ( role , 0 , Item_ID , Item_Num , 4 )
+		Notice ( cha_name.." Использует Рождественский Салют и получает Рождественский подарок!")
+	else
+		SystemNotice( role , "Можно использовать только во время Нового Года ")
+		UseItemFailed ( role )
+		return
+	end
+end
+
+-- Новогодний фейерверк (id 2874)
+function ItemUse_HNYH ( role , Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local Now_Day = os.date("%d")
+	local Now_Month = os.date("%m")
+	local NowDayNum = tonumber(Now_Day)
+	local NowMonthNum = tonumber(Now_Month)
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет ")
+		UseItemFailed ( role )
+		return
+	end
+	if NowMonthNum == 12 and NowDayNum >= 17 and NowDayNum <= 31 then
+	local cha_name = GetChaDefaultName ( role ) 
+		local el = math.random ( 1 , 100 )
+		local Item_ID = 0
+		local Item_Num = 0
+		if el >= 1 and el <= 40 then
+			Item_ID = 849
+			Item_Num = 5
+		elseif el > 40 and el <= 65 then
+			Item_ID = 3097
+			Item_Num = 2
+		elseif el > 65 and el <= 90 then
+			Item_ID = 3096
+			Item_Num = 4
+		else
+			Item_ID = 3909
+			Item_Num = 1
+		end
+		GiveItem ( role , 0 , Item_ID , Item_Num , 4 )
+		Notice ( cha_name.." Использует Новогодний фейерверк и получает Новогодний подарок!")
+	else
+		SystemNotice( role , "Можно использовать только во время Нового Года ")
+		UseItemFailed ( role )
+		return
+	end
+end
+
+-- Салют с Носком (id 2875)
+function ItemUse_XRBQYH ( role , Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local Now_Day = os.date("%d")
+	local Now_Month = os.date("%m")
+	local NowDayNum = tonumber(Now_Day)
+	local NowMonthNum = tonumber(Now_Month)
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет ")
+		UseItemFailed ( role )
+		return
+	end
+	if NowMonthNum == 12 and NowDayNum >= 17 and NowDayNum <= 31 then
+		local el = math.random ( 1 , 100 )
+		local Item_ID = 0
+		local Item_Num = 0
+		if el >= 1 and el <= 50 then
+			Item_ID = 3098
+			Item_Num = 25
+		elseif el == 51 then
+			Item_ID = 333
+			Item_Num = 1
+		elseif el > 51 and el <= 81 then
+			Item_ID = 227
+			Item_Num = 15
+		elseif el > 81 and el <= 91 then
+			Item_ID = 3105
+			Item_Num = 10
+		else
+			Item_ID = 3342
+			Item_Num = 10
+		end
+		GiveItem ( role , 0 , Item_ID , Item_Num , 4 )
+	else
+		SystemNotice( role , "Можно использовать только во время Нового Года ")
+		UseItemFailed ( role )
+		return
+	end
+end
+
+-- Салют с Упряжкой (id 2876)
+function ItemUse_MLBQYH ( role , Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local Now_Day = os.date("%d")
+	local Now_Month = os.date("%m")
+	local NowDayNum = tonumber(Now_Day)
+	local NowMonthNum = tonumber(Now_Month)
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет ")
+		UseItemFailed ( role )
+		return
+	end
+	if NowMonthNum == 12 and NowDayNum >= 17 and NowDayNum <= 31 then
+		local el = math.random ( 1 , 100 )
+		local Item_ID = 0
+		local Item_Num = 0
+		if el >= 1 and el <= 61 then
+			Item_ID = 885
+			Item_Num = 1
+		elseif el == 62 then
+			Item_ID = 333
+			Item_Num = 1
+		elseif el >= 63 and el <= 64 then
+			Item_ID = math.random ( 276 , 280 )
+			Item_Num = 1
+		elseif el > 64 and el <= 84 then
+			Item_ID = 2312
+			Item_Num = 15
+		else
+			Item_ID = 578
+			Item_Num = 17
+		end
+		GiveItem ( role , 0 , Item_ID , Item_Num , 4 )
+	else
+		SystemNotice( role , "Можно использовать только во время Нового Года ")
+		UseItemFailed ( role )
+		return
+	end
+end
+
+-- Подарок Деда Мороза (id 2877)
+function ItemUse_SDLRKZ ( role , Item )
+	local Item_ID = {}
+	local Item_Num = {}
+	local Item_PZ = {}
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet < 3 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет.")
+		UseItemFailed ( role )
+		return
+	end
+	local role_job = GetChaAttr ( role, ATTR_JOB)
+	if role_job == 0 or role_job == 1 or role_job == 2 or role_job == 4 or role_job == 5 then
+		SystemNotice ( role , "Использовать могут только игроки, которые получили вторую профессию.")
+		UseItemFailed ( role )
+		return
+	end
+	local role_type = GetChaTypeID ( role )
+	local a = math.random ( 1, 1000)
+	if a >= 0 and a <= 300 then
+		Item_ID[1] = 2872
+		Item_Num[1] = 5
+		Item_PZ[1] = 4
+	elseif a >= 301 and a <= 600 then
+		Item_ID[1] = 2873
+		Item_Num [1]= 5
+		Item_PZ[1] = 4
+	elseif a >= 601 and a <= 650 then
+		if role_type == 1 then
+			Item_ID[1] = 5264
+			Item_ID[2] = 5265
+			Item_ID[3] = 5266
+			Item_Num[1] = 1
+			Item_Num[2] = 1
+			Item_Num[3] = 1
+			Item_PZ[1] = 4
+			Item_PZ[2] = 4
+			Item_PZ[3] = 4
+		elseif role_type == 2 then
+			Item_ID[1] = 5267
+			Item_ID[2] = 5268
+			Item_ID[3] = 5269
+			Item_Num[1] = 1
+			Item_Num[2] = 1
+			Item_Num[3] = 1
+			Item_PZ[1] = 4
+			Item_PZ[2] = 4
+			Item_PZ[3] = 4
+		elseif role_type == 3 then
+			Item_ID[1] = 5270
+			Item_ID[2] = 5271
+			Item_ID[3] = 5272
+			Item_Num[1] = 1
+			Item_Num[2] = 1
+			Item_Num[3] = 1
+			Item_PZ[1] = 4
+			Item_PZ[2] = 4
+			Item_PZ[3] = 4
+		elseif role_type == 4 then
+			Item_ID[1] = 5273
+			Item_ID[2] = 5274
+			Item_ID[3] = 5275
+			Item_Num[1] = 1
+			Item_Num[2] = 1
+			Item_Num[3] = 1
+			Item_PZ[1] = 4
+			Item_PZ[2] = 4
+			Item_PZ[3] = 4
+		end
+	elseif a >= 651 and a <= 700 then
+		if role_job == 8 then
+			Item_ID[1] = 1375
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 9 then
+			Item_ID[1] = 1394
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 12 then
+			Item_ID[1] = 42
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 13 then
+			Item_ID[1] = 4198
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 14 then
+			Item_ID[1] = 4204
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 16 then
+			Item_ID[1] = 1421
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		end
+	elseif a >= 701 and a <= 750 then
+			Item_ID[1] = 2888
+			Item_Num[1] = 3
+			Item_PZ[1] = 4
+	elseif a >= 751 and a <= 800 then
+			Item_ID[1] = 2889
+			Item_Num[1] = 3
+			Item_PZ[1] = 4
+	elseif a >= 801 and a <= 850 then
+			Item_ID[1] = 2890
+			Item_Num[1] = 3
+			Item_PZ[1] = 4
+	elseif a >= 851 and a <= 900 then
+			Item_ID[1] = 2891
+			Item_Num[1] = 3
+			Item_PZ[1] = 4
+	elseif a >= 901 and a <= 950 then
+		if role_job == 8 then
+			Item_ID[1] = 4148
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 9 then
+			Item_ID[1] = 4150
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 12 then
+			Item_ID[1] = 4152
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 13 then
+			if role_type == 3 then
+				Item_ID[1] = 4159
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			else
+				Item_ID[1] = 4160
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			end
+		elseif role_job == 14 then
+			if role_type == 4 then
+				Item_ID[1] = 4164
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			else
+				Item_ID[1] = 4163
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			end
+		elseif role_job == 16 then
+			if role_type == 4 then
+				Item_ID[1] = 4156
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			else
+				Item_ID[1] = 4155
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			end
+		end
+	elseif a >= 951 and a <= 975 then
+		if role_job == 8 then
+			Item_ID[1] = 653
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 9 then
+			Item_ID[1] = 4182
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 12 then
+			Item_ID[1] = 4184
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 13 then
+			if role_type == 3 then
+				Item_ID[1] = 4191
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			else
+				Item_ID[1] = 4192
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			end
+		elseif role_job == 14 then
+			if role_type == 4 then
+				Item_ID[1] = 4196
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			else
+				Item_ID[1] = 4195
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			end
+		elseif role_job == 16 then
+			if role_type == 4 then
+				Item_ID[1] = 4188
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			else
+				Item_ID[1] = 4187
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			end
+		end
+	else
+		if role_job == 8 then
+			Item_ID[1] = 477
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 9 then
+			Item_ID[1] = 4166
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 12 then
+			Item_ID[1] = 4168
+			Item_Num[1] = 1
+			Item_PZ[1] = 22
+		elseif role_job == 13 then
+			if role_type == 3 then
+				Item_ID[1] = 4175
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			else
+				Item_ID[1] = 4176
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			end
+		elseif role_job == 14 then
+			if role_type == 4 then
+				Item_ID[1] = 4180
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			else
+				Item_ID[1] = 4179
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			end
+		elseif role_job == 16 then
+			if role_type == 4 then
+				Item_ID[1] = 4172
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			else
+				Item_ID[1] = 4171
+				Item_Num[1] = 1
+				Item_PZ[1] = 22
+			end
+		end
+	end
+	for i = 1, 3, 1 do
+		if Item_ID[i] ~= nil and Item_Num[i] ~= nil and Item_PZ[i] ~= nil then
+			GiveItem ( role , 0 , Item_ID[i] , Item_Num[i] , Item_PZ[i] )
+		end
+	end
+end
+
+-- Упаковка Праздничных Подарков (id 2882)
+function ItemUse_XmasLB ( role, Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet < 1 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет.")
+		UseItemFailed ( role )
+		return
+	end
+	local br = math.random( 1, 10)
+	local Item_ID = 0
+	local Item_Num = 0
+	if br >= 1 and br <= 3 then
+		Item_ID = 3343
+		Item_Num = 10
+	elseif br >= 4 and br <= 6 then
+		Item_ID = 3344
+		Item_Num = 10
+	else
+		Item_ID = 2883
+		Item_Num = 5
+	end
+	GiveItem ( role , 0 , Item_ID , Item_Num , 4 )
+end
+
+-- Билет в Новогоднюю Деревню (id 2883)
+function ItemUse_movexmas ( role , Item )
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "Телепортация очень утомительный процесс, пожалуйста востановите Ваше здоровье и ману.")
+		UseItemFailed ( role )
+		return
+	end 
+	local Now_Day = os.date("%d")
+	local Now_Month = os.date("%m")
+	local NowDayNum = tonumber(Now_Day)
+	local NowMonthNum = tonumber(Now_Month)
+	if NowMonthNum == 12 and NowDayNum <= 31 then
+		local j = DelBagItem(role,2883,1)
+		if j == 1 then
+			MoveCity(role,"07xmas")
+			return
+		end
+	else
+		SystemNotice(role ,"Попасть в Рожетсвенскую деревню можно только во время Нового Года ")
+		UseItemFailed ( role )
+		return
+	end
+end	
+
+-- Пакет Алладина (id 2371)
+function ItemUse_ALDXB ( role )
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	if Item_CanGet <= 0 then
+		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет.")
+		UseItemFailed ( role )
+		return
+	end
 	local cha_name = GetChaDefaultName ( role ) 
 	local star=math.random ( 1, 20000 )
-	--SystemNotice(role ,"star=="..star)
 		if star<=3700 then
 			GiveItem ( role , 0 , 2440  , 10 , 4  )
 		elseif star>=3701 and star<=5700 then
@@ -18818,5122 +18147,97 @@ function ItemUse_ALDXB ( role )
 			local el1= math.random ( 1, 5 )
 			if el1==1  then
 				GiveItem ( role , 0 , 0863  , 1 , 4 )
-				local message = cha_name.." open the Aladdin Parcel,he get the Gem of Rage" 
+				local message = cha_name.." открывает Пакет Алладина и получает Самоцвет Ярости " 
 				Notice ( message )
 			elseif el1==2 then
 				GiveItem ( role , 0 , 0860  , 1 , 4 )
-				local message1 = cha_name.." open the Aladdin Parcel,he get the Gem of the Wind" 
+				local message1 = cha_name.." открывает Пакет Алладина и получает Самоцвет Ветра " 
 				Notice ( message1 )
 			elseif el1==3 then
 				GiveItem ( role , 0 , 0861  , 1 , 4 )
-				local message2 = cha_name.." open the Aladdin Parcel,he get the Gem of Striking" 
+				local message2 = cha_name.." открывает Пакет Алладина и получает Самоцвет удара " 
 				Notice ( message2 )
 			elseif el1==4 then
 				GiveItem ( role , 0 , 0862  , 1 , 4 )
-				local message3 = cha_name.." open the Aladdin Parcel,he get the Gem of Colossus" 
+				local message3 = cha_name.." открывает Пакет Алладина и получает Самоцвет колосса " 
 				Notice ( message3 )
 			elseif el1==5 then
 				GiveItem ( role , 0 , 1012  , 1 , 4 )
-				local message4 = cha_name.." open the Aladdin Parcel,he get the Gem of Soul" 
+				local message4 = cha_name.." открывает Пакет Алладина и получает Самоцвет души " 
 				Notice ( message4 )
 			end
-
 		elseif star==19601 then
 			GiveItem ( role , 0 , 0192  , 1 , 4  )
-			local message8= cha_name.." open the Aladdin Parcel,he get the Chest of Kylin" 
+			local message8= cha_name.." открывает Пакет Алладина и получает Сундук Килин " 
 			Notice ( message8 )
-
 		elseif star>=19601 and star<=20000 then	
 			GiveItem ( role , 0 , 2224  , 1 , 4  )
-			local message8= cha_name.." open the Aladdin Parcel,he get the Modern Apparel Chest" 
+			local message8= cha_name.." открывает Пакет Алладина и получает Сундук с современными украшениями " 
 			Notice ( message8 )
 		end
-	
 end
 
+---------------------------
+-- Пригласительный билет --
+---------------------------
+function Jz_Script_qj(role, Item)
 
-------------
-------------
----- ДОБАВЛЕНИЯ ДЛЯ МОРДО-ОНЛАЙН
-------------
-------------
-
-
-------
--- Огромный Кошелек (id 5707)
-------
-
-function ItemUse_universebox (role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 1 then
-		SystemNotice(role ,"Недостаточно места в инвентаре. Невозможно использовать предмет.")
-		UseItemFailed ( role )
-		return
-	end
+	local Now_Day      = os.date("%d")
+	local Now_Month    = os.date("%m")
+	local Now_Time     = os.date("%H")
+	local NowMniuteNum = os.date("%M")
 	
-	local sc = math.random(1,100)
+	local NowMiniuteNum = tonumber(Now_Miniute)
+	local NowTimeNum    = tonumber(Now_Time)
+	local NowDayNum     = tonumber(Now_Day)
+	local NowMonthNum   = tonumber(Now_Month)
 	
-	if sc <= 30 then
-		GiveItem ( role , 0 , 862 , 1 , 4 ) -- Колосс 30%
-	elseif sc <= 60 then
-		GiveItem ( role , 0 , 863 , 1 , 4 ) -- Раж 30%
-	elseif sc <= 75 then
-		GiveItem ( role , 0 , 861 , 1 , 4 ) -- Страйк 15%
-	elseif sc <= 90 then
-		GiveItem ( role , 0 , 860 , 1 , 4 ) -- Ветер 15%
-	else
-		GiveItem ( role , 0 , 1012 , 1 , 4 ) -- Соул 10%
-	end
-
-	--local cha_name = GetChaDefaultName ( role )
-	--local itemname = GetItemName ( ItemId )
-	--Notice ( "Поздравляем игрока " ..cha_name..", он открывает Огромный кошелёк и получает "..itemname )
-end
+	local CheckDateNum  = NowMonthNum * 1000000 + NowDayNum * 10000 + NowTimeNum * 100 + NowMniuteNum
 
 
-------
--- Расписки на дублоны
-------
+	local item_old    = GetChaItem2(role, 2, 3078)
+	local old_month   = GetItemAttr(item_old, ITEMATTR_VAL_STA)	
+	local old_day     = GetItemAttr(item_old, ITEMATTR_VAL_STR)		
+	local old_hour    = GetItemAttr(item_old, ITEMATTR_VAL_CON)		
+	local old_miniute = GetItemAttr(item_old, ITEMATTR_VAL_DEX)  
+	 
 
-function ItemUse_DublonScript( role , Item )
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
+	local CheckBook1Num = old_month * 1000000 + old_day * 10000 + old_hour * 100 + old_miniute
+	local CheckBook2Num = old_month * 1000000 + old_day * 10000 + (old_hour + 2) * 100 + old_miniute
+	
+	if CheckDateNum < CheckBook1Num then
+		SystemNotice(role, "Время церемонии бракосочетания еще не пришло!")
+		UseItemFailed(role)
 		return
 	end
 
-	local Item_CanGet = GetChaFreeBagGridNum (role)
-	if Item_CanGet < 1 then
-		SystemNotice(role, "Чтобы открыть расписку, необходима 1 свободная ячейка в рюкзаке.")
-		UseItemFailed (role)
-		return
-	end
-	
-	local itemid = GetItemID(Item)
-
-	-- 10 дублонов
-	if itemid == 6800 then
-		--GiveItem ( role , 0 , 195 , 10 , 4 )
-	-- 5 дублонов
-	elseif itemid == 6801 then
-		--GiveItem ( role , 0 , 195 , 5 , 4 )
-	-- 3 дублона
-	elseif itemid == 6802 then
-		--GiveItem ( role , 0 , 195 , 3 , 4 )
-	end
-	
-end
-
-
-------
---	Задержка на использование предмета
-------
-
-function CanUseItem(role)
-
-	return 1
-
-	--[[local antiuse = GetChaStateLv ( role , 5 )
-	
-	if antiuse == 1 then 
-		UseItemFailed ( role )
-		return 0
-	else
-		AddState ( role, role, 5, 1, 1 )
-		return 1
-	end]]--
-
-end
-
-
-------
--- Функция увеличения хп для соответствующих предметов
-------
-
-function AddHp(role,hp_resume)
-
-	local hp = GetChaAttr(role, ATTR_HP) 
-
-	if hp <= 0 then 
-	
-		UseItemFailed ( role )
-		return 0
-		
-	else
-		
-		hp = hp + hp_resume 
-		mxhp = GetChaAttr(role,ATTR_MXHP) 
-		
-		if hp > mxhp then hp = mxhp end 
-	
-		SetCharaAttr(hp, role, ATTR_HP) 
-		return 1
-	
-	end 
-
-end
-
-------
--- Функция увеличения сп для соответствующих предметов
-------
-
-function AddSp(role,sp_resume)
-
-	local sp = GetChaAttr(role, ATTR_SP)
-
-	if sp <= 0 then 
-	
-		UseItemFailed ( role )
-		return 0
-		
-	else
-		
-		sp = sp + sp_resume 
-		mxsp = GetChaAttr(role,ATTR_MXSP)  
-		
-		if sp > mxsp then sp = mxsp end
-	
-		SetCharaAttr(sp, role, ATTR_SP) 
-		return 1
-	
-	end
-
-end
-
--------
--- Сундук славы войны гильдий (ID=5716)
--------
-
-function ItemUse_HZRYX ( role , Item )
-
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	if Item_CanGet <=0 then
-		SystemNotice(role ,"Недостаточно свободного места в инвентаре. Невозможно открыть сундук")
-		UseItemFailed ( role )
+	if CheckDateNum > CheckBook2Num then
+		SystemNotice(role, "Время церемонии бракосочетания уже прошло!")
+		UseItemFailed(role)
 		return
 	end
 
---	local s = DelBagItem ( role , 5716 , 1 ) 
-	local	sc = math.random(1,100)
-	local itemname = ""
-	if  sc <=30 then	
-		GiveItem ( role , 0 , 4022 , 1 , 4 ) -- 30% 
-		itemname = "Суп из осетра"
-	elseif sc <=69 then		
-		GiveItem ( role , 0 , 2951 , 1 , 4 ) -- 39%
-		itemname = "Книгу бонусов Хаоса"
-	elseif sc <=99 then
-		local Money_add = 300000
-		AddMoney ( role , 0 , Money_add ) -- 30%
-		itemname = "300 000 золотых"
-	else   
-		GiveItem ( role , 0 , 3016 , 1 , 4 ) -- 1%
-		itemname = "Свиток вызова Призрака черного дракона "
-	end
-	local cha_name = GetChaDefaultName ( role )
-	local Guild_ID = GetChaGuildID(role)
-	local Guild_name = GetGuildName( Guild_ID )
-	Notice ( "Гильдия " .. Guild_name .. "  победила в кровопролитной Битве. " ..cha_name.. " открывает приз и получает "..itemname )
-
-end
-
-
-------
--- Сундук с кораллами (ID=6799)
-------
-
-function ItemUse_CorallBox(role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-
-	local Item_CanGet = GetChaFreeBagGridNum (role)
-	if Item_CanGet < 5 then
-		SystemNotice(role, "Чтобы открыть сундук, необходимо 5 свободных ячеек в рюкзаке.")
-		UseItemFailed (role)
-		return
-	end
-	
-	GiveItem ( role , 0 , 876 , 1 , 4 )  -- Коралл тумана 5-го ур.
-	GiveItem ( role , 0 , 871 , 1 , 4 )  -- Коралл грозы 5-го ур.
-	GiveItem ( role , 0 , 821 , 1 , 4 )  -- Коралл ветра 5-го ур.
-	GiveItem ( role , 0 , 639 , 1 , 4 )  -- Коралл удара 5 ур.
-	GiveItem ( role , 0 , 1022 , 1 , 4 ) -- Перезаряжаемая батарейка
-
-end
-
-
-------
--- Пасхальные яйца (ID=6797,6798)
-------
-
-function ItemUse_EasterEgg(role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	
-	local Item_CanGet = GetChaFreeBagGridNum (role)
-	if Item_CanGet < 1 then
-		SystemNotice(role, "Чтобы открыть яйцо, необходимо иметь хотя бы одну свободную ячейку в инвентаре")
-		UseItemFailed (role)
-		return
-	end
-
-	local itemid   = GetItemID(Item)
-	local cha_type = GetChaTypeID(role) 
-	
-	local a = math.random(1,100)
-	
-	-- Обычное яйцо
-	
-	if itemid == 6797 then
-	
-		if a <= 1 then
-			--GiveItem ( role , 0 , 0195 , 2 , 4 ) -- Дублон х 2 1%
-		elseif a <= 2 then
-			GiveItem ( role , 0 , 1860 , 2 , 4 ) -- Благословляющее зелье х 2 1%
-		elseif a <= 3 then
-			GiveItem ( role , 0 , 1856 , 5 , 4 ) -- Зелье берсерка х 5 1%
-		elseif a <= 4 then
-			GiveItem ( role , 0 , 1857 , 5 , 4 ) -- Энергозелье х 5 1%
-		elseif a <= 9 then
-			GiveItem ( role , 0 , 1079 , 3 , 4 ) -- Булочка х 3 5%
-		elseif a <= 14 then
-			GiveItem ( role , 0 , 1078 , 5 , 4 ) -- Парная булочка х 5 5%
-		elseif a <= 19 then
-			GiveItem ( role , 0 , 1085 , 3 , 4 ) -- Вино ученых х 3 5%
-		elseif a <= 21 then
-			GiveItem ( role , 0 , 0885 , 1 , 4 ) -- Очищающий самоцвет х 1 2%
-		elseif a <= 23 then
-			GiveItem ( role , 0 , 0881 , 1 , 4 ) -- Люстриновый самоцвет х 1 2%
-		elseif a <= 25 then
-			GiveItem ( role , 0 , 0884 , 1 , 4 ) -- Теневой самоцвет х 1 2%
-		elseif a <= 27 then
-			GiveItem ( role , 0 , 0887 , 1 , 4 ) -- Самоцвет духа х 1 2%
-		elseif a <= 30 then
-			GiveItem ( role , 0 , 2312 , 10 , 4 ) -- Стандартный паек х 10 3%
-		elseif a <= 32 then
-			AddMoney ( role , 0 , 500000 ) -- Золото х 500к 2%
-		elseif a <= 35 then
-			AddMoney ( role , 0 , 300000 ) -- Золото х 300к 3%
-		elseif a <= 37 then
-			GiveItem ( role , 0 , 3424 , 1 , 4 ) -- Сундук из мира демонов х 1 2%
-		elseif a <= 42 then
-			GiveItem ( role , 0 , 0849 , 3 , 4 ) -- Фрукт опыта отряда х 3 5%
-		elseif a <= 44 then
-			GiveItem ( role , 0 , 3845 , 3 , 4 ) -- Зачарованная ягода х 3 2%
-		elseif a <= 47 then
-			GiveItem ( role , 0 , 3844 , 3 , 4 ) -- Небесная ягода х 3 3%
-		elseif a <= 48 then
-			GiveItem ( role , 0 , 6798 , 1 , 4 ) -- Большое пасхальное яйцо х 1 1%
-		elseif a <= 52 then
-			GiveItem ( role , 0 , 6793 , 1 , 4 ) -- Георгиевская лента х 1 4%
-		elseif a <= 68 then
-			GiveItem ( role , 0 , 3460 , 99 , 4 ) -- Кексы х 99 16%
-		elseif a <= 84 then
-			GiveItem ( role , 0 , 3126 , 50 , 4 ) -- Мороженое х 50 16%
-		elseif a <= 100 then
-			GiveItem ( role , 0 , 3133 , 50 , 4 ) -- Лакричное зелье х 50 16%
-		end
-	
-	-- Большое яйцо
-	
-	elseif itemid == 6798 then
-	
-		if a <= 2 then
-			GiveItem ( role , 0 , 3457 , 1 , 4 ) -- Кэль х 1 2%
-		elseif a <= 3 then
-			GiveItem ( role , 0 , 1134 , 1 , 4 ) -- Сундук Хаоса х 1 1%
-		elseif a <= 5 then
-		---	GiveItem ( role , 0 , 0195 , 5 , 4 ) -- Дублон х 5 2%
-		elseif a <= 6 then
-			GiveItem ( role , 0 , 2216 , 1 , 4 ) -- Книга сброса умений х 1 2%
-		elseif a <= 8 then
-			GiveItem ( role , 0 , 3458 , 1 , 4 ) -- Сундук потаенного х 1 2%
-		elseif a <= 10 then
-			GiveItem ( role , 0 , 5707 , 1 , 4 ) -- Огромный кошелек х 1 2%
-		elseif a <= 13 then
-			GiveItem ( role , 0 , 0885 , 1 , 4 ) -- Очищающий самоцвет х 1 3%
-		elseif a <= 15 then
-			GiveItem ( role , 0 , 0938 , 1 , 4 ) -- Покровительство богини х 1 2%
-		elseif a <= 17 then
-			GiveItem ( role , 0 , 0679 , 1 , 4 ) -- Яйцо мордо х 1 2%
-		elseif a <= 19 then
-			GiveItem ( role , 0 , 0609 , 1 , 4 ) -- Продвинутое владение феей х 1 2%
-		elseif a <= 24 then
-			GiveItem ( role , 0 , 6797 , 1 , 4 ) -- Обычное пасхальное яйцо х 1 5%
-		elseif a <= 29 then
-			GiveItem ( role , 0 , 3095 , 4 , 4 ) -- Супер Усилитель стремлений х 4 5%
-		elseif a <= 32 then
-			GiveItem ( role , 0 , 0849 , 6 , 4 ) -- Фрукт опыта отряда х 6 3%
-		elseif a <= 36 then
-			GiveItem ( role , 0 , 2383 , 50 , 4 ) -- Кровавый контракт х 50 4%
-		elseif a <= 39 then
-			GiveItem ( role , 0 , 3097 , 4 , 4 ) --  Большой усилитель удачи х 4 3%
-		elseif a <= 44 then
-			GiveItem ( role , 0 , 6793 , 1 , 4 ) --  Георгиевская лента х 1 5%
-		elseif a <= 62 then
-			GiveItem ( role , 0 , 3460 , 99 , 4 ) -- Кексы х 99 18%
-		elseif a <= 80 then
-			GiveItem ( role , 0 , 3126 , 50 , 4 ) -- Мороженое х 50 18%
-		elseif a <= 100 then
-			GiveItem ( role , 0 , 3133 , 50 , 4 ) -- Лакричное зелье х 50 20%
-		end
-	
-	end
-
-end
-
-------
--- Предметы в честь 1 мая 2013 г. (ID=6794,6795,6796)
-------
-
-function ItemUse_Workers(role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	
-	local Item_CanGet = GetChaFreeBagGridNum (role)
-	if Item_CanGet < 1 then
-		SystemNotice(role, "Чтобы открыть предмет, необходимо иметь хотя бы одну свободную ячейку в инвентаре")
-		UseItemFailed (role)
-		return
-	end
-
-	local itemid   = GetItemID(Item)
-	local cha_type = GetChaTypeID(role) 
-	
-	local a = math.random(1,100);
-	local b = { 1 };
-	local c = 1;
-	
-	-- Клинок удачи
-	
-	if itemid == 6794 then
-
-		if a <= 60 then -- 60% 35 анс оружие
-
-			b = { 799, 785, 770, 781 }
-			c = math.random(1,4);
-			
-		elseif a <= 90 then -- 30% 45 анс оружие
-			
-			b = { 786, 793, 774, 771, 800, 782 }
-			c = math.random(1,6);
-			
-		elseif a <= 99 then -- 9% 55 анс оружие
-			
-			b = { 794, 787, 783, 772, 775, 801 }
-			c = math.random(1,6);
-			
-		else -- 1% 65 анс оружие
-			
-			b = { 788, 802, 773, 784, 776, 795 }
-			c = math.random(1,6);
-			
-		end
-		
-		GiveItem ( role , 0 , b[c] , 1 , 12 )
-	
-	-- Доспех мудрости
-	
-	elseif itemid == 6795 then
-	
-		if a <= 60 then -- 60% 35 анс броня
-
-			b = { 803, 777, 789, 763 }
-			c = math.random(1,4);
-			
-		elseif a <= 90 then -- 30% 45 анс броня
-			
-			b = { 790, 764, 804, 796, 778, 767 }
-			c = math.random(1,6);
-			
-		elseif a <= 99 then -- 9% 55 анс броня
-			
-			b = { 791, 805, 779, 765, 768, 797 }
-			c = math.random(1,6);
-			
-		else -- 1% 65 анс броня
-			
-			b = { 806, 780, 792, 766, 769, 798 }
-			c = math.random(1,6);
-			
-		end
-		
-		GiveItem ( role , 0 , b[c] , 1 , 12 )
-		
-	-- Сапоги скорости
-	
-	elseif itemid == 6796 then
-	
-		if a <= 60 then -- 60% 45 лутовые ноги
-
-			b = { 653, 667, 740, 708 }
-			c = math.random(1,4);
-			
-		elseif a <= 90 then -- 30% 55 лутовые ноги
-			
-			b = { 668, 655, 695, 709, 715, 728, 731, 743 }
-			c = math.random(1,8);
-			
-		elseif a <= 99 then -- 9% 55 анс ноги
-			
-			b = { 808, 810, 813, 814, 877 }
-			c = math.random(1,5);
-			
-		else -- 1% Хаос-сапоги
-			
-			b = { 1126 }
-			c = 1;
-			
-		end
-		
-		GiveItem ( role , 0 , b[c] , 1 , 18 )
-	
-	end
-
-end
-
-function ItemUse_gem_ras( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum (role)
-	if Item_CanGet <= 1 then
-		SystemNotice(role, "Чтобы открыть предмет, необходимо иметь хотя бы одну свободную ячейку в инвентаре")
-		UseItemFailed (role)
-		return
-	end
-	local ItemId = GetItemID(Item)
-	if ItemId == 7718 then
-		ItemGem_1 ( role , 0878 )
-	elseif ItemId == 7719 then
-		ItemGem_1 ( role , 0879 )
-	elseif ItemId == 7720 then
-		ItemGem_1 ( role , 0880 )
-	elseif ItemId == 7721 then
-		ItemGem_1 ( role , 0881 )
-	elseif ItemId == 7722 then
-		ItemGem_1 ( role , 0882 )
-	elseif ItemId == 7723 then
-		ItemGem_1 ( role , 0883 )
-	elseif ItemId == 7724 then
-		ItemGem_1 ( role , 0884 )
-	elseif ItemId == 7725 then
-		ItemGem_1 ( role , 0887 )
-	end
-end
-
-function ItemUse_ref_ras( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum (role)
-	if Item_CanGet <= 1 then
-		SystemNotice(role, "Чтобы открыть предмет, необходимо иметь хотя бы одну свободную ячейку в инвентаре")
-		UseItemFailed (role)
-		return
-	end
-	local ItemId = GetItemID(Item)
-	if ItemId == 7726 then
-		ItemGem_1 ( role , 0885 )
-	end
-end
-
-function ItemUse_chest_gem_new( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum (role)
-	if Item_CanGet <= 1 then
-		SystemNotice(role, "Чтобы открыть предмет, необходимо иметь хотя бы одну свободную ячейку в инвентаре")
-		UseItemFailed (role)
-		return
-	end
-	local rand1 = math.random(1,3)
-	local rand2 = math.random(1,4)
-	local rand3 = math.random(1,5)
-	local ItemId = GetItemID(Item)
-	if ItemId == 7715 then
-		if rand1 == 1 then
-			ItemGem_1 ( role , 5772 )
-		elseif rand1 == 2 then
-			ItemGem_1 ( role , 5773 )
-		elseif rand1 == 3 then
-			ItemGem_1 ( role , 5774 )
-		end
-	elseif ItemId == 7716 then
-		if rand2 == 1 then
-			ItemGem_1 ( role , 5772 )
-		elseif rand2 == 2 then
-			ItemGem_1 ( role , 5773 )
-		elseif rand2 == 3 then
-			ItemGem_1 ( role , 5774 )
-		elseif rand2 == 4 then
-			ItemGem_1 ( role , 5775 )
-		end
-	elseif ItemId == 7717 then
-		if rand2 == 1 then
-			ItemGem_1 ( role , 5750 )
-		elseif rand2 == 2 then
-			ItemGem_1 ( role , 5751 )
-		elseif rand2 == 3 then
-			ItemGem_1 ( role , 5752 )
-		elseif rand2 == 4 then
-			ItemGem_1 ( role , 5771 )
-		end
-	elseif ItemId == 7711 then
-		if rand3 == 1 then
-			ItemGem_1 ( role , 6817 )
-		elseif rand3 == 2 then
-			ItemGem_1 ( role , 6820 )
-		elseif rand3 == 3 then
-			ItemGem_1 ( role , 6823 )
-		elseif rand3 == 4 then
-			ItemGem_1 ( role , 6826 )
-		elseif rand3 == 5 then
-			ItemGem_1 ( role , 6829 )
-		end
-	elseif ItemId == 7712 then
-		if rand3 == 1 then
-			ItemGem_1 ( role , 6818 )
-		elseif rand3 == 2 then
-			ItemGem_1 ( role , 6821 )
-		elseif rand3 == 3 then
-			ItemGem_1 ( role , 6824 )
-		elseif rand3 == 4 then
-			ItemGem_1 ( role , 6827 )
-		elseif rand3 == 5 then
-			ItemGem_1 ( role , 6830 )
-		end
-	elseif ItemId == 7713 then
-		if rand3 == 1 then
-			ItemGem_1 ( role , 6819 )
-		elseif rand3 == 2 then
-			ItemGem_1 ( role , 6822 )
-		elseif rand3 == 3 then
-			ItemGem_1 ( role , 6825 )
-		elseif rand3 == 4 then
-			ItemGem_1 ( role , 6828 )
-		elseif rand3 == 5 then
-			ItemGem_1 ( role , 6831 )
-		end
-	elseif ItemId == 7714 then
-		if rand3 == 1 then
-			ItemGem_1 ( role , 7108 )
-		elseif rand3 == 2 then
-			ItemGem_1 ( role , 7109 )
-		elseif rand3 == 3 then
-			ItemGem_1 ( role , 7110 )
-		elseif rand3 == 4 then
-			ItemGem_1 ( role , 7111 )
-		elseif rand3 == 5 then
-			ItemGem_1 ( role , 7112 )
-		end
-	end
-end
-
---ID7420	Языкавой Барьер
-function ItemUse_barer( role , Item )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 4 then
-		SystemNotice(role ,"Чтобы использовать сундук необходимо иметь 4 свободных слота в Вашем инвентаре.")
-		UseItemFailed ( role )
-		return
-	end
-	GiveItem ( role , 0 , 4938 , 30 , 4 )
-	GiveItem ( role , 0 , 4957 , 30 , 4 )
-	GiveItem ( role , 0 , 4976 , 30 , 4 )
-	GiveItem ( role , 0 , 4974 , 10 , 4 )
-end
-
---Сундуки с аппами
-function ItemUse_chest_app (role, Item)
-
-	local Item_CanGet = GetChaFreeBagGridNum (role)
-	 if Item_CanGet < 4 then
-		SystemNotice(role, "Чтобы открыть этот сундук, необходимо 4 свободных ячейки в рюкзаке.")
-		UseItemFailed (role)
-		return
-	end
-
-	local itemid   = GetItemID(Item)
-	local cha_type = GetChaTypeID(role) 
-
-	-- Массив сундуков и апарелей в них
-	local Boxes = {}
-
-	-- Катакомбный Костюм
-	Boxes[7500] = {}
-	Boxes[7500][1] = { 5041, 5045, 5049, 0 } -- Ланс
-	Boxes[7500][2] = { 5042, 5046, 5050, 0 } -- Карциз
-	Boxes[7500][3] = { 5043, 5047, 5051, 0 } -- Филлис
-	Boxes[7500][4] = { 5044, 5048, 5052, 5056 } -- Ами
-
-	-- Костюм Корсара
-	Boxes[7501] = {}
-	Boxes[7501][1] = { 5057, 5061, 5065, 0 } -- Ланс
-	Boxes[7501][2] = { 5058, 5062, 5066, 0 } -- Карциз
-	Boxes[7501][3] = { 5059, 5063, 5067, 0 } -- Филлис
-	Boxes[7501][4] = { 5060, 5064, 5068, 5069 } -- Ами
-
-	-- Кожанный Костюм
-	Boxes[7502] = {}
-	Boxes[7502][1] = { 5075, 5076, 5077, 0 } -- Ланс
-	Boxes[7502][3] = { 5075, 5076, 5077, 0 } -- Филлис
-
-	-- Костюм Кошмара
-	Boxes[7503] = {}
-	Boxes[7503][1] = { 5081, 5082, 5083, 0 } -- Ланс
-	Boxes[7503][3] = { 5081, 5082, 5083, 0 } -- Филлис
-
-	-- Костюм Воина
-	Boxes[7504] = {}
-	Boxes[7504][1] = { 5078, 5079, 5080, 0 } -- Ланс
-	Boxes[7504][3] = { 5078, 5079, 5080, 0 } -- Филлис
-
-	-- Соломенный Костюм
-	Boxes[7505] = {}
-	Boxes[7505][1] = { 5118, 5119, 5120, 5121 } -- Ланс
-
-	-- Трехлезвийный Костюм
-	Boxes[7506] = {}
-	Boxes[7506][1] = { 5123, 5124, 5125, 5122 } -- Ланс
-
-	-- Брутальный Костюм
-	Boxes[7507] = {}
-	Boxes[7507][1] = { 5127, 5128, 5129, 0 } -- Ланс
-
-	-- Тигровый Костюм
-	Boxes[7508] = {}
-	Boxes[7508][1] = { 5154, 5155, 5156, 0 } -- Ланс
-	Boxes[7508][3] = { 5166, 5167, 5168, 0 } -- Филлис
-
-	-- Изменчивый Костюм
-	Boxes[7509] = {}
-	Boxes[7509][1] = { 5157, 5158, 5159, 0 } -- Ланс
-	Boxes[7509][3] = { 5169, 5170, 5171, 0 } -- Филлис
-
-	-- Мерцающий Костюм Цезаря
-	Boxes[7510] = {}
-	Boxes[7510][1] = { 5160, 5161, 5162, 0 } -- Ланс
-
-	-- Королевский Костюм Майора
-	Boxes[7511] = {}
-	Boxes[7511][1] = { 5205, 5206, 5207, 5220 } -- Ланс
-	Boxes[7511][2] = { 5195, 5196, 5197, 5218 } -- Карциз
-	Boxes[7511][3] = { 5202, 5203, 5204, 5219 } -- Филлис
-	Boxes[7511][4] = { 5198, 5199, 5200, 5201 } -- Ами
-
-	-- Темный Королевский Костюм
-	Boxes[7512] = {}
-	Boxes[7512][1] = { 5221, 5222, 5223, 0 } -- Ланс
-
-	-- Костюм Жреца
-	Boxes[7513] = {}
-	Boxes[7513][1] = { 5224, 5225, 5226, 0 } -- Ланс
-
-	-- Костюм Брюса
-	Boxes[7514] = {}
-	Boxes[7514][1] = { 5227, 5228, 5229, 0 } -- Ланс
-	Boxes[7514][3] = { 5241, 5242, 5243, 0 } -- Филлис
-
-	-- Рождественский Костюм
-	Boxes[7515] = {}
-	Boxes[7515][1] = { 5264, 5265, 5266, 0 } -- Ланс
-	Boxes[7515][2] = { 5267, 5268, 5269, 0 } -- Карциз
-	Boxes[7515][3] = { 5270, 5271, 5272, 0 } -- Филлис
-	Boxes[7515][4] = { 5273, 5274, 5275, 0 } -- Ами
-
-	-- Удачливый Костюм
-	Boxes[7516] = {}
-	Boxes[7516][1] = { 5287, 5288, 5289, 5290 } -- Ланс
-	Boxes[7516][2] = { 5291, 5292, 5293, 5294 } -- Карциз
-	Boxes[7516][3] = { 5295, 5296, 5297, 5298 } -- Филлис
-	Boxes[7516][4] = { 5299, 5300, 5301, 5302 } -- Ами
-
-	-- Романтический Костюм
-	Boxes[7517] = {}
-	Boxes[7517][1] = { 5303, 5304, 5305, 0 } -- Ланс
-	Boxes[7517][2] = { 5306, 5307, 5308, 0 } -- Карциз
-	Boxes[7517][3] = { 5309, 5310, 5311, 0 } -- Филлис
-	Boxes[7517][4] = { 5312, 5313, 5314, 0 } -- Ами
-
-	-- Костюм Хрюшки
-	Boxes[7518] = {}
-	Boxes[7518][1] = { 5315, 5316, 5317, 5318 } -- Ланс
-	Boxes[7518][2] = { 5319, 5320, 5321, 5322 } -- Карциз
-	Boxes[7518][3] = { 5323, 5324, 5325, 5326 } -- Филлис
-	Boxes[7518][4] = { 5327, 5328, 5329, 5330 } -- Ами
-
-	-- Костюм Овна
-	Boxes[7519] = {}
-	Boxes[7519][1] = { 5341, 5342, 5343, 0 } -- Ланс
-	Boxes[7519][2] = { 5345, 5346, 5347, 0 } -- Карциз
-	Boxes[7519][3] = { 5349, 5350, 5351, 0 } -- Филлис
-	Boxes[7519][4] = { 5352, 5353, 5354, 5355 } -- Ами
-
-	-- Костюм Тельца
-	Boxes[7520] = {}
-	Boxes[7520][1] = { 5356, 5357, 5358, 5359 } -- Ланс
-	Boxes[7520][2] = { 5360, 5361, 5362, 5363 } -- Карциз
-	Boxes[7520][3] = { 5364, 5365, 5366, 5367 } -- Филлис
-	Boxes[7520][4] = { 5368, 5369, 5370, 5371 } -- Ами
-
-	-- Костюм Близнецов
-	Boxes[7521] = {}
-	Boxes[7521][1] = { 5372, 5373, 5374, 5375 } -- Ланс
-	Boxes[7521][2] = { 5376, 5377, 5378, 5379 } -- Карциз
-	Boxes[7521][3] = { 5380, 5381, 5382, 5383 } -- Филлис
-	Boxes[7521][4] = { 5384, 5385, 5386, 5387 } -- Ами
-
-	-- Прогулочный Костюм
-	Boxes[7522] = {}
-	Boxes[7522][1] = { 5388, 5389, 5390, 5391 } -- Ланс
-
-	-- Костюм Бакалавра
-	Boxes[7523] = {}
-	Boxes[7523][1] = { 5404, 5405, 5406, 5436 } -- Ланс
-	Boxes[7523][2] = { 5407, 5408, 5409, 5437 } -- Карциз
-	Boxes[7523][3] = { 5410, 5411, 5412, 5438 } -- Филлис
-	Boxes[7523][4] = { 5413, 5414, 5415, 5439 } -- Ами
-
-	-- Костюм Романтических танцев
-	Boxes[7524] = {}
-	Boxes[7524][1] = { 5422, 5423, 5440, 0 } -- Ланс
-	Boxes[7524][2] = { 5424, 5425, 5441, 0 } -- Карциз
-
-	-- Костюм Ночного божества
-	Boxes[7525] = {}
-	Boxes[7525][1] = { 5432, 5433, 5444, 0 } -- Ланс
-	Boxes[7525][2] = { 5434, 5435, 5445, 0 } -- Карциз
-
-	-- Костюм Большого Краба
-	Boxes[7526] = {}
-	Boxes[7526][1] = { 5456, 5457, 5458, 5459 } -- Ланс
-	Boxes[7526][2] = { 5460, 5461, 5462, 5463 } -- Карциз
-	Boxes[7526][3] = { 5464, 5465, 5466, 5467 } -- Филлис
-	Boxes[7526][4] = { 5468, 5469, 5470, 5471 } -- Ами
-
-	-- Костюм Черного Драконора
-	Boxes[7527] = {}
-	Boxes[7527][1] = { 5488, 5489, 5490, 0 } -- Ланс
-	Boxes[7527][2] = { 5491, 5492, 5493, 0 } -- Карциз
-	Boxes[7527][3] = { 5494, 5495, 5496, 0 } -- Филлис
-	Boxes[7527][4] = { 5497, 5498, 5499, 5500 } -- Ами
-
-	-- Костюм Кайлинора
-	Boxes[7528] = {}
-	Boxes[7528][1] = { 5501, 5502, 5503, 0 } -- Ланс
-	Boxes[7528][2] = { 5504, 5505, 5506, 0 } -- Карциз
-	Boxes[7528][3] = { 5507, 5508, 5509, 0 } -- Филлис
-	Boxes[7528][4] = { 5510, 5511, 5512, 5513 } -- Ами
-
-	-- Костюм Кровопийцы
-	Boxes[7529] = {}
-	Boxes[7529][1] = { 5521, 5522, 5523, 5524 } -- Ланс
-	Boxes[7529][2] = { 5525, 5526, 5527, 5528 } -- Карциз
-	Boxes[7529][3] = { 5529, 5530, 5531, 5532 } -- Филлис
-	Boxes[7529][4] = { 5533, 5534, 5535, 5536 } -- Ами
-
-	-- Костюм Хакера
-	Boxes[7530] = {}
-	Boxes[7530][1] = { 5537, 5538, 5539, 5540 } -- Ланс
-	Boxes[7530][2] = { 5541, 5542, 5543, 5544 } -- Карциз
-	Boxes[7530][3] = { 5545, 5546, 5547, 5548 } -- Филлис
-	Boxes[7530][4] = { 5549, 5550, 5551, 5552 } -- Ами
-
-	-- Костюм Азраила
-	Boxes[7531] = {}
-	Boxes[7531][1] = { 5553, 5554, 5555, 5556 } -- Ланс
-	Boxes[7531][2] = { 5557, 5558, 5559, 5560 } -- Карциз
-	Boxes[7531][3] = { 5561, 5562, 5563, 5564 } -- Филлис
-	Boxes[7531][4] = { 5565, 5566, 5567, 5568 } -- Ами
-
-	-- Костюм Сверхчеловека
-	Boxes[7532] = {}
-	Boxes[7532][1] = { 5569, 5570, 5571, 5572 } -- Ланс
-	Boxes[7532][2] = { 5573, 5574, 5575, 5576 } -- Карциз
-
-	-- Костюм Огненной тени
-	Boxes[7533] = {}
-	Boxes[7533][1] = { 5577, 5578, 5579, 5580 } -- Ланс
-	Boxes[7533][2] = { 5581, 5582, 5583, 5584 } -- Карциз
-	Boxes[7533][3] = { 5585, 5586, 5587, 5588 } -- Филлис
-	Boxes[7533][4] = { 5589, 5590, 5591, 5592 } -- Ами
-
-	-- Карибский Костюм
-	Boxes[7534] = {}
-	Boxes[7534][1] = { 5593, 5594, 5595, 5596 } -- Ланс
-	Boxes[7534][2] = { 5597, 5598, 5599, 5600 } -- Карциз
-	Boxes[7534][3] = { 5601, 5602, 5603, 5604 } -- Филлис
-	Boxes[7534][4] = { 5605, 5606, 5607, 5608 } -- Ами
-
-	-- Костюм Рилаккума
-	Boxes[7535] = {}
-	Boxes[7535][1] = { 5632, 5633, 5634, 5635 } -- Ланс
-	Boxes[7535][2] = { 5628, 5629, 5630, 5631 } -- Карциз
-	Boxes[7535][3] = { 5636, 5637, 5638, 5639 } -- Филлис
-	Boxes[7535][4] = { 5640, 5641, 5642, 5643 } -- Ами
-
-	-- Новогодний Костюм
-	Boxes[7536] = {}
-	Boxes[7536][1] = { 5651, 5652, 5653, 5654 } -- Ланс
-	Boxes[7536][2] = { 5655, 5656, 5657, 5658 } -- Карциз
-	Boxes[7536][3] = { 5659, 5660, 0, 0 } -- Филлис
-
-	-- Костюм Кровавой луны
-	Boxes[7537] = {}
-	Boxes[7537][1] = { 5661, 5662, 5663, 5664 } -- Ланс
-	Boxes[7537][2] = { 5665, 5666, 5667, 5668 } -- Карциз
-	Boxes[7537][3] = { 5669, 5670, 5671, 5672 } -- Филлис
-	Boxes[7537][4] = { 5673, 5674, 5675, 5676 } -- Ами
-
-	-- Ковбойский Костюм
-	Boxes[7538] = {}
-	Boxes[7538][1] = { 5677, 5678, 5679, 5680 } -- Ланс
-	Boxes[7538][2] = { 5681, 5682, 5683, 5684 } -- Карциз
-	Boxes[7538][3] = { 5685, 5686, 5687, 5688 } -- Филлис
-	Boxes[7538][4] = { 5689, 5690, 5691, 5692 } -- Ами
-
-	-- Костюм Странника
-	Boxes[7539] = {}
-	Boxes[7539][1] = { 5726, 5727, 5728, 5729 } -- Ланс
-	Boxes[7539][2] = { 5730, 5731, 5732, 5733 } -- Карциз
-	Boxes[7539][3] = { 5734, 5735, 5736, 5737 } -- Филлис
-	Boxes[7539][4] = { 5738, 5739, 5740, 5741 } -- Ами
-
-	-- Костюм Короля Битв
-	Boxes[7540] = {}
-	Boxes[7540][1] = { 5742, 5743, 5744, 5745 } -- Ланс
-	Boxes[7540][2] = { 5746, 5747, 5748, 5749 } -- Карциз
-	Boxes[7540][3] = { 5850, 5851, 5852, 5853 } -- Филлис
-	Boxes[7540][4] = { 5854, 5855, 5856, 5857 } -- Ами
-
-	-- Грандиозный Костюм
-	Boxes[7541] = {}
-	Boxes[7541][1] = { 5898, 5899, 5900, 5901 } -- Ланс
-
-	-- Костюм Магической Рощи
-	Boxes[7542] = {}
-	Boxes[7542][1] = { 6503, 6504, 6505, 6506 } -- Ланс
-	Boxes[7542][2] = { 6503, 6507, 6505, 6506 } -- Карциз
-	Boxes[7542][3] = { 6503, 6504, 6505, 6506 } -- Филлис
-	Boxes[7542][4] = { 6503, 6504, 6505, 6506 } -- Ами
-
-	-- Серебреный Костюм Императора
-	Boxes[7543] = {}
-	Boxes[7543][1] = { 5905, 5906, 5907, 5908 } -- Ланс
-	Boxes[7543][2] = { 5905, 5902, 5907, 5908 } -- Карциз
-	Boxes[7543][3] = { 5905, 5906, 5907, 5908 } -- Филлис
-	Boxes[7543][4] = { 5905, 5906, 5907, 5908 } -- Ами
-
-	-- Костюм Императора
-	Boxes[7544] = {}
-	Boxes[7544][1] = { 5918, 5919, 5920, 5921 } -- Ланс
-	Boxes[7544][2] = { 5918, 5903, 5920, 5921 } -- Карциз
-	Boxes[7544][3] = { 5918, 5919, 5920, 5921 } -- Филлис
-	Boxes[7544][4] = { 5918, 5919, 5920, 5921 } -- Ами
-
-	-- Золотой Костюм Императора
-	Boxes[7545] = {}
-	Boxes[7545][1] = { 5922, 5923, 5924, 5925 } -- Ланс
-	Boxes[7545][2] = { 5922, 5904, 5924, 5925 } -- Карциз
-	Boxes[7545][3] = { 5922, 5923, 5924, 5925 } -- Филлис
-	Boxes[7545][4] = { 5922, 5923, 5924, 5925 } -- Ами
-
-	-- Костюм Человека-Паука
-	Boxes[7546] = {}
-	Boxes[7546][1] = { 5926, 5927, 5928, 5929 } -- Ланс
-	Boxes[7546][2] = { 5930, 5931, 5932, 5933 } -- Карциз
-
-	-- Зимний Костюм
-	Boxes[7547] = {}
-	Boxes[7547][1] = { 5934, 5935, 5936, 5937 } -- Ланс
-	Boxes[7547][2] = { 5938, 5939, 5940, 0 } -- Карциз
-	Boxes[7547][3] = { 5941, 5942, 5943, 0 } -- Филлис
-	Boxes[7547][4] = { 5944, 5962, 5963, 5964 } -- Ами
-
-	-- Заколдованный лесной Костюм
-	Boxes[7548] = {}
-	Boxes[7548][1] = { 5945, 5946, 5947, 5948 } -- Ланс
-	Boxes[7548][2] = { 5949, 5950, 5951, 5952 } -- Карциз
-	Boxes[7548][3] = { 5953, 5954, 5955, 5956 } -- Филлис
-	Boxes[7548][4] = { 5957, 5958, 5959, 5960 } -- Ами
-
-	-- Костюм Удачливого Быка
-	Boxes[7549] = {}
-	Boxes[7549][1] = { 5965, 5966, 5967, 5968 } -- Ланс
-	Boxes[7549][2] = { 5965, 5969, 5967, 5968 } -- Карциз
-	Boxes[7549][3] = { 5965, 5966, 5967, 5968 } -- Филлис
-	Boxes[7549][4] = { 5965, 5966, 5967, 5968 } -- Ами
-
-	-- Костюм Белого Демона
-	Boxes[7550] = {}
-	Boxes[7550][1] = { 5970, 5971, 5972, 5973 } -- Ланс
-	Boxes[7550][3] = { 5978, 5979, 5980, 5981 } -- Филлис
-
-	-- Костюм Храмовника
-	Boxes[7551] = {}
-	Boxes[7551][1] = { 5992, 5993, 5994, 0 } -- Ланс
-
-	-- 	Костюм Самурая
-	Boxes[7552] = {}
-	Boxes[7552][1] = { 6350, 6351, 6352, 6353 } -- Ланс
-	Boxes[7552][2] = { 6354, 6355, 6356, 6357 } -- Карциз
-
-	-- Костюм Панка
-	Boxes[7553] = {}
-	Boxes[7553][1] = { 6362, 6363, 6364, 6365 } -- Ланс
-	Boxes[7553][2] = { 6366, 6364, 6365, 0 } -- Карциз
-	Boxes[7553][3] = { 6363, 6364, 6365, 0 } -- Филлис
-	Boxes[7553][4] = { 6363, 6364, 6365, 0 } -- Ами
-
-	-- Костюм Дартмола
-	Boxes[7554] = {}
-	Boxes[7554][1] = { 6386, 6387, 6388, 6389 } -- Ланс
-
-	-- Летний Костюм
-	Boxes[7555] = {}
-	Boxes[7555][1] = { 6395, 6396, 6397, 0 } -- Ланс
-
-	-- Костюм Девы
-	Boxes[7556] = {}
-	Boxes[7556][1] = { 6398, 6399, 6400, 6401 } -- Ланс
-	Boxes[7556][2] = { 6398, 6402, 6400, 6401 } -- Карциз
-	Boxes[7556][3] = { 6398, 6399, 6400, 6401 } -- Филлис
-	Boxes[7556][4] = { 6398, 6399, 6400, 6401 } -- Ами
-
-	-- Костюм Весов
-	Boxes[7557] = {}
-	Boxes[7557][1] = { 6403, 6404, 6405, 6406 } -- Ланс
-	Boxes[7557][2] = { 6403, 6407, 6405, 6406 } -- Карциз
-	Boxes[7557][3] = { 6403, 6404, 6405, 6406 } -- Филлис
-	Boxes[7557][4] = { 6403, 6404, 6405, 6406 } -- Ами
-
-	-- Костюм Скорпиона
-	Boxes[7558] = {}
-	Boxes[7558][1] = { 6408, 6409, 6410, 0 } -- Ланс
-	Boxes[7558][2] = { 6411, 6409, 6410, 0 } -- Карциз
-	Boxes[7558][3] = { 6408, 6409, 6410, 0 } -- Филлис
-	Boxes[7558][4] = { 6408, 6409, 6410, 0 } -- Ами
-
-	-- Костюм Стрельца
-	Boxes[7559] = {}
-	Boxes[7559][1] = { 6412, 6413, 6414, 6415 } -- Ланс
-	Boxes[7559][2] = { 6412, 6416, 6414, 6415 } -- Карциз
-	Boxes[7559][3] = { 6412, 6413, 6414, 6415 } -- Филлис
-	Boxes[7559][4] = { 6412, 6413, 6414, 6415 } -- Ами
-
-	-- Костюм Козерога
-	Boxes[7560] = {}
-	Boxes[7560][1] = { 6417, 6418, 6419, 6420 } -- Ланс
-	Boxes[7560][2] = { 6417, 6421, 6419, 6420 } -- Карциз
-	Boxes[7560][3] = { 6417, 6418, 6419, 6420 } -- Филлис
-	Boxes[7560][4] = { 6417, 6418, 6419, 6420 } -- Ами
-
-	-- Костюм Водолея
-	Boxes[7561] = {}
-	Boxes[7561][1] = { 6422, 6423, 6424, 6425 } -- Ланс
-	Boxes[7561][2] = { 6422, 6426, 6424, 6425 } -- Карциз
-	Boxes[7561][3] = { 6422, 6423, 6424, 6425 } -- Филлис
-	Boxes[7561][4] = { 6422, 6423, 6424, 6425 } -- Ами
-
-	-- Костюм Рыб
-	Boxes[7562] = {}
-	Boxes[7562][1] = { 6427, 6428, 6429, 6430 } -- Ланс
-	Boxes[7562][2] = { 6427, 6431, 6429, 6430 } -- Карциз
-	Boxes[7562][3] = { 6427, 6428, 6429, 6430 } -- Филлис
-	Boxes[7562][4] = { 6427, 6428, 6429, 6430 } -- Ами
-
-	-- Костюм Льва
-	Boxes[7563] = {}
-	Boxes[7563][1] = { 6432, 6433, 6434, 6435 } -- Ланс
-	Boxes[7563][2] = { 6432, 6436, 6434, 6435 } -- Карциз
-	Boxes[7563][3] = { 6432, 6433, 6434, 6435 } -- Филлис
-	Boxes[7563][4] = { 6432, 6433, 6434, 6435 } -- Ами
-
-	-- Костюм Железного человека
-	Boxes[7564] = {}
-	Boxes[7564][1] = { 6437, 6438, 6439, 6440 } -- Ланс
-	Boxes[7564][2] = { 6437, 6441, 6439, 6440 } -- Карциз
-	Boxes[7564][3] = { 6437, 6438, 6439, 6440 } -- Филлис
-	Boxes[7564][4] = { 6437, 6438, 6439, 6440 } -- Ами
-
-	-- Маскарадный Костюм
-	Boxes[7565] = {}
-	Boxes[7565][1] = { 6442, 6443, 6444, 6445 } -- Ланс
-	Boxes[7565][2] = { 6442, 6446, 6444, 6445 } -- Карциз
-	Boxes[7565][3] = { 6442, 6443, 6444, 6445 } -- Филлис
-	Boxes[7565][4] = { 6442, 6443, 6444, 6445 } -- Ами
-
-	-- Костюм Рокера
-	Boxes[7566] = {}
-	Boxes[7566][1] = { 6447, 6448, 6449, 6450 } -- Ланс
-
-	-- Костюм Рукопашника
-	Boxes[7567] = {}
-	Boxes[7567][1] = { 6451, 6453, 6452, 6454 } -- Ланс
-	Boxes[7567][3] = { 6451, 6453, 6452, 6454 } -- Филлис
-	Boxes[7567][4] = { 6451, 6453, 6452, 6454 } -- Ами
-
-	-- Костюм Марио
-	Boxes[7568] = {}
-	Boxes[7568][1] = { 6463, 6464, 6465, 6466 } -- Ланс
-	Boxes[7568][2] = { 6467, 6468, 6469, 6470 } -- Карциз
-	Boxes[7568][3] = { 6471, 6472, 6473, 6474 } -- Филлис
-	Boxes[7568][4] = { 5616, 5617, 5618, 5619 } -- Ами
-
-	-- Костюм Циклопа
-	Boxes[7569] = {}
-	Boxes[7569][1] = { 6475, 6476, 6477, 6478 } -- Ланс
-
-	-- Костюм Маршала
-	Boxes[7570] = {}
-	Boxes[7570][1] = { 6499, 6500, 6501, 6502 } -- Ланс
-
-	-- Костюм Маленькой пчелы
-	Boxes[7571] = {}
-	Boxes[7571][4] = { 5138, 5139, 5140, 5141 } -- Ами
-
-	-- Костюм Гриба
-	Boxes[7572] = {}
-	Boxes[7572][4] = { 5134, 5135, 5136, 5137 } -- Ами
-
-	-- Веселый Олений Костюм
-	Boxes[7573] = {}
-	Boxes[7573][4] = { 5130, 5131, 5132, 5133 } -- Ами
-
-	-- Деревенский Костюм
-	Boxes[7574] = {}
-	Boxes[7574][4] = { 5020, 5024, 5032, 5037 } -- Ами
-
-	-- Костюм Звона
-	Boxes[7575] = {}
-	Boxes[7575][4] = { 5016, 5028, 5036, 0 } -- Ами
-
-	-- Костюм Ами
-	Boxes[7576] = {}
-	Boxes[7576][4] = { 5260, 5261, 5262, 5263 } -- Ами
-
-	-- Монашеский Костюм
-	Boxes[7577] = {}
-	Boxes[7577][3] = { 5248, 5249, 5250, 5251 } -- Филлис
-	Boxes[7577][4] = { 5256, 5257, 5258, 5259 } -- Ами
-
-	-- Свадебный Костюм
-	Boxes[7578] = {}
-	Boxes[7578][3] = { 5244, 5245, 5246, 5247 } -- Филлис
-	Boxes[7578][4] = { 5252, 5253, 5254, 5255 } -- Ами
-
-	-- Шелковый Костюм Кролика
-	Boxes[7579] = {}
-	Boxes[7579][4] = { 5191, 5192, 5193, 5194 } -- Ами
-
-	-- Костюм Благородного льва
-	Boxes[7580] = {}
-	Boxes[7580][4] = { 5187, 5188, 5189, 5190 } -- Ами
-
-	-- Лазурный Костюм Феи
-	Boxes[7581] = {}
-	Boxes[7581][4] = { 5183, 5184, 5185, 5186 } -- Ами
-
-	-- Костюм Сладости
-	Boxes[7582] = {}
-	Boxes[7582][4] = { 5179, 5180, 5181, 0 } -- Ами
-
-	-- Костюм Алии
-	Boxes[7583] = {}
-	Boxes[7583][4] = { 5175, 5177, 5178, 0 } -- Ами
-
-	-- Костюм Розового ангела
-	Boxes[7584] = {}
-	Boxes[7584][4] = { 5428, 5429, 5430, 5431 } -- Ами
-
-	-- Костюм Студента
-	Boxes[7585] = {}
-	Boxes[7585][3] = { 5416, 5417, 5418, 0 } -- Филлис
-	Boxes[7585][4] = { 5419, 5420, 5421, 0 } -- Ами
-
-	-- Костюм Нежности
-	Boxes[7586] = {}
-	Boxes[7586][4] = { 5400, 5401, 5402, 5403 } -- Ами
-
-	-- Костюм Дракона
-	Boxes[7587] = {}
-	Boxes[7587][2] = { 5514, 5515, 5516, 0 } -- Карциз
-	Boxes[7587][4] = { 5517, 5518, 5519, 0 } -- Ами
-
-	-- Костюм Лолиты
-	Boxes[7588] = {}
-	Boxes[7588][4] = { 5646, 5647, 5648, 5649 } -- Ами
-
-	-- Костюм Ведьмы
-	Boxes[7589] = {}
-	Boxes[7589][3] = { 5986, 5987, 5988, 5989 } -- Филлис
-	Boxes[7589][4] = { 5986, 5987, 5988, 5989 } -- Ами
-
-	-- 	Костюм Черного Демона
-	Boxes[7590] = {}
-	Boxes[7590][2] = { 5974, 5975, 5976, 5977 } -- Карциз
-	Boxes[7590][4] = { 5982, 5983, 5984, 5985 } -- Ами
-
-	-- Костюм Эша
-	Boxes[7591] = {}
-	Boxes[7591][4] = { 5913, 5914, 5915, 5916 } -- Ами
-
-	-- Костюм Снежной Королевы
-	Boxes[7592] = {}
-	Boxes[7592][3] = { 6378, 6379, 6380, 6381 } -- Филлис
-	Boxes[7592][4] = { 6382, 6383, 6384, 6385 } -- Ами
-
-	-- Костюм Моряка
-	Boxes[7593] = {}
-	Boxes[7593][3] = { 6455, 6456, 6457, 6458 } -- Филлис
-	Boxes[7593][4] = { 6455, 6456, 6457, 6458 } -- Ами
-
-	-- Костюм Привлекательности
-	Boxes[7594] = {}
-	Boxes[7594][3] = { 5015, 5023, 5031, 0 } -- Филлис
-
-	-- Большой Костюм Зимы
-	Boxes[7595] = {}
-	Boxes[7595][3] = { 5019, 5027, 5035, 0 } -- Филлис
-
-	-- Костюм Матроса
-	Boxes[7596] = {}
-	Boxes[7596][3] = { 5084, 5085, 5086, 0 } -- Филлис
-
-	-- Костюм из кожи Акулы
-	Boxes[7597] = {}
-	Boxes[7597][3] = { 5087, 5088, 5089, 0 } -- Филлис
-
-	-- Костюм Морячка
-	Boxes[7598] = {}
-	Boxes[7598][3] = { 5090, 5091, 5092, 0 } -- Филлис
-
-	-- Флотский Костюм
-	Boxes[7599] = {}
-	Boxes[7599][3] = { 5093, 5094, 5095, 0 } -- Филлис
-
-	-- Капитанский Костюм
-	Boxes[7600] = {}
-	Boxes[7600][3] = { 5096, 5097, 5098, 0 } -- Филлис
-
-	-- Лакомый Костюм
-	Boxes[7601] = {}
-	Boxes[7601][3] = { 5142, 5143, 5144, 5145 } -- Филлис
-
-	-- Костюм Шайтанской принцессы
-	Boxes[7602] = {}
-	Boxes[7602][3] = { 5146, 5147, 5148, 5149 } -- Филлис
-
-	-- Сексуальный Костюм
-	Boxes[7603] = {}
-	Boxes[7603][3] = { 5150, 5151, 5152, 5153 } -- Филлис
-
-	-- Темно-синий Костюм Судьбы
-	Boxes[7604] = {}
-	Boxes[7604][3] = { 5172, 5173, 5174, 0 } -- Филлис
-
-	-- Причудливый Костюм
-	Boxes[7605] = {}
-	Boxes[7605][3] = { 5396, 5397, 5398, 5399 } -- Филлис
-
-	-- Чудесный райский Костюм
-	Boxes[7606] = {}
-	Boxes[7606][3] = { 5426, 5427, 5438, 0 } -- Филлис
-
-	-- Розовый Костюм Гейши
-	Boxes[7607] = {}
-	Boxes[7607][3] = { 5909, 5910, 5911, 5912 } -- Филлис
-
-	-- Костюм Принцесы
-	Boxes[7608] = {}
-	Boxes[7608][3] = { 6358, 6359, 6360, 6361 } -- Филлис
-
-	-- Ночной Костюм
-	Boxes[7609] = {}
-	Boxes[7609][3] = { 6367, 6368, 6369, 0 } -- Филлис
-
-	-- Королевский Костюм
-	Boxes[7610] = {}
-	Boxes[7610][3] = { 6370, 6371, 6372, 6373 } -- Филлис
-
-	-- Эротический Костюм
-	Boxes[7611] = {}
-	Boxes[7611][3] = { 6374, 6375, 6376, 6377 } -- Филлис
-
-	-- Рыжий Костюм
-	Boxes[7612] = {}
-	Boxes[7612][3] = { 6483, 6484, 6485, 6486 } -- Филлис
-
-	-- Рождественский Костюм
-	Boxes[7613] = {}
-	Boxes[7613][3] = { 6495, 6496, 6497, 6498 } -- Филлис
-
-	-- Костюм Современного пещерника
-	Boxes[7614] = {}
-	Boxes[7614][2] = { 5014, 5022, 5030, 0 } -- Карциз
-
-	-- Костюм Дикого пещерника
-	Boxes[7615] = {}
-	Boxes[7615][2] = { 5018, 5026, 5034, 0 } -- Карциз
-
-	-- Костюм Кровавого Капитана
-	Boxes[7616] = {}
-	Boxes[7616][2] = { 5107, 5108, 5109, 0 } -- Карциз
-
-	-- Крокодиловый Костюм Сахары
-	Boxes[7617] = {}
-	Boxes[7617][2] = { 5110, 5111, 5112, 5113 } -- Карциз
-
-	-- Флотский Костюм Курильщика
-	Boxes[7618] = {}
-	Boxes[7618][2] = { 5115, 5116, 5117, 0 } -- Карциз
-
-	-- Новый Костюм
-	Boxes[7619] = {}
-	Boxes[7619][2] = { 5163, 5164, 5165, 0 } -- Карциз
-
-	-- Костюм Епископа
-	Boxes[7620] = {}
-	Boxes[7620][2] = { 5230, 5231, 5232, 5233 } -- Карциз
-
-	-- Костюм Следопыта
-	Boxes[7621] = {}
-	Boxes[7621][2] = { 5234, 5235, 5236, 5237 } -- Карциз
-
-	-- Черный Костюм
-	Boxes[7622] = {}
-	Boxes[7622][2] = { 5238, 5239, 5240, 0 } -- Карциз
-
-	-- Костюм Бродяги
-	Boxes[7623] = {}
-	Boxes[7623][2] = { 5392, 5393, 5394, 5395 } -- Карциз
-
-	-- Костюм Дартвейдера
-	Boxes[7624] = {}
-	Boxes[7624][2] = { 6390, 6391, 6392, 6393 } -- Карциз
-
-	-- Бойцовский Костюм
-	Boxes[7625] = {}
-	Boxes[7625][2] = { 6459, 6460, 6461, 6462 } -- Карциз
-
-	-- Костюм Росомахи
-	Boxes[7626] = {}
-	Boxes[7626][2] = { 6479, 6480, 6481, 6482 } -- Карциз
-
-	-- Костюм Аладдина
-	Boxes[7627] = {}
-	Boxes[7627][2] = { 6491, 6492, 6493, 6494 } -- Карциз
-
-	-- Костюм Геркулеса
-	Boxes[7628] = {}
-	Boxes[7628][2] = { 6509, 6510, 6511, 0 } -- Карциз
-
-	-- Выдаем предметы
-	if Boxes[itemid] ~= nil then
-		if Boxes[itemid][cha_type] ~= nil then
-			for item in Boxes[itemid][cha_type] do
-				local apparel = Boxes[itemid][cha_type][item]
-				if apparel ~= nil and apparel > 0 then GiveItem (role, 0, apparel, 1, 4) end
-			end
-		else
-			SystemNotice(role, "В сундуке нет предметов для вас")
-			GiveItem (role, 0, itemid, 1, 4)
-		end
-	else
-		SystemNotice(role, "Неизвестный сундук")
-		GiveItem (role, 0, itemid, 1, 4)
-	end
-end
-
-
---Кристальный Котел
-function ItemUse_CookBlurry_test ( role , Item , Item_Traget ) 
-	local Item_ID = GetItemID ( Item_Traget )
-	if Item_ID ~= 2302 then
-		SystemNotice(role ,"Можно использовать только не чертеже Кулинарии")
-		UseItemFailed ( role )
-		return
-	end
-
-	local Cauldron_lvl = GetItemAttr(Item, ITEMATTR_VAL_STR)
-	local Cauldron_maxproch = GetItemAttr(Item, ITEMATTR_MAXENERGY)
-	local Cauldron_exp = GetItemAttr(Item, ITEMATTR_ENERGY)
-	local Cauldron_proch = GetItemAttr(Item, ITEMATTR_URE)
-
-	local ingr1 = GetItemAttr(Item_Traget, ITEMATTR_VAL_STR)
-	local ingr2 = GetItemAttr(Item_Traget, ITEMATTR_VAL_CON)
-	local ingr3 = GetItemAttr(Item_Traget, ITEMATTR_VAL_DEX)
-	local item_polych = GetItemAttr(Item_Traget, ITEMATTR_VAL_AGI)
-	local lvl_cook = GetItemAttr(Item_Traget, ITEMATTR_URE)
-	local count_use = GetItemAttr(Item_Traget, ITEMATTR_VAL_STA)
-	local mf_count = GetItemAttr(Item_Traget, ITEMATTR_MAXURE)
-	local Num_paper = GetItemForgeParam ( Item_Traget , 1 )
-	Num_paper = TansferNum ( Num_paper )
-	local ingr1_count = GetNum_Part2 ( Num_paper )
-	local ingr2_count = GetNum_Part4 ( Num_paper )
-	local ingr3_count = GetNum_Part6 ( Num_paper )
-	local skill_lv = GetSkillLv(role, 0339)
-	if skill_lv < lvl_cook then
-		SystemNotice(role ,"Уровень вашего навыка Кулинария, ниже чем уровень чертежа!")
-		UseItemFailed ( role )
-		return
-	end
-	if count_use == 0 then
-		SystemNotice(role ,"Использовать чертеж не возможно, проверьте возможно вы уже израсходовали его!")
-		UseItemFailed ( role )
-		return
-	end
-	local ret1 = proc_ingridient(role,ingr1,ingr1_count)
-	local ret2 = proc_ingridient(role,ingr2,ingr2_count)
-	local ret3 = proc_ingridient(role,ingr3,ingr3_count)
-	local ret4 = proc_ingridient(role,0855,mf_count)
-	if ret1 == 0 or ret2 == 0 or ret3 == 0 or ret4 == 0 then
-		UseItemFailed ( role )
-		return
-	end
-	local dell1 = dell_ingridient(role,ingr1,ingr1_count)
-	local dell2 = dell_ingridient(role,ingr2,ingr2_count)
-	local dell3 = dell_ingridient(role,ingr3,ingr3_count)
-	local dell4 = dell_ingridient(role,0855,mf_count)
-	if dell1 == 0 or dell2 == 0 or dell3 == 0 or dell4 == 0 then
-		UseItemFailed ( role )
-		return
-	end
-	local rand = math.random(1,3)
-	local good = 0
-	local item_polych_count = 0
-	-- Уровень котла больше или равен уровню чертежа: шанс успеха 100%
-	if Cauldron_lvl >= lvl_cook then
-		item_polych_count = (skill_lv + Cauldron_lvl) - lvl_cook
-		if item_polych_count >= 5 then
-			item_polych_count = 4
-		end
-		item_polych_count = item_polych_count + 2
-		good = 1
-	end
-	-- Уровень котла меньше уровня чертежа
-	if Cauldron_lvl < lvl_cook then
-		local razn = 0
-		razn = lvl_cook - Cauldron_lvl
-		local luck = math.random(1,100)
-		if razn == 1 then
-			if luck >= 1 and luck <= 95 then
-				item_polych_count = (skill_lv + Cauldron_lvl) - lvl_cook
-				if item_polych_count >= 5 then
-					item_polych_count = 4
-				end
-				item_polych_count = item_polych_count + 1
-				good = 1
-			else
-				item_polych_count = 1
-				good = 0
-			end
-		elseif razn == 2 then
-			if luck >= 1 and luck <= 90 then
-				item_polych_count = (skill_lv + Cauldron_lvl) - lvl_cook
-				if item_polych_count >= 5 then
-					item_polych_count = 4
-				end
-				item_polych_count = item_polych_count + 1
-				good = 1
-			else
-				item_polych_count = 1
-				good = 0
-			end
-		elseif razn == 3 then
-			if luck >= 1 and luck <= 85 then
-				item_polych_count = (skill_lv + Cauldron_lvl) - lvl_cook
-				if item_polych_count >= 5 then
-					item_polych_count = 4
-				end
-				item_polych_count = item_polych_count + 1
-				good = 1
-			else
-				item_polych_count = 1
-				good = 0
-			end
-		elseif razn == 4 then
-			if luck >= 1 and luck <= 80 then
-				item_polych_count = (skill_lv + Cauldron_lvl) - lvl_cook
-				if item_polych_count >= 5 then
-					item_polych_count = 4
-				end
-				item_polych_count = item_polych_count + 1
-				good = 1
-			else
-				item_polych_count = 1
-				good = 0
-			end
-		elseif razn == 5 then
-			if luck >= 1 and luck <= 75 then
-				item_polych_count = (skill_lv + Cauldron_lvl) - lvl_cook
-				if item_polych_count >= 5 then
-					item_polych_count = 4
-				end
-				item_polych_count = item_polych_count + 1
-				good = 1
-			else
-				good = 0
-			end
-		elseif razn == 6 then
-			if luck >= 1 and luck <= 70 then
-				item_polych_count = (skill_lv + Cauldron_lvl) - lvl_cook
-				if item_polych_count >= 5 then
-					item_polych_count = 4
-				end
-				item_polych_count = item_polych_count + 1
-				good = 1
-			else
-				item_polych_count = 1
-				good = 0
-			end
-		end
-	end
-	local new_count_use = count_use - 1
-	SetItemAttr(Item_Traget, ITEMATTR_VAL_STA, new_count_use)
-	GiveItem ( role, 0 , item_polych , item_polych_count , 4 )
-	-------------------
-	-- Выдача котла
-	-------------------
-	local m1 = -1
-	local m2 = -1
-	m1, m2 = MakeItem ( role , 1067  , 1 , 4 )
-	local Cauldronfinal = GetChaItem ( role , 2 , m2 )
-	SetItemAttr(Cauldronfinal, ITEMATTR_VAL_STR , Cauldron_lvl)
-	SetItemAttr(Cauldronfinal, ITEMATTR_MAXENERGY , Cauldron_maxproch)
-	SetItemAttr(Cauldronfinal, ITEMATTR_URE , Cauldron_proch)
-	SetItemAttr(Cauldronfinal, ITEMATTR_ENERGY , Cauldron_exp)
-	-- Успех\Провал получение опыта
-	if good == 1 then
-		Cauldron_exp = Cauldron_exp + Cauldron_lvl
-	else
-		Cauldron_exp = Cauldron_exp + 1
-	end
-	-- Убиваем прочность
-	Cauldron_proch = Cauldron_proch - 50 * Cauldron_lvl
-	if Cauldron_proch <= 0 then
-		Cauldron_proch = 0
-	end
-	if Cauldron_exp >= 10000 then
-		Cauldron_exp = 10000
-	end
-	-- Повышение уровня
-	if Cauldron_exp >= Cauldron_lvl * Cauldron_lvl * 100 then
-		Cauldron_lvl = Cauldron_lvl + 1
-		SetItemAttr(Cauldronfinal, ITEMATTR_VAL_STR , Cauldron_lvl)
-		SystemNotice( role , "Поздравляем, уровень вашего инструмента повышен!")
-		Cauldron_exp = 0
-	end
-	-- Наложение параметров опыта и прочности
-	SetItemAttr(Cauldronfinal, ITEMATTR_URE , Cauldron_proch)
-	SetItemAttr(Cauldronfinal, ITEMATTR_ENERGY , Cauldron_exp)
-end
-
---ID0938	Покровительство Богини
-function Jz_Script_Nebesa(role, Item )
-	local i = CheckBagItem(role,938)
+	local i = CheckBagItem(role, 3078)
 	local k = ChaIsBoat(role)
 	local hp = Hp(role)
 	local mxhp = Mxhp(role)
 	local sp = Sp(role)
 	local mxsp = Mxsp(role)
 	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация очень утомительный процесс. Пожалуйста, восстановите Ваше здоровье и ману")
-		UseItemFailed ( role )
+		SystemNotice (role, "\210\229\235\229\239\238\240\242\224\246\232\255 \238\247\229\237\252 \243\242\238\236\232\242\229\235\252\237\251\233 \239\240\238\246\229\241\241. \207\238\230\224\235\243\233\241\242\224, \226\238\241\241\242\224\237\238\226\232\242\229 \194\224\248\229 \231\228\238\240\238\226\252\229 \232 \236\224\237\243")
+		--SystemNotice (role, "Телепортация очень утомительный процесс. Пожалуйста, восстановите Ваше здоровье и ману")
+		UseItemFailed(role)
 		return
 	end 
+	
 	if k == 0 then
 		if i > 0 then
-			local j = DelBagItem(role,938,1)
+			local j = DelBagItem(role, 3078, 1)			
 			if j == 1 then
-				GoTo( role,  1602 , 908 , "jialebi")
-				return
+				MoveCity(role, "Church")
 			end
 		end
 	else
 		UseItemFailed ( role )
 	end
-end
-
---ID6205	Билет на Остров Зимы
-function ItemUse_DDJP(role, Item )
-	local i = CheckBagItem(role,6205)
-	local k = ChaIsBoat(role)
-	local hp = Hp(role)
-	local mxhp = Mxhp(role)
-	local sp = Sp(role)
-	local mxsp = Mxsp(role)
-	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация очень утомительный процесс. Пожалуйста, восстановите Ваше здоровье и ману")
-		UseItemFailed ( role )
-		return
-	end 
-	if k == 0 then
-		if i > 0 then
-			local j = DelBagItem(role,6205,1)
-			if j == 1 then
-				SetRecord(role, 1636)
-				MoveCity(role,"Зимние острова")
-				return
-			end
-		end
-	else
-		UseItemFailed ( role )
-	end
-end
-
---Сундук с ремонтным инструментом
-function ItemUse_remont_chest(role,Item)
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		SystemNotice(role ,"Чтобы использовать сундук необходимо иметь 1 свободный слот в Вашем инвентаре.")
-		UseItemFailed ( role )
-		return
-	end
-	local lv = 0
-	local r1 = 0
-	local r2 = 0
-	local ItemId = GetItemID(Item)
-	r1, r2 = MakeItem(role, 2236, 1 , 4)
-	local Item_rem = GetChaItem(role, 2, r2)
-	if ItemId == 7301 then
-		lv = 2
-	elseif ItemId == 7302 then
-		lv = 3
-	elseif ItemId == 7303 then
-		lv = 4
-	elseif ItemId == 7304 then
-		lv = 5
-	elseif ItemId == 7305 then
-		lv = 6
-	elseif ItemId == 7306 then
-		lv = 7
-	end
-	SetItemAttr(Item_rem, ITEMATTR_VAL_STR, lv)
-end
-
---ИМ
-function ItemUse_Im_Box(role,Item)
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		SystemNotice(role ,"Чтобы использовать сундук необходимо иметь 1 свободный слот в Вашем инвентаре.")
-		UseItemFailed ( role )
-		return
-	end
-	local ItemId = GetItemID(Item)
-	-- Каменный торс Хаоса
-	if ItemId == 7758 then
-		GiveItem ( role , 0 , 1124  , 1 , 19 )
-	-- Каменная рука Хаоса
-	elseif ItemId == 7759 then
-		GiveItem ( role , 0 , 1125  , 1 , 20 )
-	-- Каменная нога Хаоса
-	elseif ItemId == 7760 then
-		GiveItem ( role , 0 , 1126  , 1 , 15 )
-	end
-end
-
---VIP
-function ItemUse_vip_rasspiska(role,Item)
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 1 then
-		SystemNotice(role ,"Чтобы использовать сундук необходимо иметь 1 свободный слот в Вашем инвентаре.")
-		UseItemFailed ( role )
-		return
-	end
-	local ItemId = GetItemID(Item)
-	-- VIP расписка нового игрока
-	if ItemId == 7307 then
-		GiveItem ( role , 0 , 7307  , 1 , 4 )
-	-- VIP расписка(3 дня)
-	elseif ItemId == 7308 then
-		GiveItem ( role , 0 , 7308  , 1 , 4 )
-	-- VIP расписка(7 дней)
-	elseif ItemId == 7309 then
-		GiveItem ( role , 0 , 7309  , 1 , 4 )
-	end
-end
-
---	6203	Бургер
-function ItemUse_HANBAO ( role , Item )
-	local statelv = 4
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
-	end
-end 
-
---	6204	Жареный Цыпленок
-function ItemUse_KAORUZHU ( role , Item )
-	local statelv = 5
-	local statetime = 15
-	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
-	if StateLvNow >= 1 then
-		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
-		UseItemFailed ( role )
-		return
-	else
-		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
-	end
-end 
-
---ID7422	Вина перерождения
-function ItemUse_feniks( role , Item )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 7 then
-		SystemNotice(role ,"Чтобы использовать сундук необходимо иметь 7 свободных слота в Вашем инвентаре.")
-		UseItemFailed ( role )
-		return
-	end
-	GiveItem ( role , 0 , 1358, 30 , 4 )
-	GiveItem ( role , 0 , 4730, 30 , 4 )
-	GiveItem ( role , 0 , 2619, 30 , 4 )
-	GiveItem ( role , 0 , 1087, 30 , 4 )
-	GiveItem ( role , 0 , 1088, 20 , 4 )
-	GiveItem ( role , 0 , 1087, 20 , 4 )
-	GiveItem ( role , 0 , 1089, 15 , 4 )
-end
-
---ID7703	Камень Телепортации Аргента
-function Stone_argcity(role, Item )
-	local i = CheckBagItem(role,4602)
-	local k = ChaIsBoat(role)
-	local hp = Hp(role)
-	local mxhp = Mxhp(role)
-	local sp = Sp(role)
-	local mxsp = Mxsp(role)
-	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
-		UseItemFailed ( role )
-		return
-	end 
-	if k == 0 then
-		if i > 0 then
-			MoveCity(role,"Argent City")
-			return
-		end
-	else
-		UseItemFailed ( role )
-	end
-end
-
---ID7704	Камень Телепортации Ледыни
-function Stone_ledcity(role, Item )
-	local i = CheckBagItem(role,4604)
-	local k = ChaIsBoat(role)
-	local hp = Hp(role)
-	local mxhp = Mxhp(role)
-	local sp = Sp(role)
-	local mxsp = Mxsp(role)
-	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
-		UseItemFailed ( role )
-		return
-	end 
-	if k == 0 then
-		if i > 0 then
-			MoveCity(role,"Icicle Castle")
-			return
-		end
-	else
-		UseItemFailed ( role )
-	end
-end
-
---ID7705	Камень Телепортации Шайтана
-function Stone_shacity(role, Item )
-	local i = CheckBagItem(role,4603)
-	local k = ChaIsBoat(role)
-	local hp = Hp(role)
-	local mxhp = Mxhp(role)
-	local sp = Sp(role)
-	local mxsp = Mxsp(role)
-	if sp < mxsp or hp < mxhp then 
-		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
-		UseItemFailed ( role )
-		return
-	end 
-	if k == 0 then
-		if i > 0 then
-			MoveCity(role,"Shaitan City")
-			return
-		end
-	else
-		UseItemFailed ( role )
-	end
-end
-
---ID7753	Набор феи 2 генерации(Сила)
-function ItemUse_2gen_str( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	gen2 = {}
-	gen2[1] = 231
-	gen2[2] = 232
-	gen2[3] = 233
-	gen2[4] = 234
-	gen2[5] = 235
-	gen2[6] = 236
-	gen2[7] = 237
-	gen2[8] = 681
-	local i = math.random(1,8)
-	
-	local r1,r2 = MakeItem ( role , gen2[i]  , 1 , 4 )
-	GiveItem ( role , 0 , 608 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local str_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STR )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	str_JLone = 20
-	local new_lv = str_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STR , str_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---ID7754	Набор феи 2 генерации(Телосл.)
-function ItemUse_2gen_con( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	gen2 = {}
-	gen2[1] = 231
-	gen2[2] = 232
-	gen2[3] = 233
-	gen2[4] = 234
-	gen2[5] = 235
-	gen2[6] = 236
-	gen2[7] = 237
-	gen2[8] = 681
-	local i = math.random(1,8)
-	
-	local r1,r2 = MakeItem ( role , gen2[i]  , 1 , 4 )
-	GiveItem ( role , 0 , 608 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local con_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_CON )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	con_JLone = 20
-	local new_lv = con_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_CON , con_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---ID7755	Набор феи 2 генерации(Ловк.)
-function ItemUse_2gen_agi( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	gen2 = {}
-	gen2[1] = 231
-	gen2[2] = 232
-	gen2[3] = 233
-	gen2[4] = 234
-	gen2[5] = 235
-	gen2[6] = 236
-	gen2[7] = 237
-	gen2[8] = 681
-	local i = math.random(1,8)
-	
-	local r1,r2 = MakeItem ( role , gen2[i]  , 1 , 4 )
-	GiveItem ( role , 0 , 608 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local agi_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_AGI )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	agi_JLone = 20
-	local new_lv = agi_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_AGI , agi_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---ID7756	Набор феи 2 генерации(Точн.)
-function ItemUse_2gen_acc( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	gen2 = {}
-	gen2[1] = 231
-	gen2[2] = 232
-	gen2[3] = 233
-	gen2[4] = 234
-	gen2[5] = 235
-	gen2[6] = 236
-	gen2[7] = 237
-	gen2[8] = 681
-	local i = math.random(1,8)
-	
-	local r1,r2 = MakeItem ( role , gen2[i]  , 1 , 4 )
-	GiveItem ( role , 0 , 608 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local dex_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_DEX )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	dex_JLone = 20
-	local new_lv = dex_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_DEX , dex_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---ID7757	Набор феи 2 генерации(Дух)
-function ItemUse_2gen_spr( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	gen2 = {}
-	gen2[1] = 231
-	gen2[2] = 232
-	gen2[3] = 233
-	gen2[4] = 234
-	gen2[5] = 235
-	gen2[6] = 236
-	gen2[7] = 237
-	gen2[8] = 681
-	local i = math.random(1,8)
-	
-	local r1,r2 = MakeItem ( role , gen2[i]  , 1 , 4 )
-	GiveItem ( role , 0 , 608 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local sta_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STA )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	sta_JLone = 20
-	local new_lv = sta_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STA , sta_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---ID7418	Купюра на 20 миллионов
-function ItemUse_CZHeq( role , Item )
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
- 	local Money_add = 20000000
-	local Money_Have = GetChaAttr ( role , ATTR_GD )
-	if Money_Have>=999900000 then
-		SystemNotice (role, "У Вас слишком много золота. Невозможно использовать предмет")
-		UseItemFailed ( role )
-		return
-	end
-	AddMoney ( role , 0 , Money_add )
-end 
-
---ID7751	Журнал Счастливый отдых Выпуск 1
-function ItemUse_HappyBook1 ( role , Item )
-	local Cha_Boat = 0
-	local charLv=Lv ( role )
-	if charLv > 89 then
-		SystemNotice( role , "Ваш уровень слишком высокий, чтобы использовать этот предмет " )
-		UseItemFailed ( role )
-		return
-	end
-	local dif_exp_one = DEXP[charLv+1]
-	local dif_exp_three = DEXP[charLv+3]
-	local dif_exp_five = DEXP[charLv+5]
-	local Exp_star=GetChaAttr (  role , ATTR_CEXP )
-	local dif_exp_half = (DEXP[charLv+1] - DEXP[charLv])*0.5 +  Exp_star +10
-	local dif_exp_thalf = (DEXP[charLv+1] - DEXP[charLv])*0.3331  +  Exp_star + 10
-	local dif_exp_thalf_b = (DEXP[charLv+1] - DEXP[charLv])*0.2  +  Exp_star + 10
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море " )
-		UseItemFailed ( role )
-		return
-	elseif charLv>=1 and charLv<=25 then
-		SetChaAttrI( role , ATTR_CEXP , dif_exp_five )
-	elseif charLv>=26 and charLv<=55 then
-			SetChaAttrI( role , ATTR_CEXP , dif_exp_three )
-	elseif charLv>=56 and charLv<=84 then
-			SetChaAttrI( role , ATTR_CEXP , dif_exp_one )
-	elseif charLv>=85 and charLv<=89 and charLv~=79 then
-			SetChaAttrI( role , ATTR_CEXP , dif_exp_half )
-	elseif charLv==79 and dif_exp_thalf_b<=0 then 
-			SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf )
-	elseif charLv==79 and dif_exp_thalf_b>0 then 
-			dif_exp_thalf = dif_exp_thalf_b*0.02 + DEXP[charLv+1]
-			SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf )
-	end
-end
-
---7752	Журнал Счастливый отдых Выпуск 2
-function ItemUse_HappyBook2 ( role , Item )
-	local Cha_Boat = 0
-	local charLv=Lv ( role )
-	if charLv > 99 then
-		SystemNotice( role , "Ваш уровень слишком высокий, чтобы использовать этот предмет " )
-		UseItemFailed ( role )
-		return
-	end
-	local dif_exp_one = DEXP[charLv+1]
-	local dif_exp_three = DEXP[charLv+3]
-	local dif_exp_five = DEXP[charLv+5]
-	local Exp_star=GetChaAttr (  role , ATTR_CEXP )
-	local dif_exp_half = (DEXP[charLv+1] - DEXP[charLv])*0.5 +  Exp_star +10
-	local dif_exp_thalf = (DEXP[charLv+1] - DEXP[charLv])*0.3331  +  Exp_star + 10
-	local dif_exp_thalf_b = (DEXP[charLv+1] - DEXP[charLv])*0.2  +  Exp_star + 10
-	Cha_Boat = GetCtrlBoat ( role )
-
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море " )
-		UseItemFailed ( role )
-		return
-	elseif charLv < 90 then
-		SystemNotice(role, "Ваш уровень слишком мал ")
-		UseItemFailed ( role )
-		return
-	elseif charLv <= 99 then
-		SetChaAttrI( role , ATTR_CEXP , dif_exp_thalf )
-	end
-end
-
---Сундук Доблести ID 6256
-function ItemUse_SZYINGYONG ( role , Item )
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job~= 12 then
-		SystemNotice( role , "Использовать предмет могут только Стрелки" )
-		UseItemFailed ( role )
-		return
-	end
-	local i=math.random(1,100)
-	if i<=25 then
-		GiveItem ( role , 0 , 6173 , 1 , 4)
-		return
- 	elseif i<=50 then
-		GiveItem ( role , 0 , 6174 , 1 , 4)
-		return
- 	elseif i<=75 then
-		GiveItem ( role , 0 , 6175 , 1 , 4)
-		return
-	elseif i<=100 then
-		GiveItem ( role , 0 , 6176 , 1 , 4)
-		return
-	end
-end
-
---Сундук Чести ID 6257
-function ItemUse_SZRONGYU ( role , Item )
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job~= 9 then
-		SystemNotice( role , "Использовать предмет могут только Воители" )
-		UseItemFailed ( role )
-		return
-	end
-	local i=math.random(1,100)
-	if i<=25 then
-		GiveItem ( role , 0 , 6177 , 1 , 4)
-		return
-	elseif i<=50 then
-		GiveItem ( role , 0 , 6178 , 1 , 4)
-		return
- 	elseif i<=75 then
-		GiveItem ( role , 0 , 6179 , 1 , 4)
-		return
-	elseif i<=100 then
-		GiveItem ( role , 0 , 6180 , 1 , 4)
-		return
-	end
-end
-
---Сундук Жертвы ID 6258
-function ItemUse_SZXISHENG ( role , Item )
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job~= 8 then
-		SystemNotice( role , "Использовать предмет могут только Чемпионы" )
-		UseItemFailed ( role )
-		return
-	end
-	local i=math.random(1,100)
-	if i<=25 then
-		GiveItem ( role , 0 , 6181 , 1 , 4)
-		return
-	elseif i<=50 then
-		GiveItem ( role , 0 , 6182 , 1 , 4)
-		return
- 	elseif i<=75 then
-		GiveItem ( role , 0 , 6183 , 1 , 4)
-		return
-	elseif i<=100 then
-		GiveItem ( role , 0 , 6184 , 1 , 4)
-		return
-	end
-end
-
---Сундук Правосудия ID 6259
-function ItemUse_SZGONGZHENG ( role , Item )
-
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job~= 16 then
-		SystemNotice( role , "Использовать предмет могут только Покорители морей" )
-		UseItemFailed ( role )
-		return
-	end
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local i=math.random(1,100)
-	if i<=25 then
-		GiveItem ( role , 0 , 6185 , 1 , 4)
-		return
- 	elseif i<=50 then
-		GiveItem ( role , 0 , 6186 , 1 , 4)
-		return
- 	elseif i<=75 then
-		GiveItem ( role , 0 , 6187 , 1 , 4)
-		return
-	elseif i<=100 then
-		GiveItem ( role , 0 , 6188 , 1 , 4)
-		return
-	end
-end
-
---Сундук Сочувствия ID 6260
-function ItemUse_SZLIANMING ( role , Item )
-
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job~= 13 then
-		SystemNotice( role , "Использовать предмет могут только Целительницы" )
-		UseItemFailed ( role )
-		return
-	end
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local i=math.random(1,100)
-	if i<=25 then
-		GiveItem ( role , 0 , 6189 , 1 , 4)
-		return
- 	elseif i<=50 then
-		GiveItem ( role , 0 , 6190 , 1 , 4)
-		return
- 	elseif i<=75 then
-		GiveItem ( role , 0 , 6191 , 1 , 4)
-		return
-	elseif i<=100 then
-		GiveItem ( role , 0 , 6192 , 1 , 4)
-		return
-	end
-end
-
---Сундук Вдохновения ID 6261
-function ItemUse_SZJINGSHENG ( role , Item )
-
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job~= 14 then
-		SystemNotice( role , "Использовать предмет могут только Колдуньи" )
-		UseItemFailed ( role )
-		return
-	end
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local i=math.random(1,100)
-	if i<=25 then
-		GiveItem ( role , 0 , 6193 , 1 , 4)
-		return
- 	elseif i<=50 then
-		GiveItem ( role , 0 , 6194 , 1 , 4)
-		return
- 	elseif i<=75 then
-		GiveItem ( role , 0 , 6195 , 1 , 4)
-		return
-	elseif i<=100 then
-		GiveItem ( role , 0 , 6196 , 1 , 4)
-		return
-	end
-end
-
-function Chest_azik(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local c = math.random ( 1 , 5 )
-		if c <= 1  then
-			GiveItem ( role , 0 , 5845 , 1 , 4 )
-			return
-		elseif c <= 2 then
-			GiveItem ( role , 0 , 5846 , 1 , 4 )
-			return
-		elseif c <= 3 then
-			GiveItem ( role , 0 , 5847 , 1 , 4 )
-			return
-		elseif c <= 4 then
-			GiveItem ( role , 0 , 5848 , 1 , 4 )
-			return
-		else
-			GiveItem ( role , 0 , 5849 , 1 , 4 )
-			return
-		end
-end
-
---5708	Сундук Дракона
-function Chest_BD(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local c = math.random ( 1 , 4 )
-		if c == 1  then
-			GiveItem ( role , 0 , 864 , 1 , 4 )
-			return
-		elseif c == 2 then
-			GiveItem ( role , 0 , 865 , 1 , 4 )
-			return
-		elseif c == 3 then
-			GiveItem ( role , 0 , 866 , 1 , 4 )
-			return
-		else
-			GiveItem ( role , 0 , 7710 , 1 , 4 )
-			return
-		end
-end
-
---	8146	Сюрприз Самоцветов +3
-function Chest_Surprise_3(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local rand = math.random ( 1 , 100 )
-		if rand >= 1 and rand <= 6 then
-			local a = math.random ( 1 , 5 )
-			if a == 1  then
-				GiveItem ( role , 0 , 6818 , 1 , 4 )
-			elseif a == 2 then
-				GiveItem ( role , 0 , 6821 , 1 , 4 )
-			elseif a == 3 then
-				GiveItem ( role , 0 , 6824 , 1 , 4 )
-			elseif a == 4 then
-				GiveItem ( role , 0 , 6827 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 6830 , 1 , 4 )
-			end
-		elseif rand >= 7 and rand <= 9 then
-			local a = math.random ( 1 , 5 )
-			if a == 1  then
-				ItemGem_2 ( role , 6818 )
-			elseif a == 2 then
-				ItemGem_2 ( role , 6821 )
-			elseif a == 3 then
-				ItemGem_2 ( role , 6824 )
-			elseif a == 4 then
-				ItemGem_2 ( role , 6827 )
-			else
-				ItemGem_2 ( role , 6830 )
-			end
-		elseif rand >= 9 and rand <= 10 then
-			local a = math.random ( 1 , 5 )
-			local ChaName = GetChaDefaultName ( role )
-			if a == 1  then
-				ItemGem_3 ( role , 6818 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +3 и получает: Треснутый Самоцвет Ветра 3 уровня!')
-			elseif a == 2 then
-				ItemGem_3 ( role , 6821 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +3 и получает: Треснутый Самоцвет Удара 3 уровня!')
-			elseif a == 3 then
-				ItemGem_3 ( role , 6824 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +3 и получает: Треснутый Самоцвет Колосса 3 уровня!')
-			elseif a == 4 then
-				ItemGem_3 ( role , 6827 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +3 и получает: Треснутый Самоцвет Ярости 3 уровня!')
-			else
-				ItemGem_3 ( role , 6830 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +3 и получает: Треснутый Самоцвет Души 3 уровня!')
-			end
-		else
-			GiveItem ( role , 0 , 3821 , 75 , 4 )
-		end
-end
-
---	8149	Сюрприз Самоцветов +4
-function Chest_Surprise_4(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local rand = math.random ( 1 , 100 )
-		if rand >= 1 and rand <= 6  then
-			local a = math.random ( 1 , 5 )
-			if a == 1  then
-				GiveItem ( role , 0 , 6819 , 1 , 4 )
-			elseif a == 2 then
-				GiveItem ( role , 0 , 6822 , 1 , 4 )
-			elseif a == 3 then
-				GiveItem ( role , 0 , 6825 , 1 , 4 )
-			elseif a == 4 then
-				GiveItem ( role , 0 , 6828 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 6831 , 1 , 4 )
-			end
-		elseif rand >= 7 and rand <= 9 then
-			local a = math.random ( 1 , 5 )
-			if a == 1  then
-				ItemGem_2 ( role , 6819 )
-			elseif a == 2 then
-				ItemGem_2 ( role , 6822 )
-			elseif a == 3 then
-				ItemGem_2 ( role , 6825 )
-			elseif a == 4 then
-				ItemGem_2 ( role , 6828 )
-			else
-				ItemGem_2 ( role , 6831 )
-			end
-		elseif rand >= 9 and rand <= 10 then
-			local ChaName = GetChaDefaultName ( role )
-			local a = math.random ( 1 , 5 )
-			if a == 1  then
-				ItemGem_3 ( role , 6819 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +4 и получает: Неограненный Самоцвет Ветра 3 уровня!')
-			elseif a == 2 then
-				ItemGem_3 ( role , 6822 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +4 и получает: Неограненный Самоцвет Удара 3 уровня!')
-			elseif a == 3 then
-				ItemGem_3 ( role , 6825 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +4 и получает: Неограненный Самоцвет Колосса 3 уровня!')
-			elseif a == 4 then
-				ItemGem_3 ( role , 6828 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +4 и получает: Неограненный Самоцвет Ярости 3 уровня!')
-			else
-				ItemGem_3 ( role , 6831 )
-				Notice('Поздравляем игрока <<'..ChaName..'>>, он открывает Сюрприз Самоцветов +4 и получает: Неограненный Самоцвет Души 3 уровня!')
-			end
-		else
-			GiveItem ( role , 0 , 3820 , 75 , 4 )
-		end
-end
-
-function Chest_gemi_3(role, Item)--гемы +3 рондом
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local c = math.random ( 1 , 5 )
-		if c == 1  then
-			GiveItem ( role , 0 , 6818 , 1 , 4 )--Треснутый Самоцвет Ветра
-		elseif c == 2 then
-			GiveItem ( role , 0 , 6821 , 1 , 4 )--Треснутый Самоцвет Удара
-		elseif c == 3 then
-			GiveItem ( role , 0 , 6824 , 1 , 4 )--Треснутый Самоцвет Колосса
-		elseif c == 4 then
-			GiveItem ( role , 0 , 6827 , 1 , 4 )--Треснутый Самоцвет Ярости
-		else
-			GiveItem ( role , 0 , 6830 , 1 , 4 )--Треснутый Самоцвет Души
-		end
-end
-
-function Chest_gemi_4(role, Item)--гемы +4 рондом
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local c = math.random ( 1 , 5 )
-		if c == 1  then
-			GiveItem ( role , 0 , 6819 , 1 , 4 )--Неограненный Самоцвет Ветра
-			return
-		elseif c == 2 then
-			GiveItem ( role , 0 , 6822 , 1 , 4 )--Неограненный Самоцвет Удара
-			return
-		elseif c == 3 then
-			GiveItem ( role , 0 , 6825 , 1 , 4 )--Неограненный Самоцвет Колосса
-			return
-		elseif c == 4 then
-			GiveItem ( role , 0 , 6828 , 1 , 4 )--Неограненный Самоцвет Ярости
-			return
-		else
-			GiveItem ( role , 0 , 6831 , 1 , 4 )--Неограненный Самоцвет Души
-			return
-		end
-end
-
-function Chest_gemi_5(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local c = math.random ( 1 , 5 )
-		if c == 1  then
-			GiveItem ( role , 0 , 0860 , 1 , 4 )
-			return
-		elseif c == 2 then
-			GiveItem ( role , 0 , 0861 , 1 , 4 )
-			return
-		elseif c == 3 then
-			GiveItem ( role , 0 , 0862 , 1 , 4 )
-			return
-		elseif c == 4 then
-			GiveItem ( role , 0 , 0863 , 1 , 4 )
-			return
-		else
-			GiveItem ( role , 0 , 1012 , 1 , 4 )
-			return
-		end
-end
-
-
-function Chest_ansiki(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	local job = GetChaAttr(role, ATTR_JOB)
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-		if job == 8  then -- Чамп
-			GiveItem ( role , 0 , 0765 , 1 , 4 )
-			GiveItem ( role , 0 , 0772 , 1 , 4 )
-			GiveItem ( role , 0 , 0935 , 1 , 4 )
-			GiveItem ( role , 0 , 0936 , 1 , 4 )
-			return
-		elseif job == 9 then -- Круз
-			GiveItem ( role , 0 , 0775 , 2 , 4 )
-			GiveItem ( role , 0 , 0768 , 1 , 4 )
-			GiveItem ( role , 0 , 0808 , 1 , 4 )
-			GiveItem ( role , 0 , 0807 , 1 , 4 )
-			return
-		elseif job == 12 then -- Шарп
-			GiveItem ( role , 0 , 0783 , 1 , 4 )
-			GiveItem ( role , 0 , 0779 , 1 , 4 )
-			GiveItem ( role , 0 , 0810 , 1 , 4 )
-			GiveItem ( role , 0 , 0809 , 1 , 4 )
-			return
-		elseif job == 13 then -- Клер
-			GiveItem ( role , 0 , 0787 , 1 , 4 )
-			GiveItem ( role , 0 , 0791 , 1 , 4 )
-			GiveItem ( role , 0 , 0812 , 1 , 4 )
-			GiveItem ( role , 0 , 0814 , 1 , 4 )
-			return
-		elseif job == 14 then -- СМ
-			GiveItem ( role , 0 , 0794 , 1 , 4 )
-			GiveItem ( role , 0 , 0797 , 1 , 4 )
-			GiveItem ( role , 0 , 0813 , 1 , 4 )
-			GiveItem ( role , 0 , 0811 , 1 , 4 )
-			return
-		elseif job == 16 then -- Вояг
-			GiveItem ( role , 0 , 0805 , 1 , 4 )
-			GiveItem ( role , 0 , 0801 , 1 , 4 )
-			GiveItem ( role , 0 , 0877 , 1 , 4 )
-			GiveItem ( role , 0 , 0815 , 1 , 4 )
-			return
-		else
-		SystemNotice( role , "Не может быть использовано, возьмите вторую профессию!" )
-		UseItemFailed ( role )
-			return
-		end
-end
-
-
---Кристальный Котел
-function ItemUse_CookBlurry ( role , Item , Item_Traget ) 
-	local Item_ID = GetItemID ( Item_Traget )
-	if Item_ID ~= 2302 then
-		SystemNotice(role ,"Можно использовать только не чертеже Кулинарии")
-		UseItemFailed ( role )
-		return
-	end
-	local ingr1 = GetItemAttr(Item_Traget, ITEMATTR_VAL_STR)
-	local ingr2 = GetItemAttr(Item_Traget, ITEMATTR_VAL_CON)
-	local ingr3 = GetItemAttr(Item_Traget, ITEMATTR_VAL_DEX)
-	local item_polych = GetItemAttr(Item_Traget, ITEMATTR_VAL_AGI)
-	local lvl_cook = GetItemAttr(Item_Traget, ITEMATTR_URE)
-	local count_use = GetItemAttr(Item_Traget, ITEMATTR_VAL_STA)
-	local mf_count = GetItemAttr(Item_Traget, ITEMATTR_MAXURE)
-	local Num_paper = GetItemForgeParam ( Item_Traget , 1 )
-	Num_paper = TansferNum ( Num_paper )
-	local ingr1_count = GetNum_Part2 ( Num_paper )
-	local ingr2_count = GetNum_Part4 ( Num_paper )
-	local ingr3_count = GetNum_Part6 ( Num_paper )
-	local skill_lv = GetSkillLv(role, 0339)
-	if skill_lv < lvl_cook then
-		SystemNotice(role ,"Уровень вашего навыка Кулинария, ниже чем уровень чертежа!")
-		UseItemFailed ( role )
-		return
-	end
-	if count_use == 0 then
-		SystemNotice(role ,"Использовать чертеж не возможно, проверьте возможно вы уже израсходовали его!")
-		UseItemFailed ( role )
-		return
-	end
-	local ret1 = proc_ingridient(role,ingr1,ingr1_count)
-	local ret2 = proc_ingridient(role,ingr2,ingr2_count)
-	local ret3 = proc_ingridient(role,ingr3,ingr3_count)
-	local ret4 = proc_ingridient(role,0855,mf_count)
-	if ret1 == 0 or ret2 == 0 or ret3 == 0 or ret4 == 0 then
-		UseItemFailed ( role )
-		return
-	end
-	local dell1 = dell_ingridient(role,ingr1,ingr1_count)
-	local dell2 = dell_ingridient(role,ingr2,ingr2_count)
-	local dell3 = dell_ingridient(role,ingr3,ingr3_count)
-	local dell4 = dell_ingridient(role,0855,mf_count)
-	if dell1 == 0 or dell2 == 0 or dell3 == 0 or dell4 == 0 then
-		UseItemFailed ( role )
-		return
-	end
-	local rand = math.random(1,3)
-	local item_polych_count = 0
-	if skill_lv == 1 then
-		item_polych_count = 1
-	elseif skill_lv == 2 then
-		item_polych_count = 2
-	elseif skill_lv == 3 or skill_lv == 4 then
-		if rand == 1 then
-			item_polych_count = 3
-		elseif rand == 2 then
-			item_polych_count = 3
-		elseif rand == 3 then
-			item_polych_count = 4
-		end
-	elseif skill_lv == 5 or skill_lv == 6 then
-		if rand == 1 then
-			item_polych_count = 4
-		elseif rand == 2 then
-			item_polych_count = 4
-		elseif rand == 3 then
-			item_polych_count = 5
-		end
-	elseif skill_lv == 7 then
-		if rand == 1 then
-			item_polych_count = 5
-		elseif rand == 2 then
-			item_polych_count = 5
-		elseif rand == 3 then
-			item_polych_count = 5
-		end
-	end
-	local new_count_use = count_use - 1
-	SetItemAttr(Item_Traget, ITEMATTR_VAL_STA, new_count_use)
-	GiveItem ( role, 0 , item_polych , item_polych_count , 4 )
-	GiveItem ( role, 0 , 1067 , 1 , 4 )
-end
-
-
-function Chest_bski(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	local job = GetChaAttr(role, ATTR_JOB)
-	local typeSH = math.random ( 1 , 100 )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-		if job == 8  then -- Чамп
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 2532 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 2531 , 1 , 4 )
-			return
-			end
-		elseif job == 9 then -- Круз
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 2535 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 2534 , 1 , 4 )
-			return
-			end
-		elseif job == 12 then -- Шарп
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 2538 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 2537 , 1 , 4 )
-			return
-			end
-		elseif job == 13 then -- Клер
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 2544 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 2543 , 1 , 4 )
-			return
-			end
-		elseif job == 14 then -- СМ
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 2547 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 2546 , 1 , 4 )
-			return
-			end
-		elseif job == 16 then -- Вояг
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 2541 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 2540 , 1 , 4 )
-			return
-			end
-		else
-		SystemNotice( role , "Не может быть использовано, возьмите вторую профессию!" )
-		UseItemFailed ( role )
-			return
-		end
-end
-
-function Chest_ansi65(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	local job = GetChaAttr(role, ATTR_JOB)
-	local typeSH = math.random ( 1 , 100 )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-		if job == 8  then -- Чамп
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 766 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 773 , 1 , 4 )
-			return
-			end
-		elseif job == 9 then -- Круз
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 769 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 776 , 1 , 4 )
-			return
-			end
-		elseif job == 12 then -- Шарп
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 780 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 784 , 1 , 4 )
-			return
-			end
-		elseif job == 13 then -- Клер
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 792 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 788 , 1 , 4 )
-			return
-			end
-		elseif job == 14 then -- СМ
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 798 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 795 , 1 , 4 )
-			return
-			end
-		elseif job == 16 then -- Вояг
-			if typeSH >= 0 and typeSH <= 65  then
-				GiveItem ( role , 0 , 806 , 1 , 4 )
-			else
-				GiveItem ( role , 0 , 802 , 1 , 4 )
-			return
-			end
-		else
-		SystemNotice( role , "Не может быть использовано, возьмите вторую профессию!" )
-		UseItemFailed ( role )
-			return
-		end
-end
-
-
---	2919	Бремя Смерти(Воитель)
-function ItemUse_DathBagA(role, Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 3 then
-		SystemNotice(role ,"Вам необходимо иметь 2 свободных слота, что бы открыть Бремя Смерти!")
-		UseItemFailed ( role )
-		return
-	end
-	local star_rad = math.random ( 1, 3 )
-	if star_rad == 1 then
-		GiveItem ( role , 0 , 2846  , 1 , 16 )
-	elseif star_rad == 2 then
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	elseif star_rad == 3 then
-		GiveItem ( role , 0 , 2846  , 1 , 16 ) 
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	end
-end
-
---	2920	Бремя Смерти(Стрелок)
-function ItemUse_DathBagB(role, Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 3 then
-		SystemNotice(role ,"Вам необходимо иметь 2 свободных слота, что бы открыть Бремя Смерти!")
-		UseItemFailed ( role )
-		return
-	end
-	local star_rad = math.random ( 1, 3 )
-	if star_rad == 1 then
-		GiveItem ( role , 0 , 2847  , 1 , 16 )
-	elseif star_rad == 2 then
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	elseif star_rad == 3 then
-		GiveItem ( role , 0 , 2847  , 1 , 16 ) 
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	end
-end
-
---	2921	Бремя Смерти(Чемпион)
-function ItemUse_DathBagC(role, Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 3 then
-		SystemNotice(role ,"Вам необходимо иметь 2 свободных слота, что бы открыть Бремя Смерти!")
-		UseItemFailed ( role )
-		return
-	end
-	local star_rad = math.random ( 1, 3 )
-	if star_rad == 1 then
-		GiveItem ( role , 0 , 2848  , 1 , 16 )
-	elseif star_rad == 2 then
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	elseif star_rad == 3 then
-		GiveItem ( role , 0 , 2848  , 1 , 16 ) 
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	end
-end
-
---	2922	Бремя Смерти(Защитник)
-function ItemUse_DathBagD(role, Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 3 then
-		SystemNotice(role ,"Вам необходимо иметь 2 свободных слота, что бы открыть Бремя Смерти!")
-		UseItemFailed ( role )
-		return
-	end
-	local star_rad = math.random ( 1, 3 )
-	if star_rad == 1 then
-		GiveItem ( role , 0 , 2343  , 1 , 16 )
-	elseif star_rad == 2 then
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	elseif star_rad == 3 then
-		GiveItem ( role , 0 , 2343  , 1 , 16 ) 
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	end
-end
-
---	2923	Бремя Смерти(Лучник)
-function ItemUse_DathBagE(role, Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 3 then
-		SystemNotice(role ,"Вам необходимо иметь 2 свободных слота, что бы открыть Бремя Смерти!")
-		UseItemFailed ( role )
-		return
-	end
-	local star_rad = math.random ( 1, 3 )
-	if star_rad == 1 then
-		GiveItem ( role , 0 , 2850  , 1 , 16 )
-	elseif star_rad == 2 then
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	elseif star_rad == 3 then
-		GiveItem ( role , 0 , 2850  , 1 , 16 ) 
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	end
-end
-
---	2924	Бремя Смерти(Цилительница)
-function ItemUse_DathBagF(role, Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 3 then
-		SystemNotice(role ,"Вам необходимо иметь 2 свободных слота, что бы открыть Бремя Смерти!")
-		UseItemFailed ( role )
-		return
-	end
-	local star_rad = math.random ( 1, 3 )
-	if star_rad == 1 then
-		GiveItem ( role , 0 , 2851  , 1 , 16 )
-	elseif star_rad == 2 then
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	elseif star_rad == 3 then
-		GiveItem ( role , 0 , 2851  , 1 , 16 ) 
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	end
-end
-
---	2925	Бремя Смерти(Колдунья)
-function ItemUse_DathBagG(role, Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	 if Item_CanGet < 3 then
-		SystemNotice(role ,"Вам необходимо иметь 2 свободных слота, что бы открыть Бремя Смерти!")
-		UseItemFailed ( role )
-		return
-	end
-	local star_rad = math.random ( 1, 3 )
-	if star_rad == 1 then
-		GiveItem ( role , 0 , 2852  , 1 , 16 )
-	elseif star_rad == 2 then
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	elseif star_rad == 3 then
-		GiveItem ( role , 0 , 2852  , 1 , 16 ) 
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	end
-end
-
---	2926	Бремя Смерти(Покоритель морей)
-function ItemUse_DathBagH(role, Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 3 then
-		SystemNotice(role ,"Вам необходимо иметь 2 свободных слота, что бы открыть Бремя Смерти!")
-		UseItemFailed ( role )
-		return
-	end
-	local star_rad = math.random ( 1, 3 )
-	if star_rad == 1 then
-		GiveItem ( role , 0 , 2853  , 1 , 16 )
-	elseif star_rad == 2 then
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	elseif star_rad == 3 then
-		GiveItem ( role , 0 , 2853  , 1 , 16 ) 
-		GiveItem ( role , 0 , 2849  , 1 , 16 )
-	end
-end
-
---	8202	Сундук Нового игрока
-function Chest_NewPlayer ( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 6 then
-		SystemNotice(role ,"Вам необходимо иметь 5 свободных слота, что бы открыть Сундук Нового игрока!")
-		UseItemFailed ( role )
-		return
-	end
-	local lv = GetChaAttr(role, ATTR_LV) 
-	if lv <= 59 then
-		SystemNotice ( role , "Сундук Нового игрока могут открыть игроки достигшие 60 уровня." )
-		UseItemFailed ( role )
-		return
-	end
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job <= 7 then
-		SystemNotice ( role , "Сундук Нового игрока могут открыть игроки получившие 2 профессию." )
-		UseItemFailed ( role )
-		return
-	end
-	--Чемпион
-	if job == 8 then
-		GiveItem ( role , 0 , 0773  , 1 , 4 )
-		GiveItem ( role , 0 , 2530  , 1 , 4 )
-		GiveItem ( role , 0 , 2531  , 1 , 4 )
-		GiveItem ( role , 0 , 2532  , 1 , 4 )
-		GiveItem ( role , 0 , 8203  , 2 , 4 )
-	--Воитель
-	elseif job == 9 then
-		GiveItem ( role , 0 , 0776  , 1 , 4 )
-		GiveItem ( role , 0 , 0776  , 1 , 4 )
-		GiveItem ( role , 0 , 2533  , 1 , 4 )
-		GiveItem ( role , 0 , 2534  , 1 , 4 )
-		GiveItem ( role , 0 , 2535  , 1 , 4 )
-		GiveItem ( role , 0 , 8203  , 2 , 4 )
-	--Стрелок
-	elseif job == 12 then
-		GiveItem ( role , 0 , 0784  , 1 , 4 )
-		GiveItem ( role , 0 , 2340  , 1 , 4 )
-		GiveItem ( role , 0 , 2536  , 1 , 4 )
-		GiveItem ( role , 0 , 2537  , 1 , 4 )
-		GiveItem ( role , 0 , 2538  , 1 , 4 )
-		GiveItem ( role , 0 , 8203  , 2 , 4 )
-	--Целительница
-	elseif job == 13 then
-		GiveItem ( role , 0 , 0788  , 1 , 4 )
-		GiveItem ( role , 0 , 2542  , 1 , 4 )
-		GiveItem ( role , 0 , 2543  , 1 , 4 )
-		GiveItem ( role , 0 , 2544  , 1 , 4 )
-		GiveItem ( role , 0 , 2548  , 1 , 4 )
-		GiveItem ( role , 0 , 8203  , 2 , 4 )
-	--Колдунья
-	elseif job == 14 then
-		GiveItem ( role , 0 , 0795  , 1 , 4 )
-		GiveItem ( role , 0 , 2545  , 1 , 4 )
-		GiveItem ( role , 0 , 2546  , 1 , 4 )
-		GiveItem ( role , 0 , 2547  , 1 , 4 )
-		GiveItem ( role , 0 , 2548  , 1 , 4 )
-		GiveItem ( role , 0 , 8203  , 2 , 4 )
-	--Покоритель морей
-	elseif job == 16 then
-		GiveItem ( role , 0 , 0802  , 1 , 4 )
-		GiveItem ( role , 0 , 2539  , 1 , 4 )
-		GiveItem ( role , 0 , 2540  , 1 , 4 )
-		GiveItem ( role , 0 , 2541  , 1 , 4 )
-		GiveItem ( role , 0 , 2548  , 1 , 4 )
-		GiveItem ( role , 0 , 8203  , 2 , 4 )
-	end
-end
-
---	8204	Снаряжение новичка I
-function Chest_newbie1 ( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 6 then
-		SystemNotice(role ,"Вам необходимо иметь 5 свободных слота, что бы открыть Снаряжение новичка I!")
-		UseItemFailed ( role )
-		return
-	end
-	local lv = GetChaAttr(role, ATTR_LV) 
-	if lv <= 39 then
-		SystemNotice ( role , "Снаряжение новичка I могут открыть игроки достигшие 40 уровня." )
-		UseItemFailed ( role )
-		return
-	end
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job <= 7 then
-		SystemNotice ( role , "Снаряжение новичка I могут открыть игроки получившие 2 профессию." )
-		UseItemFailed ( role )
-		return
-	end
-	--Чемпион
-	if job == 8 then
-		GiveItem ( role , 0 , 3802  , 1 , 4 )
-		GiveItem ( role , 0 , 1932  , 1 , 4 )
-		GiveItem ( role , 0 , 1506  , 1 , 4 )
-		GiveItem ( role , 0 , 1509  , 1 , 4 )
-	--Воитель
-	elseif job == 9 then
-		GiveItem ( role , 0 , 1929  , 1 , 4 )
-		GiveItem ( role , 0 , 1936  , 1 , 4 )
-		GiveItem ( role , 0 , 1940  , 1 , 4 )
-		GiveItem ( role , 0 , 3799  , 2 , 4 )
-	--Стрелок
-	elseif job == 12 then
-		GiveItem ( role , 0 , 1944  , 1 , 4 )
-		GiveItem ( role , 0 , 1948  , 1 , 4 )
-		GiveItem ( role , 0 , 1952  , 1 , 4 )
-		GiveItem ( role , 0 , 3806  , 1 , 4 )
-	--Целительница
-	elseif job == 13 then
-		GiveItem ( role , 0 , 1959  , 1 , 4 )
-		GiveItem ( role , 0 , 1966  , 1 , 4 )
-		GiveItem ( role , 0 , 1973  , 1 , 4 )
-		GiveItem ( role , 0 , 3813  , 1 , 4 )
-	--Колдунья
-	elseif job == 14 then
-		GiveItem ( role , 0 , 3810  , 1 , 4 )
-		GiveItem ( role , 0 , 1956  , 1 , 4 )
-		GiveItem ( role , 0 , 1963  , 1 , 4 )
-		GiveItem ( role , 0 , 1970  , 1 , 4 )
-	--Покоритель морей
-	elseif job == 16 then
-		GiveItem ( role , 0 , 1977  , 1 , 4 )
-		GiveItem ( role , 0 , 1981  , 1 , 4 )
-		GiveItem ( role , 0 , 1985  , 1 , 4 )
-		GiveItem ( role , 0 , 3817  , 1 , 4 )
-	end
-end
-
---	8205	Снаряжение новичка II
-function Chest_newbie2 ( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 6 then
-		SystemNotice(role ,"Вам необходимо иметь 5 свободных слота, что бы открыть Снаряжение новичка II!")
-		UseItemFailed ( role )
-		return
-	end
-	local lv = GetChaAttr(role, ATTR_LV) 
-	if lv <= 49 then
-		SystemNotice ( role , "Снаряжение новичка II могут открыть игроки достигшие 50 уровня." )
-		UseItemFailed ( role )
-		return
-	end
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job <= 7 then
-		SystemNotice ( role , "Снаряжение новичка II могут открыть игроки получившие 2 профессию." )
-		UseItemFailed ( role )
-		return
-	end
-	--Чемпион
-	if job == 8 then
-		GiveItem ( role , 0 , 3803  , 1 , 4 )
-		GiveItem ( role , 0 , 1933  , 1 , 4 )
-		GiveItem ( role , 0 , 1507  , 1 , 4 )
-		GiveItem ( role , 0 , 1510  , 1 , 4 )
-	--Воитель
-	elseif job == 9 then
-		GiveItem ( role , 0 , 1930  , 1 , 4 )
-		GiveItem ( role , 0 , 1937  , 1 , 4 )
-		GiveItem ( role , 0 , 1941  , 1 , 4 )
-		GiveItem ( role , 0 , 3800  , 2 , 4 )
-	--Стрелок
-	elseif job == 12 then
-		GiveItem ( role , 0 , 1945  , 1 , 4 )
-		GiveItem ( role , 0 , 1949  , 1 , 4 )
-		GiveItem ( role , 0 , 1953  , 1 , 4 )
-		GiveItem ( role , 0 , 3807  , 1 , 4 )
-	--Целительница
-	elseif job == 13 then
-		GiveItem ( role , 0 , 1960  , 1 , 4 )
-		GiveItem ( role , 0 , 1967  , 1 , 4 )
-		GiveItem ( role , 0 , 1974  , 1 , 4 )
-		GiveItem ( role , 0 , 3814  , 1 , 4 )
-	--Колдунья
-	elseif job == 14 then
-		GiveItem ( role , 0 , 3811  , 1 , 4 )
-		GiveItem ( role , 0 , 1957  , 1 , 4 )
-		GiveItem ( role , 0 , 1964  , 1 , 4 )
-		GiveItem ( role , 0 , 1971  , 1 , 4 )
-	--Покоритель морей
-	elseif job == 16 then
-		GiveItem ( role , 0 , 1978  , 1 , 4 )
-		GiveItem ( role , 0 , 1982  , 1 , 4 )
-		GiveItem ( role , 0 , 1986  , 1 , 4 )
-		GiveItem ( role , 0 , 3818  , 1 , 4 )
-	end
-end
-
---	8206	Снаряжение новичка III
-function Chest_newbie3 ( role , Item )
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Невозможно использовать в море" )
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet < 6 then
-		SystemNotice(role ,"Вам необходимо иметь 5 свободных слота, что бы открыть Снаряжение новичка III!")
-		UseItemFailed ( role )
-		return
-	end
-	local lv = GetChaAttr(role, ATTR_LV) 
-	if lv <= 59 then
-		SystemNotice ( role , "Снаряжение новичка III могут открыть игроки достигшие 60 уровня." )
-		UseItemFailed ( role )
-		return
-	end
-	local job = GetChaAttr(role, ATTR_JOB)
-	if job <= 7 then
-		SystemNotice ( role , "Снаряжение новичка III могут открыть игроки получившие 2 профессию." )
-		UseItemFailed ( role )
-		return
-	end
-	--Чемпион
-	if job == 8 then
-		GiveItem ( role , 0 , 3804  , 1 , 4 )
-		GiveItem ( role , 0 , 1934  , 1 , 4 )
-		GiveItem ( role , 0 , 1508  , 1 , 4 )
-		GiveItem ( role , 0 , 1511  , 1 , 4 )
-	--Воитель
-	elseif job == 9 then
-		GiveItem ( role , 0 , 1931  , 1 , 4 )
-		GiveItem ( role , 0 , 1938  , 1 , 4 )
-		GiveItem ( role , 0 , 1942  , 1 , 4 )
-		GiveItem ( role , 0 , 3801  , 2 , 4 )
-	--Стрелок
-	elseif job == 12 then
-		GiveItem ( role , 0 , 1946  , 1 , 4 )
-		GiveItem ( role , 0 , 1950  , 1 , 4 )
-		GiveItem ( role , 0 , 1954  , 1 , 4 )
-		GiveItem ( role , 0 , 3808  , 1 , 4 )
-	--Целительница
-	elseif job == 13 then
-		GiveItem ( role , 0 , 1961  , 1 , 4 )
-		GiveItem ( role , 0 , 1968  , 1 , 4 )
-		GiveItem ( role , 0 , 1975  , 1 , 4 )
-		GiveItem ( role , 0 , 3815  , 1 , 4 )
-	--Колдунья
-	elseif job == 14 then
-		GiveItem ( role , 0 , 3812  , 1 , 4 )
-		GiveItem ( role , 0 , 1958  , 1 , 4 )
-		GiveItem ( role , 0 , 1965  , 1 , 4 )
-		GiveItem ( role , 0 , 1972  , 1 , 4 )
-	--Покоритель морей
-	elseif job == 16 then
-		GiveItem ( role , 0 , 1979  , 1 , 4 )
-		GiveItem ( role , 0 , 1983  , 1 , 4 )
-		GiveItem ( role , 0 , 1988  , 1 , 4 )
-		GiveItem ( role , 0 , 3819  , 1 , 4 )
-	end
-end
-
---	8208	Набор Анжелы(Сила)
-function ItemUse_angel_str( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0129  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local str_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STR )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	str_JLone = 40
-	local new_lv = str_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STR , str_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8209	Набор Анжелы(Телосл.)
-function ItemUse_angel_con( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0129  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local con_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_CON )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	con_JLone = 40
-	local new_lv = con_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_CON , con_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8210	Набор Анжелы(Ловк.)
-function ItemUse_angel_agi( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0129  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local agi_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_AGI )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	agi_JLone = 45
-	local new_lv = agi_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_AGI , agi_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8211	Набор Анжелы(Точн.)
-function ItemUse_angel_acc( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0129  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local dex_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_DEX )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	dex_JLone = 40
-	local new_lv = dex_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_DEX , dex_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8212	Набор Анжелы(Дух)
-function ItemUse_angel_spr( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0129  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local sta_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STA )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	sta_JLone = 40
-	local new_lv = sta_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STA , sta_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
-
---	8213	Набор Апалона(Сила)
-function ItemUse_apalon_str( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0130  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local str_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STR )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	str_JLone = 45
-	local new_lv = str_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STR , str_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8214	Набор Апалона(Телосл.)
-function ItemUse_apalon_con( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0130  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local con_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_CON )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	con_JLone = 45
-	local new_lv = con_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_CON , con_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8215	Набор Апалона(Ловк.)
-function ItemUse_apalon_agi( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0130  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local agi_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_AGI )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	agi_JLone = 45
-	local new_lv = agi_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_AGI , agi_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8216	Набор Апалона(Точн.)
-function ItemUse_apalon_acc( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0130  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local dex_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_DEX )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	dex_JLone = 45
-	local new_lv = dex_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_DEX , dex_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8217	Набор Апалона(Дух)
-function ItemUse_apalon_spr( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0130  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local sta_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STA )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	sta_JLone = 45
-	local new_lv = sta_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STA , sta_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
-
-
---	8218	Набор Гефеста(Сила)
-function ItemUse_gefest_str( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0131  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local str_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STR )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	str_JLone = 45
-	local new_lv = str_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STR , str_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8219	Набор Гефеста(Телосл.)
-function ItemUse_gefest_con( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0131  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local con_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_CON )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	con_JLone = 45
-	local new_lv = con_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_CON , con_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8220	Набор Гефеста(Ловк.)
-function ItemUse_gefest_agi( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0131  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local agi_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_AGI )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	agi_JLone = 45
-	local new_lv = agi_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_AGI , agi_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8221	Набор Гефеста(Точн.)
-function ItemUse_gefest_acc( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0131  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local dex_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_DEX )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	dex_JLone = 45
-	local new_lv = dex_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_DEX , dex_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8222	Набор Гефеста(Дух)
-function ItemUse_gefest_spr( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0131  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local sta_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STA )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	sta_JLone = 45
-	local new_lv = sta_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STA , sta_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
-
-
---	8223	Набор Гестии(Сила)
-function ItemUse_gestia_str( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0132  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local str_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STR )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	str_JLone = 45
-	local new_lv = str_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STR , str_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8224	Набор Гестии(Телосл.)
-function ItemUse_gestia_con( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0132  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local con_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_CON )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	con_JLone = 45
-	local new_lv = con_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_CON , con_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8225	Набор Гестии(Ловк.)
-function ItemUse_gestia_agi( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0132  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local agi_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_AGI )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	agi_JLone = 45
-	local new_lv = agi_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_AGI , agi_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8226	Набор Гестии(Точн.)
-function ItemUse_gestia_acc( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0132  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local dex_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_DEX )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	dex_JLone = 45
-	local new_lv = dex_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_DEX , dex_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8227	Набор Гестии(Дух)
-function ItemUse_gestia_spr( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0132  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local sta_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STA )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	sta_JLone = 45
-	local new_lv = sta_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STA , sta_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
-
-
---	8228	Набор Афины(Сила)
-function ItemUse_afina_str( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0133  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local str_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STR )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	str_JLone = 45
-	local new_lv = str_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STR , str_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8229	Набор Афины(Телосл.)
-function ItemUse_afina_con( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-
-	local r1,r2 = MakeItem ( role , 0133  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local con_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_CON )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	con_JLone = 45
-	local new_lv = con_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_CON , con_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8230	Набор Афины(Ловк.)
-function ItemUse_afina_agi( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0133  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local agi_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_AGI )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	agi_JLone = 45
-	local new_lv = agi_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_AGI , agi_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8231	Набор Афины(Точн.)
-function ItemUse_afina_acc( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0133  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local dex_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_DEX )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	dex_JLone = 45
-	local new_lv = dex_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_DEX , dex_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
---	8232	Набор Афины(Дух)
-function ItemUse_afina_spr( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 2 then
-		SystemNotice(role ,"Требуется 1 свободный слот в Вашем инвентаре, чтобы использовать Суп перерождения")
-		UseItemFailed ( role )
-		return
-	end
-	
-	local r1,r2 = MakeItem ( role , 0133  , 1 , 4 )
-	GiveItem ( role , 0 , 609 , 1 , 4 )
-	local Item_newJL = GetChaItem ( role , 2 , r2 )
-	local Item_newJLID = GetItemID ( Item_newJL )
-
-	local sta_JLone = GetItemAttr( Item_newJL ,ITEMATTR_VAL_STA )
-
-	local Num_JL = GetItemForgeParam ( Item_newJL , 1 )
-	Num_JL = TansferNum ( Num_JL )
-	local Part1_JL = GetNum_Part1 ( Num_JL )
-	Part1_JL = 1
-	Num_JL = SetNum_Part1 ( Num_JL , 1 )
-	SetItemForgeParam ( Item_newJL , 1 , Num_JL )
-	sta_JLone = 45
-	local new_lv = sta_JLone
-	local new_MAXENERGY = 240 * ( new_lv + 1 )
-	if new_MAXENERGY > 6480 then
-		new_MAXENERGY = 6480
-	end
-	local new_MAXURE = 5000 + 1000*new_lv
-	if new_MAXURE > 32000 then
-		new_MAXURE = 32000
-	end
-	SetItemAttr ( Item_newJL ,ITEMATTR_VAL_STA , sta_JLone )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
-	SetItemAttr ( Item_newJL , ITEMATTR_ENERGY , new_MAXENERGY )
-	SetItemAttr ( Item_newJL , ITEMATTR_URE , new_MAXURE )
-end
-
-
---	8233	Амброзия Силы
-function ItemUse_ambr_Strup( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv4( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Амброзией Силы!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Str ( role , Item_Num , Item_Traget )
-				end
-		end 
-end
-
---	8234	Амброзия Ловкости
-function ItemUse_ambr_Agiup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv4( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Амброзией Ловкости!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Agi ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---	8235	Амброзия Точности
-function ItemUse_ambr_Dexup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv4( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Амброзией Точности!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Dex ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---	8236	Амброзия Телосложения
-function ItemUse_ambr_Conup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv4( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Амброзией Телосложения!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Con ( role , Item_Num , Item_Traget )
-				end 
-		end 
-end
-
---	8237	Амброзия Духа
-function ItemUse_ambr_Staup ( role , Item , Item_Traget ) 
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Невозможно использовать когда вы в море" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
-	local ret = CheckJingLingLv4( role , Item_Traget )
-	if ret == 0 then
-		UseItemFailed ( role ) 
-		return 
-	end
-		local Item_type = GetItemType ( Item )
-		local Item_Traget_Type = GetItemType ( Item_Traget )
-		local Item_Num = GetItemID ( Item )
-		local Check_Exp = 0
-		local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
-		local Item_bg = GetChaItem ( role , 2 , 1  )
-		if Item_type == 58 and Item_Traget_Type == 59 then
-				Check_Exp = CheckElf_EXP ( role , Item_Traget )
-				if Check_Exp == 0 or Item_bg ~= Item_Traget then
-					SystemNotice(role , "Уровень роста Феи не полон. Невозможно покормить фею Амброзией Духа!" ) 
-					UseItemFailed ( role )
-				else
-					Lvup_Sta ( role , Item_Num , Item_Traget )
-				end
-		end 
-end
-
---	8239	Драгоценная шкатулка
-function Chest_gemi_kolco(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local rand = math.random ( 1 , 100 )
-		if rand >= 1 and rand <= 15 then
-			GiveItem ( role , 0 , 8245 , 1 , 4 )
-			return
-		elseif rand >= 16 and rand <= 43 then
-			GiveItem ( role , 0 , 8246 , 1 , 4 )
-			return
-		elseif rand >= 44 and rand <= 59 then
-			GiveItem ( role , 0 , 8247 , 1 , 4 )
-			return
-		elseif rand >= 60 and rand <= 74 then
-			GiveItem ( role , 0 , 8248 , 1 , 4 )
-			return
-		elseif rand >= 75 and rand <= 100 then
-			GiveItem ( role , 0 , 8249 , 1 , 4 )
-			return
-		end
-end
-
---	8240	Инкрустированная шкатулка
-function Chest_gemi_bizhyt(role, Item)
-	local Cha_Boat = GetCtrlBoat ( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	if Cha_Boat ~=  nil then
-		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
-		UseItemFailed ( role )
-		return
-	end
-	local c = math.random ( 1 , 2 )
-		if c == 1  then
-			GiveItem ( role , 0 , 8243 , 1 , 4 )
-			return
-		elseif c == 2 then
-			GiveItem ( role , 0 , 8244 , 1 , 4 )
-			return
-		end
-end
-
---	1016	Мешочек Богини
-function ItemUse_NSDXB ( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	local job = GetChaAttr(role, ATTR_JOB)
-	--Чемпион
-	if job == 8 then
-		GiveItem ( role , 0 , 2332 , 1 , 4 )
-		GiveItem ( role , 0 , 2338 , 1 , 4 )
-		GiveItem ( role , 0 , 2817 , 1 , 4 )
-		GiveItem ( role , 0 , 2818 , 1 , 4 )
-		GiveItem ( role , 0 , 2819 , 1 , 4 )
-	--Воитель
-	elseif job == 9 then
-		GiveItem ( role , 0 , 2331 , 1 , 4 )
-		GiveItem ( role , 0 , 2331 , 1 , 4 )
-		GiveItem ( role , 0 , 2820 , 1 , 4 )
-		GiveItem ( role , 0 , 2821 , 1 , 4 )
-		GiveItem ( role , 0 , 2822 , 1 , 4 )
-	--Стрелок
-	elseif job == 12 then
-		GiveItem ( role , 0 , 2334 , 1 , 4 )
-		GiveItem ( role , 0 , 2335 , 1 , 4 )
-		GiveItem ( role , 0 , 2823 , 1 , 4 )
-		GiveItem ( role , 0 , 2824 , 1 , 4 )
-		GiveItem ( role , 0 , 2825 , 1 , 4 )
-	--Целительница
-	elseif job == 13 then
-		GiveItem ( role , 0 , 2336 , 1 , 4 )
-		GiveItem ( role , 0 , 2829 , 1 , 4 )
-		GiveItem ( role , 0 , 2830 , 1 , 4 )
-		GiveItem ( role , 0 , 2831 , 1 , 4 )
-		GiveItem ( role , 0 , 5847 , 1 , 4 )
-	--Колдунья
-	elseif job == 14 then
-		GiveItem ( role , 0 , 2337 , 1 , 4 )
-		GiveItem ( role , 0 , 2832 , 1 , 4 )
-		GiveItem ( role , 0 , 2833 , 1 , 4 )
-		GiveItem ( role , 0 , 2834 , 1 , 4 )
-		GiveItem ( role , 0 , 5847 , 1 , 4 )
-	--Покоритель морей
-	elseif job == 16 then
-		GiveItem ( role , 0 , 2333 , 1 , 4 )
-		GiveItem ( role , 0 , 2826 , 1 , 4 )
-		GiveItem ( role , 0 , 2827 , 1 , 4 )
-		GiveItem ( role , 0 , 2828 , 1 , 4 )
-		GiveItem ( role , 0 , 5847 , 1 , 4 )
-	else
-		SystemNotice(role ,"Только игроки со второй профессией могут открыть этот сундук!")
-		UseItemFailed ( role )
-		return
-	end
-	local cha_name = GetChaDefaultName ( role ) 
-	local message = cha_name.." открывает Мешочек Богини и получает Сет Смерти!"
-	Notice ( message )
-end
-
---	1019	Мешочек Черного дракона
-function ItemUse_minibh( role , Item )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-	if Item_CanGet <= 0 then
-		SystemNotice(role ,"Не удалось открыть сундук. Проверьте ваш инвентарь!")
-		UseItemFailed ( role )
-		return
-	end
-	GiveItem ( role , 0 , 864 , 2 , 4 )
-	GiveItem ( role , 0 , 865 , 2 , 4 )
-	GiveItem ( role , 0 , 866 , 2 , 4 )
-	GiveItem ( role , 0 , 7710 , 2 , 4 )
-end
-
-
--- Морские скиллы в Лайф Страничке
-
-
-------
--- ID8501	Водоток
-------
-function Sk_Script_SlNew( role , Item ) 
-	local sk_add = SK_SL  
-	local form_sklv = GetSkillLv( role , sk_add ) 
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	if a== 0 then 
-		UseItemFailed ( role )  
-		return 
-	end 
-end 
-
-------
--- ID8502	Броня из раковин
-------
-function Sk_Script_BkzjNew( role , Item )
-	local sk_add = SK_BKZJ
-	local form_sklv = GetSkillLv( role , sk_add ) 
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	if a== 0 then 
-		UseItemFailed ( role )  
-		return 
-	end 
-end 
-
-------
--- ID8503	Переплетение водорослей
-------
-function Sk_Script_HzcrNew( role , Item )
-	local sk_add = SK_HZCR     
-	local form_sklv = GetSkillLv( role , sk_add ) 
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	if a== 0 then 
-		UseItemFailed ( role )  
-		return 
-	end 
-end 
-------
--- ID8504	Попутный ветер
-------
-function Sk_Script_SfNew( role , Item ) 
-	local sk_add = SK_SF       
-	local form_sklv = GetSkillLv( role , sk_add ) 
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	if a== 0 then 
-		UseItemFailed ( role )  
-		return 
-	end 
-end 
-
-------
--- ID8505	Вихрь
-------
-function Sk_Script_XwNew( role , Item ) 
-	local sk_add = SK_XW        
-	local form_sklv = GetSkillLv( role , sk_add ) 
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	if a== 0 then 
-		UseItemFailed ( role )  
-		return 
-	end 
-end 
-
-------
--- ID8506	Туман
-------
-function Sk_Script_MwNew( role , Item ) 
-	local sk_add = SK_MW
-	local form_sklv = GetSkillLv( role , sk_add ) 
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	if a== 0 then 
-		UseItemFailed ( role )  
-		return 
-	end 
-end 
-
-------
--- ID8507	Грозовая завеса
-------
-function Sk_Script_LmNew( role , Item ) 
-	local sk_add = SK_LM
-	local form_sklv = GetSkillLv( role , sk_add ) 
-	if form_sklv ~= 0  then 
-		UseItemFailed ( role )  
-		return 
-	end 
-	a = AddChaSkill ( role , sk_add, 1 , 1 , 1 ) 
-	if a== 0 then 
-		UseItemFailed ( role )  
-		return 
-	end 
-end 
-
-------
---Система пурпурной матрёшки
----------
-function ItemUse_raritybox (role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	 if Item_CanGet < 1 then
-
-		UseItemFailed ( role )
-		return
-	end
-	
-	local job = GetChaAttr( role, ATTR_JOB) 
-	local cha_type = GetChaTypeID ( role )
-	local itemname = ""
-	if cha_type ~= 2 and job==4 then
-		GiveItem ( role , 0 , 2580 , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type ~= 2 and job==16 then
-		GiveItem ( role , 0 , 2580 , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type == 2  and job~=0 then
-		GiveItem ( role , 0 , 2577 , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type ~= 2 and  cha_type ~= 4 and job==2 then
-		GiveItem ( role , 0 , 2579  , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type ~= 2 and  cha_type ~= 4 and job==12 then
-		GiveItem ( role , 0 , 2579  , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type ~= 1 and  cha_type ~= 2 and job==5 then
-		local dina=math.random ( 1, 2 )
-	if dina==1 then
-		GiveItem ( role , 0 , 2582  , 1 , 4 )
-		itemname = "85 кольцо "
-	else
-		GiveItem ( role , 0 , 2581  , 1 , 4 )
-		itemname = "85 кольцо"
-	end
-	elseif cha_type ~= 1 and  cha_type ~= 2 and job==13 then
-		GiveItem ( role , 0 , 2582  , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type ~= 1 and  cha_type ~= 2 and job==14 then
-		GiveItem ( role , 0 , 2581  , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type == 1 and  job==1 then
-		GiveItem ( role , 0 , 2578  , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type == 1 and  job==9 then
-		GiveItem ( role , 0 , 2578  , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type == 3 and  job==1 then
-		GiveItem ( role , 0 , 2578  , 1 , 4 )
-		itemname = "85 кольцо "
-	elseif cha_type == 3 and  job==9 then
-		GiveItem ( role , 0 , 2578  , 1 , 4 )
-		itemname = "85 кольцо "
-	else 
-
-		UseItemFailed ( role )
-		return
-	end
-	local cha_name = GetChaDefaultName ( role )
-	Notice ( "" ..cha_name.." открывает 85 божественный сундук и получает "..itemname )
-end
-
-----------------------------------Пурпурный сундук --------------------------------------------------------------
-function ItemUse_purplebox (role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	 if Item_CanGet < 1 then
-
-		UseItemFailed ( role )
-		return
-	end
-	local i= CheckBagItem( role, 5702 )                                                
-	if i <=0 then
-
-		UseItemFailed ( role )
-		return LUA_FALSE
-	end
-	
-	local s = DelBagItem ( role , 5702 , 1 ) 
-	local	sc = math.random(1,100)
-	local itemname = ""
-	if  sc <=60 then	
-		GiveItem ( role , 0 , 5711 , 1 , 4 )                    ---------------Сундук зелёного дракона 40%
-		itemname = "Сундук Зелёного Дракона "
-	elseif sc <=80 then		
-		GiveItem ( role , 0 , 3877 , 2 , 4 )                    ---------------Расписка на очищающий самоцвет 2 шт. 20%
-		itemname = "Расписка на очищающий самоцвет 2 шт."
-	elseif sc <=71 then
-		GiveItem ( role , 0 ,3095 , 5 , 4 )                    ---------------Супер Усилитель стремлений 29%
-		itemname = "Супер Усилитель стремлений "
-	elseif sc <=90 then
-		GiveItem ( role , 0 ,2898 , 1 , 4 )                    ---------------Праздничный обед 10%
-		itemname = "Праздничный обед "
-	elseif sc <=99 then
-		GiveItem ( role , 0 ,5703 , 1 , 4 )                    ---------------Ключ зелёного дракона 1%
-		itemname = "Ключ зелёного дракона "	
-	else   
-end
-	local cha_name = GetChaDefaultName ( role )
-	Notice ( "" ..cha_name.." открывает пурпурный сундук и получает "..itemname )
-end
-
-----------------------------------Сундук Зелёного Дракона --------------------------------------------------------------
-function ItemUse_greenbox (role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	 if Item_CanGet < 1 then
-
-		UseItemFailed ( role )
-		return
-	end
-	local i= CheckBagItem( role, 5703 )                                                
-	if i <=0 then
-
-		UseItemFailed ( role )
-		return LUA_FALSE
-	end
-	
-	local s = DelBagItem ( role , 5703 , 1 ) 
-	local	sc = math.random(1,100)
-	local itemname = ""
-	if  sc <=70 then	
-		GiveItem ( role , 0 , 5712 , 1 , 4 )   ------------------ Сундук Чёрного Дракона                
-		itemname = "Сундук Чёрного Дракона "
-	elseif sc <=50 then		
-		GiveItem ( role , 0 , 5707 , 1 , 4 )                    
-		itemname = "Огромный Кошелёк "
-	elseif sc <=85 then
-		GiveItem ( role , 0 ,7109 , 1 , 4 )                    
-		itemname = "Великий Самоцвет Души "
-	elseif sc <=85 then
-		GiveItem ( role , 0 ,7111 , 1 , 4 )                    
-		itemname = "Великий Самоцвет Колосса "
-	elseif sc <=87 then
-		GiveItem ( role , 0 ,7110 , 1 , 4 )                    
-		itemname = "Великий Самоцвет Удара "
-	elseif sc <=95 then
-		GiveItem ( role , 0 ,2835 , 1 , 4 )                    
-		itemname = "Корона Покойника "
-	elseif sc <=98 then
-		GiveItem ( role , 0 ,5704 , 1 , 4 )                    
-		itemname = "Ключ черного дракона "
-	else   
-end
-	local cha_name = GetChaDefaultName ( role )
-	Notice ( "" ..cha_name.." открывает Сундук Зелёного Дракона и получает "..itemname )
-end
-
-----------------------------------Сундук Черного Дракона --------------------------------------------------------------
-function ItemUse_turebox (role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	 if Item_CanGet < 1 then
-
-		UseItemFailed ( role )
-		return
-	end
-	local i= CheckBagItem( role, 5704 )                                                
-	if i <=0 then
-
-		UseItemFailed ( role )
-		return LUA_FALSE
-	end
-	
-	local s = DelBagItem ( role , 5704 , 1 ) 
-	local	sc = math.random(1,100)
-	local itemname = ""
-	if  sc <=70 then	
-		GiveItem ( role , 0 , 7112 , 1 , 4 )                    
-		itemname = "Великий самоцвет Ветра "
-	elseif sc <=80 then		
-		GiveItem ( role , 0 , 5713 , 1 , 4 )                 
-		itemname = "Сунду Предела "
-	elseif sc <=80 then
-		GiveItem ( role , 0 ,2801 , 20 , 4 )                  
-		itemname = "Мешок с песком 5 ур. "
-	elseif sc <=80 then
-		GiveItem ( role , 0 ,7108, 1 , 4 )                   
-		itemname = "Великий самоцвет Ярости "
-	elseif sc <=96 then
-		GiveItem ( role , 0 ,5708 , 1 , 4 )                  
-		itemname = "Сундук Дракона "
-	elseif sc <=97 then
-		GiveItem ( role , 0 ,7001 , 1 , 4 )                  
-		itemname = "Корона Короля "
-	elseif sc <=97 then
-		GiveItem ( role , 0 ,5705 , 1 , 4 )                  
-		itemname = "Корона Короля "
-	else   
-end
-	local cha_name = GetChaDefaultName ( role )
-	Notice ( "" ..cha_name.." открыл сундук Черного Дракона и получил "..itemname )
-end
-
-----------------------------------Сундук Предела --------------------------------------------------------------
-function ItemUse_respectbox (role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	 if Item_CanGet < 1 then
-
-		UseItemFailed ( role )
-		return
-	end
-	local i= CheckBagItem( role, 5705 )                                                
-	if i <=0 then
-
-		UseItemFailed ( role )
-		return LUA_FALSE
-	end
-	
-	local s = DelBagItem ( role , 5705 , 1 ) 
-	local	sc = math.random(1,100)
-	local itemname = ""
-	if  sc <=70 then	
-		GiveItem ( role , 0 , 271 , 10 , 4 )                    
-		itemname = "Ангельские кости 10 шт."
-	elseif sc <=80 then		
-		GiveItem ( role , 0 , 7002 , 1 , 20 )                    
-		itemname = "Судьба Артура "
-	elseif sc <=80 then
-		GiveItem ( role , 0 ,266 , 1 , 20 )                    
-		itemname = "Алтарь Черного Дракона "
-	elseif sc <=85 then
-		GiveItem ( role , 0 ,5714 , 1 , 4 )                    
-		itemname = "Неповторимый сундук "
-	elseif sc <=90 then
-		GiveItem ( role , 0 ,5990 , 1 , 20 )                    
-		itemname = "Меч Авроры "
-	elseif sc <=99 then
-		GiveItem ( role , 0 ,5706 , 1 , 4 )                    
-		itemname = "Неповторимый ключ "
-	else   
-end
-	local cha_name = GetChaDefaultName ( role )
-	Notice ( "" ..cha_name.." открывает сундук Предела и получает "..itemname )
-end
-
-
-----------------------------------Неповторимый сундук --------------------------------------------------------------
-function ItemUse_peerlessbox (role, Item)
-
-	local Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~=  nil then
-
-		UseItemFailed ( role )
-		return
-	end
-	local Item_CanGet = GetChaFreeBagGridNum ( role )	
-	 if Item_CanGet < 1 then
-
-		UseItemFailed ( role )
-		return
-	end
-	local i= CheckBagItem( role, 5706 )                                                
-	if i <=0 then
-
-		UseItemFailed ( role )
-		return LUA_FALSE
-	end
-	
-	local s = DelBagItem ( role , 5706 , 1 ) 
-	local	sc = math.random(1,100)
-	local itemname = ""
-	if  sc <=90 then	
-		GiveItem ( role , 0 , 272 , 1 , 4 )                    
-		itemname = "Гран-при "
-	elseif sc <=90 then		
-		GiveItem ( role , 0 , 2836 , 1 , 20 )                    
-		itemname = "Сундук Хардина  "
-	elseif sc <=90 then		
-		GiveItem ( role , 0 , 2837 , 1 , 20 )                    
-		itemname = "Сундук Тьмы "
-	elseif sc <=90 then		
-		GiveItem ( role , 0 , 2838 , 1 , 20 )                    
-		itemname = "Сундук Абаддона "
-	elseif sc <=90 then		
-		GiveItem ( role , 0 , 2839 , 1 , 20 )                    
-		itemname = "Сундук Асура "
-	elseif sc <=90 then		
-		GiveItem ( role , 0 , 2840 , 1 , 20 )                    
-		itemname = "Сундук Бездны "
-	elseif sc <=90 then		
-		GiveItem ( role , 0 , 2841 , 1 , 20 )                    
-		itemname = "Сундук Стикса "
-	elseif sc <=70 then		
-		GiveItem ( role , 0 , 2404 , 1 , 20 )                    
-		itemname = "Душа Черного Дракона "
-	else
-end
-	local cha_name = GetChaDefaultName ( role )
-	Notice ( "" ..cha_name.." открывает Неповторимый сундук и получает "..itemname )
 end

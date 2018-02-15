@@ -1,3 +1,5 @@
+print( "Загрузка Ctrl.lua" )
+
 function config(map)
     MapCanSavePos(map, 0)
     MapCanPK(map, 1)
@@ -7,9 +9,7 @@ function config(map)
     MapType ( map , 4 )
 end
 
-
 function get_map_entry_pos_puzzleworld2()
-
 	local POS_X=172
 	local POS_Y=165
 	local a = 100
@@ -30,26 +30,10 @@ function get_map_entry_pos_puzzleworld2()
 		POS_X = 365
 		POS_Y = 171
 	end
-	
 	return POS_X , POS_Y
-
---172,165
---147,384
---365,381
---365,171
-
 end
 
 function init_entry(map)
     SetMapEntryMapName(map, "puzzleworld")
     SetMapEntryTime(map, "2005/8/30/0/0", "0/3/0", "0/0/80", "0/2/0")
-end
-
-function map_run_puzzleworld2(map)
-end
-
-function after_enter_puzzleworld2( role , map_copy )
-end
-
-function before_leave_puzzleworld2( role )
 end

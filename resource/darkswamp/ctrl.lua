@@ -8,20 +8,25 @@ function config(map)
 end
 
 function get_map_entry_pos_darkswamp()
-	local POS_X=2037
-	local POS_Y=2779
+--ДС в ШАе
+	local POS_X=865
+	local POS_Y=3707
 	return POS_X , POS_Y
 end
 
 function init_entry(map)
     SetMapEntryMapName(map, "magicsea")
-    SetMapEntryTime(map, "2005/8/30/0/0", "0/3/0", "0/1/0", "0/2/0")
+  SetMapEntryTime(map, "2005/8/30/0/0", "0/3/0", "0/1/0", "0/2/0")
 end
 
+function map_copy_run_darkswamp()
+end
 function map_run_darkswamp(map)
 end
-
+function map_copy_run_special_darkswamp(map)
+end
 function after_enter_darkswamp( role , map_copy )
+--AfterEnter(role)
 end
 
 function before_leave_darkswamp( role )

@@ -1,184 +1,147 @@
-------------------------------------------------------------------------------------------------------------------
---																												--
---					Священная война Ctrl.lua																	--
---					Сервер Mordo Online																			--
---					Версия игры 1.36																			--
---					Перевод выполнили Mordo Online																--
---					Проверку выполнили Mordo Online																--
---																												--
-------------------------------------------------------------------------------------------------------------------
-
-print( "‡ Јаг§Є  Є авл: \"‘ўпйҐ­­ п ў®©­ \" ­ з « бм!" )
 print( "‡ Јаг§Є  Ctrl.lua" )
 
---особый конфиг карты (комментарии к нему)
---1 - true, 0 - false
 function config(map)
-	MapCanSavePos(map, 0)			--Сохранять точку нахождения при релоге
-	MapCanPK(map, 1)				--ПвП режим на карте
-	MapCanGuild(map,0)				--Соблюдать принадлежность к гильдии
-	MapCopyNum(map, 1)				--Клонирование карты (ТОЛЬКО 1. БОЛЕЕ 1 ВЫПОЛНЯЕТСЯ ДЛЯ АРЕНЫ)
-	--MapCopyStartType(map, 1)		--Тип появления на карте
-	SingleMapCopyPlyNum(map, 300)	--Макимум человек на карте
-	MapCanTeam(map , 1)				--Возможность делать и вступать в пати
-	MapType( map , 5 ) 				--Тип карты: СВ
-	RepatriateDie(map,0)			--Возможность воскрешения
-	SetMapGuildWar(map,1)			--Задать режим СВ(Только для СВ - принадлежность к пиратам или флоту)
-	MapCanStall(map , 0)			--Возможность ставить ларьки
+    MapCanSavePos(map, 0) 
+    MapCanPK(map, 1) 
+    MapCanGuild(map,0)
+    MapCopyNum(map, 1) 
+    SingleMapCopyPlyNum(map, 300)   
+    MapCanTeam(map , 1)
+    MapType ( map , 5 )
+    RepatriateDie(map,0)
+    SetMapGuildWar(map,1)
+    MapCanStall(map , 0)
 end
 
-function get_map_entry_pos_guildwar()
+function get_map_entry_pos_guildwar()   
 	local POS_X=979
 	local POS_Y=3608
 	return POS_X , POS_Y
 end
 
 function init_entry(map)
-	SetMapEntryMapName(map, "magicsea") 
-	SetMapEntryTime(map, "2005/8/30/1/0", "0/8/0", "0/3/0", "0/3/0")
+    SetMapEntryMapName(map, "magicsea") 
+    SetMapEntryTime(map, "2005/8/30/19/30", "0/4/0", "0/3/0", "0/3/0") 
 end
 
-function after_enter_guildwar( role , map_copy ) 
-	LG ("GW1","make")
---Принадлежность к сторонам
-	--Флот
-	if GetChaGuildID(role) <= 100 and GetChaGuildID(role) > 0 then
-		SetChaSideID(role, 1)
-		SystemNotice(role, "Вы присоединились к фракции Флота")
-	end
-	--Пираты
-	if GetChaGuildID(role) > 100 and GetChaGuildID(role) <= 200 then
-		SetChaSideID(role, 2)
-		SystemNotice(role, "Вы присоединились к фракции Пиратов")
-	end
+function after_enter_guildwar( role , map_copy )
+    if GetChaGuildID(role) <= 100 and GetChaGuildID(role) > 0 then
+        SetChaSideID(role, 1)
+    end
+    if GetChaGuildID(role) > 100 and GetChaGuildID(role) <= 200 then
+        SetChaSideID(role, 2)
+    end	
 end
 
 function before_leave_guildwar ( role )
-	local Cha = TurnToCha(role) 
+local Cha = TurnToCha(role) 
 	local i = 0
 	local j = 0
 	for i = 0 , SZ_BagItemDelCheckNum ,1 do
-
-		local j = RemoveChaItem ( Cha ,SZ_BagItemDelCheck_ID[i],0,0,-1,2,1 )
+	        local j = RemoveChaItem ( Cha ,SZ_BagItemDelCheck_ID[i],0,0,-1,2,1 )
 		if j == 0 then 
-			LG("RemoveChaItem","Ошибка при изъятии!")
+		LG("RemoveChaItem","Failed")
 		end
-		end
-
-	RemoveState( role , STATE_HFZQ )
-	RemoveState( role , STATE_QINGZ )
-	RemoveState( role , STATE_JRQKL )
-	RemoveState( role , STATE_YS )
-
-	local map_copy =  GetChaMapCopy(role)
-
-	if check_need_show == 1 then
-		return
-	else
-		if GetChaGuildID(role) <= 100 and GetChaGuildID(role) > 0 then
-		count_haijun = count_haijun - 1
-		MapCopyNotice ( map_copy , "[Один из представителей флота покинул поле боя]" )
-
-		elseif GetChaGuildID(role) > 100 and GetChaGuildID(role) <= 200 then
-			count_haidao = count_haidao - 1
-		MapCopyNotice ( map_copy , "[Один из пиратов покинул поле боя]" )
-		end
-	end
-end
-  
-function map_copy_first_run_guildwar( map_copy )
+        end
+  RemoveState( role , STATE_HFZQ )
+  RemoveState( role , STATE_QINGZ )
+  RemoveState( role , STATE_JRQKL )
+  RemoveState( role , STATE_YS )
+  local map_copy =  GetChaMapCopy(role)
+     if check_need_show == 1 then
+         return 
+         else
+         if GetChaGuildID(role) <= 100 and GetChaGuildID(role) > 0 then
+            count_haijun = count_haijun - 1
+	    MapCopyNotice ( map_copy , "[Игрок присоединился к фракции Флота]" )
+         elseif GetChaGuildID(role) > 100 and GetChaGuildID(role) <= 200 then
+            count_haidao = count_haidao - 1
+	    MapCopyNotice ( map_copy , "[Игрок присоединился к фракции Пиратов]" )
+        end
+    end
 end
 
 function map_copy_run_guildwar( map_copy )
-	local closetime = GUILDWARCLOSETIME
-		for i = 1 , GUILDNOTICE , 1 do
-			if closetime == GUILDCLOSESHOW[i] then
+    local closetime = GUILDWARCLOSETIME
+           for i = 1 , GUILDNOTICE , 1 do
+		 if closetime == GUILDCLOSESHOW[i] then
 				local Notice_all = "Карта Священной Войны будет закрыта через " .. closetime .. " секунд! Следите за новостями. Удачи!"
-				MapCopyNotice ( map_copy ,Notice_all )
-			end
-		end
-		GUILDWARCLOSETIME = GUILDWARCLOSETIME - 1
-
-	local hp_hd = GetChaAttr( haidaoSide_BaseRole , ATTR_HP )
+			 MapCopyNotice ( map_copy ,Notice_all )
+		 end
+	   end
+	   GUILDWARCLOSETIME = GUILDWARCLOSETIME - 1
+ local hp_hd = GetChaAttr( haidaoSide_BaseRole , ATTR_HP ) 
 	local mxhp_hd = GetChaAttr( haidaoSide_BaseRole , ATTR_MXHP )
 	local percent_hd = hp_hd/mxhp_hd
 	if percent_hd < 0.3 and create_boss_hd == 0 then
 		local x, y = GetChaPos( haidaoSide_BaseRole )
-			x = x+500
-			y = y+500 
-		local Monster_hdboss = CreateChaEx(1008, 30800, 52400, 145, 1300,map_copy)
+		      x = x+500
+		      y = y+500
+		      
+                local Monster_hdboss = CreateChaEx(1008, 30800, 52400, 145, 1300,map_copy)
 		SetChaLifeTime(Monster_hdboss,1200000)
-		SetChaSideID(Monster_hdboss, 2)
-
+                SetChaSideID(Monster_hdboss, 2)
 		create_boss_hd = 1  
 		MapCopyNotice ( map_copy ,"Узрите же истинную силу пиратской тьмы!")
 	end
-
-
-	local hp_hj = GetChaAttr( haijunSide_BaseRole , ATTR_HP ) 
+ local hp_hj = GetChaAttr( haijunSide_BaseRole , ATTR_HP ) 
 	local mxhp_hj = GetChaAttr( haijunSide_BaseRole , ATTR_MXHP )
 	local percent_hj = hp_hj/mxhp_hj
-
 	if percent_hj < 0.3 and create_boss_hj == 0 then
 		local x, y = GetChaPos( haijunSide_BaseRole )
-			x = x+500
-			y = y+500
-		local Monster_hjboss = CreateChaEx(1007, 30600, 10200, 145, 1300,map_copy)
+		      x = x+500
+		      y = y+500
+                local Monster_hjboss = CreateChaEx(1007, 30600, 10200, 145, 1300,map_copy)
 		SetChaLifeTime(Monster_hjboss,1200000) 
 		SetChaSideID(Monster_hjboss, 1)
-
 		create_boss_hj = 1  
 		MapCopyNotice ( map_copy ,"Пираты, вы разрушаете флотскую статую? Моя рука ответит вам за это мечем!")
 	end
-
-	if SZ_Win_CountNum == 60 then
+ if SZ_Win_CountNum == 60 then
+             
 		if CheckMonsterDead ( haijunSide_BaseRole ) == 1 then
-			if haidaoSide_JDNotice == 0 then
-				five_seconds = 1
-				SZ_Win_CountNum = SZ_Win_CountNum - 1 
-				haidaoSide_JDNotice = 1
-						CloseMapEntry ( "guildwar" )
-						check_need_show = 1 
-
-				local player_num_1 = GetMapPlayer(map_copy)
-				local pn_1 = player_num_1 * 3
-				for i=1, pn_1, 1 do
-					if player_num_1 > 0 then
-						DealAllPlayerInMap(map_copy,"HJ_Goto")
-						DealAllPlayerInMap(map_copy,"noside_Goto")
-					end
+		   if haidaoSide_JDNotice == 0 then
+			five_seconds = 1
+			SZ_Win_CountNum = SZ_Win_CountNum - 1
+			haidaoSide_JDNotice = 1
+                        CloseMapEntry ( "guildwar" )
+                        check_need_show = 1 
+			local player_num_1 = GetMapPlayer(map_copy)
+			local pn_1 = player_num_1 * 3
+			for i=1, pn_1, 1 do
+				if player_num_1 > 0 then
+					DealAllPlayerInMap(map_copy,"HJ_Goto")
+					DealAllPlayerInMap(map_copy,"noside_Goto")
 				end
-				DealAllActivePlayerInMap(map_copy,"Give_Three_QiYue")
-				local Notice_all = "Пиратская фракция победила в Священной войне"
-				Notice ( Notice_all )
 			end
+			DealAllActivePlayerInMap(map_copy,"Give_Three_QiYue")
+				local Notice_all = "Пиратская фракция победила в Священной войне "
+			Notice ( Notice_all )
+	            end
 		end
-
 		if CheckMonsterDead ( haidaoSide_BaseRole ) == 1 then
-			if haijunSide_JDNotice == 0 then
-				five_seconds = 1
-				SZ_Win_CountNum = SZ_Win_CountNum - 1
-				haijunSide_JDNotice = 1
-						CloseMapEntry ( "guildwar" )
-						check_need_show = 1
-
-				local player_num_2 = GetMapPlayer(map_copy)
-				local pn_2 = player_num_2 * 3
-				for i=1, pn_2, 1 do
-					if player_num_2 > 0 then
-						DealAllPlayerInMap(map_copy,"HD_Goto")
-						DealAllPlayerInMap(map_copy,"noside_Goto")
-					end
+		    if haijunSide_JDNotice == 0 then
+		        five_seconds = 1
+			SZ_Win_CountNum = SZ_Win_CountNum - 1
+			haijunSide_JDNotice = 1
+                        CloseMapEntry ( "guildwar" )
+			check_need_show = 1
+			local player_num_2 = GetMapPlayer(map_copy)
+			local pn_2 = player_num_2 * 3
+			for i=1, pn_2, 1 do
+				if player_num_2 > 0 then
+					DealAllPlayerInMap(map_copy,"HD_Goto")
+					DealAllPlayerInMap(map_copy,"noside_Goto")
 				end
-				DealAllActivePlayerInMap(map_copy,"Give_Three_QiYue")
-				local Notice_all =  "Флотская фракция победила в Священной войне"
-				Notice ( Notice_all )
 			end
+			DealAllActivePlayerInMap(map_copy,"Give_Three_QiYue")
+				local Notice_all =  "Флотская фракция победила в Священной войне "
+			Notice ( Notice_all )
+	            end
 		end
-
 		if CheckMonsterDead ( haijunSide_LCRole ) == 1 then
 			if haijunSide_LCNotice == 0 then
-				MapCopyNotice ( map_copy ,"Флотской склад боеприпасов уничтожен! Защита Улучшенной стрелковой башни заметно понижена")
+				MapCopyNotice ( map_copy ,"Флотской склад боеприпасов уничтожен! Защита Улучшенной стрелковой башни заметно понижена ")
 				AddState( haijunSide_BaseRole , haijunSide_BaseRole , STATE_PKLC, 10 , 10800 )
 				AddState( haijunSide_JTRole_1 , haijunSide_JTRole_1 , STATE_PKLC, 10 , 10800 )
 				AddState( haijunSide_JTRole_2 , haijunSide_JTRole_2 , STATE_PKLC, 10 , 10800 )
@@ -187,7 +150,7 @@ function map_copy_run_guildwar( map_copy )
 		end
 		if CheckMonsterDead ( haidaoSide_LCRole ) == 1 then
 			if haidaoSide_LCNotice == 0 then 
-				MapCopyNotice ( map_copy ,"Пиратский склад боеприпасов уничтожен! Защита Улучшенной стрелковой башни заметно понижена")
+				MapCopyNotice ( map_copy ,"Пиратский склад боеприпасов уничтожен! Защита Улучшенной стрелковой башни заметно понижена ")
 				AddState( haidaoSide_BaseRole , haidaoSide_BaseRole , STATE_PKLC, 10 , 10800 )
 				AddState( haidaoSide_JTRole_1 , haidaoSide_JTRole_1 , STATE_PKLC, 10 , 10800 )
 				AddState( haidaoSide_JTRole_2 , haidaoSide_JTRole_2 , STATE_PKLC, 10 , 10800 )
@@ -196,38 +159,36 @@ function map_copy_run_guildwar( map_copy )
 		end
 		if CheckMonsterDead ( haijunSide_DYKRole ) == 1 then
 			if haijunSide_DYKNotice == 0 then
-				MapCopyNotice ( map_copy ,"Флотской пакгауз уничтожен! Сила атаки Улучшенной стрелковой башни заметно понижена")
+				MapCopyNotice ( map_copy ,"Флотской пакгауз уничтожен! Сила атаки Улучшенной стрелковой башни заметно понижена ")
 				AddState( haijunSide_JTRole_1 , haijunSide_JTRole_1 , STATE_JHKML, 10 , 10800 )
 				AddState( haijunSide_JTRole_2 , haijunSide_JTRole_2 , STATE_JHKML, 10 , 10800 )
 				haijunSide_DYKNotice = 1
+				
 			end
 		end
 		if CheckMonsterDead ( haidaoSide_DYKRole ) == 1 then
 			if haidaoSide_DYKNotice == 0 then 
-				MapCopyNotice ( map_copy ,"Пиратский пакгауз уничтожен! Сила атаки Улучшенной стрелковой башни заметно понижена")
+				MapCopyNotice ( map_copy ,"Пиратский пакгауз уничтожен! Сила атаки Улучшенной стрелковой башни заметно понижена ")
 				AddState( haidaoSide_JTRole_1 , haidaoSide_JTRole_1 , STATE_JHKML, 10 , 10800 )
 				AddState( haidaoSide_JTRole_2 , haidaoSide_JTRole_2 , STATE_JHKML, 10 , 10800 )
-				haidaoSide_DYKNotice = 1  
-			end
+				haidaoSide_DYKNotice = 1
+			end		
 		end
 	else
-		if time_can_setmonster == 0 then
+              if time_can_setmonster == 0 then
 		time_can_setnvsheng = time_can_setnvsheng + 1
-		end
-
+	      end
 		local Count = SZ_Win_CountNum / 10
 		if Count == math.floor ( Count ) then
-			local Notice_map = "Богиня прибудет на карту и оценит силу смертных через "..SZ_Win_CountNum.." секунд"
+			local Notice_map = "Богиня прибудет на карту и оценит силу смертных через "..SZ_Win_CountNum.." секунд "
 			MapCopyNotice ( map_copy , Notice_map )
 		end
 		SZ_Win_CountNum = SZ_Win_CountNum - 1
 		if SZ_Win_CountNum == 0 then
 				SZ_Win_CountNum = 60
 		end
-			if time_can_setnvsheng == 59 then
-
-		MapCopyNotice ( map_copy ,"Богиня прибыла в Священную войну")
-		
+	        if time_can_setnvsheng == 59 then
+		MapCopyNotice ( map_copy ,"Богиня прибыла в Священную войну ")
 		local Monster2 = CreateChaEx(1001, 21526, 49419, 145, 1000,map_copy)
 		local Monster3 = CreateChaEx(1001, 41559, 11793, 145, 1000,map_copy)
 		local Monster4 = CreateChaEx(1001, 13667, 40891, 145, 1000,map_copy)
@@ -244,16 +205,14 @@ function map_copy_run_guildwar( map_copy )
 		SetChaLifeTime(Monster7,900000)
 		SetChaLifeTime(Monster8,900000)
 		SetChaLifeTime(Monster9,900000)
-  
-			time_can_setmonster = 1
-			time_can_setnvsheng = 1
+	       time_can_setmonster = 1
+               time_can_setnvsheng = 1
 		end
 	end
 end
 
 function map_copy_run_special_guildwar( map_copy ) 
-	local random_hezi = math.random(1,10)
-
+        local random_hezi = math.random(1,10)
 	if random_hezi == 1 then 
 		local Monster1 = CreateChaEx(934, 21620, 25990, 145, 60,map_copy)
 		local Monster2 = CreateChaEx(934, 13505, 26914, 145, 60,map_copy)
@@ -265,7 +224,7 @@ function map_copy_run_special_guildwar( map_copy )
 		local Monster8 = CreateChaEx(934, 31214, 33352, 145, 60,map_copy)
 		local Monster9 = CreateChaEx(934, 30322, 27936, 145, 60,map_copy)
 		local Monster10 = CreateChaEx(934, 12275, 8838, 145, 60,map_copy)
-		local Monster11 = CreateChaEx(935, 13441, 49302, 237, 60,map_copy)
+        local Monster11 = CreateChaEx(935, 13441, 49302, 237, 60,map_copy)
 		local Monster12 = CreateChaEx(935, 49505, 53814, 145, 60,map_copy)
 		local Monster13 = CreateChaEx(935, 52191, 48734, 145, 60,map_copy)
 		local Monster14 = CreateChaEx(935, 49514, 36624, 145, 60,map_copy)
@@ -275,26 +234,26 @@ function map_copy_run_special_guildwar( map_copy )
 		local Monster18 = CreateChaEx(935, 30494, 38172, 145, 60,map_copy)
 		local Monster19 = CreateChaEx(935, 22644, 43566, 145, 60,map_copy)
 		local Monster20 = CreateChaEx(935, 13309, 37477, 145, 60,map_copy)
-			SetChaLifeTime(Monster1,299050)
-			SetChaLifeTime(Monster2,299050)
-			SetChaLifeTime(Monster3,299100)
-			SetChaLifeTime(Monster4,299150)
-			SetChaLifeTime(Monster5,299200)
-			SetChaLifeTime(Monster6,299250)
-			SetChaLifeTime(Monster7,299300)
-			SetChaLifeTime(Monster8,299350)
-			SetChaLifeTime(Monster9,299400)
-			SetChaLifeTime(Monster10,299450)
-			SetChaLifeTime(Monster11,299050)
-			SetChaLifeTime(Monster12,299050)
-			SetChaLifeTime(Monster13,299100)
-			SetChaLifeTime(Monster14,299150)
-			SetChaLifeTime(Monster15,299200)
-			SetChaLifeTime(Monster16,299250)
-			SetChaLifeTime(Monster17,299300)
-			SetChaLifeTime(Monster18,299350)
-			SetChaLifeTime(Monster19,299400)
-			SetChaLifeTime(Monster20,299450)
+        SetChaLifeTime(Monster1,299050)
+		SetChaLifeTime(Monster2,299050)
+		SetChaLifeTime(Monster3,299100)
+		SetChaLifeTime(Monster4,299150)
+		SetChaLifeTime(Monster5,299200)
+		SetChaLifeTime(Monster6,299250)
+		SetChaLifeTime(Monster7,299300)
+		SetChaLifeTime(Monster8,299350)
+		SetChaLifeTime(Monster9,299400)
+		SetChaLifeTime(Monster10,299450)
+        SetChaLifeTime(Monster11,299050)
+        SetChaLifeTime(Monster12,299050)
+		SetChaLifeTime(Monster13,299100)
+		SetChaLifeTime(Monster14,299150)
+		SetChaLifeTime(Monster15,299200)
+		SetChaLifeTime(Monster16,299250)
+		SetChaLifeTime(Monster17,299300)
+		SetChaLifeTime(Monster18,299350)
+		SetChaLifeTime(Monster19,299400)
+		SetChaLifeTime(Monster20,299450)
 	end
 	if random_hezi == 2 then 
 		local Monster21 = CreateChaEx(934, 13280, 20327, 145, 60,map_copy)
@@ -307,7 +266,7 @@ function map_copy_run_special_guildwar( map_copy )
 		local Monster28 = CreateChaEx(934, 23025, 16585, 145, 60,map_copy)
 		local Monster29 = CreateChaEx(934, 20613, 15337, 145, 60,map_copy)
 		local Monster30 = CreateChaEx(934, 12830, 12465, 145, 60,map_copy)
-		local Monster31 = CreateChaEx(935, 21213, 39440, 46, 60,map_copy)
+        local Monster31 = CreateChaEx(935, 21213, 39440, 46, 60,map_copy)
 		local Monster32 = CreateChaEx(935, 10730, 49579, 46, 60,map_copy)
 		local Monster33 = CreateChaEx(935, 21988, 34742, 46, 60,map_copy)
 		local Monster34 = CreateChaEx(935, 22985, 36209, 46, 60,map_copy)
@@ -317,28 +276,28 @@ function map_copy_run_special_guildwar( map_copy )
 		local Monster38 = CreateChaEx(935, 13719, 34813, 46, 60,map_copy)
 		local Monster39 = CreateChaEx(935, 12202, 39254, 250, 60,map_copy)
 		local Monster40 = CreateChaEx(935, 8017, 43392, 145, 60,map_copy)
-			SetChaLifeTime(Monster21, 299050)
-			SetChaLifeTime(Monster22, 299100)
-			SetChaLifeTime(Monster23, 299150)
-			SetChaLifeTime(Monster24, 299200)
-			SetChaLifeTime(Monster25, 299250)
-			SetChaLifeTime(Monster26, 299300)
-			SetChaLifeTime(Monster27, 299350)
-			SetChaLifeTime(Monster28, 299350)
-			SetChaLifeTime(Monster29, 299350)
-			SetChaLifeTime(Monster30, 299350)
-			SetChaLifeTime(Monster31, 299050)
-			SetChaLifeTime(Monster32, 299050)
-			SetChaLifeTime(Monster33, 299050)
-			SetChaLifeTime(Monster34, 299050)
-			SetChaLifeTime(Monster35, 299050)
-			SetChaLifeTime(Monster36, 299050)
-			SetChaLifeTime(Monster37, 299050)
-			SetChaLifeTime(Monster38, 299050)
-			SetChaLifeTime(Monster39, 299050)
-			SetChaLifeTime(Monster40, 299050)
+		SetChaLifeTime(Monster21, 299050)
+		SetChaLifeTime(Monster22, 299100)
+		SetChaLifeTime(Monster23, 299150)
+		SetChaLifeTime(Monster24, 299200)
+		SetChaLifeTime(Monster25, 299250)
+		SetChaLifeTime(Monster26, 299300)
+		SetChaLifeTime(Monster27, 299350)
+		SetChaLifeTime(Monster28, 299350)
+		SetChaLifeTime(Monster29, 299350)
+		SetChaLifeTime(Monster30, 299350)
+		SetChaLifeTime(Monster31, 299050)
+		SetChaLifeTime(Monster32, 299050)
+		SetChaLifeTime(Monster33, 299050)
+		SetChaLifeTime(Monster34, 299050)
+		SetChaLifeTime(Monster35, 299050)
+		SetChaLifeTime(Monster36, 299050)
+		SetChaLifeTime(Monster37, 299050)
+		SetChaLifeTime(Monster38, 299050)
+		SetChaLifeTime(Monster39, 299050)
+		SetChaLifeTime(Monster40, 299050)
 	end
-	if random_hezi == 3 then
+	if random_hezi == 3 then 
 		local Monster41 = CreateChaEx(935, 39318, 32214, 293, 60,map_copy)
 		local Monster42 = CreateChaEx(935, 31069, 43192, 293, 60,map_copy)
 		local Monster43 = CreateChaEx(935, 39177, 52654, 293, 60,map_copy)
@@ -359,26 +318,26 @@ function map_copy_run_special_guildwar( map_copy )
 		local Monster58 = CreateChaEx(934, 37727, 14455, 306, 60,map_copy)
 		local Monster59 = CreateChaEx(934, 39731, 13703, 246, 60,map_copy)
 		local Monster60 = CreateChaEx(934, 41555, 15069, 145, 60,map_copy)
-			SetChaLifeTime(Monster41, 299050)
-			SetChaLifeTime(Monster42, 299050)
-			SetChaLifeTime(Monster43, 299050)
-			SetChaLifeTime(Monster44, 299050)
-			SetChaLifeTime(Monster45, 299050)
-			SetChaLifeTime(Monster46, 299050)
-			SetChaLifeTime(Monster47, 299050)
-			SetChaLifeTime(Monster48, 299050)
-			SetChaLifeTime(Monster49, 299050)
-			SetChaLifeTime(Monster50, 299050)
-			SetChaLifeTime(Monster51, 299050)
-			SetChaLifeTime(Monster52, 299050)
-			SetChaLifeTime(Monster53, 299050)
-			SetChaLifeTime(Monster54, 299050)
-			SetChaLifeTime(Monster55, 299050)
-			SetChaLifeTime(Monster56, 299050)
-			SetChaLifeTime(Monster57, 299050)
-			SetChaLifeTime(Monster58, 299050)
-			SetChaLifeTime(Monster59, 299050)
-			SetChaLifeTime(Monster60, 299050)
+		SetChaLifeTime(Monster41, 299050)
+		SetChaLifeTime(Monster42, 299050)
+		SetChaLifeTime(Monster43, 299050)
+		SetChaLifeTime(Monster44, 299050)
+		SetChaLifeTime(Monster45, 299050)
+		SetChaLifeTime(Monster46, 299050)
+		SetChaLifeTime(Monster47, 299050)
+		SetChaLifeTime(Monster48, 299050)
+		SetChaLifeTime(Monster49, 299050)
+		SetChaLifeTime(Monster50, 299050)
+		SetChaLifeTime(Monster51, 299050)
+		SetChaLifeTime(Monster52, 299050)
+		SetChaLifeTime(Monster53, 299050)
+		SetChaLifeTime(Monster54, 299050)
+		SetChaLifeTime(Monster55, 299050)
+		SetChaLifeTime(Monster56, 299050)
+		SetChaLifeTime(Monster57, 299050)
+		SetChaLifeTime(Monster58, 299050)
+		SetChaLifeTime(Monster59, 299050)
+		SetChaLifeTime(Monster60, 299050)
 	end
 	if random_hezi == 4 then 
 		local Monster61 = CreateChaEx(935, 32934, 48220, 145, 60,map_copy)
@@ -401,29 +360,29 @@ function map_copy_run_special_guildwar( map_copy )
 		local Monster78 = CreateChaEx(934, 31895, 20636, 145, 60,map_copy)
 		local Monster79 = CreateChaEx(934, 30197, 20647, 145, 60,map_copy)
 		local Monster80 = CreateChaEx(934, 29223, 20629, 145, 60,map_copy)
-			SetChaLifeTime(Monster61,298050)
-			SetChaLifeTime(Monster62,298100)
-			SetChaLifeTime(Monster63,298150)
-			SetChaLifeTime(Monster64,298200)
-			SetChaLifeTime(Monster65,298250)
-			SetChaLifeTime(Monster66,298300)
-			SetChaLifeTime(Monster67,298350)
-			SetChaLifeTime(Monster68,298400)
-			SetChaLifeTime(Monster69,298450)
-			SetChaLifeTime(Monster70,298500)
-			SetChaLifeTime(Monster71,298550)
-			SetChaLifeTime(Monster72,298600)
-			SetChaLifeTime(Monster73,298650)
-			SetChaLifeTime(Monster74,298700)
-			SetChaLifeTime(Monster75,298750)
-			SetChaLifeTime(Monster76,298800)
-			SetChaLifeTime(Monster77,298850)
-			SetChaLifeTime(Monster78,298900)
-			SetChaLifeTime(Monster79,298950)
-			SetChaLifeTime(Monster80,299000)
+		SetChaLifeTime(Monster61,298050)
+		SetChaLifeTime(Monster62,298100)
+		SetChaLifeTime(Monster63,298150)
+		SetChaLifeTime(Monster64,298200)
+		SetChaLifeTime(Monster65,298250)
+		SetChaLifeTime(Monster66,298300)
+		SetChaLifeTime(Monster67,298350)
+		SetChaLifeTime(Monster68,298400)
+		SetChaLifeTime(Monster69,298450)
+		SetChaLifeTime(Monster70,298500)
+		SetChaLifeTime(Monster71,298550)
+		SetChaLifeTime(Monster72,298600)
+		SetChaLifeTime(Monster73,298650)
+		SetChaLifeTime(Monster74,298700)
+		SetChaLifeTime(Monster75,298750)
+		SetChaLifeTime(Monster76,298800)
+		SetChaLifeTime(Monster77,298850)
+		SetChaLifeTime(Monster78,298900)
+		SetChaLifeTime(Monster79,298950)
+		SetChaLifeTime(Monster80,299000)
 	end
 	if random_hezi == 5 then 
-		local Monster81 = CreateChaEx(935, 23820, 13953, 201, 60,map_copy)
+	        local Monster81 = CreateChaEx(935, 23820, 13953, 201, 60,map_copy)
 		local Monster82 = CreateChaEx(935, 21199, 13676, 201, 60,map_copy)
 		local Monster83 = CreateChaEx(935, 21773, 26290, 201, 60,map_copy)
 		local Monster84 = CreateChaEx(935, 40766, 10069, 201, 60,map_copy)
@@ -485,7 +444,7 @@ function map_copy_run_special_guildwar( map_copy )
 			SetChaLifeTime(Monster110,298500)
 	end
 	if random_hezi == 6 then 
-		local Monster111 = CreateChaEx(935, 10912, 29307, 44, 60,map_copy)
+	    local Monster111 = CreateChaEx(935, 10912, 29307, 44, 60,map_copy)
 		local Monster112 = CreateChaEx(935, 7947, 34591, 44, 60,map_copy)
 		local Monster113 = CreateChaEx(935, 9241, 33020, 49, 60,map_copy)
 		local Monster114 = CreateChaEx(935, 11626, 36543, 49, 60,map_copy)
@@ -565,159 +524,151 @@ function map_copy_run_special_guildwar( map_copy )
 			SetChaLifeTime(Monster148,297900)
 			SetChaLifeTime(Monster149,297950)
 			SetChaLifeTime(Monster150,298000)
-	end
-	if random_hezi >= 7 then 
-		return
-	end
+	     end
+	  if random_hezi >= 7 then 
+	     return
+	  end
 end
 
 function map_run_guildwar( map )
-	if five_seconds == 1 then
-		second_five_seconds = second_five_seconds + 1
-	end
-
-	if second_five_seconds == 60 then
-		Notice("Священная война будет окончена через 10 минут")
-	end
-	if second_five_seconds == 120 then
-		Notice("Священная война будет окончена через 5 минут")
-	end
-	if second_five_seconds == 144 then
-		Notice("Священная война будет окончена через 3 минуты")
-	end
-	if second_five_seconds == 168 then
-		Notice("Священная война будет окончена через 1 минуту")
-	end
-
-	if second_five_seconds == 180 then
-		CloseMapCopy( "guildwar" )
-	end
+   if five_seconds == 1 then
+     second_five_seconds = second_five_seconds + 1
+   end
+   if second_five_seconds == 60 then
+		Notice("Священная война будет окончена через 10 минут ")
+   end
+   if second_five_seconds == 120 then
+		Notice("Священная война будет окончена через 5 минут ")
+   end
+   if second_five_seconds == 144 then
+		Notice("Священная война будет окончена через 3 минуты ")
+   end
+   if second_five_seconds == 168 then
+		Notice("Священная война будет окончена через 1 минуту ")
+   end
+   if second_five_seconds == 180
+   then
+   CloseMapCopy ( "guildwar" )
+   end
 end
 
 function map_copy_before_close_guildwar( map_copy )
 	local player_num = GetMapPlayer(map_copy)
-		DealAllPlayerInMap(map_copy,"All_Goto")
-		player_num = GetMapPlayer(map_copy)
-
+	DealAllPlayerInMap(map_copy,"All_Goto")
+	player_num = GetMapPlayer(map_copy)
 	local pn = player_num * 10
-		for i=1, pn, 1 do
-			if player_num > 0 then
-				DealAllPlayerInMap(map_copy,"All_Goto")
-			end
+	for i=1, pn, 1 do
+		if player_num > 0 then
+			DealAllPlayerInMap(map_copy,"All_Goto")
 		end
+	end
 end
 
 function map_copy_close_guildwar ( map_copy )
-	count_haijun = 0
-	count_haidao = 0
-	five_seconds = 0
-	second_five_seconds = 0
-	time_can_setmonster = 0
-	time_can_setnvsheng = 0
-	check_need_show = 0
-	create_boss_hj = 0
-	create_boss_hd = 0
-	GUILDWARCLOSETIME = 10800
-
-	haijunSide_JDNotice = 0
-	haijunSide_LCNotice = 0
-	haijunSide_DYKNotice =0
-	haidaoSide_JDNotice = 0
-	haidaoSide_LCNotice = 0
-	haidaoSide_DYKNotice= 0
-
-	KillMonsterInMapByName(map_copy,"Пират-хранитель")
-	KillMonsterInMapByName(map_copy,"Стражник Флота")
-	ClearAllSubMapCha(map_copy)
-
+count_haijun = 0
+count_haidao = 0
+five_seconds = 0
+second_five_seconds = 0
+time_can_setmonster = 0
+time_can_setnvsheng = 0
+check_need_show = 0
+create_boss_hj = 0
+create_boss_hd = 0
+GUILDWARCLOSETIME = 10800
+haijunSide_JDNotice = 0
+haijunSide_LCNotice = 0
+haijunSide_DYKNotice =0
+haidaoSide_JDNotice = 0
+haidaoSide_LCNotice = 0
+haidaoSide_DYKNotice= 0
+KillMonsterInMapByName(map_copy,"Пират-хранитель ")
+KillMonsterInMapByName(map_copy,"Стражник Флота ")
+ClearAllSubMapCha(map_copy)
 end
 
 function can_open_entry_guildwar( map ) 
-	return 1
-end
+	return 1 
+end 
 
 function HJ_Goto(role)
-	local typRoleType = ChaIsBoat(role)
-	if typRoleType == 1 then
+local typRoleType = ChaIsBoat(role)			
+	if  typRoleType == 1 then 						 
 		if GetChaGuildID(role) <= 100 and GetChaGuildID(role) > 0 then
-			MoveTo( role,  839, 3693,  "magicsea" )  
+			MoveTo( role,  839, 3693,  "magicsea" )
 		else
-			return
+		    return
 		end
-	else
-		local character = TurnToCha(role)
+		    
+	else															
+		local character = TurnToCha(role)	
 		if GetChaGuildID(character) <= 100 and GetChaGuildID(character) > 0 then
-			MoveTo( character,  910, 3571,  "magicsea" )
-		else
-			return
+			  MoveTo( character,  910, 3571,  "magicsea" )
+	        else
+		      return
 		end
 	end
 end
 
 function HD_Goto(role)
-	local typRoleType = ChaIsBoat(role)
-	if typRoleType == 1 then
+ local typRoleType = ChaIsBoat(role)			
+	if  typRoleType == 1 then 						 
 		if GetChaGuildID(role) > 100 and GetChaGuildID(role) <= 200 then
-				MoveTo( role,  1188, 674,  "darkblue" )
+			   MoveTo( role,  1188, 674,  "darkblue" )
 		else
-			return
+		    return
 		end
-	else
-		local character = TurnToCha(role)
-		if GetChaGuildID(character) > 100 and GetChaGuildID(character) <= 200 then
-				MoveTo( character,  1271, 527,  "darkblue" )
-		else
-			return
-		end
-	end
+	else												
+		 local character = TurnToCha(role)	
+		 if GetChaGuildID(character) > 100 and GetChaGuildID(character) <= 200 then
+			   MoveTo( character,  1271, 527,  "darkblue" )
+		 else
+		      return
+		 end
+	 end
 end
 
 function noside_Goto(role)
-	local typRoleType = ChaIsBoat(role)
-		if  typRoleType == 1 then
-			if GetChaGuildID(role) == 0 then
-					MoveTo( role,  2259, 2828,  "garner" )
-			else
-				return
-			end
-		else
-			local character = TurnToCha(role)
+local typRoleType = ChaIsBoat(role)			
+		if  typRoleType == 1 then 						 
+		    if GetChaGuildID(role) == 0 then
+                       MoveTo( role,  2259, 2828,  "garner" )
+		    else
+		       return
+		    end
+		else															
+		      local character = TurnToCha(role)	
 			if GetChaGuildID(character) == 0 then
-				MoveTo( character,  2222, 2777,  "garner" )
+			  MoveTo( character,  2222, 2777,  "garner" )
 			else
-				return
-			end
-		end
+			  return
+			end 
+	        end
 end
 
 function All_Goto(role)
-	local typRoleType = ChaIsBoat(role)
-		if typRoleType == 1 then
-			if GetChaGuildID(role) > 100 and GetChaGuildID(role) <= 200 then
-				MoveTo( role,  1188, 674,  "darkblue" )
-			else
-				MoveTo( role,  839, 3693,  "magicsea" )
-			end
-		else
-			local character = TurnToCha(role)
-			if GetChaGuildID(character) > 100 and GetChaGuildID(character) <= 200 then
-				MoveTo( character,  1271, 527,  "darkblue" )
-			else
-				MoveTo( character,  910, 3571,  "magicsea" )
-			end
-		end
+      local typRoleType = ChaIsBoat(role)			
+		if  typRoleType == 1 then 						 
+		    if GetChaGuildID(role) > 100 and GetChaGuildID(role) <= 200 then
+                       MoveTo( role,  1188, 674,  "darkblue" )
+		    else
+		       MoveTo( role,  839, 3693,  "magicsea" )
+		    end
+		else															
+		    local character = TurnToCha(role)	
+		    if GetChaGuildID(character) > 100 and GetChaGuildID(character) <= 200 then
+			MoveTo( character,  1271, 527,  "darkblue" )
+		    else
+			MoveTo( character,  910, 3571,  "magicsea" )
+		    end   
+	        end
+		
 end
 
 function Give_Three_QiYue( role )
-	local Item_CanGet = GetChaFreeBagGridNum ( role )
-		if Item_CanGet <= 0 then
-			GiveItemX ( role , 0 , 2383  , 25 , 4 )
-		else
-			GiveItem ( role , 0 , 2383  , 25 , 4 )
-		end
+   local Item_CanGet = GetChaFreeBagGridNum ( role )
+	   if Item_CanGet <= 0 then
+		   GiveItemX ( role , 0 , 2383  , 3 , 4 )
+	   else
+		   GiveItem ( role , 0 , 2383  , 3 , 4 )
+	   end
 end
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------Mordo-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------2012 - 2013-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

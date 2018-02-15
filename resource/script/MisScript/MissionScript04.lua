@@ -1,9 +1,4 @@
-------------------------------------------------------------
---MissionScript04.lua Created by Robin 2005.05.27.
---
---ЦчПЯИООс
-------------------------------------------------------------
-print( "loading MissionScript04.lua" )
+print( "‡ Јаг§Є  MissionScript04.lua" )
 
 jp= JumpPage
 amp=AutoMissionPage
@@ -12,42 +7,27 @@ am=AddMission
 MissionCheck = HasFlag
 mc=MissionCheck
 
-
-
-
-
-
-----------------------------------------------------------
---							--
---							--
---		ЦчПЯИООс	 				--
---							--
---							--
-----------------------------------------------------------
-	-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ЦчПЯИООсїЄКј
 function CenterMission001()
 
-----------------------------Т°КЮіцГ»µДЙ­БЦ
-	DefineMission( 400, "Блуждающие существа", 400 )
+	DefineMission( 400, "Блуждающие Существа ", 400 )
 	
-	MisBeginTalk( "<t>Густой лес - это опасное место, где рыскают свирепые медведи.<n><t>Тем не менее, мой племянник, <bBerry>, живет в <pЗаброшенных Шахтах>, которые находятся на краю леса. Смелый странник, не мог бы ты навестить его от моего имени и убедиться в том, что с ним все в порядке?" )
+	MisBeginTalk( "<t>Большой лес - это опасное место, будьте осторожны с местными жителями.<n><t>Хотя, мой племянник, <bБерри>, живет рядом с <pШахтами> расположенный на краю леса. Не могли ли бы Вы навестить его и посмотреть как живёт мой любимый племянник?" )
 	MisBeginCondition( LvCheck, ">", 9 )
 	MisBeginCondition(NoRecord, 400)
 	MisBeginCondition(NoMission, 400)
 	MisBeginAction(AddMission, 400)
 	MisCancelAction(ClearMission, 400)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Берри в (1893, 2812)")
+	MisNeed(MIS_NEED_DESP, " Поговорите с <bБерри> в (1893, 2812)")
 	
-	MisHelpTalk("Берри всегда играет в окрестности Заброшенных Шахт. Надеюсь, что у него все хорошо.")
+	MisHelpTalk(" Берри всегда играет около Шахт, я надеюсь у него всё хорошо.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------Т°КЮіцГ»µДЙ­БЦ
-	DefineMission( 401, "Блуждающие существа", 400, COMPLETE_SHOW )
+	DefineMission( 401, "Блуждающие Существа ", 400, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Со мной все в порядке. Медвежата не такие уж и опасные, как думает мой дядя. На самом деле, я люблю с ними играть.")
+	MisResultTalk("<t>Привет! Медвежата не такие и опасные, как думает мой дядя. Они безобидные и мне нравится с ними играть.")
 	MisResultCondition(NoRecord, 400)
 	MisResultCondition(HasMission, 400)
 	MisResultAction(ClearMission, 400 )
@@ -57,27 +37,25 @@ function CenterMission001()
 
 
 
-----------------------------іЩµЅµДЙіД®ЙМВГ
-	DefineMission( 402, "Позднее прибытие", 401 )
+	DefineMission( 402, "Последнее Прибытие ", 401 )
 	
-	MisBeginTalk( "<t>Ку! Ты как раз вовремя! Между мной и купцами из пустыни сложились довольно близкие отношения. Каждый год они приезжают сюда для торговли. Тем не менее, в этом году они очень сильно задерживаются, и от них нет никаких вестей.<n><t>Не мог бы ты отыскать <bМаркуса> в <pОазисе> и разузнать, что же их задержало?" )
+	MisBeginTalk( "<t>Привет! Вы приехали во время! Я как раз должен с минуты на минуту встретиться с Шайтанскими торговцами. Они приезжают к нам сюда каждый год что бы обменяться товаром. Но их давно нет. <n> <t> Не могли б вы найти <bМаркуса> в <pОазисе> и узнавать что их так задержало?" )
 	MisBeginCondition( LvCheck, ">", 9 )
 	MisBeginCondition(NoRecord, 401)
 	MisBeginCondition(NoMission, 401)
 	MisBeginAction(AddMission, 401)
 	MisCancelAction(ClearMission, 401)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Маркусом (789, 3112)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с <bМаркусом> в <pОазисе> (789, 3112)")
 	
-	MisHelpTalk("Эй! Почему ты до сих пор здесь? Тебе удалось разыскать Маркуса?")
+	MisHelpTalk( " Эй! Вы ещё тут? Вы нашли Маркуса?")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------іЩµЅµДЙіД®ЙМВГ
-	DefineMission( 403, "Позднее прибытие", 401, COMPLETE_SHOW )
+	DefineMission( 403, "Последнее Прибытие ", 401, COMPLETE_SHOW )--Последнее Прибытие
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>О, мы не можем путешествовать из-за участившихся песчаных бурь, поэтому мы должны отложить встречу. Не переживай, мы обязательно заглянем в Аргент. Нам это выгодно!")
+	MisResultTalk( "<t>О, нам мешают эти песчаные бури, они тут зачастили, и по этому мы вынуждены отложить поездку по другим городам. Не волнуйтесь, как только буря утихнет, мы обязательно отправимся в Аргент, и мы не упустим возможность заработать деньги, а торговать в Аргенте это хороший бизнес!")
 	MisResultCondition(NoRecord, 401)
 	MisResultCondition(HasMission, 401)
 	MisResultAction(ClearMission, 401 )
@@ -87,27 +65,25 @@ function CenterMission001()
 
 
 
-----------------------------±щФ­МЅПХ
-	DefineMission( 404, "Исследование тундры", 402 )
+	DefineMission( 404, "Исследование Тундры ", 402 )--Исследование Тундры
 	
-	MisBeginTalk( "<t>Здраствуй дружок, ты быстро растешь. Эти животные тебе больше не ровня.<n><t>Я слышал, что в <pПустошах Ледыни> собираются нанять новых искателей приключений. Почему бы тебе не попробовать? Я напишу рекомендательное письмо для <bНаны>." )
+	MisBeginTalk( "<t>Привет мой друг, Вы развиваетесь быстро. Эти маленькие животные больше Вам не соперники.<n><t>Я слышал что в <pЛедянном Шипе> нанимают отважных героев и щедро им платят за работу. Почему бы и вам не попробовать у них подзаработать? Я напишу Вам рекомендательное письмо <bНане>." )
 	MisBeginCondition( LvCheck, ">", 9 )
 	MisBeginCondition(NoRecord, 402)
 	MisBeginCondition(NoMission, 402)
 	MisBeginAction(AddMission, 402)
 	MisCancelAction(ClearMission, 402)
 		
-	MisNeed(MIS_NEED_DESP, "Найдите Нану (798, 369) для дальнейших заданий")
+	MisNeed(MIS_NEED_DESP, " Ищите Бабушку в (798, 369).")
 	
-	MisHelpTalk("Пожалуйста, найди Нану как можно быстрее. Она тебя ждет.")
+	MisHelpTalk( " Пожалуйста ищите Бабушку как можно скорее. Она, больна, и заставлять старых людей ждать не хорошо.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------±щФ­МЅПХ
-	DefineMission( 405, "Исследование тундры", 402, COMPLETE_SHOW )
+	DefineMission( 405, "Исследование Тундры ", 402, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Я верю в твои способности поскольку <bПитер> порекомендовал тебя.<n><t>Тебе бы стоило его отблагодарить.")
+	MisResultTalk( "<t>Я не сомневаюсь в Ваших способностях так как Вас послал сам <bПиттер> ко мне.<n><t>Вы должены быть благодарны ему за его рекомендацию.")
 	MisResultCondition(NoRecord, 402)
 	MisResultCondition(HasMission, 402)
 	MisResultAction(ClearMission, 402 )
@@ -116,27 +92,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 300, 300)
 
 
-----------------------------ПтЧЕЙіД®
-	DefineMission( 406, "В пустыню!", 403 )
+	DefineMission( 406, "в Пустыню!", 403 )---в Пустыню
 	
-	MisBeginTalk( "<t>Боже мой! Никогда не видел кого-то, кто бы развивался также быстро , как и ты.<n><t>К сожалению, местные монстры на окраине Ледыни больше не помеха тебе. Если интересно, я могу порекомендовать тебе <bКавойски> из <pОазиса>, ему нужна помощь." )
+	MisBeginTalk( "<t>Привет! Я не встречал ещё героев таких как Вы.<n><t>Монстры в округе Ледыни для Вас уже не соперники. Если Вам интересно, я могу рекомендовать Вас <bКавайскому> в <pОазисе>, ему как раз нужны храбрые герои." )
 	MisBeginCondition( LvCheck, ">", 9 )
 	MisBeginCondition(NoRecord, 403)
 	MisBeginCondition(NoMission, 403)
 	MisBeginAction(AddMission, 403)
 	MisCancelAction(ClearMission, 403)
 		
-	MisNeed(MIS_NEED_DESP, "Найдите Кавойски (779, 3098)")
+	MisNeed(MIS_NEED_DESP, " Отправляйтесь к <bКовайскому> в Оазис (779, 3098)")
 	
-	MisHelpTalk("Кавойски очень добр. Не стоит стесняться его.")
+	MisHelpTalk(" Не бойтесь Ковайского, он дружелюбный.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ПтЧЕЙіД®
-	DefineMission( 407, "В пустыню!", 403, COMPLETE_SHOW )
+	DefineMission( 407, "в Пустыню!", 403, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Мне нужна твоя помощь. Пожалуйста, будь неподалеку и помоги мне. Спасибо!")
+	MisResultTalk("<t> Я не откажусь от Вашей помощи. Я Вам дам задание, это задание для настоящих героев!")
 	MisResultCondition(NoRecord, 403)
 	MisResultCondition(HasMission, 403)
 	MisResultAction(ClearMission, 403 )
@@ -145,27 +119,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 300, 300)
 
 
-----------------------------АґЧФ°ЧТшµДСыЗл
-	DefineMission( 408, "Приглашение в Аргент", 404 )
+	DefineMission( 408, "Приглашение в Аскарон ", 404 )
 	
-	MisBeginTalk( "<t>Послушай, друг мой. Ледынь- очень холодный город, с непривычки можно даже заболеть.<n><t>Люди из <pЗаброшенных шахт> совсем недавно просили у меня помощи.<n><t>Если не против, не мог бы ты отправиться туда и разыскать <bКентаро>? " )
+	MisBeginTalk( "<t>Послушайте меня. Ледынь очень холодный город, Вы запросто заболеете. <n> <t> Люди из <pШахт> просили помощи у меня. <n> <t>, Если Вы не против, можете отравиться в солнечный Аргент на поиски <bКентаро>." )
 	MisBeginCondition( LvCheck, ">", 9 )
 	MisBeginCondition(NoRecord, 404)
 	MisBeginCondition(NoMission, 404)
 	MisBeginAction(AddMission, 404)
 	MisCancelAction(ClearMission, 404)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Кентаро (1894, 2798)")
+	MisNeed(MIS_NEED_DESP, " Поговорите с <bКетаро> (1894, 2798)")
 	
-	MisHelpTalk("Ты еще здесь? Кентаро срочно нужна твоя помощь!")
+	MisHelpTalk(" Отправляйтесь в Аргент в шахты и поговорите с Кентаро!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------АґЧФ°ЧТшµДСыЗл
-	DefineMission( 409, "Приглашение в Аргент", 404, COMPLETE_SHOW )
+	DefineMission( 409, "Приглашение в Аскарон ", 404, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Я верю в твои силы, поскольку <bПитер> ручался за тебя.<n><t>Тебе стоило бы его поблагодарить за рекомендации.")
+	MisResultTalk( "<t>Я верю в Вас, с тех пор как Вас направил ко мне <bПитерр>.")
 	MisResultCondition(NoRecord, 404)
 	MisResultCondition(HasMission, 404)
 	MisResultAction(ClearMission, 404 )
@@ -174,27 +146,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 300, 300)
 
 
-----------------------------Й§¶ЇµД±щФ­
-	DefineMission( 410, "Движение тундры", 405 )
+	DefineMission( 410, "Отзвуки Гром-Града ", 405 )
 	
-	MisBeginTalk( "<t>Эй! Ты как раз вовремя.<n><t><bДжернис> в беде в <pПустошах Ледыни> и ему нужна помощь.<n><t>Поскольку здесь почти нечего делать, почему бы тебе туда не сгонять?" )
+	MisBeginTalk( "<t>Эй! Вы во время.<n><t><bДжернис> в беде в <pЛедяном шипе> ей необходима ваша помощь.<n><t> Отправляйтесь скорее и помогите ей." )
 	MisBeginCondition( LvCheck, ">", 9 )
 	MisBeginCondition(NoRecord, 405)
 	MisBeginCondition(NoMission, 405)
 	MisBeginAction(AddMission, 405)
 	MisCancelAction(ClearMission, 405)
 		
-	MisNeed(MIS_NEED_DESP, "Найдите Джернис (803, 352)")
+	MisNeed(MIS_NEED_DESP, " Отыщите Джернис в (803,352)")
 	
-	MisHelpTalk("Почему ты до сих пор здесь тусуешься? Отыщи Джернис.")
+	MisHelpTalk(" Пока Вы тут занимаетесь ерундой, Джернис может погибнуть.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------Й§¶ЇµД±щФ­
-	DefineMission( 411, "Движение тундры", 405, COMPLETE_SHOW )
+	DefineMission( 411, "Отзвуки Гром-Града ", 405, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Поскольку тебя порекомендовал Одессий, я верю, что ты справишься.<n><t>Можешь послоняться поблизости, а я тем временем приму необходимые меры.")
+	MisResultTalk( "<t>Я в Вас верю так как Вас рекомендовал <bОдессис>.<n><t>Не уходите далеко, похоже у меня есть для Вас задание.")
 	MisResultCondition(NoRecord, 405)
 	MisResultCondition(HasMission, 405 )
 	MisResultAction(ClearMission, 405 )
@@ -203,27 +173,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 300, 300)
 
 
-----------------------------КЬЧиµДОпЧК
-	DefineMission( 412, "Торговое эмбарго", 406 )
+	DefineMission( 412, "Торговые поставки ", 406 )
 	
-	MisBeginTalk( "<t>Привет, мне нужна помощь. Моей задачей явлется доставка ресурсов в <pОазис>. Как бы то ни было, на путешественников в последнее время стали нападать волки. Ты не мог бы доставить письмо <bМаркусу> в Оазис и ,возможно, он придумает как мне добраться до него в целости и сохранности?" )
+	MisBeginTalk( "<t>Привет, мне нужна Ваша помощь. Я отвечаю за поставку товара в <pОазис>. Однако здешние волки совсем страх потеряли и нападают на всех среди белого дня. Не моли ли бы Вы попросить <bМаркуса> в Оазисе, что бы он мне рассказал о другом пути?" )
 	MisBeginCondition( LvCheck, ">", 9 )
 	MisBeginCondition(NoRecord, 406)
 	MisBeginCondition(NoMission, 406)
 	MisBeginAction(AddMission, 406)
 	MisCancelAction(ClearMission, 406)
 		
-	MisNeed(MIS_NEED_DESP, "Найдите Маркуса (789, 3112)")
+	MisNeed(MIS_NEED_DESP, " Найти <pМаркуса> (789, 3112)")
 	
-	MisHelpTalk("Не мог бы ты поспешить? Эти ресурсы очень важны в Оазисе.")
+	MisHelpTalk(" Вы ещё тут? Отправляйтесь на поиски Маркуса в Оазис.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------КЬЧиµДОпЧК
-	DefineMission( 413, "Торговое эмбарго", 406, COMPLETE_SHOW )
+	DefineMission( 413, "Торговые поставки ", 406, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Спасибо большое! Без этих ресурсов мы бы не прожили даже до следующего месяца.")
+	MisResultTalk( "<t>Большое спасибо! Без этих поставок, мы не дожили бы до следующей недели.")
 	MisResultCondition(NoRecord, 406)
 	MisResultCondition(HasMission, 406 )
 	MisResultAction(ClearMission, 406 )
@@ -232,27 +200,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 300, 300)
 
 
-----------------------------УВХЯХРДј
-	DefineMission( 414, "Вербовка воителей", 407 )
+	DefineMission( 414, "Рекрут воина ", 407 )
 	
-	MisBeginTalk( "<t>Послушай меня, дружок. Шайтан - очень пыльный и опасный для жизни город.<n><t><pЗаброшенные шахты> просили о помощи совсем недавно.<n><t>Ты не мог бы отправиться туда и найти <bКентаро>?" )
+	MisBeginTalk( "<t>Послушайте друг. Шайтан - пыльный город, и не стоит в нём долго находиться, пыль вредна для здаровья. <n> <t> <pШахтёры> просили помочь меня. <n> <t>, Отправляйтесь в солнечный Аргент и помогите  <bКентаро>." )
 	MisBeginCondition( LvCheck, ">", 9 )
 	MisBeginCondition(NoRecord, 407)
 	MisBeginCondition(NoMission, 407)
 	MisBeginAction(AddMission, 407)
 	MisCancelAction(ClearMission, 407)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Кентаро (1894, 2798)")
+	MisNeed(MIS_NEED_DESP, " Отыщите Кентаро у Шахт (1894, 2798)")
 	
-	MisHelpTalk("Как? Ты еще здесь? Кентаро нужна твоя помощь!")
+	MisHelpTalk( " Вы не нашли Кентаро? Отправляйтесь в Шахты и найдите его!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------УВХЯХРДј
-	DefineMission( 415, "Вербовка воителей", 407, COMPLETE_SHOW )
+	DefineMission( 415, "Рекрут воина ", 407, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>О, так <bРеслина> попросила тебя придти. Вообще-то, я не очень то ей доверяю.<n><t>Ну раз уж ты здесь...Ну, да ладно...")
+	MisResultTalk( "<t>О! Вы от <bРезлины>. В последнее время он ведёт себя очеь странно.<n><t>Но так как Вы - здесь... хорошо...")
 	MisResultCondition(NoRecord, 407)
 	MisResultCondition(HasMission, 407 )
 	MisResultAction(ClearMission, 407 )
@@ -261,27 +227,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 300, 300)
 
 
-----------------------------±щіЗµДЕ®ЙсРЕНЅ
-	DefineMission( 416, "Последователи Аши", 408 )
+	DefineMission( 416, "Последователи Аши ", 408 )
 	
-	MisBeginTalk( "<t>Ты как раз вовремя!<n><t>Мой хороший друг, <bБабушка Донг>, переехала в <pПустоши Ледыни> 10 лет назад, чтобы распространить свои знания о медицине. Но холод негативно сказывается на ее здоровье.<n><t>Мне нужен отважный доброволец, который передал бы ей мое благословение." )
+	MisBeginTalk( "<t>Выкак раз вовремя!<n><t>Мой хороший друг, <bГрени Донг>, переехал  в <pЛедяной Шип> 10 лет назад. Однако, суровые морозы его не щадят.<n><t>Отправляйтесь к нему и передайте моё благословление." )
 	MisBeginCondition( LvCheck, ">", 9 )
 	MisBeginCondition(NoRecord, 408)
 	MisBeginCondition(NoMission, 408)
 	MisBeginAction(AddMission, 408)
 	MisCancelAction(ClearMission, 408)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Бабушкой Донг (795, 363)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Грени Донг в (795,363)")
 	
-	MisHelpTalk("Я боюсь, как бы Бабушка Донг не откинула коньки.<n><t>Поторопись!")
+	MisHelpTalk(" Ну что же Вы? Отправляйтесь в Ледынь к Грени Донг!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------±щіЗµДЕ®ЙсРЕНЅ
-	DefineMission( 417, "Последователи Аши", 408, COMPLETE_SHOW )
+	DefineMission( 417, "Последователи Аши ", 408, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Спасибо, что передал благословение Святого Отца. Мне уже лучше!")
+	MisResultTalk( "<t>Спасибо Вам большое, это благословление дало мне сил!")
 	MisResultCondition(NoRecord, 408)
 	MisResultCondition(HasMission, 408 )
 	MisResultAction(ClearMission, 408 )
@@ -290,27 +254,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 300, 300)
 
 
-----------------------------ГЬБЦМЅПХ
-	DefineMission( 418, "Исследование джунглей", 409 )
+	DefineMission( 418, "Исследования Джунглей ", 409 )
 	
-	MisBeginTalk( "<t>Привет, вижу твою страсть к исследованиям.<n><t>Но это место не совсем для тебя. Поищи <pДуриана> в <pСкалистом уделе>. У него есть задание для тебя." )
+	MisBeginTalk( "<t>Привет, я вижу Вы не равнодушны к путишествиям.<n><t>Но тут не место для путешественников. Отыщите <pДариана> в <pРоще Акаций>. У неё есть для Вас пару заданий." )
 	MisBeginCondition( LvCheck, ">", 19 )
 	MisBeginCondition(NoRecord, 409)
 	MisBeginCondition(NoMission, 409)
 	MisBeginAction(AddMission, 409)
 	MisCancelAction(ClearMission, 409)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Дурианом (1535, 3071)")
+	MisNeed(MIS_NEED_DESP, " Поговорите с <pДарианой> в(1535,3071)")
 	
-	MisHelpTalk("Ты так и не сдвинулся с места?<n><t>Быстрее, время никого не ждет!")
+	MisHelpTalk(" Отправляйтесь в Рощу Акаций!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ГЬБЦМЅПХ
-	DefineMission( 419, "Исследование джунглей", 409, COMPLETE_SHOW )
+	DefineMission( 419, "Исследования Джунглей", 409, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Хоть <bВенона> и порекомендовала тебя, если ты мне не подойдешь, я не доверю тебе ни одного задания.")
+	MisResultTalk( "<t>Вас порекомендовала <bВеннона>, думаю я смогу найти для Вас работу.")
 	MisResultCondition(NoRecord, 409)
 	MisResultCondition(HasMission, 409 )
 	MisResultAction(ClearMission, 409 )
@@ -320,27 +282,25 @@ function CenterMission001()
 
 
 
-----------------------------іцРР¶«·Ѕ
 	DefineMission( 420, "Путешествие на Восток", 410 )
 	
-	MisBeginTalk( "<t>О, я тебя знаю.<n><t>Твоя репутация распространилась далеко по пустыне. Эта гавань слишком мала для такого человека, как ты.<n><t>Может ты отправишься в <pРощу Акаций> и там найдешь применение своим способностям? <bСолару> сейчас нужен кто-то с твоими умениями." )
+	MisBeginTalk( "<t>Эй, я Вас знаю.<n><t>О Вас уже ходят легенды. Эта деревенка маловата для человека Вашего уровня.<n><t>Ищите <bСолари> он сможет Вам найти задание." )
 	MisBeginCondition( LvCheck, ">", 19 )
 	MisBeginCondition(NoRecord, 410)
 	MisBeginCondition(NoMission, 410)
 	MisBeginAction(AddMission, 410)
 	MisCancelAction(ClearMission, 410)
 		
-	MisNeed(MIS_NEED_DESP, "Найдите Солару (1202, 3179)")
+	MisNeed(MIS_NEED_DESP, " Ищите <bСолари> в (1202, 3179)")
 	
-	MisHelpTalk("Не задерживайся тут надолго. Беги в Рощу Акаций!")
+	MisHelpTalk(" Так дело не пойдёт! Отправляйтесь на поиски!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------іцРР¶«·Ѕ
 	DefineMission( 421, "Путешествие на Восток", 410, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Ого, я много о тебе слышал. У <bМаркуса> прямо таки чутье на таланты.<n><t>Пожалуйста, останься здесь и я тебя проинформирую о заданиях, которые нужно выполнить.")
+	MisResultTalk( "<t>Ох, Я слышал о Вас. <bМаркус> Мог бы служить в разведке.<n><t>Не уходите далеко, возможно у меня будет для Вас пручение.")
 	MisResultCondition(NoRecord, 410)
 	MisResultCondition(HasMission, 410 )
 	MisResultAction(ClearMission, 410 )
@@ -349,27 +309,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 550, 550)
 
 
-----------------------------С°ХТ±ЈпЪ
-	DefineMission( 422, "В поисках телохранителя", 411 )
+	DefineMission( 422, "В поисках телохранителя ", 411 )
 	
-	MisBeginTalk( "<t>Ку, ты выглядишь уныло. Это потому что ты не можешь найти достойного противника тут? Если так, то позволь мне познакомить тебя с торговцем <bАлкаром> в <pБухте Атлантис>.<n><t>Его торговый путь простирается через опасный лес, и эта задача будет интересна таким, как ты!" )
+	MisBeginTalk( "<t>Привет! Вы выглядите раздражительным, может Вы не можете найти для себя противника по силе? Позвольте познакомить Вас с  <bЮлкаром> в <pАтлантисе>.<n><t>У него есть хорошая работа для Вас, не упустите этот шанс!" )
 	MisBeginCondition( LvCheck, ">", 19 )
 	MisBeginCondition(NoRecord, 411)
 	MisBeginCondition(NoMission, 411)
 	MisBeginAction(AddMission, 411)
 	MisCancelAction(ClearMission, 411)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Алкаром (1059, 661)")
+	MisNeed(MIS_NEED_DESP, " Поговорите с Улкаром (1059, 661)")
 	
-	MisHelpTalk("Почему тебе не отправиться на розыски Алкара в Бухту Атлантис?")
+	MisHelpTalk( " Отправляйтесь в Антлантис, Юлкар не будет долго ждать!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------С°ХТ±ЈпЪ
-	DefineMission( 423, "В поисках телохранителя", 411, COMPLETE_SHOW )
+	DefineMission( 423, "В поисках телохранителя ", 411, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Поскольку ты от <bФей Фей>, Я приму все возможные меры, чтобы мы отправились в путь.")
+	MisResultTalk( "<t>Так как Вас рекомендовал <bХей Хей>, то я дам Вам поручение.")
 	MisResultCondition(NoRecord, 411)
 	MisResultCondition(HasMission, 411 )
 	MisResultAction(ClearMission, 411 )
@@ -378,27 +336,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 550, 550)
 
 
-----------------------------Й­БЦМЅПХ
-	DefineMission( 424, "Исследование леса", 412 )
+	DefineMission( 424, "Лесные исследования ", 412 )
 	
-	MisBeginTalk( "<t>Мне кажется, что ты любишь риск.<n><t>Жаль, что тут нет ничего интересного.<n><t>Я могу порекомендовать местечко под названием <pСкалистый Удел>. У меня там друг <bАлександис>, он точно даст тебе пару интересных поручений." )
+	MisBeginTalk( "<t>Привет! я вижу Вы лубите приключения.<n><t>Но тут Вам его не найти.<n><t>Предлогаю <pРощи Акаций>. Там Вы сможите найти <bАлександра> у него то точно найдётся не лёгкое поручение для Вас." )
 	MisBeginCondition( LvCheck, ">", 19 )
 	MisBeginCondition(NoRecord, 412)
 	MisBeginCondition(NoMission, 412)
 	MisBeginAction(AddMission, 412)
 	MisCancelAction(ClearMission, 412)
 		
-	MisNeed(MIS_NEED_DESP, "Найдите Александиса (1526, 3089)")
+	MisNeed(MIS_NEED_DESP, " Ищите Александра в (1526,3089)")
 	
-	MisHelpTalk("Давай быстрее! Александис ждет тебя в Скалистом Уделе.")
+	MisHelpTalk( " Отправляйтесь к Александру немедленно.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------Й­БЦМЅПХ
-	DefineMission( 425, "Исследование леса", 412, COMPLETE_SHOW )
+	DefineMission( 425, "Лесные исследования ", 412, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t><bКентаро> редко кого-то хвалит.<n><t>Поскольку он тебе доверяет, я найду подходящее задание для тебя.")
+	MisResultTalk( "<t><bКентаро> редко кого может похвалить.<n><t>И если он Вас похвалил, значит Вы это действительно заслужили.")
 	MisResultCondition(NoRecord, 412)
 	MisResultCondition(HasMission, 412 )
 	MisResultAction(ClearMission, 412 )
@@ -407,27 +363,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 550, 550)
 
 
-----------------------------ПХѕіЦШЦШ
-	DefineMission( 426, "Опасные времена", 413 )
+	DefineMission( 426, "Опасные времена ", 413 )
 	
-	MisBeginTalk( "<t>О, а я хотел пойти тебя искать. Мой друг, <bСолар>, пострадал от рук песчанных бандитов несколько дней назад, когда искал сокровища. Сейчас он поправляется в <pРоще Акаций>.<n><t>Дорога туда очень опасна для меня. Не мог бы ты передать ему привет от меня?" )
+	MisBeginTalk( "<t>Привет, у меня есть для Вас просьба, <bСолару>, был тяжело ранен бандитами несколько дней назад, пока искал сокровища. Теперь он в  <pРоще Акаций> проходит курс лечения.<n><t>К сожалению я не могу к нему съездить в гости, не могли бы Вы навестить его от моего имени?" )
 	MisBeginCondition( LvCheck, ">", 19 )
 	MisBeginCondition(NoRecord, 413)
 	MisBeginCondition(NoMission, 413)
 	MisBeginAction(AddMission, 413)
 	MisCancelAction(ClearMission, 413)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Соларом в (1202, 3179)")
+	MisNeed(MIS_NEED_DESP, " Навестить Солара (1202,3179)")
 	
-	MisHelpTalk("Ты встретился с Соларом? Я беспокоюсь!")
+	MisHelpTalk( " Отправляйтесь в Рощу Акаций к моему другу!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ПХѕіЦШЦШ
-	DefineMission( 427, "Опасные времена", 413, COMPLETE_SHOW )
+	DefineMission( 427, "Опасные времена ", 413, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Все хорошо. Просто я уже не могу так быстро двигаться, как раньше. Не переживай, я очень скоро поправлюсь.<n><t>Спасибо за беспокойство!")
+	MisResultTalk( "<t>Привет! Значит обо мне не забыли! Не волнуйтесь за меня, через пару дней я буду опять полон сил.<n><t>Спасибо за заботу!")
 	MisResultCondition(NoRecord, 413)
 	MisResultCondition(HasMission, 413 )
 	MisResultAction(ClearMission, 413 )
@@ -436,27 +390,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 550, 550)
 
 
-----------------------------Ц§Ф®°ўАј±ИЛ№
-	DefineMission( 428, "Подкрепление для Атлантиды", 414 )
+	DefineMission( 428, "Подмога для Атлантис ", 414 )
 	
-	MisBeginTalk( "<t>Привет. Похоже здешние монстры уже не противники тебе. Ты был отличным защитником этой маленькой окраины все это время.<n><t>Один мой друг в <pБухте Атлантис> очень нуждается в твоей помощи. <n><t>Можешь разыскать <bЗурби> и постараться помочь ему?" )
+	MisBeginTalk( "<t>Привет. Вся наша деревня Вам очень благодарна за всё что Вы для нас сделали.<n><t>Однако в <pАтлантисе> Вы могли бы помоч больше местным жителям.<n><t>Найдите <bЦуби>, помогите ему!" )
 	MisBeginCondition( LvCheck, ">", 19 )
 	MisBeginCondition(NoRecord, 414)
 	MisBeginCondition(NoMission, 414)
 	MisBeginAction(AddMission, 414)
 	MisCancelAction(ClearMission, 414)
 		
-	MisNeed(MIS_NEED_DESP, "Найдите Зурби в (1037, 671)")
+	MisNeed(MIS_NEED_DESP, " Искать Цуби (1037, 671)")
 	
-	MisHelpTalk("Бухта Атлантис нуждается в твоей помощи.<n><t>Не стой тут, беги быстрее туда.")
+	MisHelpTalk(" Жители Атлантиса нуждаются в Вас! n><t>Не теряйте зря время.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------Ц§Ф®°ўАј±ИЛ№
-	DefineMission( 429, "Подкрепление для Атлантиды", 414, COMPLETE_SHOW )
+	DefineMission( 429, "Подмога для Атлантис ", 414, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Круто! Нам как раз нужна помощь.<n><t>Пожалуйста, не уходи!")
+	MisResultTalk( "<t>Привет! Как хорошо что Вы приехали.<n><t>Не уходите далеко, у меня есть пару заданий для Вас!")
 	MisResultCondition(NoRecord, 414)
 	MisResultCondition(HasMission, 414 )
 	MisResultAction(ClearMission, 414 )
@@ -465,27 +417,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 550, 550)
 
 
-----------------------------ґуїЄСЫЅз
-	DefineMission( 430, "Пробуждение", 415 )
+	DefineMission( 430, "Пробуждение ", 415 )
 	
-	MisBeginTalk( "<t>Внучок, если ты здесь останешься , то только потеряешь время.<n><t>Почему бы тебе не пойти и изучить мир пока ты еще молод? Мой ученик, <bАлександис>, сейчас проживает в <pСкалистом Уделе>.<n><t>Если ты скажешь, что ты от меня, он с радостью тебя примет." )
+	MisBeginTalk( "<t>Если Вы тут и дальше будите террорезировать местных зверей и жителей то навлекёте на себя беду.<n><t>Почему бы Вам не отправиться в настоящее путишествие, полное риском и опасностью? Мой ученик, <bАлександрис>, в настоящее время живёт в <pРОще Акаций>.<n><t>Отправляйтесь к нему и скажите что Вы от меня, он найдёт для Вас задания." )
 	MisBeginCondition( LvCheck, ">", 19 )
 	MisBeginCondition(NoRecord, 415)
 	MisBeginCondition(NoMission, 415)
 	MisBeginAction(AddMission, 415)
 	MisCancelAction(ClearMission, 415)
 		
-	MisNeed(MIS_NEED_DESP, "Найдите Александиса в (1526, 3089)")
+	MisNeed(MIS_NEED_DESP, " Найти Александриса в роще Акаций (1526,3089)")
 	
-	MisHelpTalk("Александис тебя ждет в Скалистом Уделе. Пожалуйста иди.")
+	MisHelpTalk(" Я ещё раз повторяю, Хватит террорезировать местную округу! отправляйтесь в Рощу Акаций!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ґуїЄСЫЅз
-	DefineMission( 431, "Пробуждение", 415, COMPLETE_SHOW )
+	DefineMission( 431, "Пробуждение ", 415, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Тебя отправил сюда <bСтарик-предсказатель>? Пожалуйста, чувствуй себя как дома.")
+	MisResultTalk( "<t>О! Вас послал ко мне сам Учитель? Чувствуйте себя тут как дома.")
 	MisResultCondition(NoRecord, 415)
 	MisResultCondition(HasMission, 415 )
 	MisResultAction(ClearMission, 415 )
@@ -495,28 +445,26 @@ function CenterMission001()
 
 
 
-----------------------------ЙіД®МЅПХ
-	DefineMission( 432, "Исследование пустыни", 416 )
+	DefineMission( 432, "Исследования пустыни ", 416 )
 	
-	MisBeginTalk( "<t>Привет, у тебя похоже страсть к исследованиям. Но это совсем не то место. Найди <bМомо> в <tРоще Акаций>.<n><t>У нее найдется пару заданий." )
+	MisBeginTalk( "<t>Я знаю что Вы отважный герой, но Вам тут нечего делать. Отправляйтесь в <pРощу Акаций> и отыщите <bМомо>. <n> <t> Там Вам найдут приминение." )
 	MisBeginCondition( LvCheck, ">", 19 )
 	MisBeginCondition(NoRecord, 416)
 	MisBeginCondition(NoMission, 416)
 	MisBeginAction(AddMission, 416)
 	MisCancelAction(ClearMission, 416)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Момо (1209, 3196)")
+	MisNeed(MIS_NEED_DESP, " Поговорите с Момо (1209, 3196)" )
 	
-	MisHelpTalk("Чего ты ждешь? Иди в Рощу Акаций и найди Момо!")
+	MisHelpTalk( " Что? Вы ещё тут? Момо не будет долго ждать Вас!" )
 	MisResultCondition(AlwaysFailure )
 
 
------------------------------------ЙіД®МЅПХ
-	DefineMission( 433, "Исследование пустыни", 416, COMPLETE_SHOW )
+	DefineMission( 433, "Исследования пустыни ", 416, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Хоть тебя и порекомендовала <bНана>, если ты мне не подходишь, я буду вынужден отказаться от твоих услуг.")
+	MisResultTalk( "<t>Если даже и сама <bНана> Вас ко мне направила это ещё не значит, что я буду кланиться к Вам в ноги, Вам прийдёться доказать мне, что Вы и есть тот самый лигендарный герой!")
 	MisResultCondition(NoRecord, 416)
 	MisResultCondition(HasMission, 416 )
 	MisResultAction(ClearMission, 416 )
@@ -525,27 +473,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 550, 550)
 
 
-----------------------------ПтДП·Ѕ
-	DefineMission( 434, "Путешествие на юг", 417 )
+	DefineMission( 434, "Путешествие на Юг ", 417 )
 	
-	MisBeginTalk( "<t>Внучок, если ты здесь останешься, то только потеряешь время. Почему бы тебе не пойти и изучить мир пока ты еще молод? Мой ученик, <bГасардий>, сейчас проживает в <pБухте Атлантис>.<n><t>Если ты скажешь, что ты от меня, он с радостью тебя примет." )
+	MisBeginTalk( "<t>Если Вы тут и дальше будите террорезировать местных зверей и жителей то навлекёте на себя беду.<n><t>Почему бы Вам не отправиться в настоящее путишествие, полное риском и опасностью? Мой ученик, <bКасардис>, в настоящее время живёт в <pАтлантике>.<n><t>Отправляйтесь к нему и скажите что Вы от меня, он найдёт для Вас задания." )
 	MisBeginCondition( LvCheck, ">", 19 )
 	MisBeginCondition(NoRecord, 417)
 	MisBeginCondition(NoMission, 417)
 	MisBeginAction(AddMission, 417)
 	MisCancelAction(ClearMission, 417)
 		
-	MisNeed(MIS_NEED_DESP, "Найти Гасардия в (1028, 649)")
+	MisNeed(MIS_NEED_DESP, " Ищите Касардиса (1028, 649)")
 	
-	MisHelpTalk("Гасардий в Бухте Атлантис. Иди уже.")
+	MisHelpTalk(" Идите же и отыщите Касардиса.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ПтДП·Ѕ
-	DefineMission( 435, "Путешествие на юг", 417, COMPLETE_SHOW )
+	DefineMission( 435, "Путешествие на Юг ", 417, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Эх, этот старичок все никак от меня не отстанет...<n><t>Ладно, забудь, раз уж ты здесь, тебе стоит остаться.<n><t>Мне все равно не хватает здесь рук.")
+	MisResultTalk( "<t>Ох, не ухадите делако, Позвольте, по моему я смогу найти для Вас работу.")
 	MisResultCondition(NoRecord, 417)
 	MisResultCondition(HasMission, 417 )
 	MisResultAction(ClearMission, 417 )
@@ -554,10 +500,9 @@ function CenterMission001()
 	MisResultAction(AddMoney, 550, 550)
 
 
-----------------------------ГОПлєЈСу
-	DefineMission( 436, "Море Мечты", 418 )
+	DefineMission( 436, "Мечта о Море ", 418 )
 	
-	MisBeginTalk( "<t>Oго, только не говори, что ты еще не исследовал море!?<n><t>Позволь мне представить тебе <bМорского советника - Алену> из <pАргента>. Она научит тебя всему, что необходимо." )
+	MisBeginTalk( "<t>О! Мой юный пират, не говорите мне что Вы всё знаете и умеете!?<n><t>Отправляйтесь в <pАргент> к <bАлине>. Она поможет Вам обуздать морскую стихию." )
 	MisBeginCondition( LvCheck, ">", 24 )
 	MisBeginCondition(NoRecord, 418)
 	MisBeginCondition(NoRecord, 419)
@@ -568,17 +513,16 @@ function CenterMission001()
 	MisBeginAction(AddMission, 418)
 	MisCancelAction(ClearMission, 418)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Аленой (2247, 2858)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Алиной (2247,2858)")
 	
-	MisHelpTalk("Алена в порту Аргента. Отправляйся к ней.")
+	MisHelpTalk( " Алина живёт в Аргенте, отправляйтесь туда и поговорите с ней.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ГОПлєЈСу
-	DefineMission( 437, "Море Мечты", 418, COMPLETE_SHOW )
+	DefineMission( 437, "Мечта о Море ", 418, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Не волнуйся, с моей помощью ты тотчас же отправишься в плавание!")
+	MisResultTalk( "<t>Не волнуйтесь, я обучу Вас хитростям морских пиратов!!" )
 	MisResultCondition(NoRecord, 418)
 	MisResultCondition(HasMission, 418 )
 	MisResultAction(ClearMission, 418 )
@@ -588,10 +532,9 @@ function CenterMission001()
 
 
 
-----------------------------єЈѕьКВОсЛщ±ЁµЅЈЎ
-	DefineMission( 438, "Открыта запись во флот!", 419 )
+	DefineMission( 438, "Новый набор во Флот!", 419 )
 	
-	MisBeginTalk( "<t>Ты еще не был в море, дружок? Я считаю, ты как раз вовремя.<n><t>Позволь представить тебе <bМорского советника - Алену> из <pАргента>. Она научит тебя всему, что надо знать о плавании." )
+	MisBeginTalk( "<t>Вы раньше не были в море? Может уже самое время.<n><t>Позвольте направить Вас в  <pАргент> к <bАлине>. Она обучит Вас морским хитростям." )
 	MisBeginCondition( LvCheck, ">", 24 )
 	MisBeginCondition(NoRecord, 418)
 	MisBeginCondition(NoRecord, 419)
@@ -602,17 +545,16 @@ function CenterMission001()
 	MisBeginAction(AddMission, 419)
 	MisCancelAction(ClearMission, 419)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Аленой в (2247, 2858)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Алиной (2247,2858)")
 	
-	MisHelpTalk("Алена в порту Аргенту. Пожалуйста, иди к ней.")
+	MisHelpTalk( " Алина живёт в Аргенте, отправляйтесь туда и поговорите с ней." )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------єЈѕьКВОсЛщ±ЁµЅЈЎ
-	DefineMission( 439, "Открыта запись во флот!", 419, COMPLETE_SHOW )
+	DefineMission( 439, "Новый набор во Флот!", 419, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Не волнуйся, с моей помощью ты сию же секунду отправишься в плавание!")
+	MisResultTalk( "<t>Не волнуйтесь, я обучу Вас хитростям морских пиратов!!" )
 	MisResultCondition(NoRecord, 419)
 	MisResultCondition(HasMission, 419 )
 	MisResultAction(ClearMission, 419 )
@@ -622,10 +564,9 @@ function CenterMission001()
 
 
 
-----------------------------єЈѕьКВОсЛщ
-	DefineMission( 440, "Штаб флота", 420 )
+	DefineMission( 440, "Управление ВМС ", 420 )
 	
-	MisBeginTalk( "<t>О, только не говори, что ты еще не выходил в открытое море!?<n><t>Я представлю тебя <bМорскому советнику - Алене> из <pАргента>. Она научит тебя всему, что нужно знать." )
+	MisBeginTalk( "<t>Вы раньше не были в море? Может уже самое время. <n> <t> Позвольте направить Вас в  <pАргент> к <bАлине>. Она обучит Вас морским хитростям." )
 	MisBeginCondition( LvCheck, ">", 24 )
 	MisBeginCondition(NoRecord, 418)
 	MisBeginCondition(NoRecord, 419)
@@ -636,17 +577,16 @@ function CenterMission001()
 	MisBeginAction(AddMission, 420)
 	MisCancelAction(ClearMission, 420)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Аленой в (2247, 2858)")
+	MisNeed(MIS_NEED_DESP, " Поговорите с Алиной (2247,2858)")
 	
-	MisHelpTalk("Алена в порту Аргента. Иди к ней.")
+	MisHelpTalk( " Алина живёт в Аргенте, отправляйтесь туда и поговорите с ней." )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------єЈѕьКВОсЛщ
-	DefineMission( 441, "Штаб флота", 420, COMPLETE_SHOW )
+	DefineMission( 441, "Управление ВМС ", 420, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Не волнуйся, с моей помощью ты сию же секунду отправишься в плавание!")
+	MisResultTalk( "<t>Не волнуйтесь, я обучу Вас хитростям морских пиратов!!" )
 	MisResultCondition(NoRecord, 420)
 	MisResultCondition(HasMission, 420 )
 	MisResultAction(ClearMission, 420 )
@@ -656,10 +596,9 @@ function CenterMission001()
 
 
 
-----------------------------МмПВµЪТ»ЙМИЛ
-	DefineMission( 442, "Лучший купец в мире", 421 )
+	DefineMission( 442, "Прекрасный мир торговца ", 421 )
 	
-	MisBeginTalk( "<t>Наконец-то ты здесь! У меня сложились хорошие отношения с <bХироро>, торговцем из <pАргента>. В последнне время, он экзаменует студентов на знание морской торговли.<n><t>Если тебе интересно узнать побольше о морской торговле, встреться с <bХироро>." )
+	MisBeginTalk( "<t>Наконецто, Вы прибыли! Мы дружим с <bТорговцем Тайны>. Я слышал он ищет учиника, и хочет передать все знания морской торговли.<n><t>Если Вы хотите научиться морской торговле отправляйтесь к нему немедленно." )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 421)
 	MisBeginCondition(NoRecord, 422)
@@ -670,17 +609,16 @@ function CenterMission001()
 	MisBeginAction(AddMission, 421)
 	MisCancelAction(ClearMission, 421)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с торговцем Хироро в (2331, 2821)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Торговцем Тайны (2331, 2821)")
 	
-	MisHelpTalk("ОМГ! Почему ты еще здесь! Неужели тебе не интересно? Хироро сейчас в Аргенте.")
+	MisHelpTalk( " Отправляйетесь в Аргент и поговорите с торговцем.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------МмПВµЪТ»ЙМИЛ
-	DefineMission( 443, "Лучший купец в мире", 421, COMPLETE_SHOW )
+	DefineMission( 443, "Прекрасный мир торговца ", 421, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Ты хочешь быть лучшим торговцем?<n><t>Хорошо! Я так и знал.")
+	MisResultTalk( "<t>Вы! Вы хотите стать лучшим торговцем?<n><t>Отлично, Вы тот кто мне нужен.")
 	MisResultCondition(NoRecord, 421)
 	MisResultCondition(HasMission, 421 )
 	MisResultAction(ClearMission, 421 )
@@ -689,10 +627,9 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------°ЧТшЅ»ТЧЛщ
-	DefineMission( 444, "Центр торговли Аргента", 422 )
+	DefineMission( 444, "Торговый центр Аскарона ", 422 )
 	
-	MisBeginTalk( "<t>Наконец-то ты здесь! У меня сложились хорошие отношения с <bХироро>, торговцем из <pАргента>. В последнне время, он экзаменует студентов на знание морской торговли.<n><t>Если тебе интересно узнать побольше о морской торговле, встреться с <bХироро>." )
+	MisBeginTalk( "<t>Наконецто, Вы прибыли! Мы дружим с <bТорговцем Тайны>. Я слышал он ищет учиника, и хочет передать все знания морской торговли.<n><t>Если Вы хотите научиться морской торговле отправляйтесь к нему немедленно." )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 421)
 	MisBeginCondition(NoRecord, 422)
@@ -703,17 +640,16 @@ function CenterMission001()
 	MisBeginAction(AddMission, 422)
 	MisCancelAction(ClearMission, 422)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с торговцем Хироро в (2331, 2821)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Торговцем Тайны (2331, 2821)")
 	
-	MisHelpTalk("ОМГ! Почему ты еще здесь! Неужели тебе не интересно? Хироро сейчас в Аргенте.")
+	MisHelpTalk( " Отправляйетесь в Аргент и поговорите с торговцем.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------°ЧТшЅ»ТЧЛщ
-	DefineMission( 445, "Центр торговли Аргента", 422, COMPLETE_SHOW )
+	DefineMission( 445, "Торговый центр Аскарона ", 422, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Ты хочешь быть лучшим торговцем?<n><t>Хорошо! Я так и знал.")
+	MisResultTalk( "<t>Вы! Вы хотите стать лучшим торговцем?<n><t>Отлично, Вы тот кто мне нужен.")
 	MisResultCondition(NoRecord, 422)
 	MisResultCondition(HasMission, 422 )
 	MisResultAction(ClearMission, 422 )
@@ -723,10 +659,9 @@ function CenterMission001()
 
 
 
-----------------------------іцєЈЅ»ТЧ
-	DefineMission( 446, "Морская торговля", 423 )
+	DefineMission( 446, "Морская торговля ", 423 )
 	
-	MisBeginTalk( "<t>Наконец-то ты здесь! У меня сложились хорошие отношения с <bХироро>, торговцем из <pАргента>. В последнне время, он экзаменует студентов на знание морской торговли.<n><t>Если тебе интересно узнать побольше о морской торговле, встреться с <bХироро>." )
+	MisBeginTalk( "<t>Наконецто, Вы прибыли! Мы дружим с <bТорговцем Тайны>. Я слышал он ищет учиника, и хочет передать все знания морской торговли.<n><t>Если Вы хотите научиться морской торговле отправляйтесь к нему немедленно." )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 421)
 	MisBeginCondition(NoRecord, 422)
@@ -737,17 +672,16 @@ function CenterMission001()
 	MisBeginAction(AddMission, 423)
 	MisCancelAction(ClearMission, 423)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с торговцем Хироро в (2331, 2821)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Торговцем Тайны (2331, 2821)")
 	
-	MisHelpTalk("ОМГ! Почему ты еще здесь! Неужели тебе не интересно? Хироро сейчас в Аргенте.")
+	MisHelpTalk( " Отправляйетесь в Аргент и поговорите с торговцем.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------іцєЈЅ»ТЧ
-	DefineMission( 447, "Морская торговля", 423, COMPLETE_SHOW )
+	DefineMission( 447, "Морская торговля ", 423, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Ты хочешь быть лучшим торговцем?<n><t>Хорошо! Я так и знал.")
+	MisResultTalk( "<t>Вы! Вы хотите стать лучшим торговцем?<n><t>Отлично, Вы тот кто мне нужен.")
 	MisResultCondition(NoRecord, 423)
 	MisResultCondition(HasMission, 423 )
 	MisResultAction(ClearMission, 423 )
@@ -756,27 +690,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------±»П®µДЅЈКї
-	DefineMission( 448, "Мечник, попавший в засаду", 424)
+	DefineMission( 448, "Засада мечника ", 424 )
 	
-	MisBeginTalk( "<t>О боже!<n><t>Даже <bКентаро> был травмирован монстром из <pЗаброшенных Шахт>.<n><t>Меня обеспокоила ситуация в шахтах. Не мог бы ты отправиться в <pЗаброшенные Шахты> и проверить обстановку?" )
+	MisBeginTalk( "<t>О дорогой!<n><t>Даже <bКентаро>, не смотря на его опыт был ранен монстром в <pШахтах>.<n><t>Навестите его, и узнайте, как он поживает?" )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 424)
 	MisBeginCondition(NoMission, 424)
 	MisBeginAction(AddMission, 424)
 	MisCancelAction(ClearMission, 424)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Кентаро в (1894, 2798)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Кентаро (1894, 2798)")
 	
-	MisHelpTalk("Раз уж пообещал, иди теперь.")
+	MisHelpTalk( " Навестите Кентаро, Прошу Вас." )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------±»П®µДЅЈКї
-	DefineMission( 449, "Мечник, попавший в засаду", 424, COMPLETE_SHOW )
+	DefineMission( 449, "Засада мечника ", 424, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Я случайно разозлил мух в шахтах и получил травму.<n><t>Теперь моя рана зажила.")
+	MisResultTalk( "<t>Я отвлёкся всего лишь на минуту, как меня тут же ранили эти ужасные монстры. <n> <t> Ну ни чего, я уже выздоравливаю.")
 	MisResultCondition(NoRecord, 424)
 	MisResultCondition(HasMission, 424 )
 	MisResultAction(ClearMission, 424 )
@@ -785,27 +717,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------ґ©ФЅАµ°ІЙ­БЦ
-	DefineMission( 450, "Пересечение", 425)
+	DefineMission( 450, "Обход ", 425)
 	
-	MisBeginTalk( "<t>Опасные существа затаились около перехода через <pАндийский Лес> в <pВалгаллу>. Многие люди не рискуют идти туда.<n><t>Но мой сын проводит там исследования. Пожалей меня, старую женщину, и передай послание моему сыну <bВаала>.<n><t>Вот бы он вернулся и навестил меня." )
+	MisBeginTalk( "<t>Ужасные существа поджидают своих жертв на пути через <pАндийский Лес> к <pВалагале>. Не каждый осмелиться на такое путешествие.<n><t>Однако Вы похожи на того смельчака, который сможет бросить вызов монстрам. Сжальтесь над бедной старушкой, помогите, передайте моему внуку  <bВаллау> моё послание!<n><t>Передайте ему что бы он навестил меня." )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 425)
 	MisBeginCondition(NoMission, 425)
 	MisBeginAction(AddMission, 425)
 	MisCancelAction(ClearMission, 425)
 		
-	MisNeed(MIS_NEED_DESP, "Передайте послание Ваалу в (1136, 2778)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Валли (1136, 2778)" )
 	
-	MisHelpTalk("Не хотелось бы тебя торопить, но лучше бы Ваала получил мое послание как можно быстрее.")
+	MisHelpTalk( "Отправляйтесь в Валагалу." )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ґ©ФЅАµ°ІЙ­БЦ
-	DefineMission( 451, "Пересечение", 425, COMPLETE_SHOW )
+	DefineMission( 451, "Обход " , 425, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Моя мама так сказала? Ого, похоже я слишком заработался.")
+	MisResultTalk( "<t>Вы от моей бабули? Я навещу её обязательно.")
 	MisResultCondition(NoRecord, 425)
 	MisResultCondition(HasMission, 425 )
 	MisResultAction(ClearMission, 425 )
@@ -814,27 +744,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------ГФ№¬Рь°ё
-	DefineMission( 452, "Загадка лабиринта", 426)
+	DefineMission( 452, "Тайна ", 426)
 	
-	MisBeginTalk( "<t><pЛедынь> когда-то была восхитительна, но каменные структуры со временем стали разрушаться.<n><t> Да еще и монстры завелись под башней, и даже стали пропадать люди. <bМасу>, монарху Ледыни нужен мой сын, Ваала, чтобы расследовать это дело. Но мой сын занят исследдованиями.<n><t>Ты можешь передать <bМасу>, чтобы он поискал кого-то другого?" )
+	MisBeginTalk( "<t><pЛедынь> Это великий город. Хотя рельеф города не очень благоприятный.<n><t>В близи города поселились монстры, и ходят слухи о пропажах лудей. <bМас>, Мэр <pЛедыни> я бы сам ему рассказал о произходящем, но увы не то уже здоровье что бы путешествовать.<n><t>Может Вы поговорите с мэром?" )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 426)
 	MisBeginCondition(NoMission, 426)
 	MisBeginAction(AddMission, 426)
 	MisCancelAction(ClearMission, 426)
 		
-	MisNeed(MIS_NEED_DESP, "Передайте письмо Масу в (1346, 451)")
+	MisNeed(MIS_NEED_DESP, " Рассказать о пропажах людей мэру Ледыни (1346, 451)")
 	
-	MisHelpTalk("Монарх Ледыни - Мас, все еще ждет мой ответ. Пожалуйста, не заставляй его ждать слишком долго.")
+	MisHelpTalk( " Отправляйтесь к мэру, пока ещё кто нибуть не пострадал." )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ГФ№¬Рь°ё
-	DefineMission( 453, "Загадка лабиринта", 426, COMPLETE_SHOW )
+	DefineMission( 453, "Тайна ", 426, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Раз уж Ваала не сможет, мне придется найти кого-то другого.<n><t>Спасибо, что передал письмо.")
+	MisResultTalk( "<t>О, Так как Валла не может сделать это, я найду других людей.<n><t>Спасибо за то, что передали письмо." )
 	MisResultCondition(NoRecord, 426)
 	MisResultCondition(HasMission, 426 )
 	MisResultAction(ClearMission, 426 )
@@ -843,27 +771,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------·ПїуМЅѕї
-	DefineMission( 454, "Исследование шахт", 427)
+	DefineMission( 454, "Иследование Шахт ", 427)
 	
-	MisBeginTalk( "<t>Заброшенные Шахты возле Аргента похожи на подземный лабиринт.<n><t>В течение долгих лет там развились новые формы жизни.<n><t>Может быть, ты найдешь там противников по душе. Иди и найди <bГрега> в <pЗаброшенных шахтах>, он расскажет намного больше об этом месте." )
+	MisBeginTalk( "<t>Из-за вековой горной промышленности, я оставил Серебрянный.<n><t>Много монстров обитает в Шахтах.<n><t>Навестите <bГрега> в <pШахтах>. возможно там требуется Ваша помощь." )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 427)
 	MisBeginCondition(NoMission, 427)
 	MisBeginAction(AddMission, 427)
 	MisCancelAction(ClearMission, 427)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Грегом (1883, 2805)")
+	MisNeed(MIS_NEED_DESP, " Поговорите с Грегом (1883, 2805)")
 	
-	MisHelpTalk("Я думаю тебе понравиться исследовать лабиринты Заброшенных Шахт. Поторопись!")
+	MisHelpTalk( " Отправляйтесь в Серебряный в Шахты!" )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------·ПїуМЅѕї
-	DefineMission( 455, "Исследование шахт", 427, COMPLETE_SHOW )
+	DefineMission( 455, "Иследование Шахт ", 427, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Раз <bПитер> тебя направил, я не сомневаюсь, что ты справишься.<n><t>Поблагодари его.")
+	MisResultTalk( "<t>Я верю в Вас, с тех пор как <bПиттер> направил Вас.<n><t>Вы должны быть благодарны своему учителю.")
 	MisResultCondition(NoRecord, 427)
 	MisResultCondition(HasMission, 427 )
 	MisResultAction(ClearMission, 427 )
@@ -872,27 +798,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------НЯИш·Ё¶ыµДОЈ»ъ
-	DefineMission( 456, "Кризис Ваалы", 428)
+	DefineMission( 456, "Кризис ", 428 )
 	
-	MisBeginTalk( "<t>Почему так долго?!<n><t>Мой дорогой <bВаала> занимается исследованиями в <pВалгалле>. Но он потерял все свои инструменты по дороге.<n><t>Поможешь мне передать эти вещи ему и заодно проверить, как у него дела?" )
+	MisBeginTalk( "<t>Что Вас так задержало?!<n><t>Мое дорогое детя <bВалло> исследует <pВалагалу>. Однако, он потерял провизию и мед препораты пока добирался до Валагалы. <n> <t> Не отнесёте ли Вы ему эти припораты и провизию?" )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 428)
 	MisBeginCondition(NoMission, 428)
 	MisBeginAction(AddMission, 428)
 	MisCancelAction(ClearMission, 428)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Ваалой в (1136, 2778)")
+	MisNeed(MIS_NEED_DESP, " Отправиться в Валагалу и передать посылку Валло (1136, 2778)" )
 	
-	MisHelpTalk("Поспеши, пожалуйста! Это вопрос жизни и смерти.")
+	MisHelpTalk( "Вы мне поможете или нет?" )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------НЯИш·Ё¶ыµДОЈ»ъ
-	DefineMission( 457, "Кризис Ваалы", 428, COMPLETE_SHOW )
+	DefineMission( 457, "Кризис ", 428, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Вода...Вода...Ах...Теперь мне лучше.<n><t>Спасибо!Мне станет еще лучше после того, как я отдохну.")
+	MisResultTalk( "<t>Вода... Вода... Ах... Я чувствую себя лучше.<n><t>Спасибо! Я встану на ноги после небольшого сна.")
 	MisResultCondition(NoRecord, 428)
 	MisResultCondition(HasMission, 428 )
 	MisResultAction(ClearMission, 428 )
@@ -901,27 +825,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------ЙсГШ·ўПЦ
-	DefineMission( 458, "Загадочное открытие", 429)
+	DefineMission( 458, "Тайна ", 429 )
 	
-	MisBeginTalk( "<t>Эй, я случайно нашел карту Замка Ледыни пока изучал эту книгу.<n><t>Глава Ледыни, <bРейно> будет рад взглянуть на нее. Ты можешь ему передать?" )
+	MisBeginTalk( "<t>Эй, я нашел карту замка Ледыни, исследуя древние тома.<n><t>Председатель Ледыни, <bРеуно> Будет рад узнав об этом. Не передадите ему о моей находке?" )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 429)
 	MisBeginCondition(NoMission, 429)
 	MisBeginAction(AddMission, 429)
 	MisCancelAction(ClearMission, 429)
 		
-	MisNeed(MIS_NEED_DESP, "Передайте послание главе Ледыни Рейно в (1294, 498)")
+	MisNeed(MIS_NEED_DESP, " Отправляйтесь в (1294, 498)")
 	
-	MisHelpTalk("Пожалуйста, отнеси это Главе Ледыни - Рейно. Это очень важно!")
+	MisHelpTalk(" Пожалуйсто поторопитесь, это великая находка!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ЙсГШ·ўПЦ
-	DefineMission( 459, "Загадочное открытие", 429, COMPLETE_SHOW )
+	DefineMission( 459, "Тайна ", 429, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Это удивительное открытие! Спасибо за помощь!")
+	MisResultTalk( "<t>Это великолепно, это великая находка, спасибо что сообщили мне об этом!")
 	MisResultCondition(NoRecord, 429)
 	MisResultCondition(HasMission, 429 )
 	MisResultAction(ClearMission, 429 )
@@ -930,27 +852,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------·ПїуГФ№¬
-	DefineMission( 460, "Лабиринты шахт", 430)
+	DefineMission( 460, "Тайна Шахт ", 430)
 	
-	MisBeginTalk( "<t>Заброшенные Шахты возле Аргента похожи на подземный лабиринт.<n><t>в течение долгих лет там развились новые формы жизни.<n><t>Может быть, ты найдешь там противников по душе. Иди и найди <bГрега> в <pЗаброшенных Шахтах>, он расскажет намного больше об этом месте." )
+	MisBeginTalk( "<t>Из-за вековой горной промышленности, я оставил Серебрянный.<n><t>Много монстров обитает в Шахтах.<n><t>Навестите <bГрега> в <pШахтах>. возможно там требуется Ваша помощь." )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 430)
 	MisBeginCondition(NoMission, 430)
 	MisBeginAction(AddMission, 430)
 	MisCancelAction(ClearMission, 430)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Грегом в (1883, 2805)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Грегом (1883, 2805)")
 	
-	MisHelpTalk("Я думаю тебе понравится исследовать лабиринты Заброшенных Шахт. Поторопись!")
+	MisHelpTalk( " Отправляйтесь в Шахты Серебрянного города!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------·ПїуГФ№¬
-	DefineMission( 461, "Лабиринты шахт", 430, COMPLETE_SHOW )
+	DefineMission( 461, "Тайна Шахт", 430, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Да, <bДуриан> рекомендовал тебя. У могу подыскать для тебя работу.")
+	MisResultTalk( "<t>Ну и что что Вас порекомендовал <bДариан>? Мне что? Падать к Вашим ногам? Докажите мне что Вы Герой, а то у меня складывается впечатление что Вы просто ляля заблудившаяся в парке.")
 	MisResultCondition(NoRecord, 430)
 	MisResultCondition(HasMission, 430 )
 	MisResultAction(ClearMission, 430 )
@@ -959,27 +879,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------С°ГЩИЛІЕ
-	DefineMission( 462, "Поиски таланта", 431)
+	DefineMission( 462, "Поиск талантов ", 431)
 	
-	MisBeginTalk( "<t>Привет. Мой друг <bГидерий> ищет ответственного человека для работы в <pВалгалле>. Поскольку он доверил мне это задание, я его не подведу.<n><t>Несмотря на это, я порекомендую тебя. Там будет много сильных мобов. Ты готов?" )
+	MisBeginTalk( "<t>Привет. Мой друг, <bГвидериус> ищет надежного человека, чтобы помочь ему в <pВалагале>. Он попросил меня найти этого человека.<n><t>И я по хоже нашёл, этот человек Вы!" )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 431)
 	MisBeginCondition(NoMission, 431)
 	MisBeginAction(AddMission, 431)
 	MisCancelAction(ClearMission, 431)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с Гидерием в (1123, 2766)")
+	MisNeed(MIS_NEED_DESP, " Поговорите с <bГвидериус> в (1123, 2766)")
 	
-	MisHelpTalk("Гидерий уже ждет, пожалуйста, поспеши!")
+	MisHelpTalk( " Не разачеровывайте меня!" )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------С°ГЩИЛІЕ
-	DefineMission( 463, "Поиски таланта", 431, COMPLETE_SHOW )
+	DefineMission( 463, "Поиск талантов ", 431, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Я был уверен, что ты справишься, поскольку Алкар порекомендовал тебя.<n><t>Я дам тебе самы важные задания, которые только возникнут.")
+	MisResultTalk( "<t>Так как Вас направил ко мне Юлкар, я верю в Вас!<n><t>И у меня есть для Вас особые поручения.")
 	MisResultCondition(NoRecord, 431)
 	MisResultCondition(HasMission, 431 )
 	MisResultAction(ClearMission, 431 )
@@ -988,27 +906,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------ГФ№¬МЅѕї
-	DefineMission( 464, "Исследование лабиринта", 432)
+	DefineMission( 464, "Исследование ", 432 )
 	
-	MisBeginTalk( "<t>Мой друг, я вижу, что здешние монстры больше не противники тебе. Почему бы тебе не отправиться в <pЛедынь>?<n><t>Монарх Ледыни <bРейно> сейчас набирает бойцов для того, чтобы разобраться с угрозой монстров, которые заполонили город.<n><t>Если хочешь, я напишу рекомендательное письмо." )
+	MisBeginTalk( "<t>Друг мой, эти монстры уже не для Вас. Почему бы Вам не отправиться в <pЛедынь>? <n> <t> Мэр Ледыни, <bРеуне>, как раз ищет героев, для борьбы с монстрами.<n><t>Если Вы желаете, я могу написать Вам рекомендацию." )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 432)
 	MisBeginCondition(NoMission, 432)
 	MisBeginAction(AddMission, 432)
 	MisCancelAction(ClearMission, 432)
 		
-	MisNeed(MIS_NEED_DESP, "Поговорите с главой Ледыни Рейно в (1294, 498)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с мером Ледыни (1294, 498)")
 	
-	MisHelpTalk("Я думаю, что ты достаточно силен чтобы сражаться с монстрами в <pЛедыни>! Иди же вперед и прославься!")
+	MisHelpTalk(" Отправляйтесь в Ледыню и поговорите с Мэром!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ГФ№¬МЅѕї
-	DefineMission( 465, "Исследование лабиринта", 432, COMPLETE_SHOW )
+	DefineMission( 465, "Исследование ", 432, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Несмотря на то, что тебя рекомендовал сам <bЗурби>, если ты не подходишь, у меня нет другого варианта, как отправить тебя обратно.")
+	MisResultTalk( "<t>И что, что из того что Вас порекомендовала  <bЦуби>? Да хоть Папа Римский! Пока я сам не удостоверюсь в Ваших силах мне чхать на других мнени и рекомендации.")
 	MisResultCondition(NoRecord, 432)
 	MisResultCondition(HasMission, 432 )
 	MisResultAction(ClearMission, 432 )
@@ -1017,27 +933,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 850, 850)
 
 
-----------------------------ѕшµШ·кЙъ
-	DefineMission( 466, "Пока мы не встретимся", 433)
+	DefineMission( 466, "Встреча ", 433 )
 	
-	MisBeginTalk( "<t>Слава Богам! Мой друг <bХохо> сумел избежать смерти после того как <rВоин Скелетов> пронзил его своей катаной. <n><t>Я бы навестил его, но ужасные монстры у <pБерега Скелетов> останавливают меня.<n><t>Удружи мне и навести <bХохо> от моего имени." )
+	MisBeginTalk( "<t>О Великие Боги! Мой друг, <bХохо> сумел избежать смерти после глубокого ранения катаны <rВойна Скелета>.<n><t>Я бы и сам посетил его, но злые монстры  <pБерега скелетов> не пускают меня.<n><t>Пожалуйста навестите моего друга." )
 	MisBeginCondition( LvCheck, ">", 29 )
 	MisBeginCondition(NoRecord, 433)
 	MisBeginCondition(NoMission, 433)
 	MisBeginAction(AddMission, 433)
 	MisCancelAction(ClearMission, 433)
 		
-	MisNeed(MIS_NEED_DESP, "Передайте послание для Хохо в (2142, 556)")
+	MisNeed(MIS_NEED_DESP, " Навестить <rХохо> (2142, 556)")
 	
-	MisHelpTalk("Пожалуйста, будь осторожен, там много скелетов!")
+	MisHelpTalk("Пожалуйста отправляйтесь на Берег Скелетов!")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ѕшµШ·кЙъ
-	DefineMission( 467, "Пока мы не встретимся", 433, COMPLETE_SHOW )
+	DefineMission( 467, "Встреча ", 433, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Большое спасибо! Многие мои друзья были слишком напуганы, чтобы навестить меня, после того, как я сюда перебрался.")
+	MisResultTalk( "<t>Большое спасибо! Мои друзья боятся здешних мест и я стал одинок с тех пор как переехал сюда.")
 	MisResultCondition(NoRecord, 433)
 	MisResultCondition(HasMission, 433 )
 	MisResultAction(ClearMission, 433 )
@@ -1045,27 +959,25 @@ function CenterMission001()
 	MisResultAction(AddExp, 3500, 3500)
 	MisResultAction(AddMoney, 1000, 1000)
 
-----------------------------¶«·ЅµјК¦
-	DefineMission( 468, "Восточный учитель", 434)
+	DefineMission( 468, "Восточный Учитель ", 434 )
 	
-	MisBeginTalk( "<t>Dear adventurer! I have been looking for my teacher, <bMaster Kerra>, for many years around Skeleton Haven but to no avail. Recently, I heard that she has moved to <pIcespire Haven>.<n><t>If you are going there, can you tell her that I have already acquired the \"Heart of Will\"?" )
+	MisBeginTalk( "<t>Дорогой путешественник! Я искал моего учителя, <bМастера Керро>, многие годы, но напрасно. Недавно, я услышал, что она двигалась в <pЛедяной шип>. <n> <t>, Если Вы её встретите передайте ей что я нашёл \"Сердце желания \"?" )
 	MisBeginCondition( LvCheck, ">", 39 )
 	MisBeginCondition(NoRecord, 434)
 	MisBeginCondition(NoMission, 434)
 	MisBeginAction(AddMission, 434)
 	MisCancelAction(ClearMission, 434)
 		
-	MisNeed(MIS_NEED_DESP, "Поищите Мастера Керу в (2664, 654)")
+	MisNeed(MIS_NEED_DESP, " Поговорить с Керрой (2664, 654)")
 	
-	MisHelpTalk("Иди на Восток и ты найдешь Ледяной Шип. Это будет опасный путь, но я верю, что твоя решимость преодолеет все преграды.")
+	MisHelpTalk( " Скажите учительнице в Ледяном Шипе что я нашёл то что искал.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------¶«·ЅµјК¦
-	DefineMission( 469, "Восточный учитель", 434, COMPLETE_SHOW )
+	DefineMission( 469, "Восточный Учитель ", 434, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Спасибо, что навестил. Похоже, мой любимый ученик наконец-то прошел обучение!")
+	MisResultTalk( "<t>Сасибо что навестили старую женщину. Так Вы говорите мой любимый ученик всё таки добился чего хотел?!")
 	MisResultCondition(NoRecord, 434)
 	MisResultCondition(HasMission, 434 )
 	MisResultAction(ClearMission, 434 )
@@ -1074,27 +986,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 1000, 1000)
 
 
-----------------------------ТЅЙъёДРР
-	DefineMission( 470, "Изменение местоположения", 435)
+	DefineMission( 470, "Изменение профессии ", 435 )
 	
-	MisBeginTalk( "<t>О, боже! Можешь мне помочь? Моя сестра, <bДоктор - Чиво>, когда-то жила в Шайтане. Недавно, она переехала в <pХалдейский Оплот>, но это место какое-то изолированное, там даже нет воды!<n><t>Не мог бы ты навестить ее от моего имени?" )
+	MisBeginTalk( "<t>О дорогой! Вы можете выручить меня? Моя сестра, <bДоктор-Чиво>. Недавно, она отправилась в <pХолдею>, Я не могу её навестить, это так далеко! <n> <t> Может Вы её навестите от моего имени?" )
 	MisBeginCondition( LvCheck, ">", 44 )
 	MisBeginCondition(NoRecord, 435)
 	MisBeginCondition(NoMission, 435)
 	MisBeginAction(AddMission, 435)
 	MisCancelAction(ClearMission, 435)
 		
-	MisNeed(MIS_NEED_DESP, "Навестите Доктора Чиво в (630, 2091)")
+	MisNeed(MIS_NEED_DESP, " Навестить Доктора-Чиво (630, 2091)")
 	
-	MisHelpTalk("Халдейский Оплот чуть южнее Громограда.")
+	MisHelpTalk( " Навестите Доктора-Чиво в Холдейском оплоте." )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------ТЅЙъёДРР
-	DefineMission( 471, "Изменение местоположения", 435, COMPLETE_SHOW )
+	DefineMission( 471, "Изменение профессии ", 435, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Хаха! Мой брат любит совать нос в чужие дела. Честно говоря, мне здесь нравится.")
+	MisResultTalk( "<t>Ха-ха-ха! Мой Братишка любит совать свой нос куда попало. Мне очень нарвется тут жить.")
 	MisResultCondition(NoRecord, 435)
 	MisResultCondition(HasMission, 435 )
 	MisResultAction(ClearMission, 435 )
@@ -1103,27 +1013,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 1100, 1100)
 
 
-----------------------------АЧцЄєЈѕь
-	DefineMission( 472, "Флот Громограда", 436)
+	DefineMission( 472, "Флот Гром-Града ", 436 )
 	
-	MisBeginTalk( "<t>Я слышал, что в <pГромограде> нанимают искателей приключений. Там, наверное, много интересных заданий для тебя.<n><t>Я могу порекомендовать тебя Капитану Стражи <bМаллаку>, если хочешь." )
+	MisBeginTalk( "<t>Я слышал, что <pГром-Град> нуждается в рабочей силе.<n><t>Я могу порекомендовать Вас копитану охраны <bМаллоку>, если Вы не против." )
 	MisBeginCondition( LvCheck, ">", 49 )
 	MisBeginCondition(NoRecord, 436)
 	MisBeginCondition(NoMission, 436)
 	MisBeginAction(AddMission, 436)
 	MisCancelAction(ClearMission, 436)
 		
-	MisNeed(MIS_NEED_DESP, "Встретьтесь с Маллаком в Громограде в (706, 1465)")
+	MisNeed(MIS_NEED_DESP, " Отправляйтесь в Гром-Град (706, 1465)")
 	
-	MisHelpTalk("Поверь мне. Если ты пойдешь в Громоград прямо сейчас, ты можешь стать офицером.")
+	MisHelpTalk( " Не теряйте время даром, идите в Гром-Град." )
 	MisResultCondition(AlwaysFailure )
 
------------------------------------АЧцЄєЈѕь
-	DefineMission( 473, "Флот Громограда", 436, COMPLETE_SHOW )
+	DefineMission( 473, "Флот Гром-Града ", 436, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Привет, ты хочешь здесь закрепиться?<n><t>Без проблем! Только запомни, не нарушай правила.")
+	MisResultTalk( "<t>Привет, Вы тут не на долго?<n><t>Хорошо, но соблюдайте правила нашего города.")
 	MisResultCondition(NoRecord, 436)
 	MisResultCondition(HasMission, 436 )
 	MisResultAction(ClearMission, 436 )
@@ -1132,27 +1040,25 @@ function CenterMission001()
 	MisResultAction(AddMoney, 1200, 1200)
 
 
-----------------------------Й­БЦЙоґ¦
-	DefineMission( 474, "Дремучий-предремучий лес", 437)
+	DefineMission( 474, "Глубокий глубокий лес ", 437)
 	
-	MisBeginTalk( "<t>В дремучем лесу Аскарона много разных племен. Один мой приятель - Старик Ковен, остановился неподалеку от <pОбители Радости>. Он часто шлет мне письма, просит, чтобы я его навестил.<n><t>Но я не могу оставить свою работу. Ты не мог бы навестить его от моего имени?" )
+	MisBeginTalk( "<t>Страшный лес Аскарона, там обитают злые туземцы.<n><t>Не могли бы Вы навестить моего друга в <pОбители радости>?" )
 	MisBeginCondition( LvCheck, ">", 54 )
 	MisBeginCondition(NoRecord, 437)
 	MisBeginCondition(NoMission, 437)
 	MisBeginAction(AddMission, 437)
 	MisCancelAction(ClearMission, 437)
 		
-	MisNeed(MIS_NEED_DESP, "Навестите Старика Ковена в (529, 2458)")
+	MisNeed(MIS_NEED_DESP, " Отправляйтесь в точку (529, 2458)")
 	
-	MisHelpTalk("Спасибо тебе, друг. Можешь отправиться в <pОбитель Радости> когда будешь свободен.")
+	MisHelpTalk( " Спасибо мой друг, но вам всё же стоит поторопиться в Обитель Радости.")
 	MisResultCondition(AlwaysFailure )
 
------------------------------------Й­БЦЙоґ¦
-	DefineMission( 475, "Дремучий-предремучий лес", 437, COMPLETE_SHOW )
+	DefineMission( 475, "Глубокий глубокий лес ", 437, COMPLETE_SHOW )
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Спасибо за визит. Не могу поверить, что Сонни до сих пор меня помнит.")
+	MisResultTalk( "<t>Спасибо за заботу. Я даже не думал, что Сонни все еще помнит меня спустя стольких лет.")
 	MisResultCondition(NoRecord, 437)
 	MisResultCondition(HasMission, 437 )
 	MisResultAction(ClearMission, 437 )
@@ -1165,33 +1071,31 @@ function CenterMission001()
 
 ----------------------------------------
 --                                    --
---        јУАХ±ИєЈµБЖХНЁИООс          --
+--        Жалоба Командующего         --
 --                                    --
 ----------------------------------------
 
--- Бй¶ЩЅ«ѕь >> ЛѕБоµДАОЙ§
 
-	DefineMission(476, "Недовольство Командира", 438)
+	DefineMission(476, "Жалоба Командующего ", 438 )
 
-	MisBeginTalk("<t>Командующий флотом Громограда только что приказал мне вернуться обратно.<n><t>Но, ввиду обстоятельств, я не смогу сам добраться туда. Ты бы не мог это сделать за меня?<n><t>Да, вернись и проверь старика и сообщи мне о результатах.")
+	MisBeginTalk( "<t>Морской Командующий Гром-Града только что послал за мной.<n><t>Однако я не могу ехать один. Может Вы за меня съездите?<n><t>Но не забудьте вернуться ко мне и рассказать как съездили.")
 	MisBeginCondition(NoRecord, 438)
 	MisBeginCondition(NoMission,438)
 	MisBeginCondition(HasNavyGuild)
 
 	MisBeginAction(AddMission, 438)
 	MisCancelAction(ClearMission, 438)
-	MisHelpTalk("<t>Ты все еще здесь? Живее!")
+	MisHelpTalk( "<t> Вы поторопитесь всё таки, если согласились помочь!" )
 
-	MisNeed(MIS_NEED_DESP, "Доклад для Командующего Флотом Громограда от имени Велингтона")
+	MisNeed(MIS_NEED_DESP, " Съездите к Главнокомандующему вместо Веленгтона ")
 
 	MisResultCondition(AlwaysFailure)
 
--- АЧцЄ±¤єЈѕьЛѕБо >> ЛѕБоµДАОЙ§
-	DefineMission(477,"Недовольство Командира",438,COMPLETE_SHOW)
+	DefineMission( 477,"Жалоба Командующего ", 438, COMPLETE_SHOW )
 
 	MisBeginCondition(AlwaysFailure)
 
-	MisResultTalk("<t>Ох, значит Велингтон не сможет сам придти. Забудь.")
+	MisResultTalk( "<t>Жаль что Веленгтон не смог сам приехать. Ну не берите в голову.")
 
 	MisResultCondition(HasMission, 438)
 	MisResultCondition(NoRecord, 438)
@@ -1201,10 +1105,9 @@ function CenterMission001()
 	MisResultAction(SetRecord, 438)
 
 	
--- АЧцЄ±¤єЈѕьЛѕБо >> ЛѕБоµДГШГЬ
-	DefineMission(478, "Секрет командующего", 439)
+	DefineMission(478, "Секрет для Командующего ", 439 )
 
-	MisBeginTalk("<t>Из-за того, что Велингтон не смог придти сам, пожалуйста, доставь ему это письмо.<n><t>Запомни, письмо должно быть в сохранности, так как оно особой важности!")
+	MisBeginTalk( "<t>Так как Веленгтон не смог приехать, пожалуйста передайте это письмо ему.<n><t>И будьте осторожны. Это письмо очень важное!")
 	MisBeginCondition(HasRecord, 438)
 	MisBeginCondition(NoRecord, 439)
 	MisBeginCondition(NoMission,439)
@@ -1214,18 +1117,17 @@ function CenterMission001()
 	MisBeginAction(AddMission, 439)
 	MisBeginAction(GiveItem, 2430, 1, 4)
 	MisCancelAction(ClearMission, 439)
-	MisHelpTalk("<t>Ты все еще здесь? Живее!")
-	MisNeed(MIS_NEED_DESP, "Доставьте письмо Велингтону от Командующего флотом")
+	MisHelpTalk( "<t> Пожалуйста поспешите!" )
+	MisNeed(MIS_NEED_DESP, " Вернитесь к Веленгтону." )
 
 	MisResultCondition(AlwaysFailure)
 
--- Бй¶ЩЅ«ѕь >> ЛѕБоµДГШГЬ
 
-	DefineMission(479,"Секрет командующего",439,COMPLETE_SHOW)
+	DefineMission( 479, "Секрет для Командующего ", 439, COMPLETE_SHOW )
 
 	MisBeginCondition(AlwaysFailure)
 
-	MisResultTalk("<t>Так значит это приказ от командующего? Похоже, нам придется что-то придумать.<n><t>Солдат, отдохни сперва. Очень скоро у нас будет много дел.")
+	MisResultTalk( "<t>Это командующий просил Вас передать письмо? (Задумался).<n><t>Отдохни боец, у нас ещё не выполненная миссия.")
 
 	MisResultCondition(HasMission, 439)
 	MisResultCondition(NoRecord, 439)
@@ -1240,11 +1142,10 @@ function CenterMission001()
 	MisResultAction(AddMoney, 25000, 25000)
 
 
--- Бй¶ЩЅ«ѕь >> єЈѕьµДОдЖч
 
-	DefineMission(480, "Вооружение Флота", 440)
+	DefineMission(480, "Оружие флота ", 440 )
 
-	MisBeginTalk("<t>Ты готов? Тогда внимательно слушай.<n><t>От лица командующего я приказываю тебе проникнуть на базу неприятеля и убить несколько Мертвых Душ. Принеси мне 5 Душ, как доказательство.")
+	MisBeginTalk( "<t>Вы готовы? Слушайте внимательно тогда.<n><t>От имени главнокомандующего флотом имени королевы приказываю, убитьМёртвую душу и принести мне в докозательство <r5 Души нежити>.")
 
 	MisBeginCondition(HasRecord, 439)
 	MisBeginCondition(NoMission, 440)
@@ -1258,9 +1159,9 @@ function CenterMission001()
 
 	MisCancelAction(ClearMission, 440)
 	
-	MisHelpTalk("<t>Ты еще не собрал 5 душ? Победа близка!")
+	MisHelpTalk( "<t> Вы уже разве принесли Души нежити!")
 	
-	MisResultTalk("<t>Неплохо, здесь все, что нужно. Может тебе присоединиться к нам хаха! Так к слову, не волнуйся.")
+	MisResultTalk( "<t> Не так и плохо, Вы не думали о том что бы присоедениться к флоту её величества?")
 
 	MisResultCondition(HasMission, 440)
 	MisResultCondition(NoRecord, 440)
@@ -1278,11 +1179,10 @@ function CenterMission001()
 	TriggerAction(1, AddNextFlag, 440, 10, 5)
 	RegCurTrigger(4401)
 
--- Бй¶ЩЅ«ѕь >> єЈѕьГШј®
 	
-	DefineMission(481,"Устав Флота",441)
+	DefineMission( 481, "Руководство Флота ", 441 )
 
-	MisBeginTalk("<t>После последних операций, военная мощь Мертвых Душ сильно снизилась.<n><t>В тоже самое время, мы разработали несколько стратегий против них и записали их в специальную книгу. Но недавно она была украдена шпионами армии Мертвых Душ. Это тяжелый удар для нас!<n><t>Я хочу, чтобы ты проник на их морскую базу и стащил все 8 страниц Тома. Да и еще, достань мне суперклей от Командира Мертвых Душ.<n><t>И не возвращайся, если у тебя чего-то будет не хватать!")
+	MisBeginTalk( "<t>После боёв со стороной зла, силы мёртвых душ значительно ослабли. <n> <t> За время боёв мы нашли отличную тактику. Но шпионы украли наши планы и разработки тактических действий. Это оскорбление самой Королеве! <n> <t> От имени королевы приказываю! Отправляйтесь в Флот нави и сокрушите врага, так же соберите все 8 Страниц Тома. Склейте страницы в единый Том <pСупер клеем> <rКомандира мертвых душ>. <n> <t> И не идите под трибунал, жду Вас с целым томом тут. Удачи Боец!")
 
 
 	MisBeginCondition(HasRecord, 440)
@@ -1293,15 +1193,15 @@ function CenterMission001()
 
 	MisBeginAction(AddMission, 441)
 
-	MisBeginAction(AddTrigger, 4411, TE_GETITEM, 2388, 1)
-	MisBeginAction(AddTrigger, 4412, TE_GETITEM, 2389, 1)
-	MisBeginAction(AddTrigger, 4413, TE_GETITEM, 2390, 1)
-	MisBeginAction(AddTrigger, 4414, TE_GETITEM, 2391, 1)
-	MisBeginAction(AddTrigger, 4415, TE_GETITEM, 2392, 1)
-	MisBeginAction(AddTrigger, 4416, TE_GETITEM, 2393, 1)
-	MisBeginAction(AddTrigger, 4417, TE_GETITEM, 2394, 1)
-	MisBeginAction(AddTrigger, 4418, TE_GETITEM, 2395, 1)
-	MisBeginAction(AddTrigger, 4419, TE_GETITEM, 2441, 1)
+	MisBeginAction(AddTrigger, 4411, TE_GETITEM, 2388, 1)--Том, страница 1
+	MisBeginAction(AddTrigger, 4412, TE_GETITEM, 2389, 1)--2
+	MisBeginAction(AddTrigger, 4413, TE_GETITEM, 2390, 1)--3
+	MisBeginAction(AddTrigger, 4414, TE_GETITEM, 2391, 1)--4
+	MisBeginAction(AddTrigger, 4415, TE_GETITEM, 2392, 1)--5
+	MisBeginAction(AddTrigger, 4416, TE_GETITEM, 2393, 1)--6
+	MisBeginAction(AddTrigger, 4417, TE_GETITEM, 2394, 1)--7
+	MisBeginAction(AddTrigger, 4418, TE_GETITEM, 2395, 1)--Страница тома 8
+	MisBeginAction(AddTrigger, 4419, TE_GETITEM, 2441, 1)--Суперклей
 
 	MisNeed(MIS_NEED_ITEM, 2388, 1, 10, 1)
 	MisNeed(MIS_NEED_ITEM, 2389, 1, 20, 1)
@@ -1315,9 +1215,9 @@ function CenterMission001()
 
 	MisCancelAction(ClearMission, 441)
 
-	MisHelpTalk("<t>Мы не можем позволить нашим врагам узнать наши стратегии из Тома!")
+	MisHelpTalk( "<t> Мы не дложны позволить нашим врагам знать наши стратегии!")
 	
-	MisResultTalk("<t>Это...Это все...Ты действительно наш герой!<n><t>Невероятно! Даже слов не хватает, чтобы передать мою радость, Мне нужно успокоиться...Хорошо...Это твоя награда, забирай.")
+	MisResultTalk( "<t>Это... Это - это... Вы - действительно наш герой!<n><t>Это невероятно! Я не могу просто выразить своего восторга, я должен остыть... О право... Вы заслужили награду от самой Королевы.")
 
 	MisResultCondition(HasMission, 441)
 	MisResultCondition(NoRecord, 441)
@@ -1395,30 +1295,28 @@ function CenterMission001()
 
 
 
--- ЅЬїЛК·ЕЙВЮ >> ЗуФ®
-	DefineMission(482, "SOS", 442)
+	DefineMission( 482, "СОС ", 442 )
 
-	MisBeginTalk("<t>Я должен признаться, что армия Мертвых Душ превзошла все наши ожидания, так что я решил позвать моего старого врага, Капитана Джека, на помощь.<n><t>Он сейчас проживает где-то в районе Магического океана. Можешь туда сгонять от моего имени? Шансы невелики, но тем не менее.")
+	MisBeginTalk( "<t>Я признаю что наш видимый враг не такой уж и слабый как мы могли подумать с самого начала, по этому я обратился за помощью к Капитану Джеку. <n> <t> Отправляйтесь к нему и передайте о военном положении, найти его можно в магическом океане. Поторопитесь.")
 	MisBeginCondition(NoRecord, 442)
 	MisBeginCondition(NoMission,442)
 	MisBeginCondition(HasPirateGuild)
 
 	MisBeginAction(AddMission, 442)
 	MisCancelAction(ClearMission, 442)
-	MisHelpTalk("<t>Ты так и не сдвинулся с места? Хорош спать!")
+	MisHelpTalk( "<t> Поторопитесь, это не терпит отлагательств!")
 
-	MisNeed(MIS_NEED_DESP, "Передай просьбу о помощи Капитану Джеку в Магическом океане")
+	MisNeed(MIS_NEED_DESP, " О как он заговорил!")
 
 	MisResultCondition(AlwaysFailure)
 
 
--- ЅЬїЛґ¬і¤ >> ЗуФ®
 
-	DefineMission(483,"SOS",442,COMPLETE_SHOW)
+	DefineMission( 483, "СОС ", 442, COMPLETE_SHOW )
 
 	MisBeginCondition(AlwaysFailure)
 
-	MisResultTalk("<t>Что! И он осмелился просить у меня помощи? Шутишь чтоли.<n><t>Вернись и передай ему: если ему нужна моя помощь, пусть сперва победит меня в дуэли!")
+	MisResultTalk( "<t>Что! Он смеет просить о помощи меня? Ха-ха-ха. Как смешно.<n><t>Отправляйтесь обратно к нему и передайте, что если он хочет от меня помощи, пусть победит меня в честном поединке!")
 
 	MisResultCondition(HasMission, 442)
 	MisResultCondition(NoRecord, 442)
@@ -1427,10 +1325,9 @@ function CenterMission001()
 	MisResultAction(ClearMission, 442)
 	MisResultAction(SetRecord, 442)
 
--- ЅЬїЛґ¬і¤ >> ЅЬїЛУЦјыЅЬїЛ
-	DefineMission(484, "Джек против Джека", 443)
+	DefineMission( 484, "Джек против Джека ", 443 )
 
-	MisBeginTalk("<t>Это письмо с заданием, которое написал я сам. Принеси его Джеку Стреле.<n><t>Скажи ему, что я буду его ждать в павильоне в полночь в полнолуние восьмого месяца. ")
+	MisBeginTalk( "<t>Это-письмо о вызове его на поединок. Отнесите его Джеку Арроу.<n><t>Скажите ему, что я буду ждать его в павильоне в полночь в полнолуние восьмого месяца.")
 	MisBeginCondition(HasRecord, 442)
 	MisBeginCondition(NoRecord, 443)
 	MisBeginCondition(NoMission,443)
@@ -1441,20 +1338,19 @@ function CenterMission001()
 
 	MisCancelAction(ClearMission, 443)
 	MisBeginAction(GiveItem, 2431, 1, 4)
-	MisHelpTalk("<t>Ты так и не сдвинулся с места? Хорош спать!")
+	MisHelpTalk( "<t>Прекратите мечтать, отправляйтесь с послание немедленно!" )
 
-	MisNeed(MIS_NEED_DESP, "Передай письмо Капитана Джека Джеку Стреле")
+	MisNeed(MIS_NEED_DESP, "Передайте Письмо Вызова Капитана Джека Джеку Арроу." )
 
 	MisResultCondition(AlwaysFailure)
 
 
--- ЅЬїЛК·ЕЙВЮ >> ЅЬїЛУЦјыЅЬїЛ
 
-	DefineMission(485,"Джек против Джека",443,COMPLETE_SHOW)
+	DefineMission( 485, "Джек против Джека ", 443, COMPLETE_SHOW )
 
 	MisBeginCondition(AlwaysFailure)
 
-	MisResultTalk("<t>Эх...Похоже, он нам не поможет. Мы сами что-нибудь придумаем.<n><t>Тебе пришлось нелегко. Отдохни.")
+	MisResultTalk( "<t>Эх... Жаль, но нам не дождаться помощи от этого самодовольного дегенерата.<n><t>Вы устали наверно бегая просто так. Отдохните.")
 
 	MisResultCondition(HasItem,2431,1)
 	MisResultCondition(HasMission, 443)
@@ -1467,26 +1363,25 @@ function CenterMission001()
 	MisResultAction(AddExp, 10000, 10000)
 	MisResultAction(AddMoney, 50000, 50000)
 
--- ЅЬїЛК·ЕЙВЮ >> јУАХ±И±¦ІШ
 
-	DefineMission(486, "Карибские сокровища", 444)
+	DefineMission( 486, "Сокровища Карибского моря ", 444 )
 
-	MisBeginTalk("<t>На Острове Скелетов много гробов, собирающих души и Сердце Дейви Джоунса до сих пор остается спрятанным в одном из них.<n><t>Мы могли бы воспользоваться им, если бы только нашли. Ты поможешь нам отыскать Сердце Дейви Джоунса?<n><t>Это бы дало нам достаточно сил, чтобы сдерживать натиск армии Мертвых Душ.")
+	MisBeginTalk( "<t>На Острове Скелетов много Душ нежити.<n><t>Души нежити нам необходимы, что бы восстановить Сердце Дэйви Джоунса.<n><t>Это даст нам большое преимущество перед нашими врагами.")
 
 	MisBeginCondition(HasRecord, 443)
 	MisBeginCondition(NoRecord, 444)
 	MisBeginCondition(NoMission, 444)
 	MisBeginCondition(HasPirateGuild)
 
-	MisBeginAction(AddMission, 444)
-	MisBeginAction(AddTrigger, 4441, TE_GETITEM, 2444, 1)
+	MisBeginAction(AddMission, 444)---гроб, собирающий души
+	MisBeginAction(AddTrigger, 4441, TE_GETITEM, 2444, 1)--сердце джонса
 
 	MisNeed(MIS_NEED_ITEM, 2444, 1, 10, 1)
 	MisCancelAction(ClearMission, 444)
 
-	MisHelpTalk("<t>Ты еще не закончил собирать? Поторопись!")
+	MisHelpTalk( "<t>Седце Это Вы сможите добыть из гроба, собирающего души!" )
 
-	MisResultTalk("<t>Круто, теперь у меня достаточно денег, чтобы собрать мою собственную пиратскую команду.")
+	MisResultTalk( "<t>Отлично! Я Верил в Вас." )
 
 	MisResultCondition(NoRecord, 444)
 	MisResultCondition(HasMission, 444)
@@ -1505,11 +1400,10 @@ function CenterMission001()
 	TriggerAction(1, AddNextFlag, 444, 10, 1)
 	RegCurTrigger(4441)
 
---МъЅі >> КҐ№с
 	
-	DefineMission(487, "Собрание", 445)
+	DefineMission( 487, "Конгрегация ", 445 )
 
-	MisBeginTalk("<t>Я слышал о твоем мужественном поступке. Но не знаешь ли ты почему атака армии Мертвых Душ настолько мощна?<n><t>Я тебе скажу, это потому что они собирают проклятые монеты. Я, конечно, точно не знаю, но это точно что-то нехорошее.<n><t>Если тебе интересно, выбей 40 монет и 1 запачканную кровью монету. Я, может, смогу разрушить заклятие.")
+	MisBeginTalk( "<t>До меня дошли слухи о Ваших героических поступках.<n><t>Вы знаете почему армия Душ такая сильная? У меня есть предположение что это связано с тем что они собрали монеты душ. Я точно не знаю, но мне кажется что всё это не приведет ни к чему хорошему.<n><t>В можете мне принести Запачканную кровью монету и 40 золотых монет.")
 
 	MisBeginCondition(HasRecord, 444)
 	MisBeginCondition(NoRecord, 445)
@@ -1526,9 +1420,9 @@ function CenterMission001()
 	
 
 	MisCancelAction(ClearMission, 445)
-	MisHelpTalk("<t>Ну как дела? Сколько уже собрал?")
+	MisHelpTalk( "<t>Вы думаете, что если Вы тут будите стоять что ни буть изменится?" )
 
-	MisResultTalk("<t>Да! Ходят слухи что: !^($......%*#oa2......1&s?~*#^%!...... (Кузнец начинает бубнить на непонятном языке). Ok! Понятно!<n><t>Эти золотые монеты больше не прокляты. Этим Мертвым Душам теперь придется несладко при следующей атаке.")
+	MisResultTalk( "<t>О да! это то самое... (старец начинает что то петь на не понятном языке: ??????????????).<n><t>Возьмите. Я снял проклятие!")
 
 	MisResultCondition(NoRecord, 445)
 	MisResultCondition(HasMission, 445)
@@ -1557,306 +1451,3 @@ function CenterMission001()
 end
 CenterMission001()
 
-
-	DefineMission( 1700, "Летний Эвент", 1700 )
-
-	MisBeginTalk( "<t>Начало лета? Уже стало жарко? Хочется прохлады? Скорее на Зиму? Но ведь ее населяют ужасные монстры и прочие чудовища. Кажется тебе понадобится новая экипировка. У меня есть немного, но тебе придется потрудиться, чтобы получить ее. Надеюсь ты готов.")
-	MisBeginCondition(PfEqual, 8)--champ
-	MisBeginCondition(NoMission, 1700)
-	MisBeginCondition(NoRecord, 1700)
-	MisBeginCondition(LvCheck, ">", 69 )
-	MisBeginAction(AddMission, 1700)
-	MisBeginAction(SetFlag, 1700, 1)
-	MisBeginAction(AddTrigger, 8151, TE_GETITEM, 4283, 100)--тиковое бревно
-	MisBeginAction(AddTrigger, 1702, TE_GETITEM, 4284, 100)--Фальшивые флотские документы
-	MisBeginAction(AddTrigger, 1703, TE_GETITEM, 4285, 100)--Браслет ящера
-	MisCancelAction(ClearMission, 1700)
-
-	MisNeed(MIS_NEED_DESP, "Соберите все, чтобы получить подарок.")
-	MisNeed(MIS_NEED_ITEM, 4283, 100, 10, 100)
-	MisNeed(MIS_NEED_ITEM, 4284, 100, 20, 100)
-	MisNeed(MIS_NEED_ITEM, 4285, 100, 30, 100)
-
-	MisResultTalk("<t>Молодец, ты сделал это! Ты действительно достоен награды!")
-	MisHelpTalk("<t>Вы еще не собрали все, что нужно.")
-	MisResultCondition(HasMission, 1700 )
-	MisResultCondition(NoRecord, 1700)
-	MisResultCondition(HasItem, 4283, 100)
-	MisResultCondition(HasItem, 4284, 100)
-	MisResultCondition(HasItem, 4285, 100)
-	MisResultAction(TakeItem, 4283, 100)
-	MisResultAction(TakeItem, 4284, 100)
-	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 4286, 1, 4)
-	MisResultAction(ClearMission, 1700 )
-	MisResultAction(SetRecord, 1700)
-	MisResultBagNeed(1)
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4283 )
-	TriggerAction( 1, AddNextFlag, 1700, 10, 100 )
-	RegCurTrigger( 8151 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4284 )
-	TriggerAction( 1, AddNextFlag, 1700, 20, 100 )
-	RegCurTrigger( 1702 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4285 )
-	TriggerAction( 1, AddNextFlag, 1700, 30, 100 )
-	RegCurTrigger( 1703 )
-	
-	
-	DefineMission( 1701, "Летний Эвент", 1701 )
-
-	MisBeginTalk( "<t>Начало лета? Уже стало жарко? Хочется прохлады? Скорее на Зиму? Но ведь ее населяют ужасные монстры и прочие чудовища. Кажется тебе понадобится новая экипировка. У меня есть немного, но тебе придется потрудиться, чтобы получить ее. Надеюсь ты готов.")
-	MisBeginCondition(LvCheck, ">", 69 )
-	MisBeginCondition(PfEqual, 9)--круз
-	MisBeginCondition(NoRecord, 1701)
-	MisBeginCondition(NoMission, 1701)
-	MisBeginAction(AddMission, 1701)
-	MisBeginAction(SetFlag, 1701, 1)
-	MisBeginAction(AddTrigger, 8161, TE_GETITEM, 4283, 100)--тиковое бревно
-	MisBeginAction(AddTrigger, 8012, TE_GETITEM, 4284, 100)--Фальшивые флотские документы
-	MisBeginAction(AddTrigger, 8013, TE_GETITEM, 4285, 100)--Браслет ящера
-	MisCancelAction(ClearMission, 1701)
-
-	MisNeed(MIS_NEED_DESP, "Соберите все, чтобы получить подарок.")
-	MisNeed(MIS_NEED_ITEM, 4283, 100, 10, 100)
-	MisNeed(MIS_NEED_ITEM, 4284, 100, 20, 100)
-	MisNeed(MIS_NEED_ITEM, 4285, 100, 30, 100)
-
-	MisResultTalk("<t>Молодец, ты сделал это! Ты действительно достоен награды!")
-	MisHelpTalk("<t>Вы еще не собрали все, что нужно.")
-	MisResultCondition(HasMission, 1701 )
-	MisResultCondition(HasItem, 4283, 100)
-	MisResultCondition(HasItem, 4284, 100)
-	MisResultCondition(HasItem, 4285, 100)
-	MisResultCondition(NoRecord, 1701)
-	MisResultAction(SetRecord, 1701)
-	MisResultAction(TakeItem, 4283, 100)
-	MisResultAction(TakeItem, 4284, 100)
-	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 4286, 1, 4)
-	MisResultAction(ClearMission, 1701 )
-	MisResultBagNeed(1)
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4283 )
-	TriggerAction( 1, AddNextFlag, 1701, 10, 100 )
-	RegCurTrigger( 8161 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4284 )
-	TriggerAction( 1, AddNextFlag, 1701, 20, 100 )
-	RegCurTrigger( 8012 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4285 )
-	TriggerAction( 1, AddNextFlag, 1701, 30, 100 )
-	RegCurTrigger( 8013 )
-	
-	
-	
-	DefineMission( 1702, "Летний Эвент", 1702 )
-
-	MisBeginTalk( "<t>Начало лета? Уже стало жарко? Хочется прохлады? Скорее на Зиму? Но ведь ее населяют ужасные монстры и прочие чудовища. Кажется тебе понадобится новая экипировка. У меня есть немного, но тебе придется потрудиться, чтобы получить ее. Надеюсь ты готов.")
-	MisBeginCondition(LvCheck, ">", 69 )
-	MisBeginCondition(PfEqual, 12)--Шарп
-	MisBeginCondition(NoRecord, 1702)
-	MisBeginCondition(NoMission, 1702)
-	MisBeginAction(AddMission, 1702)
-	MisBeginAction(SetFlag, 1702, 1)
-	MisBeginAction(AddTrigger, 8171, TE_GETITEM, 4283, 100)--тиковое бревно
-	MisBeginAction(AddTrigger, 8022, TE_GETITEM, 4284, 100)--Фальшивые флотские документы
-	MisBeginAction(AddTrigger, 8023, TE_GETITEM, 4285, 100)--Браслет ящера
-	MisCancelAction(ClearMission, 1702)
-
-	MisNeed(MIS_NEED_DESP, "Соберите все, чтобы получить подарок.")
-	MisNeed(MIS_NEED_ITEM, 4283, 100, 10, 100)
-	MisNeed(MIS_NEED_ITEM, 4284, 100, 20, 100)
-	MisNeed(MIS_NEED_ITEM, 4285, 100, 30, 100)
-
-	MisResultTalk("<t>Молодец, ты сделал это! Ты действительно достоен награды!")
-	MisHelpTalk("<t>Вы еще не собрали все, что нужно.")
-	MisResultCondition(HasMission, 1702 )
-	MisResultCondition(HasItem, 4283, 100)
-	MisResultCondition(HasItem, 4284, 100)
-	MisResultCondition(HasItem, 4285, 100)
-	MisResultCondition(NoRecord, 1702)
-	MisResultAction(SetRecord, 1702)
-	MisResultAction(TakeItem, 4283, 100)
-	MisResultAction(TakeItem, 4284, 100)
-	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 4286, 1, 4)
-	MisResultAction(ClearMission, 1702 )
-	MisResultBagNeed(1)
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4283 )
-	TriggerAction( 1, AddNextFlag, 1702, 10, 100 )
-	RegCurTrigger( 8171 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4284 )
-	TriggerAction( 1, AddNextFlag, 8000, 20, 100 )
-	RegCurTrigger( 8022 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4285 )
-	TriggerAction( 1, AddNextFlag, 8000, 30, 100 )
-	RegCurTrigger( 8023 )
-	
-	
-	
-	DefineMission( 1703, "Летний Эвент", 1703 )
-
-	MisBeginTalk( "<t>Начало лета? Уже стало жарко? Хочется прохлады? Скорее на Зиму? Но ведь ее населяют ужасные монстры и прочие чудовища. Кажется тебе понадобится новая экипировка. У меня есть немного, но тебе придется потрудиться, чтобы получить ее. Надеюсь ты готов.")
-	MisBeginCondition(LvCheck, ">", 69 )
-	MisBeginCondition(PfEqual, 13)--Клер
-	MisBeginCondition(NoRecord, 1703)
-	MisBeginCondition(NoMission, 1703)
-	MisBeginAction(AddMission, 1703)
-	MisBeginAction(SetFlag, 1703, 1)
-	MisBeginAction(AddTrigger, 8211, TE_GETITEM, 4283, 100)--тиковое бревно
-	MisBeginAction(AddTrigger, 8032, TE_GETITEM, 4284, 100)--Фальшивые флотские документы
-	MisBeginAction(AddTrigger, 8033, TE_GETITEM, 4285, 100)--Браслет ящера
-	MisCancelAction(ClearMission, 1703)
-
-	MisNeed(MIS_NEED_DESP, "Соберите все, чтобы получить подарок.")
-	MisNeed(MIS_NEED_ITEM, 4283, 100, 10, 100)
-	MisNeed(MIS_NEED_ITEM, 4284, 100, 20, 100)
-	MisNeed(MIS_NEED_ITEM, 4285, 100, 30, 100)
-
-	MisResultTalk("<t>Молодец, ты сделал это! Ты действительно достоен награды!")
-	MisHelpTalk("<t>Вы еще не собрали все, что нужно.")
-	MisResultCondition(HasMission, 1703 )
-	MisResultCondition(HasItem, 4283, 100)
-	MisResultCondition(HasItem, 4284, 100)
-	MisResultCondition(HasItem, 4285, 100)
-	MisResultCondition(NoRecord, 1703)
-	MisResultAction(SetRecord, 1703)
-	MisResultAction(TakeItem, 4283, 100)
-	MisResultAction(TakeItem, 4284, 100)
-	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 4286, 1, 4)
-	MisResultAction(ClearMission, 1703 )
-	MisResultBagNeed(1)
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4283 )
-	TriggerAction( 1, AddNextFlag, 1703, 10, 100 )
-	RegCurTrigger( 8211 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4284 )
-	TriggerAction( 1, AddNextFlag, 1703, 20, 100 )
-	RegCurTrigger( 8032 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4285 )
-	TriggerAction( 1, AddNextFlag, 1703, 30, 100 )
-	RegCurTrigger( 8033 )
-	
-	
-	DefineMission( 1704, "Летний Эвент", 1704 )
-
-	MisBeginTalk( "<t>Начало лета? Уже стало жарко? Хочется прохлады? Скорее на Зиму? Но ведь ее населяют ужасные монстры и прочие чудовища. Кажется тебе понадобится новая экипировка. У меня есть немного, но тебе придется потрудиться, чтобы получить ее. Надеюсь ты готов.")
-	MisBeginCondition(LvCheck, ">", 69 )
-	MisBeginCondition(PfEqual, 14)--СМ
-	MisBeginCondition(NoRecord, 1704)
-	MisBeginCondition(NoMission, 1704)
-	MisBeginAction(AddMission, 1704)
-	MisBeginAction(SetFlag, 1704, 1)
-	MisBeginAction(AddTrigger, 8222, TE_GETITEM, 4283, 100)--тиковое бревно
-	MisBeginAction(AddTrigger, 8042, TE_GETITEM, 4284, 100)--Фальшивые флотские документы
-	MisBeginAction(AddTrigger, 8043, TE_GETITEM, 4285, 100)--Браслет ящера
-	MisCancelAction(ClearMission, 1704)
-
-	MisNeed(MIS_NEED_DESP, "Соберите все, чтобы получить подарок.")
-	MisNeed(MIS_NEED_ITEM, 4283, 100, 10, 100)
-	MisNeed(MIS_NEED_ITEM, 4284, 100, 20, 100)
-	MisNeed(MIS_NEED_ITEM, 4285, 100, 30, 100)
-
-	MisResultTalk("<t>Молодец, ты сделал это! Ты действительно достоен награды!")
-	MisHelpTalk("<t>Вы еще не собрали все, что нужно.")
-	MisResultCondition(HasMission, 1704 )
-	MisResultCondition(HasItem, 4283, 100)
-	MisResultCondition(HasItem, 4284, 100)
-	MisResultCondition(HasItem, 4285, 100)
-	MisResultCondition(NoRecord, 1704)
-	MisResultAction(SetRecord, 1704)
-	MisResultAction(TakeItem, 4283, 100)
-	MisResultAction(TakeItem, 4284, 100)
-	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 4286, 1, 4)
-	MisResultAction(ClearMission, 1704 )
-	MisResultBagNeed(1)
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4283 )
-	TriggerAction( 1, AddNextFlag, 1704, 10, 100 )
-	RegCurTrigger( 8222 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4284 )
-	TriggerAction( 1, AddNextFlag, 1704, 20, 100 )
-	RegCurTrigger( 8042 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4285 )
-	TriggerAction( 1, AddNextFlag, 1704, 30, 100 )
-	RegCurTrigger( 8043 )
-	
-	
-	DefineMission( 1705, "Летний Эвент", 1705 )
-
-	MisBeginTalk( "<t>Начало лета? Уже стало жарко? Хочется прохлады? Скорее на Зиму? Но ведь ее населяют ужасные монстры и прочие чудовища. Кажется тебе понадобится новая экипировка. У меня есть немного, но тебе придется потрудиться, чтобы получить ее. Надеюсь ты готов.")
-	MisBeginCondition(LvCheck, ">", 69 )
-	MisBeginCondition(PfEqual, 16)--вой
-	MisBeginCondition(NoRecord, 1705)
-	MisBeginCondition(NoMission, 1705)
-	MisBeginAction(AddMission, 1705)
-	MisBeginAction(SetFlag, 1705, 1)
-	MisBeginAction(AddTrigger, 8223, TE_GETITEM, 4283, 100)--тиковое бревно 4283
-	MisBeginAction(AddTrigger, 8052, TE_GETITEM, 4284, 100)--Фальшивые флотские документы 4284
-	MisBeginAction(AddTrigger, 8053, TE_GETITEM, 4285, 100)--Браслет ящера 4285
-	MisCancelAction(ClearMission, 1705)
-
-	MisNeed(MIS_NEED_DESP, "Соберите все, чтобы получить подарок.")
-	MisNeed(MIS_NEED_ITEM, 4283, 100, 10, 100)
-	MisNeed(MIS_NEED_ITEM, 4284, 100, 20, 100)
-	MisNeed(MIS_NEED_ITEM, 4285, 100, 30, 100)
-
-	MisResultTalk("<t>Молодец, ты сделал это! Ты действительно достоен награды!")
-	MisHelpTalk("<t>Вы еще не собрали все, что нужно.")
-	MisResultCondition(HasMission, 1705 )
-	MisResultCondition(HasItem, 4283, 100)
-	MisResultCondition(HasItem, 4284, 100)
-	MisResultCondition(HasItem, 4285, 100)
-	MisResultCondition(NoRecord, 1705)
-	MisResultAction(SetRecord, 1705)
-	MisResultAction(TakeItem, 4283, 100)
-	MisResultAction(TakeItem, 4284, 100)
-	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 4286, 1, 4)
-	MisResultAction(ClearMission, 1705 )
-	MisResultBagNeed(1)
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4283 )
-	TriggerAction( 1, AddNextFlag, 1705, 10, 100 )
-	RegCurTrigger( 8223 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4284 )
-	TriggerAction( 1, AddNextFlag, 1705, 20, 100 )
-	RegCurTrigger( 8052 )
-
-	InitTrigger()
-	TriggerCondition( 1, IsItem, 4285 )
-	TriggerAction( 1, AddNextFlag, 1705, 30, 100 )
-	RegCurTrigger( 8053 )
-	
-	

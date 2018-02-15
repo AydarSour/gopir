@@ -1,18 +1,19 @@
+----------------------------------------------
+--			  by ElectroKiller				--
+----------------------------------------------
+
 SetTeamFightMapName("teampk") 
 
-function config_entry(entry) 
-end 
-
 function after_create_entry(entry) 
-    Notice("Объявление: Открыта карта для командных сражений.")
+    Notice("Объявление: Карта для сражений между отрядами открылась.")
 end
 
 function after_destroy_entry_teampk(entry)
-    Notice("Объявление: Карта для командных сражений закрыта.") 
+    Notice("Объявление: Карта для сражений между отрядами закрылась.") 
 end
 
 function after_player_login_teampk(entry, player_name)
-    ChaNotice(player_name, "Объявление: Открыта карта для командных сражений.") 
+    ChaNotice(player_name, "Объявление: Карта для сражений между отрядами открылась.") 
 end
 
 function after_get_map_copy_teampk(copy_mgr, player1, player2, type) 
@@ -32,19 +33,17 @@ function after_get_map_copy_teampk(copy_mgr, player1, player2, type)
     SetMapCopyParam(copy_mgr, 10,0)
     SetMapCopyParam(copy_mgr, 11,0)
     SetMapCopyParam(copy_mgr, 12,0)
-
 end 
-
 
 function check_can_enter_teampk( role, copy_mgr )
 	local RYZ_Num = 0
 	RYZ_Num = CheckBagItem( role,3849 )
 
 	if RYZ_Num <= 0 then
-		SystemNotice ( role , "У вас нет Медали Отваги. Обратитесь к Администратору арены" )
+		SystemNotice ( role , "Вы не имеете Медаль Чести." )
 		return 0
 	elseif RYZ_Num > 1 then
-		LG("RYZ_PK","Have more than 1 Mark of Honor")
+		LG("RYZ_PK","Необходимо иметь более 1 очка Чести ")
 		return 0
 	else
 		local role_RYZ = GetChaItem2 ( role , 2 , 3849 )
@@ -55,19 +54,17 @@ function check_can_enter_teampk( role, copy_mgr )
 
 		
 		if attr_num < Rongy_xianzhi then
-			SystemNotice ( role , "У вас слишком мало очков чести. Невозможно начать сражение" )
+			SystemNotice ( role , "Количество очков чести снизилась " )
 			return 0
 		end
 
 		if attr_num > Rongy_xianzhi0 then
-			SystemNotice ( role , "У вас слишком много очков чести. Невозможно начать сражение" )
+			SystemNotice ( role , "Количество очков чести повысилось " )
 			return 0
 		end
 		
 	end
 	return 1
-
-
 end
 
 function begin_enter_teampk(role, copy_mgr) 
@@ -92,5 +89,4 @@ function begin_enter_teampk(role, copy_mgr)
 		    MoveCity(role, "Party PK2", copy_id)
 		end 
 	end
-	
 end 

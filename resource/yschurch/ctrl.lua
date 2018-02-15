@@ -1,5 +1,7 @@
+print( "З†£агІ™† Ctrl.lua" )
+
 function config(map)
-    MapCanSavePos(map, 1)
+    MapCanSavePos(map, 0)
     MapCanPK(map, 0)
     MapCopyNum(map, 1)
     SingleMapCopyPlyNum(map, 300)
@@ -7,45 +9,12 @@ function config(map)
     MapType ( map , 1 )
 end
 
-
-function get_map_entry_pos_fs()
-end
-
-function init_entry(map)
-	SetMapEntryTime(map, "2006/10/18/14/0", "0/0/0", "0/0/0", "0/0/0")
-end
-
-function after_enter_yschurch( role , map_copy )
-end
-
-function before_leave_yschurch( role )
-end
-
-function map_copy_first_run_yschurch( map_copy )
-end
-
 function map_copy_run_yschurch( map_copy )
  local closetime = CHURCHCLOSETIME
-     -- for i = 1 , CHURCHNOTICE , 1 do
-		--if closetime == CHURCHCLOSESHOW[i] then
-			-- local Notice_all = "Њајлљћћ√їоґѓљб ш ±Љдїє”–"..closetime.."√л£°«л„•љф ±Љдј≠£°"
-			--MapCopyNotice ( map_copy ,Notice_all )
-		--end
-	--end
-	--CHURCHCLOSETIME = CHURCHCLOSETIME - 1
 	KillMonsterInChurch(map_copy)
 	KillMonsterInChurch(map_copy)
 	DealAllActivePlayerInMap(map_copy,"Goto_ShaLan")
-	--Notice("Goto_ShaLan  ")
 end
-
-
-function can_open_entry_yschurch( map )  
-end 
-
-function map_run_yschurch ( map )
-end
-
 
 function Goto_ShaLan (role)
 
@@ -56,25 +25,19 @@ function Goto_ShaLan (role)
 	now_hour= tonumber(now_hour)		
 	now_miniute= tonumber(now_miniute)
 	local CheckDateNum = now_hour*100 +now_miniute
-	--Notice("CheckDateNum = "..CheckDateNum)
-	
 	if now_week==1 then
 	if CheckDateNum==1710  then
 		MoveTo( role,  824, 3530,  "magicsea" )
-		
 		else
 		return
 		end
 	elseif now_week==6 or  now_week==0 then
 		if CheckDateNum==2000  or CheckDateNum==2210 then
 		MoveTo( role,  910, 3571,  "magicsea" )
-		--Notice("MoveTo1 = ".."910,3751")
 		else
 		return
 		end
-	
 	end
-	
 end
 
 function KillMonsterInChurch ( map_copy )
@@ -84,32 +47,20 @@ function KillMonsterInChurch ( map_copy )
 	now_week= tonumber(now_week)
 	now_hour= tonumber(now_hour)		
 	now_miniute= tonumber(now_miniute)
-	local CheckDateNum = now_hour*100 +now_miniute
-	--Notice("CheckDateNum = "..CheckDateNum)
-	
+	local CheckDateNum = now_hour*100 +now_miniute	
 	if now_week==1 then
 		if CheckDateNum==1710  then
-			KillMonsterInMapByName(map_copy,"«мµдћ‘∆шєн")
-			KillMonsterInMapByName(map_copy,"∆ш«т")
+			KillMonsterInMapByName(map_copy,"ѕразднование непослушного мальчика ")
+			KillMonsterInMapByName(map_copy,"¬оздушный Ўар ")
 		else
 			return
 		end
 	elseif now_week==6 or  now_week==0 then
 		if CheckDateNum==2000  or CheckDateNum==2210 then
-			KillMonsterInMapByName(map_copy,"«мµдћ‘∆шєн")
-			KillMonsterInMapByName(map_copy,"∆ш«т")
+			KillMonsterInMapByName(map_copy,"ѕразднование непослушного мальчика ")
+			KillMonsterInMapByName(map_copy,"¬оздушный Ўар ")
 		else
 			return
 		end
 	end
 end
-
-
-function map_copy_close_yschurch ( map_copy )
-end
-
-function can_open_entry_yschurch( map ) 
-end 
-
-
-
