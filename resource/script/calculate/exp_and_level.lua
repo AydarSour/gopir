@@ -513,7 +513,7 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 				SystemNotice ( TurnToCha(t[i]) , "Ваш уровень слишком высок, что бы получать опыт!" )
 			end 
 			
-			
+						local Lv_character = Lv (TurnToCha(t[i]))
 						local EXP_NEW_LVL = 1
 						if Lv_character >= 1 and Lv_character <= 30 then
 							EXP_NEW_LVL = 7
@@ -533,7 +533,7 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 							EXP_NEW_LVL = 1
 						end
 			
-			exp = exp + exp_up  *EXP_NEW_LVL
+			exp = exp + exp_up  * EXP_NEW_LVL
 			SetChaAttrI ( TurnToCha(t[i]) , ATTR_CEXP, exp ) 
 			LG("exp" , "exp_now = " , exp ) 
 		else 
