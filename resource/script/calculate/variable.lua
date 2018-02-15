@@ -17,7 +17,7 @@ Every_5_minute			= 0				-- Переменная отсчета Every_5_minute (Каждые 5 минут)
 
 --Рейты на Скорость\ХП\МП\ДЕФ
 
-DEF_RAID = 1.2
+DEF_RAID = 1
 HP_RAID = 5
 SP_RAID = 3
 MSPD_RAID = 5
