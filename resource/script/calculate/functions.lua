@@ -2591,28 +2591,14 @@ function ReCheck_PK_Lv ( ATKER , DEFER )
 end
 
 
-
---PKИЛОпЛАНцјмІв
+--ПВП
 function after_player_kill_player( ATKER, DEFER )
 
 	SetCharaAttr(0, DEFER, ATTR_SP)
 	local map_name_ATKER = GetChaMapName ( ATKER )
 	local map_name_DEFER = GetChaMapName ( DEFER )
 	
-	local MGPK_MapNameNum = 10
-	local MGPK_MapName = {}
 	
-	MGPK_MapName[0]  = "puzzleworld"
-	MGPK_MapName[1]  = "puzzleworld2"
-	MGPK_MapName[2]  = "abandonedcity"
-	MGPK_MapName[3]  = "abandonedcity2"
-	MGPK_MapName[4]  = "abandonedcity3"
-	MGPK_MapName[5]  = "darkswamp"
-	MGPK_MapName[6]  = "hell"
-	MGPK_MapName[7]  = "hell2"
-	MGPK_MapName[8]  = "hell3"
-	MGPK_MapName[9]  = "hell4"
-	MGPK_MapName[10] = "hell5"
 	
 	local ATKER_Get_Ry = 0
 	local DEFER_Get_Ry = 0
@@ -2856,24 +2842,10 @@ function after_player_kill_player( ATKER, DEFER )
 			ATKER = TurnToCha ( ATKER )
 			DEFER = TurnToCha ( DEFER )
 			
-			--local Have_TSWW = CheckBagItem( DEFER , 3846 )
-			
-			--if Have_TSWW <= 0 then
-			--	Dead_Punish_ItemURE ( DEFER )
-			--	MGPK_Dead_Punish_Exp ( DEFER )
-			--else
-			--	local j = DelBagItem( DEFER , 3846 , 1 )
-			--	if j == 0 then
-			--		LG ( "NewItem" , "Ошибка при удалении Куклы Вуду" )
-			--	else
-			--		SystemNotice ( DEFER , "Кукла Вуду спасла тебя от потери опыта" )
-			--	end
-			--end
 
 	    end
 	end
 	
---	PK_Dead_Punish_ItemURE ( DEFER )
 
 end
 
@@ -5491,21 +5463,21 @@ function cha_timer(role, freq, time)
 	end
 
 	--Невидимость для ГМ 
-	local gmlvl = GetGmLv(role)
-	if gmlvl >=60   then
-		local sk_add = SK_KSSQQW 
-		local form_sklv = GetSkillLv( role , sk_add )
-			if form_sklv<=0 then
-				a = AddChaSkill ( role , sk_add, 1  , 1 , 0 ) 
-			end
-		 AddState( role , role , STATE_YS , 10 , 100 )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_CON )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_STA )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_DEX )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_AGI )
-		 SetCharaAttr( 2000 , role , ATTR_STATEV_MSPD )
-		 ALLExAttrSet(role)
-		end
+	-- local gmlvl = GetGmLv(role)
+	-- if gmlvl >=60   then
+		-- local sk_add = SK_KSSQQW 
+		-- local form_sklv = GetSkillLv( role , sk_add )
+			-- if form_sklv<=0 then
+				-- a = AddChaSkill ( role , sk_add, 1  , 1 , 0 ) 
+			-- end
+		 -- AddState( role , role , STATE_YS , 10 , 100 )
+		 -- SetCharaAttr( 1000 , role , ATTR_STATEV_CON )
+		 -- SetCharaAttr( 1000 , role , ATTR_STATEV_STA )
+		 -- SetCharaAttr( 1000 , role , ATTR_STATEV_DEX )
+		 -- SetCharaAttr( 1000 , role , ATTR_STATEV_AGI )
+		 -- SetCharaAttr( 2000 , role , ATTR_STATEV_MSPD )
+		 -- ALLExAttrSet(role)
+		-- end
 	
 	--Серверное время
 	if math.mod(now_tick, 360) == 0 and now_tick > 0 then	

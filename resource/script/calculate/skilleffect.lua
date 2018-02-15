@@ -89,9 +89,7 @@ BOSSAYSJ[988] = 4
 
 function Check_Baoliao(ATKER, DEFER, ... ) --[[判定是否暴料,传入攻击者等级、受击者等级、攻击者暴料率、受击者暴料率]]--
     local diaoliao_count = arg.n 
-	--LuaPrint("Enter function Check_Baoliao(Atker,Defer,mf_atker,mf_defer) --[[determine if it is drop item]]--".."\n" ) 
-	--LG("Drop List", "Enter function Check_Baoliao(Atker,Defer,mf_atker,mf_defer) --[[determine if it is drop item]]--","\n" ) 
-	Atker = TurnToCha ( ATKER ) 
+Atker = TurnToCha ( ATKER ) 
 	Defer = TurnToCha ( DEFER ) 
 	local lv_atker = Lv(Atker)
 	local lv_defer = Lv(Defer)
@@ -4635,12 +4633,9 @@ function Skill_Lxjy_Begin ( role , sklv )
 		SkillUnable(role)   
 		return 
 	end 
-	--Sp_Red (role , sp_reduce ) 
 end 
 
 function Skill_Lxjy_End ( ATKER , DEFER , sklv ) 
-	--LG( "skill_lxjy", "enter function Skill_Def_Lxjy : " , "\n" ) 
-	--LG("skill_lxjy", "function Skill_Def_Lxjy : " , "role = " , role , "sklv =  " , sklv , "\n" ) 
 	local hp = Hp( DEFER ) 
 	if ValidCha(ATKER) == 0 then 
 		LG ( "luascript_err" , "function Skill_Lxjy_End : ATKER as null" ) 
@@ -4652,14 +4647,11 @@ function Skill_Lxjy_End ( ATKER , DEFER , sklv )
 	end
 	local dmg = ( 0.5 +sklv * 0.1 ) * Atk_Dmg ( ATKER , DEFER )  
 	Hp_Endure_Dmg ( DEFER , dmg )  
-	--LG( "Lxjy", "Meteor Shower Skill Level=" , sklv , "Skill Damage= " , dmg , '\n" ) 
 end 
 
 --Вой
 function SkillArea_Circle_Lh ( sklv )
-	--LG( "skarea_lh", " enter function SkillArea_Circle_Lh : " , "sklv = " ,sklv ) 
 	local side = 300 + math.floor ( sklv * 20 ) 
-	--LG( "skarea_lh" , " side = " , side ) 
 	SetSkillRange ( 4 , side )   
 end 
 
@@ -4685,7 +4677,6 @@ function Skill_Lh_Begin ( role , sklv )
 		SkillUnable(role)   
 		return 
 	end 
-	--Sp_Red (role , sp_reduce ) 
 end 
 
 function Skill_Lh_End ( ATKER , DEFER , sklv ) 
@@ -4742,14 +4733,11 @@ function Skill_Hxdj_End ( ATKER , DEFER , sklv )
 	Hp_Endure_Dmg ( DEFER , dmg )  
 	AddState ( ATKER , DEFER , STATE_XY , statelv , statetime ) 
 	BeatBack(ATKER , DEFER , back_dis) 
-	--LG( "Hxdj", "Parry Skill Level= " , sklv , "Skill Damage= " , dmg , '\n" ) 
 end 
 
 --Варварское дробление
 function SkillArea_Circle_Ymsl ( sklv )
-	--LG( "skarea_ymsl", " enter function SkillArea_Circle_Ymsl : " , "sklv = " ,sklv ) 
 	local side = 200 + math.floor ( sklv * 10 ) 
-	--LG( "skarea_ymsl" , " side = " , side ) 
 	SetSkillRange ( 4 , side )   
 end 
 
@@ -4771,18 +4759,15 @@ function Skill_Ymsl_Begin ( role , sklv )
 	local sp_reduce = SkillSp_Ymsl ( sklv ) 
 	if sp - sp_reduce < 0 then 
 		SkillUnable(role)   
-		--LG("skill_ymsl", "function Skill_Atk_Ymsl : ", "SP insufficient to cast Barbaric Crush" , "\n" ) 
 		return 
 	end 
 end 
 
 function Skill_Ymsl_End ( ATKER , DEFER , sklv ) 
 	local hp = Hp( DEFER ) 
-	--LG("ymsl" , "enter defer_mod " ) 
 	atk_rad = 1.5+sklv*0.1 
 	hpdmg = Atk_Raise ( atk_rad , ATKER , DEFER )
 	Hp_Endure_Dmg ( DEFER , hpdmg )  
-	--LG( "Ymsl", "Barbaric Crush Skill Level=" , sklv , "Skill Damage= " , dmg , '\n" ) 
  end
 
 
@@ -4817,8 +4802,7 @@ end
 
 function Skill_Dzy_End ( ATKER , DEFER , sklv ) 
 	local dmg = ( -1 ) * math.floor(10 + 15 * sklv + math.floor ( Sta(ATKER)*0.5     )  )
-	Hp_Endure_Dmg ( DEFER , dmg )  
-	--LG( "Dzy", "Greater Heal Skill Level=" , sklv , "Skill Damage= " , dmg , '\n" ) 
+	Hp_Endure_Dmg ( DEFER , dmg )   
 end 
 
 
@@ -5023,9 +5007,6 @@ function Skill_Rsd_End ( ATKER , DEFER , sklv )
 	local map_name = GetChaMapName (DEFER)
 	local hpdmg = sklv * 10 
 	local hp = GetChaAttr(DEFER) 
-	-- if map_name="garner" or map_name="darckblue" or map_name="magicsea" then
-		-- hpdmg = 1 
-	-- end
 	if role == DEFER then 
 		Hp_Endure_Dmg( DEFER , hpdmg ) 
 	end 
@@ -5043,8 +5024,6 @@ function State_Rs_Add ( role , statelv )
 	local statedttime = 10 + statelv * 5
 	Hp_Endure_Dmg ( role , hpdmg ) 
 	SystemNotice(role, "На вас действует эффект <Огонь> "..statelv.."ур. на "..statedttime.. " секунд" )
-			
-
 end 
 
 function State_Rs_Rem ( role , statelv ) 
@@ -5080,7 +5059,6 @@ function SkillArea_State_Zzzh ( sklv )
 		if map_name_ATKER == "garner2" or map_name_DEFER == "garner2" or map_name_DEFER == "07xmas2"  or map_name_ATKER == "07xmas" or map_name_ATKER == "darkswamp" or map_name_DEFER == "darkswamp"  or map_name_ATKER == "puzzleworld"  or map_name_ATKER =="puzzleworld2" or map_name_ATKER == "abandonedcity" or map_name_ATKER =="abandonedcity2" or map_name_ATKER =="abandonedcity3" or map_name_DEFER == "abandonedcity" or map_name_DEFER =="abandonedcity2" or map_name_DEFER =="abandonedcity3" or map_name_DEFER == "puzzleworld"  or map_name_DEFER =="puzzleworld2"  or map_name_ATKER == "hell" or map_name_ATKER =="hell2" or map_name_ATKER =="hell3" or map_name_ATKER =="hell4" or map_name_ATKER =="hell5" or map_name_DEFER == "hell" or map_name_DEFER =="hell2" or map_name_DEFER =="hell3" or map_name_DEFER =="hell4" or map_name_DEFER =="hell5" or map_name_ATKER == "garner" or  map_name_DEFER == "garner"  or map_name_ATKER == "magicsea" or  map_name_DEFER == "magicsea"  or map_name_ATKER == "darkblue" or  map_name_DEFER == "darkblue" or map_name_ATKER == "lonetower" or  map_name_DEFER == "lonetower" or map_name_ATKER == "shalan2" or  map_name_DEFER == "shalan2" or map_name_ATKER == "leiting2" or  map_name_DEFER == "leiting2" or map_name_ATKER == "binglang2" or  map_name_DEFER == "binglang2" or map_name_ATKER == "heilong" or map_name_DEFER == "heilong" or map_name_ATKER == "heilong2" or map_name_DEFER == "heilong2" or map_name_ATKER == "jialebi" or map_name_DEFER == "jialebi" or map_name_ATKER == "teampk" or map_name_DEFER == "teampk" or map_name_ATKER == "secretgarden" or map_name_DEFER == "secretgarden" then
 			if Can_Pk_Garner2 == 0 then
 			 statetime =math.max(5,math.floor(sta_atker/30))+sklv
-		--		Notice ( "statetime="..statetime)
 			end
 		end
 	local statelv = sklv 
@@ -5088,28 +5066,21 @@ function SkillArea_State_Zzzh ( sklv )
 end 
 
 function Skill_Zzzh_Begin ( role , sklv ) 
-	--LG( "skill_Zzzh", "enter function Skill_Atk_Zzzh : " , "\n" ) 
-	--LG("skill_Zzzh", "function Skill_Atk_Zzzh : " , "role = " , role , "sklv =  " , sklv , "\n" ) 
 	local sp = Sp(role) 
 	local sp_reduce 
 	sp_reduce = SkillSp_Zzzh ( sklv ) 
 	if sp - sp_reduce < 0 then 
 		SkillUnable(role)   
-		--LG("skill_zzzh", "function Skill_Atk_zzzh : ", "Insufficient SP to cast Cursed Fire" , "\n" ) 
 		return 
 	end 
 	
 	Sp_Red (role , sp_reduce ) 
-	--LG( "Zzzh", "Cursed Fire Skill Level=" , sklv , "Skill SP Consumption= " , sp_reduce , '\n" ) 
 end 
 
 function Skill_Zzzh_End ( ATKER , DEFER , sklv ) 
-	--LG( "skill_zzzh", "enter function Skill_Def_Zzzh : " , "\n" ) 
-	--LG("skill_zzzh", "function Skill_Def_Zzzh : " , "role = " , role , "sklv =  " , sklv , "\n" ) 
 end 
 
 function State_Zzzh_Add ( role , statelv ) 
-	--LG("state_Zzzh" , "function State_Zzzh_Add : " , "role =  " , role , "statelv = " , statelv, "\n" ) 
 	local defsa_dif = (-1) * ( 0.1 + 0.02 * statelv ) 
 	local defsa = math.floor (  (DefSa(role) + defsa_dif ) * ATTR_RADIX ) 
 	SetCharaAttr( defsa , role , ATTR_STATEC_DEF ) 
@@ -5117,7 +5088,6 @@ function State_Zzzh_Add ( role , statelv )
 end 
 
 function State_Zzzh_Rem ( role , statelv ) 
-	--LG("state_zzzh" , "function State_Zzzh_Rem : " , "role =  " , role , "statelv = " , statelv, "\n" ) 
 	local defsa_dif = (-1) * ( 0.1 + 0.02 * statelv ) 
 	local defsa = math.floor (  (DefSa(role) - defsa_dif ) * ATTR_RADIX ) 
 	SetCharaAttr( defsa , role , ATTR_STATEC_DEF ) 
@@ -5152,19 +5122,15 @@ function SkillArea_State_Sdbz ( sklv )
 end 
 
 function Skill_Sdbz_Begin ( role , sklv ) 
-	--LG( "skill_Sdbz", "enter function Skill_Atk_Sdbz : " , "\n" ) 
-	--LG("skill_Sdbz", "function Skill_Atk_Sdbz : " , "role = " , role , "sklv =  " , sklv , "\n" ) 
 	local sp = Sp(role) 
 	local sp_reduce 
 	sp_reduce = SkillSp_Sdbz ( sklv ) 
 	if sp - sp_reduce < 0 then 
-		SkillUnable(role)   
-		--LG("skill_sdbz", "function Skill_Atk_sdbz : ", "SP insufficient to cast Counterguard" , "\n" ) 
+		SkillUnable(role)    
 		return 
 	end 
 	
 	Sp_Red (role , sp_reduce ) 
-	--LG( "Sdbz", "Counterguard Skill Level= " , sklv , "Skill SP Consumption= " , sp_reduce , '\n" ) 
 end 
 
 function Skill_Sdbz_End ( ATKER , DEFER , sklv ) 

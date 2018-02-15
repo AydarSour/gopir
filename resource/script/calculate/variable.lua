@@ -13,10 +13,11 @@ BOGEXP_GETRAD = 		10		--Рейты на кач феи бога
 TeamExp_RAID =			 1		--Рейты на кач в отряде
 MENTOR_ITEMID =			 0 		--Дополнительный итем ученику к мини-усилителям натиска
 
---Рейт на хп мп и деф
-RAID_MX_HP=1
-RAID_MX_SP=1
-RAID_MX_DEF=1
+--Рейт на хп мп и деф скорость
+RAID_MX_HP	=	3
+RAID_MX_SP	=	2
+RAID_MX_DEF	=	1.2
+RAID_MX_MVS = 	1.3
 
 --Урон по людям 
 Damage_for_players = 1 -- Урон по героям
@@ -24,6 +25,7 @@ Damage_for_mobs = 1 -- Урон по Мобам
 
 --Лимит уровня
 LV_LIMIT = 100
+
 --Уровень феи
 JLMAXLV = 51
 JLMINLV = 1
@@ -108,17 +110,136 @@ ReadyToFight = 0
 ATTR_RADIX = 1000
 AREA_SAFE = 2
 
-WD_GOLD = 10000000			--Золото, которое требуется для получения Свадебного сертификата
-WD_FIREWORK_COUNT = 5		--Количество видов фейерверков
-WD_FIREWORK = {}			--Массив с ID фейерверков
+
+	--Свадьба
+	WD_GOLD = 10000000			--Золото, которое требуется для получения Свадебного сертификата
+	WD_FIREWORK_COUNT = 5		--Количество видов фейерверков
+	WD_FIREWORK = {}			--Массив с ID фейерверков
 	WD_FIREWORK[1] = 839
 	WD_FIREWORK[2] = 838
 	WD_FIREWORK[3] = 366
 	WD_FIREWORK[4] = 369
 	WD_FIREWORK[5] = 363
-
-ITEM_BILET_COUNT = 61
-ITEM_BILET = {}
+	
+	--Карты данжей
+	MGPK_MapNameNum = 10
+	MGPK_MapName = {}
+	MGPK_MapName[0]  = "puzzleworld"
+	MGPK_MapName[1]  = "puzzleworld2"
+	MGPK_MapName[2]  = "abandonedcity"
+	MGPK_MapName[3]  = "abandonedcity2"
+	MGPK_MapName[4]  = "abandonedcity3"
+	MGPK_MapName[5]  = "darkswamp"
+	MGPK_MapName[6]  = "hell"
+	MGPK_MapName[7]  = "hell2"
+	MGPK_MapName[8]  = "hell3"
+	MGPK_MapName[9]  = "hell4"
+	MGPK_MapName[10] = "hell5"
+	
+	--Репутация для менторства
+	PlayerCredit = {}
+	PlayerCredit[	2	]=	1
+	PlayerCredit[	3	]=	2
+	PlayerCredit[	4	]=	3
+	PlayerCredit[	5	]=	4
+	PlayerCredit[	6	]=	5
+	PlayerCredit[	7	]=	6
+	PlayerCredit[	8	]=	7
+	PlayerCredit[	9	]=	8
+	PlayerCredit[	10	]=	9
+	PlayerCredit[	11	]=	10
+	PlayerCredit[	12	]=	12
+	PlayerCredit[	13	]=	14
+	PlayerCredit[	14	]=	16
+	PlayerCredit[	15	]=	18
+	PlayerCredit[	16	]=	20
+	PlayerCredit[	17	]=	22
+	PlayerCredit[	18	]=	24
+	PlayerCredit[	19	]=	26
+	PlayerCredit[	20	]=	28
+	PlayerCredit[	21	]=	30
+	PlayerCredit[	22	]=	32
+	PlayerCredit[	23	]=	34
+	PlayerCredit[	24	]=	36
+	PlayerCredit[	25	]=	38
+	PlayerCredit[	26	]=	40
+	PlayerCredit[	27	]=	42
+	PlayerCredit[	28	]=	44
+	PlayerCredit[	29	]=	46
+	PlayerCredit[	30	]=	48
+	PlayerCredit[	31	]=	50
+	PlayerCredit[	32	]=	52
+	PlayerCredit[	33	]=	54
+	PlayerCredit[	34	]=	56
+	PlayerCredit[	35	]=	58
+	PlayerCredit[	36	]=	60
+	PlayerCredit[	37	]=	62
+	PlayerCredit[	38	]=	64
+	PlayerCredit[	39	]=	66
+	PlayerCredit[	40	]=	68
+	PlayerCredit[	41	]=	71
+	PlayerCredit[	42	]=	75
+	PlayerCredit[	43	]=	80
+	PlayerCredit[	44	]=	86
+	PlayerCredit[	45	]=	93
+	PlayerCredit[	46	]=	101
+	PlayerCredit[	47	]=	110
+	PlayerCredit[	48	]=	120
+	PlayerCredit[	49	]=	131
+	PlayerCredit[	50	]=	143
+	PlayerCredit[	51	]=	156
+	PlayerCredit[	52	]=	170
+	PlayerCredit[	53	]=	185
+	PlayerCredit[	54	]=	201
+	PlayerCredit[	55	]=	218
+	PlayerCredit[	56	]=	236
+	PlayerCredit[	57	]=	255
+	PlayerCredit[	58	]=	275
+	PlayerCredit[	59	]=	296
+	PlayerCredit[	60	]=	318
+	PlayerCredit[	61	]=	341
+	PlayerCredit[	62	]=	365
+	PlayerCredit[	63	]=	390
+	PlayerCredit[	64	]=	416
+	PlayerCredit[	65	]=	443
+	PlayerCredit[	66	]=	471
+	PlayerCredit[	67	]=	500
+	PlayerCredit[	68	]=	530
+	PlayerCredit[	69	]=	561
+	PlayerCredit[	70	]=	593
+	PlayerCredit[	71	]=	626
+	PlayerCredit[	72	]=	660
+	PlayerCredit[	73	]=	695
+	PlayerCredit[	74	]=	731
+	PlayerCredit[	75	]=	768
+	PlayerCredit[	76	]=	806
+	PlayerCredit[	77	]=	845
+	PlayerCredit[	78	]=	885
+	PlayerCredit[	79	]=	926
+	PlayerCredit[	80	]=	968
+	PlayerCredit[	81	]=	1011
+	PlayerCredit[	82	]=	1055
+	PlayerCredit[	83	]=	1100
+	PlayerCredit[	84	]=	1146
+	PlayerCredit[	85	]=	1193
+	PlayerCredit[	86	]=	1241
+	PlayerCredit[	87	]=	1290
+	PlayerCredit[	88	]=	1340
+	PlayerCredit[	89	]=	1391
+	PlayerCredit[	90	]=	1443
+	PlayerCredit[	91	]=	1496
+	PlayerCredit[	92	]=	1550
+	PlayerCredit[	93	]=	1605
+	PlayerCredit[	94	]=	1661
+	PlayerCredit[	95	]=	1718
+	PlayerCredit[	96	]=	1776
+	PlayerCredit[	97	]=	1835
+	PlayerCredit[	98	]=	1895
+	PlayerCredit[	99	]=	1956
+	PlayerCredit[	100	]=	1956
+--Все билеты
+	ITEM_BILET_COUNT = 61
+	ITEM_BILET = {}
 	ITEM_BILET[1] = 332
 	ITEM_BILET[2] = 563
 	ITEM_BILET[3] = 583
