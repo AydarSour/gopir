@@ -1,4 +1,5 @@
 print("Loading skilleffect.lua")
+
 dofile(GetResPath("script\\calculate\\variable.lua"))
 dofile(GetResPath("script\\calculate\\exp_and_level.lua"))
 dofile(GetResPath("script\\calculate\\JobType.lua"))
@@ -78,10 +79,8 @@ BOSSAYSJ[988] = 4
 
 
 
-function Check_Baoliao(ATKER, DEFER, ... ) --[[判定是否暴料,传入攻击者等级、受击者等级、攻击者暴料率、受击者暴料率]]--
+function Check_Baoliao(ATKER, DEFER, ... ) 
     local diaoliao_count = arg.n 
-	--LuaPrint("Enter function Check_Baoliao(Atker,Defer,mf_atker,mf_defer) --[[determine if it is drop item]]--".."\n" ) 
-	--LG("Drop List", "Enter function Check_Baoliao(Atker,Defer,mf_atker,mf_defer) --[[determine if it is drop item]]--","\n" ) 
 	Atker = TurnToCha ( ATKER ) 
 	Defer = TurnToCha ( DEFER ) 
 	local lv_atker = Lv(Atker)
@@ -115,8 +114,6 @@ function Check_Baoliao(ATKER, DEFER, ... ) --[[判定是否暴料,传入攻击者等级、受击
 			else
 				item[count] = 2
 			end
-			--LuaPrint("Out function Check_Baoliao(lv_atker,lv_defer,mf_atker,mf_defer) --[[determine if it is drop item]]--") 
-			--LG("Drop List" , "function Check_Baoliao : " , "count = " , count , "item[1] =" ,item[1] , "item[2] = " , item[2], "item[3] = " , item[3] ,  "item[4] = " ,item[4] , "item[5] = " , item[5] , "item[6] = " ,item[6] , "item[7] = " ,item[7], "item[8] = " ,item[8], "item[9] = " ,item[9], "item[10] = " ,item[10]) 
 			SetItemFall ( count , item[1] , item[2] , item[3] , item[4] , item[5] , item[6], item[7] ,item[8],item[9],item[10] )
 		end 
 	else

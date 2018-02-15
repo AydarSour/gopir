@@ -119,4 +119,4 @@
 //117	¬у»р	1	781	0	121373,55578	121373,55578	219	Lower Icicle Castle	20	0	el_talk27	0
 //118	њЋ»рЋєƒ™Ћє	1	781	0	210692,55139	210692,55139	129	Skeleton Haven	60	0	el_talk28	0
 //119	Descartes	1	1046	0	130900,50700	130900,50701	175	Lower Icicle Castle	20	0	movexmas_talk	0
-117	Ёвентер	1	11	15	131175,51025	131175,51025	180	Argent City	1	0	SummerEvent	0
+//117	Ёвентер	1	11	15	131175,51025	131175,51025	180	Argent City	1	0	SummerEvent	0
