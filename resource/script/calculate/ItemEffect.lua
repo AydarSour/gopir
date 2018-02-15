@@ -80,44 +80,44 @@ end
 
 -- Хлеб
 function ItemUse_BREAD (role, Item )
-	local hp = GetChaAttr(role, ATTR_HP) 
-	if hp <= 0 then   
-	end 
-	hp_resume = 80    
-	hp = hp + hp_resume 
-	mxhp = GetChaAttr(role,ATTR_MXHP) 
-	if hp > mxhp then
-		hp = mxhp 
-	end  
-	SetCharaAttr(hp, role, ATTR_HP) 
+	local statelv = 2
+	local statetime = 15
+	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
+	if StateLvNow >= 1 then
+		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
+		UseItemFailed ( role )
+		return
+	else
+		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
+	end
 end 
 
 -- Яблоко
 function ItemUse_APPLE ( role , Item )
-	local hp = GetChaAttr(role, ATTR_HP)  
-	if hp <= 0 then   
-	end 
-		hp_resume = 20    
-	hp = hp + hp_resume 
-	mxhp = GetChaAttr(role,ATTR_MXHP) 
-	if hp > mxhp then 
-		hp = mxhp 
-	end 
-	SetCharaAttr(hp, role, ATTR_HP) 
+	local statelv = 1
+	local statetime = 15
+	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
+	if StateLvNow >= 1 then
+		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
+		UseItemFailed ( role )
+		return
+	else
+		AddState ( role , role , STATE_HPPOTS , statelv , statetime )
+	end
 end 
 
 -- Кекс
 function ItemUse_CAKE ( role , Item )
-	local hp = GetChaAttr(role, ATTR_HP)  
-	if hp <= 0 then  
-	end 
-	hp_resume = 180   
-	hp = hp + hp_resume 
-	mxhp = GetChaAttr(role,ATTR_MXHP) 
-	if hp > mxhp then
-		hp = mxhp 
-	end 
-	SetCharaAttr(hp, role, ATTR_HP) 
+	local statelv = 3
+	local statetime = 15
+	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
+	if StateLvNow >= 1 then
+		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
+		UseItemFailed ( role )
+		return
+	else
+		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
+	end
 end 
 
 -- Эльфийский фрукт
