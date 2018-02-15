@@ -2,8 +2,6 @@ MFRADIX=100
 CRTRADIX=100 
 ATKER=0 
 DEFER=1 
-
---------------КҐХЅЧЁУГІї·Ц----------------------------------------
 count_haidao = 0
 count_haijun = 0
 five_seconds = 0
@@ -13,8 +11,6 @@ time_can_setnvsheng = 0
 check_need_show = 0 
 create_boss_hj = 0
 create_boss_hd = 0
---create_two_side_lose = 0
---CLOSENotice = 0
 
 
 count_haijun2 = 0
@@ -26,8 +22,6 @@ time_can_setnvsheng2 = 0
 check_need_show2 = 0
 create_boss_hj2 = 0
 create_boss_hd2 = 0
---create_two_side_lose2 = 0
---CLOSENotice2 = 0
 
 function get_repatriate_city_guildwar(role)
 
@@ -117,34 +111,34 @@ local minute = os.date("%M")
 				  return 0
 			  end
 
-				  if (message == "&hamesvrstop") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&teload_ai") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&ipdateall") then
-				  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				   if (message == "&teload") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				   if (message == "&nake") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&jide") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&nove") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
+				  -- if (message == "&hamesvrstop") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&teload_ai") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&ipdateall") then
+				  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				   -- if (message == "&teload") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				   -- if (message == "&nake") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&jide") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&nove") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
 				  -- if (message == "&lick") then
 					  -- SystemNotice(role, "Доступ запрещен!")
 					  -- return 0
@@ -157,38 +151,38 @@ local minute = os.date("%M")
 					  -- SystemNotice(role, "Доступ запрещен!")
 					  -- return 0
 				  -- end
-				  if (message == "&teload") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&dummon") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&dummonex") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&sttr") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&dkill") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&deattr") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&addexp") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&telive") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
+				  -- if (message == "&teload") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&dummon") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&dummonex") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&sttr") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&dkill") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&deattr") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&addexp") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
+				  -- if (message == "&telive") then
+					  -- SystemNotice(role, "Доступ запрещен!")
+					  -- return 0
+				  -- end
 				  -- if (message == "&wcha") then
 					  -- SystemNotice(role, "Доступ запрещен!")
 					  -- return 0
@@ -5495,21 +5489,21 @@ function cha_timer(role, freq, time)
 
 
 	--Невидимость для ГМ 
-	local gmlvl = GetGmLv(role)
-	if gmlvl >=60   then
-		local sk_add = SK_KSSQQW 
-		local form_sklv = GetSkillLv( role , sk_add )
-			if form_sklv<=0 then
-				a = AddChaSkill ( role , sk_add, 1  , 1 , 0 ) 
-			end
-		 AddState( role , role , STATE_YS , 10 , 100 )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_CON )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_STA )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_DEX )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_AGI )
-		 SetCharaAttr( 2000 , role , ATTR_STATEV_MSPD )
-		 ALLExAttrSet(role)
-		end
+	-- local gmlvl = GetGmLv(role)
+	-- if gmlvl >=60   then
+		-- local sk_add = SK_KSSQQW 
+		-- local form_sklv = GetSkillLv( role , sk_add )
+			-- if form_sklv<=0 then
+				-- a = AddChaSkill ( role , sk_add, 1  , 1 , 0 ) 
+			-- end
+		 -- AddState( role , role , STATE_YS , 10 , 100 )
+		 -- SetCharaAttr( 1000 , role , ATTR_STATEV_CON )
+		 -- SetCharaAttr( 1000 , role , ATTR_STATEV_STA )
+		 -- SetCharaAttr( 1000 , role , ATTR_STATEV_DEX )
+		 -- SetCharaAttr( 1000 , role , ATTR_STATEV_AGI )
+		 -- SetCharaAttr( 2000 , role , ATTR_STATEV_MSPD )
+		 -- ALLExAttrSet(role)
+		-- end
 	
 	--Серверное время
 	if math.mod(now_tick, 360) == 0 and now_tick > 0 then	
@@ -7447,107 +7441,7 @@ end
 -------------------------------------------------------------------------------------
 
 --------±±ГАМъИЛБщПо»о¶Ї---------bragi-----
-GetExp	=	{}
-GetExp[1]	=	2
-GetExp[2]	=	3
-GetExp[3]	=	7
-GetExp[4]	=	17
-GetExp[5]	=	50
-GetExp[6]	=	125
-GetExp[7]	=	250
-GetExp[8]	=	500
-GetExp[9]	=	987
-GetExp[10]	=	1604
-GetExp[11]	=	2493
-GetExp[12]	=	3734
-GetExp[13]	=	5422
-GetExp[14]	=	7669
-GetExp[15]	=	10605
-GetExp[16]	=	14383
-GetExp[17]	=	19178
-GetExp[18]	=	25191
-GetExp[19]	=	32653
-GetExp[20]	=	41828
-GetExp[21]	=	53016
-GetExp[22]	=	66556
-GetExp[23]	=	82834
-GetExp[24]	=	102282
-GetExp[25]	=	125390
-GetExp[26]	=	152706
-GetExp[27]	=	184846
-GetExp[28]	=	222499
-GetExp[29]	=	266435
-GetExp[30]	=	317513
-GetExp[31]	=	376689
-GetExp[32]	=	445031
-GetExp[33]	=	523719
-GetExp[34]	=	614069
-GetExp[35]	=	717537
-GetExp[36]	=	835735
-GetExp[37]	=	970446
-GetExp[38]	=	1123644
-GetExp[39]	=	1297505
-GetExp[40]	=	1494430
-GetExp[41]	=	1717066
-GetExp[42]	=	1968329
-GetExp[43]	=	2251428
-GetExp[44]	=	2569889
-GetExp[45]	=	2927590
-GetExp[46]	=	3328788
-GetExp[47]	=	3778155
-GetExp[48]	=	4280815
-GetExp[49]	=	4842382
-GetExp[50]	=	5469008
-GetExp[51]	=	6167428
-GetExp[52]	=	6945010
-GetExp[53]	=	7809811
-GetExp[54]	=	8770641
-GetExp[55]	=	9837120
-GetExp[56]	=	11019758
-GetExp[57]	=	12330022
-GetExp[58]	=	13780426
-GetExp[59]	=	15384615
-GetExp[60]	=	18873209
-GetExp[61]	=	22938213
-GetExp[62]	=	29785576
-GetExp[63]	=	37851819
-GetExp[64]	=	47307639
-GetExp[65]	=	58344152
-GetExp[66]	=	77645529
-GetExp[67]	=	93209006
-GetExp[68]	=	119079807
-GetExp[69]	=	149311139
-GetExp[70]	=	184487925
-GetExp[71]	=	225262774
-GetExp[72]	=	284204889
-GetExp[73]	=	339662372
-GetExp[74]	=	403272284
-GetExp[75]	=	476045862
-GetExp[76]	=	594049618
-GetExp[77]	=	740214605
-GetExp[78]	=	888062792
-GetExp[79]	=	1045817451
-GetExp[80]	=	1212674905
-GetExp[81]	=	1220447543
-GetExp[82]	=	1229448257
-GetExp[83]	=	1239871084
-GetExp[84]	=	1251940718
-GetExp[85]	=	1265917353
-GetExp[86]	=	1282102297
-GetExp[87]	=	1300844461
-GetExp[88]	=	1322547887
-GetExp[89]	=	1347680454
-GetExp[90]	=	1376783967
-GetExp[91]	=	1410485834
-GetExp[92]	=	1449512595
-GetExp[93]	=	1494705585
-GetExp[94]	=	1547039066
-GetExp[95]	=	1607641238
-GetExp[96]	=	1677818552
-GetExp[97]	=	1759083882
-GetExp[98]	=	1853189134
-GetExp[99]	=	1962163016
-GetExp[100]	=	2088354770
+
 
 
 	

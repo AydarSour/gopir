@@ -52,7 +52,6 @@ function AskGuildItem(role,Guild_type)
 			return 0
 		end
 	else
-		--LG("checkguild","№¤»бАаРНґнОу  Guild_type = ",Guild_type)
 	end
 	return 1
 end 
@@ -73,18 +72,9 @@ function DeductGuildItem(role,Guild_type)
 	local gold = GetChaAttr(role,ATTR_GD)
 	local fame = GetChaAttr(role,ATTR_FAME) 
 	local attr_guild = HasGuild ( role )  
---	if attr_guild ~= 0 then 
---		HelpInfo(role,0,"ТСУРЛщКф№¤»б") 
-		--SystemNotice(role,0,"ТСУРЛщКф№¤»б") 
---		return 0 
---	end 
 
-	if Guild_type == 1 then						--ЕР¶ЁєЈµБ№¤»б
---		if Guild2_ItemMax > 0 then
---			for i = 1 ,Guild2_ItemMax,1 do
---				local K = DelBagItem(role,Guild2_item[i],Guild2_count[i])
---			end
---		end
+	if Guild_type == 1 then					
+
 		DelBagItem(role,1780,1)	
 		gold = gold - Guild2_Gold
 		fame = fame - Guild2_fame
@@ -95,12 +85,8 @@ function DeductGuildItem(role,Guild_type)
 
 		SyncChar( role, 4 )
 	
-	elseif Guild_type == 0	then					--ЕР¶ЁєЈѕь№¤»б
---		if Guild1_ItemMax > 0 then
---			for i = 1 ,Guild1_ItemMax,1 do
---				local K = DelBagItem(role,Guild1_item[i],Guild1_count[i])
---			end
---		end
+	elseif Guild_type == 0	then				
+
 		DelBagItem(role,1780,1)	
 		gold = gold - Guild1_Gold
 		fame = fame - Guild1_fame
@@ -181,23 +167,41 @@ function Check_Combat_Mod(dead , atk)
 end 
 
 function GetExp_PKM( dead , atk  )
+
+
+
 	local Lv_character = Lv ( atk )
 	local map_name = GetChaMapName ( atk )
 	if map_name == "guildwar2" then
-		SystemNotice ( atk , "В Мини Священной Войне опыт не начисляется")
-		return
+				SystemNotice ( atk , "В Мини Священной Войне опыт не начисляется")
+				return
 	elseif map_name == "07xmas2" then
-		if Lv_character <= 50 then
-			return
-		end
+				if Lv_character <= 50 then
+					return
+				end
+	elseif map_name == "abandonedcity" or map_name == "abandonedcity2" or map_name == "abandonedcity3" then
+				if Lv_character == 45 then
+					return
+				end
+	elseif map_name == "darkswamp" then
+				if Lv_character == 55 then
+					return
+				end
 	end
+	
+	
+	
 	local mob_id = GetChaTypeID ( dead )
+	
 	if Lv_character >= 79 and Lv_character <= 80 then
 		if mob_id == 805 or mob_id == 807 or  mob_id == 963 or mob_id == 967 or mob_id == 959 or mob_id == 776 or mob_id == 786 or mob_id == 788 then
 			SystemNotice(atk,"За данного монстра игрокам с 79 до 80 уровня, опыт не начисляется!")
 			return
 		end
 	end
+	
+	
+	
 	local EXP_VIP_RAID_NEWBIE = 1
 	local EXP_VIP_RAID = 1
 
@@ -441,11 +445,9 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 			if fairyexp < 100 or fairyexp == nil then 
 				fairyexp = 100 
 			end
-			fairyexp = fairyexp / 100
-			--Notice (exp_up)
-			--Notice (fairyexp)
+			fairyexp = fairyexp / 100)
 			exp_up = math.floor ( exp_up * EXP_RAID_STATE * fairyexp )
-			--Notice (exp_up)
+		
 -------------------------------------------
 --Фрукт опыта отряда
 -------------------------------------------
@@ -568,47 +570,29 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 				SystemNotice ( TurnToCha(t[i]) , "Слишком высокий уровень для получения опыта" )
 			end 
 
-			exp_up =exp_up *GetExpState(t[i])/100
+			exp_up =exp_up * GetExpState(t[i])/100
 			local Lv_character = Lv ( TurnToCha(t[i]) )
 			local map_name = GetChaMapName ( TurnToCha(t[i]) )
-			local item_stop = CheckBagItem ( TurnToCha(t[i]), 1812 )
-			if map_name == "abandonedcity" or map_name == "abandonedcity2" or map_name == "abandonedcity3" then
-				if Lv_character == 45 then
-					exp = exp
-				end
-			elseif map_name == "darkswamp" then
-				if Lv_character == 55 then
-					exp = exp
-				end
-			else
-				if Lv_character == 100 then
-					exp = exp
-				else
-					if item_stop >= 1 then
-						exp = exp
-					else
-						local EXP_NEW_LVL = 1
-						if Lv_character >= 1 and Lv_character <= 50 then
-							EXP_NEW_LVL = 7
-						elseif Lv_character >= 51 and Lv_character <= 60 then
-							EXP_NEW_LVL = 6
-						elseif Lv_character >= 61 and Lv_character <= 70 then
-							EXP_NEW_LVL = 5
-						elseif Lv_character >= 71 and Lv_character <= 80 then
-							EXP_NEW_LVL = 4
-						elseif Lv_character >= 81 and Lv_character <= 90 then
-							EXP_NEW_LVL = 3
-						elseif Lv_character >= 91 and Lv_character <= 95 then
-							EXP_NEW_LVL = 2
-						elseif Lv_character >= 96 and Lv_character <= 98 then
-							EXP_NEW_LVL = 1
-						else
-							EXP_NEW_LVL = 1
-						end
-						exp = exp + (exp_up * EXP_NEW_LVL)
-					end
-				end
-			end
+			
+		local EXP_NEW_LVL = 1
+		if Lv_character >= 1 and Lv_character <= 50 then
+			EXP_NEW_LVL = 7
+		elseif Lv_character >= 51 and Lv_character <= 60 then
+			EXP_NEW_LVL = 6
+		elseif Lv_character >= 61 and Lv_character <= 70 then
+			EXP_NEW_LVL = 5
+		elseif Lv_character >= 71 and Lv_character <= 80 then
+			EXP_NEW_LVL = 4
+		elseif Lv_character >= 81 and Lv_character <= 90 then
+			EXP_NEW_LVL = 3
+		elseif Lv_character >= 91 and Lv_character <= 95 then
+			EXP_NEW_LVL = 2
+		elseif Lv_character >= 96 and Lv_character <= 98 then
+			EXP_NEW_LVL = 1
+		else
+			EXP_NEW_LVL = 1			
+			exp = exp + (exp_up * EXP_NEW_LVL)			
+		end
 			SetChaAttrI ( TurnToCha(t[i]) , ATTR_CEXP, exp ) 
 			LG("exp" , "exp_now = " , exp ) 
 		else
