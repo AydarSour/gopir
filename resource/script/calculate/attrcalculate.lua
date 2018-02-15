@@ -17,8 +17,9 @@ item_add =
   attr = attr
 }
 
---Leo Begin
 
+
+--Leo End
 
 function Reset_item_add() --ÖØÉèÊôÐÔÌí¼ÓµÄÖµÎª0
   item_add.cnt = 0
@@ -1771,50 +1772,8 @@ function Shengji_Shuxingchengzhang( role )  --[[Éý¼¶µÄÊôÐÔ³É³¤¼°ÊôÐÔ¼ÆËã]]--
 	SetCharaAttr(sp, role, ATTR_SP) 
 	--LuaPrint("Out function Shengji_Shuxingchengzhang()  --[[level up attribute growth and attribute calculation]]-- ".."\n" ) 
 
-	if lv == 5 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 5 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
-		GiveItemX( role , 0 , 1847  , 25 , 4 )
-	end
-	
-	if lv == 10 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 10 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
-		GiveItemX( role , 0 , 1847  , 30 , 4 )
-		AddMoney(role , 0, 5000)
-	end
-	if lv == 15 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 15 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
-		GiveItemX( role , 0 , 1848  , 30 , 4 )
-	end
-	
-	if lv == 20 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 20 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
-		GiveItemX( role , 0 , 1848  , 50 , 4 )
-	end
-	if lv == 25 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 25 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
-		GiveItemX( role , 0 , 1849  , 30 , 4 )
-		
-		AddMoney(role , 0, 50000)
-	end
-	if lv == 30 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 30 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
-		GiveItemX( role , 0 , 1849  , 50 , 4 )
-	end
-	if lv == 35 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 35 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
-		GiveItemX( role , 0 , 1849  , 100 , 4 )
-		AddMoney(role , 0, 50000)
-	end
-	if lv == 40 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 40 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
-		AddMoney(role , 0, 150000)
-	end
-	if lv == 45 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 45 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
-		AddMoney(role , 0, 150000)
-	end
 	if lv == 100 then
-		HelpInfo(role,0,"§±§à§Ù§Õ§â§Ñ§Ó§Ý§ñ§Ö§Þ! §£§í §Õ§à§ã§ä§Ú§Ô§Ý§Ú 100 §å§â§à§Ó§ß§ñ, §Ó§Ñ§ê §á§à§Õ§Ñ§â§à§Ü §Ó§à §Ó§â§Ö§Þ§Ö§ß§ß§à§Þ §Þ§Ö§ê§Ü§Ö.")
+		HelpInfo(role,0,"Ïîçäðàâëÿåì! Âû äîñòèãëè 100 óðîâ?, âà?ïîäàðî?âî âðåìåííî?ìåøê?")
 		GiveItemX( role , 0 , 7001  , 1 , 4 )
 	end
 ------------------------------------------------------
@@ -2022,9 +1981,10 @@ function BsAttrUpgrade( role ) --[[»ù´¡ÊôÐÔÉý¼¶³É³¤]]--
 		end 
 	end 
 
-	attr_tp = attr_tp + tp_extre
+	attr_tp = attr_tp + tp_extre --[[+1µã¼¼ÄÜµãÊý]]--
 	SetCharaAttr( attr_tp, role, ATTR_TP ) 
 	 
+	--LuaPrint("Out function BsAttrUpgrade() --[[Base attribute level up growth]]--".."\n" ) 
 end 
 
 
@@ -2064,6 +2024,18 @@ function ExAttrCheck(role)  --[[»ù±¾À©Õ¹ÊôÐÔ¼ÆËã]]--
 		return 
 	end 
    
+	--LG("ChaAttr", "Mxhp_con_rad[job] , Mxhp_lv_rad[job], Mxhp_bs = ", Mxhp_con_rad[job], Mxhp_lv_rad[job], Mxhp_bs[job],"\n" ) 
+	--LG("ChaAttr", "Mxsp_sta_rad[job] ,Mxsp_con_rad[job], Mxsp_lv = ", Mxhp_con_rad[job], Mxhp_lv_rad[job], Mxhp_bs[job] ,"\n") 
+	--LG("ChaAttr", "Mnatk_str_rad[job] = ", Mnatk_str_rad[job] ,"\n") 
+	--LG("ChaAttr", "Mxatk_str_rad[job] = ", Mxatk_str_rad[job] ,"\n") 
+	--LG("ChaAttr", "Def_dex_rad[job] =  ",Def_dex_rad[job] ,"\n") 
+	--LG("ChaAttr", "Hit_dex_rad[job] ,Hit_lv_rad[job], Hit_min[job] = ", Hit_dex_rad[job], Hit_lv_rad[job], Hit_min[job] ,"\n") 
+	--LG("ChaAttr", "Flee_agi_rad[job] ,Flee_lv_rad[job], Flee_min[job] = ", Flee_agi_rad[job], Flee_lv_rad[job], Flee_min[job] ,"\n") 
+	--LG("ChaAttr", "Mf_luk_rad[job] = ", Mf_luk_rad[job],"\n" ) 
+	--LG("ChaAttr", "Crt_luk_rad[job] , Crt_min[job], Crt_max[job] = ", Crt_luk_rad[job], Crt_min[job], Crt_max[job],"\n" ) 
+	--LG("ChaAttr", "Hrec_mxhp_rad[job] ,Hrec_lv_rad[job], Hrec_min[job] = ", Hrec_mxhp_rad[job], Hrec_lv_rad[job], Hrec_min[job],"\n" ) 
+	--LG("ChaAttr", "Srec_mxSp_rad[job] ,Srec_lv_rad[job], Srec_min[job] = ", Srec_mxsp_rad[job], Srec_lv_rad[job],Srec_min[job] ,"\n") 
+	--LG("ChaAttr", "Aspd_bsrad[job] ,Aspd_agi_rad[job], Aspd_min[job] = ", Aspd_bsrad[job], Aspd_agi_rad[job], Aspd_min[job] ,"\n") 
 
 	local mxhp	= math.floor(Con(role)*3 * Mxhp_con_rad1[job] + Mxhp_con_rad2[job] * math.pow( math.floor(Con(role)*3/20 ),  2) +Lv(role) * Mxhp_lv_rad[job]*RAID_MX_HP + 40)	--Ìàêñèìàëüíîå çäîðîâüå
 	local mxsp	= math.floor(Sta(role)*3 * Mxsp_sta_rad1[job] + Mxsp_sta_rad2[job] * math.pow( math.floor(Sta(role)*3/20), 2) +Lv(role) * Mxsp_lv_rad[job]* RAID_MX_SP + 5)		--Ìàêñèìàëüí? ìàíà
@@ -2166,7 +2138,7 @@ function ExAttrSet(role) --[[¸³ÖµÀ©Õ¹ÊôÐÔ]]--
 	SetCharaAttr(adis_final, role, ATTR_ADIS ) --[[¸³Öµ×îÖÕ×îÖÕadis]]--
 
 	local mspd_final = Mspd_final(role) --[[¼ÆËã×îÖÕmspd]]--
-	SetCharaAttr(mspd_final, role, ATTR_MSPD*RAID_MX_MVS ) --[[¸³Öµ×îÖÕ×îÖÕmspd]]--
+	SetCharaAttr(mspd_final, role, ATTR_MSPD ) --[[¸³Öµ×îÖÕ×îÖÕmspd]]--
 	--LuaPrint("Out function ExAttrSet() --[[evaluate extended attribute]]--") 
 end 
 
