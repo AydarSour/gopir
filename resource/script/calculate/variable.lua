@@ -13,6 +13,8 @@ BOGEXP_GETRAD = 		10		--Рейты на кач феи бога
 TeamExp_RAID =			 1		--Рейты на кач в отряде
 MENTOR_ITEMID =			 0 		--Дополнительный итем ученику к мини-усилителям натиска
 
+Raid_Exp_Ev = 1
+Raid_Money = 1
 --Рейт на хп мп и деф скорость
 RAID_MX_HP	=	3
 RAID_MX_SP	=	2
