@@ -187,32 +187,19 @@ end
 	Sta_updata = {} 
 	Luk_updata = {} 
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §¯§à§Ó§Ú§é§à§Ü	
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_XINSHOU], Mxhp_con_rad2[JOB_TYPE_XINSHOU], Mxhp_lv_rad[JOB_TYPE_XINSHOU]	=	3	,	2	,	30		
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ	
-		Mxsp_sta_rad1[JOB_TYPE_XINSHOU], Mxsp_sta_rad2[JOB_TYPE_XINSHOU], Mxsp_lv_rad[JOB_TYPE_XINSHOU]	=	1	,	0	,	3 	
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_XINSHOU], Mnatk_str_rad2[JOB_TYPE_XINSHOU], Mnatk_dex_rad1[JOB_TYPE_XINSHOU], Mnatk_dex_rad2[JOB_TYPE_XINSHOU]	=	1.5	,	0.4	,	0	,	0				
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_XINSHOU], Mxatk_str_rad2[JOB_TYPE_XINSHOU], Mxatk_dex_rad1[JOB_TYPE_XINSHOU], Mxatk_dex_rad2[JOB_TYPE_XINSHOU]	=	1.5	,	0.4	,	0	,	0					
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_XINSHOU], Def_con_rad2[JOB_TYPE_XINSHOU]		=	0.1		,	0.1 	
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü	
-		Hit_dex_rad1[JOB_TYPE_XINSHOU], Hit_dex_rad2[JOB_TYPE_XINSHOU]		=	0.6		,	0 		
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_XINSHOU], Flee_agi_rad2[JOB_TYPE_XINSHOU]		=	0.6		,	0		
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Mf_luk_rad[JOB_TYPE_XINSHOU]		= 0.39 								
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_XINSHOU]		= 0.31	
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ	
-		Hrec_bsmxhp_rad[JOB_TYPE_XINSHOU], Hrec_con_rad[JOB_TYPE_XINSHOU]	=	1/200	,	1/8				
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ	
-		Srec_bsmxsp_rad[JOB_TYPE_XINSHOU], Srec_sta_rad[JOB_TYPE_XINSHOU]	=	1/100	,	1/12		
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú	
-		Aspd_agi_rad[JOB_TYPE_XINSHOU]	=	1.1    	
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à	
+--ĞÂÊÖÖ°ÒµÊôĞÔ³É³¤±ÈÂÊ 
+		Mxhp_con_rad1[JOB_TYPE_XINSHOU], Mxhp_con_rad2[JOB_TYPE_XINSHOU], Mxhp_lv_rad[JOB_TYPE_XINSHOU]	=	3	,	2	,	15							--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_XINSHOU], Mxsp_sta_rad2[JOB_TYPE_XINSHOU], Mxsp_lv_rad[JOB_TYPE_XINSHOU]	=	1	,	0	,	3 						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_XINSHOU], Mnatk_str_rad2[JOB_TYPE_XINSHOU], Mnatk_dex_rad1[JOB_TYPE_XINSHOU], Mnatk_dex_rad2[JOB_TYPE_XINSHOU]	=	1.5	,	0.4	,	0	,	0						--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_XINSHOU], Mxatk_str_rad2[JOB_TYPE_XINSHOU], Mxatk_dex_rad1[JOB_TYPE_XINSHOU], Mxatk_dex_rad2[JOB_TYPE_XINSHOU]	=	1.5	,	0.4	,	0	,	0						--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_XINSHOU], Def_con_rad2[JOB_TYPE_XINSHOU]		=	0.1		,	0.1 											--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_XINSHOU], Hit_dex_rad2[JOB_TYPE_XINSHOU]		=	0.6		,	0 										--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_XINSHOU], Flee_agi_rad2[JOB_TYPE_XINSHOU]		=	0.6		,	0									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_XINSHOU]		= 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_XINSHOU]		= 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_XINSHOU], Hrec_con_rad[JOB_TYPE_XINSHOU]	=	1/200	,	1/8									--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_XINSHOU], Srec_sta_rad[JOB_TYPE_XINSHOU]	=	1/100	,	1/12									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_XINSHOU]	=	1.1    															--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ				--
 		Str_updata[JOB_TYPE_XINSHOU]		=	0.2 
 		Dex_updata[JOB_TYPE_XINSHOU]	=	0.1 
 		Con_updata[JOB_TYPE_XINSHOU]	=	0.6 
@@ -220,33 +207,22 @@ end
 		Sta_updata[JOB_TYPE_XINSHOU]		=	0.1 
 		Luk_updata[JOB_TYPE_XINSHOU]		=	0.1 
 
-		
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §®§Ö§é§ß§Ú§Ü
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ		
-		Mxhp_con_rad1[JOB_TYPE_JIANSHI], Mxhp_con_rad2[JOB_TYPE_JIANSHI], Mxhp_lv_rad[JOB_TYPE_JIANSHI] =	5	,	7	,	35							
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_JIANSHI], Mxsp_sta_rad2[JOB_TYPE_JIANSHI], Mxsp_lv_rad[JOB_TYPE_JIANSHI] = 1	, 0	, 3							
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_JIANSHI], Mnatk_str_rad2[JOB_TYPE_JIANSHI], Mnatk_dex_rad1[JOB_TYPE_JIANSHI], Mnatk_dex_rad2[JOB_TYPE_JIANSHI] =	1.5	,	0.4	,	0	,	0   	
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_JIANSHI], Mxatk_str_rad2[JOB_TYPE_JIANSHI], Mxatk_dex_rad1[JOB_TYPE_JIANSHI], Mxatk_dex_rad2[JOB_TYPE_JIANSHI] = 	1.5	,	0.4	,	0	,	0    	
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_JIANSHI], Def_con_rad2[JOB_TYPE_JIANSHI] =		0.2	,	0.2	 										
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü	
-		Hit_dex_rad1[JOB_TYPE_JIANSHI], Hit_dex_rad2[JOB_TYPE_JIANSHI] =		0.6	,	0								
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_JIANSHI], Flee_agi_rad2[JOB_TYPE_JIANSHI] =		0.6	,	0									
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Mf_luk_rad[JOB_TYPE_JIANSHI] = 0.39 															
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_JIANSHI] = 0.31												
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_JIANSHI], Hrec_con_rad[JOB_TYPE_JIANSHI] = 1/180, 1/8									
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ	
-		Srec_bsmxsp_rad[JOB_TYPE_JIANSHI], Srec_sta_rad[JOB_TYPE_JIANSHI] = 1/100, 1/12 									
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú	
-		Aspd_agi_rad[JOB_TYPE_JIANSHI] =	1.1 
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
+
+
+--½£Ê¿Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ 
+
+		Mxhp_con_rad1[JOB_TYPE_JIANSHI], Mxhp_con_rad2[JOB_TYPE_JIANSHI], Mxhp_lv_rad[JOB_TYPE_JIANSHI] =	5	,	7	,	25							--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_JIANSHI], Mxsp_sta_rad2[JOB_TYPE_JIANSHI], Mxsp_lv_rad[JOB_TYPE_JIANSHI] = 1	, 0	, 3							--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_JIANSHI], Mnatk_str_rad2[JOB_TYPE_JIANSHI], Mnatk_dex_rad1[JOB_TYPE_JIANSHI], Mnatk_dex_rad2[JOB_TYPE_JIANSHI] =	1.5	,	0.4	,	0	,	0   		--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_JIANSHI], Mxatk_str_rad2[JOB_TYPE_JIANSHI], Mxatk_dex_rad1[JOB_TYPE_JIANSHI], Mxatk_dex_rad2[JOB_TYPE_JIANSHI] = 	1.5	,	0.4	,	0	,	0    		--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_JIANSHI], Def_con_rad2[JOB_TYPE_JIANSHI] =		0.2	,	0.2	 										--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_JIANSHI], Hit_dex_rad2[JOB_TYPE_JIANSHI] =		0.6	,	0										--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_JIANSHI], Flee_agi_rad2[JOB_TYPE_JIANSHI] =		0.6	,	0										--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_JIANSHI] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_JIANSHI] = 0.31		--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_JIANSHI], Hrec_con_rad[JOB_TYPE_JIANSHI] = 1/180, 1/8									--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_JIANSHI], Srec_sta_rad[JOB_TYPE_JIANSHI] = 1/100, 1/12 									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_JIANSHI] =	1.1   														--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ				
 		Str_updata[JOB_TYPE_JIANSHI]	=	0.5 
 		Dex_updata[JOB_TYPE_JIANSHI]	=	0.1 
 		Con_updata[JOB_TYPE_JIANSHI]	=	0.5 
@@ -254,33 +230,20 @@ end
 		Sta_updata[JOB_TYPE_JIANSHI]	=	0.1 
 		Luk_updata[JOB_TYPE_JIANSHI]	=	0.1 
 
+--ÁÔÈËÖ°ÒµÊôĞÔ³É³¤±ÈÂÊ 
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §°§ç§à§ä§ß§Ú§Ü
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_LIEREN], Mxhp_con_rad2[JOB_TYPE_LIEREN], Mxhp_lv_rad[JOB_TYPE_LIEREN] =	3	, 3	, 33 							
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_LIEREN], Mxsp_sta_rad2[JOB_TYPE_LIEREN], Mxsp_lv_rad[JOB_TYPE_LIEREN] =		1	,	0	, 3							
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_LIEREN], Mnatk_str_rad2[JOB_TYPE_LIEREN], Mnatk_dex_rad1[JOB_TYPE_LIEREN], Mnatk_dex_rad2[JOB_TYPE_LIEREN] = 0, 0, 1.7, 0.4 	
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_LIEREN], Mxatk_str_rad2[JOB_TYPE_LIEREN], Mxatk_dex_rad1[JOB_TYPE_LIEREN], Mxatk_dex_rad2[JOB_TYPE_LIEREN] = 0, 0, 1.7, 0.4 	
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_LIEREN], Def_con_rad2[JOB_TYPE_LIEREN] =	0.14,	0.1 										
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü	
-		Hit_dex_rad1[JOB_TYPE_LIEREN], Hit_dex_rad2[JOB_TYPE_LIEREN] =	0.7	,	0								
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_LIEREN], Flee_agi_rad2[JOB_TYPE_LIEREN] =	0.7	,	0									
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Mf_luk_rad[JOB_TYPE_LIEREN] = 0.39 															
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_LIEREN] = 0.25												
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_LIEREN], Hrec_con_rad[JOB_TYPE_LIEREN] = 1/180, 1/8 									
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Srec_bsmxsp_rad[JOB_TYPE_LIEREN], Srec_sta_rad[JOB_TYPE_LIEREN] = 1/100, 1/12 										
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú
-		Aspd_agi_rad[JOB_TYPE_LIEREN] =	1.2   												 				
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
+		Mxhp_con_rad1[JOB_TYPE_LIEREN], Mxhp_con_rad2[JOB_TYPE_LIEREN], Mxhp_lv_rad[JOB_TYPE_LIEREN] =	3	, 3	, 25 							--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_LIEREN], Mxsp_sta_rad2[JOB_TYPE_LIEREN], Mxsp_lv_rad[JOB_TYPE_LIEREN] =		1	,	0	, 3							--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_LIEREN], Mnatk_str_rad2[JOB_TYPE_LIEREN], Mnatk_dex_rad1[JOB_TYPE_LIEREN], Mnatk_dex_rad2[JOB_TYPE_LIEREN] = 0, 0, 1.7, 0.4 		--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_LIEREN], Mxatk_str_rad2[JOB_TYPE_LIEREN], Mxatk_dex_rad1[JOB_TYPE_LIEREN], Mxatk_dex_rad2[JOB_TYPE_LIEREN] = 0, 0, 1.7, 0.4 		--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_LIEREN], Def_con_rad2[JOB_TYPE_LIEREN] =	0.14,	0.1 										--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_LIEREN], Hit_dex_rad2[JOB_TYPE_LIEREN] =	0.7	,	0										--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_LIEREN], Flee_agi_rad2[JOB_TYPE_LIEREN] =	0.7	,	0										--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_LIEREN] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_LIEREN] = 0.25		--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_LIEREN], Hrec_con_rad[JOB_TYPE_LIEREN] = 1/180, 1/8 									--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_LIEREN], Srec_sta_rad[JOB_TYPE_LIEREN] = 1/100, 1/12 										--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_LIEREN] =	1.2   												 			--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ				--
 		Str_updata[JOB_TYPE_LIEREN]	=	0.1 
 		Dex_updata[JOB_TYPE_LIEREN]	=	0.5 
 		Con_updata[JOB_TYPE_LIEREN]	=	0.1 
@@ -288,283 +251,20 @@ end
 		Sta_updata[JOB_TYPE_LIEREN]	=	0.1 
 		Luk_updata[JOB_TYPE_LIEREN]	=	0.1 
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §®§à§â§Ö§á§İ§Ñ§Ó§Ñ§ä§Ö§İ§î
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_MAOXIANZHE], Mxhp_con_rad2[JOB_TYPE_MAOXIANZHE], Mxhp_lv_rad[JOB_TYPE_MAOXIANZHE] =	5	,	5	, 36						
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_MAOXIANZHE], Mxsp_sta_rad2[JOB_TYPE_MAOXIANZHE], Mxsp_lv_rad[JOB_TYPE_MAOXIANZHE] =	2	,	1.5	, 5							
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_MAOXIANZHE], Mnatk_str_rad2[JOB_TYPE_MAOXIANZHE], Mnatk_dex_rad1[JOB_TYPE_MAOXIANZHE], Mnatk_dex_rad2[JOB_TYPE_MAOXIANZHE] = 1.5,	0.4,		0,	0				
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_MAOXIANZHE], Mxatk_str_rad2[JOB_TYPE_MAOXIANZHE], Mxatk_dex_rad1[JOB_TYPE_MAOXIANZHE], Mxatk_dex_rad2[JOB_TYPE_MAOXIANZHE] = 1.5,	0.4,		0,	0 				
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_MAOXIANZHE], Def_con_rad2[JOB_TYPE_MAOXIANZHE] = 0.13	,	0.1 										
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü	
-		Hit_dex_rad1[JOB_TYPE_MAOXIANZHE], Hit_dex_rad2[JOB_TYPE_MAOXIANZHE] =		0.6,		0 							
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_MAOXIANZHE], Flee_agi_rad2[JOB_TYPE_MAOXIANZHE] =	0.6,		0								
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"
-		--Mf_luk_rad[JOB_TYPE_MAOXIANZHE] = 0.39 														
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_MAOXIANZHE] = 0.31											
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_MAOXIANZHE], Hrec_con_rad[JOB_TYPE_MAOXIANZHE] = 1/180, 1/8								
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Srec_bsmxsp_rad[JOB_TYPE_MAOXIANZHE], Srec_sta_rad[JOB_TYPE_MAOXIANZHE] = 1/100, 1/12								
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú
-		Aspd_agi_rad[JOB_TYPE_MAOXIANZHE]	=	1.1   												 			
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
-		Str_updata[JOB_TYPE_MAOXIANZHE]	=	0.1 
-		Dex_updata[JOB_TYPE_MAOXIANZHE]	=	0.1 
-		Con_updata[JOB_TYPE_MAOXIANZHE]	=	0.3 
-		Agi_updata[JOB_TYPE_MAOXIANZHE]	=	0.1 
-		Sta_updata[JOB_TYPE_MAOXIANZHE]	=	0.5 
-		Luk_updata[JOB_TYPE_MAOXIANZHE]	=	0.1 
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §¸§Ö§İ§Ú§ä§Ö§İ§î
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_QIYUANSHI], Mxhp_con_rad2[JOB_TYPE_QIYUANSHI], Mxhp_lv_rad[JOB_TYPE_QIYUANSHI] =	5	,	5	, 33						
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_QIYUANSHI], Mxsp_sta_rad2[JOB_TYPE_QIYUANSHI], Mxsp_lv_rad[JOB_TYPE_QIYUANSHI] =	2	,	1.5	, 20							
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_QIYUANSHI], Mnatk_str_rad2[JOB_TYPE_QIYUANSHI], Mnatk_dex_rad1[JOB_TYPE_QIYUANSHI], Mnatk_dex_rad2[JOB_TYPE_QIYUANSHI] = 1.5,	0.4,		0,	0				
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_QIYUANSHI], Mxatk_str_rad2[JOB_TYPE_QIYUANSHI], Mxatk_dex_rad1[JOB_TYPE_QIYUANSHI], Mxatk_dex_rad2[JOB_TYPE_QIYUANSHI] = 1.5,	0.4,		0,	0 				
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_QIYUANSHI], Def_con_rad2[JOB_TYPE_QIYUANSHI] = 0.13	,	0.1 										
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü	
-		Hit_dex_rad1[JOB_TYPE_QIYUANSHI], Hit_dex_rad2[JOB_TYPE_QIYUANSHI] =		0.6,		0 							
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_QIYUANSHI], Flee_agi_rad2[JOB_TYPE_QIYUANSHI] = 0.6,	0									
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"
-		--Mf_luk_rad[JOB_TYPE_QIYUANSHI] = 0.39 														
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_QIYUANSHI] = 0.31											
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_QIYUANSHI], Hrec_con_rad[JOB_TYPE_QIYUANSHI] = 1/180, 1/8								
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Srec_bsmxsp_rad[JOB_TYPE_QIYUANSHI], Srec_sta_rad[JOB_TYPE_QIYUANSHI] = 1/100, 1/12								
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú
-		Aspd_agi_rad[JOB_TYPE_QIYUANSHI]	=	1.1   												 			
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
-		Str_updata[JOB_TYPE_QIYUANSHI]	=	0.1 
-		Dex_updata[JOB_TYPE_QIYUANSHI]	=	0.1 
-		Con_updata[JOB_TYPE_QIYUANSHI]	=	0.3 
-		Agi_updata[JOB_TYPE_QIYUANSHI]	=	0.1 
-		Sta_updata[JOB_TYPE_QIYUANSHI]	=	0.5 
-		Luk_updata[JOB_TYPE_QIYUANSHI]	=	0.1
-
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §¹§Ö§Ş§á§Ú§à§ß
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_JUJS], Mxhp_con_rad2[JOB_TYPE_JUJS], Mxhp_lv_rad[JOB_TYPE_JUJS] = 9,8,51 						
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_JUJS], Mxsp_sta_rad2[JOB_TYPE_JUJS], Mxsp_lv_rad[JOB_TYPE_JUJS] = 1,0,12 						
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_JUJS], Mnatk_str_rad2[JOB_TYPE_JUJS], Mnatk_dex_rad1[JOB_TYPE_JUJS], Mnatk_dex_rad2[JOB_TYPE_JUJS] = 3.74,2.37, 0, 0				
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_JUJS], Mxatk_str_rad2[JOB_TYPE_JUJS], Mxatk_dex_rad1[JOB_TYPE_JUJS], Mxatk_dex_rad2[JOB_TYPE_JUJS] =  2,1.37, 0, 0				
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_JUJS], Def_con_rad2[JOB_TYPE_JUJS] = 0.53,0.69 	
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü	
-		Hit_dex_rad1[JOB_TYPE_JUJS], Hit_dex_rad2[JOB_TYPE_JUJS] = 0.7, 0.3 	
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_JUJS], Flee_agi_rad2[JOB_TYPE_JUJS] = 0.5, 0.1	
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"
-		--Mf_luk_rad[JOB_TYPE_JUJS] = 0.39 										
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_JUJS] = 0.31										
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_JUJS], Hrec_con_rad[JOB_TYPE_JUJS] = 1/180, 1/8	
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Srec_bsmxsp_rad[JOB_TYPE_JUJS], Srec_sta_rad[JOB_TYPE_JUJS] = 1/100, 1/12	
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú
-		Aspd_agi_rad[JOB_TYPE_JUJS] = 1.05    										
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
-		Str_updata[JOB_TYPE_JUJS]	=	0.3 
-		Dex_updata[JOB_TYPE_JUJS]	=	0.1 
-		Con_updata[JOB_TYPE_JUJS]	=	0.5 
-		Agi_updata[JOB_TYPE_JUJS]	=	0.1 
-		Sta_updata[JOB_TYPE_JUJS]	=	0.1 
-		Luk_updata[JOB_TYPE_JUJS]	=	0.1 
-
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §£§à§Ú§ä§Ö§İ§î
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_SHUANGJS], Mxhp_con_rad2[JOB_TYPE_SHUANGJS], Mxhp_lv_rad[JOB_TYPE_SHUANGJS] = 5,7,45 
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_SHUANGJS], Mxsp_sta_rad2[JOB_TYPE_SHUANGJS], Mxsp_lv_rad[JOB_TYPE_SHUANGJS] = 1,0,8 	
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_SHUANGJS], Mnatk_str_rad2[JOB_TYPE_SHUANGJS], Mnatk_dex_rad1[JOB_TYPE_SHUANGJS], Mnatk_dex_rad2[JOB_TYPE_SHUANGJS]	= 1.5, 0.4, 0, 0				
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_SHUANGJS], Mxatk_str_rad2[JOB_TYPE_SHUANGJS], Mxatk_dex_rad1[JOB_TYPE_SHUANGJS], Mxatk_dex_rad2[JOB_TYPE_SHUANGJS]	= 1.5, 0.4, 0, 0	
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_SHUANGJS], Def_con_rad2[JOB_TYPE_SHUANGJS] = 0.2, 0.1 									
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü	
-		Hit_dex_rad1[JOB_TYPE_SHUANGJS], Hit_dex_rad2[JOB_TYPE_SHUANGJS] = 0.6, 0 							
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_SHUANGJS], Flee_agi_rad2[JOB_TYPE_SHUANGJS] = 0.75, 0								
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"
-		--Mf_luk_rad[JOB_TYPE_SHUANGJS] = 0.39 															
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_SHUANGJS] = 0.31											
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_SHUANGJS], Hrec_con_rad[JOB_TYPE_SHUANGJS] = 1/180, 1/8							
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Srec_bsmxsp_rad[JOB_TYPE_SHUANGJS], Srec_sta_rad[JOB_TYPE_SHUANGJS] = 1/100, 1/12									
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú
-		Aspd_agi_rad[JOB_TYPE_SHUANGJS] = 1.25    												 			
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
-		Str_updata[JOB_TYPE_SHUANGJS]	=	0.3 
-		Dex_updata[JOB_TYPE_SHUANGJS]	=	0.1 
-		Con_updata[JOB_TYPE_SHUANGJS]	=	0.5 
-		Agi_updata[JOB_TYPE_SHUANGJS]	=	0.1 
-		Sta_updata[JOB_TYPE_SHUANGJS]	=	0.1 
-		Luk_updata[JOB_TYPE_SHUANGJS]	=	0.1 
-
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §³§ä§â§Ö§İ§à§Ü	
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_JUJISHOU], Mxhp_con_rad2[JOB_TYPE_JUJISHOU], Mxhp_lv_rad[JOB_TYPE_JUJISHOU] = 4,4,40 						
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_JUJISHOU], Mxsp_sta_rad2[JOB_TYPE_JUJISHOU], Mxsp_lv_rad[JOB_TYPE_JUJISHOU] = 1,0,6						
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_JUJISHOU], Mnatk_str_rad2[JOB_TYPE_JUJISHOU], Mnatk_dex_rad1[JOB_TYPE_JUJISHOU], Mnatk_dex_rad2[JOB_TYPE_JUJISHOU] = 0,0,1.8, 0.43				
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_JUJISHOU], Mxatk_str_rad2[JOB_TYPE_JUJISHOU], Mxatk_dex_rad1[JOB_TYPE_JUJISHOU], Mxatk_dex_rad2[JOB_TYPE_JUJISHOU] = 0,0,1.8, 0.43 				
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_JUJISHOU], Def_con_rad2[JOB_TYPE_JUJISHOU] = 0.17, 0.17 									
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü
-		Hit_dex_rad1[JOB_TYPE_JUJISHOU], Hit_dex_rad2[JOB_TYPE_JUJISHOU] = 0.69, 0 	
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_JUJISHOU], Flee_agi_rad2[JOB_TYPE_JUJISHOU] = 0.48, 0		
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"
-		--Mf_luk_rad[JOB_TYPE_JUJISHOU] = 0.39 					
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_JUJISHOU] = 0.31				
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_JUJISHOU], Hrec_con_rad[JOB_TYPE_JUJISHOU] = 1/180, 1/8		
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Srec_bsmxsp_rad[JOB_TYPE_JUJISHOU], Srec_sta_rad[JOB_TYPE_JUJISHOU] = 1/100, 1/12	
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú
-		Aspd_agi_rad[JOB_TYPE_JUJISHOU] = 1.5    										
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
-		Str_updata[JOB_TYPE_JUJISHOU]	=	0.3 
-		Dex_updata[JOB_TYPE_JUJISHOU]	=	0.1 
-		Con_updata[JOB_TYPE_JUJISHOU]	=	0.5 
-		Agi_updata[JOB_TYPE_JUJISHOU]	=	0.1 
-		Sta_updata[JOB_TYPE_JUJISHOU]	=	0.1 
-		Luk_updata[JOB_TYPE_JUJISHOU]	=	0.1 
-
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §¬§İ§Ö§â§Ú§Ü		
-	--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_SHENGZHIZHE], Mxhp_con_rad2[JOB_TYPE_SHENGZHIZHE], Mxhp_lv_rad[JOB_TYPE_SHENGZHIZHE] = 	6	,	6	, 46					
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_SHENGZHIZHE], Mxsp_sta_rad2[JOB_TYPE_SHENGZHIZHE], Mxsp_lv_rad[JOB_TYPE_SHENGZHIZHE] = 		5	,	4	, 14					
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_SHENGZHIZHE], Mnatk_str_rad2[JOB_TYPE_SHENGZHIZHE], Mnatk_dex_rad1[JOB_TYPE_SHENGZHIZHE], Mnatk_dex_rad2[JOB_TYPE_SHENGZHIZHE] = 2.7,	1.2,		0,	0			
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_SHENGZHIZHE], Mxatk_str_rad2[JOB_TYPE_SHENGZHIZHE], Mxatk_dex_rad1[JOB_TYPE_SHENGZHIZHE], Mxatk_dex_rad2[JOB_TYPE_SHENGZHIZHE] = 2.7,	1.2,		0,	0			
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_SHENGZHIZHE], Def_con_rad2[JOB_TYPE_SHENGZHIZHE] =	0.14	,	0.17 									
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü
-		Hit_dex_rad1[JOB_TYPE_SHENGZHIZHE], Hit_dex_rad2[JOB_TYPE_SHENGZHIZHE] = 			0.7,		0 					
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_SHENGZHIZHE], Flee_agi_rad2[JOB_TYPE_SHENGZHIZHE] = 	0.6,		0								
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"
-		--Mf_luk_rad[JOB_TYPE_SHENGZHIZHE] = 0.39 															
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_SHENGZHIZHE] = 0.31											
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_SHENGZHIZHE], Hrec_con_rad[JOB_TYPE_SHENGZHIZHE] = 1/180, 1/8								
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Srec_bsmxsp_rad[JOB_TYPE_SHENGZHIZHE], Srec_sta_rad[JOB_TYPE_SHENGZHIZHE] = 1/100, 1/12									
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú
-		Aspd_agi_rad[JOB_TYPE_SHENGZHIZHE] = 1.7   												 			
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
-		Str_updata[JOB_TYPE_SHENGZHIZHE]	=	0.3 
-		Dex_updata[JOB_TYPE_SHENGZHIZHE]	=	0.1 
-		Con_updata[JOB_TYPE_SHENGZHIZHE]	=	0.5 
-		Agi_updata[JOB_TYPE_SHENGZHIZHE]	=	0.1 
-		Sta_updata[JOB_TYPE_SHENGZHIZHE]	=	0.1 
-		Luk_updata[JOB_TYPE_SHENGZHIZHE]	=	0.1 
-
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §¬§à§İ§Õ§å§ß§î§ñ	
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_FENGYINSHI], Mxhp_con_rad2[JOB_TYPE_FENGYINSHI], Mxhp_lv_rad[JOB_TYPE_FENGYINSHI] = 	7	,	7	, 51						
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_FENGYINSHI], Mxsp_sta_rad2[JOB_TYPE_FENGYINSHI], Mxsp_lv_rad[JOB_TYPE_FENGYINSHI] = 		5	,	5	, 12						
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_FENGYINSHI], Mnatk_str_rad2[JOB_TYPE_FENGYINSHI], Mnatk_dex_rad1[JOB_TYPE_FENGYINSHI], Mnatk_dex_rad2[JOB_TYPE_FENGYINSHI] = 1.7,	0.6,		0,	0					
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_FENGYINSHI], Mxatk_str_rad2[JOB_TYPE_FENGYINSHI], Mxatk_dex_rad1[JOB_TYPE_FENGYINSHI], Mxatk_dex_rad2[JOB_TYPE_FENGYINSHI] = 1.7,	0.6,		0,	0				
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_FENGYINSHI], Def_con_rad2[JOB_TYPE_FENGYINSHI] = 		0.21	,	0.19 									
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü
-		Hit_dex_rad1[JOB_TYPE_FENGYINSHI], Hit_dex_rad2[JOB_TYPE_FENGYINSHI] =  			0.7,		0 							
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_FENGYINSHI], Flee_agi_rad2[JOB_TYPE_FENGYINSHI] =		0.6,		0								
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"
-		--Mf_luk_rad[JOB_TYPE_FENGYINSHI] = 0.39 															
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_FENGYINSHI] = 0.31											
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_FENGYINSHI], Hrec_con_rad[JOB_TYPE_FENGYINSHI] = 1/180, 1/8									
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Srec_bsmxsp_rad[JOB_TYPE_FENGYINSHI], Srec_sta_rad[JOB_TYPE_FENGYINSHI] = 1/100, 1/12									
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú
-		Aspd_agi_rad[JOB_TYPE_FENGYINSHI] = 1.1 												 			
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
-		Str_updata[JOB_TYPE_FENGYINSHI]	=	0.3 
-		Dex_updata[JOB_TYPE_FENGYINSHI]	=	0.1 
-		Con_updata[JOB_TYPE_FENGYINSHI]	=	0.5 
-		Agi_updata[JOB_TYPE_FENGYINSHI]	=	0.1 
-		Sta_updata[JOB_TYPE_FENGYINSHI]	=	0.1 
-		Luk_updata[JOB_TYPE_FENGYINSHI]	=	0.1 
-
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §±§à§Ü§à§â§Ú§ä§Ö§İ§î §®§à§â§Ö§Û
-		--1.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ.2 §±§â§Ú§â§à§ã§ä §ç§á §à§ä §Ü§à§ß§Ñ 3.§±§â§Ú§â§à§ã§ä §ç§á §à§ä §İ§Ó§İ§Ñ
-		Mxhp_con_rad1[JOB_TYPE_HANGHAISHI], Mxhp_con_rad2[JOB_TYPE_HANGHAISHI], Mxhp_lv_rad[JOB_TYPE_HANGHAISHI] = 	8	,	8	, 53						
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 2. §á§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §Õ§å§ç§Ñ 3. §±§â§Ú§â§à§ã§ä §Ş§Ñ§ß§í §à§ä §İ§Ó§İ§Ñ
-		Mxsp_sta_rad1[JOB_TYPE_HANGHAISHI], Mxsp_sta_rad2[JOB_TYPE_HANGHAISHI], Mxsp_lv_rad[JOB_TYPE_HANGHAISHI] = 		4	,	4	, 8					
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ú§ß. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mnatk_str_rad1[JOB_TYPE_HANGHAISHI], Mnatk_str_rad2[JOB_TYPE_HANGHAISHI], Mnatk_dex_rad1[JOB_TYPE_HANGHAISHI], Mnatk_dex_rad2[JOB_TYPE_HANGHAISHI] = 1.5,	0.4,		0,	0			
-		--1. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â 2.§±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §ã§ä§â. 3 §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú. 4. §±§â§Ú§â§à§ã§ä §Ş§Ñ§Ü§ã. §Ñ§ä§Ñ§Ü§Ú §à§ä §İ§à§Ó§Ü§Ú
-		Mxatk_str_rad1[JOB_TYPE_HANGHAISHI], Mxatk_str_rad2[JOB_TYPE_HANGHAISHI], Mxatk_dex_rad1[JOB_TYPE_HANGHAISHI], Mxatk_dex_rad2[JOB_TYPE_HANGHAISHI] = 1.5,	0.4,		0,	0			
-		--1.§¥§Ö§æ §à§ä §Ü§à§ß§Ñ 2. §¥§Ö§æ §à§ä §Ü§à§ß§Ñ
-		Def_con_rad1[JOB_TYPE_HANGHAISHI], Def_con_rad2[JOB_TYPE_HANGHAISHI] =  		0.25	,	0.25 									
-		--1.§·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü 2. §·§Ú§ä §â§Ö§Û§ä §à§ä §Ñ§Ü§Ü
-		Hit_dex_rad1[JOB_TYPE_HANGHAISHI], Hit_dex_rad2[JOB_TYPE_HANGHAISHI] = 			0.7,		0 						
-		--1.§¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú 2. §¥§à§Õ§Ø §à§ä §Ñ§Ô§Ú	
-		Flee_agi_rad1[JOB_TYPE_HANGHAISHI], Flee_agi_rad2[JOB_TYPE_HANGHAISHI] = 		0.6,		0								
-		--1. §¥§â§à§á §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"
-		--Mf_luk_rad[JOB_TYPE_HANGHAISHI] = 0.39 															
-		--1. §¬§â§Ú§ä §à§ä §ã§ä§Ñ§ä§Ñ "§å§Õ§Ñ§é§Ñ"	
-		--Crt_luk_rad[JOB_TYPE_HANGHAISHI] = 0.31											
-		--1. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ç§á 2. §·§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Hrec_bsmxhp_rad[JOB_TYPE_HANGHAISHI], Hrec_con_rad[JOB_TYPE_HANGHAISHI] = 1/180, 1/8								
-		--1. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ş§Ñ§Ü§ã. §ã§á 2. §ã§á §â§Ö§Ô§Ö§ß §à§ä §Ü§à§ß§Ñ
-		Srec_bsmxsp_rad[JOB_TYPE_HANGHAISHI], Srec_sta_rad[JOB_TYPE_HANGHAISHI] = 1/100, 1/12									
-		--1. §¡§ä§Ñ§Ü§ã§á§Ú§Õ §à§ä §Ñ§Ô§Ú
-		Aspd_agi_rad[JOB_TYPE_HANGHAISHI] = 1.1   												 			
-		--§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à
-		Str_updata[JOB_TYPE_HANGHAISHI]	=	0.3 
-		Dex_updata[JOB_TYPE_HANGHAISHI]	=	0.1 
-		Con_updata[JOB_TYPE_HANGHAISHI]	=	0.5 
-		Agi_updata[JOB_TYPE_HANGHAISHI]	=	0.1 
-		Sta_updata[JOB_TYPE_HANGHAISHI]	=	0.1 
-		Luk_updata[JOB_TYPE_HANGHAISHI]	=	0.1 
-
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ Sailor(§¯§Ö§Ó§Ó§Ö§Õ§Ö§ß§à §Ó §Ú§Ô§â§å)		
-		Mxhp_con_rad1[JOB_TYPE_SHUISHOU], Mxhp_con_rad2[JOB_TYPE_SHUISHOU], Mxhp_lv_rad[JOB_TYPE_SHUISHOU] = 3, 2, 15									
-		Mxsp_sta_rad1[JOB_TYPE_SHUISHOU], Mxsp_sta_rad2[JOB_TYPE_SHUISHOU], Mxsp_lv_rad[JOB_TYPE_SHUISHOU] = 0.5, 0.5, 1								
-		Mnatk_str_rad1[JOB_TYPE_SHUISHOU], Mnatk_str_rad2[JOB_TYPE_SHUISHOU], Mnatk_dex_rad1[JOB_TYPE_SHUISHOU], Mnatk_dex_rad2[JOB_TYPE_SHUISHOU] = 0.9, 0.9, 0, 0							
-		Mxatk_str_rad1[JOB_TYPE_SHUISHOU], Mxatk_str_rad2[JOB_TYPE_SHUISHOU], Mxatk_dex_rad1[JOB_TYPE_SHUISHOU], Mxatk_dex_rad2[JOB_TYPE_SHUISHOU] = 0.9, 0.9, 0, 0 					
-		Def_con_rad1[JOB_TYPE_SHUISHOU], Def_con_rad2[JOB_TYPE_SHUISHOU] = 0.45, 0.45 											
-		Hit_dex_rad1[JOB_TYPE_SHUISHOU], Hit_dex_rad2[JOB_TYPE_SHUISHOU] = 0.31, 0.15 										
-		Flee_agi_rad1[JOB_TYPE_SHUISHOU], Flee_agi_rad2[JOB_TYPE_SHUISHOU] = 0.31, 0.15										
-		--Mf_luk_rad[JOB_TYPE_SHUISHOU] = 0.39 																	
-		--Crt_luk_rad[JOB_TYPE_SHUISHOU] = 0.31													
-		Hrec_bsmxhp_rad[JOB_TYPE_SHUISHOU], Hrec_con_rad[JOB_TYPE_SHUISHOU] = 1/200, 1/100										
-		Srec_bsmxsp_rad[JOB_TYPE_SHUISHOU], Srec_sta_rad[JOB_TYPE_SHUISHOU] = 1/200, 1/120										
-		Aspd_agi_rad[JOB_TYPE_SHUISHOU] = 1.1   																	--	
+--Ë®ÊÖÖ°ÒµÊôĞÔ³É³¤±ÈÂÊ 
+		Mxhp_con_rad1[JOB_TYPE_SHUISHOU], Mxhp_con_rad2[JOB_TYPE_SHUISHOU], Mxhp_lv_rad[JOB_TYPE_SHUISHOU] = 3, 2, 15							--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_SHUISHOU], Mxsp_sta_rad2[JOB_TYPE_SHUISHOU], Mxsp_lv_rad[JOB_TYPE_SHUISHOU] = 0.5, 0.5, 1						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_SHUISHOU], Mnatk_str_rad2[JOB_TYPE_SHUISHOU], Mnatk_dex_rad1[JOB_TYPE_SHUISHOU], Mnatk_dex_rad2[JOB_TYPE_SHUISHOU] = 0.9, 0.9, 0, 0						--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_SHUISHOU], Mxatk_str_rad2[JOB_TYPE_SHUISHOU], Mxatk_dex_rad1[JOB_TYPE_SHUISHOU], Mxatk_dex_rad2[JOB_TYPE_SHUISHOU] = 0.9, 0.9, 0, 0 						--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_SHUISHOU], Def_con_rad2[JOB_TYPE_SHUISHOU] = 0.45, 0.45 											--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_SHUISHOU], Hit_dex_rad2[JOB_TYPE_SHUISHOU] = 0.31, 0.15 										--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_SHUISHOU], Flee_agi_rad2[JOB_TYPE_SHUISHOU] = 0.31, 0.15									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_SHUISHOU] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_SHUISHOU] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_SHUISHOU], Hrec_con_rad[JOB_TYPE_SHUISHOU] = 1/200, 1/100									--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_SHUISHOU], Srec_sta_rad[JOB_TYPE_SHUISHOU] = 1/200, 1/120									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_SHUISHOU] = 1.1   															--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ				--
 		Str_updata[JOB_TYPE_SHUISHOU]	=	0.2 
 		Dex_updata[JOB_TYPE_SHUISHOU]	=	0.1 
 		Con_updata[JOB_TYPE_SHUISHOU]	=	0.6 
@@ -573,44 +273,65 @@ end
 		Luk_updata[JOB_TYPE_SHUISHOU]	=	0.1 
 
 
+--Ã°ÏÕÕßÖ°ÒµÊôĞÔ³É³¤±ÈÂÊ 
+
+		Mxhp_con_rad1[JOB_TYPE_MAOXIANZHE], Mxhp_con_rad2[JOB_TYPE_MAOXIANZHE], Mxhp_lv_rad[JOB_TYPE_MAOXIANZHE] =	5	,	5	, 25						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_MAOXIANZHE], Mxsp_sta_rad2[JOB_TYPE_MAOXIANZHE], Mxsp_lv_rad[JOB_TYPE_MAOXIANZHE] =	2	,	1.5	, 5							--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_MAOXIANZHE], Mnatk_str_rad2[JOB_TYPE_MAOXIANZHE], Mnatk_dex_rad1[JOB_TYPE_MAOXIANZHE], Mnatk_dex_rad2[JOB_TYPE_MAOXIANZHE] = 1.5,	0.4,		0,	0					--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_MAOXIANZHE], Mxatk_str_rad2[JOB_TYPE_MAOXIANZHE], Mxatk_dex_rad1[JOB_TYPE_MAOXIANZHE], Mxatk_dex_rad2[JOB_TYPE_MAOXIANZHE] = 1.5,	0.4,		0,	0 					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_MAOXIANZHE], Def_con_rad2[JOB_TYPE_MAOXIANZHE] = 0.13	,	0.1 										--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_MAOXIANZHE], Hit_dex_rad2[JOB_TYPE_MAOXIANZHE] =		0.6,		0 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_MAOXIANZHE], Flee_agi_rad2[JOB_TYPE_MAOXIANZHE] =	0.6,		0									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_MAOXIANZHE] = 0.39 														--±©ÁÏÂÊµÄÊôĞÔÓ°ÏìÏµÊı£ºĞÒÔËÏµÊı
+--		Crt_luk_rad[JOB_TYPE_MAOXIANZHE] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_MAOXIANZHE], Hrec_con_rad[JOB_TYPE_MAOXIANZHE] = 1/180, 1/8								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_MAOXIANZHE], Srec_sta_rad[JOB_TYPE_MAOXIANZHE] = 1/100, 1/12								--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_MAOXIANZHE]	=	1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
+		Str_updata[JOB_TYPE_MAOXIANZHE]	=	0.1 
+		Dex_updata[JOB_TYPE_MAOXIANZHE]	=	0.1 
+		Con_updata[JOB_TYPE_MAOXIANZHE]	=	0.3 
+		Agi_updata[JOB_TYPE_MAOXIANZHE]	=	0.1 
+		Sta_updata[JOB_TYPE_MAOXIANZHE]	=	0.5 
+		Luk_updata[JOB_TYPE_MAOXIANZHE]	=	0.1 
 
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ Animal Tamer(§¯§Ö§Ó§Ó§Ö§Õ§Ö§ß§à §Ó §Ú§Ô§â§å)	
-		Mxhp_con_rad1[JOB_TYPE_XUNSHOUSHI], Mxhp_con_rad2[JOB_TYPE_XUNSHOUSHI], Mxhp_lv_rad[JOB_TYPE_XUNSHOUSHI] = 2, 2, 10 						
-		Mxsp_sta_rad1[JOB_TYPE_XUNSHOUSHI], Mxsp_sta_rad2[JOB_TYPE_XUNSHOUSHI], Mxsp_lv_rad[JOB_TYPE_XUNSHOUSHI] = 0.5, 0.5, 1						
-		Mnatk_str_rad1[JOB_TYPE_XUNSHOUSHI], Mnatk_str_rad2[JOB_TYPE_XUNSHOUSHI], Mnatk_dex_rad1[JOB_TYPE_XUNSHOUSHI], Mnatk_dex_rad2[JOB_TYPE_XUNSHOUSHI] = 0.8, 0.8, 0, 0				
-		Mxatk_str_rad1[JOB_TYPE_XUNSHOUSHI], Mxatk_str_rad2[JOB_TYPE_XUNSHOUSHI], Mxatk_dex_rad1[JOB_TYPE_XUNSHOUSHI], Mxatk_dex_rad2[JOB_TYPE_XUNSHOUSHI] = 0.8, 0.8, 0, 0 				
-		Def_con_rad1[JOB_TYPE_XUNSHOUSHI], Def_con_rad2[JOB_TYPE_XUNSHOUSHI] = 0.5, 0.5 									
-		Hit_dex_rad1[JOB_TYPE_XUNSHOUSHI], Hit_dex_rad2[JOB_TYPE_XUNSHOUSHI] = 0.31, 0.15 							
-		Flee_agi_rad1[JOB_TYPE_XUNSHOUSHI], Flee_agi_rad2[JOB_TYPE_XUNSHOUSHI] = 0.31, 0.15								
-		--Mf_luk_rad[JOB_TYPE_XUNSHOUSHI] = 0.39 															
-		--Crt_luk_rad[JOB_TYPE_XUNSHOUSHI] = 0.31											
-		Hrec_bsmxhp_rad[JOB_TYPE_XUNSHOUSHI], Hrec_con_rad[JOB_TYPE_XUNSHOUSHI] = 1/200, 1/100								
-		Srec_bsmxsp_rad[JOB_TYPE_XUNSHOUSHI], Srec_sta_rad[JOB_TYPE_XUNSHOUSHI] = 1/200, 1/120									
-		Aspd_agi_rad[JOB_TYPE_XUNSHOUSHI] = 1.2   												 			
-		Str_updata[JOB_TYPE_XUNSHOUSHI]	=	0.3 
-		Dex_updata[JOB_TYPE_XUNSHOUSHI]	=	0.1 
-		Con_updata[JOB_TYPE_XUNSHOUSHI]	=	0.5 
-		Agi_updata[JOB_TYPE_XUNSHOUSHI]	=	0.1 
-		Sta_updata[JOB_TYPE_XUNSHOUSHI]	=	0.1 
-		Luk_updata[JOB_TYPE_XUNSHOUSHI]	=	0.1 
+--Ò©Ê¦Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ 
+
+		Mxhp_con_rad1[JOB_TYPE_QIYUANSHI], Mxhp_con_rad2[JOB_TYPE_QIYUANSHI], Mxhp_lv_rad[JOB_TYPE_QIYUANSHI] =	5	,	5	, 25						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_QIYUANSHI], Mxsp_sta_rad2[JOB_TYPE_QIYUANSHI], Mxsp_lv_rad[JOB_TYPE_QIYUANSHI] =	2	,	1.5	, 5							--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_QIYUANSHI], Mnatk_str_rad2[JOB_TYPE_QIYUANSHI], Mnatk_dex_rad1[JOB_TYPE_QIYUANSHI], Mnatk_dex_rad2[JOB_TYPE_QIYUANSHI] = 1.5,	0.4,		0,	0					--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_QIYUANSHI], Mxatk_str_rad2[JOB_TYPE_QIYUANSHI], Mxatk_dex_rad1[JOB_TYPE_QIYUANSHI], Mxatk_dex_rad2[JOB_TYPE_QIYUANSHI] = 1.5,	0.4,		0,	0 					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_QIYUANSHI], Def_con_rad2[JOB_TYPE_QIYUANSHI] = 0.13	,	0.1 										--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_QIYUANSHI], Hit_dex_rad2[JOB_TYPE_QIYUANSHI] =		0.6,		0 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_QIYUANSHI], Flee_agi_rad2[JOB_TYPE_QIYUANSHI] = 0.6,	0										--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_QIYUANSHI] = 0.39 														--±©ÁÏÂÊµÄÊôĞÔÓ°ÏìÏµÊı£ºĞÒÔËÏµÊı
+--		Crt_luk_rad[JOB_TYPE_QIYUANSHI] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_QIYUANSHI], Hrec_con_rad[JOB_TYPE_QIYUANSHI] = 1/180, 1/8								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_QIYUANSHI], Srec_sta_rad[JOB_TYPE_QIYUANSHI] = 1/100, 1/12								--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_QIYUANSHI]	=	1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
+		Str_updata[JOB_TYPE_QIYUANSHI]	=	0.1 
+		Dex_updata[JOB_TYPE_QIYUANSHI]	=	0.1 
+		Con_updata[JOB_TYPE_QIYUANSHI]	=	0.3 
+		Agi_updata[JOB_TYPE_QIYUANSHI]	=	0.1 
+		Sta_updata[JOB_TYPE_QIYUANSHI]	=	0.5 
+		Luk_updata[JOB_TYPE_QIYUANSHI]	=	0.1 
 
 
+--¼¼Ê¦Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ 
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ Artisal(§¯§Ö§Ó§Ó§Ö§Õ§Ö§ß§à §Ó §Ú§Ô§â§å)		
-		Mxhp_con_rad1[JOB_TYPE_JISHI], Mxhp_con_rad2[JOB_TYPE_JISHI], Mxhp_lv_rad[JOB_TYPE_JISHI] = 2, 2, 10 								
-		Mxsp_sta_rad1[JOB_TYPE_JISHI], Mxsp_sta_rad2[JOB_TYPE_JISHI], Mxsp_lv_rad[JOB_TYPE_JISHI] = 0.5, 0.5, 1							
-		Mnatk_str_rad1[JOB_TYPE_JISHI], Mnatk_str_rad2[JOB_TYPE_JISHI], Mnatk_dex_rad1[JOB_TYPE_JISHI], Mnatk_dex_rad2[JOB_TYPE_JISHI] = 0.8, 0.8, 0, 0					
-		Mxatk_str_rad1[JOB_TYPE_JISHI], Mxatk_str_rad2[JOB_TYPE_JISHI], Mxatk_dex_rad1[JOB_TYPE_JISHI], Mxatk_dex_rad2[JOB_TYPE_JISHI] = 0.8, 0.8, 0, 0 				
-		Def_con_rad1[JOB_TYPE_JISHI], Def_con_rad2[JOB_TYPE_JISHI] = 0.5, 0.5 										
-		Hit_dex_rad1[JOB_TYPE_JISHI], Hit_dex_rad2[JOB_TYPE_JISHI] = 0.31, 0.15 									
-		Flee_agi_rad1[JOB_TYPE_JISHI], Flee_agi_rad2[JOB_TYPE_JISHI] = 0.31, 0.15									
-		--Mf_luk_rad[JOB_TYPE_JISHI] = 0.39 																
-		--Crt_luk_rad[JOB_TYPE_JISHI] = 0.31											
-		Hrec_bsmxhp_rad[JOB_TYPE_JISHI], Hrec_con_rad[JOB_TYPE_JISHI] = 1/200, 1/100									
-		Srec_bsmxsp_rad[JOB_TYPE_JISHI],Srec_sta_rad[JOB_TYPE_JISHI] = 1/200, 1/120										
-		Aspd_agi_rad[JOB_TYPE_JISHI] = 1.1   												 				
-		Str_updata[JOB_TYPE_JISHI]	=	0.4 	
+		Mxhp_con_rad1[JOB_TYPE_JISHI], Mxhp_con_rad2[JOB_TYPE_JISHI], Mxhp_lv_rad[JOB_TYPE_JISHI] = 2, 2, 10 						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_JISHI], Mxsp_sta_rad2[JOB_TYPE_JISHI], Mxsp_lv_rad[JOB_TYPE_JISHI] = 0.5, 0.5, 1					--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_JISHI], Mnatk_str_rad2[JOB_TYPE_JISHI], Mnatk_dex_rad1[JOB_TYPE_JISHI], Mnatk_dex_rad2[JOB_TYPE_JISHI] = 0.8, 0.8, 0, 0				--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_JISHI], Mxatk_str_rad2[JOB_TYPE_JISHI], Mxatk_dex_rad1[JOB_TYPE_JISHI], Mxatk_dex_rad2[JOB_TYPE_JISHI] = 0.8, 0.8, 0, 0 					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_JISHI], Def_con_rad2[JOB_TYPE_JISHI] = 0.5, 0.5 										--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_JISHI], Hit_dex_rad2[JOB_TYPE_JISHI] = 0.31, 0.15 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_JISHI], Flee_agi_rad2[JOB_TYPE_JISHI] = 0.31, 0.15								--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_JISHI] = 0.39 														--±©ÁÏÂÊµÄÊôĞÔÓ°ÏìÏµÊı£ºĞÒÔËÏµÊı
+--		Crt_luk_rad[JOB_TYPE_JISHI] = 0.31													--±©»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºĞÒÔËÏµÊı¡¢×îĞ¡±©»÷ÂÊ¡¢×î´ó±©»÷ÂÊ
+		Hrec_bsmxhp_rad[JOB_TYPE_JISHI], Hrec_con_rad[JOB_TYPE_JISHI] = 1/200, 1/100								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_JISHI],Srec_sta_rad[JOB_TYPE_JISHI] = 1/200, 1/120									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_JISHI] = 1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
+		Str_updata[JOB_TYPE_JISHI]	=	0.4 
 		Dex_updata[JOB_TYPE_JISHI]	=	0.1 
 		Con_updata[JOB_TYPE_JISHI]	=	0.5 
 		Agi_updata[JOB_TYPE_JISHI]	=	0.1 
@@ -618,19 +339,20 @@ end
 		Luk_updata[JOB_TYPE_JISHI]	=	0.2 
 
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ Merchant(§¯§Ö§Ó§Ó§Ö§Õ§Ö§ß§à §Ó §Ú§Ô§â§å)
-		Mxhp_con_rad1[JOB_TYPE_SHANGREN], Mxhp_con_rad2[JOB_TYPE_SHANGREN], Mxhp_lv_rad[JOB_TYPE_SHANGREN] = 2, 2, 10 						
-		Mxsp_sta_rad1[JOB_TYPE_SHANGREN], Mxsp_sta_rad2[JOB_TYPE_SHANGREN], Mxsp_lv_rad[JOB_TYPE_SHANGREN] = 0.5, 0.5, 1						
-		Mnatk_str_rad1[JOB_TYPE_SHANGREN], Mnatk_str_rad2[JOB_TYPE_SHANGREN], Mnatk_dex_rad1[JOB_TYPE_SHANGREN], Mnatk_dex_rad2[JOB_TYPE_SHANGREN] = 0.8, 0.8, 0, 0				
-		Mxatk_str_rad1[JOB_TYPE_SHANGREN], Mxatk_str_rad2[JOB_TYPE_SHANGREN], Mxatk_dex_rad1[JOB_TYPE_SHANGREN], Mxatk_dex_rad2[JOB_TYPE_SHANGREN] = 0.8, 0.8, 0, 0 						
-		Def_con_rad1[JOB_TYPE_SHANGREN], Def_con_rad2[JOB_TYPE_SHANGREN] = 0.5, 0.5 											
-		Hit_dex_rad1[JOB_TYPE_SHANGREN], Hit_dex_rad2[JOB_TYPE_SHANGREN] = 0.31, 0.15 									
-		Flee_agi_rad1[JOB_TYPE_SHANGREN], Flee_agi_rad2[JOB_TYPE_SHANGREN] = 0.31, 0.15										
-		--Mf_luk_rad[JOB_TYPE_SHANGREN] = 0.39 																	
-		--Crt_luk_rad[JOB_TYPE_SHANGREN] = 0.31													
-		Hrec_bsmxhp_rad[JOB_TYPE_SHANGREN], Hrec_con_rad[JOB_TYPE_SHANGREN] = 1/200, 1/100										
-		Srec_bsmxsp_rad[JOB_TYPE_SHANGREN], Srec_sta_rad[JOB_TYPE_SHANGREN] = 1/200, 1/120											
-		Aspd_agi_rad[JOB_TYPE_SHANGREN] = 1.1   												 				
+--ÉÌÈËÖ°ÒµÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª 
+
+		Mxhp_con_rad1[JOB_TYPE_SHANGREN], Mxhp_con_rad2[JOB_TYPE_SHANGREN], Mxhp_lv_rad[JOB_TYPE_SHANGREN] = 2, 2, 10 						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_SHANGREN], Mxsp_sta_rad2[JOB_TYPE_SHANGREN], Mxsp_lv_rad[JOB_TYPE_SHANGREN] = 0.5, 0.5, 1						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_SHANGREN], Mnatk_str_rad2[JOB_TYPE_SHANGREN], Mnatk_dex_rad1[JOB_TYPE_SHANGREN], Mnatk_dex_rad2[JOB_TYPE_SHANGREN] = 0.8, 0.8, 0, 0					--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_SHANGREN], Mxatk_str_rad2[JOB_TYPE_SHANGREN], Mxatk_dex_rad1[JOB_TYPE_SHANGREN], Mxatk_dex_rad2[JOB_TYPE_SHANGREN] = 0.8, 0.8, 0, 0 					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_SHANGREN], Def_con_rad2[JOB_TYPE_SHANGREN] = 0.5, 0.5 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_SHANGREN], Hit_dex_rad2[JOB_TYPE_SHANGREN] = 0.31, 0.15 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_SHANGREN], Flee_agi_rad2[JOB_TYPE_SHANGREN] = 0.31, 0.15									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_SHANGREN] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_SHANGREN] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_SHANGREN], Hrec_con_rad[JOB_TYPE_SHANGREN] = 1/200, 1/100								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_SHANGREN], Srec_sta_rad[JOB_TYPE_SHANGREN] = 1/200, 1/120									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_SHANGREN] = 1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
 		Str_updata[JOB_TYPE_SHANGREN]	=	0.3 
 		Dex_updata[JOB_TYPE_SHANGREN]	=	0.1 
 		Con_updata[JOB_TYPE_SHANGREN]	=	0.5 
@@ -638,20 +360,61 @@ end
 		Sta_updata[JOB_TYPE_SHANGREN]	=	0.1 
 		Luk_updata[JOB_TYPE_SHANGREN]	=	0.1 
 
+-- ¾Ş½£Ê¿Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §¢§Ö§İ§í§Û §²§í§è§Ñ§â§î(§¯§Ö§Ó§Ó§Ö§Õ§Ö§ß§à §Ó §Ú§Ô§â§å)
-		Mxhp_con_rad1[JOB_TYPE_JIANDUNSHI], Mxhp_con_rad2[JOB_TYPE_JIANDUNSHI], Mxhp_lv_rad[JOB_TYPE_JIANDUNSHI] = 2, 2, 10 						
-		Mxsp_sta_rad1[JOB_TYPE_JIANDUNSHI], Mxsp_sta_rad2[JOB_TYPE_JIANDUNSHI], Mxsp_lv_rad[JOB_TYPE_JIANDUNSHI] = 0.5, 0.5, 1						
-		Mnatk_str_rad1[JOB_TYPE_JIANDUNSHI], Mnatk_str_rad2[JOB_TYPE_JIANDUNSHI], Mnatk_dex_rad1[JOB_TYPE_JIANDUNSHI], Mnatk_dex_rad2[JOB_TYPE_JIANDUNSHI] = 0.8, 0.8, 0, 0				
-		Mxatk_str_rad1[JOB_TYPE_JIANDUNSHI], Mxatk_str_rad2[JOB_TYPE_JIANDUNSHI], Mxatk_dex_rad1[JOB_TYPE_JIANDUNSHI], Mxatk_dex_rad2[JOB_TYPE_JIANDUNSHI] = 0.8, 0.8, 0, 0 				
-		Def_con_rad1[JOB_TYPE_JIANDUNSHI], Def_con_rad2[JOB_TYPE_JIANDUNSHI] = 0.5, 0.5 									
-		Hit_dex_rad1[JOB_TYPE_JIANDUNSHI], Hit_dex_rad2[JOB_TYPE_JIANDUNSHI] = 0.31, 0.15 							
-		Flee_agi_rad1[JOB_TYPE_JIANDUNSHI], Flee_agi_rad2[JOB_TYPE_JIANDUNSHI] = 0.31, 0.15								
-		--Mf_luk_rad[JOB_TYPE_JIANDUNSHI] = 0.39 															
-		--Crt_luk_rad[JOB_TYPE_JIANDUNSHI] = 0.31											
-		Hrec_bsmxhp_rad[JOB_TYPE_JIANDUNSHI], Hrec_con_rad[JOB_TYPE_JIANDUNSHI] = 1/200, 1/100								
-		Srec_bsmxsp_rad[JOB_TYPE_JIANDUNSHI], Srec_sta_rad[JOB_TYPE_JIANDUNSHI] = 1/200, 1/120									
-		Aspd_agi_rad[JOB_TYPE_JIANDUNSHI] = 1.1   												 			
+		Mxhp_con_rad1[JOB_TYPE_JUJS], Mxhp_con_rad2[JOB_TYPE_JUJS], Mxhp_lv_rad[JOB_TYPE_JUJS] = 5,7,40 						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_JUJS], Mxsp_sta_rad2[JOB_TYPE_JUJS], Mxsp_lv_rad[JOB_TYPE_JUJS] = 1,0,3 						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_JUJS], Mnatk_str_rad2[JOB_TYPE_JUJS], Mnatk_dex_rad1[JOB_TYPE_JUJS], Mnatk_dex_rad2[JOB_TYPE_JUJS] = 2,0.45, 0, 0					--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_JUJS], Mxatk_str_rad2[JOB_TYPE_JUJS], Mxatk_dex_rad1[JOB_TYPE_JUJS], Mxatk_dex_rad2[JOB_TYPE_JUJS] =  2,0.45, 0, 0					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_JUJS], Def_con_rad2[JOB_TYPE_JUJS] = 0.2,0.6 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_JUJS], Hit_dex_rad2[JOB_TYPE_JUJS] = 0.6, 0.2 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_JUJS], Flee_agi_rad2[JOB_TYPE_JUJS] = 0.6, 0.2									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_JUJS] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_JUJS] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_JUJS], Hrec_con_rad[JOB_TYPE_JUJS] = 1/180, 1/8								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_JUJS], Srec_sta_rad[JOB_TYPE_JUJS] = 1/100, 1/12									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_JUJS] = 1.1    												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
+		Str_updata[JOB_TYPE_JUJS]	=	0.3 
+		Dex_updata[JOB_TYPE_JUJS]	=	0.1 
+		Con_updata[JOB_TYPE_JUJS]	=	0.5 
+		Agi_updata[JOB_TYPE_JUJS]	=	0.1 
+		Sta_updata[JOB_TYPE_JUJS]	=	0.1 
+		Luk_updata[JOB_TYPE_JUJS]	=	0.1 
+
+--Âîèòåëü
+		Mxhp_con_rad1[JOB_TYPE_SHUANGJS], Mxhp_con_rad2[JOB_TYPE_SHUANGJS], Mxhp_lv_rad[JOB_TYPE_SHUANGJS] = 5,7,30
+		Mxsp_sta_rad1[JOB_TYPE_SHUANGJS], Mxsp_sta_rad2[JOB_TYPE_SHUANGJS], Mxsp_lv_rad[JOB_TYPE_SHUANGJS] = 1,0,3
+		Mnatk_str_rad1[JOB_TYPE_SHUANGJS], Mnatk_str_rad2[JOB_TYPE_SHUANGJS], Mnatk_dex_rad1[JOB_TYPE_SHUANGJS], Mnatk_dex_rad2[JOB_TYPE_SHUANGJS] = 1.5, 0.4, 0, 0
+		Mxatk_str_rad1[JOB_TYPE_SHUANGJS], Mxatk_str_rad2[JOB_TYPE_SHUANGJS], Mxatk_dex_rad1[JOB_TYPE_SHUANGJS], Mxatk_dex_rad2[JOB_TYPE_SHUANGJS] = 1.5, 0.4, 0, 0
+		Def_con_rad1[JOB_TYPE_SHUANGJS], Def_con_rad2[JOB_TYPE_SHUANGJS] = 0.2, 0.1
+		Hit_dex_rad1[JOB_TYPE_SHUANGJS], Hit_dex_rad2[JOB_TYPE_SHUANGJS] = 0.6, 0
+		Flee_agi_rad1[JOB_TYPE_SHUANGJS], Flee_agi_rad2[JOB_TYPE_SHUANGJS] = 0.75, 0
+--		Mf_luk_rad[JOB_TYPE_SHUANGJS] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_SHUANGJS] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_SHUANGJS], Hrec_con_rad[JOB_TYPE_SHUANGJS] = 1/180, 1/8
+		Srec_bsmxsp_rad[JOB_TYPE_SHUANGJS], Srec_sta_rad[JOB_TYPE_SHUANGJS] = 1/100, 1/12
+		Aspd_agi_rad[JOB_TYPE_SHUANGJS] = 1.25
+		Str_updata[JOB_TYPE_SHUANGJS]	=	0.3
+		Dex_updata[JOB_TYPE_SHUANGJS]	=	0.1
+		Con_updata[JOB_TYPE_SHUANGJS]	=	0.5
+		Agi_updata[JOB_TYPE_SHUANGJS]	=	0.1
+		Sta_updata[JOB_TYPE_SHUANGJS]	=	0.1
+		Luk_updata[JOB_TYPE_SHUANGJS]	=	0.1
+
+--½£¶ÜÊ¿Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª 
+
+		Mxhp_con_rad1[JOB_TYPE_JIANDUNSHI], Mxhp_con_rad2[JOB_TYPE_JIANDUNSHI], Mxhp_lv_rad[JOB_TYPE_JIANDUNSHI] = 2, 2, 10 						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_JIANDUNSHI], Mxsp_sta_rad2[JOB_TYPE_JIANDUNSHI], Mxsp_lv_rad[JOB_TYPE_JIANDUNSHI] = 0.5, 0.5, 1						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_JIANDUNSHI], Mnatk_str_rad2[JOB_TYPE_JIANDUNSHI], Mnatk_dex_rad1[JOB_TYPE_JIANDUNSHI], Mnatk_dex_rad2[JOB_TYPE_JIANDUNSHI] = 0.8, 0.8, 0, 0					--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_JIANDUNSHI], Mxatk_str_rad2[JOB_TYPE_JIANDUNSHI], Mxatk_dex_rad1[JOB_TYPE_JIANDUNSHI], Mxatk_dex_rad2[JOB_TYPE_JIANDUNSHI] = 0.8, 0.8, 0, 0 					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_JIANDUNSHI], Def_con_rad2[JOB_TYPE_JIANDUNSHI] = 0.5, 0.5 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_JIANDUNSHI], Hit_dex_rad2[JOB_TYPE_JIANDUNSHI] = 0.31, 0.15 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_JIANDUNSHI], Flee_agi_rad2[JOB_TYPE_JIANDUNSHI] = 0.31, 0.15									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_JIANDUNSHI] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_JIANDUNSHI] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_JIANDUNSHI], Hrec_con_rad[JOB_TYPE_JIANDUNSHI] = 1/200, 1/100								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_JIANDUNSHI], Srec_sta_rad[JOB_TYPE_JIANDUNSHI] = 1/200, 1/120									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_JIANDUNSHI] = 1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
 		Str_updata[JOB_TYPE_JIANDUNSHI]	=	0.3 
 		Dex_updata[JOB_TYPE_JIANDUNSHI]	=	0.1 
 		Con_updata[JOB_TYPE_JIANDUNSHI]	=	0.5 
@@ -660,19 +423,145 @@ end
 		Luk_updata[JOB_TYPE_JIANDUNSHI]	=	0.1 
 
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ Upstar(§¯§Ö§Ó§Ó§Ö§Õ§Ö§ß§à)	
-		Mxhp_con_rad1[JOB_TYPE_BAOFAHU], Mxhp_con_rad2[JOB_TYPE_BAOFAHU], Mxhp_lv_rad[JOB_TYPE_BAOFAHU] = 2, 2, 10 						
-		Mxsp_sta_rad1[JOB_TYPE_BAOFAHU], Mxsp_sta_rad2[JOB_TYPE_BAOFAHU], Mxsp_lv_rad[JOB_TYPE_BAOFAHU] = 0.5, 0.5, 1						
-		Mnatk_str_rad1[JOB_TYPE_BAOFAHU], Mnatk_str_rad2[JOB_TYPE_BAOFAHU], Mnatk_dex_rad1[JOB_TYPE_BAOFAHU], Mnatk_dex_rad2[JOB_TYPE_BAOFAHU] = 0.8, 0.8, 0, 0				
-		Mxatk_str_rad1[JOB_TYPE_BAOFAHU], Mxatk_str_rad2[JOB_TYPE_BAOFAHU], Mxatk_dex_rad1[JOB_TYPE_BAOFAHU], Mxatk_dex_rad2[JOB_TYPE_BAOFAHU] = 0.8, 0.8, 0, 0 				
-		Def_con_rad1[JOB_TYPE_BAOFAHU], Def_con_rad2[JOB_TYPE_BAOFAHU] = 0.5, 0.5 									
-		Hit_dex_rad1[JOB_TYPE_BAOFAHU], Hit_dex_rad2[JOB_TYPE_BAOFAHU] = 0.31, 0.15 							
-		Flee_agi_rad1[JOB_TYPE_BAOFAHU], Flee_agi_rad2[JOB_TYPE_BAOFAHU] = 0.31, 0.15								
-		--Mf_luk_rad[JOB_TYPE_BAOFAHU] = 0.39 															
-		--Crt_luk_rad[JOB_TYPE_BAOFAHU] = 0.31											
-		Hrec_bsmxhp_rad[JOB_TYPE_BAOFAHU], Hrec_con_rad[JOB_TYPE_BAOFAHU] = 1/200, 1/100								
-		Srec_bsmxsp_rad[JOB_TYPE_BAOFAHU], Srec_sta_rad[JOB_TYPE_BAOFAHU] = 1/200, 1/120									
-		Aspd_agi_rad[JOB_TYPE_BAOFAHU]	=	1.1   												 			
+--Ñ±ÊŞÊ¦Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª 
+
+		Mxhp_con_rad1[JOB_TYPE_XUNSHOUSHI], Mxhp_con_rad2[JOB_TYPE_XUNSHOUSHI], Mxhp_lv_rad[JOB_TYPE_XUNSHOUSHI] = 2, 2, 10 						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_XUNSHOUSHI], Mxsp_sta_rad2[JOB_TYPE_XUNSHOUSHI], Mxsp_lv_rad[JOB_TYPE_XUNSHOUSHI] = 0.5, 0.5, 1						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_XUNSHOUSHI], Mnatk_str_rad2[JOB_TYPE_XUNSHOUSHI], Mnatk_dex_rad1[JOB_TYPE_XUNSHOUSHI], Mnatk_dex_rad2[JOB_TYPE_XUNSHOUSHI] = 0.8, 0.8, 0, 0					--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_XUNSHOUSHI], Mxatk_str_rad2[JOB_TYPE_XUNSHOUSHI], Mxatk_dex_rad1[JOB_TYPE_XUNSHOUSHI], Mxatk_dex_rad2[JOB_TYPE_XUNSHOUSHI] = 0.8, 0.8, 0, 0 					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_XUNSHOUSHI], Def_con_rad2[JOB_TYPE_XUNSHOUSHI] = 0.5, 0.5 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_XUNSHOUSHI], Hit_dex_rad2[JOB_TYPE_XUNSHOUSHI] = 0.31, 0.15 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_XUNSHOUSHI], Flee_agi_rad2[JOB_TYPE_XUNSHOUSHI] = 0.31, 0.15									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_XUNSHOUSHI] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_XUNSHOUSHI] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_XUNSHOUSHI], Hrec_con_rad[JOB_TYPE_XUNSHOUSHI] = 1/200, 1/100								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_XUNSHOUSHI], Srec_sta_rad[JOB_TYPE_XUNSHOUSHI] = 1/200, 1/120									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_XUNSHOUSHI] = 1.2   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
+		Str_updata[JOB_TYPE_XUNSHOUSHI]	=	0.3 
+		Dex_updata[JOB_TYPE_XUNSHOUSHI]	=	0.1 
+		Con_updata[JOB_TYPE_XUNSHOUSHI]	=	0.5 
+		Agi_updata[JOB_TYPE_XUNSHOUSHI]	=	0.1 
+		Sta_updata[JOB_TYPE_XUNSHOUSHI]	=	0.1 
+		Luk_updata[JOB_TYPE_XUNSHOUSHI]	=	0.1 
+
+--Ñòğåëîê
+		Mxhp_con_rad1[JOB_TYPE_JUJISHOU], Mxhp_con_rad2[JOB_TYPE_JUJISHOU], Mxhp_lv_rad[JOB_TYPE_JUJISHOU] = 4.5,5.5,30
+		Mxsp_sta_rad1[JOB_TYPE_JUJISHOU], Mxsp_sta_rad2[JOB_TYPE_JUJISHOU], Mxsp_lv_rad[JOB_TYPE_JUJISHOU] = 1,0,3
+		Mnatk_str_rad1[JOB_TYPE_JUJISHOU], Mnatk_str_rad2[JOB_TYPE_JUJISHOU], Mnatk_dex_rad1[JOB_TYPE_JUJISHOU], Mnatk_dex_rad2[JOB_TYPE_JUJISHOU] = 0,0,2, 0.45
+		Mxatk_str_rad1[JOB_TYPE_JUJISHOU], Mxatk_str_rad2[JOB_TYPE_JUJISHOU], Mxatk_dex_rad1[JOB_TYPE_JUJISHOU], Mxatk_dex_rad2[JOB_TYPE_JUJISHOU] = 0,0,2, 0.45
+		Def_con_rad1[JOB_TYPE_JUJISHOU], Def_con_rad2[JOB_TYPE_JUJISHOU] = 0.2, 0.1
+		Hit_dex_rad1[JOB_TYPE_JUJISHOU], Hit_dex_rad2[JOB_TYPE_JUJISHOU] = 0.6, 0
+		Flee_agi_rad1[JOB_TYPE_JUJISHOU], Flee_agi_rad2[JOB_TYPE_JUJISHOU] = 0.7, 0
+--		Mf_luk_rad[JOB_TYPE_JUJISHOU] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_JUJISHOU] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_JUJISHOU], Hrec_con_rad[JOB_TYPE_JUJISHOU] = 1/180, 1/8
+		Srec_bsmxsp_rad[JOB_TYPE_JUJISHOU], Srec_sta_rad[JOB_TYPE_JUJISHOU] = 1/100, 1/12
+		Aspd_agi_rad[JOB_TYPE_JUJISHOU] = 1.1
+		Str_updata[JOB_TYPE_JUJISHOU]	=	0.3
+		Dex_updata[JOB_TYPE_JUJISHOU]	=	0.1
+		Con_updata[JOB_TYPE_JUJISHOU]	=	0.5
+		Agi_updata[JOB_TYPE_JUJISHOU]	=	0.1
+		Sta_updata[JOB_TYPE_JUJISHOU]	=	0.1
+		Luk_updata[JOB_TYPE_JUJISHOU]	=	0.1
+
+--Ê¥Ö°ÕßÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª 
+
+		Mxhp_con_rad1[JOB_TYPE_SHENGZHIZHE], Mxhp_con_rad2[JOB_TYPE_SHENGZHIZHE], Mxhp_lv_rad[JOB_TYPE_SHENGZHIZHE] = 	5	,	5	, 30					--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_SHENGZHIZHE], Mxsp_sta_rad2[JOB_TYPE_SHENGZHIZHE], Mxsp_lv_rad[JOB_TYPE_SHENGZHIZHE] = 		3	,	1.5	, 5					--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_SHENGZHIZHE], Mnatk_str_rad2[JOB_TYPE_SHENGZHIZHE], Mnatk_dex_rad1[JOB_TYPE_SHENGZHIZHE], Mnatk_dex_rad2[JOB_TYPE_SHENGZHIZHE] = 1.5,	0.4,		0,	0				--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_SHENGZHIZHE], Mxatk_str_rad2[JOB_TYPE_SHENGZHIZHE], Mxatk_dex_rad1[JOB_TYPE_SHENGZHIZHE], Mxatk_dex_rad2[JOB_TYPE_SHENGZHIZHE] = 1.5,	0.4,		0,	0				--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_SHENGZHIZHE], Def_con_rad2[JOB_TYPE_SHENGZHIZHE] =	0.15	,	0.1 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_SHENGZHIZHE], Hit_dex_rad2[JOB_TYPE_SHENGZHIZHE] = 			0.6,		0 							--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_SHENGZHIZHE], Flee_agi_rad2[JOB_TYPE_SHENGZHIZHE] = 	0.6,		0									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_SHENGZHIZHE] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_SHENGZHIZHE] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_SHENGZHIZHE], Hrec_con_rad[JOB_TYPE_SHENGZHIZHE] = 1/180, 1/8								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_SHENGZHIZHE], Srec_sta_rad[JOB_TYPE_SHENGZHIZHE] = 1/100, 1/12									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_SHENGZHIZHE] = 1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
+		Str_updata[JOB_TYPE_SHENGZHIZHE]	=	0.3 
+		Dex_updata[JOB_TYPE_SHENGZHIZHE]	=	0.1 
+		Con_updata[JOB_TYPE_SHENGZHIZHE]	=	0.5 
+		Agi_updata[JOB_TYPE_SHENGZHIZHE]	=	0.1 
+		Sta_updata[JOB_TYPE_SHENGZHIZHE]	=	0.1 
+		Luk_updata[JOB_TYPE_SHENGZHIZHE]	=	0.1 
+
+--·âÓ¡Ê¦Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª 
+
+		Mxhp_con_rad1[JOB_TYPE_FENGYINSHI], Mxhp_con_rad2[JOB_TYPE_FENGYINSHI], Mxhp_lv_rad[JOB_TYPE_FENGYINSHI] = 	5	,	5	, 30						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_FENGYINSHI], Mxsp_sta_rad2[JOB_TYPE_FENGYINSHI], Mxsp_lv_rad[JOB_TYPE_FENGYINSHI] = 		3	,	1.5	, 5						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_FENGYINSHI], Mnatk_str_rad2[JOB_TYPE_FENGYINSHI], Mnatk_dex_rad1[JOB_TYPE_FENGYINSHI], Mnatk_dex_rad2[JOB_TYPE_FENGYINSHI] = 1.5,	0.4,		0,	0						--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_FENGYINSHI], Mxatk_str_rad2[JOB_TYPE_FENGYINSHI], Mxatk_dex_rad1[JOB_TYPE_FENGYINSHI], Mxatk_dex_rad2[JOB_TYPE_FENGYINSHI] = 1.5,	0.4,		0,	0					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_FENGYINSHI], Def_con_rad2[JOB_TYPE_FENGYINSHI] = 		0.15	,	0.1 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_FENGYINSHI], Hit_dex_rad2[JOB_TYPE_FENGYINSHI] =  			0.6,		0 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_FENGYINSHI], Flee_agi_rad2[JOB_TYPE_FENGYINSHI] =		0.6,		0									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_FENGYINSHI] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_FENGYINSHI] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_FENGYINSHI], Hrec_con_rad[JOB_TYPE_FENGYINSHI] = 1/180, 1/8									--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_FENGYINSHI], Srec_sta_rad[JOB_TYPE_FENGYINSHI] = 1/100, 1/12									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_FENGYINSHI] = 1.1 												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
+		Str_updata[JOB_TYPE_FENGYINSHI]	=	0.3 
+		Dex_updata[JOB_TYPE_FENGYINSHI]	=	0.1 
+		Con_updata[JOB_TYPE_FENGYINSHI]	=	0.5 
+		Agi_updata[JOB_TYPE_FENGYINSHI]	=	0.1 
+		Sta_updata[JOB_TYPE_FENGYINSHI]	=	0.1 
+		Luk_updata[JOB_TYPE_FENGYINSHI]	=	0.1 
+
+--´¬³¤Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª 
+
+		Mxhp_con_rad1[JOB_TYPE_CHUANZHANG], Mxhp_con_rad2[JOB_TYPE_CHUANZHANG], Mxhp_lv_rad[JOB_TYPE_CHUANZHANG] = 2, 2, 10 						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_CHUANZHANG], Mxsp_sta_rad2[JOB_TYPE_CHUANZHANG], Mxsp_lv_rad[JOB_TYPE_CHUANZHANG] = 0.5, 0.5, 1						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_CHUANZHANG], Mnatk_str_rad2[JOB_TYPE_CHUANZHANG], Mnatk_dex_rad1[JOB_TYPE_CHUANZHANG], Mnatk_dex_rad2[JOB_TYPE_CHUANZHANG] = 0.8, 0.8, 0, 0					--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_CHUANZHANG], Mxatk_str_rad2[JOB_TYPE_CHUANZHANG], Mxatk_dex_rad1[JOB_TYPE_CHUANZHANG], Mxatk_dex_rad2[JOB_TYPE_CHUANZHANG] = 0.8, 0.8, 0, 0 					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_CHUANZHANG], Def_con_rad2[JOB_TYPE_CHUANZHANG] = 0.5, 0.5 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_CHUANZHANG], Hit_dex_rad2[JOB_TYPE_CHUANZHANG] = 0.31, 0.15 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_CHUANZHANG], Flee_agi_rad2[JOB_TYPE_CHUANZHANG] = 0.31, 0.15									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_CHUANZHANG] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_CHUANZHANG] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_CHUANZHANG], Hrec_con_rad[JOB_TYPE_CHUANZHANG] = 1/200, 1/100								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_CHUANZHANG], Srec_sta_rad[JOB_TYPE_CHUANZHANG] = 1/200, 1/120									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_CHUANZHANG] = 1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
+		Str_updata[JOB_TYPE_CHUANZHANG]	=	0.3 
+		Dex_updata[JOB_TYPE_CHUANZHANG]	=	0.1 
+		Con_updata[JOB_TYPE_CHUANZHANG]	=	0.5 
+		Agi_updata[JOB_TYPE_CHUANZHANG]	=	0.1 
+		Sta_updata[JOB_TYPE_CHUANZHANG]	=	0.1 
+		Luk_updata[JOB_TYPE_CHUANZHANG]	=	0.1 
+
+--º½º£Ê¿Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª 
+
+		Mxhp_con_rad1[JOB_TYPE_HANGHAISHI], Mxhp_con_rad2[JOB_TYPE_HANGHAISHI], Mxhp_lv_rad[JOB_TYPE_HANGHAISHI] = 	5	,	5	, 30						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_HANGHAISHI], Mxsp_sta_rad2[JOB_TYPE_HANGHAISHI], Mxsp_lv_rad[JOB_TYPE_HANGHAISHI] = 		3	,	1.5	, 5					--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_HANGHAISHI], Mnatk_str_rad2[JOB_TYPE_HANGHAISHI], Mnatk_dex_rad1[JOB_TYPE_HANGHAISHI], Mnatk_dex_rad2[JOB_TYPE_HANGHAISHI] = 1.5,	0.4,		0,	0				--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_HANGHAISHI], Mxatk_str_rad2[JOB_TYPE_HANGHAISHI], Mxatk_dex_rad1[JOB_TYPE_HANGHAISHI], Mxatk_dex_rad2[JOB_TYPE_HANGHAISHI] = 1.5,	0.4,		0,	0				--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_HANGHAISHI], Def_con_rad2[JOB_TYPE_HANGHAISHI] =  		0.15	,	0.1 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_HANGHAISHI], Hit_dex_rad2[JOB_TYPE_HANGHAISHI] = 			0.6,		0 								--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_HANGHAISHI], Flee_agi_rad2[JOB_TYPE_HANGHAISHI] = 		0.6,		0									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_HANGHAISHI] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_HANGHAISHI] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_HANGHAISHI], Hrec_con_rad[JOB_TYPE_HANGHAISHI] = 1/180, 1/8								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_HANGHAISHI], Srec_sta_rad[JOB_TYPE_HANGHAISHI] = 1/100, 1/12									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_HANGHAISHI] = 1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
+		Str_updata[JOB_TYPE_HANGHAISHI]	=	0.3 
+		Dex_updata[JOB_TYPE_HANGHAISHI]	=	0.1 
+		Con_updata[JOB_TYPE_HANGHAISHI]	=	0.5 
+		Agi_updata[JOB_TYPE_HANGHAISHI]	=	0.1 
+		Sta_updata[JOB_TYPE_HANGHAISHI]	=	0.1 
+		Luk_updata[JOB_TYPE_HANGHAISHI]	=	0.1 
+
+--±¬·¢»§Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª 
+
+		Mxhp_con_rad1[JOB_TYPE_BAOFAHU], Mxhp_con_rad2[JOB_TYPE_BAOFAHU], Mxhp_lv_rad[JOB_TYPE_BAOFAHU] = 2, 2, 10 						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_BAOFAHU], Mxsp_sta_rad2[JOB_TYPE_BAOFAHU], Mxsp_lv_rad[JOB_TYPE_BAOFAHU] = 0.5, 0.5, 1						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_BAOFAHU], Mnatk_str_rad2[JOB_TYPE_BAOFAHU], Mnatk_dex_rad1[JOB_TYPE_BAOFAHU], Mnatk_dex_rad2[JOB_TYPE_BAOFAHU] = 0.8, 0.8, 0, 0					--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_BAOFAHU], Mxatk_str_rad2[JOB_TYPE_BAOFAHU], Mxatk_dex_rad1[JOB_TYPE_BAOFAHU], Mxatk_dex_rad2[JOB_TYPE_BAOFAHU] = 0.8, 0.8, 0, 0 					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_BAOFAHU], Def_con_rad2[JOB_TYPE_BAOFAHU] = 0.5, 0.5 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_BAOFAHU], Hit_dex_rad2[JOB_TYPE_BAOFAHU] = 0.31, 0.15 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_BAOFAHU], Flee_agi_rad2[JOB_TYPE_BAOFAHU] = 0.31, 0.15									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_BAOFAHU] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_BAOFAHU] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_BAOFAHU], Hrec_con_rad[JOB_TYPE_BAOFAHU] = 1/200, 1/100								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_BAOFAHU], Srec_sta_rad[JOB_TYPE_BAOFAHU] = 1/200, 1/120									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_BAOFAHU]	=	1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
 		Str_updata[JOB_TYPE_BAOFAHU]		=	0.3 
 		Dex_updata[JOB_TYPE_BAOFAHU]	=	0.1 
 		Con_updata[JOB_TYPE_BAOFAHU]	=	0.5 
@@ -680,47 +569,26 @@ end
 		Sta_updata[JOB_TYPE_BAOFAHU]	=	0.1 
 		Luk_updata[JOB_TYPE_BAOFAHU]	=	0.1 
 
+--¹¤³ÌÊ¦Ö°ÒµÊôĞÔ³É³¤±ÈÂÊ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª 
 
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ §ª§ß§Ø§Ö§ß§Ö§â(§¯§Ö§Ó§Ó§Ö§Õ§Ö§ß§à)		
-		Mxhp_con_rad1[JOB_TYPE_GONGCHENGSHI], Mxhp_con_rad2[JOB_TYPE_GONGCHENGSHI], Mxhp_lv_rad[JOB_TYPE_GONGCHENGSHI] = 2, 2, 10 						
-		Mxsp_sta_rad1[JOB_TYPE_GONGCHENGSHI], Mxsp_sta_rad2[JOB_TYPE_GONGCHENGSHI], Mxsp_lv_rad[JOB_TYPE_GONGCHENGSHI] = 0.5, 0.5, 1						
-		Mnatk_str_rad1[JOB_TYPE_GONGCHENGSHI], Mnatk_str_rad2[JOB_TYPE_GONGCHENGSHI], Mnatk_dex_rad1[JOB_TYPE_GONGCHENGSHI], Mnatk_dex_rad2[JOB_TYPE_GONGCHENGSHI] = 0.8, 0.8, 0, 0				
-		Mxatk_str_rad1[JOB_TYPE_GONGCHENGSHI], Mxatk_str_rad2[JOB_TYPE_GONGCHENGSHI], Mxatk_dex_rad1[JOB_TYPE_GONGCHENGSHI], Mxatk_dex_rad2[JOB_TYPE_GONGCHENGSHI] = 0.8, 0.8, 0, 0 				
-		Def_con_rad1[JOB_TYPE_GONGCHENGSHI], Def_con_rad2[JOB_TYPE_GONGCHENGSHI] = 0.5, 0.5 									
-		Hit_dex_rad1[JOB_TYPE_GONGCHENGSHI], Hit_dex_rad2[JOB_TYPE_GONGCHENGSHI] = 0.31, 0.15 							
-		Flee_agi_rad1[JOB_TYPE_GONGCHENGSHI], Flee_agi_rad2[JOB_TYPE_GONGCHENGSHI] = 0.31, 0.15								
-		--Mf_luk_rad[JOB_TYPE_GONGCHENGSHI] = 0.39 															
-		--Crt_luk_rad[JOB_TYPE_GONGCHENGSHI] = 0.31											
-		Hrec_bsmxhp_rad[JOB_TYPE_GONGCHENGSHI], Hrec_con_rad[JOB_TYPE_GONGCHENGSHI] = 1/200, 1/100								
-		Srec_bsmxsp_rad[JOB_TYPE_GONGCHENGSHI], Srec_sta_rad[JOB_TYPE_GONGCHENGSHI] = 1/200, 1/120									
-		Aspd_agi_rad[JOB_TYPE_GONGCHENGSHI]	= 1.1   												 			
+		Mxhp_con_rad1[JOB_TYPE_GONGCHENGSHI], Mxhp_con_rad2[JOB_TYPE_GONGCHENGSHI], Mxhp_lv_rad[JOB_TYPE_GONGCHENGSHI] = 2, 2, 10 						--×î´óhpµÄÊôĞÔÓ°ÏìÏµÊı£ºÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı¡¢»ù±¾Êı
+		Mxsp_sta_rad1[JOB_TYPE_GONGCHENGSHI], Mxsp_sta_rad2[JOB_TYPE_GONGCHENGSHI], Mxsp_lv_rad[JOB_TYPE_GONGCHENGSHI] = 0.5, 0.5, 1						--×î´óspµÄÊôĞÔÓ°ÏìÏµÊı£º¾«Á¦ÏµÊı¡¢ÌåÖÊÏµÊı¡¢µÈ¼¶ÏµÊı
+		Mnatk_str_rad1[JOB_TYPE_GONGCHENGSHI], Mnatk_str_rad2[JOB_TYPE_GONGCHENGSHI], Mnatk_dex_rad1[JOB_TYPE_GONGCHENGSHI], Mnatk_dex_rad2[JOB_TYPE_GONGCHENGSHI] = 0.8, 0.8, 0, 0					--×îĞ¡¹¥»÷Á¦µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Mxatk_str_rad1[JOB_TYPE_GONGCHENGSHI], Mxatk_str_rad2[JOB_TYPE_GONGCHENGSHI], Mxatk_dex_rad1[JOB_TYPE_GONGCHENGSHI], Mxatk_dex_rad2[JOB_TYPE_GONGCHENGSHI] = 0.8, 0.8, 0, 0 					--×î´ó¹¥»÷µÄÊôĞÔÓ°ÏìÏµÊı£ºÁ¦Á¿ÏµÊı
+		Def_con_rad1[JOB_TYPE_GONGCHENGSHI], Def_con_rad2[JOB_TYPE_GONGCHENGSHI] = 0.5, 0.5 									--·ÀÓùµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı
+		Hit_dex_rad1[JOB_TYPE_GONGCHENGSHI], Hit_dex_rad2[JOB_TYPE_GONGCHENGSHI] = 0.31, 0.15 									--ÃüÖĞµÄÊôĞÔÓ°ÏìÏµÊı£º×¨×¢ÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÃüÖĞÂÊ
+		Flee_agi_rad1[JOB_TYPE_GONGCHENGSHI], Flee_agi_rad2[JOB_TYPE_GONGCHENGSHI] = 0.31, 0.15									--ÉÁ±ÜµÄÊôĞÔÓ°ÏìÏµÊı£ºÃô½İÏµÊı¡¢µÈ¼¶ÏµÊı¡¢×îĞ¡ÉÁ±ÜÂÊ
+--		Mf_luk_rad[JOB_TYPE_GONGCHENGSHI] = 0.39	--Íåíóæíûé ïàğàìåòğ
+--		Crt_luk_rad[JOB_TYPE_GONGCHENGSHI] = 0.31	--Íåíóæíûé ïàğàìåòğ
+		Hrec_bsmxhp_rad[JOB_TYPE_GONGCHENGSHI], Hrec_con_rad[JOB_TYPE_GONGCHENGSHI] = 1/200, 1/100								--hp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óhpÏµÊı¡¢µÈ¼¶ÏµÊı¡¢hp×îĞ¡»Ø¸´ËÙ¶È
+		Srec_bsmxsp_rad[JOB_TYPE_GONGCHENGSHI], Srec_sta_rad[JOB_TYPE_GONGCHENGSHI] = 1/200, 1/120									--sp»Ø¸´µÄÊôĞÔÓ°ÏìÏµÊı£º×î´óspÏµÊı¡¢µÈ¼¶ÏµÊı¡¢sp×îĞ¡»Ø¸´ËÙ¶È
+		Aspd_agi_rad[JOB_TYPE_GONGCHENGSHI]	= 1.1   												 		--¹¥»÷ÆµÂÊµÄÊôĞÔÓ°ÏìÏµÊı£º»ù´¡¹¥»÷¡¢Ãô½İÏµÊı¡¢×îĞ¡¹¥»÷ÆµÂÊ			
 		Str_updata[JOB_TYPE_GONGCHENGSHI]	=	0.3 
 		Dex_updata[JOB_TYPE_GONGCHENGSHI]	=	0.1 
 		Con_updata[JOB_TYPE_GONGCHENGSHI]	=	0.5 
 		Agi_updata[JOB_TYPE_GONGCHENGSHI]	=	0.1 
 		Sta_updata[JOB_TYPE_GONGCHENGSHI]	=	0.1 
 		Luk_updata[JOB_TYPE_GONGCHENGSHI]	=	0.1 
-
-
---§±§â§Ú§â§à§ã§ä §ç§Ñ§â§Ñ§Ü§ä§Ö§â§Ú§ã§ä§Ú§Ü §Ü§İ§Ñ§ã§ã§Ñ Captain(§¯§Ö§Ó§Ó§Ö§Õ§Ö§ß§à)	
-		Mxhp_con_rad1[JOB_TYPE_CHUANZHANG], Mxhp_con_rad2[JOB_TYPE_CHUANZHANG], Mxhp_lv_rad[JOB_TYPE_CHUANZHANG] = 2, 2, 10 						
-		Mxsp_sta_rad1[JOB_TYPE_CHUANZHANG], Mxsp_sta_rad2[JOB_TYPE_CHUANZHANG], Mxsp_lv_rad[JOB_TYPE_CHUANZHANG] = 0.5, 0.5, 1						
-		Mnatk_str_rad1[JOB_TYPE_CHUANZHANG], Mnatk_str_rad2[JOB_TYPE_CHUANZHANG], Mnatk_dex_rad1[JOB_TYPE_CHUANZHANG], Mnatk_dex_rad2[JOB_TYPE_CHUANZHANG] = 0.8, 0.8, 0, 0				
-		Mxatk_str_rad1[JOB_TYPE_CHUANZHANG], Mxatk_str_rad2[JOB_TYPE_CHUANZHANG], Mxatk_dex_rad1[JOB_TYPE_CHUANZHANG], Mxatk_dex_rad2[JOB_TYPE_CHUANZHANG] = 0.8, 0.8, 0, 0 				
-		Def_con_rad1[JOB_TYPE_CHUANZHANG], Def_con_rad2[JOB_TYPE_CHUANZHANG] = 0.5, 0.5 									
-		Hit_dex_rad1[JOB_TYPE_CHUANZHANG], Hit_dex_rad2[JOB_TYPE_CHUANZHANG] = 0.31, 0.15 							
-		Flee_agi_rad1[JOB_TYPE_CHUANZHANG], Flee_agi_rad2[JOB_TYPE_CHUANZHANG] = 0.31, 0.15								
-		--Mf_luk_rad[JOB_TYPE_CHUANZHANG] = 0.39 															
-		--Crt_luk_rad[JOB_TYPE_CHUANZHANG] = 0.31											
-		Hrec_bsmxhp_rad[JOB_TYPE_CHUANZHANG], Hrec_con_rad[JOB_TYPE_CHUANZHANG] = 1/200, 1/100								
-		Srec_bsmxsp_rad[JOB_TYPE_CHUANZHANG], Srec_sta_rad[JOB_TYPE_CHUANZHANG] = 1/200, 1/120									
-		Aspd_agi_rad[JOB_TYPE_CHUANZHANG] = 1.1   												 			
-		Str_updata[JOB_TYPE_CHUANZHANG]	=	0.3 
-		Dex_updata[JOB_TYPE_CHUANZHANG]	=	0.1 
-		Con_updata[JOB_TYPE_CHUANZHANG]	=	0.5 
-		Agi_updata[JOB_TYPE_CHUANZHANG]	=	0.1 
-		Sta_updata[JOB_TYPE_CHUANZHANG]	=	0.1 
-		Luk_updata[JOB_TYPE_CHUANZHANG]	=	0.1 
 
 
 
@@ -1874,7 +1742,7 @@ function Shengji_Shuxingchengzhang( role )  --[[Éı¼¶µÄÊôĞÔ³É³¤¼°ÊôĞÔ¼ÆËã]]--
 	--LuaPrint("Out function Shengji_Shuxingchengzhang()  --[[level up attribute growth and attribute calculation]]-- ".."\n" ) 
 
 	if lv == 100 then
-		HelpInfo(role,0,"Ïîçäğàâëÿåì! Âû äîñòèãëè 100 óğîâ?, âà?ïîäàğî?âî âğåìåííî?ìåøê?")
+		HelpInfo(role,0,"Ïîçäğàâëÿåì! Âû äîñòèãëè 100 óğîâíÿ, âàø ïîäàğîê âî âğåìåííîì ìåøêå.")
 		GiveItemX( role , 0 , 7001  , 1 , 4 )
 	end
 ------------------------------------------------------
@@ -1890,7 +1758,7 @@ function Shengji_Shuxingchengzhang( role )  --[[Éı¼¶µÄÊôĞÔ³É³¤¼°ÊôĞÔ¼ÆËã]]--
 		end
 
 		if lv == 41 then
-			HelpInfo(role,0,"Ïîçäğàâëÿåì! Òåïåğü âû êâàëèôèöèğîâàííû?íàñòàâíè? Âû ìîæåòå îáó÷àò?ñîáñòâåííû?ó÷åíèêîâ. ")
+			HelpInfo(role,0,"Ïîçäğàâëÿåì! Òåïåğü âû êâàëèôèöèğîâàííûé íàñòàâíèê! Âû ìîæåòå îáó÷àòü ñîáñòâåííûõ ó÷åíèêîâ. ")
 			AddCreditX(role, 300)
 			AddMoney(role , 0, 200000)
 			GiveItemX( role , 0 , 3345  , 1 , 4 )
@@ -1913,18 +1781,18 @@ function MentorsAndDisciples(role)
 	local CheckTeam = IsInTeam(role)
 	local ChaName = GetChaDefaultName(role)
 	local ID = GetRoleID(role)
-	--?Îò?äå ëè ó÷åíèê?
+	--â Îòğÿäå ëè ó÷åíèê?
 	if CheckTeam == 1 then
 		LG('MentorsAndDisciples', '----------------------------------------------')
-		LG('MentorsAndDisciples', 'Íà÷àëàñü ğàáîòà ôóíêöè?Ìåíòîğ ?ó÷åíèê:')
+		LG('MentorsAndDisciples', 'Íà÷àëàñü ğàáîòà ôóíêöèè Ìåíòîğ è ó÷åíèê:')
 		if ChaName == nil or ID == nil then
-			LG('MentorsAndDisciples', 'Êğèòè÷åñêàÿ îøèáêà!!! êî? 5')
+			LG('MentorsAndDisciples', 'Êğèòè÷åñêàÿ îøèáêà!!! êîä: 5')
 			LG('MentorsAndDisciples', '----------------------------------------------')
 			return
 		end
-		LG('MentorsAndDisciples', 'Èìÿ Ó÷åíèê? '..ChaName..'(ID = '..ID..')')
+		LG('MentorsAndDisciples', 'Èìÿ Ó÷åíèêà: '..ChaName..'(ID = '..ID..')')
 		local lv_disciples = Lv ( role )
-		LG('MentorsAndDisciples', 'Ó÷åíèê ñîâåğøèë ïîäúåì óğîâ? äî: '..lv_disciples..'.')
+		LG('MentorsAndDisciples', 'Ó÷åíèê ñîâåğøèë ïîäúåì óğîâíÿ äî: '..lv_disciples..'.')
 		local count = 0
 		local player = {}
 		player[0] = role
@@ -1932,22 +1800,22 @@ function MentorsAndDisciples(role)
 		player[2] = GetTeamCha( role , 1 )
 		player[3] = GetTeamCha( role , 2 )
 		player[4] = GetTeamCha( role , 3 )
-		--Ñîñ÷èòàå?êîëè÷åñòâî ÷åëîâå??îò?äå
+		--Ñîñ÷èòàåì êîëè÷åñòâî ÷åëîâåê â îòğÿäå
 		for i = 0 , 4 , 1 do
 			if ValidCha( player[i] ) == 1 then
 				local star = IsTeamLeader( player[i] )
 				if star == 1 then
 					local mentor_name = GetChaDefaultName(player[i])
 					local mentor_ID = GetRoleID(player[i])
-					LG('MentorsAndDisciples', 'Ëèäåğî?îò?äà ÿâëÿåò? èãğî? '..mentor_name..'('..mentor_ID..')')
-					LG('MentorsAndDisciples', 'Íà÷àëî ïğîâåğîê ìåíòîğ??ó÷åíèê?')
+					LG('MentorsAndDisciples', 'Ëèäåğîì îòğÿäà ÿâëÿåòñÿ èãğîê: '..mentor_name..'('..mentor_ID..')')
+					LG('MentorsAndDisciples', 'Íà÷àëî ïğîâåğîê ìåíòîğà è ó÷åíèêà!')
 					local IsValidTeam = IsValidTeam ( player[i] )
 					if IsValidTeam == nil then
-						LG('MentorsAndDisciples', 'Èãğîêè íå ÿâëÿşò? ìåíòîğîì ?ó÷åíèêîì! Çàâåğøåíèå ğàáîòû ôóíêöè?')
+						LG('MentorsAndDisciples', 'Èãğîêè íå ÿâëÿşòñÿ ìåíòîğîì è ó÷åíèêîì! Çàâåğøåíèå ğàáîòû ôóíêöèè!')
 						LG('MentorsAndDisciples', '----------------------------------------------')
 						return
 					elseif IsValidTeam == 1 then
-						LG('MentorsAndDisciples', 'Èãğîêè ÿâëÿşò? ìåíòîğîì ?ó÷åíèêîì! Âûäà÷à ïğèçîâ ìåíòîğ?')
+						LG('MentorsAndDisciples', 'Èãğîêè ÿâëÿşòñÿ ìåíòîğîì è ó÷åíèêîì! Âûäà÷à ïğèçîâ ìåíòîğó!')
 						local mentor = player[i]
 						local lvl = lv_disciples
 						if lvl >= 10 and lvl <= 40 then
@@ -1973,9 +1841,9 @@ function MentorsAndDisciples(role)
 						elseif lvl == 100 then
 							GiveItemX( mentor , 0 , 8144  , 1 , 4 )
 						end
-						LG('MentorsAndDisciples', 'Âûäà÷à ïğèçîâ çàâåğùåí? çàâåğøåíèå ğàáîòû ôóíêöè?')
+						LG('MentorsAndDisciples', 'Âûäà÷à ïğèçîâ çàâåğùåíà, çàâåğøåíèå ğàáîòû ôóíêöèè!')
 						LG('MentorsAndDisciples', '----------------------------------------------')
-						SystemNotice(mentor,'Âà?ó÷åíèê äîñòèã íîâîãî óğîâ?, âû ïîëó÷èëè íàãğàä? Ïğîäîëæàéò??òî?æå äóõå!')
+						SystemNotice(mentor,'Âàø ó÷åíèê äîñòèã íîâîãî óğîâíÿ, âû ïîëó÷èëè íàãğàäó. Ïğîäîëæàéòå â òîì æå äóõå!')
 						return
 					end
 				end
@@ -2138,17 +2006,17 @@ function ExAttrCheck(role)  --[[»ù±¾À©Õ¹ÊôĞÔ¼ÆËã]]--
 	--LG("ChaAttr", "Srec_mxSp_rad[job] ,Srec_lv_rad[job], Srec_min[job] = ", Srec_mxsp_rad[job], Srec_lv_rad[job],Srec_min[job] ,"\n") 
 	--LG("ChaAttr", "Aspd_bsrad[job] ,Aspd_agi_rad[job], Aspd_min[job] = ", Aspd_bsrad[job], Aspd_agi_rad[job], Aspd_min[job] ,"\n") 
 
-	local mxhp	= math.floor(Con(role)*3 * Mxhp_con_rad1[job] + Mxhp_con_rad2[job] * math.pow( math.floor(Con(role)*3/20 ),  2) +Lv(role) * Mxhp_lv_rad[job]*RAID_MX_HP + 40)	--Ìàêñèìàëüíîå çäîğîâüå
-	local mxsp	= math.floor(Sta(role)*3 * Mxsp_sta_rad1[job] + Mxsp_sta_rad2[job] * math.pow( math.floor(Sta(role)*3/20), 2) +Lv(role) * Mxsp_lv_rad[job]* RAID_MX_SP + 5)		--Ìàêñèìàëüí? ìàíà
+	local mxhp	= math.floor(Con(role)*3 * Mxhp_con_rad1[job] + Mxhp_con_rad2[job] * math.pow( math.floor(Con(role)*3/20 ),  2) +Lv(role) * Mxhp_lv_rad[job] + 40)	--Ìàêñèìàëüíîå çäîğîâüå
+	local mxsp	= math.floor(Sta(role)*3 * Mxsp_sta_rad1[job] + Mxsp_sta_rad2[job] * math.pow( math.floor(Sta(role)*3/20), 2) +Lv(role) * Mxsp_lv_rad[job] + 5)		--Ìàêñèìàëüíàÿ ìàíà
 	local mnatk	 = math.floor( 0+ Str(role) * Mnatk_str_rad1[job] + Dex(role) * Mnatk_dex_rad1[job] + Mnatk_str_rad2[job] * math.pow(math.floor( Str(role)*4/20), 2 ) + Mnatk_dex_rad2[job] * math.pow(math.floor( Dex(role)*4/20), 2 ) )											--[[¼ÆËã»ù±¾mnatk]]--
 	local mxatk	= math.floor( 0+ Str(role) * Mxatk_str_rad1[job] + Dex(role) * Mxatk_dex_rad1[job] + Mxatk_str_rad2[job] * math.pow(math.floor( Str(role)*4/20), 2 ) + Mxatk_dex_rad2[job] * math.pow(math.floor( Dex(role)*4/20), 2 ) )											--[[¼ÆËã»ù±¾mxatk]]--
-	local def = math.floor( Con(role)* 5 * Def_con_rad1[job]	+ Def_con_rad2[job] * math.floor( math.pow( Con(role))*RAID_MX_DEF  * 3 /20, 2) ) 									--[[¼ÆËã»ù±¾def]]--
+	local def = math.floor( Con(role)* 5 * Def_con_rad1[job]	+ Def_con_rad2[job] * math.floor( math.pow( Con(role) * 3 /20, 2) ) )											--[[¼ÆËã»ù±¾def]]--
 	local hit = math.floor( Dex(role) * Hit_dex_rad1[job])	+ Lv(role) * 2 + 5		--[[¼ÆËã»ù±¾hit]]--
 	local flee = math.floor( Agi(role) * Flee_agi_rad1[job] ) + Lv(role) * 2 + 5			--[[¼ÆËã»ù±¾flee]]--
 	local bcolexp = 100
 	--local bsmf = 100
-	local mf = 100			--Áû?ğàíå?= 100 + math.floor( Luk(role)*3 * Mf_luk_rad[job] )
-	local crt = 15			--Áû?ğàíå?= 11 + math.floor( Luk(role)*3 * Crt_luk_rad[job] )
+	local mf = 100			--Áûë ğàíåå = 100 + math.floor( Luk(role)*3 * Mf_luk_rad[job] )
+	local crt = 15			--Áûë ğàíåå = 11 + math.floor( Luk(role)*3 * Crt_luk_rad[job] )
 	local hrec = math.max(math.max ( 2 * mxhp * Hrec_bsmxhp_rad[job] + Con(role)*3 * Hrec_con_rad[job] , 1) ,0) 						--[[¼ÆËã»ù±¾hrec]]--
 	local srec = math.max((mxsp * Srec_bsmxsp_rad[job] + Sta(role)*3 * Srec_sta_rad[job])/2 , 1 )						--[[¼ÆËã»ù±¾srec]]--
 	local aspd = math.floor ( 100000/ (math.min ( math.floor( 65 +  Agi(role) * Aspd_agi_rad[job] ) , 300 ) ) )											--[[¼ÆËã»ù±¾aspd]]--
@@ -2359,7 +2227,7 @@ function Resume ( role )
 		end 
 		cha_role = GetMainCha ( role ) 
 		if sp <= 0 then 
-			BickerNotice ( role , "Òîïëèâ?çàêàí÷èâàåòñÿ! Ñóäí?ïîëó÷àåò ïîâğåæäåíèÿ! Îòïğàâ?éòåñ??áëèæàéøè?ïîğò! " ) 
+			BickerNotice ( role , "Òîïëèâî çàêàí÷èâàåòñÿ! Ñóäíî ïîëó÷àåò ïîâğåæäåíèÿ! Îòïğàâëÿéòåñü â áëèæàéøèé ïîğò! " ) 
 			hrec = hrec - 0.025 * mxhp 
 			srec = 0 
 		end 

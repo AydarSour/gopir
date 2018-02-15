@@ -61,149 +61,77 @@ function explode(seperator, str)
 	return arr
 end
 
-
- function HandleChat(role, message)
-local minute = os.date("%M")
-	
-	-- if (LocalChat[role] == nil) then
-		-- LocalChat[role] = {}
-	-- else
-
-		-- if (LocalChat[role].minute == minute) then
-			
-			-- -- 25 messages are maximum
-			-- if (LocalChat[role].number > 25) then
-				-- -- Mute player
-				-- SystemNotice(role, "Не флуди пожалуйста!")
-				-- return 0
-			-- else
-				-- LocalChat[role].number = LocalChat[role].number + 1
-			-- end
-			
-		-- else
-			-- LocalChat[role].minute = minute
-			-- LocalChat[role].number = 1
-		-- end
-	-- end
-	
-
-
-	 local original_id  = GetOriginalChaTypeID(role)
-	 local gmlvl = GetGmLv(role)
-	 local check = string.find(message, "&", 1)
-	 local Cha_Boat = 0
-	 local name = GetChaDefaultName ( role )
-	 Cha_Boat = GetCtrlBoat ( role )
-	 local slesh = string.find(message, "/", 1)
-	  local map_name = GetChaMapName ( role )
-	  if gmlvl >= 30 then  --name == "[GM]Morfeos" 
-			return 0
-	  end
-	  if name == "[GM]Morfeos"  then 
+function HandleChat(role, message)
+	local original_id  = GetOriginalChaTypeID(role)
+	local gmlvl = GetGmLv(role)
+	local check = string.find(message, "&", 1)
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	local slesh = string.find(message, "/", 1)
+	if check == nil then
+		if slesh == nil then
 			return 1
-	  end
-	  
-	 if check == nil then
-	 elseif check ~= nil then
-		  if gmlvl >= 100  then
-			  msg = explode(" ", message)
-			  message = msg[0]
-			  if (message == "&kua") then
-				  SystemNotice(role, "Доступ запрещен!")
-				  return 0
-			  end
-			  if (message == "&kua_all") then
-				  SystemNotice(role, "Доступ запрещен!")
-				  return 0
-			  end
-
-				  if (message == "&hamesvrstop") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&teload_ai") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&ipdateall") then
-				  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				   if (message == "&teload") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				   if (message == "&nake") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&jide") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&nove") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  -- if (message == "&lick") then
-					  -- SystemNotice(role, "Доступ запрещен!")
-					  -- return 0
-				  -- end
-				  -- if (message == "&vall") then
-					  -- SystemNotice(role, "Доступ запрещен!")
-					  -- return 0
-				  -- end
-				 -- if (message == "&hoto") then
-					  -- SystemNotice(role, "Доступ запрещен!")
-					  -- return 0
-				  -- end
-				  if (message == "&teload") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&dummon") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&dummonex") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&sttr") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&dkill") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&deattr") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&addexp") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  if (message == "&telive") then
-					  SystemNotice(role, "Доступ запрещен!")
-					  return 0
-				  end
-				  -- if (message == "&wcha") then
-					  -- SystemNotice(role, "Доступ запрещен!")
-					  -- return 0
-				  -- end
-				  return 1
-			  end
-		  else
-			  SystemNotice(role, "Доступ запрещен!")
-			  return 0
-		  end
-		  
- end
-
-
-
+		elseif slesh ~= nil then
+			if message == "/банк" then
+				local map_name_role = GetChaMapName ( role )
+				if map_name_role == "heilong" then
+					SystemNotice(role, "Применение команды в данной местности запрещено!")
+					return 0
+				end
+				OpenBank(role,role)
+				return 0
+			end
+			return 0
+		end
+	elseif check ~= nil then
+		if gmlvl == 99 then
+			msg = explode(" ", message)
+			message = msg[0]
+			if (message == "&lua") then
+				SystemNotice(role, "Доступ запрещен!")
+				return 0
+			end
+			if (message == "&lua_all") then
+				SystemNotice(role, "Доступ запрещен!")
+				return 0
+			end
+			local map_name = GetChaMapName ( role )
+			if map_name == "07xmas" then
+				return 1
+			else
+				if (message == "&gamesvrstop") then
+					SystemNotice(role, "Доступ запрещен!")
+					return 0
+				end
+				if (message == "&reload") then
+					SystemNotice(role, "Доступ запрещен!")
+					return 0
+				end
+				if (message == "&updateall") then
+					SystemNotice(role, "Доступ запрещен!")
+					return 0
+				end
+				return 1
+			end
+		else
+			SystemNotice(role, "Доступ запрещен!")
+			return 0
+		end
+	end
+	return 1
+end
+				--[[	msg = explode(" ", message)
+					message = msg[0]
+					if (message == "&roll") then
+						if(GetChaTypeID(role) == original_id) then
+							TransformCha(role, msg[1])
+						end
+						return 0
+					end
+					if (message == "&stop") then
+						TransformCha(role, original_id)
+						return 0
+					end]]--
 function TurnToJob( character, p )
 	local cha_type=GetChaTypeID(character)
 	if p==1 and (cha_type==1 or cha_type==2 or cha_type==3) then
@@ -1816,13 +1744,11 @@ function Check_Direction(a) --ЕР¶ЁЅЗЙ«ГжПт·ЅПт,xЦбµДХэ·ЅПтОЄ1ЗшЦРРДПЯЈ¬ДжК±ХлТАґ
 	return division 
 end 
 
---Наносимый урон
-function Hp_Dmg(role,dmg) 
+
+function Hp_Dmg(role,dmg) --[[ИЛОпhpПыєДґ¦Ан№«КЅ]]--
 
 	local map_name_DEFER = GetChaMapName ( role )
 	local Can_Pk_Garner2 = Is_NormalMonster (role)
-	
-	--Дамаг в Хаосе
 	local T=0.25	
 	if map_name_ATKER == "garner2" or map_name_DEFER == "garner2" or map_name_ATKER == "07xmas2" or map_name_DEFER == "07xmas2" or map_name_ATKER == "07xmas" or map_name_DEFER == "07xmas" then
 		if Can_Pk_Garner2 == 0 then
@@ -1830,22 +1756,8 @@ function Hp_Dmg(role,dmg)
 		end
 	end	
 	
-	--Дамаг режем
-	if Can_Pk_Garner2 == 0 then -- если игрок
-			dmg = dmg *  Damage_for_players -- Урон по героям
-	end
-	
-	if Can_Pk_Garner2 == 1 then -- если моб
-		dmg = dmg * Damage_for_mobs
-	end
-	--вывод в систему урона
-	if dmg > 0 then
-			SystemNotice(role, "Получено "..math.ceil(dmg).. " урона")
-		elseif dmg == 0 then
-			SystemNotice(role, "По вам промахнулись")
-	end
-	
-	
+	--LuaPrint("Enter function Hp_Dmg(role,dmg) --[[hp consumption management formula]]--") 
+	--Notice("dmg3="..dmg)
 	local statelv_mfd = GetChaStateLv ( role , STATE_MFD ) 
 	local hp = Hp(role) 
 	local sp = Sp(role) 
@@ -5491,119 +5403,7 @@ function cha_timer(role, freq, time)
 	end
 -----------------------------------
 -----------------------------------
-
-
-
-	--Невидимость для ГМ 
-	local gmlvl = GetGmLv(role)
-	if gmlvl >=60   then
-		local sk_add = SK_KSSQQW 
-		local form_sklv = GetSkillLv( role , sk_add )
-			if form_sklv<=0 then
-				a = AddChaSkill ( role , sk_add, 1  , 1 , 0 ) 
-			end
-		 AddState( role , role , STATE_YS , 10 , 100 )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_CON )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_STA )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_DEX )
-		 SetCharaAttr( 1000 , role , ATTR_STATEV_AGI )
-		 SetCharaAttr( 2000 , role , ATTR_STATEV_MSPD )
-		 ALLExAttrSet(role)
-		end
-	
-	--Серверное время
-	if math.mod(now_tick, 360) == 0 and now_tick > 0 then	
-		local now_hour= os.date("%H")		
-		local now_miniute= os.date("%M")	
-		local now_scend=  os.date("%S")		
-		now_hour= tonumber(now_hour)		
-		now_miniute= tonumber(now_miniute)	
-		now_scend= tonumber(now_scend)		
-		BickerNotice (role, "Серверное время: "..now_hour..":"..now_miniute..":"..now_scend.."")
-		--SystemNotice ( role, "Серверное время: "..now_hour..":"..now_miniute..":"..now_scend.."")
-	end
-	
-	--Награда за онлайн
-	 local SetHours = 1-- Время, через которое выдается вещь
-	 local Level = GetChaAttr( role , ATTR_LV )
-	 if OnlineEvent == true and math.mod(now_tick, SetHours*3600) == 0 and now_tick > 0 and Level >= 45 then
-		local rand = math.random(1,RAZMER_PRIZE)
-		local i = math.random (1,19) 
-		local cha = TurnToCha (role)
-		local ItemName = GetItemName (Prize[i])
-
-		GiveItemX ( cha , 0 , Prize[i] , 10 , 4 )
-		BickerNotice (cha, "Поздравляем! Вы находитесь онлайн ".. SetHours .." часов, и вы были награждены ".. ItemName .."! ")
-		end
-
-	
-	--Бонус сетов
-      local Dina_xl = GetEquipItemP(role,8)
-      local Dina_xl_ID= GetItemID (Dina_xl)
-      local Dina_x2 = GetEquipItemP(role,2)
-      local Dina_x2_ID= GetItemID (Dina_x2)
-      if Dina_xl_ID==2577 and Dina_x2_ID==2817 then
-         local statelv = 1
-         local statetime = 3600
-         AddState ( role , role , STATE_BBRING1 , statelv , statetime )
-      elseif Dina_xl_ID==2578 and Dina_x2_ID==2820 then
-         local statelv = 1
-         local statetime = 3600
-         AddState ( role , role , STATE_BBRING2 , statelv , statetime )
-      elseif Dina_xl_ID==2579 and Dina_x2_ID==2823 then
-         local statelv = 1
-         local statetime = 3600
-         AddState ( role , role , STATE_BBRING3 , statelv , statetime )
-      elseif Dina_xl_ID==2580 and Dina_x2_ID==2826 then
-         local statelv = 1
-         local statetime = 3600
-         AddState ( role , role , STATE_BBRING4 , statelv , statetime )
-      elseif Dina_xl_ID==2581 and Dina_x2_ID==2832 then
-         local statelv = 1
-         local statetime = 3600
-         AddState ( role , role , STATE_BBRING5 , statelv , statetime )
-      elseif Dina_xl_ID==2582 and Dina_x2_ID==2829 then
-         local statelv = 1
-         local statetime = 3600
-         AddState ( role , role , STATE_BBRING6 , statelv , statetime )
-      else
-         local statelv_bbring1 = GetChaStateLv ( role , STATE_BBRING1 )
-         if statelv_bbring1~=0 then
-            RemoveState ( role , STATE_BBRING1 )
-         end
-         local statelv_bbring2 = GetChaStateLv ( role , STATE_BBRING2 )
-         if statelv_bbring2~=0 then
-            RemoveState ( role , STATE_BBRING2 )
-         end
-         local statelv_bbring3 = GetChaStateLv ( role , STATE_BBRING3 )
-         if statelv_bbring3~=0 then
-            RemoveState ( role , STATE_BBRING3 )
-         end
-         local statelv_bbring4 = GetChaStateLv ( role , STATE_BBRING4 )
-         if statelv_bbring4~=0 then
-            RemoveState ( role , STATE_BBRING4 )
-         end
-         local statelv_bbring5 = GetChaStateLv ( role , STATE_BBRING5 )
-         if statelv_bbring5~=0 then
-            RemoveState ( role , STATE_BBRING5 )
-         end
-         local statelv_bbring6 = GetChaStateLv ( role , STATE_BBRING6 )
-         if statelv_bbring6~=0 then
-            RemoveState ( role , STATE_BBRING6 )
-         end  
-      end 
-
-
 end
-
-
---Получение имен персонажей на карте
-function GetPlayerNames (role)
-
-	table.insert ( PlayersInMap , GetChaDefaultName ( role ) )
-
-end
-
 
 function RemSetBonus(role)
 	RemoveState ( role , STATE_BBRING1 )
@@ -5631,6 +5431,8 @@ function DeathSetBonus(role,now_tick)
 	AddState ( role , role , STATE_BBRING1 , statelv , statetime )
 end
 
+JLMAXLV = 51
+JLMINLV = 1
 
 --Получить уровень феи
 function GetElfLV(item)
@@ -5722,19 +5524,15 @@ function Give_ElfEXP ( role , Item , Num )
 	end  
 end
 
+autoSiLiaoID = {}			autoSiLiaoXG={}				autoSiLiaoLow={}
+autoSiLiaoID[1] = 2312		autoSiLiaoXG[1] = 2500		autoSiLiaoLow[1] = 7500
+autoSiLiaoID[2] = 5645		autoSiLiaoXG[2] = 5000		autoSiLiaoLow[2] = 7500
+autoSiLiaoID[3] = 0227		autoSiLiaoXG[3] = 2500		autoSiLiaoLow[3] = 7500
+autoSiLiaoID[4] = 5644		autoSiLiaoXG[4] = 5000		autoSiLiaoLow[4] = 7500
 
 function AutoSiLiao(role,elf)
 	local lv = GetElfLV(elf)
 	local autoSL = GetChaItem ( role , 2 , 2  )
-	
-	--Кушаем автоматически усиление  роста
-	local state = GetChaStateLv(role, STATE_JLJSGZ)
-	if (state == 0 or state == nil) and GetItemID(pit)  == 578   then
-		DelBagItem(role,578,1)
-		AddState ( role, role, STATE_JLJSGZ, 1 , 900)
-		SystemNotice ( role , "Увеличеие роста феи активировано" )
-	end	
-	
 	if autoSL ~= nil and lv <= JLMAXLV then 
 		local ure = GetItemAttr( elf ,ITEMATTR_URE )
 		local autoSLID = GetItemID ( autoSL )
@@ -5756,6 +5554,27 @@ function AutoSiLiao(role,elf)
 	end
 end
 
+autoSiLiaoFructID = {}				autoSiLiaoFructXG = {}			autoSiLiaoFructAttr = {}						autoSiLiaoFructProc = {}
+autoSiLiaoFructID[1]  = 0276		autoSiLiaoFructXG[1]  = 2		autoSiLiaoFructAttr[1]  = ITEMATTR_VAL_STR		autoSiLiaoFructProc[1]  = 1
+autoSiLiaoFructID[2]  = 0277		autoSiLiaoFructXG[2]  = 2		autoSiLiaoFructAttr[2]  = ITEMATTR_VAL_AGI		autoSiLiaoFructProc[2]  = 1
+autoSiLiaoFructID[3]  = 0278		autoSiLiaoFructXG[3]  = 2		autoSiLiaoFructAttr[3]  = ITEMATTR_VAL_DEX		autoSiLiaoFructProc[3]  = 1
+autoSiLiaoFructID[4]  = 0279		autoSiLiaoFructXG[4]  = 2		autoSiLiaoFructAttr[4]  = ITEMATTR_VAL_CON		autoSiLiaoFructProc[4]  = 1
+autoSiLiaoFructID[5]  = 0280		autoSiLiaoFructXG[5]  = 2		autoSiLiaoFructAttr[5]  = ITEMATTR_VAL_STA		autoSiLiaoFructProc[5]  = 1
+autoSiLiaoFructID[6]  = 0222		autoSiLiaoFructXG[6]  = 1		autoSiLiaoFructAttr[6]  = ITEMATTR_VAL_STR		autoSiLiaoFructProc[6]  = 1
+autoSiLiaoFructID[7]  = 0223		autoSiLiaoFructXG[7]  = 1		autoSiLiaoFructAttr[7]  = ITEMATTR_VAL_AGI		autoSiLiaoFructProc[7]  = 1
+autoSiLiaoFructID[8]  = 0224		autoSiLiaoFructXG[8]  = 1		autoSiLiaoFructAttr[8]  = ITEMATTR_VAL_DEX		autoSiLiaoFructProc[8]  = 1
+autoSiLiaoFructID[9]  = 0225		autoSiLiaoFructXG[9]  = 1		autoSiLiaoFructAttr[9]  = ITEMATTR_VAL_CON		autoSiLiaoFructProc[9]  = 1
+autoSiLiaoFructID[10] = 0226		autoSiLiaoFructXG[10] = 1		autoSiLiaoFructAttr[10] = ITEMATTR_VAL_STA		autoSiLiaoFructProc[10] = 1
+autoSiLiaoFructID[11] = 7003		autoSiLiaoFructXG[11] = 1		autoSiLiaoFructAttr[11] = ITEMATTR_VAL_STR		autoSiLiaoFructProc[11] = 2
+autoSiLiaoFructID[12] = 7004		autoSiLiaoFructXG[12] = 1		autoSiLiaoFructAttr[12] = ITEMATTR_VAL_AGI		autoSiLiaoFructProc[12] = 2
+autoSiLiaoFructID[13] = 7005		autoSiLiaoFructXG[13] = 1		autoSiLiaoFructAttr[13] = ITEMATTR_VAL_DEX		autoSiLiaoFructProc[13] = 2
+autoSiLiaoFructID[14] = 7006		autoSiLiaoFructXG[14] = 1		autoSiLiaoFructAttr[14] = ITEMATTR_VAL_CON		autoSiLiaoFructProc[14] = 2
+autoSiLiaoFructID[15] = 7007		autoSiLiaoFructXG[15] = 1		autoSiLiaoFructAttr[15] = ITEMATTR_VAL_STA		autoSiLiaoFructProc[15] = 2
+autoSiLiaoFructID[16] = 8233		autoSiLiaoFructXG[16] = 1		autoSiLiaoFructAttr[16] = ITEMATTR_VAL_STR		autoSiLiaoFructProc[16] = 4
+autoSiLiaoFructID[17] = 8234		autoSiLiaoFructXG[17] = 1		autoSiLiaoFructAttr[17] = ITEMATTR_VAL_AGI		autoSiLiaoFructProc[17] = 4
+autoSiLiaoFructID[18] = 8235		autoSiLiaoFructXG[18] = 1		autoSiLiaoFructAttr[18] = ITEMATTR_VAL_DEX		autoSiLiaoFructProc[18] = 4
+autoSiLiaoFructID[19] = 8236		autoSiLiaoFructXG[19] = 1		autoSiLiaoFructAttr[19] = ITEMATTR_VAL_CON		autoSiLiaoFructProc[19] = 4
+autoSiLiaoFructID[20] = 8237		autoSiLiaoFructXG[20] = 1		autoSiLiaoFructAttr[20] = ITEMATTR_VAL_STA		autoSiLiaoFructProc[20] = 4
 
 function AutoSiLiaoFruct(role,elf)
 	local lv = GetElfLV(elf)
@@ -5944,6 +5763,11 @@ function GetNewStateLV(role,state,extra)
 	end
 end
 
+JLMAXLV_UP_STANDART = 51
+JLMAXLV_UP_2_GEN = 45
+JLMAXLV_UP_3_GEN = 20
+JLMAXLV_UP_4_GEN = 14
+JLMAXLV_UP_5_GEN = 8
 
 --Проверка для фруктов фей
 function CheckJingLingLv ( role , Item_Traget)
