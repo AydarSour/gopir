@@ -1,7 +1,5 @@
 print("Loading skilleffect.lua")
-print("Program started".."haha,resource\\script\\calculate\\")
-
-dofile(GetResPath("script\\calculate\\exp_and_level.lua"))
+dofile(GetResPath("script\\calculate\\variable.lua"))
 dofile(GetResPath("script\\calculate\\exp_and_level.lua"))
 dofile(GetResPath("script\\calculate\\JobType.lua"))
 dofile(GetResPath("script\\calculate\\AttrType.lua"))
@@ -10,18 +8,11 @@ dofile(GetResPath("script\\calculate\\ItemAttrType.lua"))
 dofile(GetResPath("script\\calculate\\functions.lua"))
 dofile(GetResPath("script\\calculate\\AttrCalculate.lua")) 
 dofile(GetResPath("script\\calculate\\ItemEffect.lua")) 
-dofile(GetResPath("script\\calculate\\variable.lua"))
 dofile(GetResPath("script\\calculate\\Look.lua"))
 dofile(GetResPath("script\\calculate\\forge.lua"))
 dofile(GetResPath("script\\calculate\\ItemGetMission.lua"))
 
 
-CheckDmgChaNameTest = {}
-CheckDmgChaNameTest [0] = "Re©Y®KŒ…©Á¿¡"
-CheckDmgChaNameTest [1] = "Carsise"      
-CheckDmgChaNameTest [2] = "I am rubbish"    
-CheckDmgChaNameTest [3] = "CG mao mao"      
-CheckDmgChaNameTest [4] = "Chief mate against"
 
 
 BOSSXYSJ = {}

@@ -1,10 +1,5 @@
 SetCurMap("garner")
 
-AddWeatherRegion(9,  8, 40, 2434, 2800 , 80, 80)--°×Òø
-AddWeatherRegion(11, 8, 40, 2247, 2960 , 80, 80)
-
-AddWeatherRegion(9,  8, 40, 1190, 1140 , 80, 80)--À×öª
-AddWeatherRegion(11, 8, 40, 1160, 1400 , 80, 80)
 
 
 -- Ñîñíà

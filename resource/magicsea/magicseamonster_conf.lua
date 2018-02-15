@@ -1,14 +1,6 @@
 SetCurMap("magicsea")
 
-AddWeatherRegion(9,  15, 40, 650, 3700 , 80, 80)--É³á°
-AddWeatherRegion(11, 15, 40, 900, 3800 , 80, 80)
 
-AddWeatherRegion(10, 15, 40, 2600, 380 , 80, 80)--ÎíÇø
-AddWeatherRegion(10, 15, 40, 2600, 800 , 80, 80)
-
-
-AddWeatherRegion(10, 15, 40, 2700, 2200 , 80, 80)--ÎíÇø
-AddWeatherRegion(10, 15, 40, 2200, 2100 , 80, 80)
 
 CreateCha(922, 52500,377500, 145, 180)
 CreateCha(922, 50900,376300, 175, 180)

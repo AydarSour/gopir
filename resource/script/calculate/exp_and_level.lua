@@ -445,7 +445,7 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 			if fairyexp < 100 or fairyexp == nil then 
 				fairyexp = 100 
 			end
-			fairyexp = fairyexp / 100)
+			fairyexp = fairyexp / 100
 			exp_up = math.floor ( exp_up * EXP_RAID_STATE * fairyexp )
 		
 -------------------------------------------
