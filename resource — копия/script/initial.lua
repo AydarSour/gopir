@@ -1,0 +1,1 @@
+--dofile(GetResPath("script\\L10n\\init.lua"))

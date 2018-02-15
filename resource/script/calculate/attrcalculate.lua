@@ -17,7 +17,108 @@ item_add =
   attr = attr
 }
 
-
+--Leo Begin
+PlayerCredit = {}
+--下面的编号表示玩家升级到该等级时其师傅（如果有的话）所获得的声望值
+PlayerCredit[	2	]=	1
+PlayerCredit[	3	]=	2
+PlayerCredit[	4	]=	3
+PlayerCredit[	5	]=	4
+PlayerCredit[	6	]=	5
+PlayerCredit[	7	]=	6
+PlayerCredit[	8	]=	7
+PlayerCredit[	9	]=	8
+PlayerCredit[	10	]=	9
+PlayerCredit[	11	]=	10
+PlayerCredit[	12	]=	12
+PlayerCredit[	13	]=	14
+PlayerCredit[	14	]=	16
+PlayerCredit[	15	]=	18
+PlayerCredit[	16	]=	20
+PlayerCredit[	17	]=	22
+PlayerCredit[	18	]=	24
+PlayerCredit[	19	]=	26
+PlayerCredit[	20	]=	28
+PlayerCredit[	21	]=	30
+PlayerCredit[	22	]=	32
+PlayerCredit[	23	]=	34
+PlayerCredit[	24	]=	36
+PlayerCredit[	25	]=	38
+PlayerCredit[	26	]=	40
+PlayerCredit[	27	]=	42
+PlayerCredit[	28	]=	44
+PlayerCredit[	29	]=	46
+PlayerCredit[	30	]=	48
+PlayerCredit[	31	]=	50
+PlayerCredit[	32	]=	52
+PlayerCredit[	33	]=	54
+PlayerCredit[	34	]=	56
+PlayerCredit[	35	]=	58
+PlayerCredit[	36	]=	60
+PlayerCredit[	37	]=	62
+PlayerCredit[	38	]=	64
+PlayerCredit[	39	]=	66
+PlayerCredit[	40	]=	68
+PlayerCredit[	41	]=	71
+PlayerCredit[	42	]=	75
+PlayerCredit[	43	]=	80
+PlayerCredit[	44	]=	86
+PlayerCredit[	45	]=	93
+PlayerCredit[	46	]=	101
+PlayerCredit[	47	]=	110
+PlayerCredit[	48	]=	120
+PlayerCredit[	49	]=	131
+PlayerCredit[	50	]=	143
+PlayerCredit[	51	]=	156
+PlayerCredit[	52	]=	170
+PlayerCredit[	53	]=	185
+PlayerCredit[	54	]=	201
+PlayerCredit[	55	]=	218
+PlayerCredit[	56	]=	236
+PlayerCredit[	57	]=	255
+PlayerCredit[	58	]=	275
+PlayerCredit[	59	]=	296
+PlayerCredit[	60	]=	318
+PlayerCredit[	61	]=	341
+PlayerCredit[	62	]=	365
+PlayerCredit[	63	]=	390
+PlayerCredit[	64	]=	416
+PlayerCredit[	65	]=	443
+PlayerCredit[	66	]=	471
+PlayerCredit[	67	]=	500
+PlayerCredit[	68	]=	530
+PlayerCredit[	69	]=	561
+PlayerCredit[	70	]=	593
+PlayerCredit[	71	]=	626
+PlayerCredit[	72	]=	660
+PlayerCredit[	73	]=	695
+PlayerCredit[	74	]=	731
+PlayerCredit[	75	]=	768
+PlayerCredit[	76	]=	806
+PlayerCredit[	77	]=	845
+PlayerCredit[	78	]=	885
+PlayerCredit[	79	]=	926
+PlayerCredit[	80	]=	968
+PlayerCredit[	81	]=	1011
+PlayerCredit[	82	]=	1055
+PlayerCredit[	83	]=	1100
+PlayerCredit[	84	]=	1146
+PlayerCredit[	85	]=	1193
+PlayerCredit[	86	]=	1241
+PlayerCredit[	87	]=	1290
+PlayerCredit[	88	]=	1340
+PlayerCredit[	89	]=	1391
+PlayerCredit[	90	]=	1443
+PlayerCredit[	91	]=	1496
+PlayerCredit[	92	]=	1550
+PlayerCredit[	93	]=	1605
+PlayerCredit[	94	]=	1661
+PlayerCredit[	95	]=	1718
+PlayerCredit[	96	]=	1776
+PlayerCredit[	97	]=	1835
+PlayerCredit[	98	]=	1895
+PlayerCredit[	99	]=	1956
+PlayerCredit[	100	]=	1956
 
 --Leo End
 
@@ -1909,7 +2010,7 @@ function AttrRecheck( role ) --[[属性重新计算]]--
 	BsAttrSet(role) 
 	ExAttrCheck(role) 
 	ExAttrSet(role) 
-	
+	--LuaPrint("Out function AttrRecheck() --[[attribute recalculation]]--") 
 end 
 
 
@@ -2012,6 +2113,8 @@ function BsAttrSet( role ) --[[基础属性赋值]]--
 end 
 
 function ExAttrCheck(role)  --[[基本扩展属性计算]]--
+	--LuaPrint("Enter function ExAttrCheck()  --[[Base extended attribute calculation]]--".."\n") 
+	--LG("ChaAttr", "Enter function ExAttrCheck()  --[[Base extended attribute calculation]]--","\n" ) 
 	local job = GetChaAttr(role, ATTR_JOB) --不同职业采用不同的属性成长率
 	--LuaPrint("Character class type= "..job) 
 	--LuaPrint("\n") 
@@ -2035,11 +2138,11 @@ function ExAttrCheck(role)  --[[基本扩展属性计算]]--
 	--LG("ChaAttr", "Srec_mxSp_rad[job] ,Srec_lv_rad[job], Srec_min[job] = ", Srec_mxsp_rad[job], Srec_lv_rad[job],Srec_min[job] ,"\n") 
 	--LG("ChaAttr", "Aspd_bsrad[job] ,Aspd_agi_rad[job], Aspd_min[job] = ", Aspd_bsrad[job], Aspd_agi_rad[job], Aspd_min[job] ,"\n") 
 
-	local mxhp	= math.floor(Con(role)*3 * Mxhp_con_rad1[job] + Mxhp_con_rad2[job] * math.pow( math.floor(Con(role)*3/20 ),  2) +Lv(role) * Mxhp_lv_rad[job]  + 40)	--锑犟桁嚯铄 玟铕钼
-	local mxsp	= math.floor(Sta(role)*3 * Mxsp_sta_rad1[job] + Mxsp_sta_rad2[job] * math.pow( math.floor(Sta(role)*3/20), 2) +Lv(role) * Mxsp_lv_rad[job] + 5)		--锑犟桁嚯? 爨磬
+	local mxhp	= math.floor(Con(role)*3 * Mxhp_con_rad1[job] + Mxhp_con_rad2[job] * math.pow( math.floor(Con(role)*3/20 ),  2) +Lv(role) * Mxhp_lv_rad[job]*RAID_MX_HP + 40)	--锑犟桁嚯铄 玟铕钼
+	local mxsp	= math.floor(Sta(role)*3 * Mxsp_sta_rad1[job] + Mxsp_sta_rad2[job] * math.pow( math.floor(Sta(role)*3/20), 2) +Lv(role) * Mxsp_lv_rad[job]* RAID_MX_SP + 5)		--锑犟桁嚯? 爨磬
 	local mnatk	 = math.floor( 0+ Str(role) * Mnatk_str_rad1[job] + Dex(role) * Mnatk_dex_rad1[job] + Mnatk_str_rad2[job] * math.pow(math.floor( Str(role)*4/20), 2 ) + Mnatk_dex_rad2[job] * math.pow(math.floor( Dex(role)*4/20), 2 ) )											--[[计算基本mnatk]]--
 	local mxatk	= math.floor( 0+ Str(role) * Mxatk_str_rad1[job] + Dex(role) * Mxatk_dex_rad1[job] + Mxatk_str_rad2[job] * math.pow(math.floor( Str(role)*4/20), 2 ) + Mxatk_dex_rad2[job] * math.pow(math.floor( Dex(role)*4/20), 2 ) )											--[[计算基本mxatk]]--
-	local def = math.floor( Con(role)* 5 * Def_con_rad1[job]	+ Def_con_rad2[job] * math.floor( math.pow( Con(role))  * 3 /20, 2)) 									--[[计算基本def]]--
+	local def = math.floor( Con(role)* 5 * Def_con_rad1[job]	+ Def_con_rad2[job] * math.floor( math.pow( Con(role))*RAID_MX_DEF  * 3 /20, 2) ) 									--[[计算基本def]]--
 	local hit = math.floor( Dex(role) * Hit_dex_rad1[job])	+ Lv(role) * 2 + 5		--[[计算基本hit]]--
 	local flee = math.floor( Agi(role) * Flee_agi_rad1[job] ) + Lv(role) * 2 + 5			--[[计算基本flee]]--
 	local bcolexp = 100
@@ -2136,7 +2239,7 @@ function ExAttrSet(role) --[[赋值扩展属性]]--
 	SetCharaAttr(adis_final, role, ATTR_ADIS ) --[[赋值最终最终adis]]--
 
 	local mspd_final = Mspd_final(role) --[[计算最终mspd]]--
-	SetCharaAttr(mspd_final, role, ATTR_MSPD * RAID_MX_MSPD ) --[[赋值最终最终mspd]]--
+	SetCharaAttr(mspd_final, role, ATTR_MSPD ) --[[赋值最终最终mspd]]--
 	--LuaPrint("Out function ExAttrSet() --[[evaluate extended attribute]]--") 
 end 
 
