@@ -1,14 +1,11 @@
 print("Loading skilleffect.lua")
-print("Program started".."haha,resource\\script\\calculate\\")
-
-dofile(GetResPath("script\\calculate\\exp_and_level.lua"))
 dofile(GetResPath("script\\calculate\\exp_and_level.lua"))
 dofile(GetResPath("script\\calculate\\JobType.lua"))
 dofile(GetResPath("script\\calculate\\AttrType.lua"))
 dofile(GetResPath("script\\calculate\\Init_Attr.lua"))
 dofile(GetResPath("script\\calculate\\ItemAttrType.lua")) 
 dofile(GetResPath("script\\calculate\\functions.lua"))
-dofile(GetResPath("script\\calculate\\AttrCalculate.lua")) 
+dofile(GetResPath("script\\calculate\\attrCalculate.lua")) 
 dofile(GetResPath("script\\calculate\\ItemEffect.lua")) 
 dofile(GetResPath("script\\calculate\\variable.lua"))
 dofile(GetResPath("script\\calculate\\Look.lua"))
@@ -16,73 +13,6 @@ dofile(GetResPath("script\\calculate\\forge.lua"))
 dofile(GetResPath("script\\calculate\\ItemGetMission.lua"))
 
 
-CheckDmgChaNameTest = {}
-CheckDmgChaNameTest [0] = "Re©Y®KŒ…©Á¿¡"
-CheckDmgChaNameTest [1] = "Carsise"      
-CheckDmgChaNameTest [2] = "I am rubbish"    
-CheckDmgChaNameTest [3] = "CG mao mao"      
-CheckDmgChaNameTest [4] = "Chief mate against"
-
-
-BOSSXYSJ = {}
-BOSSXYSJ[979] = 1
-BOSSXYSJ[980] = 12
-BOSSXYSJ[981] = 6
-BOSSXYSJ[982] = 4
-BOSSXYSJ[983] = 12
-BOSSXYSJ[984] = 16
-BOSSXYSJ[985] = 16
-BOSSXYSJ[986] = 12
-BOSSXYSJ[987] = 4
-BOSSXYSJ[988] = 4
-
-BOSSSJSJ = {}
-BOSSSJSJ[979] = 8
-BOSSSJSJ[980] = 1
-BOSSSJSJ[981] = 6
-BOSSSJSJ[982] = 4
-BOSSSJSJ[983] = 12
-BOSSSJSJ[984] = 16
-BOSSSJSJ[985] = 16
-BOSSSJSJ[986] = 12
-BOSSSJSJ[987] = 4
-BOSSSJSJ[988] = 4
-
-BOSSTJSJ = {}
-BOSSTJSJ[979] = 8
-BOSSTJSJ[980] = 1
-BOSSTJSJ[981] = 6
-BOSSTJSJ[982] = 4
-BOSSTJSJ[983] = 12
-BOSSTJSJ[984] = 16
-BOSSTJSJ[985] = 16
-BOSSTJSJ[986] = 12
-BOSSTJSJ[987] = 4
-BOSSTJSJ[988] = 4
-
-BOSSXZSJ = {}
-BOSSXZSJ[979] = 12
-BOSSXZSJ[980] = 12
-BOSSXZSJ[981] = 16
-BOSSXZSJ[982] = 16
-BOSSXZSJ[983] = 12
-BOSSXZSJ[984] = 4
-BOSSXZSJ[985] = 1
-BOSSXZSJ[986] = 6
-BOSSXZSJ[987] = 4
-BOSSXZSJ[988] = 4
-
-BOSSAYSJ = {}
-BOSSAYSJ[979] = 12
-BOSSAYSJ[980] = 12
-BOSSAYSJ[981] = 16
-BOSSAYSJ[982] = 16
-BOSSAYSJ[983] = 12
-BOSSAYSJ[984] = 4
-BOSSAYSJ[985] = 1
-BOSSAYSJ[986] = 6
-BOSSAYSJ[987] = 4
-BOSSAYSJ[988] = 4
 
 
 
