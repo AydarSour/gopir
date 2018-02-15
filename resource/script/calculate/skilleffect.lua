@@ -3597,10 +3597,39 @@ function Skill_Hqsl_Unuse( role , sklv )
 end 
 
 function Skill_Fsz_Use( role , sklv ) 
-	local statelv = sklv  
-	local lefthand_rad_dif = statelv * 8 
-	local lefthand_rad = GetChaAttr ( role , ATTR_LHAND_ITEMV ) + lefthand_rad_dif 
-	SetCharaAttr ( lefthand_rad , role , ATTR_LHAND_ITEMV ) 
+local statelv = sklv
+	local vilka_barb = vilka_barb(role)
+	local name = GetChaDefaultName(role)
+	local cha_id = GetRoleID(role)
+	if statelv <= 9 then
+		if VilkaBarb[name] == nil then
+			if vilka_barb == 1 then
+				statelv = 10
+				VilkaBarb[name] = { id = cha_id }
+			else
+				statelv = sklv
+			end
+		elseif VilkaBarb[name] ~= nil then
+			statelv = 10
+		end
+	end
+	local lefthand_weapon = GetChaItem ( role , 1 , 6 )
+	local weapon_MNATK = GetItemAttr ( lefthand_weapon , ITEMATTR_VAL_MNATK )
+	local weapon_MXATK = GetItemAttr ( lefthand_weapon , ITEMATTR_VAL_MXATK )
+	weapon_MNATK = math.floor ( ( ( weapon_MNATK / 100 ) * 20 ) + ( ( weapon_MNATK / 100 ) * ( 8 * statelv) ) )
+	weapon_MXATK = math.floor ( ( ( weapon_MXATK / 100 ) * 20 ) + ( ( weapon_MXATK / 100 ) * ( 8 * statelv) ) )
+	if RybkaDouble[name] == nil then
+		RybkaDouble[name] = { MNATK = weapon_MNATK , MXATK = weapon_MXATK }
+	end
+	local mnatksb = MnatkSb(role) + weapon_MNATK
+	local mxatksb = MxatkSb(role) + weapon_MXATK
+	SetCharaAttr( mnatksb , role , ATTR_STATEV_MNATK )
+	SetCharaAttr( mxatksb , role , ATTR_STATEV_MXATK )
+	ALLExAttrSet(role)
+	-- local statelv = sklv  
+	-- local lefthand_rad_dif = statelv * 8 
+	-- local lefthand_rad = GetChaAttr ( role , ATTR_LHAND_ITEMV ) + lefthand_rad_dif 
+	-- SetCharaAttr ( lefthand_rad , role , ATTR_LHAND_ITEMV ) 
 end 
 
 function Skill_Fsz_Unuse( role , sklv ) 
@@ -3663,6 +3692,8 @@ function SkillSp_Lxjy ( sklv )
 end 
 
 function Skill_Lxjy_Begin ( role , sklv ) 
+	local AntiBotSystem = AntiBotSystem(role)
+	if AntiBotSystem == 0 then SkillUnable(role) return end 
 	local sp = Sp(role) 
 	local sp_reduce = SkillSp_Lxjy ( sklv ) 
 	if sp - sp_reduce < 0 then 
@@ -3702,6 +3733,9 @@ function SkillSp_Lh ( sklv )
 end 
 
 function Skill_Lh_Begin ( role , sklv ) 
+
+	local AntiBotSystem = AntiBotSystem(role)
+	if AntiBotSystem == 0 then SkillUnable(role) return end
 	local sp = Sp(role) 
 	local sp_reduce = SkillSp_Lh ( sklv ) 
 	if sp - sp_reduce < 0 then 
@@ -3878,6 +3912,8 @@ function SkillEnergy_Bkcj ( sklv )
 end 
 
 function Skill_Bkcj_Begin ( role , sklv ) 
+	local AntiBotSystemLine = AntiBotSystemLine(role)
+	if AntiBotSystemLine == 0 then SkillUnable(role) return end
 	local sp = Sp(role) 
 	local sp_reduce  = SkillSp_Bkcj ( sklv )  
 	if sp - sp_reduce < 0 then 
@@ -3984,7 +4020,9 @@ function SkillSp_Rsd ( sklv )
 	return sp_reduce 
 end 
 
-function Skill_Rsd_Begin ( role , sklv )												
+function Skill_Rsd_Begin ( role , sklv )	
+	local AntiBotSystem = AntiBotSystem(role)
+	if AntiBotSystem == 0 then SkillUnable(role) return end											
 	local sp = Sp(role) 
 	local sp_reduce = SkillSp_Rsd ( sklv ) 
 	if sp - sp_reduce < 0 then 

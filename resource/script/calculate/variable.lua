@@ -5,7 +5,7 @@ print( "‡ Јаг§Є  Variable.lua" )
 
 
 EXP_RAID				= 1				-- Рейты на опыт
-MF_RAID					= 1				-- Рейты на выпадение предметов
+MF_RAID					= 3				-- Рейты на выпадение предметов
 Resource_RAID_ADJUST	= 1				-- Рейты на ресурсы
 TeamExp_RAID			= 1				-- Рейты в отряде
 ELEEXP_GETRAD			= 1				-- Рейты на рост феи
@@ -17,10 +17,10 @@ Every_5_minute			= 0				-- Переменная отсчета Every_5_minute (Каждые 5 минут)
 
 --Рейты на Скорость\ХП\МП\ДЕФ
 
-DEF_RAID = 3
-HP_RAID = 3
+DEF_RAID = 1.2
+HP_RAID = 5
 SP_RAID = 3
-MSPD_RAID = 3
+MSPD_RAID = 5
 
 
 

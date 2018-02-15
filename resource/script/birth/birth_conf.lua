@@ -190,3 +190,152 @@ AddBirthPoint("Snow War", "07xmas2",  165, 253)
 AddBirthPoint("Snow War", "07xmas2",  33, 220)
 AddBirthPoint("Snow War", "07xmas2",  66, 201)
 AddBirthPoint("Snow War", "07xmas2",  34, 99)
+
+
+AddBirthPoint("Аргент", "garner", 2232, 2787)
+AddBirthPoint("Аргент", "garner", 2194, 2779)
+AddBirthPoint("Аргент", "garner", 2245, 2703)
+AddBirthPoint("Громоград", "garner", 736, 1592)
+AddBirthPoint("Громоград", "garner", 768, 1539)
+AddBirthPoint("Громоград", "garner", 738, 1454)
+AddBirthPoint("Шайтан", "magicsea", 891, 3575)
+AddBirthPoint("Шайтан", "magicsea", 824, 3648)
+AddBirthPoint("Шайтан", "magicsea", 845, 3502)
+AddBirthPoint("Ледынь", "darkblue", 1316, 536)
+AddBirthPoint("Ледынь", "darkblue", 1342, 481)
+AddBirthPoint("Ледынь", "darkblue", 1305, 503)
+AddBirthPoint("Остров Арены", "darkblue",  471,  3407)
+AddBirthPoint("Остров Арены", "darkblue",  401,  3464)
+AddBirthPoint("Остров Арены", "darkblue",  463,  3461)
+AddBirthPoint("Остров Арены", "darkblue",  457,  3434)
+AddBirthPoint("Остров Арены", "darkblue",  426,  3435)
+AddBirthPoint("Портал Хаоса", "darkblue", 1352, 528)
+AddBirthPoint("Портал Хаоса", "darkblue", 1354, 529)
+AddBirthPoint("Портал Хаоса", "darkblue", 1350, 529)
+AddBirthPoint("Портал СНВ", "magicsea", 814, 3646)
+AddBirthPoint("Портал СНВ", "magicsea", 817, 3649)
+AddBirthPoint("Портал СНВ", "magicsea", 819, 3647)
+
+--Прилегающие к городам селения
+--Рус.
+--Аскарон
+AddBirthPoint("Халдейский оплот", "garner", 633, 2100)
+AddBirthPoint("Андийский лес", "garner", 1007, 2966)
+AddBirthPoint("Заброшенная шахта", "garner", 1903, 2807)
+AddBirthPoint("Скалистый удел", "garner", 1517, 3091)
+AddBirthPoint("Валхалла", "garner", 1120, 2773)
+AddBirthPoint("Обитель радости", "garner", 535, 2433)
+--Магический океан
+AddBirthPoint("Гавань Оазиса", "magicsea", 787, 3121)
+AddBirthPoint("Роща акаций", "magicsea", 1214, 3203)
+--Великий синий океан
+AddBirthPoint("Пустошь Ледыни", "darkblue", 807, 360)
+AddBirthPoint("Бухта Атлантис", "darkblue", 1050, 656)
+AddBirthPoint("Берег Скелетов", "darkblue", 2146, 542)
+AddBirthPoint("Ледяной шип", "darkblue", 2681, 647)
+
+--Для билетов
+--Рус.
+AddBirthPoint("Громоград Билет", "garner", 743, 1586)
+AddBirthPoint("Порт Громограда", "garner", 990, 1263)
+AddBirthPoint("Священная снежная гора", "garner", 914, 1072)
+AddBirthPoint("Андийский лес Билет", "garner", 1018, 2975)
+AddBirthPoint("Гавань Оазиса Билет", "magicsea", 804, 3115)
+AddBirthPoint("Ледяной шип Билет", "darkblue", 2697, 638)
+AddBirthPoint("Вход в Одинокую башню", "garner", 271, 1775)
+AddBirthPoint("Вход в Пустую пещеру", "magicsea", 1369, 3033)
+AddBirthPoint("Заброшенные шахты 2", "eastgoaf", 116, 28)
+AddBirthPoint("Серебряные шахты 2", "eastgoaf", 238, 27)
+AddBirthPoint("Серебряные шахты 3", "eastgoaf", 382, 123)
+AddBirthPoint("Заброшенные шахты 1", "garner", 1642, 2698)
+AddBirthPoint("Одинокая башня 2", "lonetower", 35,21)
+AddBirthPoint("Одинокая башня 3", "lonetower", 120, 406)
+AddBirthPoint("Одинокая башня 4", "lonetower", 320, 175)
+AddBirthPoint("Одинокая башня 5", "lonetower", 483, 121)
+AddBirthPoint("Одинокая башня 6", "lonetower", 494, 297)
+--Серебрянный Хаос
+--Рус.
+AddBirthPoint("Серебряный хаос", "garner2", 100, 100)
+AddBirthPoint("Серебряный хаос", "garner2", 72, 134)
+AddBirthPoint("Серебряный хаос", "garner2", 66, 37)
+AddBirthPoint("Серебряный хаос", "garner2", 151, 31)
+AddBirthPoint("Серебряный хаос", "garner2", 201, 32)
+AddBirthPoint("Серебряный хаос", "garner2", 212, 99)
+AddBirthPoint("Серебряный хаос", "garner2", 248, 176)
+AddBirthPoint("Серебряный хаос", "garner2", 184, 201)
+AddBirthPoint("Серебряный хаос", "garner2", 150, 208)
+AddBirthPoint("Серебряный хаос", "garner2", 123, 257)
+AddBirthPoint("Серебряный хаос", "garner2", 136, 133)
+--Арена
+--Рус.
+AddBirthPoint("Команда ПвП 1", "teampk", 44, 21)
+AddBirthPoint("Команда ПвП 2", "teampk", 44, 66)
+AddBirthPoint("Команда ПвП 3", "teampk", 20, 44)
+AddBirthPoint("Команда ПвП 4", "teampk", 66, 44)
+--Миражи
+--Рус.
+AddBirthPoint("Мираж Громограда", "leiting2", 55, 59)
+AddBirthPoint("Мираж Шайтана", "shalan2", 231, 184)
+AddBirthPoint("Мираж Ледыни", "binglang2", 67, 71)
+--Рус.
+--Аскарон
+AddBirthPoint("Остров Зефира", "garner", 3260, 3280)
+AddBirthPoint("Ледниковый остров", "garner", 2273, 1122)
+AddBirthPoint("Остров Отверженных", "garner", 3590, 755)
+--Магический океан
+AddBirthPoint("Остров Стужи", "magicsea", 2376, 725)
+AddBirthPoint("Остров Канареек", "magicsea", 1730, 3775)
+AddBirthPoint("Остров Купидона", "magicsea", 2527, 2399)
+--Великий синий океан
+AddBirthPoint("Остров Удачи", "darkblue", 1631, 1974)
+
+--Данжи
+--Рус.
+--Темная топь
+AddBirthPoint("Темная топь", "darkswamp", 55, 65)
+AddBirthPoint("Темная топь высадка", "darkswamp", 304, 334)
+--Затерянный Город
+AddBirthPoint("Затерянный Город", "abandonedcity", 37, 43)
+--AddBirthPoint("Затерянный Город высадка", "abandonedcity",  305, 309)
+AddBirthPoint("Затерянный Город 2", "abandonedcity2", 25, 24)
+AddBirthPoint("Затерянный Город 2", "abandonedcity2", 26, 469)
+AddBirthPoint("Затерянный Город 2", "abandonedcity2", 456, 466)
+AddBirthPoint("Затерянный Город 2", "abandonedcity2", 462, 25)
+AddBirthPoint("Затерянный Город 3", "abandonedcity3", 244, 224)
+--Мир Демонов
+AddBirthPoint("Мир Демонов", "puzzleworld", 36, 20)
+AddBirthPoint("Мир Демонов", "puzzleworld", 522, 32)
+AddBirthPoint("Мир Демонов", "puzzleworld", 36, 527)
+AddBirthPoint("Мир Демонов", "puzzleworld", 510, 527)
+AddBirthPoint("Мир Демонов 2", "puzzleworld2", 26, 23)
+AddBirthPoint("Мир Демонов 2", "puzzleworld2", 26, 521)
+AddBirthPoint("Мир Демонов 2", "puzzleworld2", 513, 518)
+AddBirthPoint("Мир Демонов 2", "puzzleworld2", 518, 28)
+
+--Снежная война
+--Рус.
+AddBirthPoint("Снежная война", "07xmas2", 251, 40)
+AddBirthPoint("Снежная война", "07xmas2", 266, 88)
+AddBirthPoint("Снежная война", "07xmas2", 27, 55)
+AddBirthPoint("Снежная война", "07xmas2", 200, 50)
+AddBirthPoint("Снежная война", "07xmas2", 220, 220)
+AddBirthPoint("Снежная война", "07xmas2", 165, 253)
+AddBirthPoint("Снежная война", "07xmas2", 33, 220)
+AddBirthPoint("Снежная война", "07xmas2", 66, 201)
+AddBirthPoint("Снежная война", "07xmas2", 34, 99)
+AddBirthPoint("Снежная война", "07xmas2", 144, 136)
+--Снежная война
+--Новое
+--Рус.
+--Зимние острова
+AddBirthPoint("Зимние острова", "winterland", 249, 868)
+--Края Авроры и Тьмы
+AddBirthPoint("1-ый край Авроры", "mjing1", 366, 395)
+AddBirthPoint("2-ой край Авроры", "mjing2", 350, 180)
+AddBirthPoint("1-ый край Тьмы", "mjing3", 351, 120)
+AddBirthPoint("2-ой край Тьмы", "mjing4", 356, 116)
+--Тюрьма
+AddBirthPoint("Тюрьма", "prisonisland", 267, 211)
+--heilong (Логово БД 2 PvP)
+--Рус.
+AddBirthPoint("Логово Черного Дракона", "heilong", 794,536 )

@@ -141,8 +141,8 @@
 141	Проклятая кровь	1	0	State_wlcx_Add	State_wlcx_Rem	1	0	1	1	1	0	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	920	1	0	0	0	0	0	0	0
 142	Отравленный дротик мертвых душ	1	0	State_wldb_Add	State_wldb_Rem	1	0	1	1	1	0	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	920	1	0	0	0	0	0	0	0
 143	Ракета Мертвой души	-1	0	State_wljy_Add	State_wljy_Rem	1	0	0	0	0	0	0	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	253	1	0	0	0	0	0	0	0
-144	Вихрь	-1	State_Xw_Tran	State_Xw_Add	State_Xw_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	280	1	0	0	0	0	0	0	0	0	0	0
-145	Атака Облака	1	State_ywgj_Tran	State_ywgj_Add	State_ywgj_Rem	1	0	1	1	1	0	1	1	1	1	1	1	1	1	0	0	0	-1	293	0	0	0	-1	0	0	0	0	0	0	0
+144	HP pots	1	State_HPPOTS_Tran	State_HPPOTS_Add	State_HPPOTS_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	0	0	0	0	0	0	0	0
+145	HP max pots	1	State_HPMAX_Tran	State_HPMAX_Add	State_HPMAX_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	0	0	0	0	0	0	0	0
 146	Стенания мертвой души	-1	0	State_wlnh_Add	State_wlnh_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	0	0	0	0
 147	Удваивает уровень роста феи	-1	0	0	0	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	0	0	0	0
 148	Навык - Вонючка	-1	0	State_jltx1_Add	State_jltx1_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	830	1	0	0	0	0	0	0	0

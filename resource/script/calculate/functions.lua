@@ -4020,7 +4020,7 @@ function cha_timer( role, freq, time )
 	local now_tick = GetChaParam( role, 1 )
 	local is_role_living = -1
 	SetChaParam( role, 1, now_tick + freq * time )
-
+	--JLXiaoHao(role,now_tick)
 	-----------------------
 	-- Восстановление ЖЗ --
 	-----------------------
@@ -4031,7 +4031,10 @@ function cha_timer( role, freq, time )
 		if is_role_living == 1 then 
 			Resume( role )
 		end 
+		DelJingLing( role , now_tick)
 	end
+	
+	
 
 --------------------------------------------------
 --		Функция свадебного бонуса (Начало)		--

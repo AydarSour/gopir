@@ -153,6 +153,27 @@ function Check_Combat_Mod(dead , atk)
 end 
 
 function GetExp_PKM( dead , atk  )
+
+   if map_name == "guildwar2" or map_name == "guildwar" then
+		SystemNotice ( atk , "В Мини Священной Войне опыт не начисляется")
+		return
+	elseif map_name == "07xmas2" then
+			return
+	elseif map_name == "darkswamp" then
+		if Lv_character <= 55 then
+			return
+		end
+	elseif map_name == "abandonedcity" or map_name == "abandonedcity2" or map_name == "abandonedcity3" then
+		if Lv_character <= 45 then
+			return
+		end
+	elseif map_name == "garner2" then
+			return
+	end
+
+
+	
+
 	local dead_lv = GetChaAttrI( dead , ATTR_LV ) 
 	local dead_exp = GetChaAttrI( dead , ATTR_CEXP ) * EXP_RAID
 	LG("exp" , "deadlv = " , dead_lv ) 
@@ -473,6 +494,9 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 			expItemNow= math.floor(expItemNow/10)
 			SetItemAttr ( ptnItem ,ITEMATTR_URE , expItemNow )
 		end			
+		
+						
+			
 			if exp_up > 20000 then
 				local cha_name = GetChaDefaultName ( TurnToCha(t[i]) )
 				local Monster_name = GetChaDefaultName ( dead )
@@ -488,7 +512,28 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 			if exp_up == 0 and retExpState ~= 0 then 
 				SystemNotice ( TurnToCha(t[i]) , "Ваш уровень слишком высок, что бы получать опыт!" )
 			end 
-			exp = exp + exp_up  
+			
+			
+						local EXP_NEW_LVL = 1
+						if Lv_character >= 1 and Lv_character <= 30 then
+							EXP_NEW_LVL = 7
+						elseif Lv_character >= 31 and Lv_character <= 50 then
+							EXP_NEW_LVL = 6
+						elseif Lv_character >= 51 and Lv_character <= 60 then
+							EXP_NEW_LVL = 5
+						elseif Lv_character >= 61 and Lv_character <= 70 then
+							EXP_NEW_LVL = 6
+						elseif Lv_character >= 71 and Lv_character <= 80 then
+							EXP_NEW_LVL = 3
+						elseif Lv_character >= 81 and Lv_character <= 90 then
+							EXP_NEW_LVL = 2
+						elseif Lv_character >= 91 and Lv_character <= 98 then
+							EXP_NEW_LVL = 1.5
+						else
+							EXP_NEW_LVL = 1
+						end
+			
+			exp = exp + exp_up  *EXP_NEW_LVL
 			SetChaAttrI ( TurnToCha(t[i]) , ATTR_CEXP, exp ) 
 			LG("exp" , "exp_now = " , exp ) 
 		else 
