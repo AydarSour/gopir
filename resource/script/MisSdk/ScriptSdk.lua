@@ -2,20 +2,19 @@
 --ScriptSdk.lua Created by knight 2005.1.14.
 --
 --Simplify the definition of tasks and planning to write a function script npc dialogue interface
-print( "‡ £àã§ª  scriptsdk.lua" )
+print( "loading scriptsdk.lua" )
 ------------------------------------------------------------
 
 --Script system global variable
 
-Page       = {}	
+Page       = {}				--npc¶Ô»°ÐÅÏ¢È«¾Ö±äÁ¿¶¨Òå
 Exchange  = {}
 ExchangeX = {}
-
 FuncList  = {}
 Trade     = {}				--npc The definition of global variable transaction information
 Goods	 = {}				--npc The definition of global variable transaction information
 Mission    = {}				--ËùÓÐÈÎÎñÐÅÏ¢±£´æÈ«¾Ö±äÁ¿¶¨Òå
---MissionSid    = {}				--MISSION misid Corresponding MISSION id -- îí?òó?áûëà, èë?êò?òî óäàëèë?
+--MissionSid    = {}				--MISSION misid Corresponding MISSION id -- îíà òóò áûëà, èëè êòî-òî óäàëèë?
 MisLogList = {}			--ËùÓÐÈÎÎñÈÕÖ¾ÐÅÏ¢±£´æÈ«¾Ö±äÁ¿¶¨Òå
 TriggerList = {}			--ËùÓÐÈ«¾Ö´¥·¢Æ÷ÐÅÏ¢±£´æÈ«¾Ö±äÁ¿¶¨Òå
 NpcMissionList  = {}		--npcÐ¯´øÈÎÎñÐÅÏ¢È«¾Ö±äÁ¿¶¨Òå
@@ -105,13 +104,11 @@ MIS_ITEM_INST_MONS	= 1	--¹ÖÎïµôÂä
 MIS_ITEM_INST_COMP	= 2	--ºÏ³É
 MIS_ITEM_INST_TASK	= 3	--ÈÎÎñ»ñµÃ
 
---×åðíûé ðûíî?
+--×åðíûé ðûíîê
 MoliTable ={}
 NakaTable ={}
 CoinTable1000 ={}
 CoinTable600 ={}
-
-
 
 MoliTable[1]=0766
 MoliTable[2]=0769
@@ -126,6 +123,18 @@ MoliTable[10]=0798
 MoliTable[11]=0802
 MoliTable[12]=0806
 
+NakaTable[1]=0765
+NakaTable[2]=0768
+NakaTable[3]=0772
+NakaTable[4]=0775
+NakaTable[5]=0779
+NakaTable[6]=0783
+NakaTable[7]=0787
+NakaTable[8]=0791
+NakaTable[9]=0794
+NakaTable[10]=0797
+NakaTable[11]=0801
+NakaTable[12]=0805
 
 CoinTable1000[1]=0764
 CoinTable1000[2]=0767
@@ -149,34 +158,24 @@ CoinTable600[6]=0789
 CoinTable600[7]=0799
 CoinTable600[8]=0803
 
-NakaTable[1]=0765
-NakaTable[2]=0768
-NakaTable[3]=0772
-NakaTable[4]=0775
-NakaTable[5]=0779
-NakaTable[6]=0783
-NakaTable[7]=0787
-NakaTable[8]=0791
-NakaTable[9]=0794
-NakaTable[10]=0797
-NakaTable[11]=0801
-NakaTable[12]=0805
+------------------------------------------------------------
 
-
-
+--³õÊ¼»¯·þÎñÆ÷´¬Ö»Éý¼¶ÐÅÏ¢
 function InitBoatLevel()
 	BoatLevelList = {}
 	BoatLevelList.count = 0
 end
 
+--Ìí¼Ó´¬Ö»Éý¼¶Êý¾ÝÐÅÏ¢
 function AddBoatLevel( level, money, exp )
 	BoatLevelList.count = BoatLevelList.count + 1
 	BoatLevelList[level] = {}
 	BoatLevelList[level].money = money
 	BoatLevelList[level].exp = exp	
-	LG( "Óðîâåíü êîðàáëÿ", "AddBoatLevel: count, level, money, exp", BoatLevelList.count, level, money, exp )
+	LG( "boatlevel_init", "AddBoatLevel: count, level, money, exp", BoatLevelList.count, level, money, exp )
 end
 
+--³õÊ¼»¯µØÍ¼ÁÐ±íÐÅÏ¢
 function InitMap()
 	MapList = {}
 	MapList.idname = {}
@@ -184,6 +183,7 @@ function InitMap()
 	MapList.count = 0
 end
 
+--Ìí¼ÓµØÍ¼Ãû³ÆÐÅÏ¢×Ô¶¯Éú³ÉµØÍ¼Î¨Ò»ID
 function AddMap( idname, str )
 	for n = 1, MapList.count, 1 do
 		if MapList.mapname[n] == nil or MapList.idname[n] == nil then
@@ -198,6 +198,7 @@ function AddMap( idname, str )
 	MapList.mapname[MapList.count] = str
 	LG( "mission", "Set map ["..MapList.mapname[MapList.count].."], IDNAME = "..MapList.idname[MapList.count].."ID = "..MapList.count )
 	PRINT( "Set map ["..MapList.mapname[MapList.count].."], IDNAME = "..MapList.idname[MapList.count].."ID = "..MapList.count )
+	
 	local ret = SetMap( MapList.idname[MapList.count], MapList.count )
 	if ret == LUA_FALSE then
 		LG( "mission", "Set map notice failed ["..MapList.mapname[MapList.count].."], IDNAME = "..MapList.idname[MapList.count].."ID = "..MapList.count )
@@ -205,13 +206,16 @@ function AddMap( idname, str )
 	end
 end
 
+--»ñµÃÖ¸¶¨IDµÄµØÍ¼Ãû³Æ
 function GetMap( mapid )
 	if mapid > MapList.count or MapList.mapname[mapid] == nil then
-		return "§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à§Ö §¯§Ñ§Ù§Ó§Ñ§ß§Ú§Ö §¬§Ñ§â§ä§í "
+		return "Unknown map name"
 	end
+	
 	return MapList.mapname[mapid]
 end
 
+--³õÊ¼»¯¶Ô»°Ò³ÐÅÏ¢
 function InitPage()
 	Page = {}
 	Page.trade = {}
@@ -225,25 +229,31 @@ function InitPage()
 	Page[1].ismission = 1
 end
 
+--³õÊ¼»¯½»Ò×Ò³ÐÅÏ¢
 function InitTrade()
 	Trade = {}
 	Trade.tp = TRADE_NOMAL
 	Trade.berth = -1
+	
+	--ÎäÆ÷
 	Trade[1] = {}
 	Trade[1].itemtype = WEAPON
 	Trade[1].count = 0;
 	Trade[1].item = {}
 	Trade[1].price = {}
+	--·À¾ß
 	Trade[2] = {}
 	Trade[2].itemtype = DEFENCE
 	Trade[2].count = 0;
 	Trade[2].item = {}
 	Trade[2].price = {}
+	--ÔÓÏî
 	Trade[3] = {}
 	Trade[3].itemtype = OTHER
 	Trade[3].count = 0;
 	Trade[3].item = {}
 	Trade[3].price = {}
+	--ºÏ³É
 	Trade[4] = {}
 	Trade[4].itemtype = SYNTHESIS
 	Trade[4].count = 0;
@@ -252,35 +262,61 @@ function InitTrade()
 end
 
 function InitTradeX( trade )
+--	trade = {}
+--	trade.tp = TRADE_NOMAL
+--	trade.berth = -1
+	
+	--ÎäÆ÷
+--	trade[1] = {}
 	trade[1].itemtype = WEAPON
 	trade[1].count = 0;
+--	trade[1].item = {}
+--	trade[1].price = {}
+	--·À¾ß
+--	trade[2] = {}
 	trade[2].itemtype = DEFENCE
 	trade[2].count = 0;
+--	trade[2].item = {}
+--	trade[2].price = {}
+	--ÔÓÏî
+--	trade[3] = {}
 	trade[3].itemtype = OTHER
 	trade[3].count = 0;
+--	trade[3].item = {}
+--	trade[3].price = {}
+	--ºÏ³É
+--	trade[4] = {}
 	trade[4].itemtype = SYNTHESIS
 	trade[4].count = 0;
+--	trade[4].item = {}
+--	trade[4].price = {}
 end
 
+--³õÊ¼»¯»õÎï½»Ò×ÐÅÏ¢
 function InitGoods( berth )
 	Trade = {}
 	Trade.tp = TRADE_GOODS
 	Trade.berth = berth
+
+	--ÎäÆ÷
 	Trade[1] = {}
 	Trade[1].itemtype = WEAPON
 	Trade[1].count = 0;
 	Trade[1].item = {}
 	Trade[1].price = {}
+	--·À¾ß
 	Trade[2] = {}
 	Trade[2].itemtype = DEFENCE
 	Trade[2].count = 0;
 	Trade[2].item = {}
 	Trade[2].price = {}
+	--ÔÓÏî
 	Trade[3] = {}
 	Trade[3].itemtype = OTHER
 	Trade[3].count = 0;
 	Trade[3].item = {}
 	Trade[3].price = {}
+	--ºÏ³É
 	Trade[4] = {}
 	Trade[4].itemtype = SYNTHESIS
 	Trade[4].count = 0;
@@ -288,21 +324,27 @@ function InitGoods( berth )
 	Trade[4].price = {}
 end
 
+--³õÊ¼»¯npcÈÎÎñÁÐ±íÐÅÏ¢
 function InitNpcMission()
 	NpcMissionList = {}
-	NpcMissionList.count = 0	
+	NpcMissionList.count = 0
+	--for n = 1, 32, 1 do
+		--NpcMissionList[n] = {}
+	--end	
 end
 
+--Ïåðåçàãðóçêà ñêðèïòà NPC (&reload)
 function ResetNpcInfo( npc, name )
 	InitPage()
 	InitTrade()
 	InitNpcMission()
 	NpcPointer = npc
-	local str = "§¯§±§³ ["..name.."] §á§Ö§â§Ö§Ù§Ñ§Ô§â§å§Ø§Ö§ß!"
+	local str = "ÍÏÑ ["..name.."] ïåðåçàãðóæåí!"
 	PRINT( str )
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", str )
+	LG( "npcinit", str )
 end
 
+--Ïîëó÷åíèå èíôîðìàöèè î íïñå
 function GetNpcInfo( npc, name )
 	NpcInfoList.count = NpcInfoList.count + 1
 	NpcInfoList[NpcInfoList.count] = {}
@@ -311,83 +353,103 @@ function GetNpcInfo( npc, name )
 	NpcInfoList[NpcInfoList.count].eXchange = ExchangeX
 	NpcInfoList[NpcInfoList.count].missionlist = NpcMissionList
 	SetNpcScriptID( npc, NpcInfoList.count )
+	
+	NpcInfoList[NpcInfoList.count].Npc = npc;
+	NpcInfoList[NpcInfoList.count].Name = name;
 	if NpcMissionList.count > 0 then
-		LG( "mission", "§µ§ã§ä§Ñ§ß§à§Ó§Ú§ä§î §¯§±§³ §ß§à§Ó§å§ð §Þ§Ö§ä§Ü§å §Õ§Ý§ñ §Ù§Ñ§Õ§Ñ§ß§Ú§ñ!" )
+		LG( "mission", "Óñòàíîâèòü ÍÏÑ íîâóþ ìåòêó äëÿ çàäàíèÿ" )
 		SetNpcHasMission( npc, 1 )
 	end
 	NpcPointer = LUA_NULL
-	local str = "§±§à§Ý§å§é§Ú§ä§î §å §¯§±§³ ["..name.."] §Ú§ß§æ§à§â§Þ§Ñ§è§Ú§ð §à §ã§è§Ö§ß§Ñ§â§Ú§Ö §Õ§Ñ§ß§ß§í§ç, ID = "..NpcInfoList.count
+	
+	local str = "Ïîëó÷èòü ó ÍÏÑ ["..name.."] èíôîðìàöèþ î ñöåíàðèå äàííûõ, ID = "..NpcInfoList.count
 	PRINT( str )
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", str )
+	LG( "npcinit", str )
 end
 
+--¶¯Ì¬ÐÞ¸Änpc½Å±¾ÐÅÏ¢
 function ModifyNpcInfo( npc, name, id )
 	PRINT( "ModifyNpcInfo:npc = , name = , id = ", npc, name, id )
+	
 	NpcInfoList[id] = {}
 	NpcInfoList[id].page = Page
 	NpcInfoList[id].trade = Trade
 	NpcInfoList[id].eXchange = ExchangeX
 	NpcInfoList[id].missionlist = NpcMissionList
+	
 	PRINT( "set npcscript  notice ID = ", id )
+	--SetNpcScriptID( npc, id )
 	if NpcMissionList.count > 0 then
-		PRINT( "mission", "§µ§ã§ä§Ñ§ß§à§Ó§Ú§ä§î §Þ§Ö§ä§Ü§å §Ù§Ñ§Õ§Ñ§ß§Ú§ñ §Õ§Ý§ñ §¯§±§³!" )
+		PRINT( "mission", "Set NPC bring quest label!" )
 		SetNpcHasMission( npc, 1 )
 	else
-		PRINT( "mission", "§¯§Ö§Ó§à§Ù§Þ§à§Ø§ß§à §á§à§ã§ä§Ñ§Ó§Ú§ä§î §Þ§Ö§ä§Ü§å §Ù§Ñ§Õ§Ñ§ß§Ú§ñ §Õ§Ý§ñ §¯§±§³!" )
+		PRINT( "mission", "set NPC does not carry quest label !" )
 		SetNpcHasMission( npc, 0 )
 	end
+	
 	NpcPointer = LUA_NULL
-	local str = "§ª§Ù§Þ§Ö§ß§Ú§ä§î §å §¯§±§³ ["..name.."] §Ú§ß§æ§à§â§Þ§Ñ§è§Ú§ð §à §ã§è§Ö§ß§Ñ§â§Ú§Ö §Õ§Ñ§ß§ß§í§ç, ID = "..id
+	
+	local str = "Modify NPC ["..name.."] script data notice, ID = "..id
 	PRINT( str )
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", str )
+	LG( "npcinit", str )
 end
 
+-- npcÏûÏ¢´¦Àíº¯Êý
 function NpcProc( character, npc, rpk, id )
 	PRINT( "NpcProc:character, npc, rpk, id",  character, npc, rpk, id )
 	if NpcInfoList[id] == nil then
-		PRINT( "§¯§Ö§Ó§à§Ù§Þ§à§Ø§ß§à §á§à§Ý§å§é§Ú§ä§î §æ§å§ß§Ü§è§Ú§ð §¯§±§³! ID = ",  id )
+		PRINT( "unable to obtain NPC script notice!ID = ",  id )
 		local npcname = GetCharName( npc )
-		local str = npcname..": §±§â§Ú§Ó§Ö§ä. §´§í §Þ§Ö§ß§ñ §Ú§ë§Ö§ê§î? §ª§Ù§Ó§Ú§ß§Ú, §ß§à §ñ §ã§Ö§Û§é§Ñ§ã §ß§Ö §Þ§à§Ô§å §ã §ä§à§Ò§à§Û §á§à§Ô§à§Ó§à§â§Ú§ä§î!"
+		local str = npcname..":  \207\240\232\226\229\242! \194\251 \232\249\232\242\229 \236\229\237\255? \223 \237\229\236\237\238\227\238 \231\224\237\255\242 \241\229\233\247\224\241._......."
 		SendPage( character, npc, 0, str, nil, 0 )
 		return
 	end
 	MsgProc( character, npc, rpk, NpcInfoList[id].page, NpcInfoList[id].trade, NpcInfoList[id].missionlist, NpcInfoList[id].eXchange )
 end
 
+--npcÈÎÎñ×´Ì¬´¦Àíº¯Êý
 function NpcState( character, npcid, id )
    PRINT( "NpcState:character, npcid, NpcMissionList", character, npcid, id )
 	if NpcInfoList[id] == nil or NpcInfoList[id].missionlist == nil then
-		PRINT( "§¯§Ö§Ó§à§Ù§Þ§à§Ø§ß§à §á§à§Ý§å§é§Ú§ä§î §æ§å§ß§Ü§è§Ú§ð §¯§±§³! ID = ",  id )
-		LG( "npc_error", "§¯§Ö§Ó§à§Ù§Þ§à§Ø§ß§à §á§à§Ý§å§é§Ú§ä§î §æ§å§ß§Ü§è§Ú§ð §¯§±§³! ID = ",  id )
+		PRINT( "unable to obtain NPC script notice!ID = ",  id )
+		LG( "npc_error", "unable to obtain NPC script notice!ID = ",  id )
 		return LUA_FALSE
 	end
+
    return MissionState( character, npcid, NpcInfoList[id].missionlist )
 end
 
+--ÖØÐÂ×°ÔØnpc´¦ÀíÐÅÏ¢
 function NpcInfoReload( name,  func )
 	PRINT( "NpcInfoReload: name, findnpc ", name, FindNpc )
 	local ret, npc, id = FindNpc( name )
 	if ret == LUA_FALSE or npc == nil or id == nil then
-		print( "§¯§Ö§ß§Ñ§Û§Õ§Ö§ß §æ§å§ß§Ü§è§Ú§ñ ["..name.."] §¯§±§³!" )
+		print( "unfound ["..name.."] NPC!" )
 		return
 	end
-	PRINT( "§¥§à§ã§ä§å§á §Ü §æ§å§ß§Ü§è§Ú§Ú §¯§±§³, pointer =, id = ", npc, id )
+	PRINT( "got npc notice, pointer =, id = ", npc, id )
+	
 	print( GetCharName( npc ) )
+
 	ResetNpcInfo( npc, name )
 	PRINT( "ResetNpcInfo, npc = , name = ", npc, name )
+	
 	func()
 	PRINT( "Func = ", func )
+	
 	ModifyNpcInfo( npc, name, id )
 	PRINT( "ModifyNpcInfo, name = , id = ", name, id )
-	print( "§ª§Ù§Þ§Ö§ß§Ú§Ö §æ§å§ß§Ü§è§Ú§Ú §¯§±§³ ["..name.."] §á§â§à§ê§Ý§à §å§ã§á§Ö§ê§ß§à!" )
+	print( "Edit NPC ["..name.."] script notice successful!" )
 end
 
+--¶Ô»°ÃèÊöÐÅÏ¢×¢²á
 function Talk( pageid, talk )
 	Page[pageid].count = Page[pageid].count + 1
 	Page[pageid][Page[pageid].count].talk = talk
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", "Talk:pageid, count, talk", pageid, Page[pageid].count, Page[pageid][Page[pageid].count].talk )
+	LG( "npcinit", "Talk:pageid, count, talk", pageid, Page[pageid].count, Page[pageid][Page[pageid].count].talk )
 end
 
+--¶Ô»°Ñ¡ÏîÐÅÏ¢×¢²á
 function Text( pageid, text, func, p1, p2, p3, p4 )
 	Page[pageid].count = Page[pageid].count + 1
 	Page[pageid][Page[pageid].count].text = text
@@ -396,84 +458,70 @@ function Text( pageid, text, func, p1, p2, p3, p4 )
 	Page[pageid][Page[pageid].count].p2 = p2
 	Page[pageid][Page[pageid].count].p3 = p3
 	Page[pageid][Page[pageid].count].p4 = p4
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", "Text:pageid, count, text, func, p1, p2, p3, p4 ", pageid, Page[pageid].count, text, func, p1, p2, p3, p4 )
+	LG( "npcinit", "Text:pageid, count, text, func, p1, p2, p3, p4 ", pageid, Page[pageid].count, text, func, p1, p2, p3, p4 )
 end
 
+--ÉèÖÃ¶Ô»°Ò³°üº¬ÈÎÎñÐÅÏ¢
 function MisListPage( pageid )
 	Page[pageid].ismission = 1
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", "MisListPage:"..pageid )
+	LG( "npcinit", "MisListPage:"..pageid )
 end
 
+--½»Ò×ÐÅÏ¢×¢²á
 function Weapon( id )
+	--ÎäÆ÷
 	Trade[1].count = Trade[1].count + 1;
 	Trade[1].item[Trade[1].count] = id
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", "Weapon:count, id", Trade[1].count, id )
+	LG( "npcinit", "Weapon:count, id", Trade[1].count, id )
 end
-
 function Defence( id )
+	--·À¾ß
 	Trade[2].count = Trade[2].count + 1;
 	Trade[2].item[Trade[2].count] = id
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", "Defence:count, id", Trade[2].count, id )
+	LG( "npcinit", "Defence:count, id", Trade[2].count, id )
 end
-
 function Other( id )
+	--ÔÓÏî
 	Trade[3].count = Trade[3].count + 1;
 	Trade[3].item[Trade[3].count] = id
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", "Other:count, id", Trade[3].count, id )
+	LG( "npcinit", "Other:count, id", Trade[3].count, id )
 end
-
 function OtherX( trade, id )
 	trade[3].count = trade[3].count + 1;
 	trade[3].item[trade[3].count] = id
 end
-
 function Synthesis( id )
+	--ºÏ³É
 	Trade[4].count = Trade[4].count + 1;
 	Trade[4].item[Trade[4].count] = id
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", "Synthesis:count, id", Trade[4].count, id )
+	LG( "npcinit", "Synthesis:count, id", Trade[4].count, id )
 end
 
+--½»Ò×»õÎïÂòÂôÊÕ¹ºÐÅÏ¢
 function SaleGoodsData( level, id, num, price, pricerange )
 	if level == nil or id == nil or num == nil or price == nil or pricerange == nil then
-		LG( "Îøèáêè ÍÏÑ(ìîðñêàÿ òîðãîâëÿ)", "SaleGoodsData:Function parameter error!level, id, num, price, pricerange", level, id, num, price, pricerange )
+		LG( "npcinit_error", "SaleGoodsData:Function parameter error!level, id, num, price, pricerange", level, id, num, price, pricerange )
 		return
 	end
+	
 	Trade[1].count = Trade[1].count + 1	
+	
+	--¼ÇÂ¼»õÎïÊý¾Ý
 	Trade[1].item[Trade[1].count] = {}
 	Trade[1].item[Trade[1].count].level = level
 	Trade[1].item[Trade[1].count].id = id
 	Trade[1].item[Trade[1].count].count = num
 	Trade[1].item[Trade[1].count].num = num
+	
+	--ÎïÆ·¼Û¸ñÐÅÏ¢
 	Trade[1].price[Trade[1].count] = {}
 	Trade[1].price[Trade[1].count].price = price
 	Trade[1].price[Trade[1].count].range = pricerange
 	Trade[1].price[Trade[1].count].curprice = price + Rand( pricerange )
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ_trade", "SaleGoodsData, count, level, id, num, price, range, curprice", Trade[1].count, level, id, num, price, pricerange, Trade[1].price[Trade[1].count].curprice )
+	LG( "npcinit_trade", "SaleGoodsData, count, level, id, num, price, range, curprice", Trade[1].count, level, id, num, price, pricerange, Trade[1].price[Trade[1].count].curprice )
 end
 
-
-function InitExchangeX()
-	ExchangeX = {}
-	ExchangeX.count = 0
-	ExchangeX.srcid = {}
-	ExchangeX.srcnum = {}
-	ExchangeX.tarid = {}
-	ExchangeX.tarnum = {}
-end
-
-function ExchangeDataX( srcID, srcNum, tarID, tarNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil then
-		LG( "Èíèöèàëèçàöèÿ ÍÏÑ_error", "ExchangeDataX: Fuction parameter error??srcID, srcNum, tarID, tarNum", srcID, srcNum, tarID, tarNum )
-		return
-	end
-	ExchangeX.count = ExchangeX.count + 1	
-	ExchangeX.srcid[ExchangeX.count] = srcID
-	ExchangeX.srcnum[ExchangeX.count] = srcNum
-	ExchangeX.tarid[ExchangeX.count] = tarID
-	ExchangeX.tarnum[ExchangeX.count] = tarNum
-end
-
---Ñòàðàÿ
+--³õÊ¼»¯ºÚÊÐ¶Ò»»ÐÅÏ¢
 function InitExchange()
 	Exchange = {}
 	Exchange.count = 0
@@ -484,12 +532,25 @@ function InitExchange()
 	Exchange.timenum = {}
 end
 
+function InitExchangeX()
+	ExchangeX = {}
+	ExchangeX.count = 0
+	ExchangeX.srcid = {}
+	ExchangeX.srcnum = {}
+	ExchangeX.tarid = {}
+	ExchangeX.tarnum = {}
+end
+
+--ºÚÊÐÉÌÈË¶Ò»»
 function ExchangeData( srcID, srcNum, tarID, tarNum, timeNum )
 	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
+		LG( "npcinit_error", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
 		return
 	end
+	
 	Exchange.count = Exchange.count + 1	
+	
+	--¶Ò»»Êý¾Ý
 	Exchange.srcid[Exchange.count] = srcID
 	Exchange.srcnum[Exchange.count] = srcNum
 	Exchange.tarid[Exchange.count] = tarID
@@ -497,55 +558,78 @@ function ExchangeData( srcID, srcNum, tarID, tarNum, timeNum )
 	Exchange.timenum[Exchange.count] = timeNum
 end
 
+function ExchangeDataX( srcID, srcNum, tarID, tarNum )
+	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil then
+		LG( "npcinit_error", "ExchangeDataX: Function parameter error!srcID, srcNum, tarID, tarNum", srcID, srcNum, tarID, tarNum )
+		return
+	end
+	
+	ExchangeX.count = ExchangeX.count + 1	
+	
+	--¶Ò»»Êý¾Ý
+	ExchangeX.srcid[ExchangeX.count] = srcID
+	ExchangeX.srcnum[ExchangeX.count] = srcNum
+	ExchangeX.tarid[ExchangeX.count] = tarID
+	ExchangeX.tarnum[ExchangeX.count] = tarNum
+end
+
+--×åðíûé Ðûíîê
 function DoExchange()
 	local intMoney =0
 	local intGoods =0
 	local intMoneyNum =0
+
 	local intNum=0
 	local intCount=0
-	for intCount=1 , 16 ,1 do
+
+	for intCount=1 , 8 ,1 do
 		intNum = math.floor(math.random(1,4))
-		if intNum == 1 then	
+		if intNum == 1 then	--65 àíñèëû
 			intMoney = 1028
 			intMoneyNum = 2
 			intGoods = MoliTable[math.floor(math.random(1,12))]
-		elseif intNum ==2 then	
+		elseif intNum ==2 then	--55 àíñèëû - ðóíà êåëü
 			intMoney = 3457
 			intMoneyNum = 1
-			intGoods = NakaTable[math.floor(math.random(1,22))]
-		elseif intNum ==3 then	
+			intGoods = NakaTable[math.floor(math.random(1,12))]
+		elseif intNum ==3 then	--45 àíñèëû -1ê ìîíåò
 			intMoney = 855
 			intMoneyNum = 500
-			intGoods = CoinTable1000[math.floor(math.random(1,36))]
-		elseif intNum ==4 then	
+			intGoods = CoinTable1000[math.floor(math.random(1,12))]
+		elseif intNum ==4 then	--35 àíñèëû - 600 ìîíåò
 			intMoney = 855
 			intMoneyNum = 300
-			intGoods = CoinTable600[math.floor(math.random(1,56))]
+			intGoods = CoinTable600[math.floor(math.random(1,8))]
 		end
+
 		ExchangeData( intMoney, intMoneyNum , intGoods, 1, 1 )
 	end
 end
 
-
-
 function BuyGoodsData( level, id, num, price, pricerange )
 	if level == nil or id == nil or num == nil or price == nil or pricerange == nil then
-		LG( "Îøèáêè ÍÏÑ(ìîðñêàÿ òîðãîâëÿ)", "BuyGoodsData:Function parameter error!level, id, num, price, pricerange", level, id, num, price, pricerange )
+		LG( "npcinit_error", "BuyGoodsData:Function parameter error!level, id, num, price, pricerange", level, id, num, price, pricerange )
 		return
 	end
+	
 	Trade[2].count = Trade[2].count + 1
+	
+	--¼ÇÂ¼»õÎïÊý¾Ý
 	Trade[2].item[Trade[2].count] = {}
 	Trade[2].item[Trade[2].count].level = level
 	Trade[2].item[Trade[2].count].id = id
 	Trade[2].item[Trade[2].count].count = num
 	Trade[2].item[Trade[2].count].num = num
+	
+	--ÎïÆ·¼Û¸ñÐÅÏ¢
 	Trade[2].price[Trade[2].count] = {}
 	Trade[2].price[Trade[2].count].price = price
 	Trade[2].price[Trade[2].count].range = pricerange
 	Trade[2].price[Trade[2].count].curprice = price + Rand( pricerange )
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ_trade", "BuyGoodsData, count, level, id, num, price, range, curprice", Trade[2].count, level, id, num, price, pricerange, Trade[2].price[Trade[2].count].curprice )
+	LG( "npcinit_trade", "BuyGoodsData, count, level, id, num, price, range, curprice", Trade[2].count, level, id, num, price, pricerange, Trade[2].price[Trade[2].count].curprice )
 end
 
+--»õÎï½»Ò×³öÊÛÎïÆ·¼Û¸ñÊýÁ¿¸üÐÂ
 function UpdateGoodsData( tradenpc )
 	PRINT( "UpdateGoodsData" )
 	if tradenpc == nil then
@@ -553,6 +637,7 @@ function UpdateGoodsData( tradenpc )
 		LG( "UpdateGoodsData:Function parameter error!" )
 		return LUA_ERROR
 	end
+
 	local name = GetCharName( tradenpc )
 	local ret, id = GetScriptID( tradenpc )
 	if ret ~= LUA_TRUE then
@@ -560,11 +645,13 @@ function UpdateGoodsData( tradenpc )
 		LG( "npctrade_error", "UpdateGoodsData:GetScriptID, obtain npc"..name.."script notice ID failed!" )
 		return LUA_FALSE
 	end
+
 	if NpcInfoList == nil or NpcInfoList[id] == nil then		
 		PRINT( "UpdateGoodsData:GetScriptID, npc"..name.."script notice does not exist! NpcInfoList, ID", NpcInfoList, id )
 		LG( "npctrade_error", "UpdateGoodsData:npc"..name.."script notice does not exist! NpcInfoList,  ID", NpcInfoList, id )
 		return LUA_FALSE
 	end
+	
 	PRINT( name..": update trade data notice" )	
 	local trade = NpcInfoList[id].trade
 	for n = 1, trade[1].count, 1 do
@@ -572,15 +659,18 @@ function UpdateGoodsData( tradenpc )
 		trade[1].price[n].curprice = trade[1].price[n].price + Rand( trade[1].price[n].range )
 		PRINT( "Sell item: ID = , Count = , CurPrice = ", trade[1].item[n].id, trade[1].item[n].count, trade[1].price[n].curprice )
 	end
+	
 	for n = 1, trade[2].count, 1 do
 		trade[2].item[n].count = trade[2].item[n].num
 		trade[2].price[n].curprice = trade[2].price[n].price + Rand( trade[2].price[n].range )
 		PRINT( "Purchase item: ID = , Count = , CurPrice = ", trade[2].item[n].id, trade[2].item[n].count, trade[2].price[n].curprice )
 	end
+	
 	SendAllGoodsData( tradenpc, trade )
 	return LUA_TRUE	
 end
 
+--¶¨Ê±¸üÐÂ³öÊÛ»õÎïÖÖÀà
 function UpdateGoodsKinds( tradenpc )
 	PRINT( "UpdateGoodsData" )
 	if tradenpc == nil then
@@ -588,6 +678,7 @@ function UpdateGoodsKinds( tradenpc )
 		LG( "UpdateGoodsData:Function parameter error!" )
 		return LUA_ERROR
 	end
+
 	local name = GetCharName( tradenpc )
 	local ret, id = GetScriptID( tradenpc )
 	if ret ~= LUA_TRUE then
@@ -595,12 +686,15 @@ function UpdateGoodsKinds( tradenpc )
 		LG( "npctrade_error", "UpdateGoodsData:GetScriptID, obtain npc"..name.."script notice ID failed!" )
 		return LUA_FALSE
 	end
+
 	if NpcInfoList == nil or NpcInfoList[id] == nil then		
 		PRINT( "UpdateGoodsData:GetScriptID, npc"..name.."script notice does not exist! NpcInfoList, ID", NpcInfoList, id )
 		LG( "npctrade_error", "UpdateGoodsData:npc"..name.."script notice does not exist! NpcInfoList,  ID", NpcInfoList, id )
 		return LUA_FALSE
 	end
+	
 	PRINT( name..": update trade data notice" )	
+	
 	local trade = NpcInfoList[id].trade
 	InitTradeX( trade )
 	OtherX( trade, rand() )
@@ -612,100 +706,22 @@ function UpdateGoodsKinds( tradenpc )
 	OtherX( trade, rand() )
 	OtherX( trade, rand() )
 	SendTradeUpdate( tradenpc, tradenpc, trade, TRADE_BUY, 0 )
+	
 	InitExchange()
 	DoExchange()
-	
 	SendExchangeUpdateData( tradenpc, tradenpc )
-	--Îáíîâëåíèå òîðãîâëè
-	InitExchange2()
-	DoExchange2()
-	InitExchange3()
-	DoExchange3()
-	InitExchange4()
-	DoExchange4()
-	InitExchange5()
-	DoExchange5()
-	InitExchange6()
-	DoExchange6()
-	InitExchange7()
-	DoExchange7()
-	InitExchange8()
-	DoExchange8()
-	InitExchange9()
-	DoExchange9()
-	InitExchange10()
-	DoExchange10()
-	InitExchange11()
-	DoExchange11()
-	InitExchange12()
-	DoExchange12()
-	InitExchange13()
-	DoExchange13()
-	InitExchange14()
-	DoExchange14()
-	InitExchange15()
-	DoExchange15()
-	InitExchange16()
-	DoExchange16()
-	InitExchange17()
-	DoExchange17()
-	InitExchange18()
-	DoExchange18()
-	InitExchange19()
-	DoExchange19()
-	InitExchange20()
-	DoExchange20()
-	InitExchange21()
-	DoExchange21()
-	InitExchange22()
-	DoExchange22()
-	InitExchange23()
-	DoExchange23()
-	InitExchange24()
-	DoExchange24()
-	InitExchange25()
-	DoExchange25()
-	InitExchange26()
-	DoExchange26()
-	InitExchange27()
-	DoExchange27()
 	
-	SendExchangeUpdateData2( tradenpc, tradenpc )
-	SendExchangeUpdateData3( tradenpc, tradenpc )
-	SendExchangeUpdateData3( tradenpc, tradenpc )
-	SendExchangeUpdateData4( tradenpc, tradenpc )
-	SendExchangeUpdateData5( tradenpc, tradenpc )
-	SendExchangeUpdateData6( tradenpc, tradenpc )
-	SendExchangeUpdateData7( tradenpc, tradenpc )
-	SendExchangeUpdateData8( tradenpc, tradenpc )
-	SendExchangeUpdateData9( tradenpc, tradenpc )
-	SendExchangeUpdateData10( tradenpc, tradenpc )
-	SendExchangeUpdateData11( tradenpc, tradenpc )
-	SendExchangeUpdateData12( tradenpc, tradenpc )
-	SendExchangeUpdateData13( tradenpc, tradenpc )
-	SendExchangeUpdateData14( tradenpc, tradenpc )
-	SendExchangeUpdateData15( tradenpc, tradenpc )
-	SendExchangeUpdateData16( tradenpc, tradenpc )
-	SendExchangeUpdateData17( tradenpc, tradenpc )
-	SendExchangeUpdateData18( tradenpc, tradenpc )
-	SendExchangeUpdateData19( tradenpc, tradenpc )
-	SendExchangeUpdateData20( tradenpc, tradenpc )
-	SendExchangeUpdateData21( tradenpc, tradenpc )
-	SendExchangeUpdateData22( tradenpc, tradenpc )
-	SendExchangeUpdateData23( tradenpc, tradenpc )
-	SendExchangeUpdateData24( tradenpc, tradenpc )
-	SendExchangeUpdateData25( tradenpc, tradenpc )
-	SendExchangeUpdateData26( tradenpc, tradenpc )
-	SendExchangeUpdateData27( tradenpc, tradenpc )
 	return LUA_TRUE
 end
 
+--³õÊ¼»¯È«¾Ö¶àº¯ÊýÁÐ±í
 function InitFuncList()
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", "InitFuncList" )
+	LG( "npcinit", "InitFuncList" )
 	FuncList = {}
 	FuncList.count = 0
 end
 
+--Ìí¼Óº¯ÊýÁÐ±íÐÅÏ¢
 function AddFuncList( func, p1, p2, p3, p4 )
 	FuncList.count = FuncList.count + 1
 	FuncList[FuncList.count] = {}
@@ -714,9 +730,10 @@ function AddFuncList( func, p1, p2, p3, p4 )
 	FuncList[FuncList.count].p2 = p2
 	FuncList[FuncList.count].p3 = p3
 	FuncList[FuncList.count].p4 = p4
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ", "AddFuncList, func, p1, p2, p3, p4", func, p1, p2, p3, p4 )
+	LG( "npcinit", "AddFuncList, func, p1, p2, p3, p4", func, p1, p2, p3, p4 )
 end
 
+--»ñÈ¡º¯ÊýÁÐ±íÐÅÏ¢
 function GetFuncList()
 	return FuncList
 end
@@ -725,6 +742,7 @@ function GetNumFunc()
 	return FuncList.count
 end
 
+--³õÊ¼»¯È«¾Ö´¥·¢Æ÷
 function InitTrigger()
 	LG( "trigger", "InitTrigger" )
 	Trigger = {}	
@@ -737,9 +755,15 @@ function InitTrigger()
 		Trigger[n].actions.count = 0
 		Trigger[n].failures = {}
 		Trigger[n].failures.count = 0
+		--for i = 1, 12, 1 do
+			--Trigger[n].conditions[i] = {}
+			--Trigger[n].actions[i] = {}
+			--Trigger[n].failures[i] = {}
+		--end
 	end
 end
 
+--ÉèÖÃ´¥·¢Æ÷µÄÊÂ¼þÀàÐÍºÍÆô¶¯·½Ê½
 function SetTrigger( id, startup, event )	
 	if Trigger[id] == nil then
 		return LG( "trigger", "SetTrigger: incorrect trigger search ID = "..id )		
@@ -748,11 +772,13 @@ function SetTrigger( id, startup, event )
 	Trigger[id].event   = event 
 end
 
+--´¥·¢Æ÷ÀàÐÍÉè¶¨
 function SetTriggerType( id, tp )
 	LG( "trigger", "SetTriggerType: id, tp ", id, tp )
 	Trigger[id].tp = tp
 end
 
+--´¥·¢Æ÷Ìõ¼þº¯Êý×¢²á
 function TriggerCondition( id, func, p1, p2, p3, p4 )
 	LG( "trigger", "TriggerCondition: id, func, p1, p2, p3, p4 ", id, func, p1, p2, p3, p4 )
 	Trigger[id].conditions.count = Trigger[id].conditions.count + 1
@@ -764,12 +790,14 @@ function TriggerCondition( id, func, p1, p2, p3, p4 )
 	Trigger[id].conditions[Trigger[id].conditions.count].p4 = p4
 end
 
+--Ëæ»úÈÎÎñÐÞ¸ÄÈ«¾Ö´¥·¢Æ÷¶¯×÷º¯Êý²ÎÊýÖµ
 function SetTriggerActionValue( id, index, p1, p2, p3, p4 )
 	if id == nil or index == nil or TriggerList[id] == nil then
 		PRINT( "SetTriggerActionValue:Function parameter error!triggerid = , index =", id, index )
 		LG( "randmission_error", "SetTriggerActionValue:functionparameter error , triggerid = , index", id, index )
 		return LUA_FALSE
 	end
+	
 	if TriggerList[id].actions == nil or TriggerList[id].actions[index] == nil then
 		PRINT( "SetTriggerActionValue: Trigger no action notice error!triggerid = , index = ", id, index )
 		LG( "randmission_error", "SetTriggerActionValue: Trigger no action notice error!triggerid = , index = ", id, index )
@@ -781,6 +809,7 @@ function SetTriggerActionValue( id, index, p1, p2, p3, p4 )
 	TriggerList[id].actions[index].p4 = p4
 end
 
+--´¥·¢Æ÷¶¯×÷º¯Êý×¢²á
 function TriggerAction( id, func, p1, p2, p3, p4, p5, p6, p7, p8 )
 	LG( "trigger", "TriggerAction: id, func, p1, p2, p3, p4 ", id, func, p1, p2, p3, p4 )
 	Trigger[id].actions.count = Trigger[id].actions.count + 1
@@ -843,6 +872,7 @@ function TriggerFailure( id, func, p1, p2, p3, p4, p5, p6, p7, p8 )
 	end
 end
 
+--»ñÈ¡È«¾Ö´¥·¢Æ÷ÐÅÏ¢
 function GetTrigger( id )
 	return Trigger[id]
 end
@@ -851,6 +881,7 @@ function GetMultiTrigger()
 	return Trigger
 end
 
+--×¢²áµ±Ç°´¥·¢Æ÷µ½È«¾Ö´¥·¢Æ÷ÐÅÏ¢ÖÐ
 function RegTrigger( id, triggerid )
 	if id == nil or triggerid == nil then
 		PRINT( "RegTrigger: register triggered cannot be as null!" )
@@ -869,6 +900,7 @@ function RegCurTrigger( id )
 	RegTrigger( id, 1 )
 end
 
+--¶Ô»°¿ªÊ¼´¥·¢Æ÷×¢²á
 function Start( trigger, count )
 	LG( "trigger", "Start:trigger, count", trigger, count )
 	Page.start = MultiTrigger
@@ -882,6 +914,7 @@ function Popup( trigger, p2 )
 	Page.p2 = p2
 end
 
+--ÊÖ¶¯½«´¥·¢Æ÷Ìí¼Óµ½NPCÉíÉÏ
 function SetNpcTrigger( trigger )
 	PRINT( "SetNpcTrigger, trigger = , npc = ", trigger, NpcPointer )
 	if trigger == nil or trigger.actions == nil then
@@ -896,20 +929,23 @@ function SetNpcTrigger( trigger )
 	end
 end
 
+--ÉèÖÃµ±Ç°³õÊ¼»¯NPCÎª¼¤»î×´Ì¬
 function SetNpcActive()
 	PRINT( "SetNpcActive" )
 	local ret = SetActive( NpcPointer )
 	if ret ~= LUA_TRUE then
 		PRINT( "SetNpcActive: Set current NPC activate status failed!NPC = "..GetCharName( NpcPointer ) )
-		LG( "Èíèöèàëèçàöèÿ ÍÏÑ_error", "SetNpcActive: Set current NPC activate status failed!NPC = "..GetCharName( NpcPointer ) )
+		LG( "npcinit_error", "SetNpcActive: Set current NPC activate status failed!NPC = "..GetCharName( NpcPointer ) )
 	end
 end
 
+--ÈÎÎñ»ù±¾ÐÅÏ¢×¢²á
 function DefineMission( id, name, misid, show, mistp )
 	LG( "mission", "ID: "..id, " Name:"..name, " MisID:"..misid )
+	--ÉèÖÃÈÎÎñ»ù±¾ÐÅÏ¢
 	Mission[id] = {}
-	Mission[id].id = misid		
-	Mission[id].sid = id 		
+	Mission[id].id = misid		--ÈÎÎñÊ¶±ðID
+	Mission[id].sid = id 		--½Å±¾ÈÎÎñË÷ÒýID
 	Mission[id].name = name
 	if mistp == nil then
 		Mission[id].tp = NOMAL_MISSION
@@ -921,12 +957,16 @@ function DefineMission( id, name, misid, show, mistp )
 	else
 		Mission[id].show = show
 	end
+	--ÉèÖÃµ±Ç°ÈÎÎñ
 	Mission.curmission = Mission[id]
+	--ÈÎÎñÐèÇóºÍ½±ÀøÐÅÏ¢
 	Mission[id].need = {}
 	Mission[id].need.count = 0
 	Mission[id].prize = {}
 	Mission[id].prize.count = 0
+	--Ä¬ÈÏÈÎÎñ½±Àø·½Ê½Îª¶àÑ¡Ò»
 	Mission[id].prize.seltp = PRIZE_SELONE
+	--ÈÎÎñ¿ªÊ¼ÐÅÏ¢
 	Mission[id].begin = {}
 	Mission[id].begin.talk = ""
 	Mission[id].begin.conditions = {}
@@ -934,6 +974,7 @@ function DefineMission( id, name, misid, show, mistp )
 	Mission[id].begin.actions = {}
 	Mission[id].begin.actions.count = 0
 	Mission[id].begin.baggrid = 0
+	--ÈÎÎñ½»¸¶ÐÅÏ¢
 	Mission[id].result = {}
 	Mission[id].result.talk = ""
 	Mission[id].result.help = ""
@@ -942,6 +983,7 @@ function DefineMission( id, name, misid, show, mistp )
 	Mission[id].result.actions = {}
 	Mission[id].result.actions.count = 0
 	Mission[id].result.baggrid = 0
+	--ÈÎÎñÈ¡ÏûÐÅÏ¢
 	Mission[id].cancel = {}
 	Mission[id].cancel.conditions = {}
 	Mission[id].cancel.conditions.count = 0
@@ -949,15 +991,18 @@ function DefineMission( id, name, misid, show, mistp )
 	Mission[id].cancel.actions.count = 0
 end
 
+--¶¨ÒåÒ»¸öÊÀ½çÈÎÎñ
 function DefineWorldMission( id, name, misid )
 	DefineMission( id, name, misid, nil, WORLD_MISSION )
 end
 
+--ÈÎÎñ´¥·¢Æ÷ÐÅÏ¢×¢²áº¯Êý
 function MisBeginTalk( str )
 	Mission.curmission.begin.talk = str
 	LG( "mission", "MisBeginTalk:talk = "..str )
 end
 
+--ÈÎÎñÍê³ÉÐèÇóÐÅÏ¢
 function MisNeed( needtype, p1, p2, p3, p4 )
 	Mission.curmission.need.count = Mission.curmission.need.count + 1
 	Mission.curmission.need[Mission.curmission.need.count] = {}
@@ -969,6 +1014,7 @@ function MisNeed( needtype, p1, p2, p3, p4 )
 	LG( "mission", "MisNeed:count, type, p1, p2, p3, p4", Mission.curmission.need.count, needtype, p1, p2, p3, p4 )
 end
 
+--ÈÎÎñÍê³É½±ÀøÐÅÏ¢
 function MisPrize( prizetype, p1, p2, p3, p4 )
 	Mission.curmission.prize.count = Mission.curmission.prize.count + 1
 	Mission.curmission.prize[Mission.curmission.prize.count] = {}
@@ -980,6 +1026,7 @@ function MisPrize( prizetype, p1, p2, p3, p4 )
 	LG( "mission", "MisPrize:count, type, p1, p2, p3, p4", Mission.curmission.prize.count, prizetype, p1, p2, p3, p4 )
 end
 
+--ÈÎÎñÍê³É½±ÀøÀàÐÍ
 function MisPrizeType( seltype )
    LG( "mission", "MisPrizeType: prize select type = "..seltype )
    Mission.curmission.prize.seltp = seltype
@@ -993,6 +1040,7 @@ function MisPrizeSelAll()
 	MisPrizeType( PRIZE_SELALL )
 end
 
+--ÈÎÎñ¿ªÊ¼Ìõ¼þÐÅÏ¢×¢²á
 function MisBeginCondition( func, p1, p2, p3, p4 )
 	Mission.curmission.begin.conditions.count = Mission.curmission.begin.conditions.count + 1
 	Mission.curmission.begin.conditions[Mission.curmission.begin.conditions.count] = {}
@@ -1004,6 +1052,7 @@ function MisBeginCondition( func, p1, p2, p3, p4 )
 	LG( "mission", "MisBeginCondition:count, func, p1, p2, p3, p4", Mission.curmission.begin.conditions.count, func, p1, p2, p3, p4 )
 end
 
+--ÈÎÎñ¿ªÊ¼¶¯×÷ÐÅÏ¢×¢²á
 function MisBeginAction( func, p1, p2, p3, p4, p5, p6, p7, p8 )
 	Mission.curmission.begin.actions.count = Mission.curmission.begin.actions.count + 1
 	Mission.curmission.begin.actions[Mission.curmission.begin.actions.count] = {}
@@ -1032,23 +1081,28 @@ function MisBeginAction( func, p1, p2, p3, p4, p5, p6, p7, p8 )
 	else
 		Mission.curmission.begin.actions[Mission.curmission.begin.actions.count].p8 = 0
 	end
+	
 	LG( "mission", "MisBeginAction:count, func, p1, p2, p3, p4, p5, p6, p7, p8", Mission.curmission.begin.actions.count, func, p1, p2, p3, p4, p5, p6, p7, p8 )
 end
 
+--ÈÎÎñ¿ªÊ¼½ÇÉ«±³°üÈÝÁ¿ÐèÇó
 function MisBeginBagNeed( num )
 	Mission.curmission.begin.baggrid = num
 end
 
+--ÈÎÎñ½»¸¶Íê³É¶Ô»°ÐÅÏ¢×¢²á
 function MisResultTalk( str )
 	Mission.curmission.result.talk = str
 	LG( "mission", "MisCompleteTalk:talk = "..str )
 end
 
+--ÈÎÎñ½»¸¶°ïÖú¶Ô»°ÐÅÏ¢×¢²á
 function MisHelpTalk( str )
 	Mission.curmission.result.help = str
 	LG( "mission", "MisHelpTalk:help = "..str )
 end
 
+--ÈÎÎñÍê³ÉÌõ¼þÐÅÏ¢×¢²á
 function MisResultCondition( func, p1, p2, p3, p4 )
 	Mission.curmission.result.conditions.count = Mission.curmission.result.conditions.count + 1
 	Mission.curmission.result.conditions[Mission.curmission.result.conditions.count] = {}
@@ -1060,6 +1114,7 @@ function MisResultCondition( func, p1, p2, p3, p4 )
 	LG( "mission", "MisResultCondition:count, func, p1, p2, p3, p4", Mission.curmission.result.conditions.count, func, p1, p2, p3, p4 )
 end
 
+--ÈÎÎñÍê³É¶¯×÷ÐÅÏ¢×¢²á
 function MisResultAction( func, p1, p2, p3, p4, p5, p6, p7, p8 )
 	Mission.curmission.result.actions.count = Mission.curmission.result.actions.count + 1
 	Mission.curmission.result.actions[Mission.curmission.result.actions.count] = {}
@@ -1091,10 +1146,12 @@ function MisResultAction( func, p1, p2, p3, p4, p5, p6, p7, p8 )
 	LG( "mission", "MisResultAction:count, func, p1, p2, p3, p4, p5, p6, p7, p8", Mission.curmission.result.actions.count, func, p1, p2, p3, p4, p5, p6, p7, p8 )
 end
 
+--ÈÎÎñÍê³ÉÊ±±³°üÈÝÁ¿ÐèÇó
 function MisResultBagNeed( num )
 	Mission.curmission.result.baggrid = num
 end
 
+--ÈÎÎñÈ¡ÏûÌõ¼þÐÅÏ¢×¢²á
 function MisCancelCondition( func, p1, p2, p3, p4 )
 	Mission.curmission.cancel.conditions.count = Mission.curmission.cancel.conditions.count + 1
 	Mission.curmission.cancel.conditions[Mission.curmission.cancel.conditions.count] = {}
@@ -1106,6 +1163,7 @@ function MisCancelCondition( func, p1, p2, p3, p4 )
 	LG( "mission", "MisCancelCondition:count, func, p1, p2, p3, p4", Mission.curmission.cancel.conditions.count, func, p1, p2, p3, p4 )
 end
 
+--ÈÎÎñÈ¡Ïû¶¯×÷ÐÅÏ¢×¢²á
 function MisCancelAction( func, p1, p2, p3, p4, p5, p6, p7, p8 )
 	Mission.curmission.cancel.actions.count = Mission.curmission.cancel.actions.count + 1
 	Mission.curmission.cancel.actions[Mission.curmission.cancel.actions.count] = {}
@@ -1137,12 +1195,16 @@ function MisCancelAction( func, p1, p2, p3, p4, p5, p6, p7, p8 )
 	LG( "mission", "MisCancelAction:count, func, p1, p2, p3, p4, p5, p6, p7, p8", Mission.curmission.cancel.actions.count, func, p1, p2, p3, p4, p5, p6, p7, p8 )
 end
 
+--½«ÈÎÎñ×¢²áµ½npcÉíÉÏ
 function AddNpcMission( id )
 	NpcMissionList.count = NpcMissionList.count + 1
 	NpcMissionList[NpcMissionList.count ] = {}
 	NpcMissionList[NpcMissionList.count ] = Mission[id]
+	PRINT( "Set quest ["..NpcMissionList.count.."]: ["..id.."]: ["..Mission[id].name.."]" )
+	LG( "missioninit", "Set quest ["..NpcMissionList.count.."]: ["..id.."]: ["..Mission[id].name.."]" )
 end
 
+--³õÊ¼»¯Ëæ»úÈÎÎñ²ÎÊý±í½á¹¹
 function InitRandParam()
 	RandParam = {}
 	RandParam.id = 0
@@ -1170,14 +1232,16 @@ function InitRandParam()
 	end
 end
 
+--Ëæ»úÈÎÎñÐÅÏ¢½Å±¾Éú³Éº¯Êý½Ó¿Ú
 function DefineRandMission( id, name, misid, bounty, npcname, npcarea, leveltp )
 	LG( "randmission_init", "ID: "..id, " Name:"..name, " MisID:"..misid, "Bounty:"..bounty )
+	--ÉèÖÃÈÎÎñ»ù±¾ÐÅÏ¢
 	Mission[id] = {}
-	Mission[id].id = misid		
-	Mission[id].sid = id 		
+	Mission[id].id = misid		--ÈÎÎñÊ¶±ðID
+	Mission[id].sid = id 		--½Å±¾ÈÎÎñË÷ÒýID
 	Mission[id].name = name
 	Mission[id].tp = RAND_MISSION
-	Mission[id].bounty = bounty 
+	Mission[id].bounty = bounty --ÈÎÎñ¸øÓèÎïÆ·½±Àø¶È
 	if leveltp == nil then
 		Mission[id].leveltp = MIS_LEVEL_CHAR
 	else
@@ -1188,14 +1252,18 @@ function DefineRandMission( id, name, misid, bounty, npcname, npcarea, leveltp )
 	Mission[id].missionlist.count = 0
 	Mission[id].loopinfo = {}
 	Mission[id].loopinfo.count = 0
+	
 	if npcname ~= nil and npcarea ~= nil then
 		Mission[id].npcname = npcname
 		Mission[id].npcarea  = npcarea
 	else
-		Mission[id].npcname = "§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§í§Û §¯§±§³ "
-		Mission[id].npcarea  = "§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§í§Û §â§Ö§Ô§Ú§à§ß §ß§Ñ §Ü§Ñ§â§ä§Ö "
+		Mission[id].npcname = "Unknown NPC"
+		Mission[id].npcarea  = "Unknown map region"
 	end	
+	
+	--ÉèÖÃµ±Ç°ÈÎÎñ
 	Mission.curmission = Mission[id]
+	--ÈÎÎñ¿ªÊ¼ÐÅÏ¢
 	Mission[id].begin = {}
 	Mission[id].begin.talk = ""
 	Mission[id].begin.conditions = {}
@@ -1203,6 +1271,7 @@ function DefineRandMission( id, name, misid, bounty, npcname, npcarea, leveltp )
 	Mission[id].begin.actions = {}
 	Mission[id].begin.actions.count = 0
 	Mission[id].begin.baggrid = 0
+	--ÈÎÎñ½»¸¶ÐÅÏ¢
 	Mission[id].result = {}
 	Mission[id].result.talk = ""
 	Mission[id].result.help = ""
@@ -1211,6 +1280,7 @@ function DefineRandMission( id, name, misid, bounty, npcname, npcarea, leveltp )
 	Mission[id].result.actions = {}
 	Mission[id].result.actions.count = 0
 	Mission[id].result.baggrid = 0
+	--ÈÎÎñÈ¡ÏûÐÅÏ¢
 	Mission[id].cancel = {}
 	Mission[id].cancel.conditions = {}
 	Mission[id].cancel.conditions.count = 0
@@ -1218,20 +1288,23 @@ function DefineRandMission( id, name, misid, bounty, npcname, npcarea, leveltp )
 	Mission[id].cancel.actions.count = 0
 end
 
+--³õÊ¼»¯Ëæ»úÈÎÎñÇ°ºó×ºÐÅÏ¢ÁÐ±í
 function InitTalkList()
-	talklist.btalkstart = "§±§â§Ú§ß§ñ§ä§î §à§á§Ú§ã§Ñ§ß§Ú§Ö §ß§Ñ§é§Ñ§Ý§Ñ §Ù§Ñ§Õ§Ñ§ß§Ú§Û "
-	talklist.btalkend = "§±§â§Ú§ß§ñ§ä§î §à§á§Ú§ã§Ñ§ß§Ú§Ö §Ü§à§ß§è§Ñ §Ù§Ñ§Õ§Ñ§ß§Ú§Û "
-	talklist.rtalkstart = "§¸§Ú§Ü§Ý §à§á§Ú§ã§Ñ§ß§Ú§ñ §ß§Ñ§é§Ñ§Ý§Ñ §Ù§Ñ§Õ§Ñ§ß§Ú§Û "
-	talklist.rtalkend = "§¸§Ú§Ü§Ý §à§á§Ú§ã§Ñ§ß§Ú§ñ §Ü§à§ß§è§Ñ §Ù§Ñ§Õ§Ñ§ß§Ú§Û "
-	talklist.helpstart = "§±§à§Þ§à§ë§î §à§á§Ú§ã§Ñ§ß§Ú§ñ §ß§Ñ§é§Ñ§Ý§Ñ §Ù§Ñ§Õ§Ñ§ß§Ú§Û "
-	talklist.helpend = "§±§à§Þ§à§ë§î §à§á§Ú§ã§Ñ§ß§Ú§ñ §Ü§à§ß§è§Ñ §Ù§Ñ§Õ§Ñ§ß§Ú§Û "
+	talklist.btalkstart = "Accept quest desription started"
+	talklist.btalkend = "Accept quest ends description"
+	talklist.rtalkstart = "cycle quest description started"
+	talklist.rtalkend = "cycle quest description ended"
+	talklist.helpstart = "Quest help description started"
+	talklist.helpend = "Quest help description ended"
 end
 
+--Ìí¼ÓËæ»úÈÎÎñÃèÊöÐÅÏ¢Ç°×ººó×º
 function AddRandMissionBeginTalk( talkstart, talkend )
 	if talkstart == nil or talkend  == nil then
 		LG( "randmission_inittalk_error", "AddRandMissionBeginTalk: misid = , ", Mission.curmission.sid )
 		return
 	end
+	
 	LG( "randmission_init", "AddRandMissionBeginTalk: talkstart = ", talkstart )
 	LG( "randmission_init", "AddRandMissionBeginTalk: talkend = ", talkend )
 	talklist.btalkstart = talkstart
@@ -1243,6 +1316,7 @@ function AddRandMissionResultTalk( talkstart, talkend )
 		LG( "randmission_inittalk_error", "AddRandMissionBeginTalk: misid = , ", Mission.curmission.sid )
 		return
 	end
+
 	LG( "randmission_init", "AddRandMissionResultTalk: talkstart = ", talkstart )
 	LG( "randmission_init", "AddRandMissionResultTalk: talkend = ", talkend )	
 	talklist.rtalkstart = talkstart
@@ -1254,38 +1328,49 @@ function AddRandMissionHelpTalk( talkstart, talkend )
 		LG( "randmission_inittalk_error", "AddRandMissionBeginTalk: misid = , ", Mission.curmission.sid )
 		return
 	end
+	
 	LG( "randmission_init", "AddRandMissionHelpTalk: talkstart = ", talkstart )
 	LG( "randmission_init", "AddRandMissionHelpTalk: talkend = ", talkend )	
 	talklist.helpstart = talkstart
 	talklist.helpend = talkend
 end
 
+--»ñÈ¡Ëæ»úÈÎÎñÃèÊöÇ°ºó×ºÐÅÏ¢ÁÐ±í
 function GetRandMissionTalk()
 	return talklist
 end
 
+--Ìí¼Óµ±Ç°Ëæ»úÈÎÎñµÄÀàÐÍÐÅÏ¢
 function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p4, p5, p6 )
 	if Mission.curmission == nil or tp == nil or tprand == nil or exptp == nil or randnum == nil then
 		PRINT( "AddRandMissionType:Mission[id] = nil or tp = nil, exptp = nil or id = "..Mission.curmission.sid..",tp = "..tp )
 		return
 	end
+   
 	LG( "randmission_init", "AddRandMissionType:Add rand mission id["..Mission.curmission.sid.."], tp = "..tp )
+	
+	--¼ì²âÀàÐÍÐÅÏ¢
 	for n = 1, Mission.curmission.missionlist.count, 1 do
 		if Mission.curmission.missionlist[n].tp == tp then
 			PRINT( "AddRandMissionType: adding of random quest type duplicate, tp = "..tp )
 			return
 		end
 	end
+	
+	--ÐÂÔöÀàÐÍÐÅÏ¢
 	Mission.curmission.missionlist.count = Mission.curmission.missionlist.count + 1
 	Mission.curmission.missionlist[Mission.curmission.missionlist.count] = {}
 	Mission.curmission.missionlist[Mission.curmission.missionlist.count].tp = tp
 	Mission.curmission.missionlist[Mission.curmission.missionlist.count].exptp = exptp
 	Mission.curmission.missionlist[Mission.curmission.missionlist.count].randnum = randnum
+
+	--ÈÎÎñÊý¾Ý³õÊ¼»¯
 	local begin = {}
 	local result = {}
 	local cancel = {}
 	local need = {}
 	local prize = {}
+
 	begin.conditions = {}
 	begin.conditions.count = 0
 	begin.actions = {}
@@ -1302,7 +1387,9 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 	cancel.actions.count = 0
 	need.count = 0
 	prize.count = 0
+	--Ä¬ÈÏÈÎÎñ½±Àø·½Ê½ÎªÈ«Ñ¡	
 	prize.seltp = PRIZE_SELALL
+	--Ä¬ÈÏÈÎÎñÃèÊöÐÅÏ¢Îª¿Õ
 	begin.talk = ""
 	begin.talkstart = talklist.btalkstart
 	begin.talkend = talklist.btalkend
@@ -1312,7 +1399,9 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 	result.help = ""
 	result.helpstart = talklist.helpstart
 	result.helpend = talklist.helpend
+	
 	if tp == MIS_RAND_KILL then
+		--Ëæ»úÈÎÎñ½±ÀøºÍÐèÇó
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1320,6 +1409,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_KILL
@@ -1327,6 +1417,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
         need[need.count] = {}
 		need[need.count].tp = MIS_NEED_KILL
@@ -1334,6 +1425,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
         need[need.count] = {}
 		need[need.count].tp = MIS_NEED_KILL
@@ -1341,6 +1433,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
         need[need.count] = {}
 		need[need.count].tp = MIS_NEED_KILL
@@ -1348,6 +1441,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		prize.count = prize.count + 1
 		prize[prize.count] = {}
 		prize[prize.count].tp = MIS_PRIZE_MONEY
@@ -1355,6 +1449,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		prize[prize.count].p2 = 0
 		prize[prize.count].p3 = 0
 		prize[prize.count].p4 = 0
+		
 		prize.count = prize.count + 1
         prize[prize.count] = {}
 		prize[prize.count].tp = MIS_PRIZE_ITEM
@@ -1362,6 +1457,18 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		prize[prize.count].p2 = 0
 		prize[prize.count].p3 = 0
 		prize[prize.count].p4 = 0
+		
+		--ÈÎÎñ¿ªÊ¼
+		--begin.conditions.count = begin.conditions.count + 1
+		--begin.conditions[begin.conditions.count] = {}
+		--begin.conditions[begin.conditions.count].func = NoRandMission
+		--begin.conditions[begin.conditions.count].p1 = Mission.curmission.id
+		
+		--begin.actions.count = begin.actions.count + 1
+		--begin.actions[begin.actions.count] = {}
+		--begin.actions[begin.actions.count].func = AddRandMission
+		--begin.actions[begin.actions.count].p1 = Mission.curmission.id
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1373,6 +1480,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
         begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1384,6 +1492,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
         begin.actions[begin.actions.count].func = AddTrigger
@@ -1395,6 +1504,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
         begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1406,65 +1516,103 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
+		--ÈÎÎñ½áÊøÌõ¼þ
+		--result.conditions.count = result.conditions.count + 1
+		--result.conditions[result.conditions.count] = {}
+		--result.conditions[result.conditions.count].func = HasRandMission
+		--result.conditions[result.conditions.count].p1 = Mission.curmission.id
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
+		--ÈÎÎñ½áÊø¶¯×÷
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
 		result.actions[result.actions.count].func = ClearMission
 		result.actions[result.actions.count].p1 = Mission.curmission.id
+		
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = AddExpAndType	
+		result.actions[result.actions.count].func = AddExpAndType	--AddExp
 		result.actions[result.actions.count].p1 = 0
 		result.actions[result.actions.count].p2 = 0
 		result.actions[result.actions.count].p3 = 0
+		
+		--ÈÎÎñÈ¡Ïû¶¯×÷
 		InitTrigger()
 		TriggerCondition( 1, HasCancelMissionMoney )
 		TriggerAction( 1, TakeCancelMissionMoney )
 		TriggerAction( 1, ClearMission, Mission.curmission.id )
 		TriggerAction( 1, FailureRandMissionCount, Mission.curmission.id )
-		TriggerAction( 2, SystemNotice, "§¯§Ö§Õ§à§ã§ä§Ñ§ä§à§é§ß§à §Ù§à§Ý§à§ä§Ñ. §¯§Ö§Ó§à§Ù§Þ§à§Ø§ß§à §à§ä§Ü§Ñ§Ù§Ñ§ä§î§ã§ñ §à§ä §Ù§Ñ§Õ§Ñ§ß§Ú§ñ!" )
+		
+		TriggerAction( 2, SystemNotice, "Insufficient gold. Unable to abandon quest!" )
+
 		cancel.actions.count = cancel.actions.count + 1
 		cancel.actions[cancel.actions.count] = {}
 		cancel.actions[cancel.actions.count].func = MultiTrigger
 		cancel.actions[cancel.actions.count].p1 = GetMultiTrigger()
 		cancel.actions[cancel.actions.count].p2 = 2
+		
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = ClearMission
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+		
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = FailureRandMissionCount
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+				
+		--½¨Á¢×î´ó4¸öÈ«¾Ö´¥·¢Æ÷ÓÃÓÚËæ»úÈÎÎñ
 		InitTrigger()
 		SetTriggerType( 1, MIS_TRIGGER_RAND )
+		--TriggerCondition( 1, IsMonster, 0 )
 		TriggerAction( 1, AddRMNextFlag, Mission.curmission.id, 0, 0 )
 		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p1, 1 )
+		
 		SetTriggerType( 2, MIS_TRIGGER_RAND )
+		--TriggerCondition( 2, IsMonster, 0 )
 		TriggerAction( 2, AddRMNextFlag, Mission.curmission.id, 0, 0 )
 		TriggerAction( 2, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p2, 2 )
+		
 		SetTriggerType( 3, MIS_TRIGGER_RAND )
+		--TriggerCondition( 3, IsMonster, 0 )
 		TriggerAction( 3, AddRMNextFlag, Mission.curmission.id, 0, 0 )
 		TriggerAction( 3, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p3, 3 )
+		
 		SetTriggerType( 4, MIS_TRIGGER_RAND )
+		--TriggerCondition( 4, IsMonster, 0 )
 		TriggerAction( 4, AddRMNextFlag, Mission.curmission.id, 0, 0 )
 		TriggerAction( 4, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p4, 4 )
+		
 	elseif tp == MIS_RAND_GET then
+		--Ëæ»úÈÎÎñ½±ÀøºÍÐèÇó
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1472,6 +1620,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_ITEM
@@ -1479,6 +1628,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
 		need[need.count] = {}
         need[need.count].tp = MIS_NEED_ITEM
@@ -1486,6 +1636,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
         need[need.count] = {}
 		need[need.count].tp = MIS_NEED_ITEM
@@ -1493,6 +1644,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
         need[need.count] = {}
 		need[need.count].tp = MIS_NEED_ITEM
@@ -1500,6 +1652,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		prize.count = prize.count + 1
 		prize[prize.count] = {}
 		prize[prize.count].tp = MIS_PRIZE_MONEY
@@ -1507,6 +1660,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		prize[prize.count].p2 = 0
 		prize[prize.count].p3 = 0
 		prize[prize.count].p4 = 0
+		
 		prize.count = prize.count + 1
         prize[prize.count] = {}
 		prize[prize.count].tp = MIS_PRIZE_ITEM
@@ -1514,6 +1668,18 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		prize[prize.count].p2 = 0
 		prize[prize.count].p3 = 0
 		prize[prize.count].p4 = 0
+		
+		--ÈÎÎñ¿ªÊ¼
+		--begin.conditions.count = begin.conditions.count + 1
+		--begin.conditions[begin.conditions.count] = {}
+		--begin.conditions[begin.conditions.count].func = NoRandMission
+		--begin.conditions[begin.conditions.count].p1 = Mission.curmission.id
+		
+		--begin.actions.count = begin.actions.count + 1
+		--begin.actions[begin.actions.count] = {}
+		--begin.actions[begin.actions.count].func = AddRandMission
+		--begin.actions[begin.actions.count].p1 = Mission.curmission.id
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1525,6 +1691,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
         begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1536,6 +1703,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
         begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1547,6 +1715,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
         begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1558,105 +1727,151 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
+		--ÈÎÎñ½áÊøÌõ¼þ
+		--result.conditions.count = result.conditions.count + 1
+		--result.conditions[result.conditions.count] = {}
+		--result.conditions[result.conditions.count].func = HasRandMission
+		--result.conditions[result.conditions.count].p1 = Mission.curmission.id
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = AlwaysTrue
+		result.conditions[result.conditions.count].func = AlwaysTrue--HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasItem
 		result.conditions[result.conditions.count].p1 = 0
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = AlwaysTrue
+		result.conditions[result.conditions.count].func = AlwaysTrue--HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasItem
 		result.conditions[result.conditions.count].p1 = 0
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = AlwaysTrue
+		result.conditions[result.conditions.count].func = AlwaysTrue--HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasItem
 		result.conditions[result.conditions.count].p1 = 0
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = AlwaysTrue
+		result.conditions[result.conditions.count].func = AlwaysTrue--HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasItem
 		result.conditions[result.conditions.count].p1 = 0
 		result.conditions[result.conditions.count].p2 = 0
+		
+		--ÈÎÎñ½áÊø¶¯×÷
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
 		result.actions[result.actions.count].func = ClearMission
 		result.actions[result.actions.count].p1 = Mission.curmission.id
+		
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = AddExpAndType	
+		result.actions[result.actions.count].func = AddExpAndType	--AddExp
 		result.actions[result.actions.count].p1 = 0
 		result.actions[result.actions.count].p2 = 0
 		result.actions[result.actions.count].p3 = 0
+		
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
 		result.actions[result.actions.count].func = TakeItem
 		result.actions[result.actions.count].p1 = 0
 		result.actions[result.actions.count].p2 = 0
+		
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
 		result.actions[result.actions.count].func = TakeItem
 		result.actions[result.actions.count].p1 = 0
 		result.actions[result.actions.count].p2 = 0
+		
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
 		result.actions[result.actions.count].func = TakeItem
 		result.actions[result.actions.count].p1 = 0
 		result.actions[result.actions.count].p2 = 0
+		
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
 		result.actions[result.actions.count].func = TakeItem
 		result.actions[result.actions.count].p1 = 0
 		result.actions[result.actions.count].p2 = 0
+		
+		--ÈÎÎñÈ¡Ïû¶¯×÷
 		InitTrigger()
 		TriggerCondition( 1, HasCancelMissionMoney )
 		TriggerAction( 1, TakeCancelMissionMoney )
 		TriggerAction( 1, ClearMission, Mission.curmission.id )
 		TriggerAction( 1, FailureRandMissionCount, Mission.curmission.id )
-		TriggerAction( 2, SystemNotice, "§¯§Ö§Õ§à§ã§ä§Ñ§ä§à§é§ß§à §Ù§à§Ý§à§ä§Ñ. §¯§Ö§Ó§à§Ù§Þ§à§Ø§ß§à §à§ä§Ü§Ñ§Ù§Ñ§ä§î§ã§ñ §à§ä §Ù§Ñ§Õ§Ñ§ß§Ú§ñ!" )
+		
+		TriggerAction( 2, SystemNotice, "Insufficient gold. Unable to abandon quest!" )
+
 		cancel.actions.count = cancel.actions.count + 1
 		cancel.actions[cancel.actions.count] = {}
 		cancel.actions[cancel.actions.count].func = MultiTrigger
 		cancel.actions[cancel.actions.count].p1 = GetMultiTrigger()
 		cancel.actions[cancel.actions.count].p2 = 2
+		
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = ClearMission
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = FailureRandMissionCount
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+		
+		--½¨Á¢×î´ó4¸öÈ«¾Ö´¥·¢Æ÷ÓÃÓÚËæ»úÈÎÎñ
 		InitTrigger()
 		SetTriggerType( 1, MIS_TRIGGER_RAND )
+		--TriggerCondition( 1, IsItem, 0 )
 		TriggerAction( 1, AddRMNextFlag, Mission.curmission.id, 0, 0 )
 		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p1, 1 )
+		
 		SetTriggerType( 2, MIS_TRIGGER_RAND )
+		--TriggerCondition( 2, IsItem, 0 )
 		TriggerAction( 2, AddRMNextFlag, Mission.curmission.id, 0, 0 )
 		TriggerAction( 2, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p2, 2 )
+		
 		SetTriggerType( 3, MIS_TRIGGER_RAND )
+		--TriggerCondition( 3, IsItem, 0 )
 		TriggerAction( 3, AddRMNextFlag, Mission.curmission.id, 0, 0 )
 		TriggerAction( 3, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p3, 3 )
+		
 		SetTriggerType( 4, MIS_TRIGGER_RAND )
+		--TriggerCondition( 4, IsItem, 0 )
 		TriggerAction( 4, AddRMNextFlag, Mission.curmission.id, 0, 0 )
 		TriggerAction( 4, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p4, 4 )
+		
 	elseif tp == MIS_RAND_SEND then
+		--Ëæ»úÈÎÎñ½±ÀøºÍÐèÇó
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1664,6 +1879,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1671,6 +1887,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1678,6 +1895,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1685,6 +1903,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1692,6 +1911,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		prize.count = prize.count + 1
 		prize[prize.count] = {}
 		prize[prize.count].tp = MIS_PRIZE_MONEY
@@ -1699,6 +1919,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		prize[prize.count].p2 = 0
 		prize[prize.count].p3 = 0
 		prize[prize.count].p4 = 0
+		
 		prize.count = prize.count + 1
 		prize[prize.count] = {}
 		prize[prize.count].tp = MIS_PRIZE_ITEM
@@ -1706,6 +1927,18 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		prize[prize.count].p2 = 0
 		prize[prize.count].p3 = 0
 		prize[prize.count].p4 = 0
+		
+		--ÈÎÎñ¿ªÊ¼
+		--begin.conditions.count = begin.conditions.count + 1
+		--begin.conditions[begin.conditions.count] = {}
+		--begin.conditions[begin.conditions.count].func = NoMission
+		--begin.conditions[begin.conditions.count].p1 = Mission.curmission.id
+		
+		--begin.actions.count = begin.actions.count + 1
+		--begin.actions[begin.actions.count] = {}
+		--begin.actions[begin.actions.count].func = AddMission
+		--begin.actions[begin.actions.count].p1 = Mission.curmission.id
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = GiveItem
@@ -1717,6 +1950,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = GiveItem
@@ -1728,6 +1962,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = GiveItem
@@ -1739,6 +1974,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = GiveItem
@@ -1750,49 +1986,83 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
+		--ÈÎÎñ½áÊøÌõ¼þ
+		--result.conditions.count = result.conditions.count + 1
+		--result.conditions[result.conditions.count] = {}
+		--result.conditions[result.conditions.count].func = HasMission
+		--result.conditions[result.conditions.count].p1 = Mission.curmission.id
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasRandNpcItemFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasRandNpcItemFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasRandNpcItemFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasRandNpcItemFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
+		--ÈÎÎñ½áÊø¶¯×÷
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
 		result.actions[result.actions.count].func = ClearMission
 		result.actions[result.actions.count].p1 = Mission.curmission.id
+		
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = AddExpAndType	
+		result.actions[result.actions.count].func = AddExpAndType	--AddExp
 		result.actions[result.actions.count].p1 = 0
 		result.actions[result.actions.count].p2 = 0
 		result.actions[result.actions.count].p3 = 0
+
+		--ÈÎÎñÈ¡Ïû¶¯×÷
 		InitTrigger()
 		TriggerCondition( 1, HasCancelMissionMoney )
 		TriggerAction( 1, TakeCancelMissionMoney )
 		TriggerAction( 1, TakeAllRandItem, Mission.curmission.id )
 		TriggerAction( 1, ClearMission, Mission.curmission.id )
 		TriggerAction( 1, FailureRandMissionCount, Mission.curmission.id )
-		TriggerAction( 2, SystemNotice, "§¯§Ö§Õ§à§ã§ä§Ñ§ä§à§é§ß§à §Ù§à§Ý§à§ä§Ñ. §¯§Ö§Ó§à§Ù§Þ§à§Ø§ß§à §à§ä§Ü§Ñ§Ù§Ñ§ä§î§ã§ñ §à§ä §Ù§Ñ§Õ§Ñ§ß§Ú§ñ!" )
+		
+		TriggerAction( 2, SystemNotice, "Insufficient gold. Unable to abandon quest!" )
+
 		cancel.actions.count = cancel.actions.count + 1
 		cancel.actions[cancel.actions.count] = {}
 		cancel.actions[cancel.actions.count].func = MultiTrigger
 		cancel.actions[cancel.actions.count].p1 = GetMultiTrigger()
 		cancel.actions[cancel.actions.count].p2 = 2
+		
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = TakeAllRandItem
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+		
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = ClearMission
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+		
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = FailureRandMissionCount
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+		
 	elseif tp == MIS_RAND_CONVOY then
+		--Ëæ»úÈÎÎñ½±ÀøºÍÐèÇó
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1800,6 +2070,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
 		need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1807,6 +2078,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
 		need[need.count] = {}
         need[need.count].tp = MIS_NEED_DESP
@@ -1814,6 +2086,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
         need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1821,6 +2094,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		need.count = need.count + 1
         need[need.count] = {}
 		need[need.count].tp = MIS_NEED_DESP
@@ -1828,6 +2102,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		need[need.count].p2 = 0
 		need[need.count].p3 = 0
 		need[need.count].p4 = 0
+		
 		prize.count = prize.count + 1
 		prize[prize.count] = {}
 		prize[prize.count].tp = MIS_PRIZE_MONEY
@@ -1835,6 +2110,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		prize[prize.count].p2 = 0
 		prize[prize.count].p3 = 0
 		prize[prize.count].p4 = 0
+		
 		prize.count = prize.count + 1
         prize[prize.count] = {}
 		prize[prize.count].tp = MIS_PRIZE_ITEM
@@ -1842,6 +2118,8 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		prize[prize.count].p2 = 0
 		prize[prize.count].p3 = 0
 		prize[prize.count].p4 = 0
+		
+		--ÈÎÎñ¿ªÊ¼
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1853,6 +2131,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 1
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1864,6 +2143,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 1
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = ConvoyNpc
@@ -1875,6 +2155,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
         begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1886,6 +2167,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 1
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = ConvoyNpc
@@ -1897,6 +2179,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
         begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1908,6 +2191,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 1
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = ConvoyNpc
@@ -1919,6 +2203,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
         begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = AddTrigger
@@ -1930,6 +2215,7 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0
 		begin.actions[begin.actions.count].p7 = 1
 		begin.actions[begin.actions.count].p8 = 0
+		
 		begin.actions.count = begin.actions.count + 1
 		begin.actions[begin.actions.count] = {}
 		begin.actions[begin.actions.count].func = ConvoyNpc
@@ -1941,78 +2227,120 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 		begin.actions[begin.actions.count].p6 = 0		
 		begin.actions[begin.actions.count].p7 = 0
 		begin.actions[begin.actions.count].p8 = 0
+		
+		--ÈÎÎñ½áÊøÌõ¼þ		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 0
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 1
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 2
+		
 		result.conditions.count = result.conditions.count + 1
 		result.conditions[result.conditions.count] = {}
 		result.conditions[result.conditions.count].func = HasFlag
 		result.conditions[result.conditions.count].p1 = Mission.curmission.id
 		result.conditions[result.conditions.count].p2 = 3
+		
+		--ÈÎÎñ½áÊø¶¯×÷
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
 		result.actions[result.actions.count].func = ClearMission
 		result.actions[result.actions.count].p1 = Mission.curmission.id
+
 		result.actions.count = result.actions.count + 1
 		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = AddExpAndType	
+		result.actions[result.actions.count].func = AddExpAndType	--AddExp
 		result.actions[result.actions.count].p1 = 0
 		result.actions[result.actions.count].p2 = 0
 		result.actions[result.actions.count].p3 = 0
+
+		--ÈÎÎñÈ¡Ïû¶¯×÷
 		InitTrigger()
 		TriggerCondition( 1, HasCancelMissionMoney )
 		TriggerAction( 1, TakeCancelMissionMoney )
 		TriggerAction( 1, ClearAllConvoyNpc, Mission.curmission.id )
 		TriggerAction( 1, ClearMission, Mission.curmission.id )
 		TriggerAction( 1, FailureRandMissionCount, Mission.curmission.id )
-		TriggerAction( 2, SystemNotice, "§¯§Ö§Õ§à§ã§ä§Ñ§ä§à§é§ß§à §Ù§à§Ý§à§ä§Ñ. §¯§Ö§Ó§à§Ù§Þ§à§Ø§ß§à §à§ä§Ü§Ñ§Ù§Ñ§ä§î§ã§ñ §à§ä §Ù§Ñ§Õ§Ñ§ß§Ú§ñ!" )
+		
+		TriggerAction( 2, SystemNotice, "Insufficient gold. Unable to abandon quest!" )
+
 		cancel.actions.count = cancel.actions.count + 1
 		cancel.actions[cancel.actions.count] = {}
 		cancel.actions[cancel.actions.count].func = MultiTrigger
 		cancel.actions[cancel.actions.count].p1 = GetMultiTrigger()
 		cancel.actions[cancel.actions.count].p2 = 2
+		
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = ClearAllConvoyNpc
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+		
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = ClearMission
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+		
+		--cancel.actions.count = cancel.actions.count + 1
+		--cancel.actions[cancel.actions.count] = {}
+		--cancel.actions[cancel.actions.count].func = FailureRandMissionCount
+		--cancel.actions[cancel.actions.count].p1 = Mission.curmission.id
+		
+		--½¨Á¢×î´ó4¸öÈ«¾Ö´¥·¢Æ÷ÓÃÓÚËæ»úÈÎÎñ
 		InitTrigger()
+		--SetTriggerType( 1, MIS_TRIGGER_RAND )
 		TriggerAction( 1, ClearConvoyNpc, Mission.curmission.id, 0 )
 		TriggerAction( 1, SetFlag, Mission.curmission.id, 0 )
-		TriggerAction( 1, HelpInfo, MIS_HELP_DESP, "§³§á§Ñ§ã§Ú§Ò§à §Ù§Ñ §Õ§à§ã§ä§Ñ§Ó§Ü§å §Þ§Ö§ß§ñ §ã§ð§Õ§Ñ. §¥§à §ã§Ó§Ú§Õ§Ñ§ß§Ú§ñ!" )
+		TriggerAction( 1, HelpInfo, MIS_HELP_DESP, "Thank you for sending me here! Good bye!" )
 		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p2, 1 )
+		
+		--SetTriggerType( 2, MIS_TRIGGER_RAND )
 		TriggerAction( 2, ClearConvoyNpc, Mission.curmission.id, 1 )
 		TriggerAction( 2, SetFlag, Mission.curmission.id, 1 )
-		TriggerAction( 2, HelpInfo, MIS_HELP_DESP, "§³§á§Ñ§ã§Ú§Ò§à §Ù§Ñ §Õ§à§ã§ä§Ñ§Ó§Ü§å §Þ§Ö§ß§ñ §ã§ð§Õ§Ñ. §¥§à §ã§Ó§Ú§Õ§Ñ§ß§Ú§ñ!" )
+		TriggerAction( 2, HelpInfo, MIS_HELP_DESP, "Thank you for sending me here! Good bye!" )
 		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p3, 2 )
+		
+		--SetTriggerType( 3, MIS_TRIGGER_RAND )
 		TriggerAction( 3, ClearConvoyNpc, Mission.curmission.id, 2 )
 		TriggerAction( 3, SetFlag, Mission.curmission.id, 2 )
-		TriggerAction( 3, HelpInfo, MIS_HELP_DESP, "§³§á§Ñ§ã§Ú§Ò§à §Ù§Ñ §Õ§à§ã§ä§Ñ§Ó§Ü§å §Þ§Ö§ß§ñ §ã§ð§Õ§Ñ. §¥§à §ã§Ó§Ú§Õ§Ñ§ß§Ú§ñ!" )
+		TriggerAction( 3, HelpInfo, MIS_HELP_DESP, "Thank you for sending me here! Good bye!" )
 		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p4, 3 )
+		
+		--SetTriggerType( 4, MIS_TRIGGER_RAND )
 		TriggerAction( 4, ClearConvoyNpc, Mission.curmission.id, 3 )
 		TriggerAction( 4, SetFlag, Mission.curmission.id, 3 )
-		TriggerAction( 4, HelpInfo, MIS_HELP_DESP, "§³§á§Ñ§ã§Ú§Ò§à §Ù§Ñ §Õ§à§ã§ä§Ñ§Ó§Ü§å §Þ§Ö§ß§ñ §ã§ð§Õ§Ñ. §¥§à §ã§Ó§Ú§Õ§Ñ§ß§Ú§ñ!" )
+		TriggerAction( 4, HelpInfo, MIS_HELP_DESP, "Thank you for sending me here! Good bye!" )
 		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
 		RegTrigger( p5, 4 )
-		local help = "§±§â§Ú§ß§ñ§ä§Ú§Ö §Ù§Ñ§Õ§Ñ§ß§Ú§ñ ["
-		help = help..Mission.curmission.name.."] §á§â§Ö§Ó§í§ê§Ö§ß§à §Ó§â§Ö§Þ§ñ §ß§Ñ §á§à§Ú§ã§Ü§Ú §Ø§å§â§ß§Ñ§Ý§Ñ."
+
+		--SetTriggerType( 1, MIS_TRIGGER_RAND )
+		local help = "accepted quest ["
+		help = help..Mission.curmission.name.."] has exceeded time allocated, quest failed! Please delete quest from quest log."
 		TriggerAction( 5, ClearAllConvoyNpc, Mission.curmission.id )
 		TriggerAction( 5, HelpInfo, MIS_HELP_DESP, help )
 		TriggerAction( 5, FailureRandMissionCount, Mission.curmission.id )
 		TriggerAction( 5, SetMissionFailure, Mission.curmission.id )
 		RegTrigger( p1, 5 )
+		
 	elseif tp == MIS_RAND_EXPLORE then
+	
 	end
+	
+	--Ô¤Éú³ÉËæ»úÈÎÎñÊý¾Ý¸ñÊ½£¬¼ÓËÙ³ÌÐò
 	Mission.curmission.missionlist[Mission.curmission.missionlist.count].begin = begin
 	Mission.curmission.missionlist[Mission.curmission.missionlist.count].result = result
 	Mission.curmission.missionlist[Mission.curmission.missionlist.count].cancel = cancel
@@ -2026,16 +2354,19 @@ function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p
 	Mission.curmission.missionlist[Mission.curmission.missionlist.count].tprand = tprand
 end
 
-
+--Ìí¼ÓËæ»úÈÎÎñÉú³ÉÐÅÏ¢
 function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )	
 	if Mission[id] == nil then
 		LG( "randmission_init", "AddRandMissionInfo:Mission[id] = nil, id = "..id )
 		PRINT( "AddRandMissionInfo:Mission[id] = nil, id = "..id )
 		return LUA_FALSE
 	end
+
 	if Mission[id].RandInfo == nil then
 		Mission[id].RandInfo = {}
 	end
+	
+	--ÅÐ¶Ï¸ÃÀàÐÍÊÇ·ñÒÑ´ò¿ª
 	local flag = 0
 	for n = 1, Mission.curmission.missionlist.count, 1 do
 		if Mission.curmission.missionlist[n].tp == tp then
@@ -2043,9 +2374,10 @@ function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )
 		end
 	end
 	if flag == 0 then
-		PRINT( "AddRandMissionInfo: Add data fail due to target data type switch is not opened. id, level, tp, p1, p2, p3, p4, p5, p6", id, level, tp, p1, p2, p3, p4, p5, p6 )
+		PRINT( "AddRandMissionInfo: Add data failed to target data type switch is not opened. id, level, tp, p1, p2, p3, p4, p5, p6", id, level, tp, p1, p2, p3, p4, p5, p6 )
 		LG( "randmission_error", "AddRandMissionInfo: add data failed die to data type switch not opened.", tp )
 	end
+	
 	if Mission[id].RandInfo[level] == nil then
 		Mission[id].RandInfo[level] = {}
 		Mission[id].RandInfo[level].KillInfo = {}
@@ -2062,15 +2394,19 @@ function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )
 		Mission[id].RandInfo[level].ExploreInfo.count = 0
 		Mission[id].RandInfo[level].LoopData = {}
 		Mission[id].RandInfo[level].LoopData.count = 0
+		
 		Mission[id].RandInfo[level].PrizeItem = {}
 		Mission[id].RandInfo[level].PrizeItem.count = 0
 		Mission[id].RandInfo[level].PrizeItem.odds = 0
 		Mission[id].RandInfo[level].PrizeItem.num = 0
+		--Ëæ»úÈÎÎñ²úÉú¿ì½ÝÐÅÏ¢
 		Mission[id].RandInfo[level].tpinfo = {}
 		Mission[id].RandInfo[level].tpinfo.count = 0
 	end
+
 	LG( "randmission_init", "mission = , mission.RandInfo = , mission.RandInfo[level] = ", Mission[id], Mission[id].RandInfo, Mission[id].RandInfo[level] )
-	if tp == MIS_RAND_KILL then					
+	
+	if tp == MIS_RAND_KILL then					--ÁÔÉ±¹ÖÎï
 		Mission[id].RandInfo[level].KillInfo.count = Mission[id].RandInfo[level].KillInfo.count + 1
 		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count] = {}
 		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p1 = p1
@@ -2081,7 +2417,7 @@ function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )
 		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p6 = p6
 		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p7 = p7
 		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p8 = p8
-	elseif tp == MIS_RAND_GET then			
+	elseif tp == MIS_RAND_GET then			--»ñÈ¡ÎïÆ·
 		Mission[id].RandInfo[level].GetInfo.count = Mission[id].RandInfo[level].GetInfo.count + 1
 		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count] = {}
 		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p1 = p1
@@ -2092,7 +2428,7 @@ function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )
 		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p6 = p6
 		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p7 = p7
 		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p8 = p8
-	elseif tp == MIS_RAND_SEND then			
+	elseif tp == MIS_RAND_SEND then			--ËÍ¸øÎïÆ·
 		Mission[id].RandInfo[level].SendInfo.count = Mission[id].RandInfo[level].SendInfo.count + 1
 		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count] = {}
 		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p1 = p1
@@ -2103,7 +2439,7 @@ function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )
 		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p6 = p6
 		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p7 = p7
 		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p8 = p8
-	elseif tp == MIS_RAND_CONVOY then		
+	elseif tp == MIS_RAND_CONVOY then		--»¤ËÍNPC
 		Mission[id].RandInfo[level].ConvoyInfo.count = Mission[id].RandInfo[level].ConvoyInfo.count + 1
 		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count] = {}
 		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p1 = p1
@@ -2114,7 +2450,7 @@ function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )
 		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p6 = p6
 		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p7 = p7
 		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p8 = p8
-	elseif tp == MIS_RAND_EXPLORE then	
+	elseif tp == MIS_RAND_EXPLORE then	--Ì½Ë÷µØÍ¼
 		Mission[id].RandInfo[level].ExploreInfo.count = Mission[id].RandInfo[level].ExploreInfo.count + 1
 		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count] = {}
 		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count].p1 = p1
@@ -2130,6 +2466,8 @@ function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )
 		LG( "randmission_init",  "AddRandMissionInfo: adds data type error, tp = "..tp )
 		return LUA_FALSE
 	end
+
+	--ÅÐ¶Ï¸ÃÀàÐÍÊý¾ÝÐÅÏ¢Ë÷ÒýÊÇ·ñÒÑ¼ÓÈë
 	local count = 0
 	for n = 1, Mission[id].RandInfo[level].tpinfo.count, 1 do
 		if Mission[id].RandInfo[level].tpinfo[n].tp == tp then
@@ -2155,18 +2493,15 @@ function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )
 	return LUA_TRUE
 end
 
+--Ìí¼Ó´Ý»ÙÎï¼þÀàÐÍµÃËæ»ú¿âÐÅÏ¢
 function AddRandKillInfo( level, monsterid, randvalue, randscope, exp, money )
 	if Mission.curmission == nil or Mission.curmission.sid == nil then
 		PRINT( "AddRandKillInfo: register random quest notice, please define a random quest!level, monsterid,  randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
 		LG( "randmission_error", "AddRandKillInfo: register random quest notice, please define a random quest!level, monsterid,  randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
 		return
 	end
-	if level>= LV_LIMIT then 
-		exp = 0
-
-	end
-	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_KILL, monsterid, randvalue, randscope, exp * Raid_Exp_Ev, money * Raid_Money )
 	
+	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_KILL, monsterid, randvalue, randscope, exp, money )
 	if ret ~= LUA_TRUE then
 			PRINT( "AddRandKillInfo:AddRandMissionInfo: register random quest notice error! level, monsterid,  randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
 			LG( "randmission_error", "AddRandKillInfo:AddRandMissionInfo: register random quest notice error! level, monsterid,  randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
@@ -2175,18 +2510,15 @@ function AddRandKillInfo( level, monsterid, randvalue, randscope, exp, money )
 	LG( "randmission_init", "AddRandKillInfo:level, monsterid, randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
 end
 
+--Ìí¼Ó»ñÈ¡ÎïÆ·ÀàÐÍËæ»ú¿âÐÅÏ¢
 function AddRandGetItem( level, itemid, randvalue, randscope, exp, money )
 	if Mission.curmission == nil or Mission.curmission.sid == nil then
 		PRINT( "AddRandGetItem: register random quest notice, please define a random quest!level, itemid,  randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
 		LG( "randmission_error", "AddRandGetItem: register random quest notice, please define a random quest!level, itemid,  randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
 		return
 	end
-	if level>= LV_LIMIT then 
-		exp = 0
-
-	end
-	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_GET, itemid, randvalue, randscope, exp * Raid_Exp_Ev, money *Raid_Money )
 	
+	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_GET, itemid, randvalue, randscope, exp, money )
 	if ret ~= LUA_TRUE then
 			PRINT( "AddRandGetItem:AddRandMissionInfo: register random quest notice error! level, monsterid,  randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
 			LG( "randmission_error", "AddRandGetItem:AddRandMissionInfo: register random quest notice error! level, itemid,  randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
@@ -2195,23 +2527,21 @@ function AddRandGetItem( level, itemid, randvalue, randscope, exp, money )
 	LG( "randmission_init", "AddRandGetItem:level, itemid, randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
 end
 
+--Ìí¼ÓËÍÎï¼þÀàÐÍËæ»ú¿âÐÅÏ¢
 function AddRandSendInfo( level, npcid, exp, money )
 	if Mission.curmission == nil or Mission.curmission.sid == nil then
 		PRINT( "AddRandSendInfo: register random quest notice, please define a random quest!level, npcid, exp, money", level, npcid, exp, money )
 		LG( "randmission_error", "AddRandSendInfo: register random quest notice, please define a random quest!level, npcid, exp, money", level, npcid, exp, money )
 		return
 	end
+	
 	if npcid == nil or NpcList[npcid] == nil or NpcList[npcid].mapid == nil or NpcList[npcid].areaid == nil then
 		PRINT( "AddRandSendInfo: Please input correct NPC ID notice. npcid = ", npcid )
 		LG( "randmission_error", "AddRandSendInfo: Please input correct NPC ID notice. npcid = ", npcid )
 		return
 	end
-	if level>= LV_LIMIT then 
-		exp = 0
-
-	end
-	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_SEND, npcid, NpcList[npcid].areaid, NpcList[npcid].mapid, exp * Raid_Exp_Ev, money*Raid_Money )
 	
+	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_SEND, npcid, NpcList[npcid].areaid, NpcList[npcid].mapid, exp, money )
 	if ret ~= LUA_TRUE then
 			PRINT( "AddRandSendInfo:AddRandMissionInfo: register random quest notice error! level, npcid, mapid, areaid, mapid, exp, money", level, npcid, NpcList[npcid].areaid, NpcList[npcid].mapid, exp, money )
 			LG( "randmission_error", "AddRandSendInfo:AddRandMissionInfo: register random quest notice error! level, npcid, areaid, mapid, exp, money", level, npcid, NpcList[npcid].areaid, NpcList[npcid].mapid, exp, money )
@@ -2220,6 +2550,7 @@ function AddRandSendInfo( level, npcid, exp, money )
 	LG( "randmission_init", "AddRandSendInfo:level, npcid, mapid, areaid, exp, money", level, npcid, NpcList[npcid].areaid, NpcList[npcid].mapid, exp, money )
 end
 
+--Ìí¼ÓËÍÎï¼þÀàÐÍËæ»ú¿â¿ÉÑ¡Îï¼þÐÅÏ¢
 function AddRandSendItem( level, item )
 	if Mission.curmission.RandInfo[level] == nil then
 		PRINT( "AddRandSendItem: add send letter random quest item, exceeds level.level = ", level )
@@ -2231,18 +2562,15 @@ function AddRandSendItem( level, item )
 	LG( "randmission_init", "AddRandSendItem:misid, level, item", Mission.curmission.sid, level, item )
 end
 
+--Ìí¼Ó»¤ËÍÀàÐÍËæ»ú¿âÐÅÏ¢
 function AddRandConvoyInfo( level, charid, mapid, areaid, x, y, scope, exp, money )
 	if Mission.curmission == nil or Mission.curmission.sid == nil then
 		PRINT( "AddRandConvoyInfo: when registering random quest notice , please define a random quest!level, npcid, areaid, mapid, exp, money", level, areaid, mapid, exp, money )
 		LG( "randmission_error", "AddRandConvoyInfo: when registering random quest notice , please define a random quest!level, npcid, areaid, mapid, exp, money", level, areaid, mapid, exp, money )
 		return
 	end
-	if level>= LV_LIMIT then 
-		exp = 0
 
-	end
-	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_CONVOY, charid, mapid, areaid, x, y, scope, exp * Raid_Exp_Ev , money * Raid_Money )
-	
+	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_CONVOY, charid, mapid, areaid, x, y, scope, exp, money )
 	if ret ~= LUA_TRUE then
 			PRINT( "AddRandConvoyInfo:AddRandMissionInfo: Register random quest notice error! level, charid, mapid, mapid, areaid, x, y, scope, exp, money", level, charid, mapid, areaid, x, y, scope, exp, money )
 			LG( "randmission_error", "AddRandConvoyInfo:AddRandMissionInfo: register random quest notice error! level, charid, mapid, areaid, x, y, scope, exp, money", level, charid, mapid, areaid, x, y, scope, exp, money )
@@ -2251,20 +2579,25 @@ function AddRandConvoyInfo( level, charid, mapid, areaid, x, y, scope, exp, mone
 	LG( "randmission_init", "AddRandConvoyInfo:level, charid, mapid, areaid, x, y, scope, exp, money", level, charid, mapid, areaid, x, y, scope, exp, money )
 end
 
+--Ìí¼ÓÌ½Ë÷ÀàÐÍËæ»ú¿âÐÅÏ¢
 function AddRandExploreInfo( level, mapid, areaid, x, y, exp, money )
 end
 
+--Ìí¼ÓËæ»úÈÎÎñÍê³É´ÎÊýºóËæ»ú¸ß¼¶×°±¸½±Àø
+--Ëæ»úÈÎÎñÃ³Ò×Ë°µã½±Àø
 function AddRandPriceCess( level, cess, cessrange )
 	LG( "randmission_init", "AddRandPrizeItem:misid, level, cess, cessrange", Mission.curmission.sid, level, cess, cessrange )
 	if Mission.curmission.RandInfo[level] == nil then
 		LG( "randmission_prize_error", "AddRandPriceCess, level data error.", level )
 		return
 	end
+	
 	Mission.curmission.RandInfo[level].LoopData.count = Mission.curmission.RandInfo[level].LoopData.count + 1
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] = {}
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize = {}
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = 0
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.tp = MIS_PRIZE_CESS
+	
 	local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
@@ -2273,17 +2606,20 @@ function AddRandPriceCess( level, cess, cessrange )
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = cessrange
 end
 
+--Ëæ»úÈÎÎñ½ÇÉ«ÉùÍû½±Àø
 function AddRandPriceFrame( level, frame, framerange )
 	LG( "randmission_init", "AddRandPrizeItem:misid, level, frame, framerange" )
 	if Mission.curmission.RandInfo[level] == nil then
 		LG( "randmission_prize_error", "AddRandPriceFrame, level data error.", level )
 		return
 	end
+	
 	Mission.curmission.RandInfo[level].LoopData.count = Mission.curmission.RandInfo[level].LoopData.count + 1
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] = {}
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize = {}
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = 0
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.tp = MIS_PRIZE_FAME
+	
 	local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
@@ -2292,17 +2628,20 @@ function AddRandPriceFrame( level, frame, framerange )
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = framerange
 end
 
+--Ëæ¼´ÈÎÎñ½ÇÉ«³èÎï¾­Ñé½±Àø
 function AddRandPricePetExp( level, exp, exprange )
 	LG( "randmission_init", "AddRandPricePetExp:misid, level, exp, exprange" )
 	if Mission.curmission.RandInfo[level] == nil then
 		LG( "randmission_prize_error", "AddRandPricePetExp, level data error.", level )
 		return
 	end
+	
 	Mission.curmission.RandInfo[level].LoopData.count = Mission.curmission.RandInfo[level].LoopData.count + 1
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] = {}
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize = {}
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = 0
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.tp = MIS_PRIZE_PETEXP
+	
 	local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
@@ -2311,12 +2650,14 @@ function AddRandPricePetExp( level, exp, exprange )
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = exprange
 end
 
+--¿ªÊ¼Ìí¼ÓËæ»úÈÎÎñ¸ß¼¶½±Àø
 function SetRandPrizeItem( level )
 	LG( "randmission_init2", "SetRandPrizeItem:misid, level", Mission.curmission.sid, level )
 	if Mission.curmission.RandInfo[level] == nil then
 		LG( "randmission_prize_error", "SetRandPrizeItem, level data error.", level )
 		return
 	end
+	
 	Mission.curmission.RandInfo[level].LoopData.count = Mission.curmission.RandInfo[level].LoopData.count + 1
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] = {}
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize = {}
@@ -2324,16 +2665,19 @@ function SetRandPrizeItem( level )
 	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.tp = MIS_PRIZE_ITEM
 end
 
+--Ëæ»úÈÎÎñ¸ß¼¶ÎïÆ·½±Àø
 function AddRandPrizeItem( level, item1, itemdata1, item2, itemdata2, item3, itemdata3, item4, itemdata4 )	
 	if Mission.curmission.RandInfo[level] == nil then
 		LG( "randmission_prize_error", "AddRandPrizeItem, level data error.", level )
 		return
 	end
+	
 	if Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] == nil or Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize == nil then
 		LG( "randmission_error", "AddRandPrizeItem: level data notice has not initialized, misid = , level = ", Mission.curmission.sid, level )
 		return
 	end
 	LG( "randmission_init2", "AddRandPrizeItem:misid, level, item1, itemdata1, item2, itemdata2, item3, itemdata3, item4, itemdata4", Mission.curmission.sid, level, item1, itemdata1, item2, itemdata2, item3, itemdata3, item4, itemdata4 )
+	
 	if item1 ~= nil then
 		local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
 		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
@@ -2344,6 +2688,7 @@ function AddRandPrizeItem( level, item1, itemdata1, item2, itemdata2, item3, ite
 	else
 		return
 	end
+	
 	if item2 ~= nil then
 		local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
 		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
@@ -2354,6 +2699,7 @@ function AddRandPrizeItem( level, item1, itemdata1, item2, itemdata2, item3, ite
 	else
 		return
 	end
+
 	if item3 ~= nil then
 		local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
 		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
@@ -2364,6 +2710,7 @@ function AddRandPrizeItem( level, item1, itemdata1, item2, itemdata2, item3, ite
 	else
 		return
 	end
+
 	if item4 ~= nil then
 		local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
 		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
@@ -2374,29 +2721,38 @@ function AddRandPrizeItem( level, item1, itemdata1, item2, itemdata2, item3, ite
 	else
 		return
 	end
+
 end
 
+--ÉèÖÃËæ»úÈÎÎñ¶ÎÍê³É¸ßµÈ¼¶×°±¸½±ÀøµÄËæ»úÂÊºÍÐèÒªÍê³É×î´óÊýÁ¿
 function SetRandPrizeOdds( loopnum, odds, completenum )
+	--Mission.curmission.RandInfo[level].PrizeItem.odds = odds
+	--Mission.curmission.RandInfo[level].PrizeItem.num  = completenum
+	--LG( "randmission_init", "AddRandPrizeItem:Add item, level, odds, completenum", level, odds, completenum )
+	
 	LG( "randmission_init", "SetRandPrizeOdds:loopnum, odds, completenum", loopnum, odds, completenum )
 	if Mission.curmission.loopinfo[loopnum] ~= nil then
 		PRINT( "SetRandPrizeOdds: data set duplicate.loopnum, odds completenum", loopnum, Mission.curmission.loopinfo[loopnum].odds, Mission.curmission.loopinfo[loopnum].completenum )
 		LG( "randmission_error", "SetRandPrizeOdds: data set duplicate.loopnum, odds completenum", loopnum, Mission.curmission.loopinfo[loopnum].odds, Mission.curmission.loopinfo[loopnum].completenum )
 	end
+	
 	Mission.curmission.loopinfo[loopnum] = {}
 	Mission.curmission.loopinfo[loopnum].odds = odds
 	Mission.curmission.loopinfo[loopnum].num = completenum
 end
 
+--³õÊ¼»¯ÊÀ½çNPCÐÅÏ¢ÁÐ±í
 function InitNpcList()
 	NpcList = {}
 	NpcList.count = 0
 end
 
+--Ìí¼ÓNPCÐÅÏ¢
 function AddNpcInfo( npcid, name, mapid, areaid )
 	PRINT( "Add NPC, ID["..npcid.."], nick ["..name.."] , MapID = "..mapid.."AreaID = "..areaid )
-	LG( "Èíôîðìàöèÿ ÍÏÑ", "AddNpcInfo:npcid = "..npcid.." name = "..name.." mapid = "..mapid.." areaid = "..areaid )
+	LG( "npcinfo", "AddNpcInfo:npcid = "..npcid.."name = "..name.."mapid = "..mapid.."areaid = "..areaid )
 	if NpcList[npcid] ~= nil then
-		LG( "Èíôîðìàöèÿ ÍÏÑ", "AddNpcInfo: found duplicate ID while adding notice, overlay original NPC notice.ID = "..npcid.." name = "..NpcList[npcid].name )
+		LG( "npcinfo", "AddNpcInfo: found duplicate ID while adding notice, overlay original NPC notice.ID = "..npcid.."name = "..NpcList[npcid].name )
 		PRINT( "AddNpcInfo: found duplicate ID while adding notice, overlay original NPC notice.ID = "..npcid.."name = "..NpcList[npcid].name )
 	end
 	NpcList[npcid] = {}
@@ -2407,83 +2763,95 @@ end
 
 function GetNpcName( npcid )
 	if npcid == nil or NpcList[npcid] == nil or NpcList[npcid].name == nil then
-		return "§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§í§Û §¯§±§³ "..npcid
+		return "Unknown NPC"..npcid
 	end
 	return NpcList[npcid].name
 end
 
+--³õÊ¼»¯×ÊÔ´ÐÅÏ¢ÁÐ±í
 function InitResource()
-	ResourceList = {}		
+	ResourceList = {}		--×ÊÔ´ÐÅÏ¢
 	ResourceList.wood = {}
 	ResourceList.mine = {}
 end
 
+--Ìí¼Ó×ÊÔ´ÐÅÏ¢
 function SetWoodResource( level, itemid, count, pileid )
 	if level == nil or itemid == nil or count == nil or pileid == nil then
 		PRINT( "SetWoodResource:Function parameter error!level, itemid, count, pileid", level, itemid, count, pileid )
-		LG( "Îøèáêè  ìîðñêîé òîðãîâëè", "SetWoodResource:Function parameter error!level, itemid, count, pileid", level, itemid, count, pileid )
+		LG( "goods_error", "SetWoodResource:Function parameter error!level, itemid, count, pileid", level, itemid, count, pileid )
 		return LUA_FALSE
 	end
+	
 	if ResourceList == nil or ResourceList.wood == nil then
 		PRINT( "SetWoodResource: resource notice list cannot be as null!" )
-		LG( "Îøèáêè  ìîðñêîé òîðãîâëè", "SetWoodResource: resource notice list cannot be as null!" )
+		LG( "goods_error", "SetWoodResource: resource notice list cannot be as null!" )
 		return LAU_FALSE
 	end
+	
 	if ResourceList.wood[level] ~= nil then
-		PRINT( "While setting wood resource Loading notice, overlay of notice level is discovered!old data, level, itemid, count, pileid", level, itemid, count, pileid )
-		LG( "Îøèáêè  ìîðñêîé òîðãîâëè", "While setting wood resource Loading notice, overlay of notice level is discovered!old data, level, itemid, count, pileid", level, itemid, count, pileid )
+		PRINT( "While setting wood resource loading notice, overlay of notice level is discovered!old data, level, itemid, count, pileid", level, itemid, count, pileid )
+		LG( "goods_error", "While setting wood resource loading notice, overlay of notice level is discovered!old data, level, itemid, count, pileid", level, itemid, count, pileid )
 	end
+	
 	ResourceList.wood[level] = {}
 	ResourceList.wood[level].itemid = itemid
 	ResourceList.wood[level].count = count
 	ResourceList.wood[level].pileid  = pileid
-	PRINT( "Set wood resource Loading notice: Level, ItemID, Count, PileID", level, itemid, count, pileid )
-	LG( "Èíèöèàëèçàöèÿ ìîðñêîé òîðãîâëè", "Set wood resource Loading notice: Level, ItemID, Count, PileID", level, itemid, count, pileid )
+	PRINT( "Set wood resource loading notice: Level, ItemID, Count, PileID", level, itemid, count, pileid )
+	LG( "packbag_init", "Set wood resource loading notice: Level, ItemID, Count, PileID", level, itemid, count, pileid )
 	return LUA_TRUE
 end
 
 function SetMineResource( level, itemid, count, pileid )
 	if level == nil or itemid == nil or count == nil or pileid == nil then
 		PRINT( "SetMineResource:Function parameter error!level, itemid, count, pileid", level, itemid, count, pileid )
-		LG( "Îøèáêè  ìîðñêîé òîðãîâëè", "SetMineResource:Function parameter error!level, itemid, count, pileid", level, itemid, count, pileid )
+		LG( "goods_error", "SetMineResource:Function parameter error!level, itemid, count, pileid", level, itemid, count, pileid )
 		return LUA_FALSE
 	end
+	
 	if ResourceList == nil or ResourceList.mine == nil then
 		PRINT( "SetMineResource: resource notice list cannot be as null!" )
-		LG( "Îøèáêè  ìîðñêîé òîðãîâëè", "SetMineResource: resource notice list cannot be as null!" )
+		LG( "goods_error", "SetMineResource: resource notice list cannot be as null!" )
 		return LAU_FALSE
 	end
+	
 	if ResourceList.mine[level] ~= nil then
-		PRINT( "While setting ore resource Loading notice, level notice discovered to be overlayed! old data, level, itemid, count, pileid", level, itemid, count, pileid )
-		LG( "Îøèáêè  ìîðñêîé òîðãîâëè", "While setting ore resource Loading notice, level notice discovered to be overlayed! old data, level, itemid, count, pileid", level, itemid, count, pileid )
+		PRINT( "While setting ore resource loading notice, level notice discovered to be overlayed! old data, level, itemid, count, pileid", level, itemid, count, pileid )
+		LG( "goods_error", "While setting ore resource loading notice, level notice discovered to be overlayed! old data, level, itemid, count, pileid", level, itemid, count, pileid )
 	end
+	
 	ResourceList.mine[level] = {}
 	ResourceList.mine[level].itemid = itemid
 	ResourceList.mine[level].count = count
 	ResourceList.mine[level].pileid  = pileid
-	PRINT( "set ore resource Loading notice: level, ItemID, Count, PileID", level, itemid, count, pileid )
-	LG( "Èíèöèàëèçàöèÿ ìîðñêîé òîðãîâëè", "set ore resource Loading notice: level, ItemID, Count, PileID", level, itemid, count, pileid )
+	PRINT( "set ore resource loading notice: level, ItemID, Count, PileID", level, itemid, count, pileid )
+	LG( "packbag_init", "set ore resource loading notice: level, ItemID, Count, PileID", level, itemid, count, pileid )
 	return LUA_TRUE
 end
 
+--Ìí¼Ó¸Û¿ÚÐÅÏ¢
 function AddBerthPort( id, name )
-	PRINT( "add harbor notice: ID["..id.."],§¤§í?§¨??"..name.."]" )
-	LG( "Èíèöèàëèçàöèÿ ïîðòîâ", "add harbor notice: ID["..id.."],§¤§í?§¨??"..name.."]" )
+	PRINT( "add harbor notice: ID["..id.."],Ãû³Æ¡["..name.."]" )
+	LG( "boat_init", "add harbor notice: ID["..id.."],Ãû³Æ¡["..name.."]" )
 	if BerthPortList[id] ~= nil then
-		LG( "Îøèáêà êîðàáëÿ", "AddBerthPort: adds harbor notice sending duplicate ID found, overlayed date: ID = "..id.."name = "..BerthPortList[id].name )
+		LG( "boat_error", "AddBerthPort: adds harbor notice sending duplicate ID found, overlayed date: ID = "..id.."name = "..BerthPortList[id].name )
 		PRINT( "AddBerthPort: adds harbor notice sending duplicate ID found, overlayed date: ID = "..id.."name = "..BerthPortList[id].name )
 	end
+	
 	BerthPortList[id] = {}
 	BerthPortList[id].name = name
 end
 
+--»ñÈ¡¸Û¿ÚÐÅÏ¢
 function GetBerthData( id )
 	if id == nil or BerthPortList[id] == nil or BerthPortList[id].name == nil then		
-		return "§¯§Ö§Ú§Ù§Ó§Ö§ã§ä§ß§à§Ö §¯§Ñ§Ù§Ó§Ñ§ß§Ú§Ö §¢§å§ç§ä§í "..id
+		return "Unknown Harbor name"..id
 	end
 	return BerthPortList[id].name
 end
 
+--´´½¨ÊÂ¼þÊµÌå
 function CreateBerthEntity( name, cid, infoid, xpos1, ypos1, dir1, berth, xpos2, ypos2, dir2 )
 	PRINT( "Build Dock", name, cid, infoid, xpos1, ypos1, dir1, berth, xpos2, ypos2, dir2 )
 	if name == nil or cid == nil or infoid == nil or xpos1 == nil or ypos1 == nil or dir1 == nil or berth == nil or xpos2 == nil or ypos2 == nil or dir2 == nil then
@@ -2492,6 +2860,7 @@ function CreateBerthEntity( name, cid, infoid, xpos1, ypos1, dir1, berth, xpos2,
 		return
 	end
 	LG( "entity_init", "CreateBerthEntity:name, cid, infoid, xpos1, ypos1, dir1, berth, xpos2, ypos2, dir2", name, cid, infoid, xpos1, ypos1, dir1, berth, xpos2, ypos2, dir2 )	
+	
 	local ret, submap = GetCurSubmap()
 	if ret ~= LUA_TRUE then
 		PRINT( "CreateBerthEntity:GetCurSubmapfunctiontransfer failed!" )
@@ -2512,6 +2881,7 @@ function CreateBerthEntity( name, cid, infoid, xpos1, ypos1, dir1, berth, xpos2,
 	end
 end
 
+--´´½¨×ÊÔ´ÊµÌå
 function CreateResourceEntity( name, cid, infoid, xpos, ypos, dir, itemid, count, time )
 	PRINT( "create resource entity", name, cid, infoid, xpos, ypos, dir, itemid, count, time )
 	if name == nil or cid == nil or infoid == nil or xpos == nil or ypos == nil or dir == nil or itemid == nil or count == nil or time == nil then
@@ -2520,6 +2890,7 @@ function CreateResourceEntity( name, cid, infoid, xpos, ypos, dir, itemid, count
 		return
 	end
 	LG( "entity_init", "CreateResourceEntity:name, cid, infoid, xpos, ypos, dir, itemid, count, time", name, cid, infoid, xpos, ypos, dir, itemid, count, time )	
+	
 	local ret, submap = GetCurSubmap()
 	if ret ~= LUA_TRUE then
 		PRINT( "CreateResourceEntity:GetCurSubmapfunctiontransfer failed!" )
@@ -2540,11 +2911,13 @@ function CreateResourceEntity( name, cid, infoid, xpos, ypos, dir, itemid, count
 	end
 end
 
+--ÉèÖÃ½ÇÉ«×ªÖ°Ö°ÒµÀà±ðºÍ½ÇÉ«ÀàÐÍÏÞ¶¨Ìõ¼þÅÐ¶ÏÐÅÏ¢£¬
 function AddPfTable( curpf, uppf )
 	if Profession[curpf] == nil then
 		Profession[curpf] = {}
 		Profession[curpf].count = 0
 	end
+	
 	for n = 1, Profession[curpf].count, 1 do
 		if Profession[curpf][n] == uppf then
 			PRINT( "Set target class advancement list notice already existed, add target notice failed!curpf = , uppf = ", curpf, uppf )
@@ -2552,8 +2925,10 @@ function AddPfTable( curpf, uppf )
 			return
 		end
 	end
+	
 	Profession[curpf].count = Profession[curpf].count + 1
 	Profession[curpf][Profession[curpf].count] = uppf
+	
 	LG( "PfTable", "AddPfTable, curpf, uppf, count", curpf, uppf, Profession[curpf].count )
 end
 
@@ -2562,6 +2937,7 @@ function AddCatTable( cat, pf )
 		Category[cat] = {}
 		Category[cat].count = 0
 	end
+	
 	for n = 1, Category[cat].count, 1 do
 		if Category[cat][n] == pf then
 			PRINT( "Set target size class advancement restriction notice already existed add target notice failed!, cat, pt ", cat, pf )
@@ -2569,2132 +2945,346 @@ function AddCatTable( cat, pf )
 			return
 		end
 	end
+	
 	Category[cat].count = Category[cat].count + 1
 	Category[cat][Category[cat].count] = pf
+	
 	LG( "PfTable", "AddCatTable, cat, pf, count ", cat, pf, Category[cat].count )
 end
 
+------------------------------------------------------------
+--²âÊÔ´úÂë
 function TestDefPage()
-	Talk( 1, "§¢§Ñ§Ò§å§ê§Ü§Ñ: §±§â§Ú§Ó§Ö§ä, §Õ§Ú§ä§ñ §Þ§à§Ö!" )
-	Text( 1, "§©§Ñ§Õ§Ñ§ß§Ú§Ö ", amp, 2 )
-	Text( 1, "§´§à§â§Ô§à§Ó§Ý§ñ ", ct, 2 )
+	--µÚÒ»Ò³
+	Talk( 1, "Granny: \"Hello, young fellow!\"" )
+	Text( 1, "Quest", amp, 2 )
+	Text( 1, "bye", ct, 2 )
 
-	Talk( 2, "§¢§Ñ§Ò§å§ê§Ü§Ñ: §¯§Ú§é§Ö§Ô§à, §Ú§Õ§Ú §Õ§Ö§Ý§Ñ§Û §ã§Ó§à§Ú §Õ§Ö§Ý§Ñ" )
+	--µÚ¶þÒ³
+	Talk( 2, "Granny: \"Nothing Go do your stuff\"" )
 
-	Talk( 3, "§¢§Ñ§Ò§å§ê§Ü§Ñ: §£§í §Þ§à§Ø§Ö§ä§Ö §Þ§ß§Ö §á§à§Þ§à§é§î §ã§à§Ò§â§Ñ§ä§î §Ý§Ú§ã§ä§à§Ó§í§Ö §á§à§é§Ü§Ú? §®§ß§Ö §ß§å§Ø§ß§à 10 §ê§ä. §±§à§Ý§å§é§Ú§ä§î §Ú§ç §Þ§à§Ø§ß§à §à§ä §´§Ñ§Ú§ß§ã§ä§Ó§Ö§ß§ß§à§Ô§à §Ü§å§ã§ä§Ñ, §Ó§à§Ù§Ý§Ö §³§Ö§â§Ö§Ò§â§ñ§ß§à§Ô§à §¤§à§â§à§Õ§Ñ." )
-	Text( 3, "§·§à§â§à§ê§à, §ñ §á§à§ß§ñ§Ý.", ct )
+	--µÚÈýÒ³
+	Talk( 3, "Granny: \"Did you help me collect Leaf Buds? I need 10. Get them from the Mystic Shrub outside of Argent City.\"" )
+	Text( 3, "Ok, I understand", ct )
 
+	--³õÊ¼»¯MultiTrigger
 	InitTrigger()
+
+	--µÚÒ»¸ö´¥·¢Æ÷
 	TriggerCondition( 1, HasMission, 12 )
 	TriggerCondition( 1, NoRecord, 145 )
 	TriggerAction( 1, GiveItem, 789 )
+
+	--µÚ¶þ¸ö´¥·¢Æ÷
 	TriggerCondition( 2, HasMission, 12 )
 	TriggerCondition( 2, NoRecord, 145 )
 	TriggerAction( 2, GiveItem, 789 )
+
+	--³õÊ¼»¯¶àº¯ÊýÁÐ±í
 	InitFuncList()
-	AddFuncList( CreditExchange, 0 ) 
-	AddFuncList( CreditExchange, 1 ) 
-	Talk( 4, "§¢§Ñ§Ò§å§ê§Ü§Ñ: §¯§Ö §Ù§Ñ§Ò§å§Õ§î§ä§Ö §á§â§Ú§ß§Ö§ã§ä§Ú §Ý§Ö§Ü§Ñ§â§ã§ä§Ó§à §Ó§â§Ñ§é§å. §°§ß §Õ§à§Ý§Ø§Ö§ß §Ò§í§ä§î §â§ñ§Õ§à§Þ §ã §Ò§Ñ§â§à§Þ §Ó §³§Ö§â§Ö§Ò§â§ñ§ß§à§Þ §Ô§à§â§à§Õ§Ö. " )
-	Text( 4, "§·§à§â§à§ê§à ", MultiTrigger, GetMultiTrigger(), 2 )
+	
+	--Ìí¼Óº¯Êýµ½º¯ÊýÁÐ±íÖÐ
+	AddFuncList( CreditExchange, 0 ) --ÒªÇ®
+	AddFuncList( CreditExchange, 1 ) --ÒªÎï
+	--ÒÔÉÏÁ½ÕßÈ¡ÆäÒ»
+	
+	--µÚËÄÒ³
+	Talk( 4, "Granny: \"Remember to bring the medicine to the physician. He should be near the starry bar in Argent City.\"" )
+	Text( 4, "Ok", MultiTrigger, GetMultiTrigger(), 2 )
+	
+	--³õÊ¼»¯¶àº¯ÊýÁÐ±í
 	InitFuncList()
-	AddFuncList( CreditExchange, 0 ) 
-	Test( 4, "§°§Ò§Þ§Ö§ß§ñ§ä§î §Ù§à§Ý§à§ä§à ", MultiFunc, GetFuncList(), GetNumFunc() )
+	
+	--Ìí¼Óº¯Êýµ½º¯ÊýÁÐ±íÖÐ
+	AddFuncList( CreditExchange, 0 ) --ÒªÇ®
+	Test( 4, "Redeem gold", MultiFunc, GetFuncList(), GetNumFunc() )
+	
+	--³õÊ¼»¯¶àº¯ÊýÁÐ±í
 	InitFuncList()
-	AddFuncList( CreditExchange, 1 ) 
-	Test( 4, "§°§Ò§Þ§Ö§ß§ñ§ä§î §á§â§Ö§Õ§Þ§Ö§ä ", MultiFunc, GetFuncList(), GetNumFunc() )
+	
+	--Ìí¼Óº¯Êýµ½º¯ÊýÁÐ±íÖÐ
+	AddFuncList( CreditExchange, 1 ) --ÒªÎï	
+	Test( 4, "Redemption item", MultiFunc, GetFuncList(), GetNumFunc() )
+	
+	--¶¨Òå½»Ò×ÐÅÏ¢
 	InitTrade()
+
+	--ÎäÆ÷
 	Weapon( 1721 )
 	Weapon( 1722 )
 	Weapon( 1723 )
+
+	--·À¾ß
 	Defence( 1001 )
+
+	--ÆäËû
 	Other( 1991 )
+
+	--³õÊ¼»¯MultiTrigger
 	InitTrigger()
+
+	--µÚÒ»¸ö´¥·¢Æ÷
 	TriggerCondition( 1, HasMission, 12 )
 	TriggerCondition( 1, NoRecord, 145 )
 	TriggerAction( 1, jp, 1 )
+
+	--µÚ¶þ¸ö´¥·¢Æ÷
 	TriggerCondition( 2, HasMission, 13 )
 	TriggerCondition( 2, NoRecord, 146 )
 	TriggerAction( 2, jp, 2 )
+
+	--Ò³¿ªÊ¼´¥·¢Æ÷
 	Start( GetMultiTrigger(), 2 )
 end
 
+--²âÊÔ¶Ô»°Ò³º¯Êý
+--ResetNpcInfo( "TestNpc" )
+--TestDefPage()
+
+--Ëæ»úÈÎÎñ½ÓÊÜËÍÐÅNPCÈÎÎñÐÅÏ¢¶¨Òå
 function TestDefMission( id, name, misid, scriptid, npcid, areaid )
 	DefineMission( id, name, misid, COMPLETE_SHOW )
+	
 	MisPrize( MIS_PRIZE_MONEY, 300, 1 )
-	MisPrizeSelAll() 
-	MisBeginTalk( "§³§á§Ñ§ã§Ú§Ò§à §Ù§Ñ §Õ§à§ã§ä§Ñ§Ó§Ü§å §Þ§à§Ö§Û §á§à§ã§í§Ý§Ü§Ú!" )
+	MisPrizeSelAll() --È«²¿¸øÓè
+	
+	MisBeginTalk( "Thank you for sending my parcel over!" )
 	MisBeginCondition( AlwaysFailure )
-	MisReultTalk( "§³§á§Ñ§ã§Ú§Ò§à §Ù§Ñ §Õ§à§ã§ä§Ñ§Ó§Ü§å §Þ§à§Ö§Û §á§à§ã§í§Ý§Ü§Ú!" )
-	MisHelpTalk( "§©§Ñ§Õ§Ñ§ß§Ú§Ö §ß§Ö§Ù§Ñ§Ó§Ö§â§ê§Ö§ß§ß§à! §±§à§Ø§Ñ§Ý§å§Û§ã§ä§Ñ, §á§â§à§Õ§à§Ý§Ø§Ñ§Û§ä§Ö." )
+	
+	MisReultTalk( "Thank you for sending my parcel over!" )
+	MisHelpTalk( "Quest incompleted, please continue" )
+	
 	MisResultCondition( HasRandMissionNpc, misid, npcid, areaid )
 	MisResultCondition( NoRandNpcItemFlag, misid, npcid )
+	
 	MisResultAction( TakeRandNpcItem, misid, npcid, GetNpcName( npcid ) )
 	MisResultAction( AddExp, 100, 1000 )
 	MisResultAction( RefreshCompleteFlag, scriptid )
 end
 
+--TestDefMission( 1, "Parcel of Peter", 8, 3, 1 )
+--AddNpcInfo( 3, "Peter", 1, 1 ) --Ìí¼Ó¸ÃNPCµ½ÐÅÏ¢¿âÖÐ
+
+--TestDefMission( 2, "Parcel of Shaitan Teleporter", 8, 4, 1 )
+--AddNpcInfo( 4, "Shaitan Teleporter", 1, 1 )
+
 function TestRegNpcMission()
 	AddNpcMission( 2 )
 end
 
+--¶¨ÒåÒ»¸öËæ»úÈÎÎñ
 function TestRandMission()
 	PRINT( "TestRandMission" )
-   DefineRandMission( 10, "§³§Ý§å§é§Ñ§Û§ß§à§Ö §Ù§Ñ§Õ§Ñ§ß§Ú§Ö ", 8 )
+   --³õÊ¼»¯Ëæ»úÈÎÎñ»ù±¾ÐÅÏ¢
+   DefineRandMission( 10, "Random Quest", 8 )
+
+   --ÉèÖÃËæ»úÈÎÎñÀàÐÍ
+   --AddRandMissionType( MIS_RAND_KILL, 1, 2, 3, 4 )
+   --AddRandMissionType( MIS_RAND_GET, 5, 6, 7, 8 )
+   --AddRandMissionType( MIS_RAND_SEND, 9, 10, 11, 12 )
    AddRandMissionType( MIS_RAND_CONVOY, 1, 2, 3, 4, 5 )
+   --AddRandMissionType( MIS_RAND_EXPLORE )
    PRINT( "AddRandMissionType" )
+   
+   --ÉèÖÃ´Ý»ÙÊý¾Ý¿âÐÅÏ¢
+   --AddRandKillInfo( 1, 69, 1, 8, 100, 50 )
+   --AddRandKillInfo( 2, 69, 1, 4, 200, 100 )
+   --AddRandKillInfo( 2, 70, 1, 4, 400, 200 )
+   
+   --
+   --AddRandGetItem( 2, 1721, 1, 4, 18, 80 )
+   --AddRandGetItem( 2, 1715, 5, 4, 80, 800 )
+   
+   --
+   --AddRandSendInfo( 2, 3, 190, 290 )
+   --AddRandSendInfo( 2, 4, 390, 890 )
+
+   --2¼¶Ëæ»ú¿ÉËÍµÄÎïÆ·ÐÅÏ¢Ìí¼Ó
+   --AddRandSendItem( 2, 1721 )
+   --AddRandSendItem( 2, 1722 )
+   --AddRandSendItem( 2, 1723 )
+   --AddRandSendItem( 2, 1715 )
+   
+   --
    AddRandConvoyInfo( 2, 1, 1, 1, 2198, 2780, 10, 60, 120 )
+   
+   --   AddRandPrizeItem( 2, 2 )
    AddRandPrizeItem( 2, 3 )
    AddRandPrizeItem( 2, 4 )
    AddRandPrizeItem( 2, 5 )
    AddRandPrizeItem( 2, 6 )
+   
    SetRandPrizeOdds( 2, 50, 5 )
+
 end
 
+--TestRandMission()
+
+--²âÊÔÈÎÎñÐÅÏ¢×¢²áº¯Êý
+--ResetNpcInfo( "TestNpc" )
+--TestDefMission()
+--TestRegNpcMission()
+
+--²âÊÔ³öÉú
 function TestBorn()
 	PRINT( "TestBorn" )
 	InitTrigger()
+	--TriggerAction( 1, AddTrigger, 24, TE_LEVELUP, 15, 1 )
+	--TriggerAction( 1, AddTrigger, 25, TE_GOTO_MAP, 1, 2198, 2780, 10 )
+	--TriggerAction( 1, AddTrigger, 26, TE_GAMETIME, TT_MULTITIME, 1, 1 )
+	--TriggerAction( 1, AddTrigger, 27, TE_GAMETIME, TT_CYCLETIME, 1, 0 )
+	--TriggerAction( 1, AddTrigger, 28, TE_GAMETIME, TT_MULTITIME, 1, 10 )
+	--TriggerAction( 1, AddTrigger, 29, TE_KILL, 69, 2 )
+	--TriggerAction( 1, AddTrigger, 30, TE_GETITEM, 1721, 2 )
 	RegTrigger( 88888, 1 )
+	
+	--define trigger 24
 	InitTrigger()
 	TriggerAction( 1, SystemNotice, "Level up 15! trigger action!" )
 	RegTrigger( 24, 1 )
+	
+	--define trigger 25
 	InitTrigger()
 	TriggerAction( 1, SystemNotice, "Goto map, 2197, 2780, 10 m!" )
 	TriggerAction( 1, SummonNpc, 1, 1, "Physican - Ditto", 4 )
 	RegTrigger( 25, 1 )
+	
+	--define trigger 26
 	InitTrigger()
 	TriggerAction( 1, SystemNotice, "Time single per 1 minute trig" )
 	TriggerAction( 1, SystemNotice, "Welcome to the world of Tales of Pirates!" )
 	RegTrigger( 26, 1 )
+	
+	--define trigger 27
 	InitTrigger()
 	TriggerAction( 1, SystemNotice, "Time cycle per 1 minute" )
 	TriggerAction( 1, HelpInfo, MIS_HELP_DESP, "You are still new. Work hard and train hard!" )
-	TriggerAction( 1, HelpInfo, MIS_HELP_IMAGE, "§²§£§¬§¸map §¸§×¦Ì?§¬§¸?§Ò.tga" )
+	TriggerAction( 1, HelpInfo, MIS_HELP_IMAGE, "ÐÂÊÖmap Ö¸µ¼ÊÖ²á.tga" )
 	TriggerAction( 1, HelpInfo, MIS_HELP_SOUNT, 18 )
 	RegTrigger( 27, 1 )
+	
+	--define trigger 28
 	InitTrigger()
 	TriggerAction( 1, SystemNotice, "Time multitime per 1 minute 10 count" )
 	RegTrigger( 28, 1 )
+	
+	--define trigger 29
 	InitTrigger()
 	TriggerAction( 1, SystemNotice, "kill 69 monster" )
 	RegTrigger( 29, 1 )
+	
+	--define trigger 30
 	InitTrigger()
 	TriggerAction( 1, SystemNotice, "Getitem 1721" )
 	RegTrigger( 30, 1 )	
+	
 end
+--TestBorn()
 
+
+--ÉèÖÃ×ªÖ°ÏÞÖÆÐÅÏ¢
 function TestConvertProfession()
-	AddPfTable( 1, 8 )		
-	AddPfTable( 1, 9 )		
-	AddPfTable( 1, 10 )		
-	AddPfTable( 2, 11 )		
-	AddPfTable( 2, 12 )		
-	AddPfTable( 3, 15 )		
-	AddPfTable( 4, 16 ) 	
-	AddPfTable( 5, 13 )		
-	AddPfTable( 5, 14 )		
-	AddPfTable( 6, 18 )		
-	AddPfTable( 7, 17 )		
-	AddCatTable( 1, 1 )		
-	AddCatTable( 1, 2 )		
-	AddCatTable( 1, 4 )		
-	AddCatTable( 1, 7 )		
-	AddCatTable( 1, 9 )		
-	AddCatTable( 1, 10 )	
-	AddCatTable( 1, 11 )	
-	AddCatTable( 1, 12 )	
-	AddCatTable( 1, 16 )	
-	AddCatTable( 1, 17 )	
-	AddCatTable( 2, 1 )		
-	AddCatTable( 2, 3 )		
-	AddCatTable( 2, 6 )		
-	AddCatTable( 2, 7 )		
-	AddCatTable( 2, 8 )		
-	AddCatTable( 2, 10 )	
-	AddCatTable( 2, 17 )	
-	AddCatTable( 3, 2 )		
-	AddCatTable( 3, 3 )		
-	AddCatTable( 3, 5 )		
-	AddCatTable( 3, 7 )		
-	AddCatTable( 3, 11 )	
-	AddCatTable( 3, 12 )	
-	AddCatTable( 3, 13 )	
-	AddCatTable( 3, 14 )	
-	AddCatTable( 3, 15 )	
-	AddCatTable( 3, 17 )	
-	AddCatTable( 4, 4 )		
-	AddCatTable( 4, 5 )		
-	AddCatTable( 4, 6 )		
-	AddCatTable( 4, 7 )		
-	AddCatTable( 4, 13 )	
-	AddCatTable( 4, 14 )	
-	AddCatTable( 4, 16 )	
-	AddCatTable( 4, 17 )	
-	AddCatTable( 4, 18 )	
+	--ÐÂÊÖÎÞ×ªÖ°ÏÞÖÆ 
+	
+	--½£Ê¿×ªÖ°
+	AddPfTable( 1, 8 )		--×ªÖ°Îª¾Þ½£Ê¿
+	AddPfTable( 1, 9 )		--×ªÖ°ÎªË«½£Ê¿
+	AddPfTable( 1, 10 )		--×ªÖ°Îª½£¶ÜÊ¿
+	
+	--ÁÔÈË×ªÖ°
+	AddPfTable( 2, 11 )		--×ªÖ°ÎªÑµÊÞÊ¦
+	AddPfTable( 2, 12 )		--×ªÖ°Îª¾Ñ»÷ÊÖ
+	
+	--Ë®ÊÖ×ªÖ°
+	AddPfTable( 3, 15 )		--×ªÖ°Îª´¬³¤
+	
+	--Ã°ÏÕÕß×ªÖ°
+	AddPfTable( 4, 16 ) 	--×ªÖ°Îªº½º£Ê¿
+	
+	--ÆíÔ¸Ê¹×ªÖ°
+	AddPfTable( 5, 13 )		--×ªÖ°ÎªÊ¥Ö°Õß
+	AddPfTable( 5, 14 )		--×ªÖ°Îª·âÓ¡Ê¦
+	
+	--¼¼Ê¦×ªÖ°
+	AddPfTable( 6, 18 )		--×ªÖ°Îª¹¤³ÌÊ¦
+	
+	--ÉÌÈË×ªÖ°
+	AddPfTable( 7, 17 )		--×ªÖ°ÎªÉÌÈË
+	
+	--½ÇÉ«ÌåÐÎÏÞÖÆ
+	--³¤·¢ÄÐ×ªÖ°
+	AddCatTable( 1, 1 )		--×ªÖ°Îª½£Ê¿
+	AddCatTable( 1, 2 )		--×ªÖ°ÎªÁÔÈË
+	AddCatTable( 1, 4 )		--×ªÖ°ÎªÃ°ÏÕÕß
+	AddCatTable( 1, 7 )		--×ªÖ°ÎªÉÌÈË
+	AddCatTable( 1, 9 )		--×ªÖ°ÎªË«½£Ê¿
+	AddCatTable( 1, 10 )	--×ªÖ°Îª½£¶ÜÊ¿
+	AddCatTable( 1, 11 )	--×ªÖ°ÎªÑ±ÊÞÊ¦
+	AddCatTable( 1, 12 )	--×ªÖ°Îª¾Ñ»÷ÊÖ
+	AddCatTable( 1, 16 )	--×ªÖ°Îªº½º£Ê¿
+	AddCatTable( 1, 17 )	--×ªÖ°Îª±¬·¢»§
+	
+	--¿ýÎàÄÐ×ªÖ°
+	AddCatTable( 2, 1 )		--×ªÖ°Îª½£Ê¿
+	AddCatTable( 2, 3 )		--×ªÖ°ÎªË®ÊÖ
+	AddCatTable( 2, 6 )		--×ªÖ°Îª¼¼Ê¦
+	AddCatTable( 2, 7 )		--×ªÖ°ÎªÉÌÈË
+	AddCatTable( 2, 8 )		--×ªÖ°Îª¾Þ½£Ê¿
+	AddCatTable( 2, 10 )	--×ªÖ°Îª½£¶ÜÊ¿
+	AddCatTable( 2, 17 )	--×ªÖ°Îª±¬·¢»§
+	
+	--Å®Ö÷½ÇÒ»×ªÖ°
+	AddCatTable( 3, 2 )		--×ªÖ°ÎªÁÔÈË
+	AddCatTable( 3, 3 )		--×ªÖ°ÎªË®ÊÖ
+	AddCatTable( 3, 5 )		--×ªÖ°ÎªÆíÔ¸Ê¹
+	AddCatTable( 3, 7 )		--×ªÖ°ÎªÉÌÈË
+	AddCatTable( 3, 11 )	--×ªÖ°ÎªÑµÊÞÊ¦
+	AddCatTable( 3, 12 )	--×ªÖ°Îª¾Ñ»÷ÊÖ
+	AddCatTable( 3, 13 )	--×ªÖ°ÎªÊ¥Ö°Õß
+	AddCatTable( 3, 14 )	--×ªÖ°Îª·âÓ¡Ê¦
+	AddCatTable( 3, 15 )	--×ªÖ°Îª´¬³¤
+	AddCatTable( 3, 17 )	--×ªÖ°Îª±©·¢»§
+	
+	--Å®Ö÷½Ç¶þ×ªÖ°
+	AddCatTable( 4, 4 )		--×ªÖ°ÎªÃ°ÏÕÕß
+	AddCatTable( 4, 5 )		--×ªÖ°ÎªÆíÔ¸Ê¹
+	AddCatTable( 4, 6 )		--×ªÖ°Îª¼¼Ê¦
+	AddCatTable( 4, 7 )		--×ªÖ°ÎªÉÌÈË
+	AddCatTable( 4, 13 )	--×ªÖ°ÎªÊ¥Ö°Õß
+	AddCatTable( 4, 14 )	--×ªÖ°Îª·âÓ¡Ê¦
+	AddCatTable( 4, 16 )	--×ªÖ°Îªº½º£Ê¿
+	AddCatTable( 4, 17 )	--×ªÖ°Îª±©·¢»§
+	AddCatTable( 4, 18 )	--×ªÖ°Îª¹¤³ÌÊ¦
 end
 
+--TestConvertProfession()
 
+--²âÊÔ´ò°ü
+--SetWoodResource( 1, 3989, 10, 3999 )
+--SetMineResource( 1, 1, 1, 2 )
 
+--´¬Ö»Éý¼¶Êý¾Ý²âÊÔ
+--InitBoatLevel()
+--AddBoatLevel( 1, 10, 0)
+--AddBoatLevel( 2, 10, 0)
+--AddBoatLevel( 3, 10, 0)
+--AddBoatLevel( 4, 10, 0)
+--AddBoatLevel( 5, 10, 0)
+--AddBoatLevel( 6, 10, 0)
+--AddBoatLevel( 7, 10, 0)
 
+function GetNpc(character, name)
 
---Ìàññèâû òîðãîâëè
-Exchange2 ={}
-Exchange3 ={}
-Exchange4 ={}
-Exchange5 ={}
-Exchange6 ={}
-Exchange7 ={}
-Exchange8 ={}
-Exchange9 ={}
-Exchange10 ={}
-Exchange11 ={}
-Exchange12 ={}
-Exchange13 ={}
-Exchange14 ={}
-Exchange15 ={}
-Exchange16 ={}
-Exchange17 ={}
-Exchange18 ={}
-Exchange19 ={}
-Exchange20 ={}
-Exchange21 ={}
-Exchange22 ={}
-Exchange23 ={}
-Exchange24 ={}
-Exchange25 ={}
-Exchange26 ={}
-Exchange27 ={}
-Exchange28 ={}
-Exchange29 ={}
-
-TorgTable = {}
-TorgTable[1]=4790
-TorgTable[2]=1353
-TorgTable[3]=1184
-TorgTable[4]=4983
-TorgTable[5]=3139
-TorgTable[6]=4939
-TorgTable[7]=1327
-TorgTable[8]=1241
-TorgTable[9]=4955
-TorgTable[10]=1237
-TorgTable[11]=1256
-TorgTable[12]=4756
-TorgTable[13]=4759
-TorgTable[14]=4763
-TorgTable[15]=4767
-TorgTable[16]=4784
-TorgTable[17]=4800
-TorgTable[18]=4801
-TorgTable[19]=4791
-TorgTable[20]=4790
-TorgTable[21]=4796
-TorgTable[22]=4860
-TorgTable[23]=4857
-TorgTable[24]=4864
-TorgTable[25]=4863
-TorgTable[26]=4866
-TorgTable[27]=4887
-TorgTable[28]=4889
-TorgTable[29]=4896
-TorgTable[30]=3365
-TorgTable[31]=3133
-TorgTable[32]=1631
-TorgTable[33]=1584
-TorgTable[34]=4545
-TorgTable[35]=1782
-TorgTable[36]=1278
-TorgTable[37]=1269
-TorgTable[38]=4983
-TorgTable[39]=1244
-TorgTable[40]=4903
-TorgTable[41]=4900
-TorgTable[42]=4825
-TorgTable[43]=4910
-TorgTable[44]=4906
-TorgTable[45]=4897
-TorgTable[46]=178
-TorgTable[47]=3822
-TorgTable[48]=4324
-TorgTable[49]=4840
-TorgTable[50]=4736
-TorgTable[51]=4722
-TorgTable[52]=2324
-TorgTable[53]=4434
-TorgTable[54]=1210
-TorgTable[55]=1782
-
---Ôóíêöèè òîðãîâëè
---Òîðãîâëÿ 2
-function InitExchange2()
-	Exchange2 = {}
-	Exchange2.count = 0
-	Exchange2.srcid = {}
-	Exchange2.srcnum = {}
-	Exchange2.tarid = {}
-	Exchange2.tarnum = {}
-	Exchange2.timenum = {}
-end
-
-function ExchangeData2( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange2.count = Exchange2.count + 1	
-	Exchange2.srcid[Exchange2.count] = srcID
-	Exchange2.srcnum[Exchange2.count] = srcNum
-	Exchange2.tarid[Exchange2.count] = tarID
-	Exchange2.tarnum[Exchange2.count] = tarNum
-	Exchange2.timenum[Exchange2.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange2()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
+	--SystemNotice( character, "NpcInfoList.count"..NpcInfoList.count )
+	
+	for n = 1, NpcInfoList.count, 1 do
+		--SystemNotice( character, "name = "..name )
+		--SystemNotice( character, "NpcInfoList[n].Name = "..NpcInfoList[n].Name )
+		if NpcInfoList[n].Name == name then
+			--SystemNotice( character, "NpcInfoList[NpcInfoList.count].Name"..NpcInfoList[n].Name )
+			return NpcInfoList[n].Npc
 		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData2( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
 	end
+	
+	return nil
 end
-
---Òîðãîâëÿ 3
-function InitExchange3()
-	Exchange3 = {}
-	Exchange3.count = 0
-	Exchange3.srcid = {}
-	Exchange3.srcnum = {}
-	Exchange3.tarid = {}
-	Exchange3.tarnum = {}
-	Exchange3.timenum = {}
-end
-
-function ExchangeData3( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange3.count = Exchange3.count + 1	
-	Exchange3.srcid[Exchange3.count] = srcID
-	Exchange3.srcnum[Exchange3.count] = srcNum
-	Exchange3.tarid[Exchange3.count] = tarID
-	Exchange3.tarnum[Exchange3.count] = tarNum
-	Exchange3.timenum[Exchange3.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange3()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData3( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 4
-function InitExchange4()
-	Exchange4 = {}
-	Exchange4.count = 0
-	Exchange4.srcid = {}
-	Exchange4.srcnum = {}
-	Exchange4.tarid = {}
-	Exchange4.tarnum = {}
-	Exchange4.timenum = {}
-end
-
-function ExchangeData4( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange4.count = Exchange4.count + 1	
-	Exchange4.srcid[Exchange4.count] = srcID
-	Exchange4.srcnum[Exchange4.count] = srcNum
-	Exchange4.tarid[Exchange4.count] = tarID
-	Exchange4.tarnum[Exchange4.count] = tarNum
-	Exchange4.timenum[Exchange4.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange4()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData4( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 5
-function InitExchange5()
-	Exchange5 = {}
-	Exchange5.count = 0
-	Exchange5.srcid = {}
-	Exchange5.srcnum = {}
-	Exchange5.tarid = {}
-	Exchange5.tarnum = {}
-	Exchange5.timenum = {}
-end
-
-function ExchangeData5( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange5.count = Exchange5.count + 1	
-	Exchange5.srcid[Exchange5.count] = srcID
-	Exchange5.srcnum[Exchange5.count] = srcNum
-	Exchange5.tarid[Exchange5.count] = tarID
-	Exchange5.tarnum[Exchange5.count] = tarNum
-	Exchange5.timenum[Exchange5.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange5()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData5( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 6
-function InitExchange6()
-	Exchange6 = {}
-	Exchange6.count = 0
-	Exchange6.srcid = {}
-	Exchange6.srcnum = {}
-	Exchange6.tarid = {}
-	Exchange6.tarnum = {}
-	Exchange6.timenum = {}
-end
-
-function ExchangeData6( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange6.count = Exchange6.count + 1	
-	Exchange6.srcid[Exchange6.count] = srcID
-	Exchange6.srcnum[Exchange6.count] = srcNum
-	Exchange6.tarid[Exchange6.count] = tarID
-	Exchange6.tarnum[Exchange6.count] = tarNum
-	Exchange6.timenum[Exchange6.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange6()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData6( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 7
-function InitExchange7()
-	Exchange7 = {}
-	Exchange7.count = 0
-	Exchange7.srcid = {}
-	Exchange7.srcnum = {}
-	Exchange7.tarid = {}
-	Exchange7.tarnum = {}
-	Exchange7.timenum = {}
-end
-
-function ExchangeData7( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange7.count = Exchange7.count + 1	
-	Exchange7.srcid[Exchange7.count] = srcID
-	Exchange7.srcnum[Exchange7.count] = srcNum
-	Exchange7.tarid[Exchange7.count] = tarID
-	Exchange7.tarnum[Exchange7.count] = tarNum
-	Exchange7.timenum[Exchange7.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange7()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData7( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 8
-function InitExchange8()
-	Exchange8 = {}
-	Exchange8.count = 0
-	Exchange8.srcid = {}
-	Exchange8.srcnum = {}
-	Exchange8.tarid = {}
-	Exchange8.tarnum = {}
-	Exchange8.timenum = {}
-end
-
-function ExchangeData8( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange8.count = Exchange8.count + 1	
-	Exchange8.srcid[Exchange8.count] = srcID
-	Exchange8.srcnum[Exchange8.count] = srcNum
-	Exchange8.tarid[Exchange8.count] = tarID
-	Exchange8.tarnum[Exchange8.count] = tarNum
-	Exchange8.timenum[Exchange8.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange8()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData8( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 9
-function InitExchange9()
-	Exchange9 = {}
-	Exchange9.count = 0
-	Exchange9.srcid = {}
-	Exchange9.srcnum = {}
-	Exchange9.tarid = {}
-	Exchange9.tarnum = {}
-	Exchange9.timenum = {}
-end
-
-function ExchangeData9( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange9.count = Exchange9.count + 1	
-	Exchange9.srcid[Exchange9.count] = srcID
-	Exchange9.srcnum[Exchange9.count] = srcNum
-	Exchange9.tarid[Exchange9.count] = tarID
-	Exchange9.tarnum[Exchange9.count] = tarNum
-	Exchange9.timenum[Exchange9.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange9()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData9( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 10
-function InitExchange10()
-	Exchange10 = {}
-	Exchange10.count = 0
-	Exchange10.srcid = {}
-	Exchange10.srcnum = {}
-	Exchange10.tarid = {}
-	Exchange10.tarnum = {}
-	Exchange10.timenum = {}
-end
-
-function ExchangeData10( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange10.count = Exchange10.count + 1	
-	Exchange10.srcid[Exchange10.count] = srcID
-	Exchange10.srcnum[Exchange10.count] = srcNum
-	Exchange10.tarid[Exchange10.count] = tarID
-	Exchange10.tarnum[Exchange10.count] = tarNum
-	Exchange10.timenum[Exchange10.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange10()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData10( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 11
-function InitExchange11()
-	Exchange11 = {}
-	Exchange11.count = 0
-	Exchange11.srcid = {}
-	Exchange11.srcnum = {}
-	Exchange11.tarid = {}
-	Exchange11.tarnum = {}
-	Exchange11.timenum = {}
-end
-
-function ExchangeData11( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange11.count = Exchange11.count + 1	
-	Exchange11.srcid[Exchange11.count] = srcID
-	Exchange11.srcnum[Exchange11.count] = srcNum
-	Exchange11.tarid[Exchange11.count] = tarID
-	Exchange11.tarnum[Exchange11.count] = tarNum
-	Exchange11.timenum[Exchange11.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange11()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData11( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 12
-function InitExchange12()
-	Exchange12 = {}
-	Exchange12.count = 0
-	Exchange12.srcid = {}
-	Exchange12.srcnum = {}
-	Exchange12.tarid = {}
-	Exchange12.tarnum = {}
-	Exchange12.timenum = {}
-end
-
-function ExchangeData12( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange12.count = Exchange12.count + 1	
-	Exchange12.srcid[Exchange12.count] = srcID
-	Exchange12.srcnum[Exchange12.count] = srcNum
-	Exchange12.tarid[Exchange12.count] = tarID
-	Exchange12.tarnum[Exchange12.count] = tarNum
-	Exchange12.timenum[Exchange12.count] = timeNum
-	LG( "Èíèöèàëèçàöèÿ ÍÏÑ_error", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange12()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData12( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 13
-function InitExchange13()
-	Exchange13 = {}
-	Exchange13.count = 0
-	Exchange13.srcid = {}
-	Exchange13.srcnum = {}
-	Exchange13.tarid = {}
-	Exchange13.tarnum = {}
-	Exchange13.timenum = {}
-end
-
-function ExchangeData13( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange13.count = Exchange13.count + 1	
-	Exchange13.srcid[Exchange13.count] = srcID
-	Exchange13.srcnum[Exchange13.count] = srcNum
-	Exchange13.tarid[Exchange13.count] = tarID
-	Exchange13.tarnum[Exchange13.count] = tarNum
-	Exchange13.timenum[Exchange13.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange13()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData13( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 14
-function InitExchange14()
-	Exchange14 = {}
-	Exchange14.count = 0
-	Exchange14.srcid = {}
-	Exchange14.srcnum = {}
-	Exchange14.tarid = {}
-	Exchange14.tarnum = {}
-	Exchange14.timenum = {}
-end
-
-function ExchangeData14( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange14.count = Exchange14.count + 1	
-	Exchange14.srcid[Exchange14.count] = srcID
-	Exchange14.srcnum[Exchange14.count] = srcNum
-	Exchange14.tarid[Exchange14.count] = tarID
-	Exchange14.tarnum[Exchange14.count] = tarNum
-	Exchange14.timenum[Exchange14.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange14()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData14( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 15
-function InitExchange15()
-	Exchange15 = {}
-	Exchange15.count = 0
-	Exchange15.srcid = {}
-	Exchange15.srcnum = {}
-	Exchange15.tarid = {}
-	Exchange15.tarnum = {}
-	Exchange15.timenum = {}
-end
-
-function ExchangeData15( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange15.count = Exchange15.count + 1	
-	Exchange15.srcid[Exchange15.count] = srcID
-	Exchange15.srcnum[Exchange15.count] = srcNum
-	Exchange15.tarid[Exchange15.count] = tarID
-	Exchange15.tarnum[Exchange15.count] = tarNum
-	Exchange15.timenum[Exchange15.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange15()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData15( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 16
-function InitExchange16()
-	Exchange16 = {}
-	Exchange16.count = 0
-	Exchange16.srcid = {}
-	Exchange16.srcnum = {}
-	Exchange16.tarid = {}
-	Exchange16.tarnum = {}
-	Exchange16.timenum = {}
-end
-
-function ExchangeData16( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange16.count = Exchange16.count + 1	
-	Exchange16.srcid[Exchange16.count] = srcID
-	Exchange16.srcnum[Exchange16.count] = srcNum
-	Exchange16.tarid[Exchange16.count] = tarID
-	Exchange16.tarnum[Exchange16.count] = tarNum
-	Exchange16.timenum[Exchange16.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange16()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData16( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 17
-function InitExchange17()
-	Exchange17 = {}
-	Exchange17.count = 0
-	Exchange17.srcid = {}
-	Exchange17.srcnum = {}
-	Exchange17.tarid = {}
-	Exchange17.tarnum = {}
-	Exchange17.timenum = {}
-end
-
-function ExchangeData17( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange17.count = Exchange17.count + 1	
-	Exchange17.srcid[Exchange17.count] = srcID
-	Exchange17.srcnum[Exchange17.count] = srcNum
-	Exchange17.tarid[Exchange17.count] = tarID
-	Exchange17.tarnum[Exchange17.count] = tarNum
-	Exchange17.timenum[Exchange17.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange17()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData17( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
-
---Òîðãîâëÿ 18
-function InitExchange18()
-	Exchange18 = {}
-	Exchange18.count = 0
-	Exchange18.srcid = {}
-	Exchange18.srcnum = {}
-	Exchange18.tarid = {}
-	Exchange18.tarnum = {}
-	Exchange18.timenum = {}
-end
-
-function ExchangeData18( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange18.count = Exchange18.count + 1	
-	Exchange18.srcid[Exchange18.count] = srcID
-	Exchange18.srcnum[Exchange18.count] = srcNum
-	Exchange18.tarid[Exchange18.count] = tarID
-	Exchange18.tarnum[Exchange18.count] = tarNum
-	Exchange18.timenum[Exchange18.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange18()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData18( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 19
-function InitExchange19()
-	Exchange19 = {}
-	Exchange19.count = 0
-	Exchange19.srcid = {}
-	Exchange19.srcnum = {}
-	Exchange19.tarid = {}
-	Exchange19.tarnum = {}
-	Exchange19.timenum = {}
-end
-
-function ExchangeData19( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange19.count = Exchange19.count + 1	
-	Exchange19.srcid[Exchange19.count] = srcID
-	Exchange19.srcnum[Exchange19.count] = srcNum
-	Exchange19.tarid[Exchange19.count] = tarID
-	Exchange19.tarnum[Exchange19.count] = tarNum
-	Exchange19.timenum[Exchange19.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange19()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData19( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 20
-function InitExchange20()
-	Exchange20 = {}
-	Exchange20.count = 0
-	Exchange20.srcid = {}
-	Exchange20.srcnum = {}
-	Exchange20.tarid = {}
-	Exchange20.tarnum = {}
-	Exchange20.timenum = {}
-end
-
-function ExchangeData20( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange20.count = Exchange20.count + 1	
-	Exchange20.srcid[Exchange20.count] = srcID
-	Exchange20.srcnum[Exchange20.count] = srcNum
-	Exchange20.tarid[Exchange20.count] = tarID
-	Exchange20.tarnum[Exchange20.count] = tarNum
-	Exchange20.timenum[Exchange20.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange20()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData20( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 21
-function InitExchange21()
-	Exchange21 = {}
-	Exchange21.count = 0
-	Exchange21.srcid = {}
-	Exchange21.srcnum = {}
-	Exchange21.tarid = {}
-	Exchange21.tarnum = {}
-	Exchange21.timenum = {}
-end
-
-function ExchangeData21( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange21.count = Exchange21.count + 1	
-	Exchange21.srcid[Exchange21.count] = srcID
-	Exchange21.srcnum[Exchange21.count] = srcNum
-	Exchange21.tarid[Exchange21.count] = tarID
-	Exchange21.tarnum[Exchange21.count] = tarNum
-	Exchange21.timenum[Exchange21.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange21()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData21( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 22
-function InitExchange22()
-	Exchange22 = {}
-	Exchange22.count = 0
-	Exchange22.srcid = {}
-	Exchange22.srcnum = {}
-	Exchange22.tarid = {}
-	Exchange22.tarnum = {}
-	Exchange22.timenum = {}
-end
-
-function ExchangeData22( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange22.count = Exchange22.count + 1	
-	Exchange22.srcid[Exchange22.count] = srcID
-	Exchange22.srcnum[Exchange22.count] = srcNum
-	Exchange22.tarid[Exchange22.count] = tarID
-	Exchange22.tarnum[Exchange22.count] = tarNum
-	Exchange22.timenum[Exchange22.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange22()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData22( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 23
-function InitExchange23()
-	Exchange23 = {}
-	Exchange23.count = 0
-	Exchange23.srcid = {}
-	Exchange23.srcnum = {}
-	Exchange23.tarid = {}
-	Exchange23.tarnum = {}
-	Exchange23.timenum = {}
-end
-
-function ExchangeData23( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange23.count = Exchange23.count + 1	
-	Exchange23.srcid[Exchange23.count] = srcID
-	Exchange23.srcnum[Exchange23.count] = srcNum
-	Exchange23.tarid[Exchange23.count] = tarID
-	Exchange23.tarnum[Exchange23.count] = tarNum
-	Exchange23.timenum[Exchange23.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange23()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData23( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 24
-function InitExchange24()
-	Exchange24 = {}
-	Exchange24.count = 0
-	Exchange24.srcid = {}
-	Exchange24.srcnum = {}
-	Exchange24.tarid = {}
-	Exchange24.tarnum = {}
-	Exchange24.timenum = {}
-end
-
-function ExchangeData24( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange24.count = Exchange24.count + 1	
-	Exchange24.srcid[Exchange24.count] = srcID
-	Exchange24.srcnum[Exchange24.count] = srcNum
-	Exchange24.tarid[Exchange24.count] = tarID
-	Exchange24.tarnum[Exchange24.count] = tarNum
-	Exchange24.timenum[Exchange24.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange24()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-	local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData24( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 25
-function InitExchange25()
-	Exchange25 = {}
-	Exchange25.count = 0
-	Exchange25.srcid = {}
-	Exchange25.srcnum = {}
-	Exchange25.tarid = {}
-	Exchange25.tarnum = {}
-	Exchange25.timenum = {}
-end
-
-function ExchangeData25( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange25.count = Exchange25.count + 1	
-	Exchange25.srcid[Exchange25.count] = srcID
-	Exchange25.srcnum[Exchange25.count] = srcNum
-	Exchange25.tarid[Exchange25.count] = tarID
-	Exchange25.tarnum[Exchange25.count] = tarNum
-	Exchange25.timenum[Exchange25.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange25()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData25( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 26
-function InitExchange26()
-	Exchange26 = {}
-	Exchange26.count = 0
-	Exchange26.srcid = {}
-	Exchange26.srcnum = {}
-	Exchange26.tarid = {}
-	Exchange26.tarnum = {}
-	Exchange26.timenum = {}
-end
-
-function ExchangeData26( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange26.count = Exchange26.count + 1	
-	Exchange26.srcid[Exchange26.count] = srcID
-	Exchange26.srcnum[Exchange26.count] = srcNum
-	Exchange26.tarid[Exchange26.count] = tarID
-	Exchange26.tarnum[Exchange26.count] = tarNum
-	Exchange26.timenum[Exchange26.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange26()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData26( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 27
-function InitExchange27()
-	Exchange27 = {}
-	Exchange27.count = 0
-	Exchange27.srcid = {}
-	Exchange27.srcnum = {}
-	Exchange27.tarid = {}
-	Exchange27.tarnum = {}
-	Exchange27.timenum = {}
-end
-
-function ExchangeData27( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange27.count = Exchange27.count + 1	
-	Exchange27.srcid[Exchange27.count] = srcID
-	Exchange27.srcnum[Exchange27.count] = srcNum
-	Exchange27.tarid[Exchange27.count] = tarID
-	Exchange27.tarnum[Exchange27.count] = tarNum
-	Exchange27.timenum[Exchange27.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange27()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData27( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 28
-function InitExchange28()
-	Exchange28 = {}
-	Exchange28.count = 0
-	Exchange28.srcid = {}
-	Exchange28.srcnum = {}
-	Exchange28.tarid = {}
-	Exchange28.tarnum = {}
-	Exchange28.timenum = {}
-end
-
-function ExchangeData28( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange28.count = Exchange28.count + 1	
-	Exchange28.srcid[Exchange28.count] = srcID
-	Exchange28.srcnum[Exchange28.count] = srcNum
-	Exchange28.tarid[Exchange28.count] = tarID
-	Exchange28.tarnum[Exchange28.count] = tarNum
-	Exchange28.timenum[Exchange28.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange28()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData28( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 29
-function InitExchange29()
-	Exchange29 = {}
-	Exchange29.count = 0
-	Exchange29.srcid = {}
-	Exchange29.srcnum = {}
-	Exchange29.tarid = {}
-	Exchange29.tarnum = {}
-	Exchange29.timenum = {}
-end
-
-function ExchangeData29( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange29.count = Exchange29.count + 1	
-	Exchange29.srcid[Exchange29.count] = srcID
-	Exchange29.srcnum[Exchange29.count] = srcNum
-	Exchange29.tarid[Exchange29.count] = tarID
-	Exchange29.tarnum[Exchange29.count] = tarNum
-	Exchange29.timenum[Exchange29.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange29()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		local sum = 0
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif  intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51  then 
-			sum = 80
-		end
-		ExchangeData29( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
---Òîðãîâëÿ 30
-function InitExchange30()
-	Exchange30 = {}
-	Exchange30.count = 0
-	Exchange30.srcid = {}
-	Exchange30.srcnum = {}
-	Exchange30.tarid = {}
-	Exchange30.tarnum = {}
-	Exchange30.timenum = {}
-end
-
-function ExchangeData30( srcID, srcNum, tarID, tarNum, timeNum )
-	if srcID == nil or srcNum == nil or tarID == nil or tarNum == nil or timeNum == nil then
-		LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-		return
-	end
-	Exchange30.count = Exchange30.count + 1	
-	Exchange30.srcid[Exchange30.count] = srcID
-	Exchange30.srcnum[Exchange30.count] = srcNum
-	Exchange30.tarid[Exchange30.count] = tarID
-	Exchange30.tarnum[Exchange30.count] = tarNum
-	Exchange30.timenum[Exchange30.count] = timeNum
-	LG( "Îøèáêè ÍÏÑ(Îáìåí)", "ExchangeData: Function parameter error!srcID, srcNum, tarID, tarNum, timeNum", srcID, srcNum, tarID, tarNum, timeNum )
-end
-
-function DoExchange30()
-	local intMoney =0
-	local intGoods =0
-	local intMoneyNum =0
-	local intNum=0
-	local intCount=0
-	local sum =  1
-	for intCount=1 , 8 ,1 do
-		intNum = math.random(1,4)
-		if intNum == 1 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum == 2 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==3 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		elseif intNum ==4 then	
-			intMoney = TorgTable[math.random(1,55)]
-			intMoneyNum =   math.random(25,65)
-			intGoods = 8141
-		
-		end
-		if intMoneyNum>=25 and intMoneyNum<=35 then
-			sum = 25
-		elseif intMoneyNum>=36 and intMoneyNum <=50 then
-			sum = 40
-		elseif intMoneyNum>=51 then 
-			sum = 80
-		end
-		ExchangeData30( intMoney, intMoneyNum , intGoods, sum, 1 )
-		intNum = intNum +1 
-	end
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

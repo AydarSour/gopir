@@ -2,7 +2,7 @@
 --MissionSdk.lua Created by knight 2004.12.10.
 --
 --??????????
-print( "‡ Јаг§Є  missionsdk.lua" )
+print( "loading missionsdk.lua" )
 ------------------------------------------------------------
 
 --?????????
@@ -67,7 +67,6 @@ MIS_PRIZE_PETEXP  = 4		--???????
 --??????
 MIS_NOVICE			= 0		--??
 MIS_FENCER			= 1		--??
-
 MIS_HUNTER			= 2		--??
 MIS_EXPERIENCED	= 2		--??
 MIS_RISKER			= 4		--???
@@ -1543,14 +1542,14 @@ function CompleteMission( character, npc, missionlist, selitem, param )
 		ret = CompleteRandMissionCount( character, mission.id )
 		if ret ~= LUA_TRUE then
 			PRINT( "CompleteRandMission:random quest completion completes calculation function transfer failed:misid = ", mission.id )
-			LG( "Ошибка ежедневных квестов", "CompleteRandMission:random quest completion completes calculation function transfer failed:misid = ", mission.id )
+			LG( "randmission_error", "CompleteRandMission:random quest completion completes calculation function transfer failed:misid = ", mission.id )
 		end
 		
 		--????????
 		local ret, loopnum = GetRandMissionNum( character, mission.id )
 		if ret ~= LUA_TRUE then
 			PRINT( "CompleteRandMission:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = ", id )
-			LG( "Ошибка ежедневных квестов", "CompleteRandMission:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = ", id )
+			LG( "randmission_error", "CompleteRandMission:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = ", id )
 			SystemNotice( character, "CompleteRandMission:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = "..id )
 			--??????radom ????
 			ResetRandMissionNum( character, mission.id )
@@ -1560,7 +1559,7 @@ function CompleteMission( character, npc, missionlist, selitem, param )
 			
 			if loopdata == nil or mission.loopinfo[loopnum] == nil then
 				PRINT( "CompleteRandMission:quest cycle data error!loopnum = "..loopnum.." id = "..mission.id.." loopdata = "..loopdata )
-				LG( "Ошибка ежедневных квестов", "CompleteRandMission:quest cycle data error!loopnum = "..loopnum.." id = "..mission.id.." loopdata = "..loopdata )
+				LG( "randmission_error", "CompleteRandMission:quest cycle data error!loopnum = "..loopnum.." id = "..mission.id.." loopdata = "..loopdata )
 				SystemNotice( character, "CompleteRandMission:quest cycle data error!loopnum = "..loopnum.." id = "..mission.id.." loopdata = "..loopdata )
 				ResetRandMissionNum( character, mission.id )
 				return LUA_FALSE
@@ -1572,7 +1571,7 @@ function CompleteMission( character, npc, missionlist, selitem, param )
 				ret = AddRandMissionNum( character, mission.id )
 				if ret ~= LUA_TRUE then
 					PRINT( "CompleteRandMission:AddRandMissionNum reset quest cycle calculation failed!id = ", mission.id  )
-					LG( "Ошибка ежедневных квестов", "CompleteRandMission:AddRandMissionNum reset quest cycle calculation failed!id ", mission.id )
+					LG( "randmission_error", "CompleteRandMission:AddRandMissionNum reset quest cycle calculation failed!id ", mission.id )
 					SystemNotice( character, "CompleteRandMission:AddRandMissionNum reset quest cycle calculation failed!id = "..mission.id )
 					return LUA_FALSE
 				end
@@ -1580,7 +1579,7 @@ function CompleteMission( character, npc, missionlist, selitem, param )
 					--???radom ????????????,????????
 					PRINT( "CompleteRandMission:ResetRandMissionNum:quest cycle completed!" )
 					ResetRandMissionNum( character, mission.id )
-					SystemNotice( character, "Цикл квестов выполнен!" )
+					SystemNotice( character, "quest cycle completed!" )
 				end
 			end
 		end
@@ -2428,35 +2427,6 @@ function ConditionsTest( character, conditions, param1, param2, npc )
 					PRINT( "ConditionsTest: NoMission = false" )
 					return LUA_FALSE
 				end
-				
-			elseif conditions[i].func == TurnToJob then
-				PRINT( "ConditionsTest:TurnToJob,p1 = ", conditions[i].p1 )
-			local ret = TurnToJob( character, conditions[i].p1 )
-			if ret ~= LUA_TRUE then
-				PRINT( "ConditionsTest:TurnToJob = false" )
-				return LUA_FALSE
-			end	
-			elseif conditions[i].func == CheckWeddingDress then
-				PRINT( "ConditionsTest:CheckWeddingDress, p1 = ", conditions[i].p1 )
-				local ret = CheckWeddingDress( character, conditions[i].p1 )
-				if ret ~= LUA_TRUE then
-					PRINT( "ConditionsTest: CheckWeddingDress = false" )
-					return LUA_FALSE
-				end
-			elseif conditions[i].func == GiveWeddingCertificate  then
-				PRINT( "ConditionsTest:GiveWeddingCertificate , p1 = ", conditions[i].p1 )
-				local ret = GiveWeddingCertificate ( character, conditions[i].p1 )
-				if ret ~= LUA_TRUE then
-					PRINT( "ConditionsTest: GiveWeddingCertificate  = false" )
-					return LUA_FALSE
-				end
-			elseif conditions[i].func == Wedding then
-				PRINT( "ConditionsTest:Wedding, p1 = ", conditions[i].p1 )
-				local ret = Wedding( character, conditions[i].p1 )
-				if ret ~= LUA_TRUE then
-					PRINT( "ConditionsTest: Wedding = false" )
-					return LUA_FALSE
-				end
 			elseif conditions[i].func == HasMission then
 				PRINT( "ConditionsTest:HasMission, p1 = ", conditions[i].p1 )
 				local ret = HasMission( character, conditions[i].p1 )
@@ -2604,11 +2574,11 @@ function ConditionsTest( character, conditions, param1, param2, npc )
 					PRINT( "ConditionsTest:EquipNoItem = false" )
 					return LUA_FALSE
 				end
-			elseif conditions[i].func == CheckTeam then
-				PRINT( "ConditionsTest:CheckTeam, p1 =, p2 =", conditions[i].p1, conditions[i].p2 )
-				local ret = CheckTeam( character, conditions[i].p1, conditions[i].p2 )
+			elseif conditions[i].func == CheckTeam1 then
+				PRINT( "ConditionsTest:CheckTeam1, p1 =, p2 =", conditions[i].p1, conditions[i].p2 )
+				local ret = CheckTeam1( character, conditions[i].p1, conditions[i].p2 )
 				if ret ~= LUA_TRUE then
-					PRINT( "ConditionsTest:CheckTeam = false" )
+					PRINT( "ConditionsTest:CheckTeam1 = false" )
 					return LUA_FALSE
 				end
 			elseif conditions[i].func == CheckRightNum then
@@ -3182,7 +3152,13 @@ function ConditionsTest( character, conditions, param1, param2, npc )
 					PRINT( "ConditionsTest:ValentinesRingJudge = false" )
 					return LUA_FALSE
 				end
-			
+			elseif conditions[i].func == TurnToJob then
+				PRINT( "ConditionsTest:TurnToJob,p1 = ", conditions[i].p1 )
+				local ret = TurnToJob( character, conditions[i].p1 )
+				if ret ~= LUA_TRUE then
+					PRINT( "ConditionsTest:TurnToJob = false" )
+					return LUA_FALSE
+				end
 			elseif conditions[i].func == CheckRase then
 				PRINT( "ConditionsTest:CheckRase,p1 = ", conditions[i].p1 )
 				local ret = CheckRase( character, conditions[i].p1 )
@@ -3237,9 +3213,6 @@ function ActionsProc( character, actions, npc, page, misid, scriptid, param1, pa
 		elseif actions[i].func == CloseTalk then
 			PRINT( "ActionProc:CloseTalk" )
 			CloseTalk( character, npc )
-		elseif actions[i].func == LaunchFirework  then
-			PRINT( "ActionProc:LaunchFirework " )
-			LaunchFirework ( character, npc )
 		elseif actions[i].func == AddMission then
 			PRINT( "ActionProc: AddMission actions[i].p1 = , scriptid = ", actions[i].p1, scriptid )
 			local ret = AddMission( character, actions[i].p1, scriptid )
@@ -3272,14 +3245,6 @@ function ActionsProc( character, actions, npc, page, misid, scriptid, param1, pa
 				SystemNotice( character, "ActionProc: adds list quest record label failed!" )
 				return LUA_FALSE
 			end
-		elseif actions[i].func == attack_tower then
-			PRINT( "ActionProc:attack_tower, p1, p2", actions[i].p1, actions[i].p2 )
-			local ret = attack_tower( character, actions[i].p1, actions[i].p2 )
-			if ret ~= LUA_TRUE then
-				PRINT( "ActionProc: attack_tower Не удалось!" )
-				SystemNotice( character, "ActionProc: ошибка!" )
-				return LUA_FALSE
-			end		
 		elseif actions[i].func == AddRMNextFlag then
 			PRINT( "ActionProc:AddRMNextFlag, p1, p2, p3", actions[i].p1, actions[i].p2, actions[i].p3 )
 			local ret = AddRMNextFlag( character, actions[i].p1, actions[i].p2, actions[i].p3 )
@@ -3429,20 +3394,8 @@ function ActionsProc( character, actions, npc, page, misid, scriptid, param1, pa
 		elseif actions[i].func == AddExp then
 			PRINT( "ActionProc:AddExp, p1 = , p2 = ", actions[i].p1, actions[i].p2 )
 			local retExpState = GetExpState(character)
-			local lv = Lv( character )
-			
-			if lv >=LV_LIMIT  then
-					actions[i].p1 = 0
-					actions[i].p2 = 0
-				else
-					actions[i].p1 = (actions[i].p1  * GetExpState(character) /100)
-					actions[i].p2 = (actions[i].p2  * GetExpState(character) /100)
-				end
-					SCHET_QUEST=SCHET_QUEST+1
-				if actions[i].p1 > 200000 or actions[i].p2 >200000 then
-					actions[i].p1=200000
-					actions[i].p1=200000
-				end 
+			actions[i].p1 = actions[i].p1  *GetExpState(character) /100
+			actions[i].p2 = actions[i].p2  *GetExpState(character) /100
 			local ret = AddExp( character, npc, actions[i].p1, actions[i].p2 )
 			if ret ~= LUA_TRUE then
 				PRINT( "ActionProc: AddExp failed!" )
@@ -3499,7 +3452,7 @@ function ActionsProc( character, actions, npc, page, misid, scriptid, param1, pa
 			end
 		elseif actions[i].func == AddExpAndType then
 			PRINT( "ActionProc:AddExpAndType, p1 = , p2 = , p3 = ", actions[i].p1, actions[i].p2, actions[i].p3 )
-			local ret = AddExpAndType( character, npc, actions[i].p1, actions[i].p2 * LIFE_EXP, actions[i].p3  * LIFE_EXP ) 
+			local ret = AddExpAndType( character, npc, actions[i].p1, actions[i].p2, actions[i].p3 )
 			if ret ~= LUA_TRUE then
 				PRINT( "ActionProc: AddExpAndType failed!" )
 				SystemNotice( character, "ActionProc: AddExpAndType Add Exp failed!" )
@@ -3507,9 +3460,8 @@ function ActionsProc( character, actions, npc, page, misid, scriptid, param1, pa
 			end
 		elseif actions[i].func == AddMoney then
 			PRINT( "ActionProc:AddMoney, p1 =", actions[i].p1 )
-			local ret = AddMoney( character, npc, actions[i].p1 * MONEY_RAID_QUEST ) 
+			local ret = AddMoney( character, npc, actions[i].p1 )
 			if ret ~= LUA_TRUE then
-
 				PRINT( "ActionProc: AddMoney failed!param1 = %d", actions[i].p1 )
 				SystemNotice( character, "ActionProc: AddMoney failed!" )
 				return LUA_FALSE
@@ -4353,7 +4305,7 @@ function TriggerProc( character, id, param1, param2, param3, param4 )
 			if param3 == nil or param4 == nil then
 				PRINT( "TriggerProc:random quest:while reseting AddRMNextFlagfunction parameter, param3, param4 cannot be nil" )
 				SystemNotice( character, "TriggerProc:random quest:while reseting AddRMNextFlagfunction parameter, param3, param4 cannot be nil" )
-				LG( "Ошибка ежедневных квестов", "TriggerProc:random quest:while reseting AddRMNextFlagfunction parameter, param3, param4 cannot be nil, triggerid = ", id )
+				LG( "randmission_error", "TriggerProc:random quest:while reseting AddRMNextFlagfunction parameter, param3, param4 cannot be nil, triggerid = ", id )
 				return LUA_FALSE
 			end
 			
@@ -4416,6 +4368,1033 @@ function TriggerResult( character, id, param1, param2 )
 	return LUA_TRUE
 end 
 
+--????????radom ???????
+function GetRandMissionLevel( character, sid, leveltp )
+	if leveltp == MIS_LEVEL_CHAR then	    --??radom ??????
+		local level = GetCharMissionLevel( character )
+		if level == nil then
+			return 10000
+		end
+		return level --1 + GetSection( level, 5 )
+	elseif leveltp == MIS_LEVEL_GANG then	--??radom ??????
+		local level = GetCharGangLevel( character )
+		return level
+	else
+		SystemNotice( character, "GetRandMissionLevel:incorrect random quest level type!missid = "..sid )
+		LG( "randmission_error", "GetRandMissionLevel:incorrect random quest level type!missid = "..sid )
+		return 10000
+	end
+	return 10000
+end
+
+--??radom ???????radom ??????,?Player??NPC?
+function GetRandMissionSendItem( itemlist )
+	PRINT( "GetRandMissionSendItem:itemlist = , itemlist.count = ", itemlist, itemlist.count )
+	local id = Rand( itemlist.count ) + 1
+	PRINT( "GetRandMissionSendItem:rand value = , item id = ", id, itemlist[id] )
+	return itemlist[id]
+end
+
+--???????radom ????radom ????????,??????
+function GetRandMissionPrize( character, misname, id, loopinfo, loopdata )
+	PRINT( "GetRandMissionPrize" )
+	if loopinfo == nil or loopdata == nil or id == nil or misname == nil then
+		PRINT( "GetRandMissionPrize: id = , loopdata = ", id, loopdata )
+		LG( "randmission_error", "GetRandMissionPrize: function parameter error!prizeitem = nil and id = "..id )
+		SystemNotice( character, "GetRandMissionPrize:function parameter error,reward failed!" )
+		return 0, 0
+	end
+	
+	local ret, loopnum = GetRandMissionNum( character, id )
+	if ret ~= LUA_TRUE then
+		PRINT( "GetRandMissionPrize:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = ", id )
+		LG( "randmission_error", "GetRandMissionPrize:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = ", id )
+		SystemNotice( character, "GetRandMissionPrize:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = "..id )
+		--??????radom ????
+		ResetRandMissionNum( character, id )
+		return 0, 0
+	else		
+		loopnum = loopnum + 1 --???lua????
+		PRINT( "GetRandMissionPrize:GetRandMissionNum: return loopnum = ", loopnum )
+		PRINT( "loopdata, loopdata", loopdata, loopdata[loopnum] )
+		if loopinfo[loopnum] == nil or loopdata[loopnum] == nil or loopdata[loopnum].Prize == nil then
+			PRINT( "GetRandMissionPrize: invalid random quest cycle data notice or reward item notice,id = , loopnum = ", id, loopnum )
+			SystemNotice( character, "GetRandMissionPrize: invalid random quest cycle data notice or reward item notice,id = "..id.." loopnum = "..loopnum )
+			--??????radom ????
+			ResetRandMissionNum( character, id )
+			return 0, 0
+		end
+		
+		local ret, miscount = GetRandMissionCount( character, id )
+		miscount = miscount + 1
+		SystemNotice( character, "You have accepted quest ["..misname.."] No."..miscount.."!" )
+		
+		PRINT( "GetRandMissionPrize:HasRandMissionCount, id = , num = ", loopinfo[loopnum].num )
+		local ret = HasRandMissionCount( character, id, loopinfo[loopnum].num - 1 )
+		if ret == LUA_TRUE then
+			--????????,???????
+			--ret = AddRandMissionNum( character, id )
+			--if ret ~= LUA_TRUE then
+				--PRINT( "GetRandMissionPrizeItem:AddRandMissionNum reset quest cycle calculation failed!id = ", id  )
+				--LG( "randmission_error", "GetRandMissionPrizeItem:AddRandMissionNum reset quest cycle calculation failed!id ", id )
+				--SystemNotice( character, "GetRandMissionPrizeItem:AddRandMissionNum reset quest cycle calculation failed!id = "..id )
+				--return 0, 0
+			--end
+			
+			PRINT( "GetRandMissionPrize:Prize", loopdata[loopnum].Prize )
+			--???????radom ?????????????????????
+			local prizelist = loopdata[loopnum].Prize
+			local value = Rand( 100 )
+			PRINT( "GetRandMissionPrize: prize rand value = , odds = ", value, loopinfo[loopnum].odds )
+			if value >= loopinfo[loopnum].odds then
+				return 0, 0
+			end
+			
+			if prizelist.tp == MIS_PRIZE_ITEM then
+				--????????radom ?
+				local randdata = 0
+				for n = 1, prizelist.count, 1 do
+					randdata = randdata + prizelist[n].p2
+					PRINT( "GetRandMissionPrize: n = , randdata = , p2 = ", n, randdata, prizelist[n].p2 )
+				end
+				local prizevalue = Rand( randdata )
+				local tempdata = 0
+				for n = 1, prizelist.count, 1 do
+					if prizevalue >= tempdata and prizevalue < tempdata + prizelist[n].p2 then
+						PRINT( "GetRandMissionPrize: return n = , prizevalue = , prizetp = , p1 = ", n, prizevalue, prizelist[n].tp, prizelist[n].p1 )
+						return prizelist[n].tp, prizelist[n].p1
+					end
+					tempdata = tempdata + prizelist[n].p2
+				end
+			else
+				local index = Rand( prizelist.count ) + 1
+				PRINT( "GetRandMissionPrize:prizetp = , p1 = , p2 = index = ", prizelist[index].tp, prizelist[index].p1, prizelist[index].p2, index )		
+				if prizelist[index] == nil then
+					SystemNotice( character, "Error: cannot locate random quest high level equipment reward notice!id = "..id.."prize index = "..index )
+					LG( "randmission_error", "Error: cannot locate random quest high level equipment reward notice!id = "..id.." prize index = "..index )
+					return 0
+				end
+				
+				--local charname = GetCharName( character )
+				--local str = "GetRandMissionPrizeItem, ???????????radom ????!name = ?"
+				--str = str..charname.."? item id = "..prizelist[index].."misid = "..id.."loopnum = "..loopnum
+				--LG( "randmission_info", str )
+				
+				PRINT( "GetRandMissionPrize: return prizetp = , p1 = ", prizelist[index].tp, prizelist[index].p1 )
+				return prizelist[index].tp, prizelist[index].p1
+			end
+		end
+	end
+	
+	PRINT( "GetRandMissionPrize: return 0" )
+	return 0, 0
+end
+
+--???radom ????????????
+function IsRandMissionAccept( character, mission )
+	PRINT( "IsRandMissionAccept:character, mission", character, mission )
+	if mission == nil or mission.tp ~= RAND_MISSION then
+		PRINT( "IsRandMissionAccept:parameter error or non random quest type data notice!" )
+		SystemNotice( character, "IsRandMissionAccept:parameter error or non random quest type data notice!" )		
+		return LUA_FALSE
+	end
+	
+	--?????radom ??????
+	local level = GetRandMissionLevel( character, mission.sid, mission.leveltp )
+	PRINT( "IsRandMissionAccept:GetRandMissionLevel : level = ", level )
+	if mission.RandInfo == nil or mission.RandInfo[level] == nil then
+		PRINT( "IsRandMissionAccept: no level info and return false " )
+		return LUA_FALSE
+	end
+	
+	PRINT( "IsRandMissionAccept:GetRandMissionLevel : return true " )
+	return LUA_TRUE
+end
+	
+--????radom ????
+function GetRandMissionExp( loopnum, miscount, exp )
+	--X*(350+Z*550)*0.0001*((10+Y*15)*0.001+INT(Y*0.1)*0.075)
+	--x=???
+	--y=???
+	--z=??? 
+	
+	if loopnum == nil or miscount == nil or exp == nil then
+		PRINT( "GetRandMissionExp:Function parameter error!loopnum, miscount, exp", loopnum, miscount, exp )
+		LG( "randmission_error", "GetRandMissionExp:Function parameter error!" )
+		return 0
+	end
+	
+	--local value = exp*(350 + loopnum*550)*0.0001*((10 + miscount*15)*0.001 + (miscount*0.1)*0.075)
+	local value = exp*((20 + miscount*5)*0.002 + ToDword(miscount*0.1)*0.05)
+	local newexp = ToDword( value )
+	PRINT( "GetRandMissionExp:newexp = ", newexp )
+	if newexp == nil then
+		return 0
+	end
+	PRINT( "GetRandMissionExp:loopnum, miscount, exp, newexp", loopnum, miscount, exp, newexp )
+	return newexp
+end
+
+function GetRandMissionMoney( loopnum, miscount, money )
+	if loopnum == nil or miscount == nil or money == nil then
+		PRINT( "GetRandMissionExp:Function parameter error!loopnu, miscount, money", loopnum, miscount, money )
+		LG( "randmission_error", "GetRandMissionMoney:Function parameter error!" )
+		return 0
+	end
+	
+	--local value = money*(350 + loopnum*550)*0.0001*((10 + miscount*15)*0.001 + (miscount*0.1)*0.075)
+	local value = money*((20 + miscount*5)*0.002 + ToDword(miscount*0.1)*0.05)
+	local newmoney = ToDword( value )
+	PRINT( "GetRandMissionExp:newmoney = ", newmoney )
+	if newmoney == nil then
+		return 0
+	end
+	
+	return newmoney
+end
+
+--???????????radom ??
+function CreateRandMission( character, npc, mission )
+	PRINT( "CreateRandMission:character, npc, mission", character, npc, mission )
+	if mission == nil or mission.tp ~= RAND_MISSION then
+		PRINT( "CreateRandMission:parameter error or non random quest type data notice!" )
+		SystemNotice( character, "CreateRandMission:parameter error or non random quest type data notice!" )		
+		return LUA_FALSE
+	end
+				
+	--?????radom ????
+	InitRandParam()
+	RandParam.id = mission.id
+	RandParam.sid = mission.sid
+	RandParam.bounty = mission.bounty
+	RandParam.npcname = mission.npcname
+	RandParam.npcarea  = mission.npcarea	
+	PRINT( "CreateRandMission:RandParam.id = , RandParam.sid = ,  bounty = , name = , area = ", RandParam.id, RandParam.sid, RandParam.bounty, RandParam.npcname, RandParam.npcarea )
+	
+	--?????radom ??????
+	RandParam.level = GetRandMissionLevel( character, mission.sid, mission.leveltp )
+	PRINT( "CreateRandMission:RandParam.level =, mission.RandInfo =, mission.RandInfo[level] = ", RandParam.level, mission.RandInfo, mission.RandInfo[RandParam.level] )
+	if mission.RandInfo == nil or mission.RandInfo[RandParam.level] == nil then
+		PRINT( "CreateRandMission:mission notice does not exist random quest data generated notice, please checl.llevel = "..RandParam.level )
+		local desp = GetCharName( npc )
+		desp = desp..": "..L10n_translate("Sorry, I do not have any quest suitable for your level. Please look elsewhere.","LifeQuest","Mission")
+		HelpInfo( character, MIS_HELP_DESP, desp )
+		return LUA_FALSE
+	end
+	
+	PRINT( "CreateRandMission: rand type count = ", mission.RandInfo[RandParam.level].tpinfo.count )
+	--radom ??????
+	--local tpinfoid = Rand( mission.RandInfo[RandParam.level].tpinfo.count ) + 1
+	local tpinfoid = GetRandTpinfoIndex( mission.RandInfo[RandParam.level].tpinfo )
+	
+	PRINT( "CreateRandMission:Rand mission info, tpinfoid =, type = ", tpinfoid, mission.RandInfo[RandParam.level].tpinfo[tpinfoid].tp )
+	if mission.RandInfo[RandParam.level].tpinfo[tpinfoid] == nil or mission.RandInfo[RandParam.level].tpinfo[tpinfoid].tp == nil then
+		PRINT( "CreateRandMission:Random quest type shortcut notice as nil.level, tpinfoid", RandParam.level, tpinfoid )
+		LG( "randmission_error", "CreateRandMission:Random quest type shortcut notice as nil.level = , tpinfoid = ", RandParam.level, tpinfoid )
+		SystemNotice( character, "CreateRandMission:Random quest type shortcut notice as nil.level = , tpinfoid = "..RandParam.level..tpinfoid )
+		return LUA_FALSE
+	end
+	
+	--radom ???????
+	RandParam.tp = mission.RandInfo[RandParam.level].tpinfo[tpinfoid].tp
+	local tpindex = GetRandMissionTypeIndex( mission, RandParam.tp )
+	PRINT( "CreateRandMission:tpindex = ", tpindex )
+	if tpindex == 0 then
+		LG( "randmission_error", "CreateRandMission:GetRandMissionTypeIndex:id, tp, level, exp, money, item, numdata", RandParam.id, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
+		PRINT( "CreateRandMission:GetRandMission:GetRandMissionTypeIndex has not found any quest mission that matches with random question type initialization date notice" )
+		SystemNotice( character, "CreateRandMission:GetRandMissionGetRandMissionTypeIndex has not found any quest mission that matches with random question type initialization date notice" )
+		return LUA_FALSE
+	end
+	
+	local randnum = mission.missionlist[tpindex].randnum
+	if randnum == nil or randnum < 1 or randnum > 4 then
+		LG( "randmission_error", "CreateRandMission:random quest highest random value type cannot be less than 1 or greater than 4! num = "..randnum )
+		PRINT( "CreateRandMission:random quest highest random value type cannot be less than 1 or greater than 4! num = "..randnum )
+		SystemNotice( character, "CreateRandMission:random quest highest random value type cannot be less than 1 or greater than 4! num = "..randnum )
+		return LUA_FALSE
+	end
+	PRINT( "CreateRandMission:randnum = , val = ", mission.missionlist[tpindex].randnum, randnum )
+	
+	--??radom ?????
+	local ret, miscount = GetRandMissionCount( character, mission.id )
+	--if miscount == 0 then
+		--miscount = 1
+	--end
+	miscount = miscount + 1
+	
+	local ret, misloopnum = GetRandMissionNum( character, mission.id )
+	--if misloopnum == 0 then
+		--misloopnum = 1
+	--end
+	misloopnum = misloopnum + 1
+	
+	--X*(350+Z*550)*0.0001*((10+Y*15)*0.001+INT(Y*0.1)*0.075)
+	--x=???
+	--y=???
+	--z=??? 
+
+	if RandParam.tp == MIS_RAND_KILL then					--????
+		--radom ??4?????
+		RandParam.numdata = Rand( randnum ) + 1
+		PRINT( "CreateRandMission:rand numdata = ", RandParam.numdata )
+		if RandParam.numdata > mission.RandInfo[RandParam.level].KillInfo.count then
+			RandParam.numdata = mission.RandInfo[RandParam.level].KillInfo.count
+		end
+		PRINT( "CreateRandMission:rand numdata = ", RandParam.numdata )
+		if RandParam.numdata <= 0 then
+			PRINT( "CreateRandMission, hunt monster quest random value cannot be less than zero. Please check if level of monster item matches! Level = ", RandParam.level )
+			SystemNotice( character, "CreateRandMission, hunt monster quest random value cannot be less than zero. Please check if level of monster item matches!Level = "..RandParam.level )
+			return LUA_FALSE
+		end
+		
+		for n = 1, RandParam.numdata, 1 do
+			local flag = 1
+			local infoid = Rand( mission.RandInfo[RandParam.level].KillInfo.count ) + 1
+			PRINT( "CreateRandMission:rand infoid = ", infoid )
+			--??????????????
+			for i = 1, n - 1, 1 do
+				if RandParam.data[i].id == infoid then
+					PRINT( "CreateRandMission:3" )
+					n = n - 1
+					flag = 0
+					break
+				end
+				PRINT( "CreateRandMission:2" )
+			end
+			PRINT( "CreateRandMission:4" )
+			if flag == 1 then
+				--????
+				PRINT( "CreateRandMission:5" )
+				RandParam.data[n].id = infoid
+				RandParam.data[n].p1 = mission.RandInfo[RandParam.level].KillInfo[infoid].p1
+				RandParam.data[n].p2 = mission.RandInfo[RandParam.level].KillInfo[infoid].p2 + Rand(mission.RandInfo[RandParam.level].KillInfo[infoid].p3)
+				PRINT( "CreateRandMission:6" )
+				RandParam.data[n].p3 = 0
+				RandParam.data[n].p4 = 0
+				RandParam.data[n].p5 = 0
+				RandParam.data[n].p6 = 0
+				RandParam.data[n].p7 = 0
+				RandParam.data[n].p8 = 0
+				--RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].KillInfo[infoid].p4 * RandParam.data[n].p2 )
+				RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].KillInfo[infoid].p4 )
+				PRINT( "CreateRandMission:7" )
+				--RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].KillInfo[infoid].p5 * RandParam.data[n].p2 )
+				RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].KillInfo[infoid].p5 )
+				PRINT( "CreateRandMission:rand data info: id, p1, p2, p3, p4", RandParam.data[n].id, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4 )
+			end
+		end
+		
+	elseif RandParam.tp == MIS_RAND_GET then			--????
+		--radom ??4?????
+		RandParam.numdata = Rand( randnum ) + 1
+		if RandParam.numdata > mission.RandInfo[RandParam.level].GetInfo.count then
+			RandParam.numdata = mission.RandInfo[RandParam.level].GetInfo.count
+		end
+		if RandParam.numdata <= 0 then
+			PRINT( "CreateRandMission, Obtain item random quest quantity must be greater than zero, please check if target's level quest notice is correct! Level = ", RandParam.level )
+			SystemNotice( character, "CreateRandMission, Obtain item random quest quantity must be greater than zero, please check if target's level quest notice is correct! Level = "..RandParam.level )
+			return LUA_FALSE
+		end
+		
+		for n = 1, RandParam.numdata, 1 do
+			local flag = 1
+			local infoid = Rand( mission.RandInfo[RandParam.level].GetInfo.count ) + 1
+			PRINT( "CreateRandMission:rand infoid = ", infoid )
+			--??????????????
+			for i = 1, n - 1, 1 do
+				if RandParam.data[i].id == infoid then
+					n = n - 1
+					flag = 0
+					break
+				end
+			end
+			
+			if flag == 1 then
+			--????
+				RandParam.data[n].id = infoid
+				RandParam.data[n].p1 = mission.RandInfo[RandParam.level].GetInfo[infoid].p1
+				RandParam.data[n].p2 = mission.RandInfo[RandParam.level].GetInfo[infoid].p2 + Rand(mission.RandInfo[RandParam.level].GetInfo[infoid].p3)
+				RandParam.data[n].p3 = 0
+				RandParam.data[n].p4 = 0
+				RandParam.data[n].p5 = 0
+				RandParam.data[n].p6 = 0
+				RandParam.data[n].p7 = 0
+				RandParam.data[n].p8 = 0
+				--RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].GetInfo[infoid].p4 * RandParam.data[n].p2 )
+				RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].GetInfo[infoid].p4 )
+				--RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].GetInfo[infoid].p5 * RandParam.data[n].p2 )
+				RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].GetInfo[infoid].p5 )
+				PRINT( "CreateRandMission:rand data info: id, p1, p2, p3, p4", RandParam.data[n].id, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4 )
+			end
+		end
+		
+	elseif RandParam.tp == MIS_RAND_SEND then			--????
+		--radom ?????????NPC
+		PRINT( "Rand send" )
+		local npcinfoid = nil --GetNpcInfoID( npc ) --????NPC?infoid,????????????????
+		RandParam.numdata = Rand( randnum ) + 1
+		PRINT( "CreateRandMission1: numdata = , randnum = , RandParam.level = , infocount = , itemcount = ", RandParam.numdata, randnum, RandParam.level, mission.RandInfo[RandParam.level].SendInfo.count, mission.RandInfo[RandParam.level].SendItem.count )
+		if RandParam.numdata > mission.RandInfo[RandParam.level].SendInfo.count then
+			RandParam.numdata = mission.RandInfo[RandParam.level].SendInfo.count
+		end
+		if RandParam.numdata > mission.RandInfo[RandParam.level].SendItem.count then
+			RandParam.numdata = mission.RandInfo[RandParam.level].SendItem.count
+		end
+		if RandParam.numdata <= 0 then
+			PRINT( "CreateRandMission, send letter quest random value cannot be greater than zero. Please check target level of send letter notice is correct!Level = ", RandParam.level )
+			SystemNotice( character, "CreateRandMission, send letter quest random value cannot be greater than zero. Please check target level of send letter notice is correct!Level = "..RandParam.level )
+			return LUA_FALSE
+		end
+		
+		PRINT( "CreateRandMission2: numdata = , randnum = ", RandParam.numdata, randnum )
+		for n = 1, RandParam.numdata, 1 do
+			local flag = 1
+			local infoid = Rand( mission.RandInfo[RandParam.level].SendInfo.count ) + 1
+			local itemid = GetRandMissionSendItem( mission.RandInfo[RandParam.level].SendItem )
+			PRINT( "CreateRandMission:rand infoid = , itemid = ", infoid, itemid )
+			--??????????????
+			if mission.RandInfo[RandParam.level].SendInfo[infoid].p1 == npcinfoid then
+				n = n - 1
+				flag = 0
+			else
+				for i = 1, n - 1, 1 do
+					if RandParam.data[i].id == infoid or RandParam.data[i].p2 == itemid then
+						PRINT( "CreateRandMission:send item ,rand value repeat" )
+						n = n - 1
+						flag = 0
+						break
+					end
+				end
+			end
+			
+			if flag == 1 then
+				--????
+				RandParam.data[n].id = infoid
+				RandParam.data[n].p1 = mission.RandInfo[RandParam.level].SendInfo[infoid].p1 --npc info id
+				RandParam.data[n].p2 = itemid --item id
+				RandParam.data[n].p3 = mission.RandInfo[RandParam.level].SendInfo[infoid].p2 --area id
+				RandParam.data[n].p4 = 0
+				RandParam.data[n].p5 = 0
+				RandParam.data[n].p6 = 0
+				RandParam.data[n].p7 = 0
+				RandParam.data[n].p8 = 0
+				RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].SendInfo[infoid].p4 )
+				RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].SendInfo[infoid].p5 )
+				PRINT( "CreateRandMission:rand data info: id, p1, p2, p3, p4", RandParam.data[n].id, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4 )
+			end
+		end
+		
+	elseif RandParam.tp == MIS_RAND_CONVOY then		--??NPC
+		PRINT( "Convoy npc" )
+		--radom ??????NPC??		
+		RandParam.numdata = 1 --?????????????NPC,??????????NPC
+		if RandParam.numdata > mission.RandInfo[RandParam.level].ConvoyInfo.count then
+			RandParam.numdata = mission.RandInfo[RandParam.level].ConvoyInfo.count
+		end
+		if RandParam.numdata <= 0 then
+			PRINT( "CreateRandMission, escort NPC quest quantity must be greater than zero, please check if target's level escort notice is correct!Level = ", RandParam.level )
+			SystemNotice( character, "CreateRandMission, escort NPC quest quantity must be greater than zero, please check if target's level escort notice is correct! Level = "..RandParam.level )
+			return LUA_FALSE
+		end
+		
+		for n = 1, RandParam.numdata, 1 do
+			local flag = 1
+			local infoid = Rand( mission.RandInfo[RandParam.level].ConvoyInfo.count ) + 1
+			--??????????????
+			for i = 1, n - 1, 1 do
+				if RandParam.data[i].id == infoid then
+					PRINT( "CreateRandMission:convoy npc ,rand value repeat" )
+					n = n - 1
+					flag = 0
+					break
+				end
+			end
+			
+			if flag == 1 then
+				--????
+				RandParam.data[n].id = infoid
+				RandParam.data[n].p1 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p1 --char info id
+				RandParam.data[n].p2 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p2 --map id
+				RandParam.data[n].p3 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p3 --areaid
+				RandParam.data[n].p4 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p4 --x
+				RandParam.data[n].p5 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p5 --y
+				RandParam.data[n].p6 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p6 --scope
+				RandParam.data[n].p7 = 0
+				RandParam.data[n].p8 = 0
+				RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p7 )
+				RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p8 )
+				PRINT( "CreateRandMission:rand data info: id, p1, p2, p3, p4, p5, p6", RandParam.data[n].id, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 )
+			end
+		end
+		
+	elseif RandParam.tp == MIS_RAND_EXPLORE then		--????
+		
+	else
+		PRINT( "CreateRandMission: invalid random quest type!tp = "..RandParam.tp )
+		SystemNotice( character, "CreateRandMission: invalid random quest type!tp = "..RandParam.tp )
+		LG( "randmission_error", "CreateRandMission: invalid random quest type!tp = "..RandParam.tp )
+		return LUA_FALSE
+	end
+	
+	PRINT( "CreateRandMission: name, id, level, loopinfo, loopdata", mission.name, RandParam.id, mission.loopinfo, mission.RandInfo[RandParam.level].LoopData )
+	RandParam.prizetp, RandParam.prizedata = GetRandMissionPrize( character, mission.name, RandParam.id, mission.loopinfo, mission.RandInfo[RandParam.level].LoopData )
+
+	--??radom ???????
+	if mission.missionlist[tpindex].exptp == nil then
+		LG( "randmission_error", "Invalid random quest experience type!exptp = ", mission.missionlist[tpindex].exptp ) 
+		PRINT( "Invalid random quest experience type!exptp = ", mission.missionlist[tpindex].exptp )
+		SystemNotice( character, "Invalid random quest experience type!exptp = ", mission.missionlist[tpindex].exptp )
+		return LUA_FALSE
+	end
+	RandParam.exptp = mission.missionlist[tpindex].exptp
+	PRINT( "CreateRandMission:exptp = ", RandParam.exptp )
+	
+	--??????radom ????
+	local ret = RandMission( mission.missionlist[tpindex], RandParam )
+	if ret ~= LUA_TRUE then
+		LG( "randmission_error", "CreateRandMission:RandMission:id, sid, tp, level, exp, money, item, numdata", RandParam.id, RandParam.sid, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
+		PRINT( "CreateRandMission:RandMission generate random quest notice error!" )
+		SystemNotice( character, "CreateRandMission:RandMission generate random quest notice error!" )
+		return LUA_FALSE
+	end
+	
+	--??radom ??????
+	PRINT( "CreateRandMission:Required number of empty slots in inventory:numgrid = ", mission.missionlist[tpindex].begin.baggrid )
+	local numgrid = mission.missionlist[tpindex].begin.baggrid
+	local ret = HasLeaveBagGrid( character, numgrid )
+	if ret ~= LUA_TRUE then
+		PRINT( "CreateRandMission:insufficient inventory slot when character accept quest! num = ", numgrid )
+		BickerNotice( character, "Inventory space insufficient, requires "..numgrid.." space. Activation of quest failed!" )
+		return LUA_FALSE, 0
+	end
+		
+	--???????????	
+	PRINT( "CreateRandMission:AddRandMission:id, sid, tp, level, exp, money, prizedata, prizetp, numdata", RandParam.id, RandParam.sid, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
+	local ret = AddRandMission( character, RandParam.id, RandParam.sid, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
+	if ret ~= LUA_TRUE then 
+		LG( "randmission_error", "AddRandMission:id, sid, tp, level, exp, money, prizedata, prizetp, numdata", RandParam.id, RandParam.sid, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
+		PRINT( "CreateRandMission:AddRandMission add character random quest notice failed!" )
+		SystemNotice( character, "CreateRandMission:AddRandMission add character random quest notice failed!" )
+		return LUA_FALSE
+	end
+	
+	for n = 1, RandParam.numdata, 1 do
+		PRINT( "CreateRandMission:SetRandMissionData:id, index, p1, p2, p3, p4, p5, p6", RandParam.id, n - 1, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 )
+		ret = SetRandMissionData( character, RandParam.id, n - 1, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 )
+		if ret ~= LUA_TRUE then
+			PRINT( "CreateRandMission:SetRandMissionData adds character random quest notice failed!, n = ", n )
+			SystemNotice( character, "CreateRandMission:SetRandMissionData adds character random quest notice failed!n = "..n )
+			return LUA_FALSE
+		end
+	end
+	local str = "["
+	local name = GetCharName( npc )
+	str = str..name.."] has given you a random quest. Complete it!"
+	SystemNotice( character, str )
+	
+	return LUA_TRUE, tpindex
+end
+
+--??radom ?????????
+function GetRandMissionTypeIndex( mission, tp )
+	if mission == nil or tp == nil then
+		PRINT( "GetRandMissionTypeIndex:parameter cannot be equal to nil. mission = nil or tp = nil" )
+		LG( "randmission_error", "GetRandMissionTypeIndex:parameter cannot be equal to nil. mission = nil or tp = nil" )
+		return 0
+	end
+	PRINT( "GetRandMissionTypeIndex:mission, tp, mission.missionlist.count", mission, tp, mission.missionlist.count )
+	for i = 1, mission.missionlist.count, 1 do
+		PRINT( "GetRandMissionTypeIndex,mission.missionlist[i].tp = ", mission.missionlist[i].tp )
+		if tp == mission.missionlist[i].tp then
+			return i
+		end
+	end
+	
+	return 0
+end
+
+--??radom ????radom ?
+function GetRandTpinfoIndex( tpinfo )
+	local randdata = 0
+	for n = 1, tpinfo.count, 1 do					
+		randdata = randdata + tpinfo[n].tprand
+		PRINT( "GetRandTpinfoIndex: n = , randdata = , tprand = ", n, randdata, tpinfo[n].tprand )
+	end
+	local randvalue = Rand( randdata )
+	local tempdata = 0
+	for n = 1, tpinfo.count, 1 do
+		if randvalue >= tempdata and randvalue < tempdata + tpinfo[n].tprand then
+			PRINT( "GetRandTpinfoIndex: return n = , tprandvalue = , tprand = ", n, randvalue, tpinfo[n].tprand )
+			return n
+		end
+		tempdata = tempdata + tpinfo[n].tprand
+	end
+	return 0
+end
+
+--????????radom ????????????
+function GetCharRandMission( character, id, mission )
+	PRINT( "GetRandMission:character", character )
+	
+	--???????radom ??????
+	if HasRandMission( character, id ) ~= LUA_TRUE then
+		PRINT( "GetRandMission:HasRandMission does not detect random quest notice on target,ID = "..id )
+		SystemNotice( character, "GetRandMission: does not detect random quest notice on target,ID = "..id )
+		return LUA_TRUE, 0
+	end
+	
+	--?????radom ????
+	InitRandParam()
+	
+	--?????radom ??????
+	PRINT( "GetCharRandMission:GetRandMission, id = ", id  )
+	local ret
+	RandParam.id = id
+	RandParam.bounty = mission.bounty
+	RandParam.npcname = mission.npcname
+	RandParam.npcarea  = mission.npcarea	
+	PRINT( "CreateRandMission:RandParam.id = , RandParam.sid = ,  bounty = , name = , area = ", RandParam.id, RandParam.sid, RandParam.bounty, RandParam.npcname, RandParam.npcarea )
+	
+	ret, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata = GetRandMission( character, id )
+	if ret ~= LUA_TRUE then
+		PRINT( "GetCharRandMission:GetRandMission error." )
+		SystemNotice( character, "GetCharRandMission:GetRandMission error." )
+		return LUA_FALSE
+	end
+	PRINT( "GetCharRandMission:tp, level, exp, money, prizedata, prizetp, numdata",  RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
+	--????????
+	for n = 1, RandParam.numdata, 1 do
+		ret, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 = GetRandMissionData( character, id, n - 1 )
+		PRINT( "GetRandMissionData: p1, p2, p3, p4, p5, p6 ", RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 )
+		if ret ~= LUA_TRUE then
+			PRINT( "GetCharRandMission:GetRandMissionData error." )
+			SystemNotice( character, "GetCharRandMission:GetRandMissionData error." )
+			return LUA_FALSE
+		end
+	end
+	
+	local index = GetRandMissionTypeIndex( mission, RandParam.tp )
+	PRINT( "GetCharRandMission:GetRandMissionTypeIndex index = ", index )
+	if index == 0  then
+		PRINT( "GetRandMission:obtain random quest matching type notice failed!" )
+		SystemNotice( character, "GetRandMission:obtain random quest matching type notice failed!" )
+		return LUA_FALSE
+	end
+
+	--??radom ???????
+	if mission.missionlist[index].exptp == nil then
+		LG( "randmission_error", "Invalid random quest experience type!exptp = ", mission.missionlist[index].exptp ) 
+		PRINT( "Invalid random quest experience type!exptp = ", mission.missionlist[index].exptp )
+		SystemNotice( character, "Invalid random quest experience type!exptp = ", mission.missionlist[index].exptp )
+		return LUA_FALSE
+	end
+	RandParam.exptp = mission.missionlist[index].exptp
+	PRINT( "CreateRandMission:exptp = ", RandParam.exptp )
+	
+	local ret = RandMission( mission.missionlist[index], RandParam )
+	if ret ~= LUA_TRUE then
+		PRINT( "GetRandMission: according to random quest setting notice resulted in random quest failed!" )
+		SystemNotice( character, "GetRandMission: according to random quest setting notice resulted in random quest failed!" )
+		return LUA_FALSE
+	end
+	
+	PRINT( "GetRandMission: return true, index = ", index )
+	return LUA_TRUE, index, mission.RandInfo[RandParam.level].LoopData
+end
+
+--radom ??????
+function RandMission( mission, param )
+	PRINT( "RandMission" )
+	if mission == nil or param == nil or param.tp ~= mission.tp then
+		PRINT( "RandMission:mission = nil or param = nil or param.tp ~= mission.tp" )
+		return LUA_FALSE
+	end
+	
+	--?????????????
+	mission.begin.baggrid = 0
+	mission.result.baggrid = 0
+	
+	PRINT( "RandMission, mission.tp = , param.tp", mission.tp, param.tp )	
+	--???????????????????
+	if mission.tp == MIS_RAND_KILL then				--????
+		--?????????
+		local num = 0
+		mission.begin.actions.count = param.numdata
+		mission.result.conditions.count = param.numdata
+		mission.need.count = param.numdata + 1
+		mission.need[1].p1 = L10n_translate("  <b"..param.npcarea..">'s<y"..param.npcname.."> needs you to hunt","LifeQuest","Mission")
+
+		--mission.begin.talk = "<t>?,???????????????????????,????"
+		--mission.result.help = "<t>?,??,?????????????,????"
+		
+		PRINT( mission.begin.talkstart, mission.result.talkstart, mission.result.helpstart )
+		PRINT( mission.begin.talkend, mission.result.talkend, mission.result.helpend )
+		mission.begin.talk = mission.begin.talkstart
+		mission.result.talk = mission.result.talkstart
+		mission.result.help = mission.result.helpstart
+		PRINT( "RandMission,1" )
+		for n = 1, param.numdata, 1 do
+			--??????
+			mission.need[n+1].p1 = param.data[n].p1 	--????ID
+			mission.need[n+1].p2 = param.data[n].p2 	--????
+			mission.need[n+1].p3 = num						--????????
+			
+			--?????????????(AddTrigger)
+			mission.begin.actions[n].p3 = param.data[n].p1 --????ID
+			mission.begin.actions[n].p4 = param.data[n].p2 --????
+			mission.begin.actions[n].p5 = num --????????
+			mission.begin.actions[n].p6 = 0
+			
+			--??????????
+			num = num + param.data[n].p2
+			mission.result.conditions[n].p2 = num - 1 --????????????
+			
+			--????????
+			PRINT( "RandMission, 2" )
+		    local monstername = GetMonsterName( param.data[n].p1 )
+			PRINT( "RandMission, 3, count, talk, need[count].p2, monstername", n, mission.begin.talk, mission.need[n].p2, monstername )			
+			local nummonster = 0
+			if mission.need[n+1].p2 ~= nil then
+				nummonster = mission.need[n+1].p2
+			end
+			mission.begin.talk = mission.begin.talk.." <r"..nummonster.."> <r\""..monstername.."\"> "
+			mission.result.help = mission.result.help.." <r"..nummonster.."> <r\""..monstername.."\"> "
+			mission.need[1].p1 = mission.need[1].p1.." <r"..nummonster.."> <r\""..monstername.."\"> "
+			if n < param.numdata then
+				mission.begin.talk = mission.begin.talk..", "
+				mission.result.help = mission.result.help..", "
+				mission.need[1].p1 = mission.need[1].p1..", "
+			end
+		end
+
+		--??????(AddExpAndType)	
+		mission.result.actions[2].p1 = param.exptp
+		mission.result.actions[2].p2 = param.exp
+		mission.result.actions[2].p3 = param.exp
+		PRINT( "RandMission:AddExpAndType, exp = ", mission.result.actions[2].p1 )
+		
+		--??????
+		--mission.begin.talk = mission.begin.talk.."?"
+		--mission.result.talk = "<t>?,????????????????,?,??????,??????????"
+		--mission.result.help = mission.result.help.."?"
+
+		mission.begin.talk = mission.begin.talk..mission.begin.talkend
+		mission.result.talk = mission.result.talk..mission.result.talkend
+		mission.result.help = mission.result.help..mission.result.helpend
+		mission.need[1].p1 = mission.need[1].p1..""
+		
+		PRINT( "RandMission,4 " )
+		--??????
+		mission.prize[1].p1 = param.money
+		if param.prizedata ~= 0 then
+			PRINT( "RandMission,5, prizetp, prizedata", param.prizetp, param.prizedata )
+			mission.prize[2].tp = param.prizetp
+			mission.prize[2].p1 = param.prizedata
+			mission.prize.count = 2
+			if param.prizetp == MIS_PRIZE_ITEM then
+				mission.prize[2].p2 = 1
+				mission.prize[2].p3 = param.bounty
+				mission.result.baggrid = 1
+			elseif param.prizetp == MIS_PRIZE_CESS then
+				mission.prize[2].p2 = 0
+			elseif param.prizetp == MIS_PRIZE_FAME then
+				mission.prize[2].p2 = 0
+			else
+				PRINT( "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
+				LG( "mission_error", "RandMission:: Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
+				mission.prize[2].tp = 0
+				mission.prize[2].p1 = 0
+				mission.prize.count = 1
+			end
+		else
+			PRINT( "RandMission,6" )
+			mission.prize.count = 1
+		end
+		PRINT( "RandMission,7" )
+	elseif mission.tp == MIS_RAND_GET then		--????
+		--?????????
+		PRINT( "RandMission:tp = MIS_RAND_GET:param.numdata = ", param.numdata ) 
+		local num = 0
+		mission.begin.actions.count = param.numdata
+		mission.result.conditions.count = param.numdata * 2
+		mission.result.actions.count = 2 + param.numdata
+		mission.need.count = param.numdata + 1
+		mission.need[1].p1 = L10n_translate("  <b"..param.npcarea..">'s<y"..param.npcname..">requires your help to collect","LifeQuest","Mission")
+		mission.need[1].p1 = mission.need[1].p1.." <r"..param.numdata.."> "..L10n_translate("items,","LifeQuest","Mission")
+		
+		--mission.begin.talk = "<t>??,????????"
+		--mission.begin.talk = mission.begin.talk.."<r"..param.numdata..">???,???????:"
+		--mission.result.help = "hmm,????????????????????????"
+		--mission.result.help = mission.result.help.."<r"..param.numdata..">???,"
+		PRINT( mission.begin.talkstart, mission.result.talkstart, mission.result.helpstart )
+		PRINT( mission.begin.talkend, mission.result.talkend, mission.result.helpend )
+		mission.begin.talk = mission.begin.talkstart
+		mission.result.talk = mission.result.talkstart
+		mission.result.help = mission.result.helpstart
+		
+		for n = 1, param.numdata, 1 do
+			--??????
+			mission.need[n+1].p1 = param.data[n].p1   	--????ID
+			mission.need[n+1].p2 = param.data[n].p2 	--????
+			mission.need[n+1].p3 = num						--????????
+			
+			--?????????????(AddTrigger)
+			mission.begin.actions[n].p3 = param.data[n].p1	 --????ID
+			mission.begin.actions[n].p4 = param.data[n].p2  --????
+			mission.begin.actions[n].p5 = num --????????
+			mission.begin.actions[n].p6 = 0
+			
+			--??????(TakeItem)
+			mission.result.actions[n+2].p1 = param.data[n].p1
+			mission.result.actions[n+2].p2 = param.data[n].p2
+			PRINT( "RandMission:TakeItem, item = , num = ", mission.result.actions[n+2].p1, mission.result.actions[n+2].p2 )
+			
+			--??????????
+			num = num + param.data[n].p2
+			--??HasFlag ????
+			mission.result.conditions[1 + (n - 1)*2].p2 = num - 1 --????????????
+			--??HasItem ????
+			mission.result.conditions[2 + (n - 1)*2].p1 = param.data[n].p1 --??????ID
+			mission.result.conditions[2 + (n - 1)*2].p2 = param.data[n].p2 --??????
+			
+			--????????
+			local itemname = GetItemName( param.data[n].p1 )
+			mission.begin.talk = mission.begin.talk.." <r"..mission.need[n+1].p2.."> <r"..itemname.."> "
+			mission.result.help = mission.result.help.." <r"..mission.need[n+1].p2.."> <r"..itemname.."> "
+			mission.need[1].p1 = mission.need[1].p1.." <r"..mission.need[n+1].p2.."> <r"..itemname.."> "
+			if n < param.numdata then
+				mission.begin.talk = mission.begin.talk..", "
+				mission.result.help = mission.result.help..", "
+				mission.need[1].p1 = mission.need[1].p1..", "
+			end
+		end
+		
+		--??????(AddExpAndType)	
+		mission.result.actions[2].p1 = param.exptp
+		mission.result.actions[2].p2 = param.exp
+		mission.result.actions[2].p3 = param.exp
+		PRINT( "RandMission:AddExpAndType, exp = ", mission.result.actions[2].p1 )
+		
+		--??????
+		--mission.begin.talk = mission.begin.talk.."?"
+		--mission.result.help = mission.begin.talk.."???,??????!"
+		--mission.result.talk = "<t>??,??????,????????????,???????,???????????"
+		mission.need[1].p1 = mission.need[1].p1..""
+
+		mission.begin.talk = mission.begin.talk..mission.begin.talkend
+		mission.result.talk = mission.result.talk..mission.result.talkend
+		mission.result.help = mission.result.help..mission.result.helpend
+		
+		--??????
+		mission.prize[1].p1 = param.money
+		if param.prizedata ~= 0 then
+			PRINT( "RandMission,5, prizetp, prizedata", param.prizetp, param.prizedata )
+			mission.prize[2].tp = param.prizetp
+			mission.prize[2].p1 = param.prizedata
+			mission.prize.count = 2
+			if param.prizetp == MIS_PRIZE_ITEM then
+				mission.prize[2].p2 = 1
+				mission.prize[2].p3 = param.bounty
+				mission.result.baggrid = 1
+			elseif param.prizetp == MIS_PRIZE_CESS then
+				mission.prize[2].p2 = 0
+			elseif param.prizetp == MIS_PRIZE_FAME then
+				mission.prize[2].p2 = 0
+			else
+				PRINT( "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
+				LG( "mission_error", "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
+				mission.prize[2].tp = 0
+				mission.prize[2].p1 = 0
+				mission.prize.count = 1
+			end
+		else
+			PRINT( "RandMission,6" )
+			mission.prize.count = 1
+		end
+		
+	elseif mission.tp == MIS_RAND_SEND then			--???
+		--????????
+		local num = 0
+		mission.begin.actions.count = param.numdata
+		mission.result.conditions.count = param.numdata
+		mission.need.count = param.numdata + 1 --??????????????
+		mission.need[1].p1 = L10n_translate("  <b"..param.npcarea..">'s<y"..param.npcname..">needs you to help him on an errand. He will reward you after you return.","LifeQuest","Mission")
+
+		--mission.begin.talk = "<t>??,???????"
+		--mission.begin.talk = mission.begin.talk.."<r"..param.numdata..">???,??"
+		--mission.result.help = "<t>?,??,?????"
+		--mission.result.help = mission.result.help.."<r"..param.numdata..">????????????"
+				
+		PRINT( mission.begin.talkstart, mission.result.talkstart, mission.result.helpstart )
+		PRINT( mission.begin.talkend, mission.result.talkend, mission.result.helpend )
+		mission.begin.talk = mission.begin.talkstart
+		mission.result.talk = mission.result.talkstart
+		mission.result.help = mission.result.helpstart
+		
+		for n = 1, param.numdata, 1 do
+			--?????????????(GiveItem)
+			mission.begin.actions[n].p1 = param.data[n].p2	 --??ID
+			mission.begin.actions[n].p2 = 1
+			PRINT( "RandMission: GiveItem item = , count = ", mission.begin.actions[n].p2, 1 )
+			
+			--??????????(HasRandItemFlag)
+			mission.result.conditions[n].p2 = param.data[n].p1 --?????NPC???????
+			
+			--????????
+			local npcname = GetNpcName( param.data[n].p1 )
+			PRINT( "RandMission, npcname = ", npcname )
+			local areaname = GetAreaName( param.data[n].p3 )
+			PRINT( "RandMission, areaname = ", areaname )
+			local itemname = GetItemName( param.data[n].p2 )
+			mission.begin.talk = mission.begin.talk.." <r["..itemname.."]> to give <p"..areaname..">'s <b\""..npcname.."\">"
+			mission.result.help = mission.result.help.." <r["..itemname.."]> to give <p"..areaname..">'s <b\""..npcname.."\">"
+			if n < param.numdata then				
+				mission.begin.talk = mission.begin.talk..", "
+				mission.result.help = mission.result.help..", "
+			end
+			PRINT( "RandMission, talk = ", mission.begin.talk )
+			
+			--??????
+			mission.need[n+1].p1 = n..") hold <r["..itemname.."]> pass to <p"..areaname..">'s <b\""..npcname.."\">"   --????			
+			PRINT( "RandMission: need.p1 = ", mission.need[n+1].p1 )
+		end
+		
+		--??????(AddExpAndType)	
+		mission.result.actions[2].p1 = param.exptp
+		mission.result.actions[2].p2 = param.exp
+		mission.result.actions[2].p3 = param.exp
+		PRINT( "RandMission:AddExpAndType, exp = ", mission.result.actions[2].p1 )		
+		
+		--??????
+		mission.begin.baggrid = param.numdata
+		--mission.begin.talk = mission.begin.talk.."?"		
+		--mission.result.help = mission.result.help.."?"
+		--mission.result.talk = "<t>?,???????,??????????,?????,????????,????????"
+		
+		mission.begin.talk = mission.begin.talk..mission.begin.talkend
+		mission.result.talk = mission.result.talk..mission.result.talkend
+		mission.result.help = mission.result.help..mission.result.helpend
+		
+		--??????
+		mission.prize[1].p1 = param.money
+		if param.prizedata ~= 0 then
+			PRINT( "RandMission,5, prizetp, prizedata", param.prizetp, param.prizedata )
+			mission.prize[2].tp = param.prizetp
+			mission.prize[2].p1 = param.prizedata
+			mission.prize.count = 2
+			if param.prizetp == MIS_PRIZE_ITEM then
+				mission.prize[2].p2 = 1
+				mission.prize[2].p3 = param.bounty
+				mission.result.baggrid = 1
+			elseif param.prizetp == MIS_PRIZE_CESS then
+				mission.prize[2].p2 = 0
+			elseif param.prizetp == MIS_PRIZE_FAME then
+				mission.prize[2].p2 = 0
+			else
+				PRINT( "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
+				LG( "mission_error", "RandMission: Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
+				mission.prize[2].tp = 0
+				mission.prize[2].p1 = 0
+				mission.prize.count = 1
+			end
+		else
+			PRINT( "RandMission,6" )
+			mission.prize.count = 1
+		end
+		
+	elseif mission.tp == MIS_RAND_CONVOY then		--??NPC
+		--???NPC
+		local num = 0
+		mission.begin.actions.count = 1 + param.numdata*2
+		mission.result.conditions.count = param.numdata
+		mission.need.count = param.numdata + 1 --??????????????
+		mission.need[1].p1 = L10n_translate("  <b"..param.npcarea..">'s <y"..param.npcname..">needs your help to escort some people to another place. You can get your reward from him after you return.","LifeQuest","Mission")
+		
+		--mission.begin.talk = "<t>??,??????"
+		
+		PRINT( mission.begin.talkstart, mission.result.talkstart, mission.result.helpstart )
+		PRINT( mission.begin.talkend, mission.result.talkend, mission.result.helpend )		
+		mission.begin.talk = mission.begin.talkstart
+		mission.result.talk = mission.result.talkstart
+		mission.result.help = mission.result.helpstart
+		
+		for n = 1, param.numdata, 1 do
+			--?????????????(AddTrigger)
+			mission.begin.actions[2 + (n - 1)*2].p3 = param.data[n].p2	 --map ID
+			mission.begin.actions[2 + (n - 1)*2].p4 = param.data[n].p4  --x
+			mission.begin.actions[2 + (n - 1)*2].p5 = param.data[n].p5  --y
+			mission.begin.actions[2 + (n - 1)*2].p6 = param.data[n].p6  --scope
+			
+			--ConvoyNpc
+			mission.begin.actions[3 + (n - 1)*2].p2 = n - 1	 --convoy index npc
+			mission.begin.actions[3 + (n - 1)*2].p3 = param.data[n].p1	 -- charid
+			
+			PRINT( "RandMission: Convoy npcid =  to map = , x = , y = , scope = ", mission.begin.actions[3 + (n - 1)*2].p3, mission.begin.actions[2 + (n - 1)*2].p3, mission.begin.actions[2 + (n - 1)*2].p4, mission.begin.actions[2 + (n - 1)*2].p5, mission.begin.actions[2 + (n - 1)*2].p6 )
+
+			--??????????(HasFlag)
+			
+			--????????
+			local npcname = GetMonsterName( param.data[n].p1 ) --charinfo name
+			PRINT( "RandMission, npcname = ", npcname )
+			local areaname = GetAreaName( param.data[n].p3 )
+			PRINT( "RandMission, areaname = ", areaname )
+			
+			mission.begin.talk = mission.begin.talk.."escort <b\""..npcname.."\"> reached <p"..areaname..">'s <b"..param.data[n].p4..","..param.data[n].p5.."> nearby?"
+			PRINT( "RandMission, talk = ", mission.begin.talk )
+			
+			--??????
+			mission.need[n+1].p1 = n..") escort <b\""..npcname.."\"> reached <p"..areaname..">"   --????
+			PRINT( "RandMission: need.p1 = ", mission.need[n+1].p1 )
+		end
+
+		--??????(AddExpAndType)	
+		mission.result.actions[2].p1 = param.exptp
+		mission.result.actions[2].p2 = param.exp
+		mission.result.actions[2].p3 = param.exp
+		PRINT( "RandMission:AddExpAndType, exp = ", mission.result.actions[2].p1 )
+		
+		--??????
+		--mission.begin.talk = mission.begin.talk.."???<r????>????????"
+		--mission.result.talk = mission.begin.talk
+		--mission.result.help = mission.begin.talk
+		
+		mission.begin.talk = mission.begin.talk..mission.begin.talkend
+		mission.result.talk = mission.result.talk..mission.result.talkend
+		mission.result.help = mission.result.help..mission.result.helpend
+		
+		--??????
+		mission.prize[1].p1 = param.money
+		if param.prizedata ~= 0 then
+			PRINT( "RandMission,5, prizetp, prizedata", param.prizetp, param.prizedata )
+			mission.prize[2].tp = param.prizetp
+			mission.prize[2].p1 = param.prizedata
+			mission.prize.count = 2
+			if param.prizetp == MIS_PRIZE_ITEM then
+				mission.prize[2].p2 = 1
+				mission.prize[2].p3 = param.bounty
+				mission.result.baggrid = 1
+			elseif param.prizetp == MIS_PRIZE_CESS then
+				mission.prize[2].p2 = 0
+			elseif param.prizetp == MIS_PRIZE_FAME then
+				mission.prize[2].p2 = 0
+			else
+				PRINT( "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
+				LG( "mission_error", "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
+				mission.prize[2].tp = 0
+				mission.prize[2].p1 = 0
+				mission.prize.count = 1
+			end
+		else
+			PRINT( "RandMission,6" )
+			mission.prize.count = 1
+		end
+		
+	elseif mission.tp == MIS_RAND_EXPLORE then		--????
+		
+	end
+	
+	return LUA_TRUE
+end
 
 ------------??0???????
 function GiveNSDX ( character , npc , value )
@@ -4691,2027 +5670,3 @@ function GiveNpcMission( character, id, name, npcmissionid )
 	SendAcceptPage( character, npcid, Mission[id], Mission[id].id )
 	return LUA_TRUE
 end
-
----Случайное задание начало
-function InitRandParam()
-	RandParam = {}
-	RandParam.id = 0
-	RandParam.sid = 0
-	RandParam.tp = 0
-	RandParam.bounty = 0
-	RandParam.exptp = MIS_EXP_NOMAL
-	RandParam.level = 0
-	RandParam.numdata = 0
-	RandParam.money = 0
-	RandParam.exp = 0
-	RandParam.prizetp = 0
-	RandParam.prizedata = 0
-	RandParam.p1 = 0
-	RandParam.p2 = 0
-	RandParam.npcname = ""
-	RandParam.npcarea = ""
-	RandParam.data = {}
-	for n = 1, 4, 1 do
-		RandParam.data[n] = {}
-		RandParam.data[n].p1 = 0
-		RandParam.data[n].p2 = 0
-		RandParam.data[n].p3 = 0
-		RandParam.data[n].p4 = 0
-	end
-end
-
-function DefineRandMission( id, name, misid, bounty, npcname, npcarea, leveltp )
-	LG( "Инициализация ежедневных квестов", "ID: "..id, " Name:"..name, " MisID:"..misid, "Bounty:"..bounty )
-	Mission[id] = {}
-	Mission[id].id = misid		
-	Mission[id].sid = id 		
-	Mission[id].name = name
-	Mission[id].tp = RAND_MISSION
-	Mission[id].bounty = bounty 
-	if leveltp == nil then
-		Mission[id].leveltp = MIS_LEVEL_CHAR
-	else
-		Mission[id].leveltp = leveltp
-	end
-	Mission[id].show = ALWAYS_SHOW
-	Mission[id].missionlist = {}
-	Mission[id].missionlist.count = 0
-	Mission[id].loopinfo = {}
-	Mission[id].loopinfo.count = 0
-	if npcname ~= nil and npcarea ~= nil then
-		Mission[id].npcname = npcname
-		Mission[id].npcarea  = npcarea
-	else
-		Mission[id].npcname = "Неизвестный НПС "
-		Mission[id].npcarea  = "Неизвестный регион на карте "
-	end	
-	Mission.curmission = Mission[id]
-	Mission[id].begin = {}
-	Mission[id].begin.talk = ""
-	Mission[id].begin.conditions = {}
-	Mission[id].begin.conditions.count = 0
-	Mission[id].begin.actions = {}
-	Mission[id].begin.actions.count = 0
-	Mission[id].begin.baggrid = 0
-	Mission[id].result = {}
-	Mission[id].result.talk = ""
-	Mission[id].result.help = ""
-	Mission[id].result.conditions = {}
-	Mission[id].result.conditions.count = 0
-	Mission[id].result.actions = {}
-	Mission[id].result.actions.count = 0
-	Mission[id].result.baggrid = 0
-	Mission[id].cancel = {}
-	Mission[id].cancel.conditions = {}
-	Mission[id].cancel.conditions.count = 0
-	Mission[id].cancel.actions = {}
-	Mission[id].cancel.actions.count = 0
-end
-
-function InitTalkList()
-	talklist.btalkstart = "Принять описание начала заданий "
-	talklist.btalkend = "Принять описание конца заданий "
-	talklist.rtalkstart = "Цикл описания начала заданий "
-	talklist.rtalkend = "Цикл описания конца заданий "
-	talklist.helpstart = "Помощь описания начала заданий "
-	talklist.helpend = "Помощь описания конца заданий "
-end
-
-function AddRandMissionBeginTalk( talkstart, talkend )
-	if talkstart == nil or talkend  == nil then
-		LG( "Инициализация ежедневных квестовtalk_error", "AddRandMissionBeginTalk: misid = , ", Mission.curmission.sid )
-		return
-	end
-	LG( "Инициализация ежедневных квестов", "AddRandMissionBeginTalk: talkstart = ", talkstart )
-	LG( "Инициализация ежедневных квестов", "AddRandMissionBeginTalk: talkend = ", talkend )
-	talklist.btalkstart = talkstart
-	talklist.btalkend = talkend
-end
-
-function AddRandMissionResultTalk( talkstart, talkend )
-	if talkstart == nil or talkend  == nil then
-		LG( "Инициализация ежедневных квестовtalk_error", "AddRandMissionBeginTalk: misid = , ", Mission.curmission.sid )
-		return
-	end
-	LG( "Инициализация ежедневных квестов", "AddRandMissionResultTalk: talkstart = ", talkstart )
-	LG( "Инициализация ежедневных квестов", "AddRandMissionResultTalk: talkend = ", talkend )	
-	talklist.rtalkstart = talkstart
-	talklist.rtalkend = talkend
-end
-
-function AddRandMissionHelpTalk( talkstart, talkend )
-	if talkstart == nil or talkend  == nil then
-		LG( "Инициализация ежедневных квестовtalk_error", "AddRandMissionBeginTalk: misid = , ", Mission.curmission.sid )
-		return
-	end
-	LG( "Инициализация ежедневных квестов", "AddRandMissionHelpTalk: talkstart = ", talkstart )
-	LG( "Инициализация ежедневных квестов", "AddRandMissionHelpTalk: talkend = ", talkend )	
-	talklist.helpstart = talkstart
-	talklist.helpend = talkend
-end
-
-function GetRandMissionTalk()
-	return talklist
-end
-
-function AddRandMissionType( tp, tprand, talklist, exptp, randnum, p1, p2, p3, p4, p5, p6 )
-	if Mission.curmission == nil or tp == nil or tprand == nil or exptp == nil or randnum == nil then
-		PRINT( "AddRandMissionType:Mission[id] = nil or tp = nil, exptp = nil or id = "..Mission.curmission.sid..",tp = "..tp )
-		return
-	end
-	LG( "Инициализация ежедневных квестов", "AddRandMissionType:Add rand mission id["..Mission.curmission.sid.."], tp = "..tp )
-	for n = 1, Mission.curmission.missionlist.count, 1 do
-		if Mission.curmission.missionlist[n].tp == tp then
-			PRINT( "AddRandMissionType: adding of random quest type duplicate, tp = "..tp )
-			return
-		end
-	end
-	Mission.curmission.missionlist.count = Mission.curmission.missionlist.count + 1
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count] = {}
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].tp = tp
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].exptp = exptp
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].randnum = randnum
-	local begin = {}
-	local result = {}
-	local cancel = {}
-	local need = {}
-	local prize = {}
-	begin.conditions = {}
-	begin.conditions.count = 0
-	begin.actions = {}
-	begin.actions.count = 0
-	begin.baggrid = 0
-	result.conditions = {}
-	result.conditions.count = 0
-	result.actions = {}
-	result.actions.count = 0
-	result.baggrid = 0
-	cancel.conditions = {}
-	cancel.conditions.count = 0
-	cancel.actions = {}
-	cancel.actions.count = 0
-	need.count = 0
-	prize.count = 0
-	prize.seltp = PRIZE_SELALL
-	begin.talk = ""
-	begin.talkstart = talklist.btalkstart
-	begin.talkend = talklist.btalkend
-	result.talk = ""
-	result.talkstart = talklist.rtalkstart
-	result.talkend = talklist.rtalkend
-	result.help = ""
-	result.helpstart = talklist.helpstart
-	result.helpend = talklist.helpend
-	if tp == MIS_RAND_KILL then
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = ""
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_KILL
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-        need[need.count] = {}
-		need[need.count].tp = MIS_NEED_KILL
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-        need[need.count] = {}
-		need[need.count].tp = MIS_NEED_KILL
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-        need[need.count] = {}
-		need[need.count].tp = MIS_NEED_KILL
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		prize.count = prize.count + 1
-		prize[prize.count] = {}
-		prize[prize.count].tp = MIS_PRIZE_MONEY
-		prize[prize.count].p1 = 0
-		prize[prize.count].p2 = 0
-		prize[prize.count].p3 = 0
-		prize[prize.count].p4 = 0
-		prize.count = prize.count + 1
-        prize[prize.count] = {}
-		prize[prize.count].tp = MIS_PRIZE_ITEM
-		prize[prize.count].p1 = 0
-		prize[prize.count].p2 = 0
-		prize[prize.count].p3 = 0
-		prize[prize.count].p4 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p1
-		begin.actions[begin.actions.count].p2 = TE_KILL
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-        begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p2
-		begin.actions[begin.actions.count].p2 = TE_KILL
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-        begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p3
-		begin.actions[begin.actions.count].p2 = TE_KILL
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-        begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p4
-		begin.actions[begin.actions.count].p2 = TE_KILL
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = ClearMission
-		result.actions[result.actions.count].p1 = Mission.curmission.id
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = AddExpAndType	
-		result.actions[result.actions.count].p1 = 0
-		result.actions[result.actions.count].p2 = 0
-		result.actions[result.actions.count].p3 = 0
-		InitTrigger()
-		TriggerCondition( 1, HasCancelMissionMoney )
-		TriggerAction( 1, TakeCancelMissionMoney )
-		TriggerAction( 1, ClearMission, Mission.curmission.id )
-		TriggerAction( 1, FailureRandMissionCount, Mission.curmission.id )
-		TriggerAction( 2, SystemNotice, "Недостаточно золота. Невозможно отказаться от задания!" )
-		cancel.actions.count = cancel.actions.count + 1
-		cancel.actions[cancel.actions.count] = {}
-		cancel.actions[cancel.actions.count].func = MultiTrigger
-		cancel.actions[cancel.actions.count].p1 = GetMultiTrigger()
-		cancel.actions[cancel.actions.count].p2 = 2
-		InitTrigger()
-		SetTriggerType( 1, MIS_TRIGGER_RAND )
-		TriggerAction( 1, AddRMNextFlag, Mission.curmission.id, 0, 0 )
-		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p1, 1 )
-		SetTriggerType( 2, MIS_TRIGGER_RAND )
-		TriggerAction( 2, AddRMNextFlag, Mission.curmission.id, 0, 0 )
-		TriggerAction( 2, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p2, 2 )
-		SetTriggerType( 3, MIS_TRIGGER_RAND )
-		TriggerAction( 3, AddRMNextFlag, Mission.curmission.id, 0, 0 )
-		TriggerAction( 3, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p3, 3 )
-		SetTriggerType( 4, MIS_TRIGGER_RAND )
-		TriggerAction( 4, AddRMNextFlag, Mission.curmission.id, 0, 0 )
-		TriggerAction( 4, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p4, 4 )
-	elseif tp == MIS_RAND_GET then
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = ""
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_ITEM
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-		need[need.count] = {}
-        need[need.count].tp = MIS_NEED_ITEM
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-        need[need.count] = {}
-		need[need.count].tp = MIS_NEED_ITEM
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-        need[need.count] = {}
-		need[need.count].tp = MIS_NEED_ITEM
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		prize.count = prize.count + 1
-		prize[prize.count] = {}
-		prize[prize.count].tp = MIS_PRIZE_MONEY
-		prize[prize.count].p1 = 0
-		prize[prize.count].p2 = 0
-		prize[prize.count].p3 = 0
-		prize[prize.count].p4 = 0
-		prize.count = prize.count + 1
-        prize[prize.count] = {}
-		prize[prize.count].tp = MIS_PRIZE_ITEM
-		prize[prize.count].p1 = 0
-		prize[prize.count].p2 = 0
-		prize[prize.count].p3 = 0
-		prize[prize.count].p4 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p1
-		begin.actions[begin.actions.count].p2 = TE_GETITEM
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-        begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p2
-		begin.actions[begin.actions.count].p2 = TE_GETITEM
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-        begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p3
-		begin.actions[begin.actions.count].p2 = TE_GETITEM
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-        begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p4
-		begin.actions[begin.actions.count].p2 = TE_GETITEM
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = AlwaysTrue
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasItem
-		result.conditions[result.conditions.count].p1 = 0
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = AlwaysTrue
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasItem
-		result.conditions[result.conditions.count].p1 = 0
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = AlwaysTrue
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasItem
-		result.conditions[result.conditions.count].p1 = 0
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = AlwaysTrue
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasItem
-		result.conditions[result.conditions.count].p1 = 0
-		result.conditions[result.conditions.count].p2 = 0
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = ClearMission
-		result.actions[result.actions.count].p1 = Mission.curmission.id
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = AddExpAndType	
-		result.actions[result.actions.count].p1 = 0
-		result.actions[result.actions.count].p2 = 0
-		result.actions[result.actions.count].p3 = 0
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = TakeItem
-		result.actions[result.actions.count].p1 = 0
-		result.actions[result.actions.count].p2 = 0
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = TakeItem
-		result.actions[result.actions.count].p1 = 0
-		result.actions[result.actions.count].p2 = 0
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = TakeItem
-		result.actions[result.actions.count].p1 = 0
-		result.actions[result.actions.count].p2 = 0
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = TakeItem
-		result.actions[result.actions.count].p1 = 0
-		result.actions[result.actions.count].p2 = 0
-		InitTrigger()
-		TriggerCondition( 1, HasCancelMissionMoney )
-		TriggerAction( 1, TakeCancelMissionMoney )
-		TriggerAction( 1, ClearMission, Mission.curmission.id )
-		TriggerAction( 1, FailureRandMissionCount, Mission.curmission.id )
-		TriggerAction( 2, SystemNotice, "Недостаточно золота. Невозможно отказаться от задания!" )
-		cancel.actions.count = cancel.actions.count + 1
-		cancel.actions[cancel.actions.count] = {}
-		cancel.actions[cancel.actions.count].func = MultiTrigger
-		cancel.actions[cancel.actions.count].p1 = GetMultiTrigger()
-		cancel.actions[cancel.actions.count].p2 = 2
-		InitTrigger()
-		SetTriggerType( 1, MIS_TRIGGER_RAND )
-		TriggerAction( 1, AddRMNextFlag, Mission.curmission.id, 0, 0 )
-		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p1, 1 )
-		SetTriggerType( 2, MIS_TRIGGER_RAND )
-		TriggerAction( 2, AddRMNextFlag, Mission.curmission.id, 0, 0 )
-		TriggerAction( 2, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p2, 2 )
-		SetTriggerType( 3, MIS_TRIGGER_RAND )
-		TriggerAction( 3, AddRMNextFlag, Mission.curmission.id, 0, 0 )
-		TriggerAction( 3, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p3, 3 )
-		SetTriggerType( 4, MIS_TRIGGER_RAND )
-		TriggerAction( 4, AddRMNextFlag, Mission.curmission.id, 0, 0 )
-		TriggerAction( 4, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p4, 4 )
-	elseif tp == MIS_RAND_SEND then
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = ""
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		prize.count = prize.count + 1
-		prize[prize.count] = {}
-		prize[prize.count].tp = MIS_PRIZE_MONEY
-		prize[prize.count].p1 = 0
-		prize[prize.count].p2 = 0
-		prize[prize.count].p3 = 0
-		prize[prize.count].p4 = 0
-		prize.count = prize.count + 1
-		prize[prize.count] = {}
-		prize[prize.count].tp = MIS_PRIZE_ITEM
-		prize[prize.count].p1 = 0
-		prize[prize.count].p2 = 0
-		prize[prize.count].p3 = 0
-		prize[prize.count].p4 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = GiveItem
-		begin.actions[begin.actions.count].p1 = 0
-		begin.actions[begin.actions.count].p2 = 0
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = GiveItem
-		begin.actions[begin.actions.count].p1 = 0
-		begin.actions[begin.actions.count].p2 = 0
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = GiveItem
-		begin.actions[begin.actions.count].p1 = 0
-		begin.actions[begin.actions.count].p2 = 0
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = GiveItem
-		begin.actions[begin.actions.count].p1 = 0
-		begin.actions[begin.actions.count].p2 = 0
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasRandNpcItemFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasRandNpcItemFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasRandNpcItemFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasRandNpcItemFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = ClearMission
-		result.actions[result.actions.count].p1 = Mission.curmission.id
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = AddExpAndType	
-		result.actions[result.actions.count].p1 = 0
-		result.actions[result.actions.count].p2 = 0
-		result.actions[result.actions.count].p3 = 0
-		InitTrigger()
-		TriggerCondition( 1, HasCancelMissionMoney )
-		TriggerAction( 1, TakeCancelMissionMoney )
-		TriggerAction( 1, TakeAllRandItem, Mission.curmission.id )
-		TriggerAction( 1, ClearMission, Mission.curmission.id )
-		TriggerAction( 1, FailureRandMissionCount, Mission.curmission.id )
-		TriggerAction( 2, SystemNotice, "Недостаточно золота. Невозможно отказаться от задания!" )
-		cancel.actions.count = cancel.actions.count + 1
-		cancel.actions[cancel.actions.count] = {}
-		cancel.actions[cancel.actions.count].func = MultiTrigger
-		cancel.actions[cancel.actions.count].p1 = GetMultiTrigger()
-		cancel.actions[cancel.actions.count].p2 = 2
-	elseif tp == MIS_RAND_CONVOY then
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = ""
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-		need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-		need[need.count] = {}
-        need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-        need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		need.count = need.count + 1
-        need[need.count] = {}
-		need[need.count].tp = MIS_NEED_DESP
-		need[need.count].p1 = 0
-		need[need.count].p2 = 0
-		need[need.count].p3 = 0
-		need[need.count].p4 = 0
-		prize.count = prize.count + 1
-		prize[prize.count] = {}
-		prize[prize.count].tp = MIS_PRIZE_MONEY
-		prize[prize.count].p1 = 0
-		prize[prize.count].p2 = 0
-		prize[prize.count].p3 = 0
-		prize[prize.count].p4 = 0
-		prize.count = prize.count + 1
-        prize[prize.count] = {}
-		prize[prize.count].tp = MIS_PRIZE_ITEM
-		prize[prize.count].p1 = 0
-		prize[prize.count].p2 = 0
-		prize[prize.count].p3 = 0
-		prize[prize.count].p4 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p1
-		begin.actions[begin.actions.count].p2 = TE_GAMETIME
-		begin.actions[begin.actions.count].p3 = TT_MULTITIME
-		begin.actions[begin.actions.count].p4 = 1
-		begin.actions[begin.actions.count].p5 = 1
-		begin.actions[begin.actions.count].p6 = 1
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p2
-		begin.actions[begin.actions.count].p2 = TE_GOTO_MAP
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 1
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = ConvoyNpc
-		begin.actions[begin.actions.count].p1 = Mission.curmission.id
-		begin.actions[begin.actions.count].p2 = 0
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 8
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-        begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p3
-		begin.actions[begin.actions.count].p2 = TE_GOTO_MAP
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 1
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = ConvoyNpc
-		begin.actions[begin.actions.count].p1 = Mission.curmission.id
-		begin.actions[begin.actions.count].p2 = 1
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 8
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-        begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p4
-		begin.actions[begin.actions.count].p2 = TE_GOTO_MAP
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 1
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = ConvoyNpc
-		begin.actions[begin.actions.count].p1 = Mission.curmission.id
-		begin.actions[begin.actions.count].p2 = 2
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 8
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-        begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = AddTrigger
-		begin.actions[begin.actions.count].p1 = p5
-		begin.actions[begin.actions.count].p2 = TE_GOTO_MAP
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 0
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0
-		begin.actions[begin.actions.count].p7 = 1
-		begin.actions[begin.actions.count].p8 = 0
-		begin.actions.count = begin.actions.count + 1
-		begin.actions[begin.actions.count] = {}
-		begin.actions[begin.actions.count].func = ConvoyNpc
-		begin.actions[begin.actions.count].p1 = Mission.curmission.id
-		begin.actions[begin.actions.count].p2 = 3
-		begin.actions[begin.actions.count].p3 = 0
-		begin.actions[begin.actions.count].p4 = 8
-		begin.actions[begin.actions.count].p5 = 0
-		begin.actions[begin.actions.count].p6 = 0		
-		begin.actions[begin.actions.count].p7 = 0
-		begin.actions[begin.actions.count].p8 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 0
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 1
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 2
-		result.conditions.count = result.conditions.count + 1
-		result.conditions[result.conditions.count] = {}
-		result.conditions[result.conditions.count].func = HasFlag
-		result.conditions[result.conditions.count].p1 = Mission.curmission.id
-		result.conditions[result.conditions.count].p2 = 3
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = ClearMission
-		result.actions[result.actions.count].p1 = Mission.curmission.id
-		result.actions.count = result.actions.count + 1
-		result.actions[result.actions.count] = {}
-		result.actions[result.actions.count].func = AddExpAndType	
-		result.actions[result.actions.count].p1 = 0
-		result.actions[result.actions.count].p2 = 0
-		result.actions[result.actions.count].p3 = 0
-		InitTrigger()
-		TriggerCondition( 1, HasCancelMissionMoney )
-		TriggerAction( 1, TakeCancelMissionMoney )
-		TriggerAction( 1, ClearAllConvoyNpc, Mission.curmission.id )
-		TriggerAction( 1, ClearMission, Mission.curmission.id )
-		TriggerAction( 1, FailureRandMissionCount, Mission.curmission.id )
-		TriggerAction( 2, SystemNotice, "Недостаточно золота. Невозможно отказаться от задания!" )
-		cancel.actions.count = cancel.actions.count + 1
-		cancel.actions[cancel.actions.count] = {}
-		cancel.actions[cancel.actions.count].func = MultiTrigger
-		cancel.actions[cancel.actions.count].p1 = GetMultiTrigger()
-		cancel.actions[cancel.actions.count].p2 = 2
-		InitTrigger()
-		TriggerAction( 1, ClearConvoyNpc, Mission.curmission.id, 0 )
-		TriggerAction( 1, SetFlag, Mission.curmission.id, 0 )
-		TriggerAction( 1, HelpInfo, MIS_HELP_DESP, "Спасибо за доставку меня сюда. До свидания!" )
-		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p2, 1 )
-		TriggerAction( 2, ClearConvoyNpc, Mission.curmission.id, 1 )
-		TriggerAction( 2, SetFlag, Mission.curmission.id, 1 )
-		TriggerAction( 2, HelpInfo, MIS_HELP_DESP, "Спасибо за доставку меня сюда. До свидания!" )
-		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p3, 2 )
-		TriggerAction( 3, ClearConvoyNpc, Mission.curmission.id, 2 )
-		TriggerAction( 3, SetFlag, Mission.curmission.id, 2 )
-		TriggerAction( 3, HelpInfo, MIS_HELP_DESP, "Спасибо за доставку меня сюда. До свидания!" )
-		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p4, 3 )
-		TriggerAction( 4, ClearConvoyNpc, Mission.curmission.id, 3 )
-		TriggerAction( 4, SetFlag, Mission.curmission.id, 3 )
-		TriggerAction( 4, HelpInfo, MIS_HELP_DESP, "Спасибо за доставку меня сюда. До свидания!" )
-		TriggerAction( 1, RefreshCompleteFlag, Mission.curmission.sid )
-		RegTrigger( p5, 4 )
-		local help = "Принятие задания ["
-		help = help..Mission.curmission.name.."] превышено время на поиски журнала."
-		TriggerAction( 5, ClearAllConvoyNpc, Mission.curmission.id )
-		TriggerAction( 5, HelpInfo, MIS_HELP_DESP, help )
-		TriggerAction( 5, FailureRandMissionCount, Mission.curmission.id )
-		TriggerAction( 5, SetMissionFailure, Mission.curmission.id )
-		RegTrigger( p1, 5 )
-	elseif tp == MIS_RAND_EXPLORE then
-	end
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].begin = begin
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].result = result
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].cancel = cancel
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].need  = need
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].prize  = prize
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].name = Mission.curmission.name
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].t1 = p1
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].t2 = p2
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].t3 = p3
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].t4 = p4
-	Mission.curmission.missionlist[Mission.curmission.missionlist.count].tprand = tprand
-end
-
-function AddRandMissionInfo( id, level, tp, p1, p2, p3, p4, p5, p6, p7, p8 )	
-	if Mission[id] == nil then
-		LG( "Инициализация ежедневных квестов", "AddRandMissionInfo:Mission[id] = nil, id = "..id )
-		PRINT( "AddRandMissionInfo:Mission[id] = nil, id = "..id )
-		return LUA_FALSE
-	end
-	if Mission[id].RandInfo == nil then
-		Mission[id].RandInfo = {}
-	end
-	local flag = 0
-	for n = 1, Mission.curmission.missionlist.count, 1 do
-		if Mission.curmission.missionlist[n].tp == tp then
-			flag = 1
-		end
-	end
-	if flag == 0 then
-		PRINT( "AddRandMissionInfo: Add data fail due to target data type switch is not opened. id, level, tp, p1, p2, p3, p4, p5, p6", id, level, tp, p1, p2, p3, p4, p5, p6 )
-		LG( "Ошибка ежедневных квестов", "AddRandMissionInfo: add data failed die to data type switch not opened.", tp )
-	end
-	if Mission[id].RandInfo[level] == nil then
-		Mission[id].RandInfo[level] = {}
-		Mission[id].RandInfo[level].KillInfo = {}
-		Mission[id].RandInfo[level].KillInfo.count = 0
-		Mission[id].RandInfo[level].GetInfo = {}
-		Mission[id].RandInfo[level].GetInfo.count = 0
-		Mission[id].RandInfo[level].SendInfo = {}
-		Mission[id].RandInfo[level].SendInfo.count = 0
-		Mission[id].RandInfo[level].SendItem = {}
-		Mission[id].RandInfo[level].SendItem.count = 0
-		Mission[id].RandInfo[level].ConvoyInfo = {}
-		Mission[id].RandInfo[level].ConvoyInfo.count = 0
-		Mission[id].RandInfo[level].ExploreInfo = {}
-		Mission[id].RandInfo[level].ExploreInfo.count = 0
-		Mission[id].RandInfo[level].LoopData = {}
-		Mission[id].RandInfo[level].LoopData.count = 0
-		Mission[id].RandInfo[level].PrizeItem = {}
-		Mission[id].RandInfo[level].PrizeItem.count = 0
-		Mission[id].RandInfo[level].PrizeItem.odds = 0
-		Mission[id].RandInfo[level].PrizeItem.num = 0
-		Mission[id].RandInfo[level].tpinfo = {}
-		Mission[id].RandInfo[level].tpinfo.count = 0
-	end
-	LG( "Инициализация ежедневных квестов", "mission = , mission.RandInfo = , mission.RandInfo[level] = ", Mission[id], Mission[id].RandInfo, Mission[id].RandInfo[level] )
-	if tp == MIS_RAND_KILL then					
-		Mission[id].RandInfo[level].KillInfo.count = Mission[id].RandInfo[level].KillInfo.count + 1
-		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count] = {}
-		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p1 = p1
-		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p2 = p2
-		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p3 = p3
-		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p4 = p4
-		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p5 = p5
-		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p6 = p6
-		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p7 = p7
-		Mission[id].RandInfo[level].KillInfo[Mission[id].RandInfo[level].KillInfo.count].p8 = p8
-	elseif tp == MIS_RAND_GET then			
-		Mission[id].RandInfo[level].GetInfo.count = Mission[id].RandInfo[level].GetInfo.count + 1
-		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count] = {}
-		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p1 = p1
-		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p2 = p2
-		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p3 = p3
-		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p4 = p4
-		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p5 = p5
-		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p6 = p6
-		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p7 = p7
-		Mission[id].RandInfo[level].GetInfo[Mission[id].RandInfo[level].GetInfo.count].p8 = p8
-	elseif tp == MIS_RAND_SEND then			
-		Mission[id].RandInfo[level].SendInfo.count = Mission[id].RandInfo[level].SendInfo.count + 1
-		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count] = {}
-		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p1 = p1
-		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p2 = p2
-		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p3 = p3
-		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p4 = p4
-		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p5 = p5
-		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p6 = p6
-		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p7 = p7
-		Mission[id].RandInfo[level].SendInfo[Mission[id].RandInfo[level].SendInfo.count].p8 = p8
-	elseif tp == MIS_RAND_CONVOY then		
-		Mission[id].RandInfo[level].ConvoyInfo.count = Mission[id].RandInfo[level].ConvoyInfo.count + 1
-		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count] = {}
-		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p1 = p1
-		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p2 = p2
-		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p3 = p3
-		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p4 = p4
-		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p5 = p5
-		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p6 = p6
-		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p7 = p7
-		Mission[id].RandInfo[level].ConvoyInfo[Mission[id].RandInfo[level].ConvoyInfo.count].p8 = p8
-	elseif tp == MIS_RAND_EXPLORE then	
-		Mission[id].RandInfo[level].ExploreInfo.count = Mission[id].RandInfo[level].ExploreInfo.count + 1
-		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count] = {}
-		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count].p1 = p1
-		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count].p2 = p2
-		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count].p3 = p3
-		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count].p4 = p4
-		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count].p5 = p5
-		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count].p6 = p6
-		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count].p7 = p7
-		Mission[id].RandInfo[level].ExploreInfo[Mission[id].RandInfo[level].ExploreInfo.count].p8 = p8
-	else
-		PRINT( "AddRandMissionInfo: adds data type error, tp = "..tp )
-		LG( "Инициализация ежедневных квестов",  "AddRandMissionInfo: adds data type error, tp = "..tp )
-		return LUA_FALSE
-	end
-	local count = 0
-	for n = 1, Mission[id].RandInfo[level].tpinfo.count, 1 do
-		if Mission[id].RandInfo[level].tpinfo[n].tp == tp then
-			count = 1
-			break
-		end
-	end
-	if count == 0 then
-		local tprand = 1
-		for n = 1, Mission.curmission.missionlist.count, 1 do
-			if Mission.curmission.missionlist[n].tp == tp and Mission.curmission.missionlist[n].tprand ~= nil then
-				tprand = Mission.curmission.missionlist[n].tprand
-				break
-			end
-		end
-		Mission[id].RandInfo[level].tpinfo.count = Mission[id].RandInfo[level].tpinfo.count + 1
-		Mission[id].RandInfo[level].tpinfo[Mission[id].RandInfo[level].tpinfo.count] = {}
-		Mission[id].RandInfo[level].tpinfo[Mission[id].RandInfo[level].tpinfo.count].tp = tp
-		Mission[id].RandInfo[level].tpinfo[Mission[id].RandInfo[level].tpinfo.count].tprand = tprand
-	end
-	LG( "Инициализация ежедневных квестов", "mission = , mission.RandInfo = , mission.RandInfo[level] = ", Mission[id], Mission[id].RandInfo, Mission[id].RandInfo[level] )
-	LG( "Инициализация ежедневных квестов",  "AddRandMissionInfo:id = , level = , tp = , tprand = , p1 =, p2 =, p3 =, p4 =, p5 =, p6 =, p7 =, p8 =", id, level, tp, tprand, p1, p2, p3, p4, p5, p6, p7, p8 )
-	return LUA_TRUE
-end
-
-function AddRandKillInfo( level, monsterid, randvalue, randscope, exp, money )
-	if Mission.curmission == nil or Mission.curmission.sid == nil then
-		PRINT( "AddRandKillInfo: register random quest notice, please define a random quest!level, monsterid,  randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
-		LG( "Ошибка ежедневных квестов", "AddRandKillInfo: register random quest notice, please define a random quest!level, monsterid,  randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
-		return
-	end
-	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_KILL, monsterid, randvalue, randscope, exp , money )
-	if ret ~= LUA_TRUE then
-			PRINT( "AddRandKillInfo:AddRandMissionInfo: register random quest notice error! level, monsterid,  randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
-			LG( "Ошибка ежедневных квестов", "AddRandKillInfo:AddRandMissionInfo: register random quest notice error! level, monsterid,  randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
-			return
-	end	
-	LG( "Инициализация ежедневных квестов", "AddRandKillInfo:level, monsterid, randvalue, randscope, exp, money", level, monsterid, randvalue, randscope, exp, money )
-end
-
-function AddRandGetItem( level, itemid, randvalue, randscope, exp, money )
-	if Mission.curmission == nil or Mission.curmission.sid == nil then
-		PRINT( "AddRandGetItem: register random quest notice, please define a random quest!level, itemid,  randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
-		LG( "Ошибка ежедневных квестов", "AddRandGetItem: register random quest notice, please define a random quest!level, itemid,  randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
-		return
-	end
-	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_GET, itemid, randvalue, randscope, exp, money )
-	if ret ~= LUA_TRUE then
-			PRINT( "AddRandGetItem:AddRandMissionInfo: register random quest notice error! level, monsterid,  randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
-			LG( "Ошибка ежедневных квестов", "AddRandGetItem:AddRandMissionInfo: register random quest notice error! level, itemid,  randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
-			return
-	end
-	LG( "Инициализация ежедневных квестов", "AddRandGetItem:level, itemid, randvalue, randscope, exp, money", level, itemid, randvalue, randscope, exp, money )
-end
-
-function AddRandSendInfo( level, npcid, exp, money )
-	if Mission.curmission == nil or Mission.curmission.sid == nil then
-		PRINT( "AddRandSendInfo: register random quest notice, please define a random quest!level, npcid, exp, money", level, npcid, exp, money )
-		LG( "Ошибка ежедневных квестов", "AddRandSendInfo: register random quest notice, please define a random quest!level, npcid, exp, money", level, npcid, exp, money )
-		return
-	end
-	if npcid == nil or NpcList[npcid] == nil or NpcList[npcid].mapid == nil or NpcList[npcid].areaid == nil then
-		PRINT( "AddRandSendInfo: Please input correct NPC ID notice. npcid = ", npcid )
-		LG( "Ошибка ежедневных квестов", "AddRandSendInfo: Please input correct NPC ID notice. npcid = ", npcid )
-		return
-	end
-	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_SEND, npcid, NpcList[npcid].areaid, NpcList[npcid].mapid, exp, money )
-	if ret ~= LUA_TRUE then
-			PRINT( "AddRandSendInfo:AddRandMissionInfo: register random quest notice error! level, npcid, mapid, areaid, mapid, exp, money", level, npcid, NpcList[npcid].areaid, NpcList[npcid].mapid, exp, money )
-			LG( "Ошибка ежедневных квестов", "AddRandSendInfo:AddRandMissionInfo: register random quest notice error! level, npcid, areaid, mapid, exp, money", level, npcid, NpcList[npcid].areaid, NpcList[npcid].mapid, exp, money )
-			return
-	end
-	LG( "Инициализация ежедневных квестов", "AddRandSendInfo:level, npcid, mapid, areaid, exp, money", level, npcid, NpcList[npcid].areaid, NpcList[npcid].mapid, exp, money )
-end
-
-function AddRandSendItem( level, item )
-	if Mission.curmission.RandInfo[level] == nil then
-		PRINT( "AddRandSendItem: add send letter random quest item, exceeds level.level = ", level )
-		LG( "Ошибка ежедневных квестов", "AddRandSendItem: add send letter random quest item, exceeds level.level = ", level )
-		return
-	end
-	Mission.curmission.RandInfo[level].SendItem.count = Mission.curmission.RandInfo[level].SendItem.count + 1
-	Mission.curmission.RandInfo[level].SendItem[Mission.curmission.RandInfo[level].SendItem.count] = item
-	LG( "Инициализация ежедневных квестов", "AddRandSendItem:misid, level, item", Mission.curmission.sid, level, item )
-end
-
-function AddRandConvoyInfo( level, charid, mapid, areaid, x, y, scope, exp, money )
-	if Mission.curmission == nil or Mission.curmission.sid == nil then
-		PRINT( "AddRandConvoyInfo: when registering random quest notice , please define a random quest!level, npcid, areaid, mapid, exp, money", level, areaid, mapid, exp, money )
-		LG( "Ошибка ежедневных квестов", "AddRandConvoyInfo: when registering random quest notice , please define a random quest!level, npcid, areaid, mapid, exp, money", level, areaid, mapid, exp, money )
-		return
-	end
-	local ret = AddRandMissionInfo( Mission.curmission.sid, level, MIS_RAND_CONVOY, charid, mapid, areaid, x, y, scope, exp, money )
-	if ret ~= LUA_TRUE then
-			PRINT( "AddRandConvoyInfo:AddRandMissionInfo: Register random quest notice error! level, charid, mapid, mapid, areaid, x, y, scope, exp, money", level, charid, mapid, areaid, x, y, scope, exp, money )
-			LG( "Ошибка ежедневных квестов", "AddRandConvoyInfo:AddRandMissionInfo: register random quest notice error! level, charid, mapid, areaid, x, y, scope, exp, money", level, charid, mapid, areaid, x, y, scope, exp, money )
-			return
-	end
-	LG( "Инициализация ежедневных квестов", "AddRandConvoyInfo:level, charid, mapid, areaid, x, y, scope, exp, money", level, charid, mapid, areaid, x, y, scope, exp, money )
-end
-
-function AddRandExploreInfo( level, mapid, areaid, x, y, exp, money )
-end
-
-function AddRandPriceCess( level, cess, cessrange )
-	LG( "Инициализация ежедневных квестов", "AddRandPrizeItem:misid, level, cess, cessrange", Mission.curmission.sid, level, cess, cessrange )
-	if Mission.curmission.RandInfo[level] == nil then
-		LG( "Ошибка ежедневных квестов", "AddRandPriceCess, level data error.", level )
-		return
-	end
-	Mission.curmission.RandInfo[level].LoopData.count = Mission.curmission.RandInfo[level].LoopData.count + 1
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = 0
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.tp = MIS_PRIZE_CESS
-	local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].tp = MIS_PRIZE_CESS
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p1 = cess
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = cessrange
-end
-
-function AddRandPriceFrame( level, frame, framerange )
-	LG( "Инициализация ежедневных квестов", "AddRandPrizeItem:misid, level, frame, framerange" )
-	if Mission.curmission.RandInfo[level] == nil then
-		LG( "Ошибка ежедневных квестов", "AddRandPriceFrame, level data error.", level )
-		return
-	end
-	Mission.curmission.RandInfo[level].LoopData.count = Mission.curmission.RandInfo[level].LoopData.count + 1
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = 0
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.tp = MIS_PRIZE_FAME
-	local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].tp = MIS_PRIZE_FAME
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p1 = frame
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = framerange
-end
-
-function AddRandPricePetExp( level, exp, exprange )
-	LG( "Инициализация ежедневных квестов", "AddRandPricePetExp:misid, level, exp, exprange" )
-	if Mission.curmission.RandInfo[level] == nil then
-		LG( "Ошибка ежедневных квестов", "AddRandPricePetExp, level data error.", level )
-		return
-	end
-	Mission.curmission.RandInfo[level].LoopData.count = Mission.curmission.RandInfo[level].LoopData.count + 1
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = 0
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.tp = MIS_PRIZE_PETEXP
-	local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].tp = MIS_PRIZE_PETEXP
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p1 = exp
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = exprange
-end
-
-function SetRandPrizeItem( level )
-	LG( "Инициализация ежедневных квестов", "SetRandPrizeItem:misid, level", Mission.curmission.sid, level )
-	if Mission.curmission.RandInfo[level] == nil then
-		LG( "Ошибка ежедневных квестов", "SetRandPrizeItem, level data error.", level )
-		return
-	end
-	Mission.curmission.RandInfo[level].LoopData.count = Mission.curmission.RandInfo[level].LoopData.count + 1
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize = {}
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = 0
-	Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.tp = MIS_PRIZE_ITEM
-end
-
-function AddRandPrizeItem( level, item1, itemdata1, item2, itemdata2, item3, itemdata3, item4, itemdata4 )	
-	if Mission.curmission.RandInfo[level] == nil then
-		LG( "Ошибка ежедневных квестов", "AddRandPrizeItem, level data error.", level )
-		return
-	end
-	if Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count] == nil or Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize == nil then
-		LG( "Ошибка ежедневных квестов", "AddRandPrizeItem: level data notice has not initialized, misid = , level = ", Mission.curmission.sid, level )
-		return
-	end
-	LG( "Инициализация ежедневных квестов", "AddRandPrizeItem:misid, level, item1, itemdata1, item2, itemdata2, item3, itemdata3, item4, itemdata4", Mission.curmission.sid, level, item1, itemdata1, item2, itemdata2, item3, itemdata3, item4, itemdata4 )
-	if item1 ~= nil then
-		local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].tp = MIS_PRIZE_ITEM
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p1 = item1
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = itemdata1
-	else
-		return
-	end
-	if item2 ~= nil then
-		local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].tp = MIS_PRIZE_ITEM
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p1 = item2
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = itemdata2
-	else
-		return
-	end
-	if item3 ~= nil then
-		local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].tp = MIS_PRIZE_ITEM
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p1 = item3
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = itemdata3
-	else
-		return
-	end
-	if item4 ~= nil then
-		local count = Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count + 1
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize.count = count
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count] = {}
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].tp = MIS_PRIZE_ITEM
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p1 = item4
-		Mission.curmission.RandInfo[level].LoopData[Mission.curmission.RandInfo[level].LoopData.count].Prize[count].p2 = itemdata4
-	else
-		return
-	end
-end
-
-function SetRandPrizeOdds( loopnum, odds, completenum )
-	LG( "Инициализация ежедневных квестов", "SetRandPrizeOdds:loopnum, odds, completenum", loopnum, odds, completenum )
-	if Mission.curmission.loopinfo[loopnum] ~= nil then
-		PRINT( "SetRandPrizeOdds: data set duplicate.loopnum, odds completenum", loopnum, Mission.curmission.loopinfo[loopnum].odds, Mission.curmission.loopinfo[loopnum].completenum )
-		LG( "Ошибка ежедневных квестов", "SetRandPrizeOdds: data set duplicate.loopnum, odds completenum", loopnum, Mission.curmission.loopinfo[loopnum].odds, Mission.curmission.loopinfo[loopnum].completenum )
-	end
-	Mission.curmission.loopinfo[loopnum] = {}
-	Mission.curmission.loopinfo[loopnum].odds = odds
-	Mission.curmission.loopinfo[loopnum].num = completenum
-end
-
-function GetRandMissionLevel( character, sid, leveltp )
-	if leveltp == MIS_LEVEL_CHAR then	    
-		local level = GetCharMissionLevel( character )
-		if level == nil then
-			return 10000
-		end
-		return level 
-	elseif leveltp == MIS_LEVEL_GANG then	
-		local level = GetCharGangLevel( character )
-		return level
-	else
-		SystemNotice( character, "GetRandMissionLevel:incorrect random quest level type!missid = "..sid )
-		LG( "Ошибка ежедневных квестов", "GetRandMissionLevel:incorrect random quest level type!missid = "..sid )
-		return 10000
-	end
-	return 10000
-end
-
-function GetRandMissionSendItem( itemlist )
-	PRINT( "GetRandMissionSendItem:itemlist = , itemlist.count = ", itemlist, itemlist.count )
-	local id = Rand( itemlist.count ) + 1
-	PRINT( "GetRandMissionSendItem:rand value = , item id = ", id, itemlist[id] )
-	return itemlist[id]
-end
-
-function GetRandMissionPrize( character, misname, id, loopinfo, loopdata )
-	PRINT( "GetRandMissionPrize" )
-	if loopinfo == nil or loopdata == nil or id == nil or misname == nil then
-		PRINT( "GetRandMissionPrize: id = , loopdata = ", id, loopdata )
-		LG( "Ошибка ежедневных квестов", "GetRandMissionPrize: Не удалось вызвать функцию!prizeitem = nil and id = "..id )
-		SystemNotice( character, "GetRandMissionPrize: Не удалось вызвать функцию!reward failed!" )
-		return 0, 0
-	end
-	local ret, loopnum = GetRandMissionNum( character, id )
-	if ret ~= LUA_TRUE then
-		PRINT( "GetRandMissionPrize:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = ", id )
-		LG( "Ошибка ежедневных квестов", "GetRandMissionPrize:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = ", id )
-		SystemNotice( character, "GetRandMissionPrize:GetRandMissionNum function transfer failed. Unable to obtain character random quest loop count!id = "..id )
-		
-		ResetRandMissionNum( character, id )
-		return 0, 0
-	else		
-		loopnum = loopnum + 1 
-		PRINT( "GetRandMissionPrize:GetRandMissionNum: return loopnum = ", loopnum )
-		PRINT( "loopdata, loopdata", loopdata, loopdata[loopnum] )
-		if loopinfo[loopnum] == nil or loopdata[loopnum] == nil or loopdata[loopnum].Prize == nil then
-			PRINT( "GetRandMissionPrize: invalid random quest cycle data notice or reward item notice,id = , loopnum = ", id, loopnum )
-			SystemNotice( character, "GetRandMissionPrize: invalid random quest cycle data notice or reward item notice,id = "..id.." loopnum = "..loopnum )
-			
-			ResetRandMissionNum( character, id )
-			return 0, 0
-		end
-		local ret, miscount = GetRandMissionCount( character, id )
-		miscount = miscount + 1
-		SystemNotice( character, "Вы получили задание ["..misname.."] № ."..miscount.."!" )
-		
-		PRINT( "GetRandMissionPrize:HasRandMissionCount, id = , num = ", loopinfo[loopnum].num )
-		local ret = HasRandMissionCount( character, id, loopinfo[loopnum].num - 1 )
-		if ret == LUA_TRUE then
-			PRINT( "GetRandMissionPrize:Prize", loopdata[loopnum].Prize )
-			
-			local prizelist = loopdata[loopnum].Prize
-			local value = Rand( 100 )
-			PRINT( "GetRandMissionPrize: prize rand value = , odds = ", value, loopinfo[loopnum].odds )
-			if value >= loopinfo[loopnum].odds then
-				return 0, 0
-			end
-			if prizelist.tp == MIS_PRIZE_ITEM then
-				local randdata = 0
-				for n = 1, prizelist.count, 1 do
-					randdata = randdata + prizelist[n].p2
-					PRINT( "GetRandMissionPrize: n = , randdata = , p2 = ", n, randdata, prizelist[n].p2 )
-				end
-				local prizevalue = Rand( randdata )
-				local tempdata = 0
-				for n = 1, prizelist.count, 1 do
-					if prizevalue >= tempdata and prizevalue < tempdata + prizelist[n].p2 then
-						PRINT( "GetRandMissionPrize: return n = , prizevalue = , prizetp = , p1 = ", n, prizevalue, prizelist[n].tp, prizelist[n].p1 )
-						return prizelist[n].tp, prizelist[n].p1
-					end
-					tempdata = tempdata + prizelist[n].p2
-				end
-			else
-				local index = Rand( prizelist.count ) + 1
-				PRINT( "GetRandMissionPrize:prizetp = , p1 = , p2 = index = ", prizelist[index].tp, prizelist[index].p1, prizelist[index].p2, index )		
-				if prizelist[index] == nil then
-					SystemNotice( character, "Error: cannot locate random quest high level equipment reward notice!id = "..id.."prize index = "..index )
-					LG( "Ошибка ежедневных квестов", "Error: cannot locate random quest high level equipment reward notice!id = "..id.." prize index = "..index )
-					return 0
-				end
-				PRINT( "GetRandMissionPrize: return prizetp = , p1 = ", prizelist[index].tp, prizelist[index].p1 )
-				return prizelist[index].tp, prizelist[index].p1
-			end
-		end
-	end
-	PRINT( "GetRandMissionPrize: return 0" )
-	return 0, 0
-end
-
-function IsRandMissionAccept( character, mission )
-	PRINT( "IsRandMissionAccept:character, mission", character, mission )
-	if mission == nil or mission.tp ~= RAND_MISSION then
-		PRINT( "IsRandMissionAccept:parameter error or non random quest type data notice!" )
-		SystemNotice( character, "IsRandMissionAccept:parameter error or non random quest type data notice!" )		
-		return LUA_FALSE
-	end
-	local level = GetRandMissionLevel( character, mission.sid, mission.leveltp )
-	PRINT( "IsRandMissionAccept:GetRandMissionLevel : level = ", level )
-	if mission.RandInfo == nil or mission.RandInfo[level] == nil then
-		PRINT( "IsRandMissionAccept: no level info and return false " )
-		return LUA_FALSE
-	end
-	PRINT( "IsRandMissionAccept:GetRandMissionLevel : return true " )
-	return LUA_TRUE
-end
-
-function GetRandMissionExp( loopnum, miscount, exp )
-	if loopnum == nil or miscount == nil or exp == nil then
-		PRINT( "GetRandMissionExp: Не удалось вызвать функцию!loopnum, miscount, exp", loopnum, miscount, exp )
-		LG( "Ошибка ежедневных квестов", "GetRandMissionExp: Не удалось вызвать функцию!" )
-		return 0
-	end
-	local value = exp*((20 + miscount*5)*0.002 + ToDword(miscount*0.1)*0.05)
-	local newexp = ToDword( value )
-	PRINT( "GetRandMissionExp:newexp = ", newexp )
-	if newexp == nil then
-		return 0
-	end
-	PRINT( "GetRandMissionExp:loopnum, miscount, exp, newexp", loopnum, miscount, exp, newexp )
-	return newexp
-end
-
-function GetRandMissionMoney( loopnum, miscount, money )
-	if loopnum == nil or miscount == nil or money == nil then
-		PRINT( "GetRandMissionExp: Не удалось вызвать функцию!loopnu, miscount, money", loopnum, miscount, money )
-		LG( "Ошибка ежедневных квестов", "GetRandMissionMoney: Не удалось вызвать функцию!" )
-		return 0
-	end
-	local value = money*((20 + miscount*5)*0.002 + ToDword(miscount*0.1)*0.05)
-	local newmoney = ToDword( value )
-	PRINT( "GetRandMissionExp:newmoney = ", newmoney )
-	if newmoney == nil then
-		return 0
-	end
-	return newmoney
-end
-
-function CreateRandMission( character, npc, mission )
-	PRINT( "CreateRandMission:character, npc, mission", character, npc, mission )
-	if mission == nil or mission.tp ~= RAND_MISSION then
-		PRINT( "CreateRandMission:parameter error or non random quest type data notice!" )
-		SystemNotice( character, "CreateRandMission:parameter error or non random quest type data notice!" )		
-		return LUA_FALSE
-	end
-	InitRandParam()
-	RandParam.id = mission.id
-	RandParam.sid = mission.sid
-	RandParam.bounty = mission.bounty
-	RandParam.npcname = mission.npcname
-	RandParam.npcarea  = mission.npcarea	
-	PRINT( "CreateRandMission:RandParam.id = , RandParam.sid = ,  bounty = , name = , area = ", RandParam.id, RandParam.sid, RandParam.bounty, RandParam.npcname, RandParam.npcarea )
-	RandParam.level = GetRandMissionLevel( character, mission.sid, mission.leveltp )
-	PRINT( "CreateRandMission:RandParam.level =, mission.RandInfo =, mission.RandInfo[level] = ", RandParam.level, mission.RandInfo, mission.RandInfo[RandParam.level] )
-	if mission.RandInfo == nil or mission.RandInfo[RandParam.level] == nil then
-		PRINT( "CreateRandMission:mission notice does not exist random quest data generated notice, please checl.llevel = "..RandParam.level )
-		local desp = GetCharName( npc )
-		desp = desp..": Sorry, I do not have any quest suitable for your level. Please look elsewhere."
-		HelpInfo( character, MIS_HELP_DESP, desp )
-		return LUA_FALSE
-	end
-	PRINT( "CreateRandMission: rand type count = ", mission.RandInfo[RandParam.level].tpinfo.count )
-	local tpinfoid = GetRandTpinfoIndex( mission.RandInfo[RandParam.level].tpinfo )
-	PRINT( "CreateRandMission:Rand mission info, tpinfoid =, type = ", tpinfoid, mission.RandInfo[RandParam.level].tpinfo[tpinfoid].tp )
-	if mission.RandInfo[RandParam.level].tpinfo[tpinfoid] == nil or mission.RandInfo[RandParam.level].tpinfo[tpinfoid].tp == nil then
-		PRINT( "CreateRandMission:Random quest type shortcut notice as nil.level, tpinfoid", RandParam.level, tpinfoid )
-		LG( "Ошибка ежедневных квестов", "CreateRandMission:Random quest type shortcut notice as nil.level = , tpinfoid = ", RandParam.level, tpinfoid )
-		SystemNotice( character, "CreateRandMission:Random quest type shortcut notice as nil.level = , tpinfoid = "..RandParam.level..tpinfoid )
-		return LUA_FALSE
-	end
-	RandParam.tp = mission.RandInfo[RandParam.level].tpinfo[tpinfoid].tp
-	local tpindex = GetRandMissionTypeIndex( mission, RandParam.tp )
-	PRINT( "CreateRandMission:tpindex = ", tpindex )
-	if tpindex == 0 then
-		LG( "Ошибка ежедневных квестов", "CreateRandMission:GetRandMissionTypeIndex:id, tp, level, exp, money, item, numdata", RandParam.id, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
-		PRINT( "CreateRandMission:GetRandMission:GetRandMissionTypeIndex has not found any quest mission that matches with random question type initialization date notice" )
-		SystemNotice( character, "CreateRandMission:GetRandMissionGetRandMissionTypeIndex has not found any quest mission that matches with random question type initialization date notice" )
-		return LUA_FALSE
-	end
-	local randnum = mission.missionlist[tpindex].randnum
-	if randnum == nil or randnum < 1 or randnum > 4 then
-		LG( "Ошибка ежедневных квестов", "CreateRandMission:random quest highest random value type cannot be less than 1 or greater than 4! num = "..randnum )
-		PRINT( "CreateRandMission:random quest highest random value type cannot be less than 1 or greater than 4! num = "..randnum )
-		SystemNotice( character, "CreateRandMission:random quest highest random value type cannot be less than 1 or greater than 4! num = "..randnum )
-		return LUA_FALSE
-	end
-	PRINT( "CreateRandMission:randnum = , val = ", mission.missionlist[tpindex].randnum, randnum )
-	local ret, miscount = GetRandMissionCount( character, mission.id )
-	miscount = miscount + 1
-	local ret, misloopnum = GetRandMissionNum( character, mission.id )
-	misloopnum = misloopnum + 1
-	if RandParam.tp == MIS_RAND_KILL then					
-		RandParam.numdata = Rand( randnum ) + 1
-		PRINT( "CreateRandMission:rand numdata = ", RandParam.numdata )
-		if RandParam.numdata > mission.RandInfo[RandParam.level].KillInfo.count then
-			RandParam.numdata = mission.RandInfo[RandParam.level].KillInfo.count
-		end
-		PRINT( "CreateRandMission:rand numdata = ", RandParam.numdata )
-		if RandParam.numdata <= 0 then
-			PRINT( "CreateRandMission, hunt monster quest random value cannot be less than zero. Please check if level of monster item matches! Level = ", RandParam.level )
-			SystemNotice( character, "CreateRandMission, hunt monster quest random value cannot be less than zero. Please check if level of monster item matches!Level = "..RandParam.level )
-			return LUA_FALSE
-		end
-		for n = 1, RandParam.numdata, 1 do
-			local flag = 1
-			local infoid = Rand( mission.RandInfo[RandParam.level].KillInfo.count ) + 1
-			PRINT( "CreateRandMission:rand infoid = ", infoid )
-			for i = 1, n - 1, 1 do
-				if RandParam.data[i].id == infoid then
-					PRINT( "CreateRandMission:3" )
-					n = n - 1
-					flag = 0
-					break
-				end
-				PRINT( "CreateRandMission:2" )
-			end
-			PRINT( "CreateRandMission:4" )
-			if flag == 1 then
-				PRINT( "CreateRandMission:5" )
-				RandParam.data[n].id = infoid
-				RandParam.data[n].p1 = mission.RandInfo[RandParam.level].KillInfo[infoid].p1
-				RandParam.data[n].p2 = mission.RandInfo[RandParam.level].KillInfo[infoid].p2 + Rand(mission.RandInfo[RandParam.level].KillInfo[infoid].p3)
-				PRINT( "CreateRandMission:6" )
-				RandParam.data[n].p3 = 0
-				RandParam.data[n].p4 = 0
-				RandParam.data[n].p5 = 0
-				RandParam.data[n].p6 = 0
-				RandParam.data[n].p7 = 0
-				RandParam.data[n].p8 = 0
-				RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].KillInfo[infoid].p4 )
-				PRINT( "CreateRandMission:7" )
-				RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].KillInfo[infoid].p5 )
-				PRINT( "CreateRandMission:rand data info: id, p1, p2, p3, p4", RandParam.data[n].id, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4 )
-			end
-		end
-		
-	elseif RandParam.tp == MIS_RAND_GET then			
-		RandParam.numdata = Rand( randnum ) + 1
-		if RandParam.numdata > mission.RandInfo[RandParam.level].GetInfo.count then
-			RandParam.numdata = mission.RandInfo[RandParam.level].GetInfo.count
-		end
-		if RandParam.numdata <= 0 then
-			PRINT( "CreateRandMission, Obtain item random quest quantity must be greater than zero, please check if target's level quest notice is correct! Level = ", RandParam.level )
-			SystemNotice( character, "CreateRandMission, Obtain item random quest quantity must be greater than zero, please check if target's level quest notice is correct! Level = "..RandParam.level )
-			return LUA_FALSE
-		end
-		for n = 1, RandParam.numdata, 1 do
-			local flag = 1
-			local infoid = Rand( mission.RandInfo[RandParam.level].GetInfo.count ) + 1
-			PRINT( "CreateRandMission:rand infoid = ", infoid )
-			for i = 1, n - 1, 1 do
-				if RandParam.data[i].id == infoid then
-					n = n - 1
-					flag = 0
-					break
-				end
-			end
-			if flag == 1 then
-				RandParam.data[n].id = infoid
-				RandParam.data[n].p1 = mission.RandInfo[RandParam.level].GetInfo[infoid].p1
-				RandParam.data[n].p2 = mission.RandInfo[RandParam.level].GetInfo[infoid].p2 + Rand(mission.RandInfo[RandParam.level].GetInfo[infoid].p3)
-				RandParam.data[n].p3 = 0
-				RandParam.data[n].p4 = 0
-				RandParam.data[n].p5 = 0
-				RandParam.data[n].p6 = 0
-				RandParam.data[n].p7 = 0
-				RandParam.data[n].p8 = 0
-				RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].GetInfo[infoid].p4 )
-				RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].GetInfo[infoid].p5 )
-				PRINT( "CreateRandMission:rand data info: id, p1, p2, p3, p4", RandParam.data[n].id, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4 )
-			end
-		end
-	elseif RandParam.tp == MIS_RAND_SEND then			
-		PRINT( "Rand send" )
-		local npcinfoid = nil 
-		RandParam.numdata = Rand( randnum ) + 1
-		PRINT( "CreateRandMission1: numdata = , randnum = , RandParam.level = , infocount = , itemcount = ", RandParam.numdata, randnum, RandParam.level, mission.RandInfo[RandParam.level].SendInfo.count, mission.RandInfo[RandParam.level].SendItem.count )
-		if RandParam.numdata > mission.RandInfo[RandParam.level].SendInfo.count then
-			RandParam.numdata = mission.RandInfo[RandParam.level].SendInfo.count
-		end
-		if RandParam.numdata > mission.RandInfo[RandParam.level].SendItem.count then
-			RandParam.numdata = mission.RandInfo[RandParam.level].SendItem.count
-		end
-		if RandParam.numdata <= 0 then
-			PRINT( "CreateRandMission, send letter quest random value cannot be greater than zero. Please check target level of send letter notice is correct!Level = ", RandParam.level )
-			SystemNotice( character, "CreateRandMission, send letter quest random value cannot be greater than zero. Please check target level of send letter notice is correct!Level = "..RandParam.level )
-			return LUA_FALSE
-		end
-		PRINT( "CreateRandMission2: numdata = , randnum = ", RandParam.numdata, randnum )
-		for n = 1, RandParam.numdata, 1 do
-			local flag = 1
-			local infoid = Rand( mission.RandInfo[RandParam.level].SendInfo.count ) + 1
-			local itemid = GetRandMissionSendItem( mission.RandInfo[RandParam.level].SendItem )
-			PRINT( "CreateRandMission:rand infoid = , itemid = ", infoid, itemid )
-			if mission.RandInfo[RandParam.level].SendInfo[infoid].p1 == npcinfoid then
-				n = n - 1
-				flag = 0
-			else
-				for i = 1, n - 1, 1 do
-					if RandParam.data[i].id == infoid or RandParam.data[i].p2 == itemid then
-						PRINT( "CreateRandMission:send item ,rand value repeat" )
-						n = n - 1
-						flag = 0
-						break
-					end
-				end
-			end
-			if flag == 1 then
-				RandParam.data[n].id = infoid
-				RandParam.data[n].p1 = mission.RandInfo[RandParam.level].SendInfo[infoid].p1 
-				RandParam.data[n].p2 = itemid 
-				RandParam.data[n].p3 = mission.RandInfo[RandParam.level].SendInfo[infoid].p2 
-				RandParam.data[n].p4 = 0
-				RandParam.data[n].p5 = 0
-				RandParam.data[n].p6 = 0
-				RandParam.data[n].p7 = 0
-				RandParam.data[n].p8 = 0
-				RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].SendInfo[infoid].p4 )
-				RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].SendInfo[infoid].p5 )
-				PRINT( "CreateRandMission:rand data info: id, p1, p2, p3, p4", RandParam.data[n].id, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4 )
-			end
-		end
-	elseif RandParam.tp == MIS_RAND_CONVOY then		
-		PRINT( "Convoy npc" )
-		RandParam.numdata = 1 
-		if RandParam.numdata > mission.RandInfo[RandParam.level].ConvoyInfo.count then
-			RandParam.numdata = mission.RandInfo[RandParam.level].ConvoyInfo.count
-		end
-		if RandParam.numdata <= 0 then
-			PRINT( "CreateRandMission, сопровождение NPC quest quantity must be greater than zero, please check if target's level сопровождение notice is correct!Level = ", RandParam.level )
-			SystemNotice( character, "CreateRandMission, сопровождение NPC quest quantity must be greater than zero, please check if target's level сопровождение notice is correct! Level = "..RandParam.level )
-			return LUA_FALSE
-		end
-		for n = 1, RandParam.numdata, 1 do
-			local flag = 1
-			local infoid = Rand( mission.RandInfo[RandParam.level].ConvoyInfo.count ) + 1
-			for i = 1, n - 1, 1 do
-				if RandParam.data[i].id == infoid then
-					PRINT( "CreateRandMission:convoy npc ,rand value repeat" )
-					n = n - 1
-					flag = 0
-					break
-				end
-			end
-			if flag == 1 then
-				RandParam.data[n].id = infoid
-				RandParam.data[n].p1 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p1 
-				RandParam.data[n].p2 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p2 
-				RandParam.data[n].p3 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p3 
-				RandParam.data[n].p4 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p4 
-				RandParam.data[n].p5 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p5 
-				RandParam.data[n].p6 = mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p6 
-				RandParam.data[n].p7 = 0
-				RandParam.data[n].p8 = 0
-				RandParam.exp = GetRandMissionExp( misloopnum, miscount, RandParam.exp + mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p7 )
-				RandParam.money = GetRandMissionMoney( misloopnum, miscount, RandParam.money + mission.RandInfo[RandParam.level].ConvoyInfo[infoid].p8 )
-				PRINT( "CreateRandMission:rand data info: id, p1, p2, p3, p4, p5, p6", RandParam.data[n].id, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 )
-			end
-		end
-	elseif RandParam.tp == MIS_RAND_EXPLORE then		
-	else
-		PRINT( "CreateRandMission: invalid random quest type!tp = "..RandParam.tp )
-		SystemNotice( character, "CreateRandMission: invalid random quest type!tp = "..RandParam.tp )
-		LG( "Ошибка ежедневных квестов", "CreateRandMission: invalid random quest type!tp = "..RandParam.tp )
-		return LUA_FALSE
-	end
-	PRINT( "CreateRandMission: name, id, level, loopinfo, loopdata", mission.name, RandParam.id, mission.loopinfo, mission.RandInfo[RandParam.level].LoopData )
-	RandParam.prizetp, RandParam.prizedata = GetRandMissionPrize( character, mission.name, RandParam.id, mission.loopinfo, mission.RandInfo[RandParam.level].LoopData )
-	if mission.missionlist[tpindex].exptp == nil then
-		LG( "Ошибка ежедневных квестов", "Invalid random quest experience type!exptp = ", mission.missionlist[tpindex].exptp ) 
-		PRINT( "Invalid random quest experience type!exptp = ", mission.missionlist[tpindex].exptp )
-		SystemNotice( character, "Invalid random quest experience type!exptp = ", mission.missionlist[tpindex].exptp )
-		return LUA_FALSE
-	end
-	RandParam.exptp = mission.missionlist[tpindex].exptp
-	PRINT( "CreateRandMission:exptp = ", RandParam.exptp )
-	local ret = RandMission( mission.missionlist[tpindex], RandParam )
-	if ret ~= LUA_TRUE then
-		LG( "Ошибка ежедневных квестов", "CreateRandMission:RandMission:id, sid, tp, level, exp, money, item, numdata", RandParam.id, RandParam.sid, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
-		PRINT( "CreateRandMission:RandMission generate random quest notice error!" )
-		SystemNotice( character, "CreateRandMission:RandMission generate random quest notice error!" )
-		return LUA_FALSE
-	end
-	PRINT( "CreateRandMission:Required number of empty slots in inventory:numgrid = ", mission.missionlist[tpindex].begin.baggrid )
-	local numgrid = mission.missionlist[tpindex].begin.baggrid
-	local ret = HasLeaveBagGrid( character, numgrid )
-	if ret ~= LUA_TRUE then
-		PRINT( "CreateRandMission:insufficient inventory slot when character accept quest! num = ", numgrid )
-		BickerNotice( character, "Inventory space insufficient, requires "..numgrid.." space. Activation of quest failed!" )
-		return LUA_FALSE, 0
-	end
-	PRINT( "CreateRandMission:AddRandMission:id, sid, tp, level, exp, money, prizedata, prizetp, numdata", RandParam.id, RandParam.sid, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
-	local ret = AddRandMission( character, RandParam.id, RandParam.sid, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
-	if ret ~= LUA_TRUE then 
-		LG( "Ошибка ежедневных квестов", "AddRandMission:id, sid, tp, level, exp, money, prizedata, prizetp, numdata", RandParam.id, RandParam.sid, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
-		PRINT( "CreateRandMission:AddRandMission add character random quest notice failed!" )
-		SystemNotice( character, "CreateRandMission:AddRandMission add character random quest notice failed!" )
-		return LUA_FALSE
-	end
-	for n = 1, RandParam.numdata, 1 do
-		PRINT( "CreateRandMission:SetRandMissionData:id, index, p1, p2, p3, p4, p5, p6", RandParam.id, n - 1, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 )
-		ret = SetRandMissionData( character, RandParam.id, n - 1, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 )
-		if ret ~= LUA_TRUE then
-			PRINT( "CreateRandMission:SetRandMissionData adds character random quest notice failed!, n = ", n )
-			SystemNotice( character, "CreateRandMission:SetRandMissionData adds character random quest notice failed!n = "..n )
-			return LUA_FALSE
-		end
-	end
-	local str = "["
-	local name = GetCharName( npc )
-	str = str..name.."] дал вам задание задание. Выполните его!"
-	SystemNotice( character, str )
-	return LUA_TRUE, tpindex
-end
-
-function GetRandMissionTypeIndex( mission, tp )
-	if mission == nil or tp == nil then
-		PRINT( "GetRandMissionTypeIndex:parameter cannot be equal to nil. mission = nil or tp = nil" )
-		LG( "Ошибка ежедневных квестов", "GetRandMissionTypeIndex:parameter cannot be equal to nil. mission = nil or tp = nil" )
-		return 0
-	end
-	PRINT( "GetRandMissionTypeIndex:mission, tp, mission.missionlist.count", mission, tp, mission.missionlist.count )
-	for i = 1, mission.missionlist.count, 1 do
-		PRINT( "GetRandMissionTypeIndex,mission.missionlist[i].tp = ", mission.missionlist[i].tp )
-		if tp == mission.missionlist[i].tp then
-			return i
-		end
-	end
-	return 0
-end
-
-function GetRandTpinfoIndex( tpinfo )
-	local randdata = 0
-	for n = 1, tpinfo.count, 1 do					
-		randdata = randdata + tpinfo[n].tprand
-		PRINT( "GetRandTpinfoIndex: n = , randdata = , tprand = ", n, randdata, tpinfo[n].tprand )
-	end
-	local randvalue = Rand( randdata )
-	local tempdata = 0
-	for n = 1, tpinfo.count, 1 do
-		if randvalue >= tempdata and randvalue < tempdata + tpinfo[n].tprand then
-			PRINT( "GetRandTpinfoIndex: return n = , tprandvalue = , tprand = ", n, randvalue, tpinfo[n].tprand )
-			return n
-		end
-		tempdata = tempdata + tpinfo[n].tprand
-	end
-	return 0
-end
-
-function GetCharRandMission( character, id, mission )
-	PRINT( "GetRandMission:character", character )
-	if HasRandMission( character, id ) ~= LUA_TRUE then
-		PRINT( "GetRandMission:HasRandMission does not detect random quest notice on target,ID = "..id )
-		SystemNotice( character, "GetRandMission: does not detect random quest notice on target,ID = "..id )
-		return LUA_TRUE, 0
-	end
-	InitRandParam()
-	PRINT( "GetCharRandMission:GetRandMission, id = ", id  )
-	local ret
-	RandParam.id = id
-	RandParam.bounty = mission.bounty
-	RandParam.npcname = mission.npcname
-	RandParam.npcarea  = mission.npcarea	
-	PRINT( "CreateRandMission:RandParam.id = , RandParam.sid = ,  bounty = , name = , area = ", RandParam.id, RandParam.sid, RandParam.bounty, RandParam.npcname, RandParam.npcarea )
-	ret, RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata = GetRandMission( character, id )
-	if ret ~= LUA_TRUE then
-		PRINT( "GetCharRandMission:GetRandMission error." )
-		SystemNotice( character, "GetCharRandMission:GetRandMission error." )
-		return LUA_FALSE
-	end
-	PRINT( "GetCharRandMission:tp, level, exp, money, prizedata, prizetp, numdata",  RandParam.tp, RandParam.level, RandParam.exp, RandParam.money, RandParam.prizedata, RandParam.prizetp, RandParam.numdata )
-	for n = 1, RandParam.numdata, 1 do
-		ret, RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 = GetRandMissionData( character, id, n - 1 )
-		PRINT( "GetRandMissionData: p1, p2, p3, p4, p5, p6 ", RandParam.data[n].p1, RandParam.data[n].p2, RandParam.data[n].p3, RandParam.data[n].p4, RandParam.data[n].p5, RandParam.data[n].p6 )
-		if ret ~= LUA_TRUE then
-			PRINT( "GetCharRandMission:GetRandMissionData error." )
-			SystemNotice( character, "GetCharRandMission:GetRandMissionData error." )
-			return LUA_FALSE
-		end
-	end
-	local index = GetRandMissionTypeIndex( mission, RandParam.tp )
-	PRINT( "GetCharRandMission:GetRandMissionTypeIndex index = ", index )
-	if index == 0  then
-		PRINT( "GetRandMission:obtain random quest matching type notice failed!" )
-		SystemNotice( character, "GetRandMission:obtain random quest matching type notice failed!" )
-		return LUA_FALSE
-	end
-	if mission.missionlist[index].exptp == nil then
-		LG( "Ошибка ежедневных квестов", "Invalid random quest experience type!exptp = ", mission.missionlist[index].exptp ) 
-		PRINT( "Invalid random quest experience type!exptp = ", mission.missionlist[index].exptp )
-		SystemNotice( character, "Invalid random quest experience type!exptp = ", mission.missionlist[index].exptp )
-		return LUA_FALSE
-	end
-	RandParam.exptp = mission.missionlist[index].exptp
-	PRINT( "CreateRandMission:exptp = ", RandParam.exptp )
-	local ret = RandMission( mission.missionlist[index], RandParam )
-	if ret ~= LUA_TRUE then
-		PRINT( "GetRandMission: according to random quest setting notice resulted in random quest failed!" )
-		SystemNotice( character, "GetRandMission: according to random quest setting notice resulted in random quest failed!" )
-		return LUA_FALSE
-	end
-	PRINT( "GetRandMission: return true, index = ", index )
-	return LUA_TRUE, index, mission.RandInfo[RandParam.level].LoopData
-end
-
-function RandMission( mission, param )
-	PRINT( "RandMission" )
-	if mission == nil or param == nil or param.tp ~= mission.tp then
-		PRINT( "RandMission:mission = nil or param = nil or param.tp ~= mission.tp" )
-		return LUA_FALSE
-	end
-	mission.begin.baggrid = 0
-	mission.result.baggrid = 0
-	PRINT( "RandMission, mission.tp = , param.tp", mission.tp, param.tp )	
-	if mission.tp == MIS_RAND_KILL then				
-		local num = 0
-		mission.begin.actions.count = param.numdata
-		mission.result.conditions.count = param.numdata
-		mission.need.count = param.numdata + 1
-		mission.need[1].p1 = "  <b"..param.npcarea.."> <y"..param.npcname.."> нуждается в помощи с охотой на "
-		PRINT( mission.begin.talkstart, mission.result.talkstart, mission.result.helpstart )
-		PRINT( mission.begin.talkend, mission.result.talkend, mission.result.helpend )
-		mission.begin.talk = mission.begin.talkstart
-		mission.result.talk = mission.result.talkstart
-		mission.result.help = mission.result.helpstart
-		PRINT( "RandMission,1" )
-		for n = 1, param.numdata, 1 do
-			mission.need[n+1].p1 = param.data[n].p1 	
-			mission.need[n+1].p2 = param.data[n].p2 	
-			mission.need[n+1].p3 = num
-			mission.begin.actions[n].p3 = param.data[n].p1 
-			mission.begin.actions[n].p4 = param.data[n].p2 
-			mission.begin.actions[n].p5 = num 
-			mission.begin.actions[n].p6 = 0
-			num = num + param.data[n].p2
-			mission.result.conditions[n].p2 = num - 1 
-			PRINT( "RandMission, 2" )
-		    local monstername = GetMonsterName( param.data[n].p1 )
-			PRINT( "RandMission, 3, count, talk, need[count].p2, monstername", n, mission.begin.talk, mission.need[n].p2, monstername )			
-			local nummonster = 0
-			if mission.need[n+1].p2 ~= nil then
-				nummonster = mission.need[n+1].p2
-			end
-			mission.begin.talk = mission.begin.talk.."<r"..nummonster.."> <r\""..monstername.."\">"
-			mission.result.help = mission.result.help.."<r"..nummonster.."> <r\""..monstername.."\">"
-			mission.need[1].p1 = mission.need[1].p1.."<r"..nummonster.."> <r\""..monstername.."\">"
-			if n < param.numdata then
-				mission.begin.talk = mission.begin.talk.." "
-				mission.result.help = mission.result.help.." "
-				mission.need[1].p1 = mission.need[1].p1.." "
-			end
-		end
-		mission.result.actions[2].p1 = param.exptp
-		mission.result.actions[2].p2 = param.exp
-		mission.result.actions[2].p3 = param.exp
-		PRINT( "RandMission:AddExpAndType, exp = ", mission.result.actions[2].p1 )
-		mission.begin.talk = mission.begin.talk..mission.begin.talkend
-		mission.result.talk = mission.result.talk..mission.result.talkend
-		mission.result.help = mission.result.help..mission.result.helpend
-		mission.need[1].p1 = mission.need[1].p1.." "
-		PRINT( "RandMission,4 " )
-		mission.prize[1].p1 = param.money
-		if param.prizedata ~= 0 then
-			PRINT( "RandMission,5, prizetp, prizedata", param.prizetp, param.prizedata )
-			mission.prize[2].tp = param.prizetp
-			mission.prize[2].p1 = param.prizedata
-			mission.prize.count = 2
-			if param.prizetp == MIS_PRIZE_ITEM then
-				mission.prize[2].p2 = 1
-				mission.prize[2].p3 = param.bounty
-				mission.result.baggrid = 1
-			elseif param.prizetp == MIS_PRIZE_CESS then
-				mission.prize[2].p2 = 0
-			elseif param.prizetp == MIS_PRIZE_FAME then
-				mission.prize[2].p2 = 0
-			else
-				PRINT( "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
-				LG( "mission_error", "RandMission:: Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
-				mission.prize[2].tp = 0
-				mission.prize[2].p1 = 0
-				mission.prize.count = 1
-			end
-		else
-			PRINT( "RandMission,6" )
-			mission.prize.count = 1
-		end
-		PRINT( "RandMission,7" )
-	elseif mission.tp == MIS_RAND_GET then		
-		PRINT( "RandMission:tp = MIS_RAND_GET:param.numdata = ", param.numdata ) 
-		local num = 0
-		mission.begin.actions.count = param.numdata
-		mission.result.conditions.count = param.numdata * 2
-		mission.result.actions.count = 2 + param.numdata
-		mission.need.count = param.numdata + 1
-		mission.need[1].p1 = "  <b"..param.npcarea.."> <y"..param.npcname.."> требует вашей помощи, чтобы собрать"
-		mission.need[1].p1 = mission.need[1].p1.." предмет,"
-		PRINT( mission.begin.talkstart, mission.result.talkstart, mission.result.helpstart )
-		PRINT( mission.begin.talkend, mission.result.talkend, mission.result.helpend )
-		mission.begin.talk = mission.begin.talkstart
-		mission.result.talk = mission.result.talkstart
-		mission.result.help = mission.result.helpstart
-		for n = 1, param.numdata, 1 do
-			mission.need[n+1].p1 = param.data[n].p1   	
-			mission.need[n+1].p2 = param.data[n].p2 	
-			mission.need[n+1].p3 = num						
-			mission.begin.actions[n].p3 = param.data[n].p1	 
-			mission.begin.actions[n].p4 = param.data[n].p2  
-			mission.begin.actions[n].p5 = num 
-			mission.begin.actions[n].p6 = 0
-			mission.result.actions[n+2].p1 = param.data[n].p1
-			mission.result.actions[n+2].p2 = param.data[n].p2
-			PRINT( "RandMission:TakeItem, item = , num = ", mission.result.actions[n+2].p1, mission.result.actions[n+2].p2 )
-			num = num + param.data[n].p2
-			mission.result.conditions[1 + (n - 1)*2].p2 = num - 1 
-			mission.result.conditions[2 + (n - 1)*2].p1 = param.data[n].p1 
-			mission.result.conditions[2 + (n - 1)*2].p2 = param.data[n].p2 
-			local itemname = GetItemName( param.data[n].p1 )
-			mission.begin.talk = mission.begin.talk.."<r"..mission.need[n+1].p2.."> <r"..itemname..">"
-			mission.result.help = mission.result.help.."<r"..mission.need[n+1].p2.."> <r"..itemname..">"
-			mission.need[1].p1 = mission.need[1].p1.."<r"..mission.need[n+1].p2.."> <r"..itemname..">"
-			if n < param.numdata then
-				mission.begin.talk = mission.begin.talk.." "
-				mission.result.help = mission.result.help.." "
-				mission.need[1].p1 = mission.need[1].p1.." "
-			end
-		end
-		mission.result.actions[2].p1 = param.exptp
-		mission.result.actions[2].p2 = param.exp
-		mission.result.actions[2].p3 = param.exp
-		PRINT( "RandMission:AddExpAndType, exp = ", mission.result.actions[2].p1 )
-		mission.need[1].p1 = mission.need[1].p1.." "
-		mission.begin.talk = mission.begin.talk..mission.begin.talkend
-		mission.result.talk = mission.result.talk..mission.result.talkend
-		mission.result.help = mission.result.help..mission.result.helpend
-		mission.prize[1].p1 = param.money
-		if param.prizedata ~= 0 then
-			PRINT( "RandMission,5, prizetp, prizedata", param.prizetp, param.prizedata )
-			mission.prize[2].tp = param.prizetp
-			mission.prize[2].p1 = param.prizedata
-			mission.prize.count = 2
-			if param.prizetp == MIS_PRIZE_ITEM then
-				mission.prize[2].p2 = 1
-				mission.prize[2].p3 = param.bounty
-				mission.result.baggrid = 1
-			elseif param.prizetp == MIS_PRIZE_CESS then
-				mission.prize[2].p2 = 0
-			elseif param.prizetp == MIS_PRIZE_FAME then
-				mission.prize[2].p2 = 0
-			else
-				PRINT( "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
-				LG( "mission_error", "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
-				mission.prize[2].tp = 0
-				mission.prize[2].p1 = 0
-				mission.prize.count = 1
-			end
-		else
-			PRINT( "RandMission,6" )
-			mission.prize.count = 1
-		end
-	elseif mission.tp == MIS_RAND_SEND then			
-		local num = 0
-		mission.begin.actions.count = param.numdata
-		mission.result.conditions.count = param.numdata
-		mission.need.count = param.numdata + 1 
-		mission.need[1].p1 = "  <b"..param.npcarea.."> <y"..param.npcname..">вы нужны, чтобы помочь ему. Он вознаградит вас, когда вы вернетесь."
-		PRINT( mission.begin.talkstart, mission.result.talkstart, mission.result.helpstart )
-		PRINT( mission.begin.talkend, mission.result.talkend, mission.result.helpend )
-		mission.begin.talk = mission.begin.talkstart
-		mission.result.talk = mission.result.talkstart
-		mission.result.help = mission.result.helpstart
-		for n = 1, param.numdata, 1 do
-			mission.begin.actions[n].p1 = param.data[n].p2	 
-			mission.begin.actions[n].p2 = 1
-			PRINT( "RandMission: GiveItem item = , count = ", mission.begin.actions[n].p2, 1 )
-			mission.result.conditions[n].p2 = param.data[n].p1 
-			local npcname = GetNpcName( param.data[n].p1 )
-			PRINT( "RandMission, npcname = ", npcname )
-			local areaname = GetAreaName( param.data[n].p3 )
-			PRINT( "RandMission, areaname = ", areaname )
-			local itemname = GetItemName( param.data[n].p2 )
-			mission.begin.talk = mission.begin.talk.."<r["..itemname.."]> и  отдайте <p"..areaname.."> <b\""..npcname.."\">"
-			mission.result.help = mission.result.help.."<r["..itemname.."]> и отдайте <p"..areaname..">  <b\""..npcname.."\">"
-			if n < param.numdata then				
-				mission.begin.talk = mission.begin.talk..""
-				mission.result.help = mission.result.help..""
-			end
-			PRINT( "RandMission, talk = ", mission.begin.talk )
-			mission.need[n+1].p1 = n..") Отдай <r["..itemname.."]> НПС в  <p"..areaname..">  <b\""..npcname.."\">"   
-			PRINT( "RandMission: need.p1 = ", mission.need[n+1].p1 )
-		end
-		mission.result.actions[2].p1 = param.exptp
-		mission.result.actions[2].p2 = param.exp
-		mission.result.actions[2].p3 = param.exp
-		PRINT( "RandMission:AddExpAndType, exp = ", mission.result.actions[2].p1 )		
-		mission.begin.baggrid = param.numdata
-		mission.begin.talk = mission.begin.talk..mission.begin.talkend
-		mission.result.talk = mission.result.talk..mission.result.talkend
-		mission.result.help = mission.result.help..mission.result.helpend
-		mission.prize[1].p1 = param.money
-		if param.prizedata ~= 0 then
-			PRINT( "RandMission,5, prizetp, prizedata", param.prizetp, param.prizedata )
-			mission.prize[2].tp = param.prizetp
-			mission.prize[2].p1 = param.prizedata
-			mission.prize.count = 2
-			if param.prizetp == MIS_PRIZE_ITEM then
-				mission.prize[2].p2 = 1
-				mission.prize[2].p3 = param.bounty
-				mission.result.baggrid = 1
-			elseif param.prizetp == MIS_PRIZE_CESS then
-				mission.prize[2].p2 = 0
-			elseif param.prizetp == MIS_PRIZE_FAME then
-				mission.prize[2].p2 = 0
-			else
-				PRINT( "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
-				LG( "mission_error", "RandMission: Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
-				mission.prize[2].tp = 0
-				mission.prize[2].p1 = 0
-				mission.prize.count = 1
-			end
-		else
-			PRINT( "RandMission,6" )
-			mission.prize.count = 1
-		end
-	elseif mission.tp == MIS_RAND_CONVOY then		
-		local num = 0
-		mission.begin.actions.count = 1 + param.numdata*2
-		mission.result.conditions.count = param.numdata
-		mission.need.count = param.numdata + 1 
-		mission.need[1].p1 = "  <b"..param.npcarea..">  <y"..param.npcname..">нужна ваша помощь для сопровождения некоторых людей в другое место. Вы можете получить награду от него после возвращения."
-		PRINT( mission.begin.talkstart, mission.result.talkstart, mission.result.helpstart )
-		PRINT( mission.begin.talkend, mission.result.talkend, mission.result.helpend )		
-		mission.begin.talk = mission.begin.talkstart
-		mission.result.talk = mission.result.talkstart
-		mission.result.help = mission.result.helpstart
-		for n = 1, param.numdata, 1 do
-			mission.begin.actions[2 + (n - 1)*2].p3 = param.data[n].p2	 
-			mission.begin.actions[2 + (n - 1)*2].p4 = param.data[n].p4  
-			mission.begin.actions[2 + (n - 1)*2].p5 = param.data[n].p5  
-			mission.begin.actions[2 + (n - 1)*2].p6 = param.data[n].p6  
-			mission.begin.actions[3 + (n - 1)*2].p2 = n - 1	 
-			mission.begin.actions[3 + (n - 1)*2].p3 = param.data[n].p1	 
-			PRINT( "RandMission: Convoy npcid =  to map = , x = , y = , scope = ", mission.begin.actions[3 + (n - 1)*2].p3, mission.begin.actions[2 + (n - 1)*2].p3, mission.begin.actions[2 + (n - 1)*2].p4, mission.begin.actions[2 + (n - 1)*2].p5, mission.begin.actions[2 + (n - 1)*2].p6 )
-			local npcname = GetMonsterName( param.data[n].p1 ) 
-			PRINT( "RandMission, npcname = ", npcname )
-			local areaname = GetAreaName( param.data[n].p3 )
-			PRINT( "RandMission, areaname = ", areaname )
-			mission.begin.talk = mission.begin.talk.."сопровождение <b\""..npcname.."\"> достигнет <p"..areaname.."> <b"..param.data[n].p4.." "..param.data[n].p5.."> соседний?"
-			PRINT( "RandMission, talk = ", mission.begin.talk )
-			mission.need[n+1].p1 = n..") сопровождение <b\""..npcname.."\"> достигнет <p"..areaname..">"   
-			PRINT( "RandMission: need.p1 = ", mission.need[n+1].p1 )
-		end
-		mission.result.actions[2].p1 = param.exptp
-		mission.result.actions[2].p2 = param.exp
-		mission.result.actions[2].p3 = param.exp
-		PRINT( "RandMission:AddExpAndType, exp = ", mission.result.actions[2].p1 )
-		mission.begin.talk = mission.begin.talk..mission.begin.talkend
-		mission.result.talk = mission.result.talk..mission.result.talkend
-		mission.result.help = mission.result.help..mission.result.helpend
-		mission.prize[1].p1 = param.money
-		if param.prizedata ~= 0 then
-			PRINT( "RandMission,5, prizetp, prizedata", param.prizetp, param.prizedata )
-			mission.prize[2].tp = param.prizetp
-			mission.prize[2].p1 = param.prizedata
-			mission.prize.count = 2
-			if param.prizetp == MIS_PRIZE_ITEM then
-				mission.prize[2].p2 = 1
-				mission.prize[2].p3 = param.bounty
-				mission.result.baggrid = 1
-			elseif param.prizetp == MIS_PRIZE_CESS then
-				mission.prize[2].p2 = 0
-			elseif param.prizetp == MIS_PRIZE_FAME then
-				mission.prize[2].p2 = 0
-			else
-				PRINT( "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
-				LG( "mission_error", "RandMission:Invalid reward type notice!misid = , tp = , p1 = ", param.id, param.prizetp, param.prizedata )
-				mission.prize[2].tp = 0
-				mission.prize[2].p1 = 0
-				mission.prize.count = 1
-			end
-		else
-			PRINT( "RandMission,6" )
-			mission.prize.count = 1
-		end
-	elseif mission.tp == MIS_RAND_EXPLORE then		
-	end
-	return LUA_TRUE
-end
-
-
---Случайное задание конец

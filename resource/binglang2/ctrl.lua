@@ -19,17 +19,13 @@ function init_entry(map)
 end
 
 function after_enter_binglang2( role , map_copy )
---AfterEnter(role)
 end
 
 function before_leave_binglang2( role )
 end
-function map_copy_run_special_binglanq2()
-end
+
 function can_open_entry_binglang2( map )
 end 
 
 function map_run_binglang2(map)
-end
-function map_copy_run_binglang2()
 end

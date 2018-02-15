@@ -36,17 +36,6 @@ function check_can_enter_heilong( role, copy_mgr )
 		SystemNotice(role, "Вы должны удалить Маска Короля Мумий чтобы войти в Логово Черного Дракона.")
 		return 0
 	end
-	local item_money = CheckBagItem(role,8143)
-		if item_money<1 then
-			SystemNotice(role, "Вы должны заплатить за вход золотым жетоном.")
-			return 0
-		else 
-			local j = DelBagItem(role,8143,1)
-			if j == 1 then
-				return 1
-			end
-	end
-
 end
 
 function begin_enter_heilong(role, copy_mgr) 

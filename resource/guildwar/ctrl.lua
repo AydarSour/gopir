@@ -28,8 +28,8 @@ function config(map)
 end
 
 function get_map_entry_pos_guildwar()
-	local POS_X=916
-	local POS_Y=3573
+	local POS_X=979
+	local POS_Y=3608
 	return POS_X , POS_Y
 end
 
@@ -39,7 +39,6 @@ function init_entry(map)
 end
 
 function after_enter_guildwar( role , map_copy ) 
---AfterEnter(role)
 	LG ("GW1","make")
 --Принадлежность к сторонам
 	--Флот
@@ -52,7 +51,6 @@ function after_enter_guildwar( role , map_copy )
 		SetChaSideID(role, 2)
 		SystemNotice(role, "Вы присоединились к фракции Пиратов")
 	end
-	--AfterEnter(role)
 end
 
 function before_leave_guildwar ( role )

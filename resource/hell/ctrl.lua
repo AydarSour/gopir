@@ -108,13 +108,10 @@ function can_open_entry_hell( map )
 
 --	local time = GetTickCount ( ) 
 	local Now_Week = GetNowWeek()
-	if Now_Week == 6 or Now_Week == 0  or Now_Week == 5 or  Now_Week == 4  or  Now_Week == 3 or  Now_Week == 2  then
+	if Now_Week == 5 or Now_Week == 6 then
 		return 1
 	end
 
 	return 0
 
 end 
-function map_copy_run_special_hell()
-
-end

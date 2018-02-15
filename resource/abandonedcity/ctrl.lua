@@ -8,12 +8,10 @@ function config(map)
 
 end
 
-function map_copy_run_abandonedcity()
-end
+
 function get_map_entry_pos_abandonedcity()
-	--ФС в шае
-	local POS_X=820
-	local POS_Y=3708
+	local POS_X=1509
+	local POS_Y=3666
 	return POS_X , POS_Y
 end
 
@@ -26,7 +24,6 @@ function map_run_abandonedcity(map)
 end
 
 function after_enter_abandonedcity( role , map_copy )
---AfterEnter(role)
 end
 
 function before_leave_abandonedcity( role )

@@ -3,7 +3,7 @@ print( "Loading ctrl.lua" )
 
 function config(map)
 	MapCanSavePos(map, 1)
-	MapCanPK(map, 1)
+	MapCanPK(map, 0)
 end
 
 function init_entry(map)
@@ -27,7 +27,6 @@ function get_map_entry_pos_winterland()
 end
 
 function after_enter_winterland( role , map_copy )
---AfterEnter(role)
 end
 
 function before_leave_winterland( role )

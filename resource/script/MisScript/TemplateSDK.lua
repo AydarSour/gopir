@@ -1,4 +1,4 @@
-print( "Загрузка templateSDK.lua" )
+print( "Loading TemplateSDK.lua" )
 
 function MisKillMonster( Talk, Param, Prize )
 

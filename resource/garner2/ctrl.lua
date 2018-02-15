@@ -13,31 +13,21 @@ end
 
 
 function get_map_entry_pos_garner2() 
-	--’с в јргенте
-	local POS_X=2186
-	local POS_Y=2804
+
+	local POS_X=1370
+	local POS_Y=532
 	return POS_X , POS_Y
 
 end
 
 function init_entry(map)
 
-	SetMapEntryMapName(map, "garner") 
-	SetMapEntryTime(map, "2006/10/18/0/0", "0/1/0", "0/0/30", "0/0/45")
+	SetMapEntryMapName(map, "darkblue") 
+	SetMapEntryTime(map, "2006/10/18/2/0", "0/1/0", "0/0/30", "0/0/45")
 
-end
-
-function can_open_entry_garner2(map) 
-local Now_Time = GetNowTime()
-	if Now_Time == 10 or Now_Time == 16 or Now_Time == 22  then
-		return 1
-	else
-		return 0
-	end
 end
 
 function after_enter_garner2( role , map_copy )
---AfterEnter(role)
 end
 
 function before_leave_garner2( role )
@@ -590,25 +580,6 @@ function map_copy_run_special_garner2( map_copy )
 		local Monster332 =CreateChaEx(884, 6836, 3723, 145, 60,map_copy)
 		local Monster333 =CreateChaEx(884, 21369, 9546, 205, 60,map_copy)
 		local Monster334 =CreateChaEx(884, 21811, 3311, 205, 60,map_copy)
-		
-		
-		-- local Monster335 =CreateChaEx(883, 10496, 17593, 70, 60,map_copy)
-		-- local Monster336 =CreateChaEx(884, 10736, 17123, 145, 60,map_copy)
-		-- local Monster337 =CreateChaEx(885, 20769, 3346, 205, 60,map_copy)
-		-- local Monster338 =CreateChaEx(886, 24811, 17811, 205, 60,map_copy)
-		-- local Monster339 =CreateChaEx(883, 9896, 16493, 70, 60,map_copy)
-		-- local Monster340 =CreateChaEx(884, 14436, 12623, 145, 60,map_copy)
-		-- local Monster341 =CreateChaEx(884, 11169, 24846, 205, 60,map_copy)
-		-- local Monster342 =CreateChaEx(886, 12311, 16111, 205, 60,map_copy)
-		
-			-- SetChaLifeTime(Monster335,290050)
-			-- SetChaLifeTime(Monster336,290100)
-			-- SetChaLifeTime(Monster337,290150)
-			-- SetChaLifeTime(Monster338,290200)
-			-- SetChaLifeTime(Monster339,290250)
-			-- SetChaLifeTime(Monster340,290300)
-			-- SetChaLifeTime(Monster341,290350)
-			-- SetChaLifeTime(Monster342,290400)
 			SetChaLifeTime(Monster168,290050)
 			SetChaLifeTime(Monster169,290100)
 			SetChaLifeTime(Monster170,290150)
@@ -804,7 +775,7 @@ function map_copy_before_close_garner2( map_copy )
 		DealAllActivePlayerInMap(map_copy,"GiveSpecItemgarner2")
 	end
 	How_Many_Active = 0
-	Money_all = 3000000
+	Money_all = 1000000
 	Every_Check_minute = 0
 	Every_5_minute = 0
 end
@@ -813,15 +784,15 @@ function map_copy_close_garner2( map_copy )
 	ClearAllSubMapCha(map_copy)
 end
 
--- function can_open_entry_garner2( map )
-	-- local Now_Time = GetNowTime()
-	-- if Now_Time == 2 or Now_Time == 14 or Now_Time == 20 then
-		-- return 1
-	-- else
-		-- return 0
-	-- end
+function can_open_entry_garner2( map )
+	local Now_Time = GetNowTime()
+	if Now_Time == 2 or Now_Time == 14 or Now_Time == 20 then
+		return 1
+	else
+		return 0
+	end
 
--- end 
+end 
 
 function GiveSpecItemgarner2( role )
 	if How_Many_Active == 0 then

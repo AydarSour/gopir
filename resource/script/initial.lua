@@ -1,1 +1,1 @@
-dofile(GetResPath("script\\extension\\init.lua"))
+--dofile(GetResPath("script\\L10n\\init.lua"))

@@ -1,11 +1,11 @@
 --------------------------------------------------------------------------
 --									--
 --									--
---missionscript02.lua Created by Robin 2005.03.31.			--
+--MissionScript02.lua Created by Robin 2005.03.31.			--
 --									--
 --									--
 --------------------------------------------------------------------------
-print( "‡ Јаг§Є  missionscript02.lua" )
+print( "loading MissionScript02.lua" )
 
 jp= JumpPage
 amp=AutoMissionPage
@@ -91,8 +91,8 @@ function HistoryMission001()
 	MisResultCondition(HasMission, 200)
 	MisResultAction(ClearMission, 200 )
 	MisResultAction(SetRecord, 200 )
-	MisResultAction(AddExp,500,00)
-	MisResultAction(AddMoney,1399,1399)
+	MisResultAction(AddExp,250,250)
+	MisResultAction(AddMoney,999,999)
 	MisResultAction(AddExpAndType,2,875,875)
 
 
@@ -107,8 +107,8 @@ function HistoryMission001()
 	MisResultCondition(HasMission, 201)
 	MisResultAction(ClearMission, 201 )
 	MisResultAction(SetRecord, 200 )
-	MisResultAction(AddExp,500,00)
-	MisResultAction(AddMoney,1399,1399)
+	MisResultAction(AddExp,250,250)
+	MisResultAction(AddMoney,999,999)
 	MisResultAction(AddExpAndType,2,875,875)
 
 
@@ -122,8 +122,8 @@ function HistoryMission001()
 	MisResultCondition(HasMission, 202)
 	MisResultAction(ClearMission, 202 )
 	MisResultAction(SetRecord, 200 )
-	MisResultAction(AddExp,500,00)
-	MisResultAction(AddMoney,1399,1399)
+	MisResultAction(AddExp,250,250)
+	MisResultAction(AddMoney,999,999)
 	MisResultAction(AddExpAndType,2,875,875)
 
 
@@ -152,8 +152,8 @@ function HistoryMission001()
 	MisResultCondition(HasMission, 203)
 	MisResultAction(ClearMission, 203 )
 	MisResultAction(SetRecord, 203 )
-	MisResultAction(AddExp,430,430)
-	MisResultAction(AddMoney,1400,1400)
+	MisResultAction(AddExp,230,230)
+	MisResultAction(AddMoney,1000,1000)
 	MisResultAction(AddExpAndType,2,875,875)
 
 
@@ -186,8 +186,8 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 3116, 10 )
 	MisResultAction(ClearMission, 204)
 	MisResultAction(SetRecord, 204 )
-	MisResultAction(AddExp,430,430)
-	MisResultAction(AddMoney,1400,1400)	
+	MisResultAction(AddExp,230,230)
+	MisResultAction(AddMoney,1000,1000)	
 	MisResultAction(AddExpAndType,2,875,875)
 
 
@@ -229,7 +229,7 @@ function HistoryMission001()
 	MisResultCondition(HasMission, 205)
 	MisResultAction(ClearMission, 205 )
 	MisResultAction(SetRecord, 205 )
-	MisResultAction(AddExp,430,430)
+	MisResultAction(AddExp,230,230)
 	MisResultAction(AddMoney,1100,1100)
 	MisResultAction(AddExpAndType,2,875,875)
 
@@ -263,7 +263,7 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 3965, 1 ) 
 	MisResultAction(ClearMission, 206 )
 	MisResultAction(SetRecord, 206 )
-	MisResultAction(AddExp,430,430)
+	MisResultAction(AddExp,230,230)
 	MisResultAction(AddMoney,1100,1100)	
 	MisResultAction(AddExpAndType,2,875,875)
 
@@ -290,7 +290,7 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 3967, 1 )
 	MisResultAction(ClearMission, 207)
 	MisResultAction(SetRecord, 207 )
-	MisResultAction(AddExp,500,00)
+	MisResultAction(AddExp,250,250)
 	MisResultAction(AddMoney,1200,1200)
 	MisResultAction(AddExpAndType,2,875,875)
 
@@ -330,7 +330,7 @@ function HistoryMission001()
 	MisNeed(MIS_NEED_ITEM, 1678, 3, 10, 3)
 	MisNeed(MIS_NEED_ITEM, 3968, 3, 20, 3)
 	MisNeed(MIS_NEED_ITEM, 1614, 3, 30, 3)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 3967, 1, 4)
 	MisPrizeSelAll()
 
@@ -345,7 +345,7 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 1614, 3 )
 	MisResultAction(ClearMission, 208)
 	MisResultAction(SetRecord, 208 )
-	MisResultAction(AddExp,500,500)
+	MisResultAction(AddExp,250,250)
 	MisResultAction(AddMoney,1200,1200)
 	MisResultAction(AddExpAndType,2,875,875)
 	MisResultBagNeed(1)
@@ -366,7 +366,7 @@ function HistoryMission001()
 ----------------------------МЖµВµДОЇНР
 	DefineMission( 216, "Просьба Томми", 209 )
 	
-	MisBeginTalk( "<t>В письме Томи написал что овцы выходят из под контроля намного чаще,чем раньше.Мы назвали это Мутацией <n> <T> Я предлагаю вам поговорить с Дито(2250, 2770) для получения более подробной информации." )
+	MisBeginTalk( "<t><bTommy>'s letter has confirmed that the sheeps that he saw were getting crazy and out of control more often than usual. We decided to call these changed creatures 'Feral'.<n><t>This is also happens to be one of the case that Salvier wanted you to investigate. I suggest you to talk to <bPhysician Ditto> at (2250, 2770) for more information." )
 	MisBeginCondition(NoRecord, 209)
 	MisBeginCondition(HasRecord, 207)
 	MisBeginCondition(NoMission, 209)
@@ -388,8 +388,8 @@ function HistoryMission001()
 	MisResultCondition(HasMission, 209)
 	MisResultAction(ClearMission, 209 )
 	MisResultAction(SetRecord, 209 )
-	MisResultAction(AddExp,380,380)
-	MisResultAction(AddMoney,2300,2300)
+	MisResultAction(AddExp,280,280)
+	MisResultAction(AddMoney,1300,1300)
 	MisResultAction(AddExpAndType,2,875,875)
 
 
@@ -413,8 +413,8 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 3969, 5 )
 	MisResultAction(ClearMission, 210)
 	MisResultAction(SetRecord, 210 )
-	MisResultAction(AddExp,500,5000)
-	MisResultAction(AddMoney,2300,2300)
+	MisResultAction(AddExp,280,280)
+	MisResultAction(AddMoney,1300,1300)
 	MisResultAction(AddExpAndType,2,875,875)
 
 
@@ -443,8 +443,8 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 3970, 1 )
 	MisResultAction(ClearMission, 211)
 	MisResultAction(SetRecord, 211 )
-	MisResultAction(AddExp,1800,1800)
-	MisResultAction(AddMoney,7000,7000)	
+	MisResultAction(AddExp,1500,1500)
+	MisResultAction(AddMoney,6000,6000)	
 	MisResultAction(AddExpAndType,2,875,875)
 
 
@@ -482,8 +482,8 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 3971, 1 )
 	MisResultAction(ClearMission, 212 )
 	MisResultAction(SetRecord, 212 )
-	MisResultAction(AddExp,550,550)
-	MisResultAction(AddMoney,3500,3500)
+	MisResultAction(AddExp,350,350)
+	MisResultAction(AddMoney,1500,1500)
 	MisResultAction(AddExpAndType,2,3400,3400)
 
 
@@ -516,8 +516,8 @@ function HistoryMission001()
 	MisResultAction(TakeItem , 3972, 1 )
 	MisResultAction(ClearMission, 213 )
 	MisResultAction(SetRecord, 213 )
-	MisResultAction(AddExp,500,500)
-	MisResultAction(AddMoney,2500,2500)	
+	MisResultAction(AddExp,400,400)
+	MisResultAction(AddMoney,1500,1500)	
 	MisResultAction(AddExpAndType,2,3401,3401)
 
 
@@ -549,8 +549,8 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 3975, 5 )
 	MisResultAction(ClearMission, 214)
 	MisResultAction(SetRecord, 214 )
-	MisResultAction(AddExp,850,850)
-	MisResultAction(AddMoney,2600,2600)	
+	MisResultAction(AddExp,450,450)
+	MisResultAction(AddMoney,1600,1600)	
 	MisResultAction(AddExpAndType,2,3402,3402)
 
 
@@ -586,8 +586,8 @@ function HistoryMission001()
 	MisResultCondition(HasFlag, 215, 19 )
 	MisResultAction(ClearMission, 215)
 	MisResultAction(SetRecord, 215 )
-	MisResultAction(AddExp,1500,1500)
-	MisResultAction(AddMoney,2700,2700)	
+	MisResultAction(AddExp,500,500)
+	MisResultAction(AddMoney,1700,1700)	
 	MisResultAction(AddExpAndType,2,3403,3403)
 
 
@@ -616,8 +616,8 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 3976, 1)
 	MisResultAction(ClearMission, 216)
 	MisResultAction(SetRecord, 216 )
-	MisResultAction(AddExp,5000,5000)
-	MisResultAction(AddMoney,11000,11000)	
+	MisResultAction(AddExp,3000,3000)
+	MisResultAction(AddMoney,9000,9000)	
 	MisResultAction(AddExpAndType,2,3404,3404)
 
 
@@ -646,8 +646,8 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 3977, 1)
 	MisResultAction(ClearMission, 217)
 	MisResultAction(SetRecord, 217 )
-	MisResultAction(AddExp,950,950)
-	MisResultAction(AddMoney,3000,3000)
+	MisResultAction(AddExp,750,750)
+	MisResultAction(AddMoney,2000,2000)
 	MisResultAction(AddExpAndType,2,11833,11833)
 
 	InitTrigger()
@@ -675,8 +675,8 @@ function HistoryMission001()
 	MisResultAction(TakeItem, 1841, 3 )
 	MisResultAction(ClearMission, 218)
 	MisResultAction(SetRecord, 218 )
-	MisResultAction(AddExp,3000,3000)
-	MisResultAction(AddMoney,3200,3200)	
+	MisResultAction(AddExp,1000,1000)
+	MisResultAction(AddMoney,2200,2200)	
 	MisResultAction(AddExpAndType,2,11833,11833)
 
 
@@ -704,8 +704,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasFlag, 219, 10 )
 	MisResultAction(ClearMission, 219)
 	MisResultAction(SetRecord, 219 )
-	MisResultAction(AddExp,6000,6000)
-	MisResultAction(AddMoney,12000,12000)	
+	MisResultAction(AddExp,5000,5000)
+	MisResultAction(AddMoney,10000,10000)	
 	MisResultAction(AddExpAndType,2,11833,11833)
 
 
@@ -743,8 +743,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 3978, 1 )
 	MisResultAction(ClearMission, 220 )
 	MisResultAction(SetRecord, 220 )
-	MisResultAction(AddExp,3100,3100)
-	MisResultAction(AddMoney,2700,2700)
+	MisResultAction(AddExp,1100,1100)
+	MisResultAction(AddMoney,2300,2300)
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 
@@ -767,8 +767,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasFlag, 221, 1 )
 	MisResultAction(ClearMission, 221 )
 	MisResultAction(SetRecord, 221 )
-	MisResultAction(AddExp,3200,3200)
-	MisResultAction(AddMoney,4400,4400)	
+	MisResultAction(AddExp,1200,1200)
+	MisResultAction(AddMoney,2400,2400)	
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 -----------------------------------±дТмµДФ­Тт
@@ -776,7 +776,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Бее... Я говорящая овечка! <n> <T> Хотите знать, как я начала говорить? <n> <T> Не так давно я прогуливался! Бее ... <n> <T> Там был плод в форме яйца.Бее... <n> <T> Бее ... Это было вкусно <n> <T> На следующий день я уже могла говорить! ")
+	MisResultTalk("<t>Baa...I'm Welly the Sheep!<n><t>Wondering how did I start talking?<n><t>Not too long ago, I was taking a nice evening stroll. Baa...Don't you know? Even sheeps need to relax every now and then.<n><t>Anyway, I remember seeing a round egg shaped fruit washed up on shore, it looked good enough to eat.<n><t>Baa...Next thing I knew, I could speak to humans!<n><t>The <bClan Chief> was nice enough to let me stay in town. Baa...tell him I said 'Hello' when you meet him.")
 	MisResultCondition(NoRecord, 221)
 	MisResultCondition(HasMission, 221)
 	MisResultCondition(NoFlag, 221, 1)
@@ -809,8 +809,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 222)
 	MisResultAction(ClearMission, 222 )
 	MisResultAction(SetRecord, 222 )
-	MisResultAction(AddExp,4200,4200)
-	MisResultAction(AddMoney,5400,5400)
+	MisResultAction(AddExp,1200,1200)
+	MisResultAction(AddMoney,2400,2400)
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 
@@ -839,8 +839,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 223)
 	MisResultAction(ClearMission, 223 )
 	MisResultAction(SetRecord, 223 )
-	MisResultAction(AddExp,900,900)
-	MisResultAction(AddMoney,5000,5000)
+	MisResultAction(AddExp,600,600)
+	MisResultAction(AddMoney,2400,2400)
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 
@@ -866,8 +866,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasFlag, 224, 24 )
 	MisResultAction(ClearMission, 224)
 	MisResultAction(SetRecord, 224 )
-	MisResultAction(AddExp,2000,2000)
-	MisResultAction(AddMoney,3550,3550)	
+	MisResultAction(AddExp,1400,1400)
+	MisResultAction(AddMoney,2550,2550)	
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 
@@ -900,8 +900,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 3979, 1 )
 	MisResultAction(ClearMission, 225 )
 	MisResultAction(SetRecord, 225 )
-	MisResultAction(AddExp,1669,1669)
-	MisResultAction(AddMoney,4275,4275)	
+	MisResultAction(AddExp,669,669)
+	MisResultAction(AddMoney,1275,1275)	
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 	
@@ -913,7 +913,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 ----------------------------ХжПа
 	DefineMission( 240, "ИСТИНА", 226 )
 	
-	MisBeginTalk( "<t>Вы помогли стать мне новым Главарем Песчаных бандитов,я скажу вам правду. <n> <T>Я знаю о небольшой группе пиратов.<n> <T> Их называют еПираты Джекае Они пытались найти журнал Роланда,и я им в этом помого!А теперь можете доложить стражу " )
+	MisBeginTalk( "<t>Since you have helped me to become the new leader of the Sand Bandits, I shall tell you the truth. <n><t>We, the Sand Bandits have an alliance with a group of pirates so I helped them steal the logbook. <n><t>The infamous, 'Jack's Pirates', has been trying to find the lost treasure of the <bPirate King Roland>. The secret is believed to be hidden inside the Pirate King's log. Now go and report back to Michael!" )
 	MisBeginCondition(NoRecord, 226)
 	MisBeginCondition(HasRecord, 225)
 	MisBeginCondition(NoMission, 226)
@@ -935,8 +935,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 226)
 	MisResultAction(ClearMission, 226 )
 	MisResultAction(SetRecord, 226 )
-	MisResultAction(AddExp,4500,4500)
-	MisResultAction(AddMoney,5650,5650)
+	MisResultAction(AddExp,1500,1500)
+	MisResultAction(AddMoney,2650,2650)
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 
@@ -965,8 +965,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 227 )
 	MisResultAction(ClearMission, 227 )
 	MisResultAction(SetRecord, 227 )
-	MisResultAction(AddExp,949,949)
-	MisResultAction(AddMoney,6333,6333)	
+	MisResultAction(AddExp,749,749)
+	MisResultAction(AddMoney,1333,1333)	
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 
@@ -995,8 +995,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 228 )
 	MisResultAction(ClearMission, 228 )
 	MisResultAction(SetRecord, 228 )
-	MisResultAction(AddExp,2700,2700)
-	MisResultAction(AddMoney,3000,3000)
+	MisResultAction(AddExp,1700,1700)
+	MisResultAction(AddMoney,2800,2800)
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 
@@ -1020,8 +1020,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 3980, 1 )
 	MisResultAction(ClearMission, 229 )
 	MisResultAction(SetRecord, 229 )
-	MisResultAction(AddExp,6680,6680)
-	MisResultAction(AddMoney,9075,9075)	
+	MisResultAction(AddExp,4680,4680)
+	MisResultAction(AddMoney,7075,7075)	
 	MisResultAction(AddExpAndType,2,5000,5000)
 
 	InitTrigger()
@@ -1032,7 +1032,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 ----------------------------С°ХТКХРЕИЛ
 	DefineMission( 247, "Для тех, кого это касается", 230 )
 	
-	MisBeginTalk( "<t> Я осмотрел сумку, она содержала письмо от от таинственного \ Дж\." )
+	MisBeginTalk( "<t>I have inspected the bag, it seems to contain letters from a mysterious 'J' person. It seems to be that <rJack's Pirates> is just working on direct orders from 'J'. I wonder who this <r'J'> is.<n><t>I have an idea! Let me forge this letter and you take it around town pretending to have 'picked' it up from nowhere, perhaps you may find this mysterious 'J'" )
 	MisBeginCondition(NoRecord, 230)
 	MisBeginCondition(HasRecord, 229)
 	MisBeginCondition(NoMission, 230)
@@ -1041,7 +1041,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisCancelAction(ClearMission, 230)
 	MisBeginBagNeed(1)
 		
-	MisNeed(MIS_NEED_DESP, "Найдите таинственного  \"Дж\"")
+	MisNeed(MIS_NEED_DESP, "Look for the guy codenamed 'J'")
 	
 	MisHelpTalk("<t>Я знаю, что информации мало, но вы должны доверять мне. У меня есть предчувствие, что вы сможете его найти...")
 	MisResultCondition(AlwaysFailure )
@@ -1051,7 +1051,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t> Каким образом вы получили это письмо? Это мое письмо!!! <n> <T> Я \ Дж\.Почему называется \ Дж\? <n> <T> Ты никогда не узнаешь ответа.А теперь я дам тебе небольшой урок этикета!. ")
+	MisResultTalk("<t>How did you get this letter? Give it to me!!!<n><t>I'm the 'J' they mentioned. Why am I called 'J'?<n><t>You shall die without ever knowing the answer. Now move along before I ask my Sand Bandits to give you a proper lesson on etiquette.")
 	MisResultCondition(NoRecord, 230 )
 	MisResultCondition(HasMission, 230 )
 	MisResultCondition(HasItem, 3981, 1 )
@@ -1059,8 +1059,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(ClearMission, 230 )
 	MisResultAction(SetRecord, 230 )
 	MisResultAction(ObligeAcceptMission, 5 )
-	MisResultAction(AddExp,1936,1936)
-	MisResultAction(AddMoney,2415,2415)	
+	MisResultAction(AddExp,936,936)
+	MisResultAction(AddMoney,1415,1415)	
 	MisResultAction(AddExpAndType,2,7000,7000)
 
 
@@ -1069,13 +1069,13 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	
 	MisBeginCondition(AlwaysFailure )
 		
-	MisResultTalk("<t>Супермун - загадочный Дж?Никогда бы не подумал...")
+	MisResultTalk("<t>I never suspected that <bSupermun> could be the mysterious 'J'. I heard that he is quite reknowned in many ways but he seemed quite harmless. I may have underestimated him I guess.")
 	MisResultCondition(HasMission, 5 )
 	MisResultCondition(NoRecord, 5 )
 	MisResultAction(ClearMission, 5 )
 	MisResultAction(SetRecord, 5 )
-	MisResultAction(AddExp,4000,4000)
-	MisResultAction(AddMoney,5800,5800)
+	MisResultAction(AddExp,2000,2000)
+	MisResultAction(AddMoney,2800,2800)
 	MisResultAction(AddExpAndType,2,7000,7000)
 
 
@@ -1104,8 +1104,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 232 )
 	MisResultAction(ClearMission, 232 )
 	MisResultAction(SetRecord, 232 )
-	MisResultAction(AddExp,4000,4000)
-	MisResultAction(AddMoney,5900,5900)
+	MisResultAction(AddExp,2000,2000)
+	MisResultAction(AddMoney,2900,2900)
 	MisResultAction(AddExpAndType,2,7000,7000)
 
 
@@ -1134,8 +1134,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 233 )
 	MisResultAction(ClearMission, 233 )
 	MisResultAction(SetRecord, 233 )
-	MisResultAction(AddExp,5000,5000)
-	MisResultAction(AddMoney,7900,7900)
+	MisResultAction(AddExp,2000,2000)
+	MisResultAction(AddMoney,2900,2900)
 	MisResultAction(AddExpAndType,2,7000,7000)
 
 
@@ -1164,8 +1164,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 234 )
 	MisResultAction(ClearMission, 234 )
 	MisResultAction(SetRecord, 234 )
-	MisResultAction(AddExp,3000,3000)
-	MisResultAction(AddMoney,5800,5800)
+	MisResultAction(AddExp,2000,2000)
+	MisResultAction(AddMoney,2800,2800)
 	MisResultAction(AddExpAndType,2,7000,7000)
 
 
@@ -1194,8 +1194,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 235 )
 	MisResultAction(ClearMission, 235 )
 	MisResultAction(SetRecord, 235 )
-	MisResultAction(AddExp,5000,5000)
-	MisResultAction(AddMoney,6800,6800)	
+	MisResultAction(AddExp,2000,2000)
+	MisResultAction(AddMoney,2800,2800)	
 	MisResultAction(AddExpAndType,2,7000,7000)
 
 
@@ -1219,8 +1219,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 3982, 15 )
 	MisResultAction(ClearMission, 236 )
 	MisResultAction(SetRecord, 236 )
-	MisResultAction(AddExp,4000,4000)
-	MisResultAction(AddMoney,3800,3800)
+	MisResultAction(AddExp,2000,2000)
+	MisResultAction(AddMoney,2800,2800)
 	MisResultAction(AddExpAndType,2,7000,7000)
 
 	
@@ -1259,8 +1259,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 3983, 15 )
 	MisResultAction(ClearMission, 237 )
 	MisResultAction(SetRecord, 237 )
-	MisResultAction(AddExp,3550,3550)
-	MisResultAction(AddMoney,3900,3900)	
+	MisResultAction(AddExp,2300,2300)
+	MisResultAction(AddMoney,2900,2900)	
 	MisResultAction(AddExpAndType,2,7000,7000)
 
 
@@ -1682,9 +1682,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisCancelAction(ClearMission, 250)
 
 	MisNeed(MIS_NEED_ITEM, 4083, 1, 10, 1)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 34464, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 34464, 1)
 	MisPrizeSelAll()
 
 	MisResultTalk("<t>Вы действительно убили его! Вот Ваша награда.")
@@ -1778,7 +1777,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisCancelAction(ClearMission, 253)
 
 	MisNeed(MIS_NEED_ITEM, 4084, 1, 10, 1)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 3917, 1, 4)
 	MisPrizeSelAll()
 
@@ -1809,7 +1808,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	RegCurTrigger( 109 )
 	InitTrigger()
 	TriggerCondition( 1, NoFlag, 4, 10 )
-	TriggerAction( 1, SystemNotice, "Время прошло!" )
+	TriggerAction( 1, SystemNotice, "Quest countdown is over. Lure Behemoth failed!" )
 	TriggerAction( 1, SetMissionFailure, 4 )
 	RegCurTrigger( 108 )
 
@@ -1847,7 +1846,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisNeed(MIS_NEED_ITEM, 4078, 2, 20, 2)
 	MisNeed(MIS_NEED_ITEM, 4079, 2, 22, 2)
 	MisNeed(MIS_NEED_ITEM, 4080, 3, 24, 3)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 4072, 1, 4)
 	MisPrizeSelAll()
 
@@ -1904,7 +1903,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 -------------------------------------------------єЅПЯ»оµШНј
 	DefineMission( 290, "Навигационная карта", 256 )
 
-	MisBeginTalk( "<t>Хотя я и не знаю об этом месте,возможно другие пираты знаюи. <n> <T>. Его зовут .....< bБарос>! Если вы найдете его,то получите некоторую информацию. Однако в открытом море много опасностей! <n> <T> Ах , да местонахождение бухты тут  (2024, 2752).Удачи! " )
+	MisBeginTalk( "<t>Although I have no knowledge of it, there are others that may know.<n><t>The Haven in the sea was attacked several times by pirates until it was destroyed. Usually during the reconstruction of the Haven, there will be a change in its name.<n><t>I remember when I was studying at Argent City Maritime school, I once heard my teacher mentioned a place called <pWoody Heaven> where a harbor operator who was called the '<rLiving Map of the sea>'. His name is.....<bBaros>!  Maybe you can try to look for him and question him. However, there are great dangers in the open sea so be prepared.<n><t>Oh right, the location of the Haven is at (2024, 2752), other than this I can't help you anymore. Good luck!" )
 	MisBeginCondition(NoRecord, 256)
 	MisBeginCondition(HasRecord, 254)
 	MisBeginCondition(NoMission, 256)
@@ -1934,7 +1933,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 -------------------------------------------------МфХЅЛ®Дё
 	DefineMission( 292, "Состязание морской медузы", 257 )
 
-	MisBeginTalk( "<t>*Кашель* Если вы хотите знат чуть больше,то выполните мои поручения <n> <T>Найдите для меня 15 кристалов кровожадной медузы.." )
+	MisBeginTalk( "<t>*Cough* If you want to know so badly, you have to help me run an errand.<n><t>Back in my younger days I was termed the one and only 'Walking Map', I travelled and traded between many places.<n><t>In my greed, I did not take care of my health and contracted this persistent cough.<n><t>*Cough* The only thing to sooth it is to drink a soup brewed by <yTempest Sea Jelly Crystal>. I will need 15 to last me for some time.<n><t>*Cough* Those Sea Jellies are nearby. Come back to me when you have 15 and I may give you some information." )
 	MisBeginCondition(NoRecord, 257)
 	MisBeginCondition(HasRecord, 256)
 	MisBeginCondition(NoMission, 257)
@@ -1998,7 +1997,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 -------------------------------------------------ВПЙъРЦµЬ
 	DefineMission( 295, "Братья Ли", 259 )
 
-	MisResultTalk("<t>Хм ... Это письмо от моего брата.<n> <T> Он всегда умел шутить.Хе-хе.Я  надеюсь, что вы не сердитесь.")
+	MisBeginTalk( "<t>*Muak*<n><t>When you get this letter, I know that you have succesfully delivered the goods. Before you read onЎ­. Take a deep breathЎ­. <n><t>I am really sorry for lying to you, I am actually not the 'Walking Map' that you are looking for, but do not get angry. <n><t>I do know who the 'Walking Map' is as he is my twin brother. As you are so sincere, for your information, he lives in <bIcicle Castle>. His name is <bLuke>, bring my letter along and show it to him at (1320, 585). <n><t>P.S He is my twin brother so he will look like me!" )
 	MisBeginCondition(NoRecord, 259)
 	MisBeginCondition(HasRecord, 258)
 	MisBeginCondition(NoMission, 259)
@@ -2032,7 +2031,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 -------------------------------------------------Чј±ё»о¶Ї
 	DefineMission( 297, "Подготовка к деятельности", 260 )
 
-	MisBeginTalk( "<t>Хотя я знаю, где Девятая бухта, я должен предупредить вас!<n> <T> Это место очень опасно. Я надеюсь, что вы достаточно сильны. <n> <T> Достаньте мне 12 Чешуи Рыбы-Скелета , и я дам вам вознаграждение.")
+	MisBeginTalk( "<t>Although I do know where 'Nine Haven' is, I must warn you in advance.<n><t>The place is fraught with danger and peril. I do hope you are strong enough to face the trials ahead.<n><t>I do not wish to send a person to their death so I propose a trial.<n><t>Head east by ship from Icicle Harbor till you reach an area full of Feral Skeleton Fish. Bring back 12 <ySkeleton Fish Scales> and I will present you with a reward.")
 	MisBeginCondition(NoRecord, 260)
 	MisBeginCondition(HasRecord, 259)
 	MisBeginCondition(NoMission, 260)
@@ -2048,7 +2047,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 260 )
 	MisResultCondition(HasItem, 4143, 12 )
 	MisResultAction(TakeItem, 4143, 12 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4144, 1, 4 )
 	MisResultAction(ClearMission, 260 )
 	MisResultAction(SetRecord, 260 )
@@ -2096,7 +2094,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 -------------------------------------------------РДБйБ¦Бї
 	DefineMission( 300, "Духовная сила", 262 )
 
-	MisBeginTalk( "<t> Бесчисленное множество людей просили моего благословения!Но только чистый сердцем может получить благословение. Я не хотела бы давать вам ложные надежды. Уничтожте Неупокоенного Лучника  (2746, 450) и принесите мне Лучистую душу. ")
+	MisBeginTalk( "<t> Countless people have requested my blessings. In fact, only a selected few has their wish granted, that is because I am only a guide. I have a strong mental power thus I can guide them successfully. Only those pure of heart can obtain the blessings. I do not wish to give you false hopes. Prove to me by heading eastwards towards the Icespire Haven, from there head north. You will find a group of Undead Archers at (2746, 450). Among them hides a Master Archer, he was resurrected by an unknown force. Kill him and bring his 'Radiant Soul' so I can put him to rest.")
 	MisBeginCondition(NoRecord, 262)
 	MisBeginCondition(HasRecord, 261)
 	MisBeginCondition(NoMission, 262)
@@ -2114,7 +2112,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasItem, 4145, 1 )
 	MisResultAction(TakeItem, 4145, 1 )
 	MisResultAction(TakeItem, 4144, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4146, 1 , 4)
 	MisResultAction(ClearMission, 262 )
 	MisResultAction(SetRecord, 262 )
@@ -2150,7 +2147,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 -------------------------------------------------З°Нщt9
 	DefineMission( 303, "Плывите до девятой гавани", 264 )
 
-	MisBeginTalk( "<t>Девятая бухта существовала 10 лет назад. <n> <T> Эта было торговая бухта,охраняемая флотом <n> <T> Когда он был перестроен она была переименована в  <yБухту Айрис>.  <n> <T> Не многие люди помнят о Девятой бухте.Координаты  (2042, 635 ),в Магическом океане.Ищите Оператора Бани,он вам поможет!" )
+	MisBeginTalk( "<t>The Nine Haven you are talking about, existed 10 years ago.<n><t>Back then it was a mercantile trading port protected by the royal navy. They were raided by pirates and razed to ruins.<n><t>When it was rebuilt it was renamed <y Aerase Haven>. Due to the victory the pirates had over the navy, it is considered pirate domain.<n><t>Not many people remember the area 'Nine Haven' as new about it's sacking were surpressed.The coordinates are (2042, 635) in the Magical Ocean. Look for <b Harbor Operator - Burni>, he will help you." )
 	MisBeginCondition(NoRecord, 264)
 	MisBeginCondition(HasRecord, 7)
 	MisBeginCondition(NoMission, 264)
@@ -2216,7 +2213,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 262)
 	MisBeginAction(AddMission, 266)
 	MisBeginAction(AddTrigger, 2661, TE_KILL, 667, 5)		
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте <r5 Морских стрелков> и вернитесь к <bДжереми> в точку(2362, 657).")
 	MisNeed(MIS_NEED_KILL, 667, 5, 10, 5)
@@ -2245,7 +2242,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 266)
 	MisBeginCondition(NoMission, 267)
 	MisBeginAction(AddMission, 267)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Ищите <pДжека> на <bострове Канареек> по координатам (1672,3777).")
 
@@ -2276,7 +2273,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 267)
 	MisBeginCondition(NoMission, 268)
 	MisBeginAction(AddMission, 268)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поговорите с Джеком (1672, 3777).")
 
@@ -2316,12 +2313,12 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 2691, TE_GETITEM, 3790, 1)
 	MisBeginAction(AddTrigger, 2692, TE_GETITEM, 3791, 1)
 	MisBeginAction(AddTrigger, 2693, TE_GETITEM, 3792, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_ITEM, 3790, 1, 10, 1)
 	MisNeed(MIS_NEED_ITEM, 3791, 1, 11, 1)
 	MisNeed(MIS_NEED_ITEM, 3792, 1, 12, 1)
-	MisNeed(MIS_NEED_DESP, "Принесите Джеку Эмблемы его подчиненных..")
+	MisNeed(MIS_NEED_DESP, "Obtain some <rEmblem> from Jack's henchmen to prove that you are carrying out an 'Investigation'.")
 
 
 	MisResultTalk("<t>От куда у Вас эти <bЭмблемы>? И по чему на них кровь? Не может быть... Хватит остановитесь, я всё расскажу. Этот Андрей и после своей смерти приносит одни только неприятности. Я жду Вас немного позже, что бы рассказать всю историю, связанную с Андреем.")
@@ -2358,7 +2355,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 270)
 	MisBeginAction(AddMission, 270)
 	MisBeginAction(AddTrigger, 2701, TE_GETITEM, 4219, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убивайте членов экипажа Джека в поисках <bЗаписки Андрея>.")
 	MisNeed(MIS_NEED_ITEM, 4219, 1, 10, 1)
@@ -2368,16 +2365,13 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 270 )
 	MisResultCondition(HasItem, 4219 , 1)
 	MisResultAction(TakeItem, 4219, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4220, 1, 4 )
 	MisResultAction(ClearMission, 270 )
 	MisResultAction(SetRecord, 270 )
 	MisResultAction(AddExp,30000,30000)
 	MisResultAction(AddMoney,5000,5000)
 	MisResultAction(AddExpAndType,2,20000,20000)
-	--MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem,1815,1,4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
+	--MisResultAction(GiveItem,1815,1,4)
 	MisResultAction(GiveItem,679,1,4) -- Яйцо Мордо
 	MisResultBagNeed(2)
 
@@ -2435,7 +2429,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(SetRecord, 11)
 	MisBeginAction(AddMission, 271)
 	MisBeginAction(AddTrigger, 2711, TE_KILL, 667, 30)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте <r30 Морских стрелков> и вернитесь к <bМонарху Ледыни - Масу> в точку(1346, 451).")
 	MisNeed(MIS_NEED_KILL, 667, 30, 10, 30)
@@ -2446,14 +2440,12 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasItem, 4221 , 1)
 	MisResultCondition(HasFlag, 271, 39)
 	MisResultAction(TakeItem, 4221, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4222, 1, 4 )
 	MisResultAction(ClearMission, 271 )
 	MisResultAction(SetRecord, 271 )
 	MisResultAction(AddExp,50000,50000)
 	MisResultAction(AddMoney,5000,5000)
 	MisResultAction(AddExpAndType,2,20000,20000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,1814,1,4)
 	MisResultBagNeed(2)
 
@@ -2473,7 +2465,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(ClearMission, 12)
 	MisBeginAction(SetRecord, 12)
 	MisBeginAction(AddMission, 272)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ринесите <p2 миллиона> золота <bГениралу Вильяму>(2277, 2831).")
 
@@ -2483,14 +2475,12 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasItem, 4221 , 1)
 	MisResultCondition(HasMoney, 2000000 )
 	MisResultAction(TakeItem, 4221, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4222, 1, 4 )
 	MisResultAction(ClearMission, 272 )
 	MisResultAction(SetRecord, 272 )
 	MisResultAction(AddExp,80000,80000)
 	MisResultAction(AddMoney,8000,8000)
 	MisResultAction(AddExpAndType,2,30000,30000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,1814,1,4)
 	MisResultBagNeed(2)
 
@@ -2505,7 +2495,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(ClearMission, 13)
 	MisBeginAction(SetRecord, 13)
 	MisBeginAction(AddMission, 273)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Плывите в Аскарон в точку<p(77, 3971)> и кликните 2 раза по <bЗаписке Андрея>. Получив задание вернитесь к Сальверу в точку (2219, 2749).")
 
@@ -2515,7 +2505,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 14 )
 	MisResultCondition(HasItem, 4221 , 1)
 	MisResultAction(TakeItem, 4221, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4222, 1, 4 )
 	MisResultAction(ClearMission, 273 )
 	MisResultAction(SetRecord, 14 )
@@ -2541,7 +2530,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 2742, TE_GETITEM, 4224, 1)
 	MisBeginAction(AddTrigger, 2743, TE_GETITEM, 4225, 1)
 	MisBeginAction(AddTrigger, 2744, TE_GETITEM, 4226, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Соберите все подписи и возвращайтесь к Банкиру Громорада (743,1534).")
 	MisNeed(MIS_NEED_ITEM, 4223, 1, 10, 1)
@@ -2562,7 +2551,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 4224, 1 )
 	MisResultAction(TakeItem, 4225, 1 )
 	MisResultAction(TakeItem, 4226, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4227, 1, 4 )
 	MisResultAction(ClearMission, 274 )
 	MisResultAction(SetRecord, 274 )
@@ -2596,7 +2584,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasNavyGuild)
 	MisBeginAction(AddMission, 275)
 	MisBeginAction(AddTrigger, 2751, TE_KILL, 667, 30)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте <r30 морских стрелков> и вернитесь к <bМасу> за подписью в точку(1346,451).")
 	MisNeed(MIS_NEED_KILL, 667, 30, 10, 30)
@@ -2605,7 +2593,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisHelpTalk("<t>И Вы после этого говорите, что наш друг, убирайтесь от сюда!")
 	MisResultCondition(HasMission, 275 )
 	MisResultCondition(HasFlag, 275, 39)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4223, 1, 4 )
 	MisResultAction(ClearMission, 275 )
 	MisResultAction(SetRecord, 275 )
@@ -2627,7 +2614,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoFlag, 274, 1 )
 	MisResultCondition(HasMission, 274)
 	MisResultCondition(NoNavyGuild)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4223, 1, 4)
 	MisResultAction(SetFlag, 274, 1 )
 	MisResultBagNeed(1)
@@ -2645,7 +2631,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 2771, TE_KILL, 145, 10)
 	MisBeginAction(AddTrigger, 2772, TE_KILL, 146, 10)
 	MisBeginAction(AddTrigger, 2773, TE_KILL, 291, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте пиратов Джека, что бы доказать свою преданность флоту.")
 	MisNeed(MIS_NEED_KILL, 145, 10, 10, 10)
@@ -2658,7 +2644,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasFlag, 277, 19)
 	MisResultCondition(HasFlag, 277, 29)
 	MisResultCondition(HasFlag, 277, 39)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4224, 1, 4 )
 	MisResultAction(ClearMission, 277 )
 	MisResultAction(SetRecord, 277 )
@@ -2688,7 +2673,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 274)
 	MisResultCondition(NoFlag, 274, 2 )
 	MisResultCondition(NoPirateGuild)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4224, 1, 4)
 	MisResultAction(SetFlag, 274, 2 )
 	MisResultBagNeed(1)
@@ -2707,7 +2691,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 2792, TE_KILL, 146, 5)
 	MisBeginAction(AddTrigger, 2793, TE_KILL, 291, 5)
 	MisBeginAction(AddTrigger, 2794, TE_KILL, 667, 5)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте требуемых монстров и вернитесь к Секретарю Аргента - Сальеру за подпесью!")
 	MisNeed(MIS_NEED_KILL, 145, 5, 10, 5)
@@ -2722,7 +2706,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasFlag, 279, 24)
 	MisResultCondition(HasFlag, 279, 34)
 	MisResultCondition(HasFlag, 279, 44)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4225, 1, 4 )
 	MisResultAction(ClearMission, 279 )
 	MisResultAction(SetRecord, 279 )
@@ -2756,7 +2739,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoFlag, 274, 3 )
 	MisResultCondition(HasMission, 274)
 	MisResultCondition(HasGuild)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4225, 1, 4)
 	MisResultAction(SetFlag, 274, 3 )
 	MisResultBagNeed(1)
@@ -2770,23 +2752,21 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 274)
 	MisBeginAction(AddMission, 281)
 	MisBeginAction(AddTrigger, 2811, TE_KILL, 620, 30)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
-	MisNeed(MIS_NEED_DESP, "Убейте Русалку-Призрака и доложите Альбуде (898, 3640).")
+	MisNeed(MIS_NEED_DESP, "Use blood of the <yShadow Mermaid> to cleanse away your sins and report back to 'Clan Chief - Albuda' at (898, 3640).")
 	MisNeed(MIS_NEED_KILL, 620, 30, 10, 30)
 
 	MisResultTalk("<t>Да благословят Вас Боги. Давайте свой Документ. Я с удовольствием его Вам подпишу.")
 	MisHelpTalk("<t>Пока исчадие ада ходит по этой земле я не могу думать ни о каких бумажках!")
 	MisResultCondition(HasMission, 281 )
 	MisResultCondition(HasFlag, 281, 39)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4226, 1, 4 )
 	MisResultAction(ClearMission, 281 )
 	MisResultAction(SetRecord, 281 )
 	MisResultAction(AddExp,80000,80000)
 	MisResultAction(AddMoney,10000,10000)
 	MisResultAction(AddExpAndType,2,30000,30000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3885,1,4)
 	MisResultBagNeed(2)
 
@@ -2817,7 +2797,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 282)
 	MisBeginCondition(HasItem, 4227, 1)
 	MisBeginAction(AddMission, 282)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Поговорите о завещании с Малышом Дениелем(2193, 2730).")
 	
@@ -2847,7 +2827,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 284)
 	MisBeginCondition(HasItem, 4227, 1)
 	MisBeginAction(AddMission, 283)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Отправляйтесь в (1672, 3777) и посмотрите, что произошло с Джеком, после того как Вы его предали.")
 	
@@ -2869,7 +2849,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 2842, TE_GETITEM, 1291, 5)
 	MisBeginAction(AddTrigger, 2843, TE_GETITEM, 1365, 7)
 	MisBeginAction(AddTrigger, 2844, TE_GETITEM, 1292, 9)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите всё это Малышу Дениелю в Аргент в точку(2193, 2730).")
 	MisNeed(MIS_NEED_ITEM, 1255, 3, 10, 3)
@@ -2888,7 +2868,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 1291, 5)
 	MisResultAction(TakeItem, 1365, 7)
 	MisResultAction(TakeItem, 1292, 9)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4228, 1, 4)
 	MisResultAction(SetRecord, 284 )
 	MisResultAction(ClearMission, 284 )
@@ -2922,7 +2901,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddMission, 285)
 	MisBeginAction(SetRecord, 283)
 	MisBeginAction(ClearMission, 283)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Поговорите с Барменшой Диной в точке(2224,2887).")
 	
@@ -2941,7 +2920,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 2861, TE_GETITEM, 4735, 1)
 	MisBeginAction(SetRecord, 285)
 	MisBeginAction(ClearMission, 285)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите <bДине> (2224, 2887) одну <pУжасную тыквенную голову>.")
 	MisNeed(MIS_NEED_ITEM, 4735, 1, 10, 1)
@@ -2951,7 +2930,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 286 )
 	MisResultCondition(HasItem, 4735, 1)
 	MisResultAction(TakeItem, 4735, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4229, 1, 4)
 	MisResultAction(SetRecord, 286 )
 	MisResultAction(ClearMission, 286 )
@@ -2975,7 +2953,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 4229, 1 )
 	MisResultAction(SetRecord, 17 )
 	MisResultAction(ClearMission, 17 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4228, 1, 4 )
 	MisResultBagNeed(1)
 
@@ -2992,7 +2969,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 2871, TE_GETITEM, 4230, 1)
 	MisBeginAction(SetRecord, 18)
 	MisBeginAction(ClearMission, 18)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Отправляйтесь в Магический океан и убейте <rКоролеву русалок> в точке(3385,1985). И принесите <pРусалочье тело> <bДжеку>.")
 	MisNeed(MIS_NEED_ITEM, 4230, 1, 10, 1)
@@ -3007,9 +2984,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(AddExp,300000,300000)
 	MisResultAction(AddMoney,300000,300000)
 	MisResultAction(AddExpAndType,2,30000,30000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3463,10,4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,1092,5,4)
 	MisResultBagNeed(2)
 
@@ -3039,7 +3014,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 288)
 	MisBeginCondition(HasItem, 4231, 1)
 	MisBeginAction(AddMission, 288)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Поговорить с Альбудой в точке(898, 3640).")
 	
@@ -3067,7 +3042,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 289)
 	MisBeginCondition(HasItem, 4231, 1)
 	MisBeginAction(AddMission, 289)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Ищите Жрицу Аду по координатам(862, 3303).")
 	
@@ -3085,7 +3060,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 2901, TE_GETITEM, 3954, 1)
 	MisBeginAction(SetRecord, 289)
 	MisBeginAction(ClearMission, 289)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Очистите свою душу и получите Благословление у Верховного жреца - Геньона(862, 3500).")
 	MisNeed(MIS_NEED_ITEM, 3954, 1, 15, 1)
@@ -3097,7 +3072,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasItem, 4231, 1)
 	MisResultAction(TakeItem, 4231, 1)
 	MisResultAction(TakeItem, 3954, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4232, 1, 4)
 	MisResultAction(SetRecord, 290 )
 	MisResultAction(ClearMission, 290 )
@@ -3120,7 +3094,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 290 )
 	MisResultCondition(PfEqual, 5)
 	MisResultCondition(HasItem, 4231, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3954, 1, 4 )
 	MisResultBagNeed(1)
 	
@@ -3135,7 +3108,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 290 )
 	MisResultCondition(PfEqual, 13)
 	MisResultCondition(HasItem, 4231, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3954, 1, 4 )
 	MisResultBagNeed(1)
 	
@@ -3150,7 +3122,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 290 )
 	MisResultCondition(PfEqual, 14)
 	MisResultCondition(HasItem, 4231, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3954, 1, 4 )
 	MisResultBagNeed(1)
 	
@@ -3179,7 +3150,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasFlag, 290, 1)
 	MisBeginAction(AddMission, 291)
 	MisBeginAction(AddTrigger, 2911, TE_KILL, 42, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Первое испытание")
 	MisNeed(MIS_NEED_KILL, 42, 10, 10, 10)
@@ -3205,7 +3176,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 290)
 	MisBeginAction(AddMission, 292)
 	MisBeginAction(AddTrigger, 2921, TE_KILL, 267, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Второе испытание")
 	MisNeed(MIS_NEED_KILL, 267, 10, 10, 10)
@@ -3231,7 +3202,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 290)
 	MisBeginAction(AddMission, 293)
 	MisBeginAction(AddTrigger, 2931, TE_KILL, 541, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Третье испытание")
 	MisNeed(MIS_NEED_KILL, 541, 10, 10, 10)
@@ -3257,7 +3228,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 290)
 	MisBeginAction(AddMission, 294)
 	MisBeginAction(AddTrigger, 2941, TE_KILL, 565, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Четвёртое испытание")
 	MisNeed(MIS_NEED_KILL, 565, 10, 10, 10)
@@ -3283,7 +3254,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 290)
 	MisBeginAction(AddMission, 295)
 	MisBeginAction(AddTrigger, 2951, TE_KILL, 52, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Пятое испытание")
 	MisNeed(MIS_NEED_KILL, 52, 10, 10, 10)
@@ -3309,7 +3280,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 290)
 	MisBeginAction(AddMission, 296)
 	MisBeginAction(AddTrigger, 2961, TE_KILL, 666, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Шестое испытание")
 	MisNeed(MIS_NEED_KILL, 666, 10, 10, 10)
@@ -3335,7 +3306,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 290)
 	MisBeginAction(AddMission, 297)
 	MisBeginAction(AddTrigger, 2971, TE_KILL, 508, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Седьмое испытание")
 	MisNeed(MIS_NEED_KILL, 508, 10, 10, 10)
@@ -3361,7 +3332,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 290)
 	MisBeginAction(AddMission, 298)
 	MisBeginAction(AddTrigger, 2981, TE_KILL, 518, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Восьмое испытание")
 	MisNeed(MIS_NEED_KILL, 518, 10, 10, 10)
@@ -3387,7 +3358,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 290)
 	MisBeginAction(AddMission, 299)
 	MisBeginAction(AddTrigger, 2991, TE_KILL, 547, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Девятое испытание")
 	MisNeed(MIS_NEED_KILL, 547, 10, 10, 10)
@@ -3413,7 +3384,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 290)
 	MisBeginAction(AddMission, 300)
 	MisBeginAction(AddTrigger, 3001, TE_KILL, 190, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Последнее испытание")
 	MisNeed(MIS_NEED_KILL, 190, 1, 10, 1)
@@ -3424,12 +3395,10 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasFlag, 300, 10)
 	MisResultAction(SetRecord, 300 )
 	MisResultAction(ClearMission, 300 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3954, 1, 4 )
 	MisResultAction(AddExp,350000,350000)
 	MisResultAction(AddMoney,10000,10000)
 	MisResultAction(AddExpAndType,2,40000,40000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3844,15,4)
 	MisResultBagNeed(2)
 
@@ -3459,7 +3428,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 21)
 	MisBeginCondition(NoMission, 301)
 	MisBeginAction(AddMission, 301)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Поговорите с пьяницей в Баре Аргента(2222,2889) о Веснограде.")
 	
@@ -3477,7 +3446,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(SetRecord, 301)
 	MisBeginAction(ClearMission, 301)
 	MisBeginAction(AddTrigger, 3021, TE_GETITEM, 3962, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поговорите с <bМалышом Даниэлем>(2193, 2730) о испытаниях, после прохождения испытаний вернитесь к Антонию в точку (2222, 2889).")
 	MisNeed(MIS_NEED_ITEM, 3962, 1, 10, 1)
@@ -3509,7 +3478,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoItem, 3962, 1)
 	MisResultCondition(HasMission, 302 )
 	MisResultCondition(PfEqual, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3962, 1, 4 )
 	MisResultBagNeed(1)
 
@@ -3524,7 +3492,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoItem, 3962, 1)
 	MisResultCondition(HasMission, 302 )
 	MisResultCondition(PfEqual, 16)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3962, 1, 4 )
 	MisResultBagNeed(1)
 
@@ -3552,7 +3519,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 303)
 	MisBeginAction(AddTrigger, 3031, TE_KILL, 574, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Первое испытание")
 	MisNeed(MIS_NEED_KILL, 574, 10, 10, 10)
@@ -3579,7 +3546,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 304)
 	MisBeginAction(AddTrigger, 3041, TE_KILL, 638, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Второе испытание")
 	MisNeed(MIS_NEED_KILL, 638, 10, 10, 10)
@@ -3608,7 +3575,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 305)
 	MisBeginAction(AddTrigger, 3051, TE_KILL, 583, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Третье испытание")
 	MisNeed(MIS_NEED_KILL, 583, 10, 10, 10)
@@ -3635,7 +3602,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 306)
 	MisBeginAction(AddTrigger, 3061, TE_KILL, 660, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Четвёртое испытание")
 	MisNeed(MIS_NEED_KILL, 660, 10, 10, 10)
@@ -3665,7 +3632,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 307)
 	MisBeginAction(AddTrigger, 3071, TE_KILL, 584, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Пятое испытание")
 	MisNeed(MIS_NEED_KILL, 584, 10, 10, 10)
@@ -3692,7 +3659,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 308)
 	MisBeginAction(AddTrigger, 3081, TE_KILL, 603, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Шестое испытание")
 	MisNeed(MIS_NEED_KILL, 603, 10, 10, 10)
@@ -3720,7 +3687,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 309)
 	MisBeginAction(AddTrigger, 3091, TE_KILL, 622, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Седьмое испытание")
 	MisNeed(MIS_NEED_KILL, 622, 10, 10, 10)
@@ -3750,7 +3717,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 310)
 	MisBeginAction(AddTrigger, 3101, TE_KILL, 650, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Восьмое испытание")
 	MisNeed(MIS_NEED_KILL, 650, 10, 10, 10)
@@ -3778,7 +3745,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 311)
 	MisBeginAction(AddTrigger, 3111, TE_KILL, 585, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Девятое испытание")
 	MisNeed(MIS_NEED_KILL, 585, 10, 10, 10)
@@ -3805,7 +3772,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasMission, 302)
 	MisBeginAction(AddMission, 312)
 	MisBeginAction(AddTrigger, 3121, TE_KILL, 611, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Десятое испытание")
 	MisNeed(MIS_NEED_KILL, 611, 10, 10, 10)
@@ -3816,12 +3783,10 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasFlag, 312, 19)
 	MisResultAction(SetRecord, 312 )
 	MisResultAction(ClearMission, 312 )
-        MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 3962, 1, 4 )	
+        MisResultAction(GiveItem, 3962, 1, 4 )	
 	MisResultAction(AddExp,250000,250000)
 	MisResultAction(AddMoney,50000,50000)
 	MisResultAction(AddExpAndType,2,40000,40000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3845,6,4)
 	MisResultBagNeed(2)
 
@@ -3839,7 +3804,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 302)
 	MisBeginCondition(NoMission, 313)
 	MisBeginAction(AddMission, 313)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Вы можете найти ее в Аргенте в точке (2277, 2769)")
 	
@@ -3868,7 +3833,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 315)
 	MisBeginAction(AddMission, 315)
 	MisBeginAction(AddTrigger, 3151, TE_GETITEM, 4235, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Верните вещи <bБелди>, хранящиеся в банке Ледыни")
 	MisNeed(MIS_NEED_ITEM, 4235, 1, 1, 1)
@@ -3877,7 +3842,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisHelpTalk("<t>Отправляйтесь за вещами в банк Громограда.")
 	MisResultCondition(HasMission, 315 )
 	MisResultCondition(HasItem, 4235, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4237, 1 , 4)
 	MisResultAction(SetRecord, 315 )
 	MisResultAction(ClearMission, 315 )
@@ -3904,19 +3868,18 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoPfEqual, 12)
 	MisBeginAction(AddMission, 316)
 	MisBeginAction(AddTrigger, 3161, TE_KILL, 504, 100)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Побит рекорд установленный Рэем")
 	MisNeed(MIS_NEED_KILL, 504, 100, 1, 100)
 
-	MisNeed(MIS_NEED_DESP, "Убейте Огромных Полярных медведей ")
+	MisResultTalk("<t>Ммм.. Не ожидала, что вы вернетесь не только живым, но еще и с хорошим результатом!. Вот, держите, это вещи старушки Белди. Оберегайте их так же, как свою жизнь. Я не прощу вам, если вы их потеряете!<n><t>By the way, there's a girl by the name of Mona over at the Bar, she seems to have a similar flower brooch. If you have the time, please drop by and speak to her.")
 	MisHelpTalk("<t>Хм.. убийство 100 <yПолярных медведей> кажется слишком легким заданием для вас. Думаю, мне стоит пересмотреть сложность заданий.")
 	MisResultCondition(HasMission, 316 )
 	MisResultCondition(HasFlag, 316, 100)
 	MisResultAction(SetRecord, 316 )
 	MisResultAction(ClearMission, 316 )
-        MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 4235, 1, 4 )	
+        MisResultAction(GiveItem, 4235, 1, 4 )	
 	MisResultBagNeed(1)
  		
 	InitTrigger()
@@ -3936,7 +3899,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoItem, 4235, 1)
 	MisResultCondition(HasMission, 315 )
 	MisResultCondition(PfEqual, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4235, 1, 4 )
 	MisResultAction(SetFlag, 315, 10 )
 	MisResultBagNeed(1)
@@ -3952,7 +3914,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoItem, 4235, 1)
 	MisResultCondition(HasMission, 315 )
 	MisResultCondition(PfEqual, 8)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4235, 1, 4 )
 	MisResultAction(SetFlag, 315, 20 )
 	MisResultBagNeed(1)
@@ -3968,7 +3929,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoItem, 4235, 1)
 	MisResultCondition(HasMission, 315 )
 	MisResultCondition(PfEqual, 9)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4235, 1, 4 )
 	MisResultAction(SetFlag, 315, 30 )
 	MisResultBagNeed(1)
@@ -3984,7 +3944,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoItem, 4235, 1)
 	MisResultCondition(HasMission, 315 )
 	MisResultCondition(PfEqual, 2)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4235, 1, 4 )
 	MisResultAction(SetFlag, 315, 40 )
 	MisResultBagNeed(1)
@@ -4000,7 +3959,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoItem, 4235, 1)
 	MisResultCondition(HasMission, 315 )
 	MisResultCondition(PfEqual, 12)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4235, 1, 4 )
 	MisResultAction(SetFlag, 315, 50 )
 	MisResultBagNeed(1)
@@ -4016,7 +3974,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasItem, 4235, 1)
 	MisBeginCondition(NoMission, 317)
 	MisBeginAction(AddMission, 317)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Заплатите 100 000 золотых за брошь <bОфициантке Моне> в точке (990, 1263)")
 	
@@ -4025,14 +3983,12 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMoney, 100000 )
 	MisResultCondition(HasMission, 317 )
 	MisResultAction(TakeMoney, 100000 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4236, 1, 4 )
 	MisResultAction(SetRecord, 317 )
 	MisResultAction(ClearMission, 317 )
 	MisResultAction(AddExp,180000,180000)
 	MisResultAction(AddMoney,15000,15000)
 	MisResultAction(AddExpAndType,2,40000,40000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3848,30,4)
 	MisResultBagNeed(2)
 	
@@ -4048,7 +4004,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(ClearMission, 22)
 	MisBeginAction(AddMission, 318)
 	MisBeginAction(AddTrigger, 3181, TE_GETITEM, 4238, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Привезите <rПоставки> обратно на остров.")
 	MisNeed(MIS_NEED_ITEM, 4238, 1, 1, 1)
@@ -4075,7 +4031,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 318)
 	MisBeginCondition(NoMission, 319)
 	MisBeginAction(AddMission, 319)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Поговорите с диспетчером порта в точке (2041, 1355)")
 	
@@ -4095,7 +4051,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(SetRecord, 319)
 	MisBeginAction(AddMission, 320)
 	MisBeginAction(AddTrigger, 3201, TE_GETITEM, 1478, 20)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Принесите 20 <rСашими> в точку (2041, 1355)")
 	MisNeed(MIS_NEED_ITEM, 1478, 20, 1, 20)
@@ -4148,40 +4104,40 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 321)
 	MisBeginCondition(NoMission, 323)
 	MisBeginAction(AddMission, 323)
-	MisBeginAction(AddTrigger, 3231, TE_GETITEM, 4938, 60)
-	MisBeginAction(AddTrigger, 3232, TE_GETITEM, 4957, 60)
-	MisBeginAction(AddTrigger, 3233, TE_GETITEM, 4976, 60)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisBeginAction(AddTrigger, 3231, TE_GETITEM, 4938, 30)
+	MisBeginAction(AddTrigger, 3232, TE_GETITEM, 4957, 30)
+	MisBeginAction(AddTrigger, 3233, TE_GETITEM, 4976, 30)
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Принесите нужные ингридиенты Оператору гавани - Фарделлу в точку (3153, 674)")
-	MisNeed(MIS_NEED_ITEM, 4938, 60, 1, 60)
-	MisNeed(MIS_NEED_ITEM, 4957, 60, 31, 60)
-	MisNeed(MIS_NEED_ITEM, 4976, 60, 61, 60)
+	MisNeed(MIS_NEED_ITEM, 4938, 30, 1, 30)
+	MisNeed(MIS_NEED_ITEM, 4957, 30, 31, 30)
+	MisNeed(MIS_NEED_ITEM, 4976, 30, 61, 30)
 
 	MisResultTalk("<t>Отлично! Это все ингредиенты, которые мне потребуются. Пожалуйста, подождите немного, пока я сварю вам зелье. (Теперь вы способны услышать, о чем говорят русалки).")
 	MisHelpTalk("<t>ЧТО?! Вы не знаете, из каких монстров можно добыть эти ингредиенты? Что ж, я подскажу, кто вам потребуется: Колючая рыба-кость, Прожорливая рыба-кость и Скелет рыбы чистильщика. Аа? Вы хотите, что бы я сказал вам их координаты? Научитесь вы, наконец, пользоваться веб-сайтом базы данных этой игры!")
 	MisResultCondition(HasMission, 323 )
-	MisResultCondition(HasItem, 4938, 60)
-	MisResultCondition(HasItem, 4957, 60)
-	MisResultCondition(HasItem, 4976, 60)
-	MisResultAction(TakeItem, 4938, 60 )
-	MisResultAction(TakeItem, 4957, 60 )
-	MisResultAction(TakeItem, 4976, 60 )
+	MisResultCondition(HasItem, 4938, 30)
+	MisResultCondition(HasItem, 4957, 30)
+	MisResultCondition(HasItem, 4976, 30)
+	MisResultAction(TakeItem, 4938, 30 )
+	MisResultAction(TakeItem, 4957, 30 )
+	MisResultAction(TakeItem, 4976, 30 )
 	MisResultAction(SetRecord, 323 )
 	MisResultAction(ClearMission, 323 )
 	
 		
 	InitTrigger()
 	TriggerCondition( 1, IsItem, 4938 )
-	TriggerAction( 1, AddNextFlag, 323, 1, 60 )
+	TriggerAction( 1, AddNextFlag, 323, 1, 30 )
 	RegCurTrigger( 3231 )
 	InitTrigger()
 	TriggerCondition( 1, IsItem, 4957 )
-	TriggerAction( 1, AddNextFlag, 323, 31, 60 )
+	TriggerAction( 1, AddNextFlag, 323, 31, 30 )
 	RegCurTrigger( 3232 )
 	InitTrigger()
 	TriggerCondition( 1, IsItem, 4976 )
-	TriggerAction( 1, AddNextFlag, 323, 61, 60 )
+	TriggerAction( 1, AddNextFlag, 323, 61, 30 )
 	RegCurTrigger( 3233 )
 
 
@@ -4195,7 +4151,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 324)
 	MisBeginAction(AddMission, 324)
 	MisBeginAction(AddTrigger, 3241, TE_GETITEM, 4254, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Получите <rпротивоядие> у <bОператора порта Буни> в точке (2042, 635).")
 	MisNeed(MIS_NEED_ITEM, 4254, 1, 1, 1)
@@ -4224,7 +4180,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 325)
 	MisBeginAction(AddMission, 325)
 	MisBeginAction(GiveItem, 4254, 1, 4 )	
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 
 	MisNeed(MIS_NEED_DESP, "<t>Обменяйте противоядие на 100 000 золотых у Фардилла, в точке (3153, 674).")
@@ -4245,7 +4201,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 326)
 	MisBeginAction(AddMission, 326)
 	MisBeginAction(AddTrigger, 3261, TE_GETITEM, 4255, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Найдите утерянный фрагмент формулы.")
 	MisNeed(MIS_NEED_ITEM, 4255, 10, 1, 10)
@@ -4260,7 +4216,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(ClearMission, 326 )
 	MisResultAction(AddExp,320000,320000)
 	MisResultAction(AddExpAndType,2,50000,50000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3846,1,4)
 	MisResultBagNeed(1)
 		
@@ -4278,7 +4233,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 327)
 	MisBeginCondition(NoRecord, 330)
 	MisBeginAction( AddMission, 387 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален" )
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned" )
 		
 	MisNeed(MIS_NEED_DESP, "Поговорите с <bБабушкой Белди> (2277, 2769)")
 	
@@ -4295,7 +4250,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(SetRecord, 387)
 	MisBeginAction(ClearMission, 387)
 	MisBeginAction(AddMission, 327)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "<t>Спросите <bОфициантку Бабару> о зелье в точке (1310,530)")
 	
@@ -4314,7 +4269,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(SetRecord, 327)
 	MisBeginAction(ClearMission, 327)
 	MisBeginAction(AddMission, 328)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Всего 100 000 золотых")
 	
@@ -4325,8 +4280,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeMoney, 100000 )
 	MisResultAction(SetRecord, 328 )
 	MisResultAction(ClearMission, 328 )
-        MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 4256, 1, 4 )
+        MisResultAction(GiveItem, 4256, 1, 4 )
 	MisResultBagNeed(1)
 
 
@@ -4338,23 +4292,23 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 330)
 	MisBeginCondition(HasMission, 30)
 	MisBeginAction(AddMission, 330)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Соберите все ингредиенты и заплатите 50 000 золотых")
 
 	MisResultTalk("<t>К чему такая спешка? Я пока еще не закончила! Мне нужно еще 50000. Почему?.. Эмм.. Хорошо-Хорошо! Я просто пошутила! Уберите своё оружие! Вот, забирайте его.<n><t>(Вы не задумываясь выпили зелье...)")
 	MisHelpTalk("<t>Нет денег - нет зелья. Всего лишь 5000 золотых!")
 	MisResultCondition(HasMission, 330 )
-	MisResultCondition(HasItem, 4938, 60)
-	MisResultCondition(HasItem, 4957, 60)
-	MisResultCondition(HasItem, 4976, 60)
+	MisResultCondition(HasItem, 4938, 30)
+	MisResultCondition(HasItem, 4957, 30)
+	MisResultCondition(HasItem, 4976, 30)
 	MisResultCondition(HasItem, 4974, 10)
 	MisResultCondition(HasMoney, 50000 )
 	MisResultAction(SetRecord, 30)
 	MisResultAction(ClearMission, 30)
-	MisResultAction(TakeItem, 4938, 60)
-	MisResultAction(TakeItem, 4957, 60)
-	MisResultAction(TakeItem, 4976, 60)
+	MisResultAction(TakeItem, 4938, 30)
+	MisResultAction(TakeItem, 4957, 30)
+	MisResultAction(TakeItem, 4976, 30)
 	MisResultAction(TakeItem, 4974, 10)
 	MisResultAction(TakeMoney, 50000 )
 	MisResultAction(SetRecord, 330 )
@@ -4362,9 +4316,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       	MisResultAction(AddExp,550000,550000)
 	MisResultAction(AddMoney,10000,10000)
 	MisResultAction(AddExpAndType,2,50000,50000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3908,1,4)	
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,4708,1,4)
 	MisResultBagNeed(3)
 
@@ -4377,7 +4329,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 331)
 	MisBeginAction(AddTrigger, 3311, TE_GETITEM, 4242, 7 )
 	MisBeginAction(AddMission, 331)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "<t>Ознакомтесь с местностью и пообщайтесь с жильцами этого города.")
 	MisNeed(MIS_NEED_ITEM, 4242, 7, 10, 7)	
@@ -4408,7 +4360,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoFlag, 331, 1)
 	MisResultCondition(HasMission, 331)
 	MisResultAction(SetFlag, 331, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4242, 1, 4)
 	MisResultBagNeed(1)
 
@@ -4422,7 +4373,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoFlag, 331, 2)
 	MisResultCondition(HasMission, 331)
 	MisResultAction(SetFlag, 331, 2)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4242, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -4436,7 +4386,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoFlag, 331, 3)
 	MisResultCondition(HasMission, 331)
 	MisResultAction(SetFlag, 331, 3)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4242, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -4450,7 +4399,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoFlag, 331, 4)
 	MisResultCondition(HasMission, 331)
 	MisResultAction(SetFlag, 331, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4242, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -4464,7 +4412,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoFlag, 331, 5)
 	MisResultCondition(HasMission, 331)
 	MisResultAction(SetFlag, 331, 5)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4242, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -4479,7 +4426,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoFlag, 331, 6)
 	MisResultCondition(HasMission, 331)
 	MisResultAction(SetFlag, 331, 6)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4242, 1, 4)
 	MisResultBagNeed(1)
 
@@ -4493,7 +4439,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(NoFlag, 331, 7)
 	MisResultCondition(HasMission, 331)
 	MisResultAction(SetFlag, 331, 7)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4242, 1, 4)
 	MisResultBagNeed(1)
 
@@ -4507,7 +4452,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
         MisBeginCondition(HasItem, 4236,1)
 	MisBeginAction(AddMission, 339)
 	MisBeginAction(AddTrigger, 3391, TE_GETITEM, 4236, 1 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Отдайте <bДревнюю брошь> <bБанкиру Ван Мо> в точке (3290, 2512)")
 	MisNeed(MIS_NEED_ITEM, 4236, 1, 1, 1)
@@ -4537,7 +4482,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 3405, TE_GETITEM, 1791, 5)
 	MisBeginAction(AddTrigger, 3406, TE_GETITEM, 1792, 5)
 	MisBeginAction(AddTrigger, 3407, TE_GETITEM, 1793, 5)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Собрать: <rКрасная краска> 5 штук, <rОранжевая краска> 5 штук, <rЖелтая краска> 5 штук, <rЗеленая краска> 5 штук, <rГолубая краска> 5 штук, <rСиняя краска> 5 штук, <rПурпурная краска> 5")
 	MisNeed(MIS_NEED_ITEM, 1787, 5, 1, 5)
@@ -4607,7 +4552,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 341)
 	MisBeginAction(AddMission, 341)
 	MisBeginAction(AddTrigger, 3411, TE_GETITEM, 1649, 30)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Добудьте 30 бутылок <rЧистой воды> для <bБанкира Ван Мо> в точку (3290, 2512)")
 	MisNeed(MIS_NEED_ITEM, 1649, 30, 1, 30)
@@ -4635,7 +4580,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 341)
 	MisBeginAction(AddMission, 342)
 	MisBeginAction(AddTrigger, 3421, TE_GETITEM, 165, 10)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите этой ненормальной художнице, <bБанкиру Ванг Мо> <y10 Лисьих хвостов>")
 	MisNeed(MIS_NEED_ITEM, 165, 10, 1, 10)
@@ -4649,7 +4594,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(ClearMission, 342 )
 	MisResultAction(AddExp,700000,700000)
 	MisResultAction(AddMoney,10000,10000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3885,1,4)	
 	MisResultBagNeed(1)
 
@@ -4667,7 +4611,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 343)
 	MisBeginCondition(HasRecord, 331)
    	MisBeginAction(AddMission, 343)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Спуститесь в туннель и узнайте, что произошло с сыном Санг Ди.")
 
@@ -4698,7 +4642,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 343)
 	MisBeginCondition(NoMission, 345)
   	MisBeginAction(AddMission, 345)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите <bЛуну> (3279,2501), чтобы забрать <rТалисман>.")
 
@@ -4714,7 +4658,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 346)
   	MisBeginAction(AddMission, 346)
 	MisBeginAction(AddTrigger, 3461, TE_GETITEM, 4262, 20)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите <r20 Талисманов привидения> <bЛуне> в точку (3279,2501).")
 	MisNeed(MIS_NEED_ITEM, 4262, 20, 1, 20)
@@ -4724,7 +4668,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 346 )
 	MisResultCondition(HasItem, 4262, 20)
 	MisResultAction(TakeItem, 4262,20 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4244, 1, 4)
 	MisResultAction(SetRecord, 346 )
 	MisResultAction(ClearMission, 346 )
@@ -4745,7 +4688,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasItem, 4244, 1)
 	MisBeginAction(TakeItem, 4244, 1)
   	MisBeginAction(AddMission, 347)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Отправляйтесь к <bЛуне> и сообщите ей, что Хеми больше никогда не вернётся к ней и будет жить в подводном туннеле.")
 	
@@ -4763,9 +4706,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(ClearMission, 347)
 	MisResultAction(AddExp,1000000,1000000)
 	MisResultAction(AddMoney,20000,20000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3883, 5, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3884, 5, 4)
 	MisResultBagNeed(2)
 
@@ -4782,7 +4723,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 3491, TE_GETITEM, 4245, 1 )
 	MisBeginAction(AddTrigger, 3492, TE_GETITEM, 4246, 1 )
 	MisBeginAction(AddTrigger, 3493, TE_GETITEM, 4247, 1 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите 3 специальных предмета <pФокусу-Покусу>.")
 	MisNeed(MIS_NEED_ITEM, 4245, 1, 5, 1)
@@ -4798,8 +4739,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 4245, 1 )	
 	MisResultAction(TakeItem, 4246, 1 )	
 	MisResultAction(TakeItem, 4247, 1 )
-        MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 4248, 1 ,4)	
+        MisResultAction(GiveItem, 4248, 1 ,4)	
 	MisResultAction(SetRecord, 349 )
 	MisResultAction(ClearMission, 349 )
 	MisResultBagNeed(1)
@@ -4825,7 +4765,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 350)
 	MisBeginCondition(HasMission, 349)
  	MisBeginAction(AddMission, 350)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Зайдите в глубины <pПустой пещеры> и принесите оттуда <rЧистый Звенящий Песок>.")
 
@@ -4846,7 +4786,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 351)
 	MisBeginCondition(HasMission, 349)
  	MisBeginAction(AddMission, 351)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Идите в <pРуины Дворца> и верните <rКорону Королевы>")
 
@@ -4865,7 +4805,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 352)
 	MisBeginCondition(HasMission, 349)
  	MisBeginAction(AddMission, 352)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Отправляйтесь в <pМир Демонов> и добудьте <rКристальное перо>")
 
@@ -4886,7 +4826,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasItem, 4248,1)
 	MisBeginAction(TakeItem, 4248, 1)
   	MisBeginAction(AddMission, 353)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Передайте добрую весть <bБакалейщице Luna>(3279, 2501)")
 
@@ -4905,11 +4845,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(ClearMission, 353)	
 	MisResultAction(AddExp,2000000,2000000)
 	MisResultAction(AddExpAndType,2,50000,50000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3348,10,4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3349,10,4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3350,10,4)
 	MisResultBagNeed(3)
 
@@ -4922,7 +4859,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 353)
  	MisBeginAction(AddMission, 355)
 	MisBeginAction(AddTrigger, 3551, TE_GETITEM, 4262, 20)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите <r20 Талисманов привидения> для создания ядостойкого <rАмулета>")
 	MisNeed(MIS_NEED_ITEM, 4262, 20, 1, 20)
@@ -4932,8 +4869,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 355)
 	MisResultCondition(HasItem, 4262, 20)
 	MisResultAction(TakeItem, 4262, 20)
-        MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 4249, 12 ,4)	
+        MisResultAction(GiveItem, 4249, 12 ,4)	
  	MisResultAction(SetRecord, 355 )
 	MisResultAction(ClearMission, 355 )
 	MisResultBagNeed(1)
@@ -4980,7 +4916,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 345)
 	MisBeginCondition(NoMission, 358)
   	MisBeginAction(AddMission, 358)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Расспросите <bЮри> (3195, 2506) о загадочном фрукте.")
 
@@ -4989,14 +4925,14 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 -----------------------------------ЙсЖж№ыКµ
 	DefineMission( 530, "Чудесный фрукт", 359 )
 
-	MisBeginTalk( "<t>Я видел короля Роланда. <n> <T> Если вы не верите мне, посмотрите на эти шрамы!Они являются результатом нашей дуэли которая прошла недавно. Вы говорите, что хотите увидеть загадочные фрукты? Я раньше таких фруктов не видел!На знаю что Чжоу комуто его продала. <n> <T> Почему бы тебе самому не спросить  <bЧжоу> (3298, 2534)?")
+	MisBeginTalk( "<t>I'm really irritated by that old hag calling me a big liar. Lets drop the topic! I've seen Pirate King Roland before.<n><t>If you don't believe me, take a look at these scars on my chest. These were the result of our duels a long time ago. You say you want to take a look at the mysterious fruits? The truth is...I haven't seen anything like that for over a year. The last time, Guard Zhou gave one to me to pass sell it to a stranger named 'Lu'.<n><t>Why don't you go ask <bGuard Zhou> at (3298, 2534) about it?")
 	MisBeginCondition(NoRecord, 359)
 	MisBeginCondition(NoMission, 359)
 	MisBeginCondition(HasMission, 358)
 	MisBeginAction(SetRecord, 358 )
 	MisBeginAction(ClearMission, 358 )
   	MisBeginAction(AddMission, 359)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Расспросите <bСтражника Жу> (3298, 2534) о загадочном фрукте")
 
@@ -5013,7 +4949,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(ClearMission, 359 )
   	MisBeginAction(AddMission, 360)
 	MisBeginAction(AddTrigger, 3601, TE_GETITEM, 4263, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Исследовать в <pПодводном туннеле>")
 	MisNeed(MIS_NEED_ITEM, 4263, 1, 1, 1)
@@ -5036,7 +4972,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasItem, 4263, 1)
 	MisBeginAction(ClearMission, 360 )
  	MisBeginAction(AddMission, 361)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Уничтожите фрукт и поговорите с Чжоу. (3298, 2534)")
 
@@ -5058,7 +4994,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
  	MisBeginAction(GiveItem, 4250,1,4)
 	MisBeginBagNeed(1)
 
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Отдайте <rРозовое письмо> Банкиру Ванг Мо (3290, 2512)")
 
@@ -5077,7 +5013,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 363)
 	MisBeginCondition(HasRecord, 362)
   	MisBeginAction(AddMission, 363)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Расспросите <pСанг Ди> о Адских фруктах (3287, 2501)")
 
@@ -5094,7 +5030,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 3641, TE_GETITEM, 4259, 3)
 	MisBeginAction(AddTrigger, 3642, TE_GETITEM, 4260, 3)
 	MisBeginAction(AddTrigger, 3643, TE_GETITEM, 4261, 3)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите Луне ингредиенты")
 	MisNeed(MIS_NEED_ITEM, 4259, 3, 1, 3)
@@ -5110,7 +5046,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 4259, 3)
 	MisResultAction(TakeItem, 4260, 3)
 	MisResultAction(TakeItem, 4261, 3)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4251, 1 ,4)	
  	MisResultAction(SetRecord, 364 )
  	MisResultAction(ClearMission, 364 )
@@ -5151,7 +5086,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 24)	
 	MisBeginCondition(HasItem, 4252,1)	
  	MisBeginAction(AddMission, 366)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите <rСлеза Дракона>")
 
@@ -5175,7 +5110,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 367)
 	MisBeginCondition(HasItem, 4252,1)
 	MisBeginAction(AddMission, 367)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поговорите с Лонг Ер")
 
@@ -5211,7 +5146,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(GiveItem, 4239,1,4)
  	MisBeginAction(AddMission, 369)
 	MisBeginBagNeed(1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Великий синий океан (3800, 550) Найдите бутыль с водой.")
 
@@ -5220,7 +5155,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 369 )
 	MisResultCondition(HasItem, 4257,1)
         MisResultAction(TakeItem, 4257, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4240, 1, 4)
 	MisResultAction(SetRecord, 369 )
  	MisResultAction(ClearMission, 369 )
@@ -5234,7 +5168,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 370)
 	MisBeginCondition(NoMission, 370)
 	MisBeginAction(AddMission, 370)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Пролейте Святую воду на Слезу дракона, что бы освободить душу.")
 
@@ -5247,7 +5181,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	
 	MisBeginCondition( AlwaysFailure )
 
-	MisResultTalk("<t> Наши вклады очень долгое время не использовали. Вы говорите,что готовы взять его на себя? Хорошо.Если вы скажите нам пароль от сейфа мы подумаем.")
+	MisResultTalk("<t> This deposit has not been touched for a long time. You say the owner is transferring it to you? Okay, we will go by the normal rules and procedures, if you can tell us the safety box's password, the money is yours. <n><t>(I pondered for awhile, and entered the password, 'All that you see is not what it seems. Your own eyes are often the cause of deception.')")
 	MisResultCondition(NoRecord, 26)
 	MisResultCondition(HasMission, 26)
 	MisResultAction(ClearMission, 26)
@@ -5268,7 +5202,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(SetRecord, 27)
 	MisBeginAction(ClearMission, 27)
 	MisBeginAction(AddTrigger, 3721, TE_GETITEM, 4241, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Помогите <bБанкиру - Ванг Мо> вернуть комплект <rМодная одежда> купить который можно у <bКупец - Юрий> по координатам (3196, 2509).")
 	MisNeed(MIS_NEED_ITEM, 4241, 1, 1, 1)
@@ -5326,7 +5260,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(GiveItem, 4258,1,4)
 	MisBeginBagNeed(1)
 
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Отправляйтесь по координатам <p2500, 2260> рядом с Весноградом. <rБинокль> для наблюдения.")
 
@@ -5335,7 +5269,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
        	MisResultCondition(HasMission, 28)
 	MisResultCondition(HasItem, 4258, 1)
 	MisResultAction(TakeItem, 4258, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4241, 1,4)	
  	MisResultAction(SetRecord, 375 )
  	MisResultAction(ClearMission, 375 )
@@ -5354,15 +5287,14 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 376)
 	MisBeginCondition(HasMission, 372)	
 	MisBeginAction(AddMission, 376)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisResultTalk("<t>Я надеялся на то , что вы исследуете море.Но если вы готовы расстаться с 100000 тысячами золотых...")
 	MisHelpTalk("<t>Принести 100000 тысяч золотых")
 	MisResultCondition(HasMission, 376)
 	MisResultCondition(HasMoney, 100000)
         MisResultAction(TakeMoney, 100000)	
-        MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 4241, 1,4)	
+        MisResultAction(GiveItem, 4241, 1,4)	
  	MisResultAction(SetRecord, 376 )
  	MisResultAction(ClearMission, 376 )
 	MisResultBagNeed(1)
@@ -5395,11 +5327,8 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(ClearMission, 363)
 	MisResultAction(AddMoney,50000,50000)
 	MisResultAction(AddExpAndType,2,60000,60000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3351,15,4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3352,15,4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3353,15,4)
 	MisResultBagNeed(3)
 
@@ -5412,7 +5341,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 380)
 	MisBeginCondition(NoMission, 380)
 	MisBeginAction(AddMission, 380)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Навестите Санг Ди (3287, 2501).")
 
@@ -5435,7 +5364,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddMission, 381)
   	MisBeginAction(GiveItem,4253,1,4)
 	MisBeginBagNeed(1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	
 	MisNeed(MIS_NEED_DESP, "Магический океан (3757, 1248)")
@@ -5452,7 +5381,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(ClearMission, 29)
 	MisBeginAction(SetRecord, 29)
 	MisBeginAction(AddMission, 382)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Отнести письмо Пачкулю по координатам (2272, 2700)")
 	
@@ -5481,7 +5410,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 3831, TE_KILL, 594, 10)
 	MisBeginAction(AddTrigger, 3832, TE_KILL, 593, 5)
 	MisBeginAction(AddTrigger, 3833, TE_KILL, 656, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Уничтожте Фрегат Джека-пирата x10 (1950, 3515); Корабль поддержки Джека-пирата на х5 (2210, 3769); Командный корабль Джека-пирата х1 (1966, 3769)")
 	MisNeed(MIS_NEED_KILL, 594, 10, 1, 10)
@@ -5498,9 +5427,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
  	MisResultAction(ClearMission, 383 )
 	MisResultAction(AddMoney,100000,100000)
 	MisResultAction(AddExpAndType,2,60000,60000)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3878,1,4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,4715,1,4)
 	MisResultBagNeed(2)
 
@@ -5526,7 +5453,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 290)
  	MisBeginAction(AddMission, 384)
 	MisBeginAction(AddTrigger, 3841, TE_GETITEM, 4234, 1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите <rДревние рукописи> для Жрицы Ады (862,3303)")
 	MisNeed(MIS_NEED_ITEM, 4234, 1, 1, 1)
@@ -5540,7 +5467,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(ClearMission, 384 )
 	MisResultAction(AddExpAndType,2,60000,60000)
 	
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem,3878,1,4)
 	MisResultBagNeed(2)
 
@@ -5573,7 +5499,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginAction(AddMission,386)
       MisBeginAction(GiveItem,0948,1,4)
       MisBeginBagNeed(1)
-      MisCancelAction(SystemNotice, "Квест не может быть удален") 
+      MisCancelAction(SystemNotice, "This quest cannot be abandoned") 
 
       MisNeed(MIS_NEED_DESP, "Соберите Долги с Кузнеца, Трактирщика , Луны, Юрия , Юноши - Облако , Диспетчера порта") 
       
@@ -5593,8 +5519,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisResultCondition(HasMoney,2000000)
       MisResultAction(TakeMoney,2000000)
       MisResultAction(TakeItem,0948,1)
-      MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem,0189,1,4)
+      MisResultAction(GiveItem,0189,1,4)
       MisResultBagNeed(1)
       MisResultAction(ClearMission,380)
       MisResultAction(ClearMission, 386 )
@@ -5637,7 +5562,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginCondition(NoRecord,389 )
       MisBeginCondition(NoMission,389 )
       MisBeginAction(AddMission,389)
-      MisCancelAction(SystemNotice, "Квест не может быть удален")
+      MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
       MisBeginTalk("<t>Ох черт, моя память наверное подводит меня. Я так занят своей работой. Ты не сможешь сделать мне одолжение, не отправишься в банк? Я предупрежу Ванг Мо о Тебе? Если я правильно помню,  речь идет о 200000G.")
       
@@ -5691,7 +5616,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginAction(AddTrigger, 3911, TE_GETITEM, 0176, 3 )		--ІРИ±µД№ьК¬Іј
       MisBeginAction(AddTrigger, 3912, TE_GETITEM, 0177, 3 )		--ЖЖЛрµД№ьК¬Іј
       MisBeginAction(AddTrigger, 3913, TE_GETITEM, 0178, 3 )		--НкХыµД№ьК¬Іј
-      MisCancelAction(SystemNotice, "Квест не может быть удален")
+      MisCancelAction(SystemNotice, "This quest cannot be abandoned")
       
       MisNeed(MIS_NEED_DESP, "Идите в подводный туннель и достаньте :Разорванная ткань для оборачивания тела  3 шт, Поврежденная ткань для оборачивания тела  3 шт,Целая ткань для оборачивания тела  3 шт.")
       MisNeed(MIS_NEED_ITEM, 0176, 3, 10, 3)
@@ -5736,7 +5661,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginCondition(NoMission,392)
       MisBeginAction(AddMission,392)
       MisBeginAction(GiveItem,0949,1,4)
-      MisCancelAction(SystemNotice, "Квест не может быть удален")
+      MisCancelAction(SystemNotice, "This quest cannot be abandoned")
       MisBeginBagNeed(1)
 
       MisNeed(MIS_NEED_DESP, "Доставьте посылку в Громоград Морскому Командующему - Дессаро (713, 1416)")
@@ -5775,7 +5700,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginAction(AddMission,393)
    
       MisBeginAction(AddTrigger, 3931, TE_GETITEM, 1864, 5 )		 
-      MisCancelAction(SystemNotice, "Квест не может быть удален")
+      MisCancelAction(SystemNotice, "This quest cannot be abandoned")
       
       MisNeed(MIS_NEED_DESP, "Достаньте 5 Хрустальных шаров")
       MisNeed(MIS_NEED_ITEM, 1864, 5, 10, 5)
@@ -5802,7 +5727,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginCondition(NoMission, 394)
      MisBeginCondition(NoRecord, 394)
      MisBeginAction(AddMission, 394)
-     MisCancelAction(SystemNotice, "Квест не может быть удален")
+     MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
      MisNeed(MIS_NEED_DESP, "Сдайте Санг Ди золото. (3287, 2501)")
      MisHelpTalk("<t>Будьте терпеливы!")
@@ -5822,7 +5747,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddMission,395)
 	MisBeginAction(GiveItem, 1051, 1, 4)	----------------ДЄР°ПоБґ	
 	MisBeginBagNeed(1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Дайшу")
 	
@@ -5846,7 +5771,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 396)
 	MisBeginCondition(HasRecord,395)
 	MisBeginAction(AddMission,396)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Фокус-Покуса")
 	
@@ -5877,7 +5802,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginAction(AddMission,397)
       MisBeginAction(AddTrigger, 3971, TE_KILL, 748, 10)
    
-      MisCancelAction(SystemNotice, "Квест не может быть удален")
+      MisCancelAction(SystemNotice, "This quest cannot be abandoned")
       MisNeed(MIS_NEED_DESP, "Убейте 10 Лисьих даосистов.")
       MisNeed(MIS_NEED_KILL, 748, 10, 10, 10)
 
@@ -5902,7 +5827,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 992)
 	MisBeginCondition(NoMission, 992)
 	MisBeginAction(AddMission,992)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Дайшу, чтобы помочь разгадать его сны")
 	
@@ -5929,7 +5854,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 398)
 	MisBeginCondition(HasRecord,992)
 	MisBeginAction(AddMission,398)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Белидину (1360, 519)")
 	
@@ -5953,7 +5878,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 399)
 	MisBeginCondition(HasRecord,398)
 	MisBeginAction(AddMission,399)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Фокус-Покуса")
 	
@@ -5977,7 +5902,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddMission, 996)
 	MisBeginAction(AddTrigger, 9961, TE_GETITEM, 3366,2 )		--А¶Й«Л®ѕ§
 	MisBeginAction(AddTrigger, 9962, TE_GETITEM, 1635, 3 )		--Л®ѕ§ґїКЇ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
         MisNeed(MIS_NEED_DESP, "Запомни! Принеси 2 <yЛазурных кристалла> и 3 <yСовершенных кристалла>!")
 	MisNeed(MIS_NEED_ITEM, 3366,2, 10, 2)
@@ -6018,7 +5943,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord,996)-----------------
 	MisBeginAction(AddMission,  950 )
 	MisBeginAction(AddTrigger,  9501, TE_KILL,761, 5 )	----------єьСэ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Убейте 5 Кицуне и вернитесь!")
 	MisNeed(MIS_NEED_KILL,761,5, 10, 5)
@@ -6049,7 +5974,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 951 )
 	MisBeginAction(AddMission,  951)
 	MisBeginAction(AddTrigger,  9511, TE_KILL, 776, 1 )----------------єьПЙ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте Мудрого Лиса")
 	MisNeed(MIS_NEED_KILL,776,1, 10, 1)
@@ -6080,7 +6005,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,952 )
 	MisBeginAction(AddMission, 952)
 	MisBeginAction(AddTrigger,9521, TE_KILL, 621, 1 )		----СёЅЭµД±©·зЛ®Дё
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	 MisNeed(MIS_NEED_DESP, "Убейте 1 Циклоническую Медузу в Магическом Океане!")----------++++1
 	MisNeed(MIS_NEED_KILL,621,1, 10, 1)
@@ -6107,7 +6032,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 952)
 	MisBeginCondition(NoMission, 953 )
 	MisBeginAction(AddMission, 953 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Санг Ди, чтобы узнать о Духе Роланда")
 	MisHelpTalk("<t>Она тебе поможет.")
@@ -6135,7 +6060,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 954)
 	MisBeginAction(AddMission,  954)
 	MisBeginAction(AddTrigger,  9541, TE_GETITEM,  0376,1 )		
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	 MisNeed(MIS_NEED_DESP, "Принесите 1 Исцеляющую накидку от Терранского капитана")
 	MisNeed(MIS_NEED_ITEM,  0376,1, 10, 1)
@@ -6167,7 +6092,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 955)
 	MisBeginAction(AddMission,  955)
 	MisBeginAction(AddTrigger,  9551, TE_GETITEM,  1626,3 )		
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	 MisNeed(MIS_NEED_DESP, "Убейте Смертоносных скелетов-лучников и принесите 3 волшебных кости")
 	MisNeed(MIS_NEED_ITEM,  1626,3, 10, 3)
@@ -6198,7 +6123,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 956)
 	MisBeginAction(AddMission,  956)
 	MisBeginAction(AddTrigger,  9561, TE_GETITEM,  4783,1 )		
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте Химер и принесите 1 Рог химеры")
 	MisNeed(MIS_NEED_ITEM,  4783,1, 10, 1)
@@ -6227,7 +6152,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 957)
 	MisBeginCondition(HasRecord,956)
 	MisBeginAction(AddMission,957)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите в Шайтане Верховного Жреца Геньона (862, 3500) для дальнейших инструкций.")
 	
@@ -6255,7 +6180,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord,957)
 	MisBeginCondition(IsChaType,1)
 	MisBeginAction(AddMission,958)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Принца-Тритона, чтобы узнать рецепт супа памяти.")
 	
@@ -6286,7 +6211,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord,958)
 	MisBeginAction(AddMission,959)
 
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Супермуна")
 	
@@ -6314,7 +6239,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord,959)
 	MisBeginAction(AddMission, 960)
 	MisBeginAction(GiveItem, 1041, 1, 4)	----------СыЗлєЇ	
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 		
 	MisNeed(MIS_NEED_DESP, "Отправьте письмо Банкиру Юдису.")
@@ -6333,7 +6258,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 960)
 	MisResultCondition(HasItem, 1041, 1)
 	MisResultAction(TakeItem, 1041, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1040, 1,4)--------------СЄКЇ
 	MisResultAction(ClearMission, 960 )
 	MisResultAction(SetRecord,  960 )
@@ -6350,7 +6274,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 9611, TE_GETITEM, 1234,10)		
 	MisBeginAction(AddTrigger, 9612, TE_GETITEM, 1260, 1 )
 	
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	 MisNeed(MIS_NEED_DESP, "Найдите 1 толстый хвост прозрачного выползня и 10 частей черной арабской жемчужины")
 	MisNeed(MIS_NEED_ITEM, 1234,10, 10,10)
@@ -6368,7 +6292,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	
 	MisResultAction(ClearMission, 961)
 	MisResultAction(SetRecord, 961 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1043, 1, 4)-------»Ш»кМА
 	MisResultAction(AddExp,800000,800000)	
 	MisResultAction(AddExpAndType,2,60000,60000)
@@ -6394,7 +6317,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,962)
 	MisBeginAction(AddMission,  962)
 	MisBeginAction(AddTrigger,  9621, TE_GETITEM,  3362,1)--------єЪХдЦй		
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Получите 1 Черную Жемчужину")
 	MisNeed(MIS_NEED_ITEM,  3362,1, 10, 1)
@@ -6427,7 +6350,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 957)
 	MisBeginCondition(IsChaType,3)----·ЖАы¶ы
 	MisBeginAction(AddMission,963)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Таинственную Бабушку, чтобы получить капсулу памяти.")
 	
@@ -6455,7 +6378,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord,963)
 	MisBeginAction(AddMission,964)
 	MisBeginAction(GiveItem, 2303, 1, 4)---------+++++????
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)	
 	MisNeed(MIS_NEED_DESP, "Помогите таинственной Бабушке передать янтарную слезу Ланге в Шайтане (852, 3549).")
 	
@@ -6489,7 +6412,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,965)
 	MisBeginAction(AddMission,  965)
 	MisBeginAction(AddTrigger,  9651, TE_GETITEM,  1296,1)	
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Достаньте Спинной плавник Аметистового Дельфина для Таинственной Бабули, чтобы восстановить рацион кальция")
 	MisNeed(MIS_NEED_ITEM,  1296,1, 10, 1)
@@ -6520,7 +6443,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 966 )
 	MisBeginAction(AddMission,  966 )
 	MisBeginAction(AddTrigger,  9661, TE_GETITEM,  3143,1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
         MisNeed(MIS_NEED_DESP, "Принесите оживляющий клевер, чтобы спасти свою жизнь!")
 	MisNeed(MIS_NEED_ITEM,  3143,1, 10, 1)
@@ -6550,7 +6473,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 967)
 	MisBeginAction(AddMission,  967)
 	MisBeginAction(AddTrigger,  9671, TE_GETITEM,  1351,1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Используйте Темную кровь Выпозня")
 	MisNeed(MIS_NEED_ITEM,  1351,1, 10, 1)
@@ -6563,7 +6486,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem,  1351,1 )
 	MisResultAction(ClearMission, 967)
 	MisResultAction(SetRecord,  967)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1050, 1, 4)-------ЅЎТдЅєДТ
 	MisResultAction(AddExp,800000,800000)
 	MisResultAction(AddMoney,100000,100000)	
@@ -6590,7 +6512,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord,957)
 	MisBeginCondition(IsChaType,2)
 	MisBeginAction(AddMission,968)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Минелии")
 	
@@ -6617,7 +6539,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 969)
 	MisBeginAction(AddMission,  969)
 	MisBeginAction(AddTrigger,  9691, TE_GETITEM,  4823,1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Получите 1 использованную свечу для Минелли")
 	MisNeed(MIS_NEED_ITEM,  4823,1, 10, 1)
@@ -6647,7 +6569,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 969)
 	MisBeginAction(AddMission,970)
 	MisBeginAction(AddTrigger,  9701, TE_GETITEM,  1042,1)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Получи Зелье Восстановления у Дитто")
 	
@@ -6660,7 +6582,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 1042, 1 )
 	MisResultAction(ClearMission, 970)
 	MisResultAction(SetRecord, 970)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1042, 1, 4)
 	MisResultBagNeed(1)
 
@@ -6682,7 +6603,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 9711, TE_GETITEM, 1351,1)		
 	MisBeginAction(AddTrigger, 9712, TE_GETITEM, 3134, 3 )
 	MisBeginAction(AddTrigger, 9713, TE_GETITEM, 3147, 3 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите 1 Темную Кровь Выползня, 3 Стимулятора и 3 Чая Бодрячка для Дитто")
 	MisNeed(MIS_NEED_ITEM, 1351,1, 10,1)
@@ -6701,7 +6622,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 3134, 3 )
 	MisResultAction(TakeItem,  3147, 3 )
 	
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1042, 1, 4)
 	MisResultAction(ClearMission, 971)
 	MisResultAction(SetRecord, 971 )
@@ -6732,7 +6652,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasItem, 1042, 1 )
 	MisBeginAction(AddMission, 972)
 	MisBeginAction(GiveItem, 1054, 1, 4)		
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 		
 	MisNeed(MIS_NEED_DESP, "Отдай Лотусный Клевер Минелли")
@@ -6765,7 +6685,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 957)
 	MisBeginCondition(IsChaType,4)
 	MisBeginAction(AddMission,973)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Найдите Лангу в Шайтане и узнайте о сере.")
 	
@@ -6794,7 +6714,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord,973)
 	MisBeginAction(GiveItem, 1053, 1, 4)------іПРЕІШ±¦Нј
 	MisBeginAction(AddMission,974)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	--MisBeginAction(AddTrigger, 9741, TE_GETITEM, 1044,1)
 	MisBeginBagNeed(1)	
 		
@@ -6817,7 +6737,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 1053, 1 )
 	MisResultAction(ClearMission, 974)
 	MisResultAction(SetRecord, 974)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1045, 1, 4)--------ТхКЇ
 	MisResultBagNeed(1)
 	--------------------------------------------------СфКЇµДПВВд
@@ -6829,7 +6748,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 974)
 	MisBeginAction(GiveItem, 1046, 1, 4)-------НЖјцРЕ
 	MisBeginAction(AddMission,975)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 		
 	MisNeed(MIS_NEED_DESP, "Узнайте подробности у Дитто.")
@@ -6861,7 +6780,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 9761, TE_GETITEM, 1362,1)		
 	MisBeginAction(AddTrigger, 9762, TE_GETITEM, 3134, 3 )
 	MisBeginAction(AddTrigger, 9763, TE_GETITEM, 1649, 10 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите 3 чашки чая Бодрячка, 1 сильный спинной плавник и 10 пузырьков чистой воды для приготовления слезы")
 	MisNeed(MIS_NEED_ITEM, 1362,1, 10,1)
@@ -6880,7 +6799,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 3134, 3 )
 	MisResultAction(TakeItem,1649, 10 )
 	
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1047, 1, 4)------------- СшСЫЛ®
 	MisResultAction(ClearMission, 976 )
 	MisResultAction(SetRecord, 976  )
@@ -6912,7 +6830,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(TakeItem, 1047, 1 )
 	MisBeginAction(AddMission,  977)
 	MisBeginAction(AddTrigger,  9771, TE_GETITEM,  4782,1 )		
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите Саван у Адской Мумии B в Абаддоне 2")
 	MisNeed(MIS_NEED_ITEM,  4782,1, 10, 1)
@@ -6922,7 +6840,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission,  977)
 	MisResultCondition(HasItem, 4782, 1)
 	MisResultAction(TakeItem,  4782, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1048, 1, 4)------------- СфКЇ
 	MisResultAction(ClearMission,  977)
 	MisResultAction(SetRecord,  977 )
@@ -6945,7 +6862,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 957)
 	MisBeginCondition(NoMission, 978)
 	MisBeginAction(AddMission, 978)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisNeed(MIS_NEED_DESP, "Поговорите с Масом")
 
 	MisResultTalk("<t>Отлично! Теперь моего брата можно спасти. Спасибо!")
@@ -6972,7 +6889,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddMission, 979)
 
 	MisBeginAction(AddTrigger, 9791, TE_GETITEM, 4739, 1 )		--і¤Г¬
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Получите Длинное Заточенное Туземное Копье у Безумного Знахаря")
 	MisNeed(MIS_NEED_ITEM, 4739,1, 10, 1)
@@ -7003,7 +6920,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,  980)
 	MisBeginAction(AddMission,   980)
 	MisBeginAction(AddTrigger,   9801, TE_KILL, 508,1 )		
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_KILL,  508,1, 10, 1)
 	
@@ -7032,7 +6949,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 980)
 	MisBeginAction(GiveItem, 1025, 1, 4)----------ЧфВЮГжѕЯ
 	MisBeginAction(AddMission,981)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 		
 	MisNeed(MIS_NEED_DESP, "Поищите Кентаро")
@@ -7060,7 +6977,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 982  )
 	MisBeginAction(AddMission, 982 )
 	MisBeginAction(AddTrigger, 9821, TE_GETITEM, 4261, 1 )		--Л®Гў
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Получите Ость проклятой водяной феи.")
 	MisNeed(MIS_NEED_ITEM,4261,1, 10, 1)
@@ -7092,7 +7009,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 983 )
 	MisBeginAction(AddMission, 983)
 	MisBeginAction(AddTrigger, 9831, TE_GETITEM, 2487, 1 )		--КЮµ¤КЇ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите Отталкивающий камень зверей для того, чтобы понять что написано на маске")
 	MisNeed(MIS_NEED_ITEM,2487,1, 10, 1)
@@ -7124,7 +7041,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,  984 )
 	MisBeginAction(AddMission,  984)
 	MisBeginAction(AddTrigger,  9841, TE_GETITEM,4738, 1 )		--ЖЖЛйµДМмК№№в»·
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Отберите Сломанный нимб у падшего ангела-хранителя")
 	MisNeed(MIS_NEED_ITEM,4738,1, 10, 1)
@@ -7155,7 +7072,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,  985)
 	MisBeginAction(AddMission,  985)
 	MisBeginAction(GiveItem, 1025, 1, 4)----------ЧфВЮГжѕЯ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 	
 	MisNeed(MIS_NEED_DESP, "Найдите Генерала Вильяма и передайте маску")----------------++++13
@@ -7175,7 +7092,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 1025, 1 )
 	MisResultAction(ClearMission,  985)
 	MisResultAction(SetRecord,  985)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1052, 1,4)
 	MisResultAction(AddMoney,80000,80000)
 	MisResultBagNeed(1)
@@ -7190,7 +7106,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,986 )
 	MisBeginAction(AddMission, 986)
 	MisBeginAction(AddTrigger, 9861, TE_GETITEM, 2438, 10 )		--Ѕр±Т
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поищите золотые монеты для Санг Ди у Кораблей скелетов-пиратов")
 	MisNeed(MIS_NEED_ITEM,2438,10, 10, 10)
@@ -7219,7 +7135,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,987)
 	MisBeginCondition(HasRecord,986)
 	MisBeginAction(AddMission,987)	
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 		
 	MisNeed(MIS_NEED_DESP, "Поговорите с кем-нибудь кто может рассказать о разных классах.")
 	
@@ -7316,7 +7232,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoPfEqual, 16)
 	MisBeginAction(AddMission, 988 )
 	MisBeginAction(AddTrigger, 9881, TE_KILL, 524, 1 )		--±©Е­µДтбтжИЛ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_KILL,524,1, 10, 1)
 	
@@ -7353,7 +7269,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddMission, 989 )
 	MisBeginAction(AddTrigger, 9891, TE_GETITEM, 4789, 1 )		
 	MisBeginAction(AddTrigger, 9892, TE_GETITEM, 4741, 1 )	
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите Королевскую Эмблему и Живое сердце природы")
 	MisNeed(MIS_NEED_ITEM, 4789,1, 10, 1)
@@ -7397,7 +7313,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoPfEqual, 9)
 	MisBeginCondition(NoPfEqual, 12)
 	MisBeginAction(AddMission, 990 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisHelpTalk("<t>Отправляйтесь в Великий Синий (194, 1718) и поговорите с оператором порта Грегори.")
 	MisNeed(MIS_NEED_DESP, "Поговорите с оператором порта Грегори")
@@ -7440,7 +7356,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoPfEqual, 4)
 	MisBeginCondition(NoPfEqual, 16)
 	MisBeginAction(AddMission, 991 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поговорите с Минелли")
 	MisHelpTalk("<t>Минелли в Магическом Океане (1244, 3186)")
@@ -7467,7 +7383,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 991)
 	MisBeginCondition(NoMission, 998 )
 	MisBeginAction(AddMission, 998 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Используйте навык на себя.")
 	MisHelpTalk("<t>Сильная воля - главное качество пирата")
@@ -7488,7 +7404,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
      MisBeginCondition(NoMission, 993)
      MisBeginCondition(NoRecord, 993)
      MisBeginAction(AddMission, 993)
-     MisCancelAction(SystemNotice, "Квест не может быть удален")
+     MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
      MisNeed(MIS_NEED_DESP, "Подождите пока Питер закончит Статистическую таблицу")
      MisHelpTalk("<t>Таблица еще не закончена. Не отвлекай.")
@@ -7504,7 +7420,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginCondition(NoMission, 994)
      MisBeginCondition(NoRecord, 994)
      MisBeginAction(AddMission, 994)
-     MisCancelAction(SystemNotice, "Квест не может быть удален")
+     MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
      MisNeed(MIS_NEED_DESP, "Подождите пока Рэй завершит таблицу")
      MisHelpTalk("<t>Статистическая таблица еще не закончена. Не мешай.")
@@ -7521,7 +7437,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginCondition(NoMission, 995)
      MisBeginCondition(NoRecord, 995)
      MisBeginAction(AddMission, 995)
-     MisCancelAction(SystemNotice, "Квест не может быть удален")
+     MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
      MisNeed(MIS_NEED_DESP, "Подождите пока Минелли завершит таблицу.")
      MisHelpTalk("<t>Статистическая таблица еще не готова.")
@@ -7537,7 +7453,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
       MisBeginCondition(NoMission, 997)
      MisBeginCondition(NoRecord, 997)
      MisBeginAction(AddMission, 997)
-     MisCancelAction(SystemNotice, "Квест не может быть удален")
+     MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
      MisNeed(MIS_NEED_DESP, "Подождите пока оператор порта закончит таблицу")
      MisHelpTalk("<t>Таблица еще не закончена. Не мешай.")
@@ -7555,7 +7471,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 993)
 	MisBeginCondition(NoMission, 1500 )
 	MisBeginAction(AddMission, 1500 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поговорите с Лангой")
 	MisHelpTalk("<t>Поговорите с Лангой (853, 3549)")
@@ -7572,7 +7488,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 994)
 	MisBeginCondition(NoMission, 1501 )
 	MisBeginAction(AddMission, 1501 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поговорите с Лангой")
 	MisHelpTalk("<t>Поговорите с Лангой (853, 3549)")
@@ -7588,7 +7504,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 995)
 	MisBeginCondition(NoMission, 1502 )
 	MisBeginAction(AddMission, 1502 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поговорите с Лангой")
 	MisHelpTalk("<t>Поговорите с Лангой (853, 3549)")
@@ -7605,7 +7521,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 997)
 	MisBeginCondition(NoMission, 1503 )
 	MisBeginAction(AddMission, 1503 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поговорите с Лангой")
 	MisHelpTalk("<t>Поговорите с Лангой (853, 3549)")
@@ -7769,7 +7685,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1504)
 	MisBeginCondition(NoMission, 1507 )
 	MisBeginAction(AddMission, 1507 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Поговорите с Грегори, Минелли, Рэйом или Питером.")
 	MisHelpTalk("<t>Минели можно найти тут (1244, 3186).")
@@ -7866,7 +7782,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1508 )
 	MisBeginAction(AddMission,  1508)
 	MisBeginAction(AddTrigger,  15081, TE_KILL, 67, 5 )----------------µШѕ«ХЅКї
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 5  Терранских капитанов")
 	MisNeed(MIS_NEED_KILL,67,5, 10, 5)
@@ -7894,7 +7810,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1509 )
 	MisBeginAction(AddMission,  1509)
 	MisBeginAction(AddTrigger,  15091, TE_KILL, 549, 5 )----------------Р°¶сµДІ»ГрОд
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 5 Зловещий неупокоенный воин")
 	MisNeed(MIS_NEED_KILL,549,5, 10, 5)
@@ -7922,7 +7838,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1510 )
 	MisBeginAction(AddMission,  1510)
 	MisBeginAction(AddTrigger,  15101, TE_KILL, 546, 6 )----------------Р°¶сµДДП№ПЖпКї
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте Зловещий рыцарь тыквы 6 шт.")
 	MisNeed(MIS_NEED_KILL,546,6, 10, 6)
@@ -7952,7 +7868,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1511 )
 	MisBeginAction(AddMission,  1511)
 	MisBeginAction(AddTrigger,  15111, TE_KILL, 201, 8 )----------------°µУ°БФКЦ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 8 Призрачных охотников")
 	MisNeed(MIS_NEED_KILL,201,8, 10, 8)
@@ -7986,7 +7902,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1512 )
 	MisBeginAction(AddMission,  1512)
 	MisBeginAction(AddTrigger,  15121, TE_KILL, 187, 5 )----------------РЎ±щБъ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 5 Детенышей ледяного дракона")
 	MisNeed(MIS_NEED_KILL,187,5, 10, 5)
@@ -8015,7 +7931,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1513 )
 	MisBeginAction(AddMission,  1513)
 	MisBeginAction(AddTrigger,  15131, TE_KILL, 543, 5 )----------------·иїсµДНБЦшИЛ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 5 Безумных туземцев")
 	MisNeed(MIS_NEED_KILL,543,5, 10, 5)
@@ -8044,7 +7960,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1518 )
 	MisBeginAction(AddMission,  1518)
 	MisBeginAction(AddTrigger,  15181, TE_KILL, 566, 6 )----------------АЗИЛХЅКї¶Уі¤
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 6 Главарей Вервольфов-воинов")
 	MisNeed(MIS_NEED_KILL,566,6, 10, 6)
@@ -8073,7 +7989,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1519 )
 	MisBeginAction(AddMission,  1519)
 	MisBeginAction(AddTrigger,  15191, TE_KILL, 511, 8)----------------ѕЮРНКчИЛ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 8 Тысячелетних энтов")
 	MisNeed(MIS_NEED_KILL,511,8, 10, 8)
@@ -8105,7 +8021,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1520 )
 	MisBeginAction(AddMission,  1520)
 	MisBeginAction(AddTrigger,  15201, TE_KILL, 549, 5 )----------------Р°¶сµДІ»ГрОдКї
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 5 Зловещий неупокоенный воин")
 	MisNeed(MIS_NEED_KILL,549,5, 10, 5)
@@ -8135,7 +8051,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1521 )
 	MisBeginAction(AddMission,  1521)
 	MisBeginAction(AddTrigger,  15211, TE_KILL, 587, 2 )----------------
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 2 Сирены")
 	MisNeed(MIS_NEED_KILL,587,2, 10, 2)
@@ -8165,7 +8081,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1522 )
 	MisBeginAction(AddMission,  1522)
 	MisBeginAction(AddTrigger,  15221, TE_KILL, 606, 3 )----------------
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 3 Глубоководная сирена")
 	MisNeed(MIS_NEED_KILL,606,3, 10, 3)
@@ -8193,7 +8109,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1523 )
 	MisBeginAction(AddMission,  1523)
 	MisBeginAction(AddTrigger,  15231, TE_KILL, 735, 8 )----------------
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убить 8 Пиратов 007 ")
 	MisNeed(MIS_NEED_KILL,735,8, 10,8)
@@ -8226,7 +8142,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1524 )
 	MisBeginAction(AddMission,  1524)
 	MisBeginAction(AddTrigger,  15241, TE_GETITEM, 1350, 2 )----------------
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите Светящийся хребет рыбы-кости 2 шт ")
 	MisNeed(MIS_NEED_ITEM,1350,2, 10, 2)
@@ -8255,7 +8171,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1525 )
 	MisBeginAction(AddMission,  1525)
 	MisBeginAction(AddTrigger,  15251, TE_GETITEM, 1295, 2 )----------------
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите 2 Кристалла сирены")
 	MisNeed(MIS_NEED_ITEM,1295,2, 10, 2)
@@ -8286,7 +8202,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1526 )
 	MisBeginAction(AddMission,  1526)
 	MisBeginAction(AddTrigger,  15261, TE_GETITEM, 3116, 99 )----------------
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите 99 эльфийских фруктов")
 	MisNeed(MIS_NEED_ITEM,3116,99, 10, 99)
@@ -8316,7 +8232,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1527 )
 	MisBeginAction(AddMission,  1527)
 	MisBeginAction(AddTrigger,  15271, TE_GETITEM, 4802, 1 )----------------
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите 15 Эмблем рядового бородача")
 	MisNeed(MIS_NEED_ITEM,4802,1, 10, 1)
@@ -8346,7 +8262,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1511)
 	MisBeginCondition(NoMission, 1528 )
 	MisBeginAction(AddMission, 1528 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Рони")
 	MisHelpTalk("<t>Рони находиться в Аргенте (2242, 2748)")
@@ -8375,7 +8291,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1519)
 	MisBeginCondition(NoMission, 1529 )
 	MisBeginAction(AddMission, 1529 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Рони")
 	MisHelpTalk("<t>Рони находиться в Аргенте (2242, 2748)")
@@ -8402,7 +8318,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1523)
 	MisBeginCondition(NoMission, 1530 )
 	MisBeginAction(AddMission, 1530 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Рони")
 	MisHelpTalk("<t>Рони находиться в Аргенте (2242, 2748)")
@@ -8428,7 +8344,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1527)
 	MisBeginCondition(NoMission, 1531 )
 	MisBeginAction(AddMission, 1531 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Правителем Аргента")
 	MisHelpTalk("<t>Правителя Аргента можно найти в (2242, 2748)")
@@ -8454,7 +8370,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1505)
 	MisBeginCondition(NoMission, 1532 )
 	MisBeginAction(AddMission, 1532 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с портнихой Биби")
 	MisHelpTalk("<t>Поговорите с портнихой Биби ")
@@ -8483,7 +8399,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1533 )
 	MisBeginAction(AddMission,  1533)
 	MisBeginAction(AddTrigger,  15331, TE_KILL, 642, 2 )----------------РЧГНµД№ЗУг
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Уничтожте 2 Кровожадная рыба-кость")
 	MisNeed(MIS_NEED_KILL,642,2, 10, 2)
@@ -8511,7 +8427,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1533)
 	MisBeginCondition(NoMission, 1534 )
 	MisBeginAction(AddMission, 1534 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с <bМастером Керрой>")
 	MisHelpTalk("<t>Следующее испытание будет не такое легкое")
@@ -8538,7 +8454,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1535 )
 	MisBeginAction(AddMission,  1535)
 	MisBeginAction(AddTrigger,  15351, TE_KILL, 652, 2 )----------------РЧГНµД±¦КЇєЈла
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 2 Свирепый рубиновый дельфин")
 	MisNeed(MIS_NEED_KILL,652,2, 10, 2)
@@ -8566,7 +8482,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1535)
 	MisBeginCondition(NoMission, 1536 )
 	MisBeginAction(AddMission, 1536 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с <bМаркусом>")
 	MisHelpTalk("<t>Желаю вам удачи!")
@@ -8593,7 +8509,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1537 )
 	MisBeginAction(AddMission,  1537)
 	MisBeginAction(AddTrigger,  15371, TE_KILL, 587, 2 )----------------РЧГНµД±¦КЇєЈла
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 3 Сирена")
 	MisNeed(MIS_NEED_KILL,587,2, 10, 2)
@@ -8621,7 +8537,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1537)
 	MisBeginCondition(NoMission, 1538 )
 	MisBeginAction(AddMission, 1538 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Зевсом")
 	MisHelpTalk("<t>Желаю вам удачи!")
@@ -8650,7 +8566,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1539 )
 	MisBeginAction(AddMission,  1539)
 	MisBeginAction(AddTrigger,  15391, TE_KILL, 570, 5 )----------------ємєъЧУєЈµБНЕХЅ¶·Ф±
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 4 Абордажник бородачей")
 	MisNeed(MIS_NEED_KILL,570,5, 10, 5)
@@ -8678,7 +8594,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1539)
 	MisBeginCondition(NoMission, 1540 )
 	MisBeginAction(AddMission, 1540 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Доктором Маса")
 	MisHelpTalk("<t>Желаю вам удачи!")
@@ -8706,7 +8622,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1541 )
 	MisBeginAction(AddMission,  1541)
 	MisBeginAction(AddTrigger,  15411, TE_KILL, 589, 2 )----------------єЈСэ№­КЦ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 5 Сирена-стрелок")
 	MisNeed(MIS_NEED_KILL,589,2, 10, 2)
@@ -8734,7 +8650,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1541)
 	MisBeginCondition(NoMission, 1542 )
 	MisBeginAction(AddMission, 1542 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Диспетчер порта Данний")
 	MisHelpTalk("<t>Желаю вам удачи!")
@@ -8761,7 +8677,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1543 )
 	MisBeginAction(AddMission,  1543)
 	MisBeginAction(AddTrigger,  15431, TE_KILL, 36, 6 )----------------°ЧБйГЁ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 6 Свирепая белая рысь")
 	MisNeed(MIS_NEED_KILL,36,6, 10, 6)
@@ -8788,7 +8704,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1543)
 	MisBeginCondition(NoMission, 1544 )
 	MisBeginAction(AddMission, 1544 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Зурби")
 	MisHelpTalk("<t>Желаю вам удачи!!")
@@ -8815,7 +8731,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1545 )
 	MisBeginAction(AddMission,  1545)
 	MisBeginAction(AddTrigger,  15451, TE_KILL, 263, 7 )----------------µШѕ«ХЅКїі¤
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 7 Терранских капитанов")
 	MisNeed(MIS_NEED_KILL,263,7, 10, 7)
@@ -8842,7 +8758,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1545)
 	MisBeginCondition(NoMission, 1546 )
 	MisBeginAction(AddMission, 1546 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Линдой")
 	MisHelpTalk("<t>Желаю вам удачи!")
@@ -8869,7 +8785,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1547 )
 	MisBeginAction(AddMission,  1547)
 	MisBeginAction(AddTrigger,  15471, TE_KILL, 808, 8 )----------------НцБйКї±ш
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 8 Солдат мертвых душ")
 	MisNeed(MIS_NEED_KILL,808,8, 10,8)
@@ -8899,7 +8815,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1548 )
 	MisBeginAction(AddMission, 1548 )
 	MisBeginAction(GiveItem, 2917,1,4)----------------------------------------------------ЙсЪН
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Лангой")
@@ -8929,7 +8845,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1549 )
 	MisBeginAction(AddMission,  1549)
 	MisBeginAction(AddTrigger,  15491, TE_KILL, 546, 10 )----------------Р°¶сµДДП№ПЖпКї
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 10 Зловещий рыцарь тыквы")
 	MisNeed(MIS_NEED_KILL,546,10, 10,10)
@@ -8960,7 +8876,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1550 )
 	MisBeginAction(AddMission,  1550)
 	MisBeginAction(AddTrigger,  15501, TE_GETITEM, 4893, 2 )----------------НхКТЕеЅЈ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите 2 Королевских меча")
 	MisNeed(MIS_NEED_ITEM, 4893, 2, 10, 2)
@@ -8991,7 +8907,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1551 )
 	MisBeginAction(AddMission,  1551)
 	MisBeginAction(AddTrigger,  15511, TE_KILL, 606, 3 )----------------ЙоА¶єЈСэ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 3 Глубоководных сирен")
 	MisNeed(MIS_NEED_KILL,606,3, 10,3)
@@ -9020,7 +8936,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1552 )
 	MisBeginAction(AddMission,  1552)
 	MisBeginAction(AddTrigger,  15521, TE_KILL, 589, 3 )----------------єЈСэ№­КЦ
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Убейте 3 Сирена-стрелок")
 	MisNeed(MIS_NEED_KILL,589,3, 10,3)
@@ -9050,7 +8966,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1553 )
 	MisBeginAction(GiveItem, 2918, 1, 4)		------------ГЙµВКЇ
 	MisBeginAction(AddMission, 1553 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 
 	MisNeed(MIS_NEED_DESP, "<t>Отнесите Камень Менгу Старику-предсказателю")
@@ -9080,7 +8996,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1554 )
 	MisBeginAction(GiveItem, 2918, 1, 4)		------------ГЙµВКЇ
 	MisBeginAction(AddMission, 1554 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 
 	MisNeed(MIS_NEED_DESP, "<t>Отнесите Камень Менгу Старику-предсказателю")
@@ -9110,7 +9026,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1555 )
 	MisBeginAction(GiveItem, 2918, 1, 4)		------------ГЙµВКЇ
 	MisBeginAction(AddMission, 1555 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 
 	MisNeed(MIS_NEED_DESP, "<t>Отнесите Камень Менгу Старику-предсказателю")
@@ -9139,7 +9055,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1556)
 	MisBeginCondition(NoMission, 1557 )
 	MisBeginAction(AddMission, 1557 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите с Бабушкой Донг (795, 363)")
 	MisHelpTalk("<t>Поговорите с Бабушкой Донг (795, 363)")
@@ -9167,7 +9083,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1559)
 	MisBeginCondition(NoMission, 1561 )
 	MisBeginAction(AddMission, 1561 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Нажмите на <rЕще раз здравствуй> и ответьте на вопрос.")
 	
@@ -9192,7 +9108,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1566 )
 	MisBeginAction(AddMission, 1566 )
 	MisBeginAction(AddTrigger,  15661, TE_GETITEM, 2743, 1 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Дайте бабушке Световую гранату 3 ур")
 	MisNeed(MIS_NEED_ITEM,2743,1, 10, 1)
@@ -9225,7 +9141,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1567 )
 	MisBeginAction(AddMission, 1567 )
 	MisBeginAction(AddTrigger,  15671, TE_GETITEM, 2744, 1 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите бабушке 1 гранату 3 уровня")
 	MisNeed(MIS_NEED_ITEM,2744,1, 10, 1)
@@ -9257,7 +9173,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1564)
 	MisBeginCondition(NoMission, 1568 )
 	MisBeginAction(AddMission, 1568 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите со Стариком-предсказателем.")
 	MisHelpTalk("<t>Ну же! Идите")
@@ -9285,7 +9201,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(HasRecord, 1567)
 	MisBeginCondition(NoMission, 1569 )
 	MisBeginAction(AddMission, 1569 )
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "<t>Поговорите со Стариком-предсказателем.")
 	MisHelpTalk("<t>Ну же! Идите")
@@ -9319,7 +9235,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,1570 )
 	MisBeginAction(AddMission, 1570)
 	MisBeginAction(AddTrigger, 15701, TE_GETITEM, 2408, 1 )		--їЪБоAB
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "<t>Принесите пароль BC")
 	MisNeed(MIS_NEED_ITEM,2408,1, 10, 1)
@@ -9349,7 +9265,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,1572 )
 	MisBeginAction(AddMission, 1572)
 	MisBeginAction(AddTrigger, 15721, TE_GETITEM, 2409, 1 )		--їЪБоBC
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите пароль CD")
 	MisNeed(MIS_NEED_ITEM,2409,1, 10, 1)
@@ -9380,7 +9296,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,1573 )
 	MisBeginAction(AddMission, 1573)
 	MisBeginAction(AddTrigger, 15731, TE_GETITEM, 2410, 1 )		--їЪБоCD
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите пароль CD")
 	MisNeed(MIS_NEED_ITEM,2410,1, 10, 1)
@@ -9411,7 +9327,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,1574 )
 	MisBeginAction(AddMission, 1574)
 	MisBeginAction(AddTrigger, 15741, TE_GETITEM, 2411, 1 )		--їЪБоDE
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите пароль DE")
 	MisNeed(MIS_NEED_ITEM,2411,1, 10, 1)
@@ -9442,7 +9358,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission,1575 )
 	MisBeginAction(AddMission, 1575)
 	MisBeginAction(AddTrigger, 15751, TE_GETITEM, 2412, 1 )		--їЪБоEF
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Принесите пароль EF")
 	MisNeed(MIS_NEED_ITEM,2412,1, 10, 1)
@@ -9472,7 +9388,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoMission, 1576)
 	MisBeginCondition(HasRecord, 1575)
 	MisBeginAction(AddMission, 1576)
-	MisCancelAction(SystemNotice, "Квест не может быть удален")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Подождите пока Старик расскажет вам об результатах")
 	MisHelpTalk("<t>Пожалуйста, будте терпеливы")
@@ -9523,7 +9439,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
 
 	MisBeginAction(SetFlag, 1621, 1)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t><rПьянчужка - Антоний> (2222,2889) просит отыскать <rПринца-тритона - Хассана> (1254,3491) и принести ему <pМанящих искр>.")
@@ -9562,7 +9478,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 16223, TE_GETITEM, 1691, 20)
 	MisBeginAction(AddTrigger, 16224, TE_GETITEM, 1779, 5)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Помоги <rПринцу-тритону - Хассану> (1254,3491) собрать необходимые ингридиенты.")
@@ -9586,7 +9502,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultAction(TakeItem, 1691, 20)
 	MisResultAction(TakeItem, 1779, 5)
 
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 6206, 1, 4)
 	MisResultAction(ClearMission, 1622)
 	MisResultAction(SetRecord, 1622)
@@ -9678,7 +9593,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddMission, 1625)
 	MisBeginAction(AddTrigger,16251, TE_GETITEM,4301, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Найди <rЭдварда> (266,230) в <bМире Демонов> и принесите от него <pПосох разума> для <rБлагочестивой жрицы - Ады> (862,3303).")
@@ -9712,7 +9627,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16261, TE_KILL, 559, 50)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Убей 50 <bПроклятых черных рысей> для <rЭдварда> (266,230)")
@@ -9725,7 +9640,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 1626)
 	MisResultCondition(HasMission, 1626)
 	MisResultCondition(HasFlag, 1626, 59)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4301, 1, 4)
 	MisResultAction(ClearMission, 1626)
 	MisResultAction(SetRecord, 1626)
@@ -9802,7 +9716,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddMission, 1629)
 	MisBeginAction(AddTrigger,16291, TE_GETITEM,3116, 20)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Принеси <rПирату Джереми> (2362,657) 20 <bЭльфийских фруктов> и он расскажет тебе как попасть на остров Зимы.")
@@ -9953,7 +9867,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 16341, TE_KILL, 734, 25)
 	MisBeginAction(AddTrigger, 16342, TE_KILL, 735, 30)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Убей для <rСтранницы>(2423,3186) 25 <pПиратов 006>(2736,3042) и 30 <pПиратов 007>(2736,3042)")
@@ -10024,7 +9938,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger,16362, TE_GETITEM,4848, 10)
 	MisBeginAction(AddTrigger,16363, TE_GETITEM,3366, 10)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Принеси <rВиллю> (2582,3245) 10 <bЧерных жемчужин>, 10 <bТяжелых палашей ящера> и 10 <bЛазурных кристаллов>, для того чтобы попасть на <pо. Зимы>.")
@@ -10079,7 +9993,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger,16373, TE_GETITEM,6211, 1)
 	MisBeginAction(AddTrigger,16374, TE_GETITEM,6212, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Принеси <pЖурналы Приключений> <rУченому - Йе> (297,901)")
@@ -10138,7 +10052,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16381, TE_KILL, 1090, 20)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Помоги <rИсследователю -  Уинстону> (472,531) убить 20 <pСнежных Леопардов> (549,528).")
@@ -10151,7 +10065,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 1638)
 	MisResultCondition(HasMission, 1638)
 	MisResultCondition(HasFlag, 1638, 29)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 6209, 1, 4)
 	MisResultAction(ClearMission, 1638)
 	MisResultAction(SetRecord, 1638)
@@ -10176,7 +10089,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16391, TE_KILL, 1091, 20)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Помоги <rИсследователю - Крису> (1147,403) убить 20 <pГенералов тыквы> (966,272).")
@@ -10189,7 +10102,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 1639)
 	MisResultCondition(HasMission, 1639)
 	MisResultCondition(HasFlag, 1639, 29)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 6210, 1, 4)
 	MisResultAction(ClearMission, 1639)
 	MisResultAction(SetRecord, 1639)
@@ -10214,7 +10126,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16401, TE_KILL, 1085, 20)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Помоги <rИсследователю - Лиону> (365,1526) убить 20 <pЯрых Медведей> (661,1230)")
@@ -10227,7 +10139,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 1640)
 	MisResultCondition(HasMission, 1640)
 	MisResultCondition(HasFlag, 1640, 29)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 6211, 1, 4)
 	MisResultAction(ClearMission, 1640)
 	MisResultAction(SetRecord, 1640)
@@ -10252,7 +10163,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16411, TE_KILL, 1086, 20)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Помоги <rИсследователю - Джилл> (958,1159) убить 20 <pУбийц Душ> (839,1160).")
@@ -10265,7 +10176,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginCondition(NoRecord, 1641)
 	MisResultCondition(HasMission, 1641)
 	MisResultCondition(HasFlag, 1641, 29)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 6212, 1, 4)
 	MisResultAction(ClearMission, 1641)
 	MisResultAction(SetRecord, 1641)
@@ -10375,7 +10285,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 16452, TE_KILL, 1084, 35)
 	MisBeginAction(AddTrigger, 16453, TE_KILL, 1086, 25)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Помоги <rЗащитнику Острова Зимы> (655,1471) убить чудовищ.")
@@ -10425,7 +10335,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger,16462, TE_GETITEM,1201, 10)
 	MisBeginAction(AddTrigger,16463, TE_GETITEM,6240, 10)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Заверши задание <rЗащитника Острова Зимы> (655,1471) собери необходимые предметы.")
@@ -10508,7 +10418,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16481, TE_GETITEM, 6200, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Помоги <rВиллю с Севера> (715,1135) отыскать <bСердце Сутры>.")
@@ -10521,7 +10431,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 1648)
 	MisResultCondition(HasItem, 6200, 1)
 	MisResultAction(TakeItem, 6200, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 6213, 1, 4)
 	MisResultAction(ClearMission, 1648)
 	MisResultAction(SetRecord, 1648)
@@ -10548,7 +10457,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 16492, TE_KILL, 1097, 35)
 	MisBeginAction(AddTrigger, 16493, TE_KILL, 1098, 25)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Помоги <rЗащитнику Древних Реликвий> (2010,783) убить чудовищ.")
@@ -10602,7 +10511,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger,16501, TE_GETITEM, 6214, 1)
 	MisBeginAction(AddTrigger,16502, TE_GETITEM, 6216, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Собери по одной слезе со <rСтатуи Кары> (1440,1268) и <rСтатуи Вилля> (1464,464) и возвращайся к <pЗащитнику Древних Реликвий> (2010,783).")
@@ -10645,7 +10554,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16511, TE_GETITEM, 6215, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t><rСтатуя Кары> (1440,1268) просит убить <pДемонов Меча> (1761,609), что бы достать с них <bТаинство Камня>.")
@@ -10658,7 +10567,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 1651)
 	MisResultCondition(HasItem, 6215, 1)
 	MisResultAction(TakeItem, 6215, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 6214, 1, 4)
 	MisResultAction(ClearMission, 1651)
 	MisResultAction(SetRecord, 1651)
@@ -10683,7 +10591,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16521, TE_GETITEM, 6217, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t><rСтатуя Вилля(1464,464)> просит убить <pДемонических Душ> (1676,800), что бы достать с них <bКамень Всераскрытия>.")
@@ -10696,7 +10604,6 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisResultCondition(HasMission, 1652)
 	MisResultCondition(HasItem, 6217, 1)
 	MisResultAction(TakeItem, 6217, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 6216, 1, 4)
 	MisResultAction(ClearMission, 1652)
 	MisResultAction(SetRecord, 1652)
@@ -10835,7 +10742,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16571, TE_GETITEM, 0400, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Принеси <rПринцу-тритону - Хассану> (1254,3491) <bКамзол Аполлона>.")
@@ -10932,7 +10839,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddTrigger, 16606, TE_GETITEM, 2478, 1)
 	MisBeginAction(AddTrigger, 16607, TE_GETITEM, 2484, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Помоги <rВильяму Тернеру> (516,407) собрать ингридиенты, чтобы он смог закончить свою работу.")
@@ -11159,7 +11066,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 	MisBeginAction(AddMission, 1666)
 	MisBeginAction(AddTrigger,16661, TE_GETITEM,6231, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>В глубинах края есть страж, который ждет, чтобы ему принесли <bРуну Учтивости>.")
@@ -11208,7 +11115,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16671, TE_KILL, 1109, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>Уничтожь <bЯростную Кары> и освободи край Авроры. После отчитайся перед <rСтатуей Вилля> (377,417).")
@@ -11271,7 +11178,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16691, TE_KILL, 1113, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "Убей <bДефектного защитника реликвий> и после найди <rСтража реликвии Тьмы> (360,117).")
@@ -11334,7 +11241,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16711, TE_KILL, 1117, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "<t>На втором уровне края Тьмы уничтожь <bМорфея> и возвращайся к <rИзображению Кары> (360,117).")
@@ -11471,7 +11378,7 @@ MisBeginTalk( "<t>Мне извесно о Главаре бандитов. Он очень жестокий и хитрый чел
 
 	MisBeginAction(AddTrigger, 16751, TE_KILL, 1101, 1)
 	MisCancelAction(SystemNotice, "Этот квест не может быть отменён" )
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrizeSelAll()
 
 	MisNeed(MIS_NEED_DESP, "Помоги <rМорфейке - Фрее> (651,1585) и убей <rЛорда Душ Стужи> (1595,687) с <bЗимних островов>.")

@@ -15,5 +15,3 @@ function begin_enter_puzzleworld2(role, copy_mgr)
   	SystemNotice(role,"Вы вошли в [Мир Демонов 2]") 
 	MoveCity(role, "Demonic World 2")
 end
-function after_player_login_puzzleworld(entry, player_name)
-   end

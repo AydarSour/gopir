@@ -1,16 +1,8 @@
 -------------------------------------------------------------------
 --									--
 --									--
---npcscripts08.lua Created by knight.gong 2005.7.12.				--
+--NPCScript08.lua Created by knight.gong 2005.7.12.				--
 --									--
 --									--
 --------------------------------------------------------------------------
-print( "Загрузка npcscripts08.lua" )
-
- 
-
- 
-
- 
-
-  
+print( "loading NPCScript08.lua" )

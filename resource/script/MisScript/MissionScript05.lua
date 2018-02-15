@@ -1,9 +1,9 @@
 ------------------------------------------------------------
---missionscript05.lua Created by Robin 2005.05.27.
+--MissionScript05.lua Created by Robin 2005.05.27.
 --
 --╟°╙Є╚╬╬ё
 ------------------------------------------------------------
-print( "Загрузка missionscript05.lua" )
+print( "loading MissionScript05.lua" )
 
 jp= JumpPage
 amp=AutoMissionPage

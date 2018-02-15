@@ -311,6 +311,7 @@ AddHelpInfo("Combat Piglet","Somebody spotted them near Deep Blue sea region at 
 AddHelpInfo("Oyster","Somebody spotted them near Deep Blue sea region at (889, 375)")
 
 
+--µÙ¡œ
 AddHelpInfo("Frozen Grass","Rumored that Snowy Mystic Shrub has a certain drop rate")
 AddHelpInfo("Green Grass","Rumored that Mystic Shrub has a certain drop rate")
 AddHelpInfo("Sparkling Grass","Rumored that Dry Mystic Shrub has a certain drop rate")

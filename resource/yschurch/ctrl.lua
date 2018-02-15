@@ -26,36 +26,17 @@ end
 
 function map_copy_run_yschurch( map_copy )
  local closetime = CHURCHCLOSETIME
-     DealAllActivePlayerInMap(map_copy, "Goto_ShaLan")
-end
- 
-function Goto_ShaLan(role)
-    local now_week    = os.date("%w")
-    local now_hour    = os.date("%H")
-    local now_miniute = os.date("%M")
-   
-    now_week    = tonumber(now_week)
-    now_hour    = tonumber(now_hour)   
-    now_miniute = tonumber(now_miniute)
-   
-    local CheckDateNum = now_hour * 100 + now_miniute
-   
-    --Понедельник. Выкидываем с карты посетителей.
-    if now_week == 1 then
-    if CheckDateNum == 1710  then
-            MoveTo(role, 824, 3530, "magicsea")
-        else
-            return
-        end
-    --Суббота и Воскресенье. Выкидываем с карты жениха с невестой и гостей.
-    elseif now_week == 6 or now_week == 0 then
-        if CheckDateNum == 2000 or CheckDateNum == 2210 then
-            MoveTo(role, 910, 3571, "magicsea")
-        else
-            return
-        end
-    end
-
+     -- for i = 1 , CHURCHNOTICE , 1 do
+		--if closetime == CHURCHCLOSESHOW[i] then
+			-- local Notice_all = "ѕаАлЅММГ»о¶ЇЅбКшК±јд»№УР"..closetime.."ГлЈЎЗлЧҐЅфК±јдА­ЈЎ"
+			--MapCopyNotice ( map_copy ,Notice_all )
+		--end
+	--end
+	--CHURCHCLOSETIME = CHURCHCLOSETIME - 1
+	KillMonsterInChurch(map_copy)
+	KillMonsterInChurch(map_copy)
+	DealAllActivePlayerInMap(map_copy,"Goto_ShaLan")
+	--Notice("Goto_ShaLan  ")
 end
 
 

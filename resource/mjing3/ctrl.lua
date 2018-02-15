@@ -18,7 +18,6 @@ function get_map_entry_pos_mjing3()
 end
 
 function after_enter_mjing3( role , map_copy )
---AfterEnter(role)
 end
 
 function before_leave_mjing3( role )

@@ -16,7 +16,7 @@ function after_create_entry(entry)
 	local copy_mgr = GetMapEntryCopyObj(entry, 0) 
 
 	map_name, posx, posy, tmap_name = GetMapEntryPosInfo(entry) 
-	Notice("Объявление: В окрестностях Шайтана ["..posx..","..posy.."] открылся портал в [Священную войну] для игроков с 45 по 65 уровни. Следите за объявлениями. Удачи!") 
+	Notice("Объявление: В окрестностях Ледыни ["..posx..","..posy.."] открылся портал в [Священную войну] для игроков с 45 по 65 уровни. Следите за объявлениями. Удачи!") 
 
 	local EntryName = "Священная война: [Пиратская фракция] против [Флотская фракция] (45 - 65 уровни)"
 	SetMapEntryEventName( entry, EntryName )

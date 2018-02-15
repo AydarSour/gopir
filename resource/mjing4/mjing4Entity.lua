@@ -1,2 +1,2 @@
-print( "Loading EventEntity.lua" )
+print( "loading EventEntity.lua" )
 -------------------------------------------------------------

@@ -1,6 +1,6 @@
 function config(map)
 	MapCanSavePos(map, 0)
-	MapCanPK(map, 1)
+	-----MapCanPK(map, 0)
 	MapCopyNum(map, 1)
 	SingleMapCopyPlyNum(map, 300)
 	MapCanTeam(map , 1)
@@ -21,15 +21,11 @@ end
 
 function can_open_entry_shalan2( map )
 end 
-function map_copy_run_shalan2()
-end
-function map_copy_run_special_shalan2()
-end
+
 function map_run_shalan2(map)
 end
 
 function after_enter_shalan2( role , map_copy )
---AfterEnter(role)
 end
 
 function before_leave_shalan2( role )

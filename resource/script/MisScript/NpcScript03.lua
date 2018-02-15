@@ -1,11 +1,11 @@
---------Диспетчера, кораблестроители,СВЯЩЕННАЯ ВОЙНА
+-------------------------------------------------------------------
 --									--
 --									--
---npcscripts03.lua Created by Robin 2005.6.1.				--
+--NPCScript03.lua Created by Robin 2005.6.1.				--
 --									--
 --									--
 --------------------------------------------------------------------------
-print( "‡ Јаг§Є  npcscripts03.lua" )
+print( "loading NPCScript03.lua" )
 
 jp= JumpPage
 amp=AutoMissionPage
@@ -14,12 +14,78 @@ am=AddMission
 MissionCheck = HasFlag
 mc=MissionCheck
 
+
+----------------------------------------------------------
+--							--
+--							--
+--		з™Ѕй“¶еџЋ[дє¤ж?“е‘?В·йѓќжґ›з”«]			--
+--							--
+--		225538,280188				--
+----------------------------------------------------------
+-----------------------------------------------------------иї™й‡ЊејЂе§‹PиЇќиЃЉе¤©
 function r_talk10 ()
 	
 	
-	 Talk( 1, "Харбор : Привет! Я Оператор-Харбор. Как я могу помочь вам?" )
+	Talk( 1, "Chiroro: Hi! I am the Harbor Operator. How can I help you?" )
+	InitTrigger()
+	TriggerCondition( 1, HasBoatInBerth, 1 )
+	TriggerAction( 1, TradeBerthList, 1 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Cargo Trade", MultiTrigger, GetMultiTrigger(), 1 )
+	Text( 1, "Regarding High Lv Commerce Permit",JumpPage, 3)
+	
+	Talk( 2, "Chiroro: Sorry, you do not have any ships docked in Argent Harbor . Unable to trade." )
+	
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Regarding Tax Rate",JumpPage, 7)
+	Text( 3, "Low Lv Commerce Permit",JumpPage, 4)
+	Text( 3, "Mid Lv Commerce Permit",JumpPage, 5)
+	Text( 3, "High Lv Commerce Permit",JumpPage, 6)
 	
 
+	Talk( 4, "Low Lv Commerce Permit is easy to obtain. When you reaches Lv 20, go to the trading post in Shaitan and complete a simple task to have one.")
+	Talk( 5, "When you reaches Lv 40 and reduces your tax rate to 20%, you can go to Shaitan Trading Post and obtain a Mid Lv Commerce Permit.")
+	Talk( 6, "When you have reached level 60 and possess a Commerce Permit with 10% tax, you can activate the quest for High Lv Commerce.")
+	Talk( 7, "Check your Commerce Permit to see the current Tax Rate imposed on your product when you sell it to any trader. Complete some quest at Shaitan Trading Post to reduce the Tax Rate.")
+
+	InitGoods(1)
+	SaleGoodsData(	0	,	4573	,	900	,	279	,	62	)
+	SaleGoodsData(	0	,	4574	,	800	,	342	,	76	)
+	SaleGoodsData(	1	,	4575	,	700	,	391	,	87	)
+	SaleGoodsData(	1	,	4576	,	480	,	432	,	96	)
+	SaleGoodsData(	2	,	4577	,	300	,	495	,	110	)
+	SaleGoodsData(	2	,	4578	,	240	,	522	,	116	)
+	SaleGoodsData(	3	,	4579	,	60	,	589	,	131	)
+	SaleGoodsData(	3	,	4580	,	40	,	648	,	144	)
+
+	BuyGoodsData(0,	4581	,	-1	,	542	,	121	)
+	BuyGoodsData(0,	4583	,	-1	,	724	,	161	)
+	BuyGoodsData(0,	4585	,	-1	,	846	,	188	)
+	BuyGoodsData(0,	4587	,	-1	,	846	,	564	)
+	BuyGoodsData(0,	4593	,	-1	,	1000	,	223	)
+	BuyGoodsData(0,	4595	,	-1	,	938	,	625	)
+	BuyGoodsData(0,	4597	,	-1	,	881	,	195	)
+	BuyGoodsData(0,	4598	,	-1	,	878	,	195	)
+	BuyGoodsData(0,	4600	,	-1	,	866	,	577	)
+	BuyGoodsData(0,	4552	,	-1	,	642	,	143	)
+	BuyGoodsData(0,	4553	,	-1	,	789	,	175	)
+	BuyGoodsData(0,	4554	,	-1	,	934	,	207	)
+	BuyGoodsData(0,	4556	,	-1	,	870	,	193	)
+	BuyGoodsData(0,	4557	,	-1	,	970	,	215	)
+	BuyGoodsData(0,	4560	,	-1	,	1056	,	235	)
+	BuyGoodsData(0,	4563	,	-1	,	909	,	202	)
+	BuyGoodsData(0,	4566	,	-1	,	785	,	175	)
+	BuyGoodsData(0,	4569	,	-1	,	1014	,	225	)
+	BuyGoodsData(0,	4572	,	-1	,	924	,	205	)
+	BuyGoodsData(0,	4547	,	-1	,	100	,	0	)
+	BuyGoodsData(0,	4549	,	-1	,	500	,	0	)
+	BuyGoodsData(0,	4548	,	-1	,	300	,	0	)
+	BuyGoodsData(0,	4551	,	-1	,	20	,	0	)
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
+	SetNpcTrigger( GetTrigger( 1 ) )
+	SetNpcActive()
 
 	AddNpcMission 	(443)
 	AddNpcMission 	(445)
@@ -32,23 +98,101 @@ function r_talk10 ()
 	
 end 
 
+-----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<дє¤ж?“е‘?В·йѓќжґ›з”«
 
+
+
+----------------------------------------------------------
+--							--
+--							--
+--		й›·йњ†е Ў[дє¤ж?“е‘?В·жЎ‘еђ‰]			--
+--							--
+--		103877,127848				--
+----------------------------------------------------------
+-----------------------------------------------------------иї™й‡ЊејЂе§‹PиЇќиЃЉе¤©
 function r_talk27 ()
 	
 	
-	Talk( 1, " Sanjay:Привет, Малыш! Я занимаюсь торговлей и девочками!." )
+	Talk( 1, " Sanjay: Hi, Baby! I am in charge of the trade hereвЂ¦and girls too." )
+	InitTrigger()
+	TriggerCondition( 1, HasBoatInBerth, 2 )
+	TriggerAction( 1, TradeBerthList, 2 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)
+	
+	Talk( 2, "Санджай: Извини! У тебя нет корабля, пришвартованного в порту Громограда." )	
+	
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
 
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+	
+	
+	
+	InitGoods( 2)
+	SaleGoodsData(	1	,	4597	,	480	,	436	,	97	)
+	SaleGoodsData(	2	,	4598	,	300	,	472	,	105	)
+	SaleGoodsData(	2	,	4599	,	240	,	508	,	113	)
+	SaleGoodsData(	3	,	4600	,	60	,	571	,	127	)
+	SaleGoodsData(	3	,	4601	,	40	,	643	,	143	)
+	
+	BuyGoodsData(0,	4573	,	-1	,	554	,	123	)
+	BuyGoodsData(0,	4574	,	-1	,	711	,	158	)
+	BuyGoodsData(0,	4576	,	-1	,	872	,	193	)
+	BuyGoodsData(0,	4581	,	-1	,	548	,	121	)
+	BuyGoodsData(0,	4583	,	-1	,	740	,	165	)
+	BuyGoodsData(0,	4587	,	-1	,	900	,	600	)
+	BuyGoodsData(0,	4591	,	-1	,	880	,	195	)
+	BuyGoodsData(0,	4593	,	-1	,	1029	,	229	)
+	BuyGoodsData(0,	4595	,	-1	,	976	,	651	)
+	BuyGoodsData(0,	4553	,	-1	,	826	,	183	)
+	BuyGoodsData(0,	4555	,	-1	,	793	,	177	)
+	BuyGoodsData(0,	4556	,	-1	,	860	,	191	)
+	BuyGoodsData(0,	4557	,	-1	,	960	,	213	)
+	BuyGoodsData(0,	4559	,	-1	,	920	,	205	)
+	BuyGoodsData(0,	4560	,	-1	,	1039	,	231	)
+	BuyGoodsData(0,	4563	,	-1	,	909	,	202	)
+	BuyGoodsData(0,	4566	,	-1	,	831	,	185	)
+	BuyGoodsData(0,	4569	,	-1	,	1089	,	243	)
+	BuyGoodsData(0,	4572	,	-1	,	924	,	205	)
+	BuyGoodsData(0,	4547	,	-1	,	100	,	0	)
+	BuyGoodsData(0,	4549	,	-1	,	450	,	0	)
+	BuyGoodsData(0,	4550	,	-1	,	1000	,	0	)
+	BuyGoodsData(0,	4548	,	-1	,	300	,	0	)
+	BuyGoodsData(0,	4551	,	-1	,	20	,	0	)
+	BuyGoodsData(0,	3913	,	-1	,	1248	,	832 	)
+	BuyGoodsData(0,	3912	,	-1	,	1395	,	930 	)
+	BuyGoodsData(0,	3914	,	-1	,	1614	,	1077	)
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
+	SetNpcTrigger( GetTrigger( 1 ) )
+	SetNpcActive()
 
 	AddNpcMission	(1021)
 	AddNpcMission	(1077)
 	AddNpcMission	(1133)
 	AddNpcMission	(1184)
-
+----------дє¤ж?“е‘?В·жЎ‘еђ‰-------еЏЊе­ђ	--------------03
 	AddNpcMission	(5728)
 	AddNpcMission	(5729)
 end 
 
-
+----------------------------------------------------------
+--							--
+--							--
+--		жІ™еІљеџЋ[и€№е·ҐВ·еј—е…°е…‹]			--
+--							--
+--		90391,366735				--
+----------------------------------------------------------
+-----------------------------------------------------------иї™й‡ЊејЂе§‹PиЇќиЃЉе¤©
 function r_talk60 ()
 	
 	Talk( 1, "Франклин: Здравствуй! Строительству кораблей я научился в Аргенте. Можешь звать меня Франклин." )
@@ -107,16 +251,6 @@ function r_talk60 ()
 
 	Talk( 3, "Франклин: Чтобы повысить уровень своего судна, необходимо пришвартовать его в гавани. Корабль становится лучше, если поднять его уровень. Возвращайся, чтобы сделать это, когда накопишь достаточно опыта в плаваниях или сражениях с морскими чудовищами." )
 
-	
-	Text( 1, "Купить корабельные навыки ", SendExchangeXData)
-	InitExchangeX()
-	ExchangeDataX	(	8142	,	5	,	8865	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8866	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8867	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8868	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8869	,	1	)
-
-	
 	AddNpcMission	(1116)
 	AddNpcMission	(158)
 	AddNpcMission	(159)
@@ -149,7 +283,7 @@ function r_talk150()
 	TriggerAction( 1, SetRecord, 1469 )
 	TriggerAction( 1, JumpPage, 3 )
 	TriggerFailure( 1, JumpPage, 4 )
-	--Text( 2, "Моряк",MultiTrigger, GetMultiTrigger(), 1)
+	Text( 2, "Моряк",MultiTrigger, GetMultiTrigger(), 1)
 
 	InitTrigger()
 	TriggerCondition( 1, NoRecord,1466 )
@@ -160,7 +294,7 @@ function r_talk150()
 	TriggerAction( 1, SetRecord, 1469 )
 	TriggerAction( 1, JumpPage, 3 )
 	TriggerFailure( 1, JumpPage, 4 )
-	--Text( 2, "Пират",MultiTrigger, GetMultiTrigger(), 1)
+	Text( 2, "Пират",MultiTrigger, GetMultiTrigger(), 1)
 
 	InitTrigger()
 	TriggerCondition( 1, NoRecord,1466 )
@@ -171,7 +305,7 @@ function r_talk150()
 	TriggerAction( 1, SetRecord, 1469 )
 	TriggerAction( 1, JumpPage, 3 )
 	TriggerFailure( 1, JumpPage, 4 )
-	--Text( 2, "Капитан",MultiTrigger, GetMultiTrigger(), 1)
+	Text( 2, "Капитан",MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk(3, "жµ·дє‹ж‰ЂеЉ©зђ†В·зЅ—ж‹‰еЁњ:еёЊжњ›ж‚ЁиѓЅе¤џеќље®љи‡Єе·±зљ„йЂ‰ж‹©пјЊдёЌи¦Ѓж”ѕејѓе“¦пјЃж€‘ењЁиї™й‡ЊзҐќз¦Џж‚Ё..." )
 	Talk( 4, "жµ·дє‹ж‰ЂеЉ©зђ†В·зЅ—ж‹‰еЁњ:жЊ‘ж€?е·Ёиџ№е®«зљ„ж—¶еЂ™,йљѕеє¦еЏЄиѓЅйЂ‰ж‹©дёЂж¬Ў.е№¶зЎ®дїќж‚Ёзљ„иѓЊеЊ…й‡Њжњ‰е·Ёиџ№е®«й—ЁзҐЁ.")
@@ -182,23 +316,23 @@ function r_talk150()
 
 ------------зЅ—ж‹‰еЁњ
 -----------------------е·Ёиџ№еє§
-	--AddNpcMission 	(5800)
-	--AddNpcMission 	(5801)
-	--AddNpcMission 	(5802)
-	--AddNpcMission 	(5803)
-	--AddNpcMission 	(5804)
-	--AddNpcMission 	(5805)
-	--AddNpcMission 	(5806)
-	--AddNpcMission 	(5807)
-	--AddNpcMission 	(5808)
-	--AddNpcMission 	(5809)
-	--AddNpcMission 	(5810)
-	--AddNpcMission 	(5811)
-	--AddNpcMission 	(5812)
-	--AddNpcMission 	(5813)
-	--AddNpcMission 	(5814)
-	--AddNpcMission 	(5815)
-	--AddNpcMission 	(5816)
+	AddNpcMission 	(5800)
+	AddNpcMission 	(5801)
+	AddNpcMission 	(5802)
+	AddNpcMission 	(5803)
+	AddNpcMission 	(5804)
+	AddNpcMission 	(5805)
+	AddNpcMission 	(5806)
+	AddNpcMission 	(5807)
+	AddNpcMission 	(5808)
+	AddNpcMission 	(5809)
+	AddNpcMission 	(5810)
+	AddNpcMission 	(5811)
+	AddNpcMission 	(5812)
+	AddNpcMission 	(5813)
+	AddNpcMission 	(5814)
+	AddNpcMission 	(5815)
+	AddNpcMission 	(5816)
 	AddNpcMission 	(5857)
 	AddNpcMission 	(5858)
 	AddNpcMission 	(5862)
@@ -257,17 +391,7 @@ function r_talk151 ()
 	Text( 2, "Построить Орёл", MultiTrigger, GetMultiTrigger(), 1 )
 
 	Talk( 3, "Синбад: Видимо, твой корабль здесь не пришвартован. А это необходимо, чтобы повысить его уровень. Возвращайся, когда наберешь достаточно опыта в плаваниях или сражениях с морскими чудищами." )
-
-	
-	Text( 1, "Купить корабельные навыки ", SendExchangeXData)
-	InitExchangeX()
-	ExchangeDataX	(	8142	,	5	,	8865	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8866	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8867	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8868	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8869	,	1	)
-
-	end 
+end 
 
 ------------------------------------------------------------
 -- з™Ѕй“¶еџЋ-----жµ·жёЇжЊ‡жЊҐВ·й›ЄиЋ‰
@@ -275,7 +399,7 @@ function r_talk151 ()
 
 function r_talk152()
 
-	Talk( 1, " Шерли: Привет! Я Диспетчер порта. Если захочешь отплыть - обращайся ко мне" )
+	Talk( 1, " Shirley: Hi! I am the Harbor Operator for Argent. I am in charge of all ships that is docked in this harbor. Look for me if you want to set sail." )
 	InitTrigger()
 	TriggerCondition( 1, HasAllBoatInBerth, 1 )
 	--TriggerAction( 1, RemoveYS )
@@ -350,7 +474,6 @@ function r_talk153()
 	Talk( 5, "Прости, но для заправки нужно пришвартовать корабль в нашей гавани. С тебя 200 золотых." )
 	Talk( 6, "Извини, мы восстанавливаем лишь те корабли, которые пришвартованы в нашей гавани. Тебе придется заплатить 1000 зол." )
 
-	
 
 
 end
@@ -406,13 +529,6 @@ function r_talk155 ()
 
 	Talk( 3, "Джордж: Чтобы повысить уровень судна, необходимо пришвартовать его в гавани. Корабль становится лучше, если поднять его уровень. Возвращайся, когда накопишь достаточно опыта в плаваниях или сражениях с морскими чудовищами." )
 		
-	Text( 1, "Купить корабельные навыки ", SendExchangeXData)
-	InitExchangeX()
-	ExchangeDataX	(	8142	,	5	,	8865	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8866	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8867	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8868	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8869	,	1	)
 end 
 
 ------------------------------------------------------------
@@ -495,7 +611,7 @@ function r_talk178()
 	Talk( 4, "Извини, но я ремонтирую лишь корабли, приписанные к этой гавани. Тебе придется заплатить 1000 зол." )
 	Talk( 5, "Прости, но для заправки нужно пришвартовать корабль в нашей гавани. С тебя 200 золотых." )
 	Talk( 6, "Прости, мы восстанавливаем лишь те корабли, которые пришвартованы в нашей гавани. Тебе придется заплатить 1000 зол." )
-	--AddNpcMission	(3001 )
+	
 end
 
 ------------------------------------------------------------
@@ -535,8 +651,6 @@ function r_talk179()
 	Talk( 5, "Прости, но для заправки нужно пришвартовать корабль в нашей гавани. С тебя 200 золотых." )
 	Talk( 6, "Извини, мы восстанавливаем лишь те корабли, которые пришвартованы в нашей гавани. Тебе придется заплатить 1000 зол." )
 
-	
-	
 end
 
 ------------------------------------------------------------
@@ -575,7 +689,7 @@ function r_talk180()
 	Talk( 4, "Извини, но я ремонтирую лишь корабли, приписанные к этой гавани. Тебе придется заплатить 1000 зол." )
 	Talk( 5, "Прости, но для заправки нужно пришвартовать корабль в нашей гавани. С тебя 200 золотых." )
 	Talk( 6, "Извини, мы восстанавливаем лишь те корабли, которые пришвартованы в нашей гавани. Тебе придется заплатить 1000 зол." )
-	--AddNpcMission	(3002 )
+
 end
 
 ------------------------------------------------------------
@@ -599,8 +713,7 @@ function r_talk181()
 	Talk( 4, "Извини! Ремонт стоит 1000 зол." )
 	Talk( 5, "Извини! Заправка стоит 200 зол." )
 
-	
-	
+
 	AddNpcMission	(763)
 	AddNpcMission(	1742	)
 	AddNpcMission (	1938	)
@@ -608,7 +721,7 @@ function r_talk181()
 ----------------еђ‰е°јж–Ї---жµ·жёЇжЊ‡жЊҐВ·жё©дєљеЎ”--03
 	AddNpcMission	(5511)
 	AddNpcMission	(5512)
-	--AddNpcMission	(3003 )
+	
 
 end
 
@@ -639,8 +752,6 @@ function r_talk182()
 ----------------еђ‰е°јж–Ї---жµ·жёЇжЊ‡жЊҐВ·иѕѕиЂ¶иѕѕ--03
 	AddNpcMission (5533 )
 	AddNpcMission (5534 )
-	
-	
 end
 
 ------------------------------------------------------------
@@ -737,16 +848,56 @@ end
 function r_talk185()
 
 	Talk( 1, "Баргес: Привет! Чем могу помочь?" )
-	Text( 1,"Обмен", SendExchangeData19 )
-
-	InitExchange19()
-	DoExchange19()
-	
 	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
+	TriggerCondition( 1, HasBoatInBerth, 5 )
+	TriggerAction( 1, TradeBerthList, 5 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)	
+
+	Talk( 2, "Burgess: Sorry! You ship is not docked in Zephyr Harbor. Unable to trade." )	
+
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
+
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+
+	InitGoods(5)
+	SaleGoodsData(	0	,	4552	,	800	,	315	,	70	)
+	SaleGoodsData(	1	,	4553	,	700	,	405	,	90	)
+	SaleGoodsData(	1	,	4554	,	480	,	477	,	106	)
+
+	BuyGoodsData(0,	4574	,	-1	,	697	,	155	)
+	BuyGoodsData(0,	4578	,	-1	,	960	,	213	)
+	BuyGoodsData(0,	4580	,	-1	,	972	,	648	)
+	BuyGoodsData(0,	4582	,	-1	,	664	,	147	)
+	BuyGoodsData(0,	4584	,	-1	,	818	,	181	)
+	BuyGoodsData(0,	4586	,	-1	,	895	,	199	)
+	BuyGoodsData(0,	4588	,	-1	,	969	,	646	)
+	BuyGoodsData(0,	4590	,	-1	,	725	,	161	)
+	BuyGoodsData(0,	4592	,	-1	,	1017	,	226	)
+	BuyGoodsData(0,	4594	,	-1	,	1071	,	238	)
+	BuyGoodsData(0,	4598	,	-1	,	888	,	197	)
+	BuyGoodsData(0,	4599	,	-1	,	955	,	213	)
+	BuyGoodsData(0,	4601	,	-1	,	991	,	661	)
+	BuyGoodsData(0,	4557	,	-1	,	981	,	218	)
+	BuyGoodsData(0,	4560	,	-1	,	1124	,	249	)
+	BuyGoodsData(0,	4563	,	-1	,	976	,	217	)
+	BuyGoodsData(0,	4566	,	-1	,	763	,	169	)
+	BuyGoodsData(0,	4569	,	-1	,	981	,	218	)
+	BuyGoodsData(0,	4572	,	-1	,	950	,	211	)
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
 	SetNpcTrigger( GetTrigger( 1 ) )
 	SetNpcActive()
-	
+
 
 
 --	AddNpcMission	(760)	--Путешествие Покорителя Морей
@@ -760,15 +911,57 @@ end
 function r_talk186()
 
 	Talk( 1, "Сакиний: Привет! Чем могу помочь?" )
-Text( 1,"Обмен", SendExchangeData20 )
-
-	InitExchange20()
-	DoExchange20()
-	
 	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
+	TriggerCondition( 1, HasBoatInBerth, 6 )
+	TriggerAction( 1, TradeBerthList, 6 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)
+
+	Talk( 2, "Сакиний: Извини, но у тебя нет корабля, пришвартованного в гавани Ледникового острова" )
+	
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
+
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+
+	InitGoods(6)
+	SaleGoodsData(	1	,	4555	,	480	,	405	,	90	)
+	SaleGoodsData(	2	,	4556	,	300	,	468	,	104	)
+	SaleGoodsData(	2	,	4557	,	240	,	522	,	116	)
+
+	BuyGoodsData(0,	4573	,	-1	,	554	,	123	)
+	BuyGoodsData(0,	4574	,	-1	,	711	,	158	)
+	BuyGoodsData(0,	4575	,	-1	,	780	,	173	)
+	BuyGoodsData(0,	4585	,	-1	,	936	,	208	)
+	BuyGoodsData(0,	4586	,	-1	,	970	,	215	)
+	BuyGoodsData(0,	4590	,	-1	,	699	,	155	)
+	BuyGoodsData(0,	4592	,	-1	,	963	,	214	)
+	BuyGoodsData(0,	4594	,	-1	,	997	,	221	)
+	BuyGoodsData(0,	4596	,	-1	,	1027	,	685	)
+	BuyGoodsData(0,	4597	,	-1	,	855	,	190	)
+	BuyGoodsData(0,	4600	,	-1	,	857	,	571	)
+	BuyGoodsData(0,	4554	,	-1	,	991	,	221	)
+	BuyGoodsData(0,	4558	,	-1	,	828	,	184	)
+	BuyGoodsData(0,	4559	,	-1	,	910	,	203	)
+	BuyGoodsData(0,	4562	,	-1	,	819	,	183	)
+	BuyGoodsData(0,	4563	,	-1	,	879	,	195	)
+	BuyGoodsData(0,	4566	,	-1	,	831	,	185	)
+	BuyGoodsData(0,	4569	,	-1	,	1126	,	251	)
+	BuyGoodsData(0,	4572	,	-1	,	924	,	205	)
+
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
 	SetNpcTrigger( GetTrigger( 1 ) )
 	SetNpcActive()
+		
 --	AddNpcMission	(761)	--Путешествие Покорителя Морей
 
 	-----------------дє¤ж?“е‘?В·иµ›з‘џе°ј---------й‡‘з‰›
@@ -783,15 +976,59 @@ end
 function r_talk187()
 
 	Talk( 1, "Дилади: Привет! Чем могу помочь?" )
-Text( 1,"Обмен", SendExchangeData21 )
-
-	InitExchange21()
-	DoExchange21()
-	
 	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
+	TriggerCondition( 1, HasBoatInBerth, 7 )
+	TriggerAction( 1, TradeBerthList, 7 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)
+
+	Talk( 2, "Дилади: Извини, но у тебя нет корабля, пришвартованного в гавани острова Отверженных" )	
+
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
+
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+
+
+	InitGoods(7)
+	SaleGoodsData(	2	,	4558	,	300	,	450	,	100	)
+	SaleGoodsData(	2	,	4559	,	240	,	495	,	110	)
+	SaleGoodsData(	3	,	4560	,	60	,	571	,	127	)
+
+	BuyGoodsData(0,	4576	,	-1	,	898	,	199	)
+	BuyGoodsData(0,	4577	,	-1	,	930	,	207	)
+	BuyGoodsData(0,	4585	,	-1	,	936	,	208	)
+	BuyGoodsData(0,	4587	,	-1	,	938	,	625	)
+	BuyGoodsData(0,	4589	,	-1	,	548	,	121	)
+	BuyGoodsData(0,	4591	,	-1	,	844	,	187	)
+	BuyGoodsData(0,	4593	,	-1	,	972	,	216	)
+	BuyGoodsData(0,	4595	,	-1	,	900	,	600	)
+	BuyGoodsData(0,	4597	,	-1	,	881	,	195	)
+	BuyGoodsData(0,	4599	,	-1	,	945	,	210	)
+	BuyGoodsData(0,	4600	,	-1	,	866	,	577	)
+	BuyGoodsData(0,	4554	,	-1	,	1020	,	227	)
+	BuyGoodsData(0,	4555	,	-1	,	793	,	177	)
+	BuyGoodsData(0,	4556	,	-1	,	860	,	191	)
+	BuyGoodsData(0,	4557	,	-1	,	960	,	213	)
+	BuyGoodsData(0,	4561	,	-1	,	808	,	179	)
+	BuyGoodsData(0,	4566	,	-1	,	876	,	195	)
+	BuyGoodsData(0,	4569	,	-1	,	1089	,	243	)
+	BuyGoodsData(0,	4572	,	-1	,	924	,	205	)
+
+
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
 	SetNpcTrigger( GetTrigger( 1 ) )
 	SetNpcActive()
+
 
 --	AddNpcMission	(762)	--Путешествие Покорителя Морей
 end
@@ -833,11 +1070,8 @@ function r_talk188()
 	Talk( 5, "Прости, но для заправки нужно пришвартовать корабль в нашей гавани. С тебя 200 золотых." )
 	Talk( 6, "Извини, мы восстанавливаем лишь те корабли, которые пришвартованы в нашей гавани. Тебе придется заплатить 1000 зол." )
 	----------жµ·жёЇжЊ‡жЊҐВ·жіўе°”-------еЏЊе­ђ--------03
-	--AddNpcMission	(101)
 	AddNpcMission	(5704)
 	AddNpcMission	(5705)
-	--AddNpcMission (3013 )
-	
 end
 
 ------------------------------------------------------------
@@ -914,7 +1148,6 @@ function r_talk190()
 	Talk( 4, "Извини, но я ремонтирую лишь корабли, приписанные к этой гавани. Тебе придется заплатить 1000 зол." )
 	Talk( 5, "Прости, но для заправки нужно пришвартовать корабль в нашей гавани. С тебя 200 золотых." )
 	Talk( 6, "Извини, мы восстанавливаем лишь те корабли, которые пришвартованы в нашей гавани. Тебе придется заплатить 1000 зол." )
-	--AddNpcMission (3005 )
 end
 
 ------------------------------------------------------------
@@ -939,7 +1172,6 @@ function r_talk191()
 	 -------------еђ‰е°јж–Ї--и‹ЏжёЇиЎҐз»™з«™,жµ·жёЇжЊ‡жЊҐВ·йІЃиҐї(464,468)--03
 	AddNpcMission (5527 )
 	AddNpcMission (5528 )
-	--AddNpcMission (3011 )
 
 
 end
@@ -971,12 +1203,10 @@ function r_talk192()
 	AddNpcMission (	1954	)
 	AddNpcMission (	386	)
 	AddNpcMission (	387	)
-	--AddNpcMission (3012 )
 
 	----------------еђ‰е°јж–Ї---жµ·жёЇжЊ‡жЊҐВ·еёѓзєЅ--03
 	AddNpcMission (5525 )
 	AddNpcMission (5526 )
-	
 	
 end
 
@@ -1007,7 +1237,7 @@ function r_talk193()
 	----------------еђ‰е°јж–Ї---жµ·жёЇжЊ‡жЊҐВ·е¤ље»‰иѕѕ--03
 	AddNpcMission (5523 )
 	AddNpcMission (5524 )
-	--AddNpcMission (3010 )
+
 
 end
 
@@ -1030,8 +1260,7 @@ function r_talk194()
 
 	Talk( 4, "Извини! Ремонт стоит 1000 зол." )
 	Talk( 5, "Извини! Заправка стоит 200 зол." )
-	
-	--AddNpcMission (3007 )
+
 end
 
 ------------------------------------------------------------
@@ -1059,7 +1288,7 @@ function r_talk195()
 	AddNpcMission ( 293 )
 	AddNpcMission(	1443	)
 	AddNpcMission (	1932	)
-	--AddNpcMission (3008 )
+
 	
 
 
@@ -1087,7 +1316,6 @@ function r_talk196()
 	----------------еђ‰е°јж–Ї---жµ·жёЇжЊ‡жЊҐВ·иїЄиїЄиђЁ--03
 	AddNpcMission (5515 )
 	AddNpcMission (5516 )
-	--AddNpcMission (3006 )
 end
 
 ------------------------------------------------------------
@@ -1118,7 +1346,6 @@ function r_talk197()
 	----------------еђ‰е°јж–Ї---жµ·жёЇжЊ‡жЊҐВ·дё№е°јж–Ї--03
 	AddNpcMission (5513 )
 	AddNpcMission (5514 )
-	--AddNpcMission (3004 )
 end
 
 ------------------------------------------------------------
@@ -1140,63 +1367,200 @@ function r_talk198()
 
 	Talk( 4, "Извини! Ремонт стоит 1000 зол." )
 	Talk( 5, "Извини! Заправка стоит 200 зол." )
+	----------------еђ‰е°јж–Ї---жµ·жёЇжЊ‡жЊҐВ·зґўе°”--03
 	AddNpcMission (5517 )
 	AddNpcMission (5518 )
-	--AddNpcMission (3009 )
 end
 
+------------------------------------------------------------
+-- е†°й›ЄеІ›-----дє¤ж?“е‘?В·иҐїе°”зЏ­
+------------------------------------------------------------
 
 function r_talk199()
-Talk( 1, "Сибун: Привет! Чем могу помочь?" )
 
-Text( 1,"Обмен", SendExchangeData17 )
-
-	InitExchange17()
-	DoExchange17()
-	
+	Talk( 1, "Сибун: Привет! Чем могу помочь?" )
 	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
+	TriggerCondition( 1, HasBoatInBerth, 8 )
+	TriggerAction( 1, TradeBerthList, 8 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)
+
+	Talk( 2, "Сибун: Извини, но у тебя нет корабля, пришвартованного в гавани острова Стужи" )	
+
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
+
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+
+	InitGoods(8)
+	SaleGoodsData(	1	,	4561	,	480	,	400	,	89	)
+	SaleGoodsData(	2	,	4562	,	300	,	436	,	97	)
+	SaleGoodsData(	2	,	4563	,	240	,	468	,	104	)
+
+	BuyGoodsData(0,	4578	,	-1	,	1014	,	225	)
+	BuyGoodsData(0,	4580	,	-1	,	1056	,	705	)
+	BuyGoodsData(0,	4586	,	-1	,	936	,	208	)
+	BuyGoodsData(0,	4588	,	-1	,	1042	,	695	)
+	BuyGoodsData(0,	4590	,	-1	,	673	,	149	)
+	BuyGoodsData(0,	4592	,	-1	,	909	,	202	)
+	BuyGoodsData(0,	4594	,	-1	,	954	,	212	)
+	BuyGoodsData(0,	4596	,	-1	,	955	,	637	)
+	BuyGoodsData(0,	4598	,	-1	,	954	,	212	)
+	BuyGoodsData(0,	4599	,	-1	,	988	,	219	)
+	BuyGoodsData(0,	4601	,	-1	,	1049	,	699	)
+	BuyGoodsData(0,	4554	,	-1	,	1077	,	239	)
+	BuyGoodsData(0,	4556	,	-1	,	879	,	195	)
+	BuyGoodsData(0,	4558	,	-1	,	837	,	186	)
+	BuyGoodsData(0,	4559	,	-1	,	920	,	205	)
+	BuyGoodsData(0,	4560	,	-1	,	1039	,	231	)
+	BuyGoodsData(0,	4566	,	-1	,	854	,	189	)
+	BuyGoodsData(0,	4569	,	-1	,	1052	,	233	)
+	BuyGoodsData(0,	4572	,	-1	,	872	,	193	)
+
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
 	SetNpcTrigger( GetTrigger( 1 ) )
 	SetNpcActive()
 
+
 	
 end
 
-
+------------------------------------------------------------
+-- йёЈжІ™еІ›-----дє¤ж?“е‘?В·з±ізґўдєљж–Ї
+------------------------------------------------------------
 
 function r_talk200()
 
-	Talk( 1, "Микки: Привет! Чем могу помочь?" )	
-	Text( 1,"Обмен", SendExchangeData15 )
-
-	InitExchange15()
-	DoExchange15()
-	
+	Talk( 1, "Микки: Привет! Чем могу помочь?" )
 	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
+	TriggerCondition( 1, HasBoatInBerth, 9 )
+	TriggerAction( 1, TradeBerthList, 9 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)
+
+	Talk( 2, "Микки: Извини, но у тебя нет корабля, пришвартованного в гавани острова Канареек" )	
+	
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
+
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+
+	InitGoods(9)
+	SaleGoodsData(	0	,	4564	,	800	,	283	,	63	)
+	SaleGoodsData(	1	,	4565	,	560	,	342	,	76	)
+	SaleGoodsData(	1	,	4566	,	360	,	378	,	84	)
+
+	BuyGoodsData(0,	4574	,	-1	,	724	,	161	)
+	BuyGoodsData(0,	4575	,	-1	,	798	,	177	)
+	BuyGoodsData(0,	4576	,	-1	,	898	,	199	)
+	BuyGoodsData(0,	4581	,	-1	,	531	,	119	)
+	BuyGoodsData(0,	4582	,	-1	,	651	,	145	)
+	BuyGoodsData(0,	4590	,	-1	,	699	,	155	)
+	BuyGoodsData(0,	4592	,	-1	,	963	,	214	)
+	BuyGoodsData(0,	4596	,	-1	,	1027	,	685	)
+	BuyGoodsData(0,	4598	,	-1	,	982	,	219	)
+	BuyGoodsData(0,	4601	,	-1	,	1105	,	737	)
+	BuyGoodsData(0,	4553	,	-1	,	807	,	179	)
+	BuyGoodsData(0,	4554	,	-1	,	963	,	214	)
+	BuyGoodsData(0,	4557	,	-1	,	1052	,	233	)
+	BuyGoodsData(0,	4560	,	-1	,	1268	,	281	)
+	BuyGoodsData(0,	4563	,	-1	,	976	,	217	)
+	BuyGoodsData(0,	4567	,	-1	,	705	,	157	)
+	BuyGoodsData(0,	4568	,	-1	,	860	,	191	)
+	BuyGoodsData(0,	4569	,	-1	,	960	,	213	)
+	BuyGoodsData(0,	4572	,	-1	,	872	,	193	)
+
+
+
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
 	SetNpcTrigger( GetTrigger( 1 ) )
 	SetNpcActive()
+
 
 ----------дє¤ж?“е‘?В·з±ізґўдєљж–Ї-------еЏЊе­ђ---03
 	AddNpcMission	(5710)
 	AddNpcMission	(5711)
 end
 
-
+------------------------------------------------------------
+-- зњџз€±еІ›-----дє¤ж?“е‘?В·е°¤еЌЎ
+------------------------------------------------------------
 
 function r_talk201()
 
 	Talk( 1, "Юка: Привет! Чем могу помочь?" )
-	Text( 1,"Обмен", SendExchangeData16 )
-	
-
-	InitExchange16()
-	DoExchange16()
 	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
+	TriggerCondition( 1, HasBoatInBerth, 10 )
+	TriggerAction( 1, TradeBerthList, 10 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)
+	
+	Talk( 2, "Юка: Извини, но у тебя нет корабля, пришвартованного в гавани острова Купидона" )	
+
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
+
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+
+	InitGoods(10)
+	SaleGoodsData(	1	,	4567	,	600	,	360	,	80	)
+	SaleGoodsData(	2	,	4568	,	400	,	468	,	104	)
+	SaleGoodsData(	2	,	4569	,	240	,	522	,	116	)
+
+	BuyGoodsData(0,	4576	,	-1	,	924	,	205	)
+	BuyGoodsData(0,	4577	,	-1	,	999	,	223	)
+	BuyGoodsData(0,	4578	,	-1	,	1014	,	225	)
+	BuyGoodsData(0,	4582	,	-1	,	664	,	147	)
+	BuyGoodsData(0,	4584	,	-1	,	818	,	181	)
+	BuyGoodsData(0,	4589	,	-1	,	542	,	121	)
+	BuyGoodsData(0,	4593	,	-1	,	904	,	201	)
+	BuyGoodsData(0,	4595	,	-1	,	846	,	564	)
+	BuyGoodsData(0,	4597	,	-1	,	986	,	219	)
+	BuyGoodsData(0,	4599	,	-1	,	1061	,	235	)
+	BuyGoodsData(0,	4600	,	-1	,	1017	,	678	)
+	BuyGoodsData(0,	4554	,	-1	,	991	,	221	)
+	BuyGoodsData(0,	4557	,	-1	,	1126	,	251	)
+	BuyGoodsData(0,	4560	,	-1	,	1220	,	271	)
+	BuyGoodsData(0,	4563	,	-1	,	943	,	209	)
+	BuyGoodsData(0,	4564	,	-1	,	577	,	129	)
+	BuyGoodsData(0,	4565	,	-1	,	666	,	149	)
+	BuyGoodsData(0,	4570	,	-1	,	550	,	123	)
+	BuyGoodsData(0,	4571	,	-1	,	842	,	187	)
+
+
+
+
+
+	
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
 	SetNpcTrigger( GetTrigger( 1 ) )
 	SetNpcActive()
-	
 
 -----------------дє¤ж?“е‘?В·е°¤еЌЎ---------й‡‘з‰›
 	AddNpcMission	(5633)
@@ -1206,7 +1570,9 @@ function r_talk201()
 	AddNpcMission	(5717)
 end
 
-
+------------------------------------------------------------
+-- еҐЅиїђеІ›-----жµ·жёЇжЊ‡жЊҐВ·еЌўе…‹
+------------------------------------------------------------
 function r_talk202()
 
 	Talk( 1, "Диспетчер порта: Я заправляю и ремонтирую корабли. Могу я тебе чем-нибудь помочь?" )
@@ -1241,7 +1607,9 @@ function r_talk202()
 	Talk( 6, "Извини, мы восстанавливаем лишь те корабли, которые пришвартованы в нашей гавани. Тебе придется заплатить 1000 зол." )
 end
 
-
+------------------------------------------------------------
+-- иђЁиїЄе‹’иЎҐз»™з«™-----жµ·жёЇжЊ‡жЊҐВ·д№”е°”д№”е°ј
+------------------------------------------------------------
 function r_talk203()
 
 	Talk( 1, "Диспетчер порта: Я заправляю и ремонтирую корабли. Могу я тебе чем-нибудь помочь?" )
@@ -1278,7 +1646,9 @@ function r_talk203()
 	AddNpcMission (5522 )
 end
 
-
+------------------------------------------------------------
+-- еЌЎй©¬иµ›иЎҐз»™з«™-----жµ·жёЇжЊ‡жЊҐВ·еҐҐз™»
+------------------------------------------------------------
 function r_talk204()
 
 	Talk( 1, "Диспетчер порта: Я заправляю и ремонтирую корабли. Могу я тебе чем-нибудь помочь?" )
@@ -1295,14 +1665,17 @@ function r_talk204()
 
 	Talk( 4, "Извини! Ремонт стоит 1000 зол." )
 	Talk( 5, "Извини! Заправка стоит 200 зол." )
+	----------------еђ‰е°јж–Ї---жµ·жёЇжЊ‡жЊҐВ·еҐҐз™»--03
 	AddNpcMission (5519 )
 	AddNpcMission (5520 )
+	-----------------жµ·жёЇжЊ‡жЊҐВ·еҐҐз™»---------й‡‘з‰›
 	AddNpcMission	(5635)
 	AddNpcMission	(5636)
 end
 
 ------------------------------------------------------------
-
+-- жЂќжЂќзґўиЎҐз»™з«™-----жµ·жёЇжЊ‡жЊҐВ·ж‹‰з±ідї®
+------------------------------------------------------------
 function r_talk205()
 
 	Talk( 1, "Диспетчер порта: Я заправляю и ремонтирую корабли. Могу я тебе чем-нибудь помочь?" )
@@ -1335,15 +1708,58 @@ end
 function r_talk206()
 
 	Talk( 1, "Буви: Привет! Чем могу помочь?" )
-	Text( 1,"Обмен", SendExchangeData18 )
-
-	InitExchange18()
-	DoExchange18()
-	
 	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
+	TriggerCondition( 1, HasBoatInBerth, 11 )
+	TriggerAction( 1, TradeBerthList, 11 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)
+
+	Talk( 2, "Буви: Извини, но у тебя нет корабля, пришвартованного в гавани острова Удачи" )	
+
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
+
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+
+	InitGoods(11)
+	SaleGoodsData(	1	,	4570	,	560	,	270	,	60	)
+	SaleGoodsData(	1	,	4571	,	360	,	405	,	90	)
+	SaleGoodsData(	2	,	4572	,	200	,	432	,	96	)
+
+	BuyGoodsData(0,	4577	,	-1	,	1059	,	235	)
+	BuyGoodsData(0,	4578	,	-1	,	1089	,	243	)
+	BuyGoodsData(0,	4579	,	-1	,	1049	,	699	)
+	BuyGoodsData(0,	4583	,	-1	,	740	,	165	)
+	BuyGoodsData(0,	4584	,	-1	,	866	,	193	)
+	BuyGoodsData(0,	4589	,	-1	,	537	,	119	)
+	BuyGoodsData(0,	4591	,	-1	,	807	,	179	)
+	BuyGoodsData(0,	4592	,	-1	,	909	,	202	)
+	BuyGoodsData(0,	4597	,	-1	,	986	,	219	)
+	BuyGoodsData(0,	4599	,	-1	,	1061	,	235	)
+	BuyGoodsData(0,	4600	,	-1	,	1017	,	678	)
+	BuyGoodsData(0,	4554	,	-1	,	1106	,	245	)
+	BuyGoodsData(0,	4557	,	-1	,	1089	,	243	)
+	BuyGoodsData(0,	4560	,	-1	,	1220	,	271	)
+	BuyGoodsData(0,	4562	,	-1	,	881	,	195	)
+	BuyGoodsData(0,	4563	,	-1	,	909	,	202	)
+	BuyGoodsData(0,	4566	,	-1	,	808	,	179	)
+	BuyGoodsData(0,	4568	,	-1	,	879	,	195	)
+	BuyGoodsData(0,	4569	,	-1	,	981	,	218	)
+
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
 	SetNpcTrigger( GetTrigger( 1 ) )
-	SetNpcActive()
+	SetNpcActive()	
+
+
 	
 
 end
@@ -1383,9 +1799,7 @@ function r_talk207()
 	Talk( 4, "Извини, но я ремонтирую лишь корабли, приписанные к этой гавани. Тебе придется заплатить 1000 зол." )
 	Talk( 5, "Прости, но для заправки нужно пришвартовать корабль в нашей гавани. С тебя 200 золотых." )
 	Talk( 6, "Извини, мы восстанавливаем лишь те корабли, которые пришвартованы в нашей гавани. Тебе придется заплатить 1000 зол." )
-
-
-	end
+end
 
 ------------------------------------------------------------
 -- жІ™еІљж–°еџЋ-----дє¤ж?“е‘?В·иҐїе¤ље¤«
@@ -1393,11 +1807,68 @@ function r_talk207()
 
 function r_talk208()
 
-	 Talk( 1, "Сейдор: Привет! Здесь я отвечаю за торговлю. Чем могу помочь?" )
+	Talk( 1, "Сейдор: Привет! Здесь я отвечаю за торговлю. Чем могу помочь?" )
+	InitTrigger()
+	TriggerCondition( 1, HasBoatInBerth, 3 )
+	TriggerAction( 1, TradeBerthList, 3 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)
 
+	Talk( 2, "Сейдор: Извини! У тебя нет корабля, пришвартованного в порту Шайтана." )
+
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
+
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+
+	InitGoods(3)
+	SaleGoodsData(	0	,	4581	,	900	,	270	,	60	)
+	SaleGoodsData(	0	,	4582	,	800	,	319	,	71	)
+	SaleGoodsData(	1	,	4583	,	700	,	355	,	79	)
+	SaleGoodsData(	1	,	4584	,	480	,	405	,	90	)
+	SaleGoodsData(	2	,	4585	,	300	,	450	,	100	)
+	SaleGoodsData(	2	,	4586	,	240	,	481	,	107	)
+	SaleGoodsData(	3	,	4587	,	60	,	549	,	122	)
+	SaleGoodsData(	3	,	4588	,	40	,	639	,	142	)
+
+	BuyGoodsData(0,	4573	,	-1	,	560	,	125	)
+	BuyGoodsData(0,	4575	,	-1	,	798	,	177	)
+	BuyGoodsData(0,	4577	,	-1	,	930	,	207	)
+	BuyGoodsData(0,	4589	,	-1	,	548	,	121	)
+	BuyGoodsData(0,	4591	,	-1	,	844	,	187	)
+	BuyGoodsData(0,	4593	,	-1	,	972	,	216	)
+	BuyGoodsData(0,	4595	,	-1	,	900	,	600	)
+	BuyGoodsData(0,	4598	,	-1	,	954	,	212	)
+	BuyGoodsData(0,	4599	,	-1	,	988	,	219	)
+	BuyGoodsData(0,	4552	,	-1	,	655	,	145	)
+	BuyGoodsData(0,	4553	,	-1	,	807	,	179	)
+	BuyGoodsData(0,	4557	,	-1	,	1052	,	233	)
+	BuyGoodsData(0,	4560	,	-1	,	1172	,	261	)
+	BuyGoodsData(0,	4563	,	-1	,	909	,	202	)
+	BuyGoodsData(0,	4564	,	-1	,	577	,	129	)
+	BuyGoodsData(0,	4566	,	-1	,	740	,	165	)
+	BuyGoodsData(0,	4568	,	-1	,	870	,	193	)
+	BuyGoodsData(0,	4569	,	-1	,	970	,	215	)
+	BuyGoodsData(0,	4572	,	-1	,	872	,	193	)
+	BuyGoodsData(0,	4547	,	-1	,	200	,	0	)
+	BuyGoodsData(0,	4549	,	-1	,	360	,	0	)
+	BuyGoodsData(0,	4550	,	-1	,	1000	,	0	)
+	BuyGoodsData(0,	4551	,	-1	,	20	,	0	)
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
+	SetNpcTrigger( GetTrigger( 1 ) )
+	SetNpcActive()
 
 	AddNpcMission(	104	)
-	--AddNpcMission 	(198)
+	AddNpcMission 	(198)
 	AddNpcMission 	(199)
 	AddNpcMission 	(149)
 	AddNpcMission(	105	)
@@ -1411,7 +1882,64 @@ end
 
 function r_talk209()
 
-	 Talk( 1, "Паниро: Привет! Я отвечаю за торговлю. Чем могу помочь?" )
+	Talk( 1, "Паниро: Привет! Я отвечаю за торговлю. Чем могу помочь?" )
+	InitTrigger()
+	TriggerCondition( 1, HasBoatInBerth, 4 )
+	TriggerAction( 1, TradeBerthList, 4 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+	Text( 1, "Об уровнях торговых лицензий",JumpPage, 3)
+	
+	Talk( 2, "Паниро: Извини, но у тебя нет корабля, пришвартованного в гавани Ледыни" )	
+
+	Talk( 3, "Hi! If you want to get rich, then you will need a \"Commerce Permit!\" With it you can have more products for commerce trade and also reduce your capital to maximize your profits! Currently, players can only obtain Commerce Permit from Shaitan Trading Post.")
+	Text( 3, "Узнать о ставке налога",JumpPage, 7)
+	Text( 3, "Торговая лицензия низкого уровня",JumpPage, 4)
+	Text( 3, "Торговая лицензия среднего уровня",JumpPage, 5)
+	Text( 3, "Торговая лицензия высокого уровня",JumpPage, 6)
+
+	Talk( 4, "Торговую лицензию низкого уровня получить довольно просто. При достижении 20 уровня необходим обратиться в Торговую палату Шайтана для выполнения задания на получение лицензии.")
+	Talk( 5, "Когда ты достигнешь 40 уровня, ты сможешь получить Торговую лицензию среднего уровня с налоговой ставкой 20%.")
+	Talk( 6, "Когда ты достигнешь 60 уровня, ты сможешь получить Торговую лицензию высоуого уровня с налоговой ставкой 10%.")
+	Talk( 7, "Проверьте налоговую ставку вашей Торговой лицензии, на товары, продаваемые торговцам. Выполните задания Торговой палаты Шайтана для снижения налоговой ставки.")
+
+	InitGoods(4)
+	SaleGoodsData(	0	,	4589	,	900	,	161	,	57	)
+	SaleGoodsData(	0	,	4590	,	800	,	238	,	84	)
+	SaleGoodsData(	1	,	4591	,	700	,	297	,	105	)
+	SaleGoodsData(	1	,	4592	,	600	,	425	,	150	)
+	SaleGoodsData(	2	,	4593	,	400	,	467	,	165	)
+	SaleGoodsData(	2	,	4594	,	240	,	561	,	198	)
+	SaleGoodsData(	3	,	4595	,	120	,	612	,	216	)
+	SaleGoodsData(	1	,	4596	,	80	,	705	,	249	)
+
+	BuyGoodsData(0,	4577	,	-1	,	750	,	643	)
+	BuyGoodsData(0,	4578	,	-1	,	802	,	689	)
+	BuyGoodsData(0,	4582	,	-1	,	471	,	403	)
+	BuyGoodsData(0,	4584	,	-1	,	691	,	593	)
+	BuyGoodsData(0,	4586	,	-1	,	737	,	633	)
+	BuyGoodsData(0,	4597	,	-1	,	728	,	625	)
+	BuyGoodsData(0,	4599	,	-1	,	1092	,	936	)
+	BuyGoodsData(0,	4600	,	-1	,	1139	,	977	)
+	BuyGoodsData(0,	4554	,	-1	,	844	,	725	)
+	BuyGoodsData(0,	4557	,	-1	,	892	,	765	)
+	BuyGoodsData(0,	4560	,	-1	,	992	,	851	)
+	BuyGoodsData(0,	4561	,	-1	,	627	,	539	)
+	BuyGoodsData(0,	4562	,	-1	,	649	,	557	)
+	BuyGoodsData(0,	4563	,	-1	,	735	,	630	)
+	BuyGoodsData(0,	4566	,	-1	,	569	,	487	)
+	BuyGoodsData(0,	4568	,	-1	,	710	,	609	)
+	BuyGoodsData(0,	4569	,	-1	,	761	,	653	)
+	BuyGoodsData(0,	4571	,	-1	,	596	,	511	)
+	BuyGoodsData(0,	4547	,	-1	,	300	,	0	)
+	BuyGoodsData(0,	4550	,	-1	,	1000	,	0	)
+	BuyGoodsData(0,	4548	,	-1	,	300	,	0	)
+	BuyGoodsData(0,	4551	,	-1	,	20	,	0	)
+
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
+	SetNpcTrigger( GetTrigger( 1 ) )
+	SetNpcActive()
 
 
 end
@@ -1466,20 +1994,11 @@ function r_talk210 ()
 	Text( 2, "Построить Огромную Белую акулу", MultiTrigger, GetMultiTrigger(), 1 )
 
 	Talk( 3, "Аттан: Похоже, твоего корабля нет у этого причала. Чтобы повысить уровень судна, набери достаточно опыта в плаваниях и сражениях с чудовищами и пришвартуй корабль здесь." )
+end 
 
-	Text( 1, "Купить корабельные навыки ", SendExchangeXData)
-	InitExchangeX()
-	ExchangeDataX	(	8142	,	5	,	8865	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8866	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8867	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8868	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8869	,	1	)
-
-	
-	end 
-
-
-
+------------------------------------------------------------
+-- з™Ѕй“¶еџЋ-----жµ·з›—жѓ…жЉҐе‘?В·ж€€з“¦ж’’
+------------------------------------------------------------
 
 function r_talk211()
 
@@ -1502,7 +2021,9 @@ function r_talk211()
 		
 end
 
-
+------------------------------------------------------------
+-- з™Ѕй“¶еџЋ-----жµ·е†›жѓ…жЉҐе‘?В·иѕѕйљ†дё№
+------------------------------------------------------------
 
 function r_talk212()
 
@@ -1527,6 +2048,9 @@ function r_talk212()
 		
 end
 
+------------------------------------------------------------
+-- з™Ѕй“¶еџЋ-----жµ·е†›е‹џе…µе°Џе§ђВ·и•ѕз»®е°”
+------------------------------------------------------------
 
 function r_talk213()
 
@@ -1557,6 +2081,9 @@ function r_talk213()
 		
 end
 
+------------------------------------------------------------
+-- еєџзџїиЎҐз»™з«™-----ж‰“еЊ…дєєВ·д№Ће‹’иѕѕ
+------------------------------------------------------------
 
 function r_talk214()
 
@@ -1565,13 +2092,17 @@ function r_talk214()
 	TriggerCondition( 1, HasBoatInBerth, 1)
 	TriggerAction( 1, PackBagList, 1, RES_MINE, 3 )
 	TriggerFailure( 1, JumpPage, 2 )
-	Text( 1, "‡ Јаг§Є  Crystal", MultiTrigger, GetMultiTrigger(), 1 )
+	Text( 1, "Load Crystal", MultiTrigger, GetMultiTrigger(), 1 )
 
 	Talk( 2, "У тебя нет корабля в порту Аргента" )
+	----------ж‰“еЊ…дєєВ·д№Ће‹’иѕѕ-------еЏЊе­ђ-------------03
 	AddNpcMission	(5720)
 	AddNpcMission	(5721)	
 end
 
+------------------------------------------------------------
+-- й›·йњ†е Ўе†›жёЇ-----ж‰“еЊ…дєєВ·иґ№еѕ·зґўж‹‰
+------------------------------------------------------------
 
 function r_talk215()
 
@@ -1668,7 +2199,7 @@ function r_talk220()
 	TriggerCondition( 1, HasBoatInBerth, 4)
 	TriggerAction( 1, PackBagList, 4, RES_MINE, 2 )
 	TriggerFailure( 1, JumpPage, 2 )
-	Text( 1, "‡ Јаг§Є  Iron Ore", MultiTrigger, GetMultiTrigger(), 1 )
+	Text( 1, "Load Iron Ore", MultiTrigger, GetMultiTrigger(), 1 )
 	InitTrigger()
 	TriggerCondition( 1, HasBoatInBerth, 4)
 	TriggerAction( 1, PackBagList, 4, RES_WOOD, 1 )
@@ -2004,6 +2535,10 @@ function r_talk259 ()
 	InitGoods(12)
 	SaleGoodsData(	0	,	1861	,	500	,	5000	,	5000	)
 
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 52, TE_GAMETIME, TT_CYCLETIME, 15, 0 )
+	SetNpcTrigger( GetTrigger( 1 ) )
+	SetNpcActive()
 
 	AddNpcMission 	(443)
 	AddNpcMission 	(445)
@@ -2092,7 +2627,10 @@ function r_talk264()
 	InitGoods(3)
 	SaleGoodsData(	0	,	3914	,	150	,	990	,	220	)
 	
-
+	InitTrigger()
+	TriggerAction( 1, AddNpcTrigger, 51, TE_GAMETIME, TT_CYCLETIME, 30, 0 )
+	SetNpcTrigger( GetTrigger( 1 ) )
+	SetNpcActive()
 
 
 
@@ -2101,6 +2639,16 @@ end
 --зІѕеЇ†д»Єе™Ёдѕ›еє”е•†	
 
 function r_talk265()
+	Talk( 1, "Торговец редкими материалами: Привет! Я Торговец редкими материалами, которые очень востребованы в Громограде для строительства. У меня как раз появилась новая партия материалов для отправки в Громоград. Но я могу доверить доставку только членам гильдии, занимающей второе место." )
+	InitTrigger()
+	TriggerCondition( 1, HasBoatInBerth, 3 )
+	TriggerCondition( 1, HasGuildLevel, 2 )
+	TriggerAction( 1, TradeBerthList, 3 )
+	TriggerFailure( 1, JumpPage, 2 )
+	--Text( 1, "Морская торговля", MultiTrigger, GetMultiTrigger(), 1 ) 
+
+	Talk( 2, "Торговец редкими материалами: Совершать покупки могут только члены гильдии, занимающей второе место, если их корабль пришвартован в порту Шайтана." )
+
 
 	InitGoods(3)
 	SaleGoodsData(	0	,	3912	,	200	,	855	,	190	)
@@ -2259,7 +2807,13 @@ function leo_talk10()
 	Talk(2,"Торговец Черного рынка: О-хо-хо, а вы неплохо осведомлены... Чего изволите?")
 	Text(2,"Дайте-ка сначала взглянуть на ваши вещи", SendExchangeData )
 
+	--е…‘жЌўж‰ЂйњЂз‰©е“Ѓ IDпјЊж•°й‡ЏпјЊе…‘жЌўж‰Ђеѕ—з‰©е“Ѓж•°й‡ЏпјЊиµ‹дє€зљ„еЂј
 	InitExchange()
+
+	--еЉ иЅЅ8дёЄйЃ“е…·дїЎжЃЇпјЊењЁScriptSDKй‡Њ
+
+
+
 	DoExchange()
 
 	InitTrade()
@@ -2273,16 +2827,15 @@ function leo_talk10()
 	Other(	rand()	)
 	
 	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 53, TE_GAMETIME, TT_CYCLETIME, 60, 0 )
+	TriggerAction( 1, AddNpcTrigger, 53, TE_GAMETIME, TT_CYCLETIME, 120, 0 )
 	SetNpcTrigger( GetTrigger( 1 ) )
 	SetNpcActive()
 end
-
-
-function rand()	
+--
+function rand()	--й»‘её‚йљЏжњєиЈ…е¤‡е€—иЎЁ
 	local tabunknow = {}
 	tabunknow[	1	] =	0088
-	tabunknow[	2	] =	0088
+	tabunknow[	2	] =	0089
 	tabunknow[	3	] =	3302
 	tabunknow[	4	] =	3303
 	tabunknow[	5	] =	3304
@@ -2320,7 +2873,7 @@ function rand()
 	return tabunknow[math.floor(math.random(1,35))]
 end
 ------------------------------------------------------------
---СВЯЩЕННАЯ ВОЙНА
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·й›¶й›¶й›¶
 ------------------------------------------------------------
 function star_talk001()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
@@ -2332,7 +2885,9 @@ function star_talk001()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·й›¶й›¶дёЂ
+------------------------------------------------------------
 function star_talk002()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2343,7 +2898,9 @@ function star_talk002()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·й›¶й›¶дєЊ
+------------------------------------------------------------
 function star_talk003()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2354,7 +2911,9 @@ function star_talk003()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·й›¶й›¶дё‰
+------------------------------------------------------------
 function star_talk004()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2365,7 +2924,9 @@ function star_talk004()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·й›¶й›¶е››
+------------------------------------------------------------
 function star_talk005()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2376,7 +2937,9 @@ function star_talk005()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·й›¶й›¶дє”
+------------------------------------------------------------
 function star_talk006()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2387,7 +2950,9 @@ function star_talk006()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·й›¶й›¶е…­
+------------------------------------------------------------
 function star_talk007()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2398,7 +2963,9 @@ function star_talk007()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·й›¶й›¶дёѓ
+------------------------------------------------------------
 function star_talk008()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2409,7 +2976,9 @@ function star_talk008()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·е№єе№єй›¶
+------------------------------------------------------------
 function star_talk009()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2421,6 +2990,9 @@ function star_talk009()
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
 
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·е№єе№єдёЂ
+------------------------------------------------------------
 function star_talk010()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2431,7 +3003,9 @@ function star_talk010()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·е№єе№єдєЊ
+------------------------------------------------------------
 function star_talk011()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2442,7 +3016,9 @@ function star_talk011()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·е№єе№єдё‰
+------------------------------------------------------------
 function star_talk012()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2453,7 +3029,9 @@ function star_talk012()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·е№єе№єе››
+------------------------------------------------------------
 function star_talk013()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2464,7 +3042,9 @@ function star_talk013()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·е№єе№єдє”
+------------------------------------------------------------
 function star_talk014()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2475,7 +3055,9 @@ function star_talk014()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·е№єе№єе…­
+------------------------------------------------------------
 function star_talk015()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2486,7 +3068,9 @@ function star_talk015()
 
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
-
+------------------------------------------------------------
+-- ењЈж€?-----жµ·жёЇжЊ‡жЊҐВ·е№єе№єдёѓ
+------------------------------------------------------------
 function star_talk016()
 	Talk( 1, "Привет! Я диспетчер порта Священной Войны. Я ослуживаю только те корабли, которые пришвартованы к гавани Шайтана. Убедись, что твой корабль приписан к этому порту." )
 	InitTrigger()
@@ -2498,6 +3082,10 @@ function star_talk016()
 	Talk( 2, "Извини, но у тебя нет корабля в Шайтане" )
 end
 
+
+------------------------------------------------------------
+-- ењЈж€?----жµ·е†›е‰ЌзєїжЊ‡жЊҐе®?--Roico
+------------------------------------------------------------
 function roico_talk001()
   Talk( 1, "Navy Frontline Commander: The battle has begun, everyone is a hero, remember what you strive for and work in teams to defeat the enemies! This is the only way to victory!" )
   Text( 1, "Battle Instructor" ,JumpPage, 2)
@@ -2574,7 +3162,9 @@ function roico_talk001()
 	Text( 16, "Own side Granary surroundings", GetChaName22_guildwar, 1)
 
 end
-
+------------------------------------------------------------
+-- ењЈж€?----жµ·з›—е‰ЌзєїжЊ‡жЊҐе®?--Roico
+------------------------------------------------------------
 function roico_talk002()
 Talk( 1, "Pirate Frontline Commander: Destroy, plunder, kill, nothing can stop us, show the enemy what real fear is!" )
   Text( 1, "Battle Instructor" ,JumpPage, 2)
@@ -2651,4 +3241,294 @@ Talk( 1, "Pirate Frontline Commander: Destroy, plunder, kill, nothing can stop u
 	Text( 16, "Own side Granary surroundings", GetChaName44_guildwar, 1)
 end
 
+function roico_talk()
+        Talk( 1, "Holy War Administrator: To enter the Holy War, please obtain the [Life and Death Token] from me, it represents your determination and spirit! Next I have some item you might be interested in, but I'll only give them to heroes of the war!" )
+        Text( 1, "Exchange Level 70 boss equipment",JumpPage, 2 )
+	Text( 1, "Exchange for Title Medal",JumpPage, 16 )
+	Text( 1, "Exchange Blood Pledge Token",JumpPage, 28 )
+	Text( 1, "Use Honor points to exchange into Life and Death token",JumpPage, 29 )
 
+	Talk( 2, "Select the Boss stone of your choice" )
+        Text( 2, "Hephaestus Pawstone (Champion)", JumpPage, 3)
+	Text( 2, "Hermes Pawstone (Crusader)", JumpPage, 4)
+	Text( 2, "Apollo Pawstone (SharpShooter)", JumpPage, 5)
+	Text( 2, "Poseidon Pawstone (Voyager)", JumpPage, 6)
+	Text( 2, "Hestia Pawstone (Cleric)", JumpPage, 7)
+	Text( 2, "Athena Pawstone (SealMaster)", JumpPage, 8)
+	Text( 2, "Next Page", JumpPage, 9)
+	Talk( 9, "Select the Boss stone of your choice" )
+	Text( 9, "Hephaestus Clawstone (Champion)", JumpPage, 10)
+	Text( 9, "Hermes Clawstone (Crusader)", JumpPage, 11)
+	Text( 9, "Apollo Clawstone (SharpShooter)", JumpPage, 12)
+	Text( 9, "Poseidon Clawstone (Voyager)", JumpPage, 13)
+	Text( 9, "Hestia Clawstone (Cleric)", JumpPage, 14)
+	Text( 9, "Athena Clawstone (Sealed)", JumpPage, 15)
+	Text( 9, "Go back a page", JumpPage, 2) 
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2532, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 3, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 3, "Obtained Hephaestus Pawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2535, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 4, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 4, "Obtained Hermes Pawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2538, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 5, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 5, "Obtained Apollo Pawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2541, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 6, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 6, "Obtained Poseidon Pawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2544, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 7, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 7, "Obtained Hestia Pawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2547, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 8, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 8, "Obtained Athena Pawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2531, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 10, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 10, "Obtained Hephaestus Clawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+
+
+	
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2534, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 11, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 11, "Obtained Hermes Clawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2537, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 12, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 12, "Obtained Apollo Clawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2540, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 13, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 13, "Obtained Poseidon Clawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2543, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 14, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 14, "Obtained Hestia Clawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 300 )
+	TriggerCondition( 1, LvCheck, ">", 64 )
+	TriggerAction( 1, TakeItem, 2383, 300 )
+	TriggerAction( 1, GiveItem, 2546, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 15, "Sacred War Administrator: If your level is above 65 and if you bring me 300 blood contract, I can give you this stone." )
+	Text( 15, "Obtained Athena Clawstone", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	Talk( 16, "Sacred War Administrator: Please select the Title Accessories that you want!" )
+        Text( 16, "Scout", JumpPage, 17)
+	Text( 16, "3rd Rank Special Attack Force", JumpPage, 18)
+	Text( 16, "Vice-Cap", JumpPage, 19)
+	Text( 16, "Major General", JumpPage, 20)
+	Text( 16, "Master Chief", JumpPage, 21)
+	Text( 16, "Next Page", JumpPage, 30)
+
+	Talk( 30, "Sacred War Administrator: Please select the Title Accessories that you want!" )
+	Text( 30, "Iron blood commander", JumpPage, 22)
+	Text( 30, "Argent lieutenant commander", JumpPage, 23)
+	Text( 30, " Golden Colonel General", JumpPage, 24)
+	Text( 30, "Gold General", JumpPage, 25)
+	Text( 30, "General Godslayer", JumpPage, 26)
+	Text( 30, "Go back a page", JumpPage, 16)
+
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 20 )
+	TriggerCondition( 1, HasLeaveBagGrid, 1 )
+	TriggerAction( 1, TakeItem, 2383, 20 )
+	TriggerAction( 1, GiveItem, 5331, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 17, "Sacred War Administrator: If you can give me 20 blood contract, I can give you this level of Medal." )
+	Text( 17, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+
+
+
+	
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 50 )
+	TriggerCondition( 1, HasItem, 5331, 1 )
+	TriggerAction( 1, TakeItem, 2383, 50 )
+	TriggerAction( 1, TakeItem, 5331, 1 )
+	TriggerAction( 1, GiveItem, 5332, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 18, "Sacred War Administrator: If you can give me 50 Blood Contract and 1st Rank Medal, I'll give you the medal of this rank." )
+	Text( 18, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 100 )
+	TriggerCondition( 1, HasItem, 5332, 1 )
+	TriggerAction( 1, TakeItem, 2383, 100 )
+	TriggerAction( 1, TakeItem, 5332, 1 )
+	TriggerAction( 1, GiveItem, 5333, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 19, "Sacred War Administrator: If you can give me 100 Blood Contract and 2nd rank Medal, I'll give you the Medal of this rank." )
+	Text( 19, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 250 )
+	TriggerCondition( 1, HasItem, 5333, 1 )
+	TriggerAction( 1, TakeItem, 2383, 250 )
+	TriggerAction( 1, TakeItem, 5333, 1 )
+	TriggerAction( 1, GiveItem, 5334, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 20, "Sacred war Administrator: If you can give me 250 Blood Contract and Medal of the 3rd rank, I'll then give you the Medal of this rank." )
+	Text( 20, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 400 )
+	TriggerCondition( 1, HasItem, 5334, 1 )
+	TriggerAction( 1, TakeItem, 2383, 400 )
+	TriggerAction( 1, TakeItem, 5334, 1 )
+	TriggerAction( 1, GiveItem, 5335, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 21, "Sacred war Administrator: If you can give me 400 Blood Contract and Medal of the 4th rank, I'll then give you the Medal of this rank." )
+	Text( 21, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 650 )
+	TriggerCondition( 1, HasItem, 5335, 1 )
+	TriggerAction( 1, TakeItem, 2383, 650 )
+	TriggerAction( 1, TakeItem, 5335, 1 )
+	TriggerAction( 1, GiveItem, 5336, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 22, "Sacred War Administrator: If you can give me 650 Blood Contract and 5th Rank Medal, I will give you the medal of this rank." )
+	Text( 22, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2865, 55 )
+	TriggerCondition( 1, HasItem, 5336, 1 )
+	TriggerAction( 1, TakeItem, 2865, 55 )
+	TriggerAction( 1, TakeItem, 5336, 1 )
+	TriggerAction( 1, GiveItem, 5337, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 23, "Sacred War Administrator: If you can give me 55 Blood Pledge Token and 6th Rank Medal, I will give you the medal of this rank." )
+	Text( 23, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2865, 80 )
+        TriggerCondition( 1, HasItem, 5337, 1)
+	TriggerAction( 1, TakeItem, 2865, 80 )
+	TriggerAction( 1, TakeItem, 5337, 1 )
+	TriggerAction( 1, GiveItem, 5338, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 24, "Sacred war Administrator: If you can give me 80 Blood pledge token and Medal of the 7th rank, I'll then give you the Medal of this rank. " )
+	Text( 24, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2865, 110 )
+	TriggerCondition( 1, HasItem, 5338, 1)
+	TriggerAction( 1, TakeItem, 2865, 110 )
+	TriggerAction( 1, TakeItem, 5338, 1 )
+	TriggerAction( 1, GiveItem, 5339, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 25, "Sacred war Administrator: If you can give me110 Blood pledge token and Medal of the 8th rank, I'll then give you the Medal of this rank. " )
+	Text( 25, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2865, 155 )
+	TriggerCondition( 1, HasItem, 5339, 1)
+	TriggerAction( 1, TakeItem, 2865, 155 )
+	TriggerAction( 1, TakeItem, 5339, 1 )
+	TriggerAction( 1, GiveItem, 5340, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 26, "Sacred War Administrator: If you can give me 155 Blood Bledge Token and 9th rank Medal, then I will give you the medal of this rank." )
+	Text( 26, "Obtained Emblem", MultiTrigger, GetMultiTrigger(), 1)
+        Talk( 27, "Sacred War Administrator: Please check if your inventory has enough space or you may not have all the items needed. I cannot exchange with you!" )
+
+
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 2383, 20 )
+	TriggerCondition( 1, HasLeaveBagGrid, 1 )
+	TriggerAction( 1, TakeItem, 2383, 20 )
+	TriggerAction( 1, GiveItem, 2865, 1, 4 )
+	TriggerFailure( 1, JumpPage, 27 )
+	Talk( 28, "Sacred War Administrator: 20 Blood Covenant can be exchanged into 1 Token of Blood Alliance!" )
+	Text( 28, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
+
+
+	
+	Talk( 29, "Sacred War Administrator: 15 honor points can be exchanged into one Life and Death Token. Life and Death Token will only disappear if you died inside Sacred War!")
+	Text( 29, "Confirm to exchange", GetChaName45_guildwar, 1)
+
+end

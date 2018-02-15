@@ -1,8 +1,6 @@
-print( "‡ Јаг§Є  scriptdefine.lua" )
+print( "Loading ScriptDefine.lua" )
 
 InitMap()
-AddMap( "leteria", "leteria1" )	
-AddMap( "flois", "noobland" )
 AddMap( "garner",          "Аскарон" )								--ID = 1
 AddMap( "magicsea",        "Магическ. Океан" )						--ID = 2
 AddMap( "darkblue",        "Великий Синий" )						--ID = 3
@@ -38,9 +36,3 @@ AddMap( "mjing3",          "1-ый край Тьмы" )						--ID = 32
 AddMap( "mjing4",          "2-ой край Тьмы" )						--ID = 33
 AddMap( "heilong",         "Логово Черного Дракона" )				--ID = 34
 AddMap( "heilong2",        "Логово Черного Дракона 2" )				--ID = 35
-AddMap( "premium",     "Премиум" )		
-AddMap( "songwar", "Песня войны" )							--ID = 36
-AddMap( "darkblue2", "Хаос Ледыни " ) --ID = 30
-AddMap( "deathcircle", "Захват флага " ) --ID = 41
-AddMap( "bountypk", "Баунти " ) --ID = 31
-AddMap( "crhell",       "Аббадон")

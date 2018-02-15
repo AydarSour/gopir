@@ -1,5 +1,5 @@
-print( "‡ Јаг§Є  missionscript01.lua" )
---MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) \n\t MisPrize(MIS_PRIZE_MONEY
+print( "Loading MissionScript01.lua" )
+
 jp= JumpPage
 amp=AutoMissionPage
 ct=CloseTalk
@@ -22,7 +22,6 @@ function RobinMission003()
 	MisResultCondition(HasItem, 3952, 1)
 	MisResultAction(TakeItem, 3952, 1)
 	MisResultAction(SetFlag, 703, 10)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1847, 99, 4)
 	MisResultBagNeed(1)
 
@@ -36,23 +35,22 @@ function RobinMission003()
 	MisBeginAction(AddMission, 721)
 	MisBeginAction(SetFlag, 721, 1)
 	MisBeginAction(AddTrigger, 7211, TE_GETITEM, 1573, 10 )
-	MisBeginAction(AddTrigger, 7212, TE_GETITEM, 1574, 5 )
+	MisBeginAction(AddTrigger, 7212, TE_GETITEM, 1574, 3 )
 	MisCancelAction(ClearMission, 721)
 
 	MisNeed(MIS_NEED_ITEM, 1573, 10, 10, 10)
-	MisNeed(MIS_NEED_ITEM, 1574, 5, 20, 5)
+	MisNeed(MIS_NEED_ITEM, 1574, 3, 20, 3)
 
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 100, 1)
+	MisPrize(MIS_PRIZE_MONEY, 100, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Замечательно! Теперь я могу продолжить исследование!")
 	MisHelpTalk("<t>Ты еще не собрал все листья?")
 	MisResultCondition(HasMission, 721)
 	MisResultCondition(HasItem, 1573, 10 )
-	MisResultCondition(HasItem, 1574, 5 )
+	MisResultCondition(HasItem, 1574, 3 )
 	MisResultAction(TakeItem, 1573, 10 )
-	MisResultAction(TakeItem, 1574, 5 )
+	MisResultAction(TakeItem, 1574, 3 )
 	MisResultAction(AddExp, 40, 70)
 	MisResultAction(ClearMission, 721)
 		
@@ -62,7 +60,7 @@ function RobinMission003()
 	RegCurTrigger( 7211 )
 	InitTrigger()
 	TriggerCondition( 1, IsItem, 1574)	
-	TriggerAction( 1, AddNextFlag, 721, 20, 5 )
+	TriggerAction( 1, AddNextFlag, 721, 20, 3 )
 	RegCurTrigger( 7212 )
 
 --Рецепт отвара
@@ -83,8 +81,7 @@ function RobinMission003()
 	MisNeed(MIS_NEED_ITEM, 1579, 2, 20, 2)
 	MisNeed(MIS_NEED_ITEM, 1705, 5, 30, 5)
 
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 200, 1)
+	MisPrize(MIS_PRIZE_MONEY, 200, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Очень хорошо. Ты принес всё необходимое, и тепер ья могу начать свой эксперимент.")
@@ -128,8 +125,7 @@ function RobinMission003()
 	MisNeed(MIS_NEED_ITEM, 3118, 5, 10, 5)
 	MisNeed(MIS_NEED_ITEM, 1725, 10, 20, 10)
 
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 300, 1)
+	MisPrize(MIS_PRIZE_MONEY, 300, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Замечательно! Ты все принес! Спасибо!")
@@ -157,64 +153,52 @@ RobinMission003()
 
 function RobinMission004()
 
+--Компас выживания
+	DefineMission( 748, "Компас выживания", 736 )
+	
+	MisBeginTalk( "<t>Ты пришел, чтобы стать Исследователем? Наш брат часто встречает опасности и должен быть готов к ним. Без нужных знаний из тебя толкового Исследователя не выйдет. Чтоб заслужить <rКомпас выжвиания>, сходи на <pОкраины Аргента>, победи 5 <bБолотных духов> (к северу от Шахт), 10 <bМоллюсков> (на побережье) и собери флаконов 5 <bЧерепашьей крови> (с Травяных черепах).<n><t>Если ты справишься, я выдам тебе <bКомпас выживания>.<n><t>А когда достигнешь уровня 10, приходи чтобы стать полноправным Исследователем." )
+	MisBeginCondition(NoMission, 736)
+	MisBeginCondition(LvCheck, ">", 8 )
+	MisBeginCondition(PfEqual, 0 )
+	MisBeginCondition(CheckConvertProfession, MIS_RISKER )
+	MisBeginAction(AddMission, 736)
+	MisBeginAction(SetFlag, 736, 1)
+	MisBeginAction(AddTrigger, 7361, TE_KILL, 104, 5 )
+	MisBeginAction(AddTrigger, 7362, TE_KILL, 39, 10 )
+	MisBeginAction(AddTrigger, 7363, TE_GETITEM, 1844, 5 )
+	MisCancelAction(ClearMission, 736)
+	
+	MisNeed(MIS_NEED_KILL, 104, 5, 10, 5)
+	MisNeed(MIS_NEED_KILL, 39, 10, 20, 10)
+	MisNeed(MIS_NEED_ITEM, 1844, 5, 30, 5)
 
+	MisPrize(MIS_PRIZE_ITEM, 3962, 1, 4)
+	MisPrizeSelAll()
+	
+	MisResultTalk("<t>Отличная работа, должен сказать!<n><t>Ты прошел мое испытания. Держи свой собственный <rКомпас выживания>. <n><t>Храни его и возвращайся по достижении <pУр10>.")
+	MisHelpTalk("<t>Ты еще не выполнил мое задание. Получить Компас не так-то легко!")
+	MisResultCondition(HasMission, 736)
+	MisResultCondition(HasFlag, 736, 14 )
+	MisResultCondition(HasFlag, 736, 29 )
+	MisResultCondition(HasItem, 1844, 5 )
+	MisResultAction(TakeItem, 1844, 5)
+	MisResultAction(ClearMission, 736)
+	MisResultBagNeed(1)
+	
+	InitTrigger()
+	TriggerCondition( 1, IsMonster, 104 )	
+	TriggerAction( 1, AddNextFlag, 736, 10, 5 )
+	RegCurTrigger( 7361 )
 
----------2999,  "начальное снаряжение ", 748)
-DefineMission(  2999,  "Начальное снаряжение ", 748)
+	InitTrigger()
+	TriggerCondition( 1, IsMonster, 39 )	
+	TriggerAction( 1, AddNextFlag, 736, 20, 10 )
+	RegCurTrigger( 7362 )
 
-MisBeginTalk(  "<t>Этот мир очень опасен, для того чтобы тут выживать вам нужна хорошая амуниция.Мы предлагаем вам выполнить наши поручения и вы получите достойное снаряжение на первое время.   " )
---Параметр "Наличие выполненного квеста" не задан
-MisBeginCondition(NoRecord, 748)
-MisBeginCondition(NoMission, 748)
-MisBeginCondition(LvCheck, ">", 30)
-MisBeginAction(AddMission, 748)
-MisBeginAction(AddTrigger, 7481, TE_KILL, 64, 25 )
-MisBeginAction(AddTrigger, 7482, TE_KILL, 88, 25 )
-MisBeginAction(AddTrigger, 7483, TE_KILL, 136, 25 )
-MisCancelAction(ClearMission, 748)
-
-MisNeed(MIS_NEED_DESP, "Начальное снаряжение ")
-MisNeed(MIS_NEED_KILL,  64, 25, 10, 25) -- 25+10-1
-MisNeed(MIS_NEED_KILL, 88, 25, 20, 25)-- 25+20-1
-MisNeed(MIS_NEED_KILL, 136, 25, 30, 25)-- 25+30-1
-
-MisPrize(MIS_PRIZE_ITEM, 8577, 1, 4)
-MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-MisPrizeSelAll()
-
-
-MisResultTalk( "<t>Поздравляю, вы выполнили нашу просьбу  ")
-MisHelpTalk( "<t>К сожалению вы не выполнили условия нашего договора  ")
-
-MisResultCondition(HasMission, 748)
-MisResultCondition(HasFlag, 748, 34 )
-MisResultCondition(HasFlag, 748, 44 )
-MisResultCondition(HasFlag, 748, 54 )
-MisResultAction(ClearMission, 748)
-MisResultAction(SetRecord, 748)
-MisResultAction(AddMoney, 100000, 100000)
-MisResultAction(AddExp, 15000, 15000)
-MisResultBagNeed(1)
-
-InitTrigger()
-TriggerCondition( 1, IsMonster, 64)
-TriggerAction( 1, AddNextFlag, 748, 10, 25)
-RegCurTrigger( 7481)
-
-InitTrigger()
-TriggerCondition( 1, IsMonster, 88)
-TriggerAction( 1, AddNextFlag, 748, 20, 25)
-RegCurTrigger( 7482)
-
-InitTrigger()
-TriggerCondition( 1, IsMonster, 136)
-TriggerAction( 1, AddNextFlag, 748, 30, 25)
-RegCurTrigger( 7483)
--------------Конец квеста
-
-
-
-
+	InitTrigger()
+	TriggerCondition( 1, IsItem, 1844 )	
+	TriggerAction( 1, AddNextFlag, 736, 30, 5 )
+	RegCurTrigger( 7363 )
 
 -------------------------
 -- Получение 2 профессии
@@ -278,7 +262,7 @@ RegCurTrigger( 7483)
 	DefineMission( 763, "Путешествие Покорителя Морей", 742, COMPLETE_SHOW)
 
 	MisBeginCondition( AlwaysFailure )
-	MisResultTalk("<t>Под парусом в море опасно. Поговори со мной, если тебе что-то понадобится. Малыш Даниэль помогал мне много в прошлом, возвращайся к нему.")
+	MisResultTalk("<t>Под парусом в море опасно. Поговори со мной, если тебе что-то понадобится. Малыш Даниэль помогал мне много в прошлом.")
 	MisResultCondition(NoRecord, 742)
 	MisResultCondition(HasMission, 742)
 	MisResultCondition(NoFlag, 742, 50)
@@ -330,7 +314,6 @@ function RobinMission017()
 	MisNeed(MIS_NEED_KILL, 247, 10, 30, 10)
 
 	MisPrize(MIS_PRIZE_ITEM, 3954, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Ты справилась!<n><t>Ты прошла тест, возьми же <rПатент> и стань великим целителем.<n><t>Храни его и возвращайся ко мне по достижении <pУр 10>. ")
@@ -365,7 +348,7 @@ function RobinMission017()
 --Прогулка Целительницы
 	DefineMission( 751, "Прогулка Целительницы", 739 )
 
-	MisBeginTalk( "<t>Для того чтобы стать <bЦелительницей>, у тебя должна быть вера. Я надеюсь, что ты будешь помнить об этом. У меня есть для тебя очень простая задача.<n><t>Собери:<n><t>1 <yЛепесток многоцвета>, 2 <yПанацеи> и 3 кувшина <yСока эльфийских фруктов>.<n><t>И передай это <bБабушке Донг> в Пустоши Ледыни. Она очень будет этому рада.Затем возвращайся обратно ко мне что закончить задание" )
+	MisBeginTalk( "<t>Для того чтобы стать <bЦелительницей>, у тебя должна быть вера. Я надеюсь, что ты будешь помнить об этом. У меня есть для тебя очень простая задача.<n><t>Собери:<n><t>1 <yЛепесток многоцвета>, 2 <yПанацеи> и 3 кувшина <yСока эльфийских фруктов>.<n><t>И передай это <bБабушке Донг> в Пустоши Ледыни. Она очень будет этому рада." )
 	MisBeginCondition(NoRecord, 739)
 	MisBeginCondition(NoMission, 740)
 	MisBeginCondition(NoMission, 739)
@@ -391,7 +374,7 @@ function RobinMission017()
 	DefineMission( 752, "Прогулка Целительницы", 739, COMPLETE_SHOW)
 
 	MisBeginCondition( AlwaysFailure )
-	MisResultTalk("Это что подарок мне? Ты так добр. Я скажу Первосвященнику об этом. Возвращайся к нему.")
+	MisResultTalk("Это что подарок мне? Ты так добр. Я скажу Первосвященнику об этом..")
 	MisResultCondition(NoRecord, 739)
 	MisResultCondition(HasMission, 739)
 	MisResultCondition(NoFlag, 739, 10)
@@ -404,20 +387,20 @@ function RobinMission017()
 	MisResultAction(SetFlag, 739, 10)
 
 
-	DefineMission( 753, "Прогулка Целительницы", 739, COMPLETE_SHOW)
+--	DefineMission( 753, "Прогулка Целительницы", 739, COMPLETE_SHOW)
 
-	MisBeginCondition( AlwaysFailure )
-	MisResultTalk("Это первосвященник послал тебя. Мне не хватает некоторых важных трав и ты пришел в нужный момент. Я отчитаюсь перед первосвященником по этому вопросу.")
-	MisResultCondition(NoRecord, 739)
-	MisResultCondition(HasMission, 739)
-	MisResultCondition(NoFlag, 739, 20)
-	MisResultCondition(HasItem, 3122, 3)
-	MisResultCondition(HasItem, 3146, 2)
-	MisResultCondition(HasItem, 3130, 1)
-	MisResultAction(TakeItem, 3122, 3)
-	MisResultAction(TakeItem, 3146, 2)
-	MisResultAction(TakeItem, 3130, 1)
-	MisResultAction(SetFlag, 739, 20)
+--	MisBeginCondition( AlwaysFailure )
+--	MisResultTalk("Это первосвященник послал тебя. Мне не хватает некоторых важных трав и ты пришел в нужный момент. Я отчитаюсь перед первосвященником по этому вопросу.")
+--	MisResultCondition(NoRecord, 739)
+--	MisResultCondition(HasMission, 739)
+--	MisResultCondition(NoFlag, 739, 20)
+--	MisResultCondition(HasItem, 3122, 3)
+--	MisResultCondition(HasItem, 3146, 2)
+--	MisResultCondition(HasItem, 3130, 1)
+--	MisResultAction(TakeItem, 3122, 3)
+--	MisResultAction(TakeItem, 3146, 2)
+--	MisResultAction(TakeItem, 3130, 1)
+--	MisResultAction(SetFlag, 739, 20)
 
 ------------------------
 -- Получение 2 профессии
@@ -494,7 +477,7 @@ function RobinMission024()
 	--MisResultCondition(HasFlag, 700, 20)
 	MisResultAction(ClearMission, 1)
 	MisResultAction(SetRecord, 1)
-	MisResultAction(AddExp, 1, 1)
+	MisResultAction(AddExp, 6, 6)
 
 --Приветствие кузнеца
 	DefineMission( 702, "Приветствие кузнеца", 701 )
@@ -589,8 +572,7 @@ function RobinMission024()
 	MisNeed(MIS_NEED_ITEM, 1620, 1, 10, 1)
 	MisNeed(MIS_NEED_KILL, 103, 5, 20, 5)
 	
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 100, 1)
+	MisPrize(MIS_PRIZE_MONEY, 100, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Похоже, что ты уловил основы битвы и подбора предметов. Очень хорошо.<n><t>Раз уж ты выучился всему, что я могу тебе дать, почему бы не вернуть должок? Моему другу Маркусе пригодился бы хороший боец (2065, 2732). Если же драки тебе не по душе, посети Врача Дитто (2250, 2770). Последнее время он частенько нанимает новичков для сбора ингридиентов.<n><t>Удачи тебе!")
@@ -633,7 +615,6 @@ function RobinMission025()
 	MisResultCondition(HasItem, 3951, 1)
 	MisResultAction(TakeItem, 3951, 1)
 	MisResultAction(SetFlag, 702, 10)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 465, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -642,6 +623,7 @@ RobinMission025()
 
 function RobinMission026()
 
+-----------------------------------УВЖшЦ¤Кй
 	DefineMission( 709, "Свидетельство храбрости", 705 )
 	
 	MisBeginTalk( "<t>Ты здесь ради Свидетельства храбрости? А ты смелый!<n><t>Но одной смелости будет мало, чтоб получить <rСвидетельство храбрости>, докажи что ты ловок и умен.<n><t>Иди на <pОкраины Аргента> и победи 10 <bМилых овечек> (2057, 2638), 10 <bПузырчатых моллюсков> на северном пляже, а также 10 <bСвинокрылов> и возвращайся ко мне.<n><t>Если сможешь всё это сделать, я посчитаю тебя достойным <bСвидетельства храбрости>." )
@@ -659,7 +641,7 @@ function RobinMission026()
 	MisNeed(MIS_NEED_KILL, 237, 10, 10, 10)
 	MisNeed(MIS_NEED_KILL, 213, 10, 20, 10)
 	MisNeed(MIS_NEED_KILL, 125, 10, 30, 10)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 3953, 1, 4)
 	MisPrizeSelAll()
 	
@@ -697,13 +679,13 @@ function RobinMission026()
 	MisBeginCondition(NoMission, 737)
 	MisBeginCondition(LvCheck, ">", 39 )
 	MisBeginCondition(PfEqual, 1 )
-	MisBeginCondition(TurnToJob, 2 )
+	MisBeginCondition(CheckConvertProfession, MIS_TWO_FENCER )
 	MisBeginAction(AddMission, 737)
 	MisBeginAction(AddTrigger, 7371, TE_GETITEM, 4474, 5 )
 	MisCancelAction(ClearMission, 737)
 
 	MisNeed(MIS_NEED_ITEM, 4474, 5, 20, 5)
-	
+
 	MisResultTalk("<t>Поздравляю!<n><t>Теперь ты полноправный <bВоительr>!<n><t>Новые приключения ждут тебя!")
 	MisHelpTalk("<t>Мои требования высоки, но я верю, что ты справишься.")
 	MisResultCondition(HasMission, 737)
@@ -725,7 +707,7 @@ function RobinMission026()
 --Мужество чемпиона
 	DefineMission( 750, "Мужество чемпиона", 738 )
 
-	MisBeginTalk( "<t>Хочешь стать <bЧемпионом>? Хорошо!<n><t>Принеси мне следующие вещи: <n><t>5 <yБольших камней> у <rСкальных големов> обитающих в <pАндийском лесу> (702,2604).<n><t>Таким образом ты докажешь, что сможешь стать великим Чемпионом." )
+	MisBeginTalk( "<t>Хочешь стать <bЧемпионом>? Хорошо!<n><t>Принеси мне следующие вещи: <n><t>5 <yБольших камней> у <rСкальных големов> обитающих в <pАндийском лесу> (737,1718).<n><t>Таким образом ты докажешь, что сможешь стать великим Чемпионом." )
 	MisBeginCondition(NoRecord, 738)
 	MisBeginCondition(NoMission, 738)
 	MisBeginCondition(LvCheck, ">", 39 )
@@ -770,7 +752,7 @@ function RobinMission027()
 	--MisResultCondition(HasFlag, 706, 20)
 	MisResultAction(ClearMission, 2)
 	MisResultAction(SetRecord, 2)
-	MisResultAction(AddExp, 1, 1)
+	MisResultAction(AddExp, 6, 6)
 
 --Приветствие кузнеца
 	DefineMission( 712, "Приветствие кузнеца", 707 )
@@ -864,9 +846,8 @@ function RobinMission027()
 
 	MisNeed(MIS_NEED_ITEM, 1691, 1, 10, 1)
 	MisNeed(MIS_NEED_KILL, 188, 5, 20, 5)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 100, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 100, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Отлично! Похоже, ты уловил основы боя и подбора предметов.<n><t>Раз уж я научила тебя всему что нужно, почему бы тебе не вернуть должок? Помоги моему другу <bМайклу>. Он сейчас в патруле на окраинах города (2085, 2742). Если хочешь, вместо этого сходи к доктору <bШайле> (2250, 2770). В последнее время она не скупится на найм помощников в сборе лекарственных ингридиентов.")
@@ -907,7 +888,6 @@ function RobinMission028()
 	MisResultCondition(HasItem, 3957, 1)
 	MisResultAction(TakeItem, 3957, 1)
 	MisResultAction(SetFlag, 708, 10)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 465, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -930,7 +910,7 @@ function RobinMission030()
 	--MisResultCondition(HasFlag, 712, 20)
 	MisResultAction(ClearMission, 3)
 	MisResultAction(SetRecord, 3)
-	MisResultAction(AddExp, 1, 1)
+	MisResultAction(AddExp, 6, 6)
 
 
 --Приветствие кузнеца
@@ -1027,9 +1007,8 @@ function RobinMission030()
 	MisNeed(MIS_NEED_ITEM, 1597, 1, 10, 1)
 	MisNeed(MIS_NEED_KILL, 234, 5, 20, 5)
 
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 100, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 100, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Отлично, ты усвоил основы боя и подбирания предметов.")
@@ -1091,7 +1070,6 @@ function RobinMission032()
 	MisResultCondition(HasItem, 3960, 1)
 	MisResultAction(TakeItem, 3960, 1)
 	MisResultAction(SetFlag, 714, 10)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 465, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -1112,7 +1090,6 @@ function RobinMission033()
 	MisResultCondition(HasItem, 3961, 1)
 	MisResultAction(TakeItem, 3961, 1)
 	MisResultAction(SetFlag, 715, 10)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1847, 99, 4)
 	MisResultBagNeed(1)
 
@@ -1130,8 +1107,7 @@ function RobinMission033()
 
 	MisNeed(MIS_NEED_ITEM, 1704, 5, 10, 5)
 
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 100, 1)
+	MisPrize(MIS_PRIZE_MONEY, 100, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Отличное пополнение моей коллекции.<n><t>Спасибо!")
@@ -1161,9 +1137,8 @@ function RobinMission033()
 	MisCancelAction(ClearMission, 734)
 
 	MisNeed(MIS_NEED_ITEM, 3372, 5, 10, 5)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 200, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 200, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Хохо. Теперь моя коллекция прекрасна.")
@@ -1195,9 +1170,8 @@ function RobinMission033()
 	MisCancelAction(ClearMission, 735)
 
 	MisNeed(MIS_NEED_ITEM, 1779, 5, 10, 5)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 300, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 300, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Хехе! <n><t>Теперь у меня есть флаконы, в которых можно хранить экспонаты. Хаха, как же я счастлив!")
@@ -1240,7 +1214,7 @@ function RobinMission034()
 	MisNeed(MIS_NEED_KILL, 240, 10, 10, 10)
 	MisNeed(MIS_NEED_ITEM, 3122, 1, 20, 1)
 	MisNeed(MIS_NEED_KILL, 238, 10, 30, 10)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 3955, 1, 4)
 	MisPrizeSelAll()
 	
@@ -1342,9 +1316,8 @@ function RobinMission035()
 	MisCancelAction(ClearMission, 718)
 	
 	MisNeed(MIS_NEED_KILL, 206, 10, 10, 10)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 50, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 50, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Вот здорово! Ты настоящий друг. Благодаря тебе, мне не придется снова драить туалеты за весь батальон!")
@@ -1373,9 +1346,8 @@ function RobinMission035()
 	MisCancelAction(ClearMission, 724)
 	
 	MisNeed(MIS_NEED_KILL, 184, 15, 10, 15)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 100, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 100, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Уже всё?<n><t>Ты отлично поработал! Я перехожу к другим задачам, а тебе спасибо.")
@@ -1406,9 +1378,8 @@ function RobinMission035()
 	MisCancelAction(ClearMission, 725)
 	
 	MisNeed(MIS_NEED_KILL, 119, 10, 10, 10)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 150, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 150, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Закончил?<n><t>Отлично! Хоть мне и жаль бедных черепах, но наши жизни важнее...")
@@ -1442,7 +1413,6 @@ function RobinMission036()
 	MisResultCondition(HasItem, 3958, 1)
 	MisResultAction(TakeItem, 3958, 1)
 	MisResultAction(SetFlag, 709, 10)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1847, 99, 4)
 	MisResultBagNeed(1)
 
@@ -1461,9 +1431,8 @@ function RobinMission036()
 
 	MisNeed(MIS_NEED_ITEM, 1691, 5, 10, 5)
 	MisNeed(MIS_NEED_ITEM, 1597, 5, 20, 5)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 100, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 100, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Отлично! Теперь я начну свой эксперимент. Возвращайся через год, посмотришь на результат!")
@@ -1502,9 +1471,8 @@ function RobinMission036()
 
 	MisNeed(MIS_NEED_ITEM, 1648, 5, 10, 5)
 	MisNeed(MIS_NEED_ITEM, 1777, 2, 20, 2)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 200, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 200, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Хаха! Отлично! Теперь я точно его одурачу.")
@@ -1544,9 +1512,8 @@ function RobinMission036()
 
 	MisNeed(MIS_NEED_ITEM, 1692, 5, 10, 5)
 	MisNeed(MIS_NEED_ITEM, 3117, 2, 20, 2)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 300, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 300, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Я должна сказать 'спасибо'. Теперь можно начать смешивание.")
@@ -1588,9 +1555,8 @@ function RobinMission037()
 	MisCancelAction(ClearMission, 719)
 	
 	MisNeed(MIS_NEED_KILL, 95, 15, 10, 15)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 50, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 50, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Слава Богине! Ты сильно помог.")
@@ -1620,9 +1586,8 @@ function RobinMission037()
 	MisCancelAction(ClearMission, 728)
 	
 	MisNeed(MIS_NEED_KILL, 48, 10, 10, 10)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 100, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 100, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Замечательно. Жалоб больше быть не должно.<n><t>Эти верблюды совсем отбились от рук.")
@@ -1652,9 +1617,8 @@ function RobinMission037()
 	MisCancelAction(ClearMission, 729)
 	
 	MisNeed(MIS_NEED_KILL, 247, 10, 10, 10)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 150, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 150, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Хохо! Я не зря дал это задание именно тебе!")
@@ -1688,9 +1652,8 @@ function RobinMission038()
 	MisCancelAction(ClearMission, 720)
 	
 	MisNeed(MIS_NEED_KILL, 235, 15, 10, 15)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 50, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 50, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Спасибо. Теперь я могу расслабиться.")
@@ -1719,9 +1682,8 @@ function RobinMission038()
 	MisCancelAction(ClearMission, 730)
 
 	MisNeed(MIS_NEED_KILL, 239, 10, 10, 10)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 100, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 100, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Все? Спасибо! У этих свинокрылов огромный аппетит. Может, и мне стоит почаще жарить свининку?")
@@ -1751,9 +1713,8 @@ function RobinMission038()
 	MisCancelAction(ClearMission, 731)
 	
 	MisNeed(MIS_NEED_KILL, 238, 10, 10, 10)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-	MisPrize(MIS_PRIZE_ITEM, 8288 , 1 , 4) 
-	 MisPrize(MIS_PRIZE_MONEY, 150, 1)
+
+	MisPrize(MIS_PRIZE_MONEY, 150, 1)
 	MisPrizeSelAll()
 	
 	MisResultTalk("<t>Хорошо! Ты справился!<n><t>Я отложу все дела ради этой оленины! Хехе...")
@@ -1813,7 +1774,7 @@ function RobinMission039()
 	
 	MisBeginCondition( AlwaysFailure )
 
-	MisResultTalk("<t>Это хорошо, что вы здесь, я мог бы использовать руку при помощи.<n><t>также, примем к сведению ваши полоска HP в бою. Правильно, красная полоска показывает уровень HP. Вы умрете, когда он достигает 0. Будьте осторожны!<п><т>помимо еды \"яблоки\", \"пирожные\" или другое зелье восстановления, вы можете нажать \"Добавить\" ключ к увеличение скорости восстановления HP/SP.")
+	MisResultTalk("<t>It's good that you are here, I could use a helping hand.<n><t>Also, take note of your HP bar while in battle. That's right, the red bar shows your HP level. You will die when it reaches 0. Beware!<n><t>Beside eating \"Apples\", \"Cakes\" or other recovery potion, you can press the \"Insert\" key to increase HP/SP recovery rate.")
 	MisResultCondition(NoRecord, 50)
 	MisResultCondition(HasMission, 50)
 	MisResultCondition(HasItem, 4111, 1)
@@ -1959,7 +1920,7 @@ function RobinMission039()
 
 	MisNeed(MIS_NEED_DESP, "Убейте 12 <rТравяных Черепах> и вернитесь в Аргент к Голлди")
 	MisNeed(MIS_NEED_KILL, 119, 12, 10, 12)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 4309, 1, 4)
 	MisPrizeSelAll()
 	
@@ -2016,8 +1977,7 @@ function RobinMission039()
 	MisBeginTalk( "<t>Пришло время выбрать, кем же ты хочешь стать. Если ты хочешь стать мечником, отправляйся в Аргент и разыщи замкового стража <bПитера>. Его можно найти в точке (2192, 2767). У него есть задания для тебя.<n><t>Мечник - это самый сильный класс ближнего боя. Они могут развиться в ловкого Воителя или Чемпиона.")
 	MisBeginCondition(LvCheck, ">", 8 )
 	MisBeginCondition(PfEqual, 0 )
-	MisBeginCondition(TurnToJob, 1 )
-	
+	MisBeginCondition(CheckConvertProfession, MIS_FENCER )
 	MisBeginCondition(NoRecord, 58)
 	MisBeginCondition(NoRecord, 59)
 	MisBeginCondition(NoRecord, 60)
@@ -2039,7 +1999,7 @@ function RobinMission039()
 --Карьера охотника
 	DefineMission( 63, "Карьера охотника", 59 )
 	
-	MisBeginTalk( "<t>Вот и пришло время сделать выбор. Если ты хочешь быть охотником, передай это письмо Рэю в Ледыни (1365,570). У него есть задания, чтобы проверить твои способности.<n><t>Охотник - это класс, который использует лук или пушку для дальней атаки, им может стать Ланс или Филлис." )
+	MisBeginTalk( "<t>Вот и пришло время сделать выбор. Если ты хочешь быть охотником, передай это письмо Рэю в Ледыни (1365,70). У него есть задания, чтобы проверить твои способности.<n><t>Охотник - это класс, который использует лук или пушку для дальней атаки, им может стать Ланс или Филлис." )
 	MisBeginCondition(LvCheck, ">", 8 )
 	MisBeginCondition(PfEqual, 0 )
 	MisBeginCondition(CheckConvertProfession, MIS_HUNTER )
@@ -2246,9 +2206,7 @@ function RobinMission039()
 	MisResultAction(SetRecord, 65)
 	MisResultAction(AddExp, 100, 100)
 	MisResultAction(SetProfession, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3164, 1, 4)
 	MisResultBagNeed(2)
 
@@ -2339,7 +2297,7 @@ function RobinMission039()
 	
 	MisNeed(MIS_NEED_DESP, "Соберите 6 <rЯдовитых грибов> и доложите Рори (2240, 2752)")
 	MisNeed(MIS_NEED_ITEM, 1725, 6, 10, 6)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 4308, 1, 4)
 	MisPrizeSelAll()
 	
@@ -2402,7 +2360,7 @@ function RobinMission039()
 	
 	MisNeed(MIS_NEED_DESP, "Соберите 2 пузырька <rЧерепашьей Крови> и принесите Коди в Аргент (2219, 2911)")
 	MisNeed(MIS_NEED_ITEM, 1844, 2, 10, 2)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+	
 	MisPrize(MIS_PRIZE_ITEM, 4310, 1, 4)
 	MisPrizeSelAll()
 	
@@ -2492,7 +2450,7 @@ function RobinMission039()
 	
 	MisBeginCondition( AlwaysFailure )
 
-	MisResultTalk("<t>Это хорошо, что вы здесь, я мог бы использовать руку при помощи.<n><t>также, примем к сведению ваши полоска HP в бою. Правильно, красная полоска показывает уровень HP. Вы умрете, когда он достигает 0. Будьте осторожны!<п><т>помимо еды \"яблоки\", \"пирожные\" или другое зелье восстановления, вы можете нажать \"Добавить\" ключ к увеличение скорости восстановления HP/SP.")
+	MisResultTalk("<t>It's good that you are here, I could use a helping hand.<n><t>Also, take note of your HP bar while in battle. That's right, the red bar shows your HP level. You will die when it reaches 0. Beware!<n><t>Beside eating \"Apples\", \"Cakes\" or other recovery potion, you can press the \"Insert\" key to increase HP/SP recovery rate.")
 	MisResultCondition(NoRecord, 72)
 	MisResultCondition(HasMission, 72)
 	MisResultCondition(HasItem, 4123, 1)
@@ -2572,7 +2530,7 @@ function RobinMission039()
 
 	MisNeed(MIS_NEED_DESP, "Убейте 8  <rГорбатых Верблюдов> и сообщите Франко в Шайтане")
 	MisNeed(MIS_NEED_KILL, 48, 8, 10, 8)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 9, 1, 4)
 	MisPrizeSelAll()
 	
@@ -2636,7 +2594,7 @@ function RobinMission039()
 
 	MisNeed(MIS_NEED_DESP, "Убейте 12 <rБольших Скорпионов> и вернитесь к Смиту в Шайтан")
 	MisNeed(MIS_NEED_KILL, 247, 12, 10, 12)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 4309, 1, 4)
 	MisPrizeSelAll()
 	
@@ -2820,9 +2778,7 @@ function RobinMission039()
 	MisResultAction(SetRecord, 83)
 	MisResultAction(AddExp, 100, 100)
 	MisResultAction(SetProfession, 5)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3206, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 97, 1, 4)
 	MisResultBagNeed(2)
 
@@ -2914,7 +2870,7 @@ function RobinMission039()
 	
 	MisNeed(MIS_NEED_DESP, "Собери 3 пузырька <rТемной Воды> и принесите Лене в Шайтан (883, 3520)")
 	MisNeed(MIS_NEED_ITEM, 1648, 3, 10, 3)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 4308, 1, 4)
 	MisPrizeSelAll()
 
@@ -2977,7 +2933,7 @@ function RobinMission039()
 	
 	MisNeed(MIS_NEED_DESP, "Соберите 3 <rЦветок Кактуса> и поговорите с Франклином")
 	MisNeed(MIS_NEED_ITEM, 1692, 3, 10, 3)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 4310, 1, 4)
 	MisPrizeSelAll()	
 
@@ -3068,7 +3024,7 @@ function RobinMission039()
 	
 	MisBeginCondition( AlwaysFailure )
 
-	MisResultTalk("<t>Это хорошо, что вы здесь, я мог бы использовать руку при помощи.<n><t>также, примем к сведению ваши полоска HP в бою. Правильно, красная полоска показывает уровень HP. Вы умрете, когда он достигает 0. Будьте осторожны!<п><т>помимо еды \"яблоки\", \"пирожные\" или другое зелье восстановления, вы можете нажать \"Добавить\" ключ к увеличение скорости восстановления HP/SP.")
+	MisResultTalk("<t>It's good that you are here, I could use a helping hand.<n><t>Also, take note of your HP bar while in battle. That's right, the red bar shows your HP level. You will die when it reaches 0. Beware!<n><t>Beside eating \"Apples\", \"Cakes\" or other recovery potion, you can press the \"Insert\" key to increase HP/SP recovery rate.")
 	MisResultCondition(NoRecord, 90)
 	MisResultCondition(HasMission, 90)
 	MisResultCondition(HasItem, 4131, 1)
@@ -3148,7 +3104,7 @@ function RobinMission039()
 
 	MisNeed(MIS_NEED_DESP, "Убейте 8  <bСнежных Свинокрылов> и вернитесь к Рэю в Ледынь (1365, 570)")
 	MisNeed(MIS_NEED_KILL, 239, 8, 10, 8)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 9, 1, 4)
 	MisPrizeSelAll()
 
@@ -3211,7 +3167,7 @@ function RobinMission039()
 
 	MisNeed(MIS_NEED_DESP, "Поймайте 12 <bОленят> и передайте их Ханне (1349, 539)")
 	MisNeed(MIS_NEED_KILL, 238, 12, 10, 12)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 4309, 1, 4)
 	MisPrizeSelAll()
 	
@@ -3397,9 +3353,7 @@ function RobinMission039()
 	MisResultAction(SetRecord, 151)
 	MisResultAction(AddExp, 100, 100)
 	MisResultAction(SetProfession, 2)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3187, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 25, 1, 4)
 	MisResultBagNeed(2)
 
@@ -3491,7 +3445,7 @@ function RobinMission039()
 	
 	MisNeed(MIS_NEED_DESP, "Собери 2 <rФлакона> и вернимсь к Яски в Ледынь в точку (964, 422)")
 	MisNeed(MIS_NEED_ITEM, 1779, 2, 10, 2)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 4308, 1, 4)
 	MisPrizeSelAll()	
 
@@ -3554,7 +3508,7 @@ function RobinMission039()
 	
 	MisNeed(MIS_NEED_DESP, "Собери 1 <bСлезу> и вернись к Белинде в Ледынь по координатам (1360, 519)")
 	MisNeed(MIS_NEED_ITEM, 1681, 1, 10, 1)
-	MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
+
 	MisPrize(MIS_PRIZE_ITEM, 4310, 1, 4)
 	MisPrizeSelAll()	
 
@@ -3736,9 +3690,7 @@ function RobinMission039()
 	MisResultAction(SetRecord, 161)
 	MisResultAction(AddExp, 100, 100)
 	MisResultAction(SetProfession, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 867, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3227, 1, 4)
 	MisResultBagNeed(2)
 
@@ -3764,7 +3716,6 @@ function RobinMission039()
 	MisResultAction(TakeItem, 4543, 40 )
 	MisResultAction(ClearMission, 162)
 	MisResultAction(SetRecord, 162)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4605, 1, 4)
 	MisResultAction(SetTradeItemLevel, 1 )
 	MisResultBagNeed(1)

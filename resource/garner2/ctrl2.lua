@@ -12,17 +12,16 @@ end
 
 function get_map_entry_pos_garner2()
 
-	local POS_X=2186
-	local POS_Y=2804
+	local POS_X=1370
+	local POS_Y=532
 	return POS_X , POS_Y
-
 
 end
 
 function init_entry(map)
 
-	SetMapEntryMapName(map, "garner")
-	SetMapEntryTime(map, "2010/10/18/14/0", "0/7/0", "0/0/30", "0/0/45")
+	SetMapEntryMapName(map, "darkblue")
+	SetMapEntryTime(map, "2010/10/18/14/0", "0/6/0", "0/0/30", "0/0/45")
 end
 
 function after_enter_garner2( role , map_copy )

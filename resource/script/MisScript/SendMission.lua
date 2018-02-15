@@ -1,4 +1,4 @@
-print( "Загрузка sendMission.lua" )
+print( "Loading SendMission.lua" )
 
 function TestDefMission( id, name, misid, npcid, areaid )
 	DefineMission( id, name, misid, COMPLETE_SHOW )

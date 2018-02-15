@@ -17,11 +17,10 @@ end
 
 function init_entry(map)
     SetMapEntryMapName(map, "hell3")
-    SetMapEntryTime(map, "2007/1/0/00/0", "/1/0", "0/2/0", "0/3/0")
+    SetMapEntryTime(map, "2007/1/0/23/0", "1/0/0", "0/2/0", "0/3/0")
 end
 
 function after_enter_hell4( role , map_copy )
---AfterEnter(role)
 	local cha_name=GetChaDefaultName(role)
 	SystemNotice ( role, "Таинственный голос: <"..cha_name..">, Я покажу Тебе реальную Власть Смерти! " ) 
 end
@@ -96,10 +95,15 @@ end
 function can_open_entry_hell4( map ) 
 --	local time = GetTickCount ( ) 
 	local Now_Week = GetNowWeek()
-	if Now_Week == 6 or Now_Week == 0  or Now_Week == 5 or  Now_Week == 4  or  Now_Week == 3 or  Now_Week == 2  then
+	if Now_Week == 5 or Now_Week == 6 then
 		return 1
 	end
 
+	if Now_Week == 6 then
+		return 1
+	end
+	if Now_Week == 0 then
+		return 1
+	end
+		return 0
 end 
-function map_copy_run_special_hell4()
-end

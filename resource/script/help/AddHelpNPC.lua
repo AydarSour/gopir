@@ -63,5 +63,9 @@ function antichit3par(...)
 	end
 end
 
+--Hook:SetHookPattern("^.*_End", "PRE", antichit3par, 2)
+--Hook:SetHookPattern("^.*_Begin", "PRE", antichit2par, 2)
+--Hook:SetHookPattern("^.*_Use", "PRE", antichit2par, 2)
+--Hook:SetHookPattern("^.*_Unuse", "PRE", antichit2par, 2)
 Hook:SetHookPattern("^after_enter_.*$", "POST", PlayerEnterMap, 2)
 Hook:SetHookPattern("^before_leave_.*$", "POST", PlayerLeaveMap, 2)

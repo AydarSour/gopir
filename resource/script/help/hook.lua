@@ -1,5 +1,5 @@
 print("Loading Hook Library by MaTT");
-dofile(GetResPath("script/extension/custom_ai/teleport.lua"))
+
 Hook = { hookList = {}, enabled = true }
 
 function Hook:AddReplacementHook(originalFctName, newFct)
@@ -224,4 +224,3 @@ function Hook:SortHooks(hookList)
 						end
 	table.sort(hookList, compareFct)
 end
-

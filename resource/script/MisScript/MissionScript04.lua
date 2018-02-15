@@ -1,9 +1,9 @@
 ------------------------------------------------------------
---missionscript04.lua Created by Robin 2005.05.27.
+--MissionScript04.lua Created by Robin 2005.05.27.
 --
 --÷чѕя»ќќс
 ------------------------------------------------------------
-print( "З†£агІ™† missionscript04.lua" )
+print( "loading MissionScript04.lua" )
 
 jp= JumpPage
 amp=AutoMissionPage
@@ -16,8 +16,18 @@ mc=MissionCheck
 
 
 
+
+----------------------------------------------------------
+--							--
+--							--
+--		÷чѕя»ќќс	 				--
+--							--
+--							--
+----------------------------------------------------------
+	-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>÷чѕя»ќќсњ™ Љ
 function CenterMission001()
 
+----------------------------“∞ ё≥ц√їµƒ…≠Ѕ÷
 	DefineMission( 400, "Ѕлуждающие существа", 400 )
 	
 	MisBeginTalk( "<t>√устой лес - это опасное место, где рыскают свирепые медведи.<n><t>“ем не менее, мой плем€нник, <bBerry>, живет в <p«аброшенных Ўахтах>, которые наход€тс€ на краю леса. —мелый странник, не мог бы ты навестить его от моего имени и убедитьс€ в том, что с ним все в пор€дке?" )
@@ -1577,7 +1587,6 @@ CenterMission001()
 	MisResultAction(TakeItem, 4283, 100)
 	MisResultAction(TakeItem, 4284, 100)
 	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4286, 1, 4)
 	MisResultAction(ClearMission, 1700 )
 	MisResultAction(SetRecord, 1700)
@@ -1629,7 +1638,6 @@ CenterMission001()
 	MisResultAction(TakeItem, 4283, 100)
 	MisResultAction(TakeItem, 4284, 100)
 	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4286, 1, 4)
 	MisResultAction(ClearMission, 1701 )
 	MisResultBagNeed(1)
@@ -1681,7 +1689,6 @@ CenterMission001()
 	MisResultAction(TakeItem, 4283, 100)
 	MisResultAction(TakeItem, 4284, 100)
 	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4286, 1, 4)
 	MisResultAction(ClearMission, 1702 )
 	MisResultBagNeed(1)
@@ -1733,7 +1740,6 @@ CenterMission001()
 	MisResultAction(TakeItem, 4283, 100)
 	MisResultAction(TakeItem, 4284, 100)
 	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4286, 1, 4)
 	MisResultAction(ClearMission, 1703 )
 	MisResultBagNeed(1)
@@ -1784,7 +1790,6 @@ CenterMission001()
 	MisResultAction(TakeItem, 4283, 100)
 	MisResultAction(TakeItem, 4284, 100)
 	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4286, 1, 4)
 	MisResultAction(ClearMission, 1704 )
 	MisResultBagNeed(1)
@@ -1835,7 +1840,6 @@ CenterMission001()
 	MisResultAction(TakeItem, 4283, 100)
 	MisResultAction(TakeItem, 4284, 100)
 	MisResultAction(TakeItem, 4285, 100)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 4286, 1, 4)
 	MisResultAction(ClearMission, 1705 )
 	MisResultBagNeed(1)

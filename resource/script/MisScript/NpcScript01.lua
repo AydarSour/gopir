@@ -1,11 +1,11 @@
 --------------------------------------------------------------------------
 --									--
 --									--
---npcscripts01.lua Created by Robin 2005.1.20.	--
+--NPCScript01.lua Created by Robin 2005.1.20.	--
 --									--
 --									--
 --------------------------------------------------------------------------
-print( "‡ Јаг§Є  npcscripts01.lua" )
+print( "loading NPCScript01.lua" )
 
 jp= JumpPage
 amp=AutoMissionPage
@@ -85,13 +85,13 @@ function r_talk86()
 	TriggerCondition( 2, CheckRase, 2 )
 	TriggerAction( 2, JumpPage, 2 )
 	TriggerCondition( 3, CheckRase, 3 )
-	TriggerAction( 3, JumpPage, 2 )
+	TriggerAction( 3, JumpPage, 1 )
 	TriggerCondition( 4, CheckRase, 4 )
 	TriggerAction( 4, JumpPage, 1 )
 	Start( GetMultiTrigger(), 4 )
 
 	Talk( 1, "Питер: Привет, я страж Питер. Я охраняю этот замечательный город от бандитов. Так же я провожу тренировки юных Мечников. К сожалению ты не можешь у меня пройти обучение.")
-	Text( 1, "Приобрести навыки",BuyPage)
+	Text( 1, "Хорошо, спасибо" ,CloseTalk)
 
 	Talk( 2, "Питер: Привет, я страж Питер. Я охраняю этот замечательный город от бандитов. Так же я провожу тренировки юных Мечников. Тебя что то интересует?")
 
@@ -123,8 +123,6 @@ function r_talk86()
 	Other(	3172	)
 	Other(	3173	)
 
-
-
 	Talk( 3, "Питер: Погоди, мой дорогой друг! Тебе так интересны мечи? Знай, я могу тебя обучить мастерству мечника, но знай, что профессия выбирается лишь 1 раз и навсегда. Ты готов стать настоящим Воином?")
 
 	InitTrigger()
@@ -151,9 +149,9 @@ function r_talk86()
 
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, ">", 39 )
-	TriggerCondition( 1, TurnToJob, 3 )
+	TriggerCondition( 1, CheckRase, 1 )
 	TriggerCondition( 1, PfEqual, 1 )
-	--TriggerCondition( 1, CheckConvertProfession, MIS_TWO_FENCER )
+	TriggerCondition( 1, CheckConvertProfession, MIS_TWO_FENCER )
 	TriggerCondition( 1, HasLeaveBagGrid, 2 )
 	TriggerCondition( 1, HasMoney, 50000 )
 	TriggerAction( 1, TakeMoney, 50000 )
@@ -183,17 +181,17 @@ function r_talk86()
 
 	Talk( 9, "Питер: К сожалению нужные условия, что бы стать Воителем не выполнены. Чемпионом может стать только Карциз. Необходимо иметь 40 уровень. Так же у тебя должна быть 1 профессия мечника.")
 
-	AddNpcMission	(100)	--Жизнь Мечника
+--	AddNpcMission	(100)	--Жизнь Мечника
 	AddNpcMission	(204)	--Послание секретаря(Завершение)
 	AddNpcMission	(279)	--Бегство Чудища(Завершение)
 	AddNpcMission	(281)	--Страшный Монстр
-	AddNpcMission	(404)	--Исследование тундры
-	AddNpcMission	(749)	--Кодекс Воителя
-	AddNpcMission	(750)	--Мужество Чемпиона
-	--AddNpcMission	(66)	--Карьера мечника(Завершение квеста от Наставницы)
-	AddNpcMission	(67)	--Карьера мечника
-	AddNpcMission	(68)	--Карьера мечника
-	AddNpcMission	(72)	--Карьера мечника(Завершение квеста)
+--	AddNpcMission	(404)	--Исследование тундры
+--	AddNpcMission	(749)	--Кодекс Воителя
+--	AddNpcMission	(750)	--Мужество Чемпиона
+--	AddNpcMission	(66)	--Карьера мечника(Завершение квеста от Наставницы)
+--	AddNpcMission	(67)	--Карьера мечника
+--	AddNpcMission	(68)	--Карьера мечника
+--	AddNpcMission	(72)	--Карьера мечника(Завершение квеста)
 --	AddNpcMission	(1222)	--Коммерция
 
 	AddNpcMission	(5056)	--Указания Санг Ди(Завершение)
@@ -232,13 +230,12 @@ function r_trade01 ()
 	Text( 1, "Ремонт", OpenRepair )
 	Text( 1, "Комбинировать", OpenUnite)
 	Text( 1, "Ковка", OpenForge)
-	--Text( 1, "Купить свитки плавки ", JumpPage, 3 )
+	Text( 1, "Купить свитки плавки ", JumpPage, 3 )
 	Text( 1, "Смотреть ещё ", JumpPage, 2 )
 	Text( 2, "Плавка", OpenMilling)
 	Text( 2, "Плавка аппарелей", OpenFusion)
 	Text( 2, "Усовершенствование аппарелей", OpenUpgrade)
 	Text( 2, "Извлечение самоцвета", OpenGetStone )
-	Text( 2, "Получить украшение", SendExchangeXData )
 	Text( 2, "Назад ", JumpPage, 1 )
 	Text( 2, "Ничего...",CloseTalk )
 	Text( 1, "Ничего...",CloseTalk )
@@ -287,57 +284,6 @@ function r_trade01 ()
 	Text( 3, "Назад ", JumpPage, 1 )
 	Talk( 5, "Не все условия выполнены " )
 
-		InitExchangeX()
-	--Мечи 
-ExchangeDataX	(	8142	,	15	,	5001	,	1	)
-ExchangeDataX	(	8142	,	15	,	5008	,	1	)
-ExchangeDataX	(	8142	,	20	,	5002	,	1	)
-ExchangeDataX	(	8142	,	20	,	5007	,	1	)
---Молот
-ExchangeDataX	(	8142	,	30	,	5003	,	1	)
-ExchangeDataX	(	8142	,	40	,	5009	,	1	)
---Пистолеты\Луки
-ExchangeDataX	(	8142	,	30	,	5005	,	1	)
-ExchangeDataX	(	8142	,	40	,	5011	,	1	)
-ExchangeDataX	(	8142	,	30	,	5448	,	1	)
-ExchangeDataX	(	8142	,	40	,	5612	,	1	)
---Посохи
-ExchangeDataX	(	8142	,	30	,	5006	,	1	)
-ExchangeDataX	(	8142	,	40	,	5012	,	1	)
-ExchangeDataX	(	8142	,	30	,	5004	,	1	)
-ExchangeDataX	(	8142	,	40	,	5010	,	1	)
-
---Аппы Ланса за медь
-ExchangeDataX	(	8141	,	20	,	8823	,	1	)
-ExchangeDataX	(	8141	,	30	,	8821	,	1	)
-ExchangeDataX	(	8141	,	40	,	8822	,	1	)
-ExchangeDataX	(	8141	,	50	,	8824	,	1	)
-ExchangeDataX	(	8141	,	60	,	8825	,	1	)
-ExchangeDataX	(	8141	,	70	,	8826	,	1	)
---Аппа Карциза
-ExchangeDataX	(	8141	,	20	,	8829	,	1	)
-ExchangeDataX	(	8141	,	30	,	8827	,	1	)
-ExchangeDataX	(	8141	,	40	,	8828	,	1	)
-ExchangeDataX	(	8141	,	50	,	8830	,	1	)
-ExchangeDataX	(	8141	,	60	,	8831	,	1	)
-ExchangeDataX	(	8141	,	70	,	8832	,	1	)
---Аппы Филис
-ExchangeDataX	(	8141	,	20	,	8835	,	1	)
-ExchangeDataX	(	8141	,	30	,	8833	,	1	)
-ExchangeDataX	(	8141	,	40	,	8834	,	1	)
-ExchangeDataX	(	8141	,	50	,	8836	,	1	)
-ExchangeDataX	(	8141	,	60	,	8837	,	1	)
-ExchangeDataX	(	8141	,	70	,	8838	,	1	)
---Аппы Ами
-ExchangeDataX	(	8141	,	20	,	8841	,	1	)
-ExchangeDataX	(	8141	,	30	,	8839	,	1	)
-ExchangeDataX	(	8141	,	40	,	8840	,	1	)
-ExchangeDataX	(	8141	,	50	,	8842	,	1	)
-ExchangeDataX	(	8141	,	60	,	8843	,	1	)
---ExchangeDataX	(	8141	,	70	,	8844	,	1	)
-	
-	
-	
 	InitTrade()
 	Weapon(	0008	)
 	Weapon(	0196	)
@@ -417,25 +363,22 @@ ExchangeDataX	(	8141	,	60	,	8843	,	1	)
 	Weapon(	1452	)
 	Weapon(	1460	)
 	Weapon(	1461	)
-	--Weapon(	3400	)
-	--Weapon(	3401	)
-	--Weapon(	3402	)
-	--Weapon(	3403	)
 --	Defence(	0453	)
 --	Defence(	0454	)
 --	Defence(	6946	)
---	Defence(	1020	)
+	Defence(	1020	)
 --	Defence(	0455	)
 --	Defence(	0456	)
 --	Defence(	0890	)
 --	Defence(	0891	)
---	Defence(	0886	)
---	Defence(	3075	)
---	Defence(	3074	)
---	Defence(	454	)--катализатор плавки
---	Defence(	456	)
---	Defence(	891	)--Катализатор снаряжения
---	Defence(	890	)--Стабилизатор снаряжения
+	Defence(	0886	)
+	Defence(	3075	)
+	Defence(	3074	)
+		--
+	Defence(	454	)--катализатор плавки
+	Defence(	456	)
+	Defence(	891	)--Катализатор снаряжения
+	Defence(	890	)--Стабилизатор снаряжения
 	--Other(	6819	)
 	--Other(	6822	)
 	--Other(	6825	)
@@ -461,7 +404,6 @@ ExchangeDataX	(	8141	,	60	,	8843	,	1	)
 	AddNpcMission	(58)
 	AddNpcMission	(59)
 	AddNpcMission	(60)
-	AddNpcMission	(114)
 	AddNpcMission	(1221)
 
 
@@ -545,7 +487,7 @@ function r_talk01 ()
 
 	AddNpcMission	(5037)
 
-	
+	AddNpcMission	(6300)
 	MisListPage(8)
 
 end 
@@ -576,13 +518,13 @@ function r_talk02 ()
 	Text( 2, "Redeem Seed of Love", GetChaName_21, 1 )
 
 	Talk( 3, "Granny: 10 Seeds of Love to exchange for 1 Honey Chocolate")
-	Text(3,"Подтвердить to exchange",  GetChaName_22, 1)
+	Text(3,"Confirm to exchange",  GetChaName_22, 1)
 
 	Talk( 4, "Granny: 100 Seeds of Love to exchange for 3 Amplifiers of Strive")
-	Text(4,"Подтвердить to exchange",  GetChaName_23, 1)
+	Text(4,"Confirm to exchange",  GetChaName_23, 1)
 
 	Talk( 5, "Granny: 1000 Seeds of Love can be used to exchange for 1 Pass to Abandon 4")
-	Text(5,"Подтвердить to exchange",  GetChaName_24, 1)
+	Text(5,"Confirm to exchange",  GetChaName_24, 1)
 	
 	Talk(6,"АПДМДМЈєчТчСКўСзЦ®Р·НхґуІНЈ¬РиТЄДъКЦАпµД1ёцЎ°Р·ГзЎ±єНЙМіЗЦР№єВтµД1ёцЎ°і¬ј¶Р·УГј¤ЛШЎ±ЎЈµ±ДкПнУюХыёцєЈµБЅзµДґуєЈµБНхВЮЙ­Ј¬ФшТтЖ·№эґЛІЛ¶шѕ­Сй±лФцЎЈЗЧ°®µДЕуУСЈЎИГОТГЗ№ІН¬ЖЪґэЖжјЈµДЅµБЩЈЎ")	
 	InitTrigger()                                                   --------1ёцР·Нх
@@ -638,7 +580,7 @@ InitTrigger() --¶Ф»»µЖБэ
 	AddNpcMission(	373	)
 	AddNpcMission(	374	)
 	AddNpcMission(	388	)
-	AddNpcMission( 906 )
+	--AddNpcMission( 906 )
 
 -----------------АПДМДМЎ¤±ґµЩ---------ЅрЕЈ
 	AddNpcMission	(5631)
@@ -738,16 +680,6 @@ function r_talk03 ()
 	Other(	1848	)
 	Other(	1849	)
 	Other(	3143	)
-	Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
-	--Other(	3911	)
-    --Other(	3904	)
-	--Other(	3343	)
 	--Leo
 	Other(	1576	)
 	Other(	4049	)
@@ -778,9 +710,9 @@ function r_talk03 ()
 	MisListPage(1)
 
 	AddNpcMission	(707 )
-	AddNpcMission	(733 )
-	AddNpcMission	(738 )
-	AddNpcMission	(739 )
+	--AddNpcMission	(733 )
+	--AddNpcMission	(738 )
+	--AddNpcMission	(739 )
 	AddNpcMission	(214 )
 	AddNpcMission	(215 )
 	AddNpcMission	(217 )
@@ -792,10 +724,10 @@ function r_talk03 ()
 	AddNpcMission	(73)
 	AddNpcMission	(74)
 	AddNpcMission	(75)
-	AddNpcMission	(913)
-	AddNpcMission	(914)
-	AddNpcMission	(915)
-	AddNpcMission	(916)
+	--AddNpcMission	(913)
+	--AddNpcMission	(914)
+	--AddNpcMission	(915)
+	--AddNpcMission	(916)
 -------------eleven
 	AddNpcMission	(5027)
 	AddNpcMission	(5035)
@@ -827,8 +759,8 @@ function r_talk04 ()
 	TriggerCondition( 1, LvCheck, "<", 6 )
 	TriggerCondition( 1, HasRecord, 500 )
 	TriggerAction( 1, ReAll )
-	TriggerCondition( 2, HasMoney, 20000 )
-	TriggerAction( 2, TakeMoney, 20000 )
+	TriggerCondition( 2, HasMoney, 200 )
+	TriggerAction( 2, TakeMoney, 200 )
 	TriggerAction( 2, ReAll )
 	TriggerFailure( 2, JumpPage, 2 )
 
@@ -837,19 +769,19 @@ function r_talk04 ()
 
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, "<", 6 )
-	TriggerCondition( 1, HasRecord, 5000 )
+	TriggerCondition( 1, HasRecord, 500 )
 	TriggerAction( 1, ReHp, 50 )
-	TriggerCondition( 2, HasMoney, 15000 )
-	TriggerAction( 2, TakeMoney, 15000 )
+	TriggerCondition( 2, HasMoney, 50 )
+	TriggerAction( 2, TakeMoney, 50 )
 	TriggerAction( 2, ReHp,50 )
 	TriggerFailure( 2, JumpPage, 3 )
 
 	Text( 1, "Исцеление", MultiTrigger,GetMultiTrigger(),2)
 	--Text( 1, "Build Ship", JumpPage, 10)
 
-	Talk( 2, "Джина: Великое Исцеление стоит 20000 золотых, которых у тебя нет" )
+	Talk( 2, "Джина: Великое Исцеление стоит 200 золотых, которых у тебя нет" )
 
-	Talk( 3, "Джина: Исцеление стоит 15000 золотых, которых у тебя нет" )
+	Talk( 3, "Джина: Исцеление стоит 50 золотых, которых у тебя нет" )
 
 	Talk( 4, "У меня нет никакого письма. Ты меня с кем-то путаешь" )
 
@@ -857,10 +789,10 @@ function r_talk04 ()
 		
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, "<", 6 )
-	TriggerCondition( 1, HasRecord, 5000 )
+	TriggerCondition( 1, HasRecord, 500 )
 	TriggerAction( 1, ReAll )
-	TriggerCondition( 2, HasMoney, 20000 )
-	TriggerAction( 2, TakeMoney, 20000 )
+	TriggerCondition( 2, HasMoney, 200 )
+	TriggerAction( 2, TakeMoney, 200 )
 	TriggerAction( 2, ReAll )
 	TriggerFailure( 2, JumpPage, 2 )
 
@@ -869,10 +801,10 @@ function r_talk04 ()
 
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, "<", 6 )
-	TriggerCondition( 1, HasRecord, 5000 )
+	TriggerCondition( 1, HasRecord, 500 )
 	TriggerAction( 1, ReHp, 50 )
-	TriggerCondition( 2, HasMoney, 5000 )
-	TriggerAction( 2, TakeMoney, 5000 )
+	TriggerCondition( 2, HasMoney, 50 )
+	TriggerAction( 2, TakeMoney, 50 )
 	TriggerAction( 2, ReHp,50 )
 	TriggerFailure( 2, JumpPage, 3 )
 
@@ -981,14 +913,14 @@ function r_talk05 ()
 	Text(7,"5 монет феи - 500 очков Репутации" ,MultiTrigger,GetMultiTrigger(),1)
 
 	InitTrigger()
-	TriggerCondition( 1, HasCredit,50000 )
+	TriggerCondition( 1, HasCredit,5000 )
 	TriggerCondition( 1, HasLeaveBagGrid, 1 )
 	TriggerCondition( 1, KitbagLock, 0 )
-	TriggerAction( 1, DelRoleCredit, 50000 )
+	TriggerAction( 1, DelRoleCredit, 5000 )
 	TriggerAction( 1, GiveItem, 3094,3,4 )
 	TriggerAction( 1, JumpPage,8 )
 	TriggerFailure( 1, JumpPage, 6)
-	Text(7,"3 Усилителя стремлений - 50 000 очков Репутации" ,MultiTrigger,GetMultiTrigger(),1)
+	Text(7,"3 Усилителя стремлений - 5 000 очков Репутации" ,MultiTrigger,GetMultiTrigger(),1)
 
 
 	--InitTrigger()
@@ -1001,7 +933,38 @@ function r_talk05 ()
 	--TriggerFailure( 1, JumpPage, 6)
 	--Text(7,"Саморазрушение нач. уровня - 20 000 очков Репутации" ,MultiTrigger,GetMultiTrigger(),1)
 
-	
+	InitTrigger()
+	TriggerCondition( 1, HasCredit,50000 )
+	TriggerCondition( 1, HasLeaveBagGrid, 1 )
+	TriggerCondition( 1, KitbagLock, 0 )
+	TriggerAction( 1, DelRoleCredit, 50000 )
+	TriggerAction( 1, GiveItem, 0885,1,4 )
+	TriggerAction( 1, JumpPage,8 )
+	TriggerFailure( 1, JumpPage, 6)
+	Text(7,"Очищающий самоцвет - 50 000 очков Репутации" ,MultiTrigger,GetMultiTrigger(),1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasCredit,200000 )
+	TriggerCondition( 1, HasLeaveBagGrid, 1 )
+	TriggerCondition( 1, KitbagLock, 0 )
+	TriggerAction( 1, DelRoleCredit, 200000 )
+	TriggerAction( 1, GiveItem, 0862,1,4 )
+	TriggerAction( 1, JumpPage,8 )
+	TriggerFailure( 1, JumpPage, 6)
+	Text(7,"Самоцвет Колосса - 200 000 очков Репутации" ,MultiTrigger,GetMultiTrigger(),1)
+
+
+	InitTrigger()
+	TriggerCondition( 1, HasCredit,600000 )
+	TriggerCondition( 1, HasLeaveBagGrid, 1 )
+	TriggerCondition( 1, KitbagLock, 0 )
+	TriggerAction( 1, DelRoleCredit, 600000 )
+	TriggerAction( 1, GiveItem, 1012,1,4 )
+	TriggerAction( 1, JumpPage,8 )
+	TriggerFailure( 1, JumpPage, 6)
+	Text(7,"Самоцвет Души - 600 000 очков Репутации" ,MultiTrigger,GetMultiTrigger(),1)
+
 	Talk(8,"Добро пожаловать в когорту самых славных пиратов! Работай, чтобы достичь своей цели.")
 
 --	Talk( 9, "ДъєГЈ¬ОТГЗХвАпЦ»ПтУРГыНыµДИЛїЄ·ЕЎЈЦ»УРДъУРЧг№»µДГыЙщЈ¬ДъїЙТФФЪХвАп»»µЅЛщУРДъПлТЄµД¶«ОчЈ¬І»№эН¬К±ОТГЗТІ»бїЫіэДъµДТ»Ії·Цѕ«БйУІ±ТЧчОЄКЦРш·СЕ¶ЎЈ")
@@ -1207,16 +1170,13 @@ function r_talk06 ()
 	Start( GetMultiTrigger(), 4 )
 
 	Talk( 1, "Малыш Даниэль: Юным авантюристам следует без опаски изучать мир. Их ждет множество прекрасных открытий. Ты бывал в великом пустынном храме? А в Одинокой башне в чаще Священного леса? Я кстати провожу тренировки юных Мореплаваталей. К сожалению ты не можешь у меня пройти обучение." )
-	Text( 1, "Я хочу получить Генератор Древних ", JumpPage, 9 )
+
 	Talk( 2, "Малыш Даниэль: Юным авантюристам следует без опаски изучать мир. Их ждет множество прекрасных открытий. Ты бывал в великом пустынном храме? А в Одинокой башне в чаще Священного леса? Я кстати провожу тренировки юных Мореплаваталей." )
 	Text( 2, "Я хочу стать Мореплавателем", JumpPage, 3 )
 	Text( 2, "Я хочу стать Покорителем Морей", JumpPage, 6 )
-	--Text( 2, "Я хочу получить Генератор Древних ", JumpPage, 9 )
-	Text( 2, "Приобрести навыки", BuyPage )
-	--Text( 2, "Перезарядка коралла", OpenItemEnergy )
-	--Text( 2, "Руководство по перезарядке кораллов", JumpPage, 13)
-	Talk( 13, "Малыш Даниэль: Используй батарейку для пополнения энергии кораллов. После использования батарейка исчезает!" )
-	
+	Text( 2, "Я хочу получить ГД ", JumpPage, 9 )
+	Text( 2, "Приобрести Навыки", BuyPage )
+
 	InitTrade()
 	Other(	3227	)
 	Other(	3231	)
@@ -1224,12 +1184,20 @@ function r_talk06 ()
 	Other(	3229	)
 	Other(	3230	)
 	Other(	3232	)
-
 	Other(	3233	)
 	Other(	3234	)
 	Other(	3235	)
 	Other(	3236	)
 	Other(	3237	)
+	Other(		)
+	Other(	635	)
+	Other(	636	)
+	Other(	817	)
+	Other(	818	)
+	Other(	867	)
+	Other(	868	)
+	Other(	872	)
+	Other(	873	)
 
 	Talk(3, "Малыш Даниэль: Погоди, мой дорогой друг! Тебе так интересно море? Знай, я могу тебя обучить мастерству мореплавателя, но знай, что профессия выбирается лишь 1 раз и навсегда. Ты готов стать настоящим Морским волком?")
 
@@ -1243,7 +1211,7 @@ function r_talk06 ()
 	TriggerAction( 1, SetProfession, 4  )
 	TriggerAction( 1, GiveItem, 3227, 1, 4 )
 	TriggerAction( 1, GiveItem, 73, 1, 4 )
-	--TriggerAction( 1, GiveItem, 867, 1, 4 )
+	TriggerAction( 1, GiveItem, 867, 1, 4 )
 	TriggerAction( 1, JumpPage, 4 )
 	TriggerAction( 1, Starteffect , 366)
 	TriggerCondition( 2, LvCheck, ">", 9 )
@@ -1255,7 +1223,7 @@ function r_talk06 ()
 	TriggerAction( 2, SetProfession, 4  )
 	TriggerAction( 2, GiveItem, 3227, 1, 4 )
 	TriggerAction( 2, GiveItem, 73, 1, 4 )
-	--TriggerAction( 2, GiveItem, 867, 1, 4 )
+	TriggerAction( 2, GiveItem, 867, 1, 4 )
 	TriggerAction( 2, JumpPage, 4 )
 	TriggerAction( 2, Starteffect , 366)
 	TriggerCondition( 3, LvCheck, ">", 9 )
@@ -1267,7 +1235,7 @@ function r_talk06 ()
 	TriggerAction( 3, TakeMoney, 5000 )
 	TriggerAction( 3, GiveItem, 3227, 1, 4 )
 	TriggerAction( 3, GiveItem, 73, 1, 4 )
-	--TriggerAction( 3, GiveItem, 867, 1, 4 )
+	TriggerAction( 3, GiveItem, 867, 1, 4 )
 	TriggerAction( 3, Starteffect , 366)
 	TriggerAction( 3, JumpPage, 4 )
 	TriggerFailure( 3, JumpPage, 5 )
@@ -1315,33 +1283,33 @@ function r_talk06 ()
 	Talk(7, "Малыш Даниэль: К сожалению нужные условия, что бы стать Покорителем морей не выполнены. Покорителем морей может стать Ланс, Филлис или Ами. Необходимо иметь 40 уровень. Так же у тебя должна быть 1 профессия мореплавателя.")
 
 	InitTrigger()
-	TriggerCondition( 1, HasItem, 3933, 50)
-	TriggerCondition( 1, HasMoney, 70000)
-	TriggerAction( 1, TakeItem, 3933, 50)
-	TriggerAction( 1, TakeMoney, 70000)
+	TriggerCondition( 1, HasItem, 3933, 10)
+	TriggerCondition( 1, HasMoney, 5000)
+	TriggerAction( 1, TakeItem, 3933, 10)
+	TriggerAction( 1, TakeMoney, 5000)
 	TriggerAction( 1, GiveItem, 1812, 1, 4)
 	TriggerAction( 1, JumpPage, 10)
 	TriggerFailure( 1, JumpPage, 11)
-	Talk( 9, "Малыш Даниэль: Да ты знаток! Принеси мне 50 Деталей робота и 70.000 золотых, и я сделаю для тебя Генератор Древних." )
+	Talk( 9, "Малыш Даниэль: Да ты знаток! Принеси мне 10 Деталей робота и 5000 золотых, и я сделаю для тебя Генератор Древних." )
 	Text( 9, "Вот держи",  MultiTrigger, GetMultiTrigger(), 1)
 	Text( 9, "Хорошо, я подумаю", CloseTalk)
 
-	Talk(11, "Малыш Даниэль: Увы, но у тебя нету 50 Деталей робота и 70.000 золотых для изготовления 1 Генератора Древних.")
+	Talk(11, "Малыш Даниэль: Увы, но у тебя нету 10 Деталей робота и 5000 золотых для изготовления 1 Генератора Древних.")
 
 	Talk(10, "Малыш Даниэль: Вот, держи. Я надеюсь, ты знаешь, что с ним делать? Иначе он бесполезен.")
 
 
---	AddNpcMission	(2999)	--Начальное снаряжение 
+--	AddNpcMission	(748)	--Компас Выживания
 --	AddNpcMission	(1045)	--Жизнь мечника
 ---	AddNpcMission	(1099)	--Жизнь охотника
 --	AddNpcMission	(1157)	--Жизнь знахарки
-	AddNpcMission	(758)	--Путешествие Покорителя Морей
-	AddNpcMission	(103)	--Жизнь Исследователя
-	AddNpcMission	(191)	--Повышение Мореплавателя(Завершение от Наставницы)
-	AddNpcMission	(192)	--Повышение Мореплавателя
-	AddNpcMission	(193)	--Повышение Мореплавателя
-	AddNpcMission	(197)	--Повышение Мореплавателя
---	AddNpcMission	(1225)	--Коммерция
+--	AddNpcMission	(758)	--Путешествие Покорителя Морей
+--	AddNpcMission	(103)	--Жизнь Исследователя
+--	AddNpcMission	(191)	--Повышение Мореплавателя(Завершение от Наставницы)
+--	AddNpcMission	(192)	--Повышение Мореплавателя
+--	AddNpcMission	(193)	--Повышение Мореплавателя
+--	AddNpcMission	(197)	--Повышение Мореплавателя
+---	AddNpcMission	(1225)	--Коммерция
 	AddNpcMission	(503)	--Страшный Скелет войн
 	AddNpcMission	(330)	--Тайна(Завершение)
 	AddNpcMission	(331)	--Приветствие Джека
@@ -1392,14 +1360,46 @@ function r_talk07 ()
 	Text( 1, "Выкупить маску реальности",JumpPage, 2 )
 
 	InitTrade()
-	Other(	3141	)
-	Other(	4602	)
-	Other(	4603	)
-	Other(	4604	)
+	Other(	3297	)
+	Other(	3298	)
+	Other(	3164	)
+	Other(	3160	)
+	Other(	3161	)
+	Other(	3165	)
+	Other(	3238	)
+	Other(	3170	)
+	Other(	3293	)
+	Other(	3174	)
+	Other(	3163	)
+	Other(	3176	)
+	Other(	3180	)
+	Other(	3179	)
+	Other(	3177	)
+	Other(	3168	)
+	Other(	3162	)
+	Other(	3166	)
+	Other(	3167	)
+	Other(	3172	)
+	Other(	3173	)
+	Other(	3227	)
+	Other(	3231	)
+	Other(	3228	)
+	Other(	3229	)
+	Other(	3230	)
+	Other(	3232	)
+	Other(	3233	)
+	Other(	3234	)
+	Other(	3235	)
+	Other(	3236	)
+	Other(	3237	)
 	Other(	3225	)
 	Other(	3226	)
 	Other(	3294	)
 	Other(	3295	)
+	Other(	3141	)
+	Other(	4602	)
+	Other(	4603	)
+	Other(	4604	)
 	Other(	3296	)
 	Other(	3299	)
 	--baby--Йъ»ојјДЬКйLv1
@@ -1429,10 +1429,10 @@ function r_talk07 ()
 	Other(	1734	)
 	Other(	1621	)
 	Other(	1703	)
-	--Other(	3288	)
-	--Other(  2440    )
+	Other(	3288	)
+	Other(  2440    )
 	Other(	854	)
-	AddNpcMission	(5501)
+	--AddNpcMission	(5501)
 
 
 	---bragi
@@ -1590,7 +1590,6 @@ function r_talk08 ()
 	AddNpcMission	(1135)
 	AddNpcMission	(1186)
 	AddNpcMission(	1223	)
-	--AddNpcMission(	3024	)
 	
 
 
@@ -1598,7 +1597,18 @@ function r_talk08 ()
 
 end 
 
+-----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ѕУГсЎ¤ВкёсАцМШ
 
+
+----------------------------------------------------------
+--							--
+--							--
+
+	--°ЧТшіЗ[ВГµкАП°еЎ¤ВкА­ТААј]		--
+--							--
+--		221150,278125				--
+----------------------------------------------------------
+-----------------------------------------------------------ХвАпїЄКјP»°БДМм
 function r_talk09 ()
 	
 	
@@ -1620,7 +1630,7 @@ function r_talk09 ()
 	TriggerAction( 1, JumpPage, 11 )
 	TriggerFailure( 1, JumpPage, 12)
 	Talk( 10, "Marriam: Want some extra juicy and delicious turkey meat? Bring me 10 slices of turkey meat and 10000 coins.")
-	Text(10, "Подтвердить and Cook",  MultiTrigger, GetMultiTrigger(), 1)
+	Text(10, "Confirm and Cook",  MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk(11, "Marriam: The delicious turkey meat was cooked by me, come and try some to see how it tastes?" )
 
@@ -1643,7 +1653,7 @@ function r_talk09 ()
 	TriggerAction( 1, JumpPage, 11 )
 	TriggerFailure( 1, JumpPage, 14 )
 	Talk( 15, "ItЎЇs not easy to cook Christmas meal, I need 10 pieces of turkey meat , a Christmas Rose,and 10000 coins. A Christmas Rose can be found in the Item Mall and I will only cook the meal for each person 3 times at most.")
-	Text( 15, "Подтвердить and Cook",  MultiTrigger, GetMultiTrigger(), 1)
+	Text( 15, "Confirm and Cook",  MultiTrigger, GetMultiTrigger(), 1)
 
 	
 
@@ -1663,7 +1673,7 @@ function r_talk09 ()
 	TriggerAction( 1, JumpPage, 11 )
 	TriggerFailure( 1, JumpPage, 18 )
 	Talk(16, "Want me to cook again? I need 10 pieces of turkey meat, a Christmas Rose and 1,000,000 coin.  A Christmas Rose can be found in the Item Mall and I will only cook the meal for each person 3 times at most.")
-	Text( 16, "Подтвердить and Cook",  MultiTrigger, GetMultiTrigger(), 1)
+	Text( 16, "Confirm and Cook",  MultiTrigger, GetMultiTrigger(), 1)
 
 	---------------------ЕлµчКҐµ®ґуІН
 	InitTrigger()
@@ -1681,7 +1691,7 @@ function r_talk09 ()
 	TriggerAction( 1, JumpPage, 11 )
 	TriggerFailure( 1, JumpPage,19 )
 	Talk(17, "Want me to cook again? I need 10 pieces of turkey meat, a Christmas Rose and 10,000,000 coin.  A Christmas Rose can be found in the Item Mall and I will only cook the meal for each person 3 times at most.")
-	Text( 17, "Подтвердить and Cook",  MultiTrigger, GetMultiTrigger(), 1)
+	Text( 17, "Confirm and Cook",  MultiTrigger, GetMultiTrigger(), 1)
 	Talk( 14, "Marriam: It seems you donЎЇt have enough items and money. You also need to make sure there is one available slot in your backpack. Is this your first time to let me cook Christmas meal? I will only do it 3 times. ")
 	Talk( 18, "Marriam: It seems you donЎЇt have enough items and money. You also need to make sure there is one available slot in your backpack. Is this your second time to let me cook Christmas meal? I will only do it 3 times. ")
 	Talk( 19, " It seems you donЎЇt have enough items and money. You also need to make sure there is one available slot in your backpack. Is this your third time to let me cook Christmas meal? I will only do it 3 times. ")
@@ -1773,11 +1783,23 @@ function r_talk09 ()
 	AddNpcMission	(5536)		--ЗгіЗЦ®Бµ
 
 end 
+-----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ВГµкАП°еЎ¤ВкА­ТААј
 
+
+
+
+----------------------------------------------------------
+--							--
+--							--
+--		°ЧТшіЗ[·рД·]				--
+--							--
+--		222629,272668				--
+----------------------------------------------------------
+-----------------------------------------------------------ХвАпїЄКјP»°БДМм
 function r_talk11 ()
 	
 	
-	Talk( 1, "Forbei:У меня есть загадка для вас, что 1 плюс 1? Хохо, его 2! Разве это не смешно? Нет? Не уходи!" )
+	Talk( 1, "Forbei: I have a riddle for you, what is 1 plus 1? Hoho, its 2! Isn't it funny? No? Let me change anotherЎ­Wait! Don't go!" )
 
 	--Text( 1, "Ties up Dumpling", JumpPage,2)
 
@@ -1795,8 +1817,8 @@ function r_talk11 ()
 	TriggerAction( 1, TakeItem, 3040, 1 )
 	TriggerAction( 1, GiveItem,3043, 1,4 )
 	TriggerFailure( 1, JumpPage, 6 ) 
-	Talk(3, "Forbei: 1 Желток клецки строки + 1 теплый пельмень =1 яичный желток клецки. Яичный желток вареник может поднять защиту на 60 пунктов на 10 минут.")
-	Text( 3, "Подтвердить",MultiTrigger, GetMultiTrigger(), 1) 
+	Talk(3, "Forbei: 1 Egg Yolk Dumpling String + 1 Warm Dumpling=1 Egg yolk dumpling. Egg yolk dumpling can raise defense by 60 points in 10 minutes.")
+	Text( 3, "Comfirm",MultiTrigger, GetMultiTrigger(), 1) 
 
 	InitTrigger() --¶Т»»¶№ЙіфХ
 	TriggerCondition( 1, HasItem, 3037, 1 )
@@ -1807,8 +1829,8 @@ function r_talk11 ()
 	TriggerAction( 1, TakeItem, 3041, 1 )
 	TriggerAction( 1, GiveItem,3044, 1,4 )
 	TriggerFailure( 1, JumpPage, 6 ) 
-	Talk(4, "Forbei: 1 красная фасоль клецки строки + 1 теплый вареник=1 вареник красной фасоли. Клецки с красной фасолью может значительно увеличить скорость ходьбы на 15 минут.")
-	Text( 4, "Подтвердить",MultiTrigger, GetMultiTrigger(), 1) 
+	Talk(4, "Forbei: 1 red bean dumpling string + 1 warm dumpling=1 red bean dumpling. Red bean dumpling can greatly increase walking speed in 15 minutes.")
+	Text( 4, "Comfirm",MultiTrigger, GetMultiTrigger(), 1) 
 	
 	InitTrigger() --¶Т»»ЕґГЧфХ
 	TriggerCondition( 1, HasItem, 3037, 1 )
@@ -1820,9 +1842,9 @@ function r_talk11 ()
 	TriggerAction( 1, GiveItem,3045, 1,4 )
 	TriggerFailure( 1, JumpPage, 6 ) 
 	Talk(5, "Forbei: 1 Sticky Rice Dumpling String + 1 Warm Dumpling=1 Sticky Rice Dumpling. Sticky Rice Dumpling can recover 35% HP")
-	Text( 5, "Подтвердить",MultiTrigger, GetMultiTrigger(), 1) 
+	Text( 5, "Comfirm",MultiTrigger, GetMultiTrigger(), 1) 
 	
-	Talk( 6, "Forbei: You do have have enough space to make a dumpling! Your bag could also be locked, please Подтвердить you have one space inside your inventory.")
+	Talk( 6, "Forbei: You do have have enough space to make a dumpling! Your bag could also be locked, please confirm you have one space inside your inventory.")
 	AddNpcMission	(1009)
 	AddNpcMission	(1173)
 
@@ -1831,7 +1853,18 @@ function r_talk11 ()
 	AddNpcMission	(6124 )
 end 
 
+-----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<·рД·
 
+
+
+----------------------------------------------------------
+--							--
+--							--
+--		°ЧТшіЗ[Л®КЦЎ¤єЈФЖ]			--
+--							--
+--		235013,284694				--
+----------------------------------------------------------
+-----------------------------------------------------------ХвАпїЄКјP»°БДМм
 function r_talk12 ()
 	
 	
@@ -1870,39 +1903,58 @@ function r_talk12 ()
 	AddNpcMission	(79)
 	----------------јЄДбЛ№-єЈФЖ---01
 	AddNpcMission	(5510)
-	AddNpcMission	(6061 )
-	AddNpcMission	(6062 )
-	AddNpcMission	(6063 )
-	AddNpcMission	(6064 )
-	AddNpcMission	(6065 )
-	AddNpcMission	(6066 )
-	AddNpcMission	(6067 )
-	AddNpcMission	(6068 )
+	--AddNpcMission	(6061 )
+	--AddNpcMission	(6062 )
+	--AddNpcMission	(6063 )
+	--AddNpcMission	(6064 )
+	--AddNpcMission	(6065 )
+	--AddNpcMission	(6066 )
+	--AddNpcMission	(6067 )
+	--AddNpcMission	(6068 )
 
 end 
 
+-----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Л®КЦЎ¤єЈФЖ
 
+
+----------------------------------------------------------
+--							--
+--							--
+--		°ЧТшіЗ[ТшРРіцДЙЎ¤Д¦ДЭСЕ]			--
+--							--
+--		222050,270400				--
+----------------------------------------------------------
+-----------------------------------------------------------ХвАпїЄКјP»°БДМм
 function r_talk13 ()
 	
 	
 	Talk( 1, "Моника: Привет, я Банкир Моника. Со мной счета всегда будут в порядке." )
 	InitTrigger()
-	TriggerCondition( 1, HasMoney, 3000 )
-	TriggerAction( 1, TakeMoney, 3000 )
+	TriggerCondition( 1, HasMoney, 200 )
+	TriggerAction( 1, TakeMoney, 200 )
 	TriggerAction( 1, OpenBank )
 	TriggerFailure( 1, JumpPage, 2 )
-	Text( 1, "Хранилище (плата 3000 зол.)", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 1, "Хранилище (плата 200 зол.)", MultiTrigger, GetMultiTrigger(), 1)
 	Talk( 2, "Извини, похоже, у тебя не хватает денег" )
 
 	AddNpcMission	(1050)
 	AddNpcMission	(1212)
 	AddNpcMission	(6091 )
 	AddNpcMission	(6092 )
-	AddNpcMission (113)
+
 
 end 
 
+-----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ТшРРіцДЙЎ¤Д¦ДЭСЕ
 
+----------------------------------------------------------
+--							--
+--							--
+--		°ЧТшіЗ[єЈѕьЙЩЅ«Ў¤Ню¶ыЛ№]			--
+--							--
+--		230228,270157				--
+----------------------------------------------------------
+-----------------------------------------------------------ХвАпїЄКјP»°БДМм
 function r_talk14 ()
 	
 	
@@ -2017,7 +2069,18 @@ function r_talk14 ()
 
 end 
 
+-----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<єЈѕьЙЩЅ«Ў¤Ню¶ыЛ№
 
+
+
+----------------------------------------------------------
+--							--
+--							--
+--		°ЧТшіЗ[Йіб°іЗґуК№Ў¤ПЇ°Н]			--
+--							--
+--		225648,270640				--
+----------------------------------------------------------
+-----------------------------------------------------------ХвАпїЄКјP»°БДМм
 function r_talk15 ()
 	
 	
@@ -2030,7 +2093,17 @@ function r_talk15 ()
 
 end 
 
+-----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Йіб°іЗґуК№Ў¤ПЇ°Н
 
+
+----------------------------------------------------------
+--							--
+--							--
+--		°ЧТшіЗ[°ЧТшіЗЙМ»б»бі¤Ў¤АНВЧµПВнЛ№]		--
+--							--
+--		224207,274850				--
+----------------------------------------------------------
+-----------------------------------------------------------ХвАпїЄКјP»°БДМм
 function r_talk16 ()
 	
 	
@@ -2054,10 +2127,19 @@ function r_talk16 ()
 	AddNpcMission	(5147 )
 end 
 
+-----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<°ЧТшіЗЙМ»б»бі¤Ў¤АНВЧµПВнЛ№
 
+----------------------------------------------------------
+--							--
+--							--
+--		°ЧТшіЗ[АПХЯЎ¤єэНїЙЅИЛ]			--
+--							--
+--		227208,270036				--
+----------------------------------------------------------
+-----------------------------------------------------------ХвАпїЄКјP»°БДМм
 function r_talk17 ()
 	Talk( 1, "Пачкуля: Клубничные бисквиты, которые печет Белди, - обьеденье!" )
-	--AddNpcMission	(3023)	
+
 	AddNpcMission	(266)	--1
 	AddNpcMission	(267)	--2
 	AddNpcMission	(270)	--3
@@ -2080,8 +2162,8 @@ function r_talk17 ()
 	AddNpcMission	(6351)	--18
 
 	--AddNpcMission	(6126)
-	AddNpcMission	(6094)
-	AddNpcMission	(6167)
+	--AddNpcMission	(6094)
+	--AddNpcMission	(6167)
 end 
 
 -----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<АПХЯЎ¤єэНїЙЅИЛ
@@ -2139,7 +2221,7 @@ function r_talk20 ()
 
 	Talk( 1, "Антоний: Что такое? Хочешь что-то выведать у меня? Значит, ты попал в самую точку. Но только деньги развяжут любой язык. За сведения придется платить. Введи в текст запроса '/?ключевое слово'" )
 
-	--AddNpcMission	(500)	--1
+	AddNpcMission	(500)	--1
 	AddNpcMission	(501)	--2
 	AddNpcMission	(358)	--3
 	AddNpcMission	(372)	--4
@@ -2232,17 +2314,14 @@ function r_talk24 ()
 	
 	Talk( 1, "Дессаро: Приветствую, я главнокомандующий в Громограде. Хочешь к нам присоединиться?" )
 	InitTrigger()
-	--TriggerCondition( 1, HasCredit, 150 )
-	--TriggerCondition( 1, HasMoney, 300000 )
-	--TriggerCondition( 1, HasItem, 1780, 1 )
+	TriggerCondition( 1, HasMoney, 100000 )
+	TriggerCondition( 1, HasItem, 1780, 1 )
 	TriggerCondition( 1, NoGuild )
 	TriggerAction( 1, CreateGuild, 0 )
-	--TriggerAction( 1, TakeMoney, 300000 )
-	--TriggerAction( 1, TakeCredit, 150 )
 	TriggerFailure( 1, JumpPage, 2 )
 	Text( 1, "Создать Флотскую гильдию", MultiTrigger, GetMultiTrigger(), 1)
 
-	Talk( 2, "Дессаро: Чтобы стать главой подразделения морского флота и доказать свою преданность, тебе нужно заплатить 300 000 золотых и принести Камень клятвы и иметь 150 репутации" )
+	Talk( 2, "Дессаро: Чтобы стать главой подразделения морского флота и доказать свою преданность, тебе нужно заплатить 100 000 золотых и принести Камень клятвы." )
         
 	AddNpcMission	(566)
 	AddNpcMission	(477)
@@ -2324,15 +2403,6 @@ function r_talk28 ()
 	Other(	1848	)
 	Other(	1849	)
 	Other(	3143	)
-	Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
-	Other(	3904	)
-	Other(	3911	)
 
 	AddNpcMission	(1024)
 	AddNpcMission	(1081)
@@ -2360,11 +2430,11 @@ function r_talk29 ()
 	
 	Talk( 1, "Макурдо: Привет, добро пожаловать в Банк Громограда." )
 	InitTrigger()
-	TriggerCondition( 1, HasMoney, 30000 )
-	TriggerAction( 1, TakeMoney, 30000 )
+	TriggerCondition( 1, HasMoney, 200 )
+	TriggerAction( 1, TakeMoney, 200 )
 	TriggerAction( 1, OpenBank )
 	TriggerFailure( 1, JumpPage, 2 )
-	Text( 1, "Хранилище (плата 30000 зол.)", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 1, "Хранилище (плата 200 зол.)", MultiTrigger, GetMultiTrigger(), 1)
 	Talk( 2, "Извини, похоже, у тебя не хватает денег" )
 
 	AddNpcMission	(1049)
@@ -2438,10 +2508,10 @@ function r_talk31 ()
 	
 	Talk( 1, "Синди: Привет, я люблю всякие симпатичные вещи. Если вдруг найдешь симпатичные вещи, сохрани их для меня!" )
 	
-	--Text( 1, "Дворец овна-вампира (Квест Гороскопа)", JumpPage,6 )
-	--Text( 1, "Награда в состязании моряков", JumpPage,8 )
-	--Text( 1, "Награда в состязании пиратов", JumpPage,11 )
-	--Text( 1, "Капитанская награда за выполнение", JumpPage,12 )
+	Text( 1, "Дворец овна-вампира (Квест Гороскопа)", JumpPage,6 )
+	Text( 1, "Награда в состязании моряков", JumpPage,8 )
+	Text( 1, "Награда в состязании пиратов", JumpPage,11 )
+	Text( 1, "Капитанская награда за выполнение", JumpPage,12 )
 	Text( 1, "Приготовить краситель для волос", JumpPage, 2)
 
 	Talk( 6, "Синди: Пожалуйста, выбери испытание в порядке роста сложности, от Моряка до Капитана. Чем труднее испытание, тем щедрее награда. Ты уже сделал выбор? Смотри, потом не пожалей." )
@@ -2609,28 +2679,28 @@ function r_talk31 ()
 	AddNpcMission	(867)
 	AddNpcMission	(863)
 	------------------------------------------°ЧСт
-	--AddNpcMission	(5536)
+	AddNpcMission	(5536)
 	AddNpcMission	(5537)
 	AddNpcMission	(5538)
 	AddNpcMission	(5539)
 	AddNpcMission	(5540)
 	AddNpcMission	(5541)
 
-	--AddNpcMission	(5542)
+	AddNpcMission	(5542)
 	AddNpcMission	(5543)
 	AddNpcMission	(5544)
 	AddNpcMission	(5545)
 	AddNpcMission	(5546)
 	AddNpcMission	(5547)
 
-	--AddNpcMission	(5548)
+	AddNpcMission	(5548)
 	AddNpcMission	(5549)
 	AddNpcMission	(5550)
 	AddNpcMission	(5551)
 	AddNpcMission	(5552)
 
 
-	--AddNpcMission	(5597)
+	AddNpcMission	(5597)
 	AddNpcMission	(5600)
 
 end 
@@ -2843,29 +2913,7 @@ function r_talk38 ()
 	
 	
 	Talk( 1, "Каду: Привет! Ты как раз во-время! У нас здесь рекламная акция. Когда поднимешься выше 10 уровня, я предоставлю тебе специальную скидку на свои товары. А, возможно, и дополнительный опыт!" )
-	Text( 1,"Обмен", SendExchangeData23 )
-
-	
-	Text( 1,"Получить снаряжение",SendExchangeXData)
-
-	
-	InitExchangeX()
-	ExchangeDataX	(	8141	,	90	,	8577	,	1	)
-	ExchangeDataX	(	8142	,	5	,	3422	,	1	)
-	ExchangeDataX	(	8142	,	90	,	3423	,	1	)
-	ExchangeDataX	(	8143	,	25	,	4288	,	1	)
-	ExchangeDataX	(	8143	,	100	,	2842	,	1	)
-	
-	InitExchange23()
-	DoExchange23()
-	
-	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
-	SetNpcTrigger( GetTrigger( 1 ) )
-	SetNpcActive()
-
-
-
+	Text( 1, "Ничего...",CloseTalk )
 	AddNpcMission	(1053)
 	AddNpcMission	(1107)
 	AddNpcMission	(1163)
@@ -3067,15 +3115,25 @@ end
 -----------------------------------------------------------
 function r_talk47 ()
 
-	
+	InitTrigger()
+	TriggerCondition( 1, HasMission, 290 )
+	TriggerAction( 1, JumpPage, 1 )
+	TriggerCondition( 2, CheckRase, 1 )
+	TriggerAction( 2, JumpPage, 1 )
+	TriggerCondition( 3, CheckRase, 2 )
+	TriggerAction( 3, JumpPage, 1 )
+	TriggerCondition( 4, CheckRase, 3 )
+	TriggerAction( 4, JumpPage, 2 )
+	TriggerCondition( 5, CheckRase, 4 )
+	TriggerAction( 5, JumpPage, 2 )
+	Start( GetMultiTrigger(), 5 )
 
 	Talk( 1, "Геньон: Здравствуй, друг мой! Да пребудет с тобой богиня Кара! Я Верховный жрец города Шайтана Геньон. Я обучаю юнных Знахарок. К сожалению я не могу заняться твоим обучением." )
-	Text( 1, "Приобрести навыки", BuyPage)
-	
+
 	Talk( 2, "Геньон: Здравствуй, друг мой! Да пребудет с тобой богиня Кара! Я Верховный жрец города Шайтана Геньон. Я обучаю юнных Знахарок. Чем я могу тебе помочь?" )
-	Text( 1, "Стать Знахаркой", JumpPage, 12 )
-	Text( 1, "Стать Целительницей", JumpPage, 15 )
-	Text( 1, "Стать Колдуньей", JumpPage, 17 )
+	Text( 2, "Стать Знахаркой", JumpPage, 12 )
+	Text( 2, "Стать Целительницей", JumpPage, 15 )
+	Text( 2, "Стать Колдуньей", JumpPage, 17 )
 	Text( 2, "Приобрести навыки", BuyPage)
 
 	InitTrade()
@@ -3097,7 +3155,6 @@ function r_talk47 ()
 	Other(	3223	)
 	Other(	3217	)
 	Other(	3224	)
-
 
 --[[	Talk( 2, "Геньон: Я исследую древние руны. Принесешь достаточное количество рун, обменяю тебе их на что-нибудь стоящее." )
 	--Text( 2, "Экиперовка скелета", JumpPage, 3)
@@ -3400,7 +3457,7 @@ function r_talk47 ()
 
 	Talk( 11, "Геньон: У тебя нет вещей, которые можно обменять. Возможно, твой рюкзак заблокирован или в нем не хватает свободных ячеек." )	]]--
 
-	Talk(12, "Геньон: Погоди, мой дорогой друг! Тебе так интересна магия? Знай, я могу тебя обучить мастерству Знахакаря, но знай, что профессия выбирается лишь 1 раз и навсегда. Для того чтоб пройти курс знахарки тебе надо быть выше 9 уровня и иметь при себе 5000 золотых. Ты готов освоить путь магии?")
+	Talk(12, "Геньон: Погоди, мой дорогой друг! Тебе так интересна магия? Знай, я могу тебя обучить мастерству Знахакаря, но знай, что профессия выбирается лишь 1 раз и навсегда. Ты готов освоить путь магии?")
 
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, ">", 9 )
@@ -3433,7 +3490,7 @@ function r_talk47 ()
 
 	Talk(14, "Геньон: К сожалению нужные условия, что бы стать Знахаркой не выполнены. Знахаркой может стать Филлис или Ами. Необходимо иметь 10 уровень. Так же у тебя не должно быть не какой другой професии.")
 
-	Talk(15, "Геньон: Погоди, мой дорогой друг! Тебе так интересна магия? Знай, я могу тебя обучить мастерству Целительницы, но знай, что профессия выбирается лишь 1 раз и навсегда. Для того чтоб стать Целительницей тебе нужно иметь при себе 50.000 золотых и быть выше 40 уровня. Ты готов освоить путь магии?")
+	Talk(15, "Геньон: Погоди, мой дорогой друг! Тебе так интересна магия? Знай, я могу тебя обучить мастерству Целительницы, но знай, что профессия выбирается лишь 1 раз и навсегда. Ты готов освоить путь магии?")
 
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, ">", 39 )
@@ -3488,15 +3545,15 @@ function r_talk47 ()
 	Talk(18, "Геньон: К сожалению нужные условия, что бы стать Колдуньей не выполнены. Колдуньей может стать Филлис или Ами. Необходимо иметь 40 уровень. Так же у тебя должна быть 1 профессия знахарки.")
 
 --	AddNpcMission	(719)	--Патент о благочестии
-	AddNpcMission	(102)	--Жизнь знахарки
-	AddNpcMission	(416)	--Последователи Аши
-	AddNpcMission	(751)	--Прогулка Целительницы
-	AddNpcMission	(755)	--Колдовские пути
-	--AddNpcMission	(95)	--Карьера знахарки(Завершение от Наставницы)
-	AddNpcMission	(96)	--Карьера знахарки
-	AddNpcMission	(97)	--Карьера знахарки
-	AddNpcMission	(151)	--Карьера знахарки(Завершение)
-	AddNpcMission	(1227)	--Коммерция
+--	AddNpcMission	(102)	--Жизнь знахарки
+--	AddNpcMission	(416)	--Последователи Аши
+--	AddNpcMission	(751)	--Прогулка Целительницы
+--	AddNpcMission	(755)	--Колдовские пути
+--	AddNpcMission	(95)	--Карьера знахарки(Завершение от Наставницы)
+--	AddNpcMission	(96)	--Карьера знахарки
+--	AddNpcMission	(97)	--Карьера знахарки
+--	AddNpcMission	(151)	--Карьера знахарки(Завершение)
+--	AddNpcMission	(1227)	--Коммерция
 	AddNpcMission	(342)	--Завет(Завершение)
 	AddNpcMission	(343)	--Завет(Завершение)
 	AddNpcMission	(344)	--Завет(Завершение)
@@ -3819,11 +3876,11 @@ function r_talk51 ()
 	
 	Talk( 1, "Юдис: Здравствуй! Добро пожаловать в банк города Шайтан! Чем могу помочь?" )
 	InitTrigger()
-	TriggerCondition( 1, HasMoney, 3000 )
-	TriggerAction( 1, TakeMoney, 3000 )
+	TriggerCondition( 1, HasMoney, 200 )
+	TriggerAction( 1, TakeMoney, 200 )
 	TriggerAction( 1, OpenBank )
 	TriggerFailure( 1, JumpPage, 2 )
-	Text( 1, "Хранилище (плата 3000 зол.)", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 1, "Хранилище (плата 200 зол.)", MultiTrigger, GetMultiTrigger(), 1)
 	Talk( 2, "Извини, похоже, у тебя не хватает денег" )
 
 	AddNpcMission	(1051)
@@ -3931,13 +3988,12 @@ function r_talk53 ()
 	Text( 1, "Ремонт", OpenRepair )
 	Text( 1, "Комбинировать", OpenUnite)
 	Text( 1, "Ковка", OpenForge)
-	--Text( 1, "Купить свитки плавки ", JumpPage, 3 )
+	Text( 1, "Купить свитки плавки ", JumpPage, 3 )
 	Text( 1, "Смотреть ещё ", JumpPage, 2 )
 	Text( 2, "Плавка", OpenMilling)
 	Text( 2, "Плавка аппарелей", OpenFusion)
 	Text( 2, "Усовершенствование аппарелей", OpenUpgrade)
 	Text( 2, "Извлечение самоцвета", OpenGetStone )
-	Text( 2, "Получить украшение", SendExchangeXData )
 	Text( 2, "Назад ", JumpPage, 1 )
 	Text( 2, "Ничего...",CloseTalk )
 	Text( 1, "Ничего...",CloseTalk )
@@ -3985,55 +4041,6 @@ function r_talk53 ()
 	Text( 3, "Пять свитков за 500к ",MultiTrigger, GetMultiTrigger(), 1 )
 	Text( 3, "Назад ", JumpPage, 1 )
 	Talk( 5, "Не все условия выполнены " )
-	
-		InitExchangeX()
-	--Мечи 
-ExchangeDataX	(	8142	,	15	,	5001	,	1	)
-ExchangeDataX	(	8142	,	15	,	5008	,	1	)
-ExchangeDataX	(	8142	,	20	,	5002	,	1	)
-ExchangeDataX	(	8142	,	20	,	5007	,	1	)
---Молот
-ExchangeDataX	(	8142	,	30	,	5003	,	1	)
-ExchangeDataX	(	8142	,	40	,	5009	,	1	)
---Пистолеты\Луки
-ExchangeDataX	(	8142	,	30	,	5005	,	1	)
-ExchangeDataX	(	8142	,	40	,	5011	,	1	)
-ExchangeDataX	(	8142	,	30	,	5448	,	1	)
-ExchangeDataX	(	8142	,	40	,	5612	,	1	)
---Посохи
-ExchangeDataX	(	8142	,	30	,	5006	,	1	)
-ExchangeDataX	(	8142	,	40	,	5012	,	1	)
-ExchangeDataX	(	8142	,	30	,	5004	,	1	)
-ExchangeDataX	(	8142	,	40	,	5010	,	1	)
-
---Аппы Ланса за медь
-ExchangeDataX	(	8141	,	20	,	8823	,	1	)
-ExchangeDataX	(	8141	,	30	,	8821	,	1	)
-ExchangeDataX	(	8141	,	40	,	8822	,	1	)
-ExchangeDataX	(	8141	,	50	,	8824	,	1	)
-ExchangeDataX	(	8141	,	60	,	8825	,	1	)
-ExchangeDataX	(	8141	,	70	,	8826	,	1	)
---Аппа Карциза
-ExchangeDataX	(	8141	,	20	,	8829	,	1	)
-ExchangeDataX	(	8141	,	30	,	8827	,	1	)
-ExchangeDataX	(	8141	,	40	,	8828	,	1	)
-ExchangeDataX	(	8141	,	50	,	8830	,	1	)
-ExchangeDataX	(	8141	,	60	,	8831	,	1	)
-ExchangeDataX	(	8141	,	70	,	8832	,	1	)
---Аппы Филис
-ExchangeDataX	(	8141	,	20	,	8835	,	1	)
-ExchangeDataX	(	8141	,	30	,	8833	,	1	)
-ExchangeDataX	(	8141	,	40	,	8834	,	1	)
-ExchangeDataX	(	8141	,	50	,	8836	,	1	)
-ExchangeDataX	(	8141	,	60	,	8837	,	1	)
-ExchangeDataX	(	8141	,	70	,	8838	,	1	)
---Аппы Ами
-ExchangeDataX	(	8141	,	20	,	8841	,	1	)
-ExchangeDataX	(	8141	,	30	,	8839	,	1	)
-ExchangeDataX	(	8141	,	40	,	8840	,	1	)
-ExchangeDataX	(	8141	,	50	,	8842	,	1	)
-ExchangeDataX	(	8141	,	60	,	8843	,	1	)
---ExchangeDataX	(	8141	,	70	,	8844	,	1	)
 
 	InitTrade()
 	Weapon(	0008	)
@@ -4082,7 +4089,35 @@ ExchangeDataX	(	8141	,	60	,	8843	,	1	)
 	Weapon(	1473	)
 	Weapon(	1475	)
 	Weapon(	1476	)
-
+--	Defence(	0453	)
+--	Defence(	0454	)
+--	Defence(	6946	)
+	Defence(	1020	)
+--	Defence(	0455	)
+--	Defence(	0456	)
+--	Defence(	0890	)
+--	Defence(	0891	)
+	Defence(	0886	)
+	Defence(	3075	)
+	Defence(	3074	)
+	--
+	Defence(	454	)--катализатор плавки
+	Defence(	456	)
+	Defence(	891	)--Катализатор снаряжения
+	Defence(	890	)--Стабилизатор снаряжения
+	--Other(	6819	)
+	--Other(	6822	)
+	--Other(	6825	)
+	--Other(	6828	)
+	--Other(	6831	)
+	--Other(		)
+	--Other(		)
+	--Other(		)
+	--Other(	6818	)
+	--Other(	6821	)
+	--Other(	6824	)
+	--Other(	6827	)
+	--Other(	6830	)
 	Other(		)
 	Other(		)
 	Other(		)
@@ -4104,7 +4139,28 @@ end
 
 --------------------------------------------------------------МъЅіµДНЅµЬ 
 function mmm_talk04 ()
-	Text( 1, "Узнать о ковке", JumpPage, 2 )
+	Talk( 1, "Ученик кузница: Привет я могу тебе помочь соеденить Очищающие самоцветы в 4 ур. и 5 ур. Тебе понадобиться для 4 ур. 8 расписок на очищающий самоцвет. А для 5 ур. 16 расписок." )
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem , 7726 , 8 )
+	TriggerCondition( 1, HasLeaveBagGrid , 1 )
+	TriggerCondition( 1, KitbagLock , 0 )
+	TriggerAction( 1, TakeItem , 7726, 8 )
+	TriggerAction( 1, GiveItem , 885 , 1 , 104 )
+	TriggerFailure( 1, JumpPage, 2 ) 
+	Text( 1, "Очищающий самоцвет 4 ур.",MultiTrigger, GetMultiTrigger(), 1)
+
+	InitTrigger()
+	TriggerCondition( 1, HasItem , 7726 , 16 )
+	TriggerCondition( 1, HasLeaveBagGrid , 1 )
+	TriggerCondition( 1, KitbagLock , 0 )
+	TriggerAction( 1, TakeItem , 7726, 16 )
+	TriggerAction( 1, GiveItem , 885 , 1 , 105 )
+	TriggerFailure( 1, JumpPage, 2 ) 
+	Text( 1, "Очищающий самоцвет 5 ур.",MultiTrigger, GetMultiTrigger(), 1)
+
+	Talk( 2, "Ученик кузница: Кажется у тебя не хватает расписок для обмена. Или твой интветарь заблокирован, так же возможно, что у тебя не достаточно места." )
+--[[	Text( 1, "Узнать о ковке", JumpPage, 2 )
 	Text( 1, "Узнать о комбинировании", JumpPage, 3 )
 	Text( 1, "Узнать о плавке", JumpPage, 7 )
 	Text( 1, "Ничего...",CloseTalk )
@@ -4124,7 +4180,7 @@ function mmm_talk04 ()
 	Talk( 6, "Ученик кузнеца: Чем выше уровень выковываемого предмета, тем ниже шанс удачной ковки. Максимальный уровень создаваемого предмета - 27. При неудачной ковке используемые в ней предметы исчезнут." )
 	
 	Talk( 7, "Ученик кузнеца: Для плавки предметов тебе необходимо приготовить 1 Стабилизатор и 1 Катализатор, чтобы сделать слот." )
-
+]]--
 end
 
 ----------------------------------------------------------
@@ -4187,7 +4243,24 @@ function r_talk55 ()
 	Text( 1, "Выкупить маску реальности",JumpPage, 2 )
 
 	InitTrade()
-	
+	Other(	3206	)
+	Other(	3208	)
+	Other(	3205	)
+	Other(	3242	)
+	Other(	3210	)
+	Other(	3207	)
+	Other(	3211	)
+	Other(	3215	)
+	Other(	3212	)
+	Other(	3209	)
+	Other(	3220	)
+	Other(	3222	)
+	Other(	3219	)
+	Other(	3218	)
+	Other(	3216	)
+	Other(	3223	)
+	Other(	3217	)
+	Other(	3224	)
 	Other(	3225	)
 	Other(	3226	)
 	Other(	3294	)
@@ -4226,7 +4299,7 @@ function r_talk55 ()
 	Other(	1621	)
 	Other(	1703	)
 	--Other(	3288	)
-	--Other(  2440    )
+	Other(  2440    )
 	Other(	854	)
 
 	AddNpcMission	(1161)
@@ -4403,7 +4476,7 @@ function r_talk58 ()
 	Talk( 1, "Деки: Эй! Я Деки, главарь Вервольфов-пиратов! В списке разыскиваемых флотом преступников я значусь седьмым. Почему я тебе об этом рассказываю? Потому, что я не боюсь флота! Хе-хе!" )
 	
 
-	--Text( 1, "ГО»ГЛ«ЧУ№¬(ЦХј«12№¬ЧЁУГИООс)", JumpPage,2 )
+--	Text( 1, "ГО»ГЛ«ЧУ№¬(ЦХј«12№¬ЧЁУГИООс)", JumpPage,2 )
 
 	Talk( 2, "єЈµБЎ¤µВїЛ:ЗлСЎФсДгТЄґі№ШµДДС¶И,ґУЛ®КЦµЅґ¬і¤ДС¶ИТАґОјУґу,µ±И»БЛДС¶ИФЅёЯЅ±АшФЅ·бєс.ДгПлєГБЛВр?Ц»ДЬСЎФсТ»ґО,І»їЙТФєу»ЪЕ¶" )
 
@@ -4489,10 +4562,6 @@ end
 function r_talk59 ()
 	Talk( 1, "Рислина: Привет! Я Рислина! Я обожаю болтовню и сплетни! Спрашивай меня о чем угодно!" )
 	--Text( 1, 'Звезда единства', JumpPage, 31 )
-	Text( 1, 'Звезда единства', SendExchangeXData )
-	InitExchangeX()
-	ExchangeDataX	(		8142	,	5	,	1033	,	1	)
-	
 	Text( 1, "Мне хотелось бы кое о чем спросить", JumpPage, 4 )
 	Text( 1, "О классах и атрибутах", JumpPage, 11 )
 	Text( 1, "Узнать расположение монстров", JumpPage, 30 )
@@ -4644,24 +4713,24 @@ function r_talk59 ()
 
 	Talk( 30, "Рислина: Чтобы выяснить, где находятся чудовища, достаточно разыскать Пьянчугу в баре Аргента (2222, 2889). За плату он сообщит тебе координаты." )
 
-	InitTrigger()
-	TriggerCondition( 1, NoItem, 1034, 1 )
-	TriggerCondition( 1, NoItem, 1033, 1 )
-	TriggerCondition( 1, BankNoItem, 1034, 1 )
-	TriggerCondition( 1, BankNoItem, 1033, 1 )
-	TriggerCondition( 1, EquipNoItem, 1034, 1 )
-	TriggerCondition( 1, EquipNoItem, 1033, 1 )
-	TriggerCondition( 1, ChekTimeHook )
-	TriggerCondition( 1, LvCheck, "<", 41 )
-	TriggerAction( 1, GiveItem, 1033, 1, 4 )
-	TriggerFailure( 1, JumpPage, 6 )
+	--InitTrigger()
+	--TriggerCondition( 1, NoItem, 1034, 1 )
+	--TriggerCondition( 1, NoItem, 1033, 1 )
+	--TriggerCondition( 1, BankNoItem, 1034, 1 )
+	--TriggerCondition( 1, BankNoItem, 1033, 1 )
+	--TriggerCondition( 1, EquipNoItem, 1034, 1 )
+	--TriggerCondition( 1, EquipNoItem, 1033, 1 )
+	--TriggerCondition( 1, ChekTimeHook )
+	--TriggerCondition( 1, LvCheck, "<", 41 )
+	--TriggerAction( 1, GiveItem, 1033, 1, 4 )
+	--TriggerFailure( 1, JumpPage, 6 )
 
-	Talk( 31, "Звезда единства - таинственный предмет из другого мира. Она позволит тебе использовать силу единства, и тогда... не знаю, что тогда. Все игроки с уровнем выше 41 могут обменять Звезду единства на хорошее снаряжение. Тебя это интересует?" )
-	Text( 31, "Получить Звезду единства",MultiTrigger, GetMultiTrigger(), 1)
-	Text( 31, "Обменять Звезду единства",JumpPage, 32 )
+	--Talk( 31, "Звезда единства - таинственный предмет из другого мира. Она позволит тебе использовать силу единства, и тогда... не знаю, что тогда. Все игроки с уровнем выше 41 могут обменять Звезду единства на хорошее снаряжение. Тебя это интересует?" )
+	--Text( 31, "Получить Звезду единства",MultiTrigger, GetMultiTrigger(), 1)
+	--Text( 31, "Обменять Звезду единства",JumpPage, 32 )
 
-	Talk( 32, "Благодарим за выбор наших товаров. Если у тебя есть 'Звезда единства', можешь выкупить оружие 50 ур. для своей категории. Заманчиво, правда?")
-	Text( 32, "Получить оружие на свой класс", Transfer_TeamStar, 1)
+	--Talk( 32, "Благодарим за выбор наших товаров. Если у тебя есть 'Звезда единства', можешь выкупить оружие 50 ур. для своей категории. Заманчиво, правда?")
+	--Text( 32, "Получить оружие на свой класс", Transfer_TeamStar, 1)
 
 	Talk( 6, "Рислина: Извини, но ты не соответствуешь нужным требованиям" )
 	
@@ -4996,9 +5065,9 @@ function r_talk68 ()
 	AddNpcMission	(5014)	--2
 	AddNpcMission	(5033)	--3
 	AddNpcMission	(5034)	--4
-	--AddNpcMission	(5553)	--5
-	--AddNpcMission	(5554)	--6
-	--AddNpcMission	(6303)	--7
+	AddNpcMission	(5553)	--5
+	AddNpcMission	(5554)	--6
+	AddNpcMission	(6303)	--7
 	AddNpcMission	(6354)	--8
 	AddNpcMission	(6355)	--9
 	AddNpcMission	(6356)	--10
@@ -5046,8 +5115,8 @@ function r_talk70 ()
 	AddNpcMission	(553)	--10-Трагедия
 	AddNpcMission	(556)	--11-Потеря
 
-	--AddNpcMission	(5627)	--12-Посол Пиратии 2(Завершение)
-	--AddNpcMission	(5628)	--13-Посол Пиратии 3(Завершение)
+	AddNpcMission	(5627)	--12-Посол Пиратии 2(Завершение)
+	AddNpcMission	(5628)	--13-Посол Пиратии 3(Завершение)
 
 	AddNpcMission	(6307)	--14-Секрет острова Зимы(Завершение)
 	AddNpcMission	(6308)	--15-Загадочный Вилль с Севера
@@ -5104,13 +5173,12 @@ function r_talk73 ()
 	Text( 1, "Ремонт", OpenRepair )
 	Text( 1, "Комбинировать", OpenUnite)
 	Text( 1, "Ковка", OpenForge)
-	--Text( 1, "Купить свитки плавки ", JumpPage, 3 )
+	Text( 1, "Купить свитки плавки ", JumpPage, 3 )
 	Text( 1, "Смотреть ещё ", JumpPage, 2 )
 	Text( 2, "Плавка", OpenMilling)
 	Text( 2, "Плавка аппарелей", OpenFusion)
 	Text( 2, "Усовершенствование аппарелей", OpenUpgrade)
 	Text( 2, "Извлечение самоцвета", OpenGetStone )
-	Text( 2, "Получить украшение", SendExchangeXData )
 	Text( 2, "Назад ", JumpPage, 1 )
 	Text( 2, "Ничего...",CloseTalk )
 	Text( 1, "Ничего...",CloseTalk )
@@ -5159,57 +5227,6 @@ function r_talk73 ()
 	Text( 3, "Назад ", JumpPage, 1 )
 	Talk( 5, "Не все условия выполнены " )
 	--
-	
-		InitExchangeX()
-	--Мечи 
-ExchangeDataX	(	8142	,	15	,	5001	,	1	)
-ExchangeDataX	(	8142	,	15	,	5008	,	1	)
-ExchangeDataX	(	8142	,	20	,	5002	,	1	)
-ExchangeDataX	(	8142	,	20	,	5007	,	1	)
---Молот
-ExchangeDataX	(	8142	,	30	,	5003	,	1	)
-ExchangeDataX	(	8142	,	40	,	5009	,	1	)
---Пистолеты\Луки
-ExchangeDataX	(	8142	,	30	,	5005	,	1	)
-ExchangeDataX	(	8142	,	40	,	5011	,	1	)
-ExchangeDataX	(	8142	,	30	,	5448	,	1	)
-ExchangeDataX	(	8142	,	40	,	5612	,	1	)
---Посохи
-ExchangeDataX	(	8142	,	30	,	5006	,	1	)
-ExchangeDataX	(	8142	,	40	,	5012	,	1	)
-ExchangeDataX	(	8142	,	30	,	5004	,	1	)
-ExchangeDataX	(	8142	,	40	,	5010	,	1	)
-
---Аппы Ланса за медь
-ExchangeDataX	(	8141	,	20	,	8823	,	1	)
-ExchangeDataX	(	8141	,	30	,	8821	,	1	)
-ExchangeDataX	(	8141	,	40	,	8822	,	1	)
-ExchangeDataX	(	8141	,	50	,	8824	,	1	)
-ExchangeDataX	(	8141	,	60	,	8825	,	1	)
-ExchangeDataX	(	8141	,	70	,	8826	,	1	)
---Аппа Карциза
-ExchangeDataX	(	8141	,	20	,	8829	,	1	)
-ExchangeDataX	(	8141	,	30	,	8827	,	1	)
-ExchangeDataX	(	8141	,	40	,	8828	,	1	)
-ExchangeDataX	(	8141	,	50	,	8830	,	1	)
-ExchangeDataX	(	8141	,	60	,	8831	,	1	)
-ExchangeDataX	(	8141	,	70	,	8832	,	1	)
---Аппы Филис
-ExchangeDataX	(	8141	,	20	,	8835	,	1	)
-ExchangeDataX	(	8141	,	30	,	8833	,	1	)
-ExchangeDataX	(	8141	,	40	,	8834	,	1	)
-ExchangeDataX	(	8141	,	50	,	8836	,	1	)
-ExchangeDataX	(	8141	,	60	,	8837	,	1	)
-ExchangeDataX	(	8141	,	70	,	8838	,	1	)
---Аппы Ами
-ExchangeDataX	(	8141	,	20	,	8841	,	1	)
-ExchangeDataX	(	8141	,	30	,	8839	,	1	)
-ExchangeDataX	(	8141	,	40	,	8840	,	1	)
-ExchangeDataX	(	8141	,	50	,	8842	,	1	)
-ExchangeDataX	(	8141	,	60	,	8843	,	1	)
---ExchangeDataX	(	8141	,	70	,	8844	,	1	)
-	
-	
 	InitTrade()
 	Weapon(	0008	)
 	Weapon(	0196	)
@@ -5239,7 +5256,35 @@ ExchangeDataX	(	8141	,	60	,	8843	,	1	)
 	Weapon(	1409	)
 	Weapon(	1413	)
 	Weapon(	1414	)
-
+--	Defence(	0453	)
+--	Defence(	0454	)
+--	Defence(	6946	)
+	Defence(	1020	)
+--	Defence(	0455	)
+--	Defence(	0456	)
+--	Defence(	0890	)
+--	Defence(	0891	)
+	Defence(	0886	)
+	Defence(	3075	)
+	Defence(	3074	)
+		--
+	Defence(	454	)--катализатор плавки
+	Defence(	456	)
+	Defence(	891	)--Катализатор снаряжения
+	Defence(	890	)--Стабилизатор снаряжения
+	--Other(	6819	)
+	--Other(	6822	)
+	--Other(	6825	)
+	--Other(	6828	)
+	--Other(	6831	)
+	--Other(		)
+	--Other(		)
+	--Other(		)
+	--Other(	6818	)
+	--Other(	6821	)
+	--Other(	6824	)
+	--Other(	6827	)
+	--Other(	6830	)
 	Other(		)
 	Other(		)
 	Other(		)
@@ -5272,7 +5317,18 @@ function r_talk74 ()
 	Text( 1, "Выкупить маску реальности",JumpPage, 2 )
 
 	InitTrade()
-	
+	Other(	3187	)
+	Other(	3188	)
+	Other(	3190	)
+	Other(	3239	)
+	Other(	3197	)
+	Other(	3193	)
+	Other(	3241	)
+	Other(	3192	)
+	Other(	3198	)
+	Other(	3202	)
+	Other(	3203	)
+	Other(	3204	)
 	Other(	3225	)
 	Other(	3226	)
 	Other(	3294	)
@@ -5310,7 +5366,7 @@ function r_talk74 ()
 	Other(	1621	)
 	Other(	1703	)
 	--Other(	3288	)
-	--Other(  2440    )
+	Other(  2440    )
 	Other(	854	)
 
 
@@ -5425,13 +5481,6 @@ function r_talk75 ()
 	Other(	1848	)
 	Other(	1849	)
 	Other(	3143	)
-		Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
 	--Leo
 	Other(	1576	)
 	Other(	4049	)
@@ -5453,9 +5502,9 @@ function r_talk75 ()
 	--Start( GetMultiTrigger(), 1 )
 
 	AddNpcMission	(727 )
-	AddNpcMission	(735 )
-	AddNpcMission	(746 )
-	AddNpcMission	(747 )
+	--AddNpcMission	(735 )
+	--AddNpcMission	(746 )
+	--AddNpcMission	(747 )
 	AddNpcMission	(1047)
 	AddNpcMission	(1101)
 	AddNpcMission	(1158)
@@ -5513,10 +5562,6 @@ function r_talk77 ()
 	
         Talk( 1, "Анжела: Привет, меня зовут Анжела. Я расскажу тебе о жизни в Ледыни. Надеюсь, тебе понравится наша бесконечная зима!" )
 	--Text( 1, 'Звезда единства', JumpPage, 31 )
-	--Text( 1, 'Звезда единства', JumpPage, 31 )
-	Text( 1, 'Звезда единства', SendExchangeXData )
-	InitExchangeX()
-	ExchangeDataX	(		8142	,	5	,	1033	,	1	)
 	Text( 1, "Мне хотелось бы кое о чем спросить", JumpPage, 4 )
 	Text( 1, "О классах и атрибутах", JumpPage, 11 )
 	Text( 1, "Узнать расположение монстров", JumpPage, 30 )
@@ -5673,24 +5718,24 @@ function r_talk77 ()
 
 	Talk( 30, "Анжела: Чтобы выяснить, где находятся чудовища, достаточно разыскать Пьянчугу в баре Аргента (2222, 2889). За плату он сообщит тебе координаты." )
 
-	InitTrigger()
-	TriggerCondition( 1, NoItem, 1034, 1 )
-	TriggerCondition( 1, NoItem, 1033, 1 )
-	TriggerCondition( 1, BankNoItem, 1034, 1 )
-	TriggerCondition( 1, BankNoItem, 1033, 1 )
-	TriggerCondition( 1, EquipNoItem, 1034, 1 )
-	TriggerCondition( 1, EquipNoItem, 1033, 1 )
-	TriggerCondition( 1, ChekTimeHook )
-	TriggerCondition( 1, LvCheck, "<", 41 )
-	TriggerAction( 1, GiveItem, 1033, 1, 4 )
-	TriggerFailure( 1, JumpPage, 6 )
+	--InitTrigger()
+	--TriggerCondition( 1, NoItem, 1034, 1 )
+	--TriggerCondition( 1, NoItem, 1033, 1 )
+	--TriggerCondition( 1, BankNoItem, 1034, 1 )
+	--TriggerCondition( 1, BankNoItem, 1033, 1 )
+	--TriggerCondition( 1, EquipNoItem, 1034, 1 )
+	--TriggerCondition( 1, EquipNoItem, 1033, 1 )
+	--TriggerCondition( 1, ChekTimeHook )
+	--TriggerCondition( 1, LvCheck, "<", 41 )
+	--TriggerAction( 1, GiveItem, 1033, 1, 4 )
+	--TriggerFailure( 1, JumpPage, 6 )
 
-	Talk( 31, "Анжела: Звезда единства - таинственный предмет из другого мира. Она позволит тебе использовать силу единства, и тогда... не знаю, что тогда. Все игроки с уровнем выше 41 могут обменять Звезду единства на хорошее снаряжение. Тебя это интересует?" )
-	Text( 31, "Получить Звезду единства",MultiTrigger, GetMultiTrigger(), 1)
-	Text( 31, "Обменять Звезду единства",JumpPage, 32 )
+	--Talk( 31, "Анжела: Звезда единства - таинственный предмет из другого мира. Она позволит тебе использовать силу единства, и тогда... не знаю, что тогда. Все игроки с уровнем выше 41 могут обменять Звезду единства на хорошее снаряжение. Тебя это интересует?" )
+	--Text( 31, "Получить Звезду единства",MultiTrigger, GetMultiTrigger(), 1)
+	--Text( 31, "Обменять Звезду единства",JumpPage, 32 )
 
-	Talk( 32, "Благодарим за выбор наших товаров. Если у тебя есть 'Звезда единства', можешь выкупить оружие 50 ур. для своей категории. Заманчиво, правда?")
-	Text( 32, "Получить оружие на свой класс", Transfer_TeamStar, 1)
+	--Talk( 32, "Благодарим за выбор наших товаров. Если у тебя есть 'Звезда единства', можешь выкупить оружие 50 ур. для своей категории. Заманчиво, правда?")
+	--Text( 32, "Получить оружие на свой класс", Transfer_TeamStar, 1)
 
 	Talk( 6, "Анжела: Извини, но ты не соответствуешь нужным требованиям" )
 
@@ -5768,7 +5813,6 @@ function r_talk78 ()
 	Other(	3203	)
 	Other(	3204	)
 
-
 	Talk( 3, "Рэй: Погоди, мой дорогой друг! Тебе так интересны луки? Знай, я могу тебя обучить мастерству охотника, но знай, что профессия выбирается лишь 1 раз и навсегда. Ты готов стать настоящим Стрелком?")
 
 	InitTrigger()
@@ -5828,20 +5872,21 @@ function r_talk78 ()
 	Text( 6, "Мне нужно ещё подумать", CloseTalk)
 
 	Talk( 7, "Рэй: К сожалению нужные условия, что бы стать Стрелком не выполнены. Стрелком может стать Ланс или Филлис. Необходимо иметь 40 уровень. Так же у тебя должна быть 1 профессия охотника.")
-	AddNpcMission	(101)	--Жизнь охотника
+
+--	AddNpcMission	(101)	--Жизнь охотника
 	AddNpcMission	(251)	--Путешествие на север(Завершение)
 	AddNpcMission	(252)	--Опасность в Ледыне
 	AddNpcMission	(260)	--Доставка припасов(Завершение)
 	AddNpcMission	(261)	--Дальнейшее расследование
 --	AddNpcMission	(410)	--Движение тундры
-	AddNpcMission	(757)	--Стрельбище
+--	AddNpcMission	(757)	--Стрельбище
 	AddNpcMission	(167)	--Письмо Рэю(Завершение)
 	AddNpcMission	(168)	--Лишним не будет
 	AddNpcMission	(169)	--Письмо Ханне
-	--AddNpcMission	(174)	--Карьера охотника(Завершение от наставницы)
-	AddNpcMission	(175)	--Карьера охотника
-	AddNpcMission	(176)	--Карьера охотника
-	AddNpcMission	(180)	--Карьера охотника(Завершение)
+--	AddNpcMission	(174)	--Карьера охотника(Завершение от наставницы)
+--	AddNpcMission	(175)	--Карьера охотника
+--	AddNpcMission	(176)	--Карьера охотника
+--	AddNpcMission	(180)	--Карьера охотника(Завершение)
 	AddNpcMission	(523)	--Кристальное перо
 --	AddNpcMission	(1237)	--Коммерция
 
@@ -5856,10 +5901,10 @@ function r_talk78 ()
 	AddNpcMission	(5099)	--Ученик уровень 3
 	AddNpcMission	(5100)	--Ученик уровень 4
 	AddNpcMission	(5111)	--Ученик
-    AddNpcMission	(6125)	--The Sixth Task
+
 	MisListPage(2)
 
-	
+	--AddNpcMission	(6125 )	--The Sixth Task
 end 
 
 -----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<±щАЗ±¤ЅЈКїЎ¤АЧЕ·
@@ -5951,17 +5996,13 @@ function r_talk80 ()
 
 	Talk( 2, "Мас: Хо-хо-хо… Пиратская банда? Хочешь основать банду? Это зависит от твоих способностей." )
 	InitTrigger()
-	--TriggerCondition( 1, HasCredit, 300 )
-	--TriggerCondition( 1, HasMoney, 400000 )
-	--TriggerCondition( 1, HasItem, 1780, 1 )
-	TriggerCondition( 1, NoGuild )
+	TriggerCondition( 1, HasMoney, 100000 )
+	TriggerCondition( 1, HasItem, 1780, 1 )
 	TriggerAction( 1, CreateGuild, 1 )
-	--TriggerAction( 1, TakeMoney, 400000 )
-	--TriggerAction( 1, TakeCredit, 300 )
 	TriggerFailure( 1, JumpPage, 3 )
 	Text( 2, "Создать Пиратскую гильдию", MultiTrigger, GetMultiTrigger(), 1)
 
-	Talk( 3, "Мас: Не каждому под силу быть лидером пиратов. Принеси 400 000 золотых и Камень клятвы и ты должен иметь 300 репутации, чтобы доказать, что ты достоин этого" )
+	Talk( 3, "Мас: Не каждому под силу быть лидером пиратов. Принеси 100 000 золотых и Камень клятвы, чтобы доказать, что ты достоин этого" )
 
 	AddNpcMission	(253)	--1-Опасность в Ледыни(Завершение)
 	AddNpcMission	(254)	--2-Восполнение
@@ -5998,11 +6039,11 @@ function r_talk81 ()
 	
 	Talk( 1, "Белинда: Добро пожаловать в Банк Ледыни. Я могу вам чем-то помочь?" )
 	InitTrigger()
-	TriggerCondition( 1, HasMoney, 3000 )
-	TriggerAction( 1, TakeMoney, 3000 )
+	TriggerCondition( 1, HasMoney, 200 )
+	TriggerAction( 1, TakeMoney, 200 )
 	TriggerAction( 1, OpenBank )
 	TriggerFailure( 1, JumpPage, 2 )
-	Text( 1, "Хранилище (плата 3000 зол.)", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 1, "Хранилище (плата 200 зол.)", MultiTrigger, GetMultiTrigger(), 1)
 	Talk( 2, "Извини, похоже, у тебя не хватает денег" )
 
 	AddNpcMission	(1102)
@@ -6031,7 +6072,7 @@ function r_talk82 ()
 	
 	Talk( 1, "Бабара: Привет, есть что рассказать?" )
 
-	--Text( 1, "Дворец Кровоточащего Тельца (Квест Гороскопа)", JumpPage,9 )
+	Text( 1, "Дворец Кровоточащего Тельца (Квест Гороскопа)", JumpPage,9 )
 --	Text( 1, "Sailor Completion Reward", JumpPage,11 )
 --	Text( 1, "Pirate Completion Reward", JumpPage,12 )
 --	Text( 1, "Captain completion reward", JumpPage,13 )
@@ -6104,7 +6145,7 @@ function r_talk82 ()
 --	TriggerAction( 1, JumpPage, 15 )
 --	TriggerFailure( 1, JumpPage, 16 )
 --	Talk( 11, "Babara: Collect all 7 badges to exchange for Aries Protector Seal and the Ticket for the next Palace. There are also more prizes available." )
---	Text( 11, "Подтвердить to exchange",MultiTrigger_1, GetMultiTrigger(), 1)--------------------?????????
+--	Text( 11, "Confirm to exchange",MultiTrigger_1, GetMultiTrigger(), 1)--------------------?????????
 --
 --
 --
@@ -6134,7 +6175,7 @@ function r_talk82 ()
 --	TriggerAction( 1, JumpPage, 15 )
 --	TriggerFailure( 1, JumpPage, 16 )
 --	Talk( 11, "Babara: Collect all 7 Emblems to exchange for Taurus Protector Seal and Gemini Gate Ticket. There are also other prizes available." )
---	Text( 11, "Подтвердить to exchange",MultiTrigger, GetMultiTrigger(), 1)
+--	Text( 11, "Confirm to exchange",MultiTrigger, GetMultiTrigger(), 1)
 --
 --
 --	InitTrigger()
@@ -6163,7 +6204,7 @@ function r_talk82 ()
 --	TriggerAction( 1, JumpPage, 15 )
 --	TriggerFailure( 1, JumpPage, 16 )
 --	Talk( 12, "Babara: Collect all 7 Taurus Emblem to exchange with me for Taurus Protector Seal and Gemini Gate Ticket. There are also more prizes available." )
---	Text( 12, "Подтвердить to exchange",MultiTrigger, GetMultiTrigger(), 1)
+--	Text( 12, "Confirm to exchange",MultiTrigger, GetMultiTrigger(), 1)
 --
 --	Talk( 16, "Babara: You don't seem to have enough emblems on you! Please check if your bag is locked, and please make sure you have 3 slots in your inventory! Are you sure you want to choose this difficulty?")
 --	Talk( 15, "Babara: Next Palace is Gemini Palace, and please continue your effort!")
@@ -6392,10 +6433,6 @@ function BT_NewUser001()
 
 	Talk( 1, "Синна: Здравствуй, я советник в Аргенте. Я отвечаю на вопросы всех новоприбывших путешественников. Если тебе что-то неясно, спроси меня." )
 	--Text( 1, 'Звезда единства', JumpPage, 31 )
-	--Text( 1, 'Звезда единства', JumpPage, 31 )
-	Text( 1, 'Звезда единства', SendExchangeXData )
-	InitExchangeX()
-	ExchangeDataX	(		8142	,	5	,	1033	,	1	)
 	Text( 1, "Узнать об Аргенте", JumpPage, 4 )
 	Text( 1, "О классах и атрибутах", JumpPage, 11 )
 	Text( 1, "Узнать расположение монстров", JumpPage, 30 )
@@ -6553,23 +6590,23 @@ function BT_NewUser001()
 
 	Talk( 30, "Синна: Чтобы выяснить, где находятся чудовища, достаточно разыскать Пьянчугу в баре Аргента (2222, 2889). За плату он сообщит тебе координаты." )
 	
-	InitTrigger()
-	TriggerCondition( 1, NoItem, 1034, 1 )
-	TriggerCondition( 1, NoItem, 1033, 1 )
-	TriggerCondition( 1, BankNoItem, 1034, 1 )
-	TriggerCondition( 1, BankNoItem, 1033, 1 )
-	TriggerCondition( 1, EquipNoItem, 1034, 1 )
-	TriggerCondition( 1, EquipNoItem, 1033, 1 )
-	TriggerCondition( 1, ChekTimeHook )
-	TriggerCondition( 1, LvCheck, "<", 41 )
-	TriggerAction( 1, GiveItem, 1033, 1, 4 )
-	TriggerFailure( 1, JumpPage, 6 )
-	Talk( 31, "Звезда единства - таинственный предмет из другого мира. Она позволит тебе использовать силу единства, и тогда... не знаю, что тогда. Все игроки с уровнем выше 41 могут обменять Звезду единства на хорошее снаряжение. Тебя это интересует?" )
-	Text( 31, "Получить Звезду единства",MultiTrigger, GetMultiTrigger(), 1)
-	Text( 31, "Обменять Звезду единства",JumpPage, 32 )
+	--InitTrigger()
+	--TriggerCondition( 1, NoItem, 1034, 1 )
+	--TriggerCondition( 1, NoItem, 1033, 1 )
+	--TriggerCondition( 1, BankNoItem, 1034, 1 )
+	--TriggerCondition( 1, BankNoItem, 1033, 1 )
+	--TriggerCondition( 1, EquipNoItem, 1034, 1 )
+	--TriggerCondition( 1, EquipNoItem, 1033, 1 )
+	--TriggerCondition( 1, ChekTimeHook )
+	--TriggerCondition( 1, LvCheck, "<", 41 )
+	--TriggerAction( 1, GiveItem, 1033, 1, 4 )
+	--TriggerFailure( 1, JumpPage, 6 )
+	--Talk( 31, "Звезда единства - таинственный предмет из другого мира. Она позволит тебе использовать силу единства, и тогда... не знаю, что тогда. Все игроки с уровнем выше 41 могут обменять Звезду единства на хорошее снаряжение. Тебя это интересует?" )
+	--Text( 31, "Получить Звезду единства",MultiTrigger, GetMultiTrigger(), 1)
+	--Text( 31, "Обменять Звезду единства",JumpPage, 32 )
 
-	Talk( 32,"Благодарим за выбор наших товаров. Если у тебя есть 'Звезда единства', можешь выкупить оружие 50 ур. для своей категории. Заманчиво, правда?")
-	Text( 32, "Получить оружие на свой класс", Transfer_TeamStar, 1)
+	--Talk( 32,"Благодарим за выбор наших товаров. Если у тебя есть 'Звезда единства', можешь выкупить оружие 50 ур. для своей категории. Заманчиво, правда?")
+	--Text( 32, "Получить оружие на свой класс", Transfer_TeamStar, 1)
 
 	Talk( 6, "Синна: Извини, но ты не соответствуешь нужным требованиям" )
 
@@ -6595,7 +6632,7 @@ function BT_NewUser001()
 	AddNpcMission	(402)
 	AddNpcMission	(50)
 	AddNpcMission	(51)
-	--AddNpcMission	(61)
+	AddNpcMission	(61)
 	--AddNpcMission	(62)
 	--AddNpcMission	(63)
 	--AddNpcMission	(64)
@@ -6621,14 +6658,7 @@ function r_talk87 ()
 	Text( 1, "Получить Медаль Отваги", JumpPage, 2)
 	Text( 1, "Распределение очков чести в отряде", JumpPage, 6)
 	Text( 1, "Обмен взноса команд", JumpPage, 3)
-	Text( 1, "Записать точку возрождения", SetSpawnPos, "Argent Bar")
-	
-	InitTrigger()
-	TriggerCondition( 1, HasMoney, 50000 )
-	TriggerAction( 1, TakeMoney, 50000 )
-	TriggerAction( 1, ReHp,50 )
-	TriggerFailure( 1, JumpPage, 1 )
-	Text( 1, 'Великое исцеление', MultiTrigger,GetMultiTrigger(), 19 )
+	Text( 1, "Record Current Challenge Location", SetSpawnPos, "Argent Bar")
 
 	Talk( 2, "Управляющий Арены: Привет! Чтобы получить Медаль отваги, нужно быть выше 25 ур. и иметь 50000 золотых, чтобы оплатить пошлину. Тогда ты сможешь участвовать в битвах с другими игроками. Медаль отваги всегда будет у тебя. Ее нельзя выбросить, уничтожить или потерять." )
 	InitTrigger()
@@ -6641,13 +6671,13 @@ function r_talk87 ()
 	TriggerFailure( 1, JumpPage, 4 )
 	Text( 2, "Получить Медаль Отваги", MultiTrigger, GetMultiTrigger(), 1)
 
-	Talk( 3, "Управляющий Арены: Очки взноса отряда можно обменивать на очки Чести. Получить их можно, сразившись в битве отрядов. Одно очко Чести стоит 10 очков Очков взноса отряда и 8000 золотых." )
+	Talk( 3, "Управляющий Арены: Очки взноса отряда можно обменивать на очки Чести. Получить их можно, сразившись в битве отрядов. Одно очко Чести стоит 10 очков Очков взноса отряда и 500 золотых." )
 	InitTrigger()
 	TriggerCondition( 1, HasItem, 3849, 1 )
 	TriggerCondition( 1, LessCredit, "<", 0 )
 	TriggerCondition( 1, HasOffer, 10 )
-	TriggerCondition( 1, HasMoney, 8000 )
-	TriggerAction( 1, TakeMoney, 8000 )
+	TriggerCondition( 1, HasMoney, 500 )
+	TriggerAction( 1, TakeMoney, 500 )
 	TriggerAction( 1, TakeOffer, 10 )
 	TriggerAction( 1, AddCredit, 1 )
 	TriggerFailure( 1, JumpPage, 5 )
@@ -6656,8 +6686,8 @@ function r_talk87 ()
 	TriggerCondition( 1, HasItem, 3849, 1 )
 	TriggerCondition( 1, LessCredit, "<", 0 )
 	TriggerCondition( 1, HasOffer, 50 )
-	TriggerCondition( 1, HasMoney, 40000 )
-	TriggerAction( 1, TakeMoney, 40000 )
+	TriggerCondition( 1, HasMoney, 2500 )
+	TriggerAction( 1, TakeMoney, 2500 )
 	TriggerAction( 1, TakeOffer, 50 )
 	TriggerAction( 1, AddCredit, 5 )
 	TriggerFailure( 1, JumpPage, 11 )
@@ -6666,8 +6696,8 @@ function r_talk87 ()
 	TriggerCondition( 1, HasItem, 3849, 1 )
 	TriggerCondition( 1, LessCredit, "<", 0 )
 	TriggerCondition( 1, HasOffer, 100 )
-	TriggerCondition( 1, HasMoney, 80000 )
-	TriggerAction( 1, TakeMoney, 80000 )
+	TriggerCondition( 1, HasMoney, 5000 )
+	TriggerAction( 1, TakeMoney, 5000 )
 	TriggerAction( 1, TakeOffer, 100 )
 	TriggerAction( 1, AddCredit, 10 )
 	TriggerFailure( 1, JumpPage, 12 )
@@ -6681,16 +6711,16 @@ function r_talk87 ()
 	TriggerAction( 1, TakeOffer, 300 )
 	TriggerAction( 1, AddCredit, 30 )
 	TriggerFailure( 1, JumpPage, 13 )
-	--Text( 3, "Выкупить 300 Очков взноса отряда", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 3, "Выкупить 300 Очков взноса отряда", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 4, "Управляющий Арены: Получить Медаль отваги могут игроки не ниже 25 уровня, у которых есть пустая ячейка в рюкзаке и 50000 золотых." )
 
-	Talk( 5, "Управляющий Арены: Привет! Чтобы обменять 10 Очков взноса отряда на 1 очко Чести, тебе понадобится 10 Очков взноса отряда, 8000 золотых и отрицательная Честь." )
+	Talk( 5, "Управляющий Арены: Привет! Чтобы обменять 10 Очков взноса отряда на 1 очко Чести, тебе понадобится 10 Очков взноса отряда, 500 золотых и отрицательная Честь." )
 
 	Talk( 6, "Управляющий Арены: Я могу рассказать тебе как распределяются очки Чести" )
 	Text( 6, "О количестве боев", JumpPage, 7)
-	--Text( 6, "О награде за поединок", JumpPage, 8)
-	--Text( 6, "О Воинской Чести", JumpPage, 9)
+	Text( 6, "О награде за поединок", JumpPage, 8)
+	Text( 6, "О Воинской Чести", JumpPage, 9)
 	Text( 6, "О том, как избежать наказания", JumpPage, 10)
 
 	Talk( 7, "Управляющий Арены: Каждая битва увеличит счетчик битв на 1" )
@@ -6706,7 +6736,6 @@ function r_talk87 ()
 	Talk( 12, "Управляющий Арены: Привет! 100 Очков взноса отряда можно обменять на 10 Очков чести. Для этого тебе нужно 5000 золотых и отрицательное значение очков чести." )
 
 	Talk( 13, "Управляющий Арены: Привет! Чтобы обменять 300 Очков взноса отряда на 30 Очков чести, необходимо заплатить 300 Очков взноса отряда и 15000 золотых и иметь отрицательные Очки чести" )
-
 
 end
 
@@ -6738,6 +6767,7 @@ function r_talk88 ()
 	AddNpcMission	(52 )
 	AddNpcMission	(53 )
 	AddNpcMission	(54 )
+----------СІВЯ±шЎ¤Вн¶ыЛ№-------Л«ЧУ
 	AddNpcMission	(5696)
 	AddNpcMission	(5697)
 	MisListPage(2)
@@ -6880,20 +6910,10 @@ function r_talk92 ()
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
-	Defence(	4651	)
-	Defence(	4652	)
-	Defence(	4653	)
-	Defence(	4654	)
-	Defence(	4655	)
-	Defence(	4656	)
-	Defence(	4657	)
-	Defence(	4658	)
-	Defence(	4659	)
-	Defence(	4660	)
 
 	AddNpcMission	(471)	--Смена владельца(Завершение)
 	AddNpcMission	(472)	--Флот Громограда
-	AddNpcMission	(753)	--Прогулка Целительницы(Завершение)
+--	AddNpcMission	(753)	--Прогулка Целительницы(Завершение)
 end
 
 ------------------------------------------------------------
@@ -6910,16 +6930,6 @@ function r_talk93 ()
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
-	Defence(	4626	)
-	Defence(	4627	)
-	Defence(	4628	)
-	Defence(	4629	)
-	Defence(	4630	)
-	Defence(	4631	)
-	Defence(	4632	)
-	Defence(	4633	)
-	Defence(	4634	)
-	Defence(	4635	)
 
 	AddNpcMission(	1442	)
 	AddNpcMission	(	1900	)
@@ -6956,13 +6966,6 @@ function r_talk95 ()
 	Text( 1, "Ничего...",CloseTalk )
 
 	InitTrade()
-		Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
@@ -7038,7 +7041,7 @@ end
 -- µВ¶ыО¬ЖЅФ­-----ВіВі
 ------------------------------------------------------------
 
-function r_talk99999 ()
+function r_talk99 ()
 
 	Talk( 1, "Лулу: Ха-ха! Не смотри на зло!" )
 
@@ -7947,15 +7950,6 @@ end
 function r_talk157()
 
 	Talk( 1, "Дуриан: Я много ем, но я всегда голоден. Наверно, это какая-то болезнь..." )
-	
-	Text( 1,"Обмен", SendExchangeData7 )
-	InitExchange7()
-	DoExchange7()
-	
-	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
-	SetNpcTrigger( GetTrigger( 1 ) )
-	SetNpcActive()
 
 	AddNpcMission	(419)
 	AddNpcMission	(460)
@@ -7988,8 +7982,9 @@ function r_talk158()
 
 	Talk( 1, "Лейна: Че...го...буу..дешь...пппо... купать?" )
 	Text( 1, "Торг", BuyPage )
+	Text( 1, "Ничего",CloseTalk )
 
-
+	InitTrade()
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
@@ -8025,16 +8020,6 @@ function r_talk159()
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
-	Defence(	4631	)
-	Defence(	4632	)
-	Defence(	4633	)
-	Defence(	4634	)
-	Defence(	4635	)
-	Defence(	4636	)
-	Defence(	4637	)
-	Defence(	4638	)
-	Defence(	4639	)
-	Defence(	4640	)
 	
 	AddNpcMission	(463)
 	AddNpcMission	(620)
@@ -8108,23 +8093,12 @@ function r_talk162()
 
 	Talk( 1, "Грег: Привет! Я Грег. Нужна помощь?" )
 	Text( 1, "Торг", BuyPage )
-
 	Text( 1, "Ничего...",CloseTalk )
 
 	InitTrade()
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
-	Defence(	4611	)
-	Defence(	4612	)
-	Defence(	4613	)
-	Defence(	4614	)
-	Defence(	4615	)
-	Defence(	4616	)
-	Defence(	4617	)
-	Defence(	4618	)
-	Defence(	4619	)
-	Defence(	4620	)
 
 	AddNpcMission	(455)
 	AddNpcMission	(461)
@@ -8148,17 +8122,6 @@ end
 function r_talk163()
 
 	Talk( 1, "Линда: Я не хочу работать сверхурочно! Но мой начальник заставляет меня делать это каждый день... Пусть мне платят больше!" )
-	
-	Text( 1,"Обмен", SendExchangeData11 )
-
-	InitExchange11()
-	DoExchange11()
-	
-	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
-	SetNpcTrigger( GetTrigger( 1 ) )
-	SetNpcActive()
-	
 	AddNpcMission	(1027)
 	AddNpcMission	(1190)
 ----------------1.7
@@ -8188,22 +8151,12 @@ function r_talk165()
 
 	Talk( 1, "Грегг: Привет! Что тебе нужно?" )
 	Text( 1, "Торг", BuyPage )
-	
-
-
 	Text( 1, "Ничего...",CloseTalk )
 
 	InitTrade()
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
-		Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
 	---------------°ЧСт
 	AddNpcMission	(5563)
 	AddNpcMission	(5564)
@@ -8217,28 +8170,12 @@ function r_talk166()
 
 	Talk( 1, "Момо: Привет! Я Момо. У меня ты можешь купить изысканные кушанья." )
 	Text( 1, "Торг", BuyPage )
-	Text(1, "Обменяться", SendExchangeData22 )
 	Text( 1, "Ничего...",CloseTalk )
-	InitExchange22()
-	DoExchange22()
-	
-	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
-	SetNpcTrigger( GetTrigger( 1 ) )
-	SetNpcActive()
-	
 
 	InitTrade()
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
-	Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
 
 	AddNpcMission	(433)
 	AddNpcMission	(655)
@@ -8251,7 +8188,7 @@ function r_talk166()
 	---------------°ЧСт
 	AddNpcMission	(5577)
 	AddNpcMission	(5578)
-	
+
 
 
 
@@ -8307,25 +8244,13 @@ function r_talk169()
 
 	Talk( 1, "Маркус: Я могу пополнить ваши запасы. Хотите?" )
 	Text( 1, "Торг", BuyPage )
-	Text( 1,"Обмен", SendExchangeData14 )
-
-	InitExchange14()
-	DoExchange14()
-	
 	Text( 1, "Ничего...",CloseTalk )
 
 	InitTrade()
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
-	Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
-	
+
 	AddNpcMission	(403)
 	AddNpcMission	(413)
 	AddNpcMission	(420)
@@ -8369,33 +8294,16 @@ function r_talk170()
 end
 
 ------------------------------------------------------------
--- Алкар
+-- ЙіИЄІ№ёшХѕ-----УИЛюАпДб
 ------------------------------------------------------------
 
 function r_talk171()
 
-	Talk( 1, "Алкар: Привет, тебе чем то помочь?" )
+	Talk( 1, "Ulkar: Hey! Do you want some bread?" )
 	Text( 1, "Торг", BuyPage )
-	Text( 1,"Обмен", SendExchangeData12 )
 	Text( 1, "Ничего...",CloseTalk )
-	InitExchange12()
-	DoExchange12()
-	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
-	SetNpcTrigger( GetTrigger( 1 ) )
-	SetNpcActive()
-
-	
-	
 
 	InitTrade()
-		Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
@@ -8450,24 +8358,14 @@ function r_talk172()
 end
 
 ------------------------------------------------------------
---Хозо
+-- чјчГУЄµШІ№ёшХѕ-----ОыОы№ю№ю
 ------------------------------------------------------------
 
 function r_talk173()
 
 	Talk( 1, "Хохо: Привет, я здесь отвечаю за ресурсы. Тебе что-нибудь нужно?" )
 	Text( 1, "Торг", BuyPage )
-	Text( 1,"Обмен", SendExchangeData13 )
-Text( 1, "Ничего...",CloseTalk )
-	InitExchange13()
-	DoExchange13()
-	
-	
-	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 1, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
-	SetNpcTrigger( GetTrigger( 1 ) )
-	SetNpcActive()
-	
+	Text( 1, "Ничего...",CloseTalk )
 
 	InitTrade()
 	Other(	1847	)
@@ -8555,13 +8453,6 @@ function r_talk176()
 	Text( 1, "Ничего...",CloseTalk )
 
 	InitTrade()
-		Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
 	Other(	1847	)
 	Other(	1848	)
 	Other(	1849	)
@@ -8624,9 +8515,9 @@ end
 
 function r_talk221()
 
-	Talk( 1, "Ламон: Я тут гуляю, что то случилось?" )
-	--Text( 1, "Торг", BuyPage )
-	--Text( 1, "Восполнение энергии Коралла", JumpPage, 2 )
+	Talk( 1, "Ламон: Я люблю собирать Кораллы всех видов. У меня множество уникальных Кораллов. Желаешь взглянуть?" )
+	Text( 1, "Торг", BuyPage )
+	Text( 1, "Восполнение энергии Коралла", JumpPage, 2 )
 	Text( 1, "Ничего",CloseTalk )
 
 
@@ -8726,7 +8617,7 @@ function r_talk222()
 	AddNpcMission	(5118 )
 	AddNpcMission	(5119 )
 	AddNpcMission	(5120 )
-	--AddNpcMission	(3021 )
+
 end
 ------------------------------------------------------------
 -- ЗпЦ®µє-----АіДИ
@@ -8743,7 +8634,7 @@ end
 function r_talk224()
 
 	Talk( 1, "Пират Джереми: Привет! Я пират и я счастлив!" )
-AddNpcMission	(306)
+
 	AddNpcMission	(306)	--1-Кто такой Андрей?(Завершение)
 	AddNpcMission	(307)	--2-Флот не движется!
 	AddNpcMission	(308)	--3-Снова Джек
@@ -8752,8 +8643,6 @@ AddNpcMission	(306)
 	AddNpcMission	(6313)	--6-Местонахождение Вилля с Севера 2(Завершение)
 	AddNpcMission	(6314)	--7-Проблема Джереми
 	AddNpcMission	(6315)	--8-Посылка Джереми
-	
-	AddNpcMission	(102)
 
 end
 
@@ -8764,7 +8653,7 @@ function r_talk225()
 
 	AddNpcMission	(309)	--1-Снова Джек(Завершение)
 	AddNpcMission	(310)	--2-Я Вернусь!
-	AddNpcMission	(312)	--3-Расследование
+	AddNpcMission	(312)	--3-Investigation
 	AddNpcMission	(313)	--4-Записка Андрея
 	AddNpcMission	(314)	--5-Кровь Пирата(Завершение)
 	AddNpcMission	(315)	--6-Душа Моря(Завершение)
@@ -8947,35 +8836,35 @@ function r_talk234()
 	--Weapon(	0932	)	--Модная книга причесок(Карциз)
 	--Weapon(	0933	)	--Модная книга причесок(Филлис)
 	--Weapon(	0934	)	--Модная книга причесок(Ами)
-	-- --Ингридиенты
-	-- Weapon(	1804	)	--Половинка ножниц
-	-- Weapon(	1805	)	--Гребень
-	-- Weapon(	1806	)	--Гель для волос
-	-- Weapon(	1807	)	--Расписка
-	-- --Краска
-	-- Defence(	4608	)	--Коричневая краска 
-	-- Defence(	4606	)	--Черная краска 
-	-- Defence(		)
-	-- Defence(		)
-	-- Defence(	1793	)	--Пурпурная краска 
-	-- Defence(	1792	)	--Синяя краска
-	-- Defence(	1791	)	--Голубая краска 
-	-- Defence(	1790	)	--Зеленая краска 
-	-- Defence(	1789	)	--Желтая краска 
-	-- Defence(	1788	)	--Оранжевая краска
-	-- Defence(	1787	)	--Красная краска
-	-- --Красители
-	-- Other(	4610	)	--Обесцвечивающее средство
-	-- Other(	4609	)	--Коричневый краситель  
-	-- Other(	4607	)	--Черный краситель
-	-- Other(		)
-	-- Other(	1803	)	--Пурпурный краситель 
-	-- Other(	1801	)	--Голубой краситель 
-	-- Other(	1800	)	--Зеленый краситель
-	-- Other(	1798	)	--Оранжевый краситель 
-	-- Other(	1797	)	--Красный краситель
-	-- Other(	1802	)	--Синий краситель
-	-- Other(	1799	)	--Желтый краситель
+	--Ингридиенты
+	Weapon(	1804	)	--Половинка ножниц
+	Weapon(	1805	)	--Гребень
+	Weapon(	1806	)	--Гель для волос
+	Weapon(	1807	)	--Расписка
+	--Краска
+	Defence(	4608	)	--Коричневая краска 
+	Defence(	4606	)	--Черная краска 
+	Defence(		)
+	Defence(		)
+	Defence(	1793	)	--Пурпурная краска 
+	Defence(	1792	)	--Синяя краска
+	Defence(	1791	)	--Голубая краска 
+	Defence(	1790	)	--Зеленая краска 
+	Defence(	1789	)	--Желтая краска 
+	Defence(	1788	)	--Оранжевая краска
+	Defence(	1787	)	--Красная краска
+	--Красители
+	Other(	4610	)	--Обесцвечивающее средство
+	Other(	4609	)	--Коричневый краситель  
+	Other(	4607	)	--Черный краситель
+	Other(		)
+	Other(	1803	)	--Пурпурный краситель 
+	Other(	1801	)	--Голубой краситель 
+	Other(	1800	)	--Зеленый краситель
+	Other(	1798	)	--Оранжевый краситель 
+	Other(	1797	)	--Красный краситель
+	Other(	1802	)	--Синий краситель
+	Other(	1799	)	--Желтый краситель
 
 	InitTrigger()
 	TriggerCondition( 1, HasItem, 1807, 1 )
@@ -8987,43 +8876,51 @@ function r_talk234()
 
 	Talk( 3, "У тебя нет Парикмахерской расписки. Я не могу сделать тебе прическу.")
 
-	AddNpcMission	(6085 )
+	--AddNpcMission	(6085 )
 
 end
 
 ------------------------------------------------------------
--- Пукан
+-- ·ПїуІ№ёшХѕ-----КОЖ·ЙМИЛЎ¤ІјїЁ
 ------------------------------------------------------------
 function r_talk235()
 
 	Talk( 1, "Пукан: На твой выбор все виды драгоценных колец и ожерелий. Может что и приглянется. У меня самые низкие цены в округе." )
-	Text( 1,"Обмен", SendExchangeData6 )
+	Text( 1, "Торг", BuyPage )
 
-	InitExchange6()
-	DoExchange6()
-
-
-	
-	InitTrigger()
-	TriggerAction( 1, AddNpcTrigger, 53, TE_GAMETIME, TT_CYCLETIME, 55, 0 )
-	SetNpcTrigger( GetTrigger( 1 ) )
-	SetNpcActive()
+	InitTrade()
+	Defence(	4611	)
+	Defence(	4612	)
+	Defence(	4613	)
+	Defence(	4614	)
+	Defence(	4615	)
+	Defence(	4616	)
+	Defence(	4617	)
+	Defence(	4618	)
+	Defence(	4619	)
+	Defence(	4620	)
 
 end
 
 ------------------------------------------------------------
--- Рикка
+-- Аµ°ІЙ­БЦІ№ёшХѕ-----КОЖ·ЙМИЛЎ¤АпїЛ
 ------------------------------------------------------------
 function r_talk236()
 
-	Talk( 1, "Рикка: На твой выбор все виды драгоценных колец и ожерелий. Может что и приглянется. У меня самые низкие цены в округе.")
-	
-	Text( 1,"Обмен", SendExchangeData7 )
+	Talk( 1, "Рикка: На твой выбор все виды драгоценных колец и ожерелий. Может что и приглянется. У меня самые низкие цены в округе." )
+	Text( 1, "Торг", BuyPage )
 
-	InitExchange7()
-	DoExchange7()
-
-	
+	InitTrade()
+	Defence(	4626	)
+	Defence(	4627	)
+	Defence(	4628	)
+	Defence(	4629	)
+	Defence(	4630	)
+	Defence(	4631	)
+	Defence(	4632	)
+	Defence(	4633	)
+	Defence(	4634	)
+	Defence(	4635	)
 
 	-----------------КОЖ·ЙМИЛЎ¤АпїЛ---------ЅрЕЈ
 	AddNpcMission	(5649)
@@ -9031,20 +8928,24 @@ function r_talk236()
 end
 
 ------------------------------------------------------------
--- Феррари
+-- НЯ¶ыЕµІ№ёшХѕ-----КОЖ·ЙМИЛЎ¤·СА­Ап
 ------------------------------------------------------------
 function r_talk237()
 
 	Talk( 1, "Феррари: У меня самые лучшие кольца и ожерелья, которые только можно отыскать. Ты наверняка найдешь себе что-нибудь по душе." )
+	Text( 1, "Торг", BuyPage )
 
-	Text( 1,"Обмен", SendExchangeData8 )
-	
-	
-	
-	InitExchange8()
-	DoExchange8()
-
-	
+	InitTrade()
+	Defence(	4631	)
+	Defence(	4632	)
+	Defence(	4633	)
+	Defence(	4634	)
+	Defence(	4635	)
+	Defence(	4636	)
+	Defence(	4637	)
+	Defence(	4638	)
+	Defence(	4639	)
+	Defence(	4640	)
 
 end
 
@@ -9080,32 +8981,34 @@ function r_talk238()
 end
 
 ------------------------------------------------------------
--- Ай
+-- їЁ¶ыјУµВІ№ёшХѕ-----КОЖ·ЙМИЛЎ¤°¬¶ы
 ------------------------------------------------------------
 function r_talk239()
 
-	Talk( 1, "Ай: У меня есть множество ценных монет. Посмотри, может, тебе что-нибудь подойдет." )
+	Talk( 1, "Ай: У меня есть множество ценных ожерелий и колец. Посмотри, может, тебе что-нибудь подойдет." )
+	Text( 1, "Торг", BuyPage )
 
-	Text( 1,"Обмен", SendExchangeData9 )
-
-	InitExchange9()
-	DoExchange9()
-
-	
+	InitTrade()
+	Defence(	4651	)
+	Defence(	4652	)
+	Defence(	4653	)
+	Defence(	4654	)
+	Defence(	4655	)
+	Defence(	4656	)
+	Defence(	4657	)
+	Defence(	4658	)
+	Defence(	4659	)
+	Defence(	4660	)
 
 end
 
 ------------------------------------------------------------
--- Аллан
+-- °НІјІ№ёшХѕ-----КОЖ·ЙМИЛЎ¤°¬ВЧ
 ------------------------------------------------------------
 function r_talk240()
 
 	Talk( 1, "Лавочник - Аллан: У меня в продаже только самые качественные и дорогие кольца и ожерелья. Выбирай! У меня самые разумные цены." )
 	Text( 1, "Торг", BuyPage )
-	Text( 1,"Обмен", SendExchangeData10 )
-
-	InitExchange10()
-	DoExchange10()
 
 	InitTrade()
 	Defence(	4666	)
@@ -9130,16 +9033,12 @@ function r_talk240()
 end
 
 ------------------------------------------------------------
---Данман
+-- ±щј«І№ёшХѕ-----КОЖ·ЙМИЛЎ¤Ир¶ч
 ------------------------------------------------------------
 function r_talk241()
 
 	Talk( 1, "Данман: У меня в продаже только самые качественные и дорогие колца и ожерелья. Выбирай! У меня самые разумные цены!" )
 	Text( 1, "Торг", BuyPage )
-	Text( 1,"Обмен", SendExchangeData13 )
-
-	InitExchange13()
-	DoExchange13()
 
 	InitTrade()
 	Defence(	4686	)
@@ -9171,7 +9070,16 @@ end
 ------------------------------------------------------------
 function r_talk252()
 	
-InitFuncList()
+	InitFuncList()
+	AddFuncList( GiveItem,	0817	,	1	,	4)
+	AddFuncList( GiveItem,	0818	,	1	,	4)
+	AddFuncList( GiveItem,	0819	,	1	,	4)
+	AddFuncList( GiveItem,	0867	,	1	,	4)
+	AddFuncList( GiveItem,	0868	,	1	,	4)
+	AddFuncList( GiveItem,	0869	,	1	,	4)
+	AddFuncList( GiveItem,	0872	,	1	,	4)
+	AddFuncList( GiveItem,	0873	,	1	,	4)
+	AddFuncList( GiveItem,	0874	,	1	,	4)
 	AddFuncList( GiveItem,	1630	,	2	,	4)
 	AddFuncList( GiveItem,	1631	,	1	,	4)
 	AddFuncList( GiveItem,	1632	,	1	,	4)
@@ -9240,14 +9148,14 @@ InitFuncList()
 
 	InitTrigger()
 	TriggerCondition( 1, HasItem, 3927, 1 )
-	TriggerCondition( 1, HasMoney, 2000 )
+	TriggerCondition( 1, HasMoney, 200 )
 	TriggerCondition( 1, HasLeaveBagGrid, 2 )
 	TriggerCondition( 1, KitbagLock, 0 )
-	TriggerAction( 1, TakeMoney, 2000 )
+	TriggerAction( 1, TakeMoney, 200 )
 	TriggerAction( 1, TakeItem, 3927, 1 )
 	TriggerAction( 1, RandFunction, GetFuncList(), GetNumFunc() )
 	TriggerFailure( 1, JumpPage, 2 )
-	Talk( 1, "Это старая чистилка, которая способная очистить все, что угодно. Стоимость очистки - 20000 золота." )
+	Talk( 1, "Это старая чистилка, которая способная очистить все, что угодно. Стоимость очистки - 200 золота." )
 	Text( 1, "Очистить", MultiTrigger, GetMultiTrigger(), 1)
 	--Text( 1, "Clean the Christmas Box", JumpPage, 3)
 
@@ -9261,7 +9169,7 @@ InitFuncList()
 	TriggerAction( 1, GiveItem, 2893, 1 , 4)
 	TriggerAction( 1, JumpPage, 4)
 	TriggerFailure( 1, JumpPage, 2 )
-	Talk( 3, "Ух ты! Какое грязное! Чтобы очистить это тебе потребуется 10000 монет." )
+	Talk( 3, "Ух ты! Какое грязное! Чтобы очистить это тебе потребуется 1000 монет." )
 	Text( 3, "Подтвердить очистку", MultiTrigger, GetMultiTrigger(), 1)
 	Talk( 4, "Очистить Подарочную коробку" )
 	Talk( 2, "Чистка невозможна. Недостаточно денег или нечего очищать." )
@@ -10324,7 +10232,7 @@ end
 -- °ЧТшіЗ-----йД№ы
 ------------------------------------------------------------
 function r_talk242()
-	--Talk( 14, "Бинго: Дай мне Расписку на новогодний самоцвет и я дам тебе взамен высокоуровневый самоцвет" )
+	Talk( 14, "Бинго: Дай мне Расписку на новогодний самоцвет и я дам тебе взамен высокоуровневый самоцвет" )
 	InitTrigger() --ёЯј¶±¦КЇ¶Т»»ИЇ
 	TriggerCondition( 1, HasItem,2899, 1 )
 	TriggerCondition( 1, HasLeaveBagGrid, 3 )
@@ -10332,7 +10240,7 @@ function r_talk242()
 	TriggerAction( 1, TakeItem, 2899, 1 )
 	TriggerAction( 1, GiveItem, 0860, 3, 101 )
 	TriggerFailure( 1, JumpPage, 15 )
-	--Text( 14, "Самоцвет Ветра 3 ур.",MultiTrigger, GetMultiTrigger(), 1) 
+	Text( 14, "Самоцвет Ветра 3 ур.",MultiTrigger, GetMultiTrigger(), 1) 
 	InitTrigger() --ёЯј¶±¦КЇ¶Т»»ИЇ
 	TriggerCondition( 1, HasItem,2899, 1 )
 	TriggerCondition( 1, HasLeaveBagGrid, 3 )
@@ -10340,7 +10248,7 @@ function r_talk242()
 	TriggerAction( 1, TakeItem, 2899, 1 )
 	TriggerAction( 1, GiveItem, 0861, 3,101 )
 	TriggerFailure( 1, JumpPage, 15 )
-     --   Text( 14, "Самоцвет Удара 3 ур.",MultiTrigger, GetMultiTrigger(), 1) 
+        Text( 14, "Самоцвет Удара 3 ур.",MultiTrigger, GetMultiTrigger(), 1) 
 
 	InitTrigger() --ёЯј¶±¦КЇ¶Т»»ИЇ
 	TriggerCondition( 1, HasItem,2899, 1 )
@@ -10349,7 +10257,7 @@ function r_talk242()
 	TriggerAction( 1, TakeItem, 2899, 1 )
 	TriggerAction( 1, GiveItem, 0862, 3,101 )
 	TriggerFailure( 1, JumpPage, 15 )
-     --   Text( 14, "Самоцвет Колосса 3 ур.",MultiTrigger, GetMultiTrigger(), 1) 
+        Text( 14, "Самоцвет Колосса 3 ур.",MultiTrigger, GetMultiTrigger(), 1) 
 
 	InitTrigger() --ёЯј¶±¦КЇ¶Т»»ИЇ
 	TriggerCondition( 1, HasItem,2899, 1 )
@@ -10358,7 +10266,7 @@ function r_talk242()
 	TriggerAction( 1, TakeItem, 2899, 1 )
 	TriggerAction( 1, GiveItem, 0863, 3,101 )
 	TriggerFailure( 1, JumpPage, 15 )
-    --    Text( 14, "Самоцвет Ярости 3 ур.",MultiTrigger, GetMultiTrigger(), 1) 
+        Text( 14, "Самоцвет Ярости 3 ур.",MultiTrigger, GetMultiTrigger(), 1) 
 	InitTrigger() --ёЯј¶±¦КЇ¶Т»»ИЇ
 	TriggerCondition( 1, HasItem,2899, 1 )
 	TriggerCondition( 1, HasLeaveBagGrid, 1 )
@@ -10366,7 +10274,7 @@ function r_talk242()
 	TriggerAction( 1, TakeItem, 2899, 1 )
 	TriggerAction( 1, GiveItem, 1012, 1,101 )
 	TriggerFailure( 1, JumpPage, 15 )
-      --  Text( 14, "Самоцвет Души 1 ур.",MultiTrigger, GetMultiTrigger(), 1) 
+        Text( 14, "Самоцвет Души 1 ур.",MultiTrigger, GetMultiTrigger(), 1) 
 
 	Talk( 15, "Redemption failed. You do not seem to have any Christmas Gem Voucher or your inventory has been binded. " )
 	Talk( 16, "С новым годом!" )
@@ -10378,8 +10286,8 @@ function r_talk242()
 	Text( 1, "Расписка на очищающий самоцвет", JumpPage, 2 )
 	Text( 1, "Расписка на очищающий самоцвет 2 ур.", JumpPage, 3 )
 	Text( 1, "Расписка на очищающий самоцвет", JumpPage, 4 )
-      --  Text( 1, "Расписка на самоцвет", JumpPage, 5 )
-       -- Text( 1, "Соединить Камень желаний", JumpPage, 6 )
+        Text( 1, "Расписка на самоцвет", JumpPage, 5 )
+        Text( 1, "Соединить Камень желаний", JumpPage, 6 )
 --	Text( 1, "ФВ±э¶Т»»", JumpPage, 20 )
 
 
@@ -10746,7 +10654,7 @@ function r_talk242()
 --	TriggerAction( 1, TakeItem, 3915, 30 )
 --	TriggerAction( 1, RandFunction, GetFuncList(), GetNumFunc() )
 --	TriggerFailure( 1, JumpPage, 11 )
---	Talk( 3, "Bingo: 30 Mooncakes to exchange for a Lv 35 armor of your class. Подтвердить?")
+--	Talk( 3, "Bingo: 30 Mooncakes to exchange for a Lv 35 armor of your class. Confirm?")
 --	Text( 3, "I am sure",MultiTrigger, GetMultiTrigger(), 1)
 --	Text( 3, "Forget it then",CloseTalk )
 
@@ -10764,10 +10672,10 @@ function mmm_talk01()
 	TriggerFailure( 1, JumpPage, 15 )
 	Text( 1, "У меня есть Расписка на фею" ,MultiTrigger, GetMultiTrigger(), 1)
 --]]
---	Text( 1, "Меня интересуют уникальные кольца" ,JumpPage, 2)
---	Text( 1, "Меня интересуют уникальные Бижутерии" ,JumpPage, 8)
---	Text( 1, "Скелетные сундуки", BuyPage)
---	Text( 1, "Я просто осматриваюсь здесь, пока" ,CloseTalk)
+	Text( 1, "Меня интересуют уникальные кольца" ,JumpPage, 2)
+	Text( 1, "Меня интересуют уникальные Бижутерии" ,JumpPage, 8)
+	Text( 1, "Скелетные сундуки", BuyPage)
+	Text( 1, "Я просто осматриваюсь здесь, пока" ,CloseTalk)
 
 	InitTrade()
 	Other(	3400	)
@@ -11211,15 +11119,14 @@ function mmm_talk02()
 	--AddNpcMission	(903 )
 	--AddNpcMission	(904 )
 end
-
+-----------------------------------------------------------
+---Йіб°іЗ---іиОп№ЬАнФ±Ў¤АКДГ¶И
+-----------------------------------------------------------
 function e_talk01 ()
-	Talk( 1, "Ланга: Адский фрукт определяет, какого типа будет новая фея, а тип феи определяет, какие характеристики получит игрок при использовании навыка обладания феей. После бракосочетания феи-родители теряют по 4 уровня. Коробочку фей ты можешь получить у меня за 10 брошей фей, а умения фей за 1 золотой, монеты фей я обмениваю на медь.  Хочешь узнать что-то еще?" )
+	Talk( 1, "Ланга: Адский фрукт определяет, какого типа будет новая фея, а тип феи определяет, какие характеристики получит игрок при использовании навыка обладания феей. После бракосочетания феи-родители теряют по 4 уровня. Хочешь узнать что-то еще?" )
 	Text( 1, "Возможности нового поколения фей" ,JumpPage, 2)
-	Text( 1, "Условия рождения фей", JumpPage, 3 )
+	Text( 1, "Условия рождения фей", JumpPage, 3)
 	Text( 1, "Свадьба фей", OpenEidolonMetempsychosis )
-	Text( 1, "Получить фею и умения", SendExchangeXData )
-	Text( 1, "Улучшить фрукты", JumpPage, 13 )
-	
 	Talk( 2, "Ланга: Новое поколение фей обучится Самоуничтожению и Обладанию. Фея силы, Фея телосложения, Фея точности, Фея духа и Фея ловкости могут улучшать соответствующие параметры персонажа. Фея удачи и Фея зла могут увеливать вероятность нахождения трофеев и скорость получения опыта соответственно, а Мордо Младший обладает способностями как Феи Зла, так и Феи удачи, равно как и скрытыми свойствами.")	
 	Talk( 3, "Ланга: Уровень обычных фей сильно влияет на новорожденных фей. Я много знаю о феях. Пожалуйста, проверяйте их.")
 	Text( 3, "Условия для получения Феи Силы", JumpPage, 4  )
@@ -11230,78 +11137,15 @@ function e_talk01 ()
 	Text( 3, "Условия рождения Феи Удачи", JumpPage, 9 )
 	Text( 3, "Условия для рождения Феи Зла", JumpPage, 10 )
 	Text( 3, "Условия для рождения Мордо Младшего", JumpPage, 11 )	
-	Talk(  4, "Ланга: чтобы сотворить Фею Силы, потребуется две феи не ниже 26 ур., 1 Адский фрукт силыи немного золота")
-	Talk(  5, "Ланга: Чтобы вырастить Фею Телосложения понадобятся 2 феи не ниже 26 ур., 1 Адский фрукт отваги и немного золота")
-	Talk(  6, "Ланга: Вот что нужно, чтобы вырастить фею Точности: 2 феи не ниже 26 ур. и 1 Адский фрукт энергии и немного золота")
-	Talk(  7, "Ланга: чтобы получить Фею Духа, нужны две обычных феи 26 ур. Или выше и немного золота")
-	Talk(  8, "Ланга: Чтобы создать Фею Ловкости, понадобится две обычных ручных феи не ниже 26 ур., 1 'Адский фрукт Ловкости' и немного золота")
-	Talk(  9, "Ланга: Чтобы получить Фею удачи, необходимы: две обычные феи не слабее 26 ур., 1 Адский фрукт кислоты, и немного золота")
-	Talk(  10, "Ланга: чтобы обрести Фею зла требуется: две обычных феи минимум 26 уровня, 1 адский фрукт тайны и немного золота")
+	Talk(  4, "Ланга: чтобы сотворить Фею Силы, потребуется две феи не ниже 20 ур., 1 Адский фрукт силы, 10 обломков арабской жемчужины, 10 Трупов стенающих воинов и немного золота")
+	Talk(  5, "Ланга: Чтобы вырастить Фею Телосложения понадобятся 2 феи не ниже 20 ур., 1 Адский фрукт отваги, 10 Треснутых арабских жемчужин, 10 Трупов печального лучника и немного золота")
+	Talk(  6, "Ланга: Вот что нужно, чтобы вырастить фею Точности: 2 феи не ниже 20 ур. и 1 Адский фрукт энергии. Вдобавок в твоем рюкзаке должно быть 10 Рыбьих шипов, 10 Грязных колод и немного золота")
+	Talk(  7, "Ланга: чтобы получить Фею Духа, нужны две обычных феи 20 ур. Или выше, 1 Адский фрукт интеллекта, 10 Хвостов выползня, 10 Трупов стенающих лучников и немного золота")
+	Talk(  8, "Ланга: Чтобы создать Фею Ловкости, понадобится две обычных ручных феи не ниже 20 ур., 1 'Адский фрукт Ловкости', 10 Акулий плавник, 10 Болотных деревьев и немного золота")
+	Talk(  9, "Ланга: Чтобы получить Фею удачи, необходимы: две обычные феи не слабее 20 ур., 1 Адский фрукт кислоты, Вкусное мясо кальмара (10), 10 Трупов Печальных воинов и немного золота")
+	Talk(  10, "Ланга: чтобы обрести Фею зла требуется: две обычных феи минимум 20 уровня, 1 адский фрукт тайны, 10 частей искрящейся арабской жемчужины, 10 комков грязи и немного золота")
 	Talk(  11, "Ланга: Требования для получения Мордо Младшего: сочетание двух фей Мордо произведет на свет Мордо Младшего с вероятностью успеха 100%, вне зависимости от используемого Адского Фрукта. Вероятность рождения Мордо Младшего от сочетания феи Мордо с другими феями зависит от их уровня.")
-	Talk(  12, "Ланга: Чтобы получить Супер фрукты фей тебе нужно принести мне Огромный фрукт и Брошку Фей, за услугу я у тебя возьму 30.000 золотых ")
 
-InitTrigger()
-TriggerCondition( 1, HasItem, 0276, 1 )
-TriggerCondition( 1, HasItem, 1762, 1 )
-TriggerCondition( 1, HasMoney, 30000 )
-TriggerAction( 1, TakeItem, 0276, 1 )
-TriggerAction( 1, TakeItem, 1762, 1 )
-TriggerAction( 1, TakeMoney, 30000 )
-TriggerAction( 1, GiveItem, 7008, 1, 4 )
-TriggerFailure(  1, JumpPage, 1 )
-Text( 12, " Улучшить Фрукт дракона ",MultiTrigger, GetMultiTrigger(), 1)
-	
-InitTrigger()
-TriggerCondition( 1, HasItem, 0277, 1 )
-TriggerCondition( 1, HasItem, 1762, 1 )
-TriggerCondition( 1, HasMoney, 30000 )
-TriggerAction( 1, TakeItem, 0277, 1 )
-TriggerAction( 1, TakeItem, 1762, 1 )
-TriggerAction( 1, TakeMoney, 30000 )
-TriggerAction( 1, GiveItem, 7009, 1, 4 )
-TriggerFailure(  1, JumpPage, 1 )
-Text( 12, " Улучшить Ледяную сливу ",MultiTrigger, GetMultiTrigger(), 1)
-
-InitTrigger()
-TriggerCondition( 1, HasItem, 0278, 1 )
-TriggerCondition( 1, HasItem, 1762, 1 )
-TriggerCondition( 1, HasMoney, 30000 )
-TriggerAction( 1, TakeItem, 0278, 1 )
-TriggerAction( 1, TakeItem, 1762, 1 )
-TriggerAction( 1, TakeMoney, 30000 )
-TriggerAction( 1, GiveItem, 7010, 1, 4 )
-TriggerFailure(  1, JumpPage, 1 )
-Text( 12, " Улучшить Фишлос ",MultiTrigger, GetMultiTrigger(), 1)
-	
-InitTrigger()
-TriggerCondition( 1, HasItem, 0279, 1 )
-TriggerCondition( 1, HasItem, 1762, 1 )
-TriggerCondition( 1, HasMoney, 30000 )
-TriggerAction( 1, TakeItem, 0279, 1 )
-TriggerAction( 1, TakeItem, 1762, 1 )
-TriggerAction( 1, TakeMoney, 30000 )
-TriggerAction( 1, GiveItem, 7011, 1, 4 )
-TriggerFailure(  1, JumpPage, 1 )
-Text( 12, " Улучшить Серебрянное манго ",MultiTrigger, GetMultiTrigger(), 1)
-
-InitTrigger()
-TriggerCondition( 1, HasItem, 0280, 1 )
-TriggerCondition( 1, HasItem, 1762, 1 )
-TriggerCondition( 1, HasMoney, 30000 )
-TriggerAction( 1, TakeItem, 31028035, 1 )
-TriggerAction( 1, TakeItem, 1762, 1 )
-TriggerAction( 1, TakeMoney, 30000 )
-TriggerAction( 1, GiveItem, 7012, 1, 4 )
-TriggerFailure(  1, JumpPage, 1 )
-Text( 12, " Улучшить Шайтанский бисквит ",MultiTrigger, GetMultiTrigger(), 1)
-	
-	
-	
-	
-	InitExchangeX()
-	ExchangeDataX(	1762	,	1	,	262	,	1	)
-	ExchangeDataX(	8143	,	1	,	8272	,	1	)
-	ExchangeDataX(	855	,	99	,	8141	,	5	)
 -----------eleven
 	AddNpcMission	(5019 )
 	AddNpcMission	(5032 )
@@ -11350,11 +11194,11 @@ function star_talk02 ()
 	Talk( 1, "Очаг бессмертия: Что уставился? Впервые перед таким прекрасным очагом?" )
 	Text( 1, "Разъяснение функций", JumpPage, 2 )
 	Text( 1, "Улучшение снаряжения", OpenItemTiChun )
-	--Text( 1, "Перезарядка коралла", OpenItemEnergy )
+	Text( 1, "Перезарядка коралла", OpenItemEnergy )
 	Text( 1, "Извлечение самоцвета", OpenGetStone )
 	Text( 1, "Ремонт инструментов", OpenItemFix )
 	Talk( 2, "Очаг Бессмертия: Больше я ничего не скажу. Потрудись сам!" )
-	Text( 2, "Руководство по улуРуководство по улучшению снаряжения", JumpPage, 3)
+	Text( 2, "Руководство по улучшению снаряжения", JumpPage, 3)
 	Text( 2, "Руководство по перезарядке кораллов", JumpPage, 4 )
 	Text( 2, "Руководство по извлечению самоцветов", JumpPage, 5 )
 	Text( 2, "Руководство по ремонтному инструменту", JumpPage, 6)
@@ -11621,16 +11465,16 @@ function kk_talk01 ()
 
 	ExchangeDataX(	2608	,	100	,	2682	,	1	,	1)
 	ExchangeDataX(	2609	,	100	,	2683	,	1	,	1)
-	ExchangeDataX(	2609	,	100	,	2684	,	1	,	1)
+	ExchangeDataX(	2609	,	1000	,	2684	,	1	,	1)
 	ExchangeDataX(	2608	,	100	,	2692	,	1	,	1)
 	ExchangeDataX(	2609	,	100	,	2693	,	1	,	1)
-	ExchangeDataX(	2609	,	100	,	2694	,	1	,	1)
+	ExchangeDataX(	2609	,	1000	,	2694	,	1	,	1)
 	ExchangeDataX(	2608	,	100	,	2702	,	1	,	1)
 	ExchangeDataX(	2609	,	100	,	2703	,	1	,	1)
-	ExchangeDataX(	2609	,	100	,	2704	,	1	,	1)
+	ExchangeDataX(	2609	,	1000	,	2704	,	1	,	1)
 	ExchangeDataX(	2608	,	100	,	2712	,	1	,	1)
 	ExchangeDataX(	2609	,	100	,	2713	,	1	,	1)
-	ExchangeDataX(	2609	,	100	,	2714	,	1	,	1)
+	ExchangeDataX(	2609	,	1000	,	2714	,	1	,	1)
 	
 	InitTrigger()
 	TriggerCondition( 1, HasItem, 1031, 1 )
@@ -11674,7 +11518,7 @@ function kk_talk01 ()
 	Text( 12, "Получить Отважное сердце Хаоса", Change_rongyao)
 	Text( 12, "Получить Сердце великолепия Хаоса", Change_huihuang)
 
-	Talk( 13, "Управляющий Хаосом: Серебряный Хаос позволяет игрокам сражаться между собой! Для этого игроки должны быть не ниже 26 уровня и обладать 20 очками чести. Войдя в эту зону, игроки могут свободно убивать друг друга. Если разница в уровнях сражавшихся игроков не превышает 15, побежденный игрок потеряет 1 очко чести, а победивший получит 1 очко хаоса. Если побежденный игрок на 15 уровней выше проигравшего, он лишится 2 очков чести, а победитель заработает 2 очка хаоса. По окончании битвы победитель получит в награду золото. Если в битве выживут 5 или менее человек, каждый из них получит Святую эмблему ринга. Если выживет только один боец, он получит дополнительное золото и Эмблему Короля ринга. Внимание: перед участием в битве необходимо оставить одну свободную ячейку в рюкзаке." )
+	Talk( 13, "Управляющий Хаосом: Серебряный Хаос позволяет игрокам сражаться между собой! Для этого игроки должны быть не ниже 20 уровня и обладать 20 очками чести. Войдя в эту зону, игроки могут свободно убивать друг друга. Если разница в уровнях сражавшихся игроков не превышает 15, побежденный игрок потеряет 1 очко чести, а победивший получит 1 очко хаоса. Если побежденный игрок на 15 уровней выше проигравшего, он лишится 2 очков чести, а победитель заработает 2 очка хаоса. По окончании битвы победитель получит в награду золото. Если в битве выживут 5 или менее человек, каждый из них получит Святую эмблему ринга. Если выживет только один боец, он получит дополнительное золото и Эмблему Короля ринга. Внимание: перед участием в битве необходимо оставить одну свободную ячейку в рюкзаке." )
 	
 end 
 
@@ -11698,10 +11542,11 @@ function b_talk28 ()
 end 
 
 function leo_talkaa()
-	Talk( 1, "Будет принимать все материалы! Гарантия на годы!" )
-	Text( 1, "Покажи что у тебя есть.", SendExchangeXData)
+	Talk( 1, "Will accept all sort of project! Workmanship guarantee!" )
+	Text( 1, "Have a look at your item.", SendExchangeXData)
 
-
+	
+	--¶Т»»ЛщРиОпЖ· ID,КэБї,¶Т»»ЛщµГОпЖ·КэБї,ёіУиµДЦµ
 	InitExchangeX()
 
 	ExchangeDataX(	3989	,	99	,	3999	,	20	,	1)
@@ -11714,7 +11559,7 @@ function leo_talkaa()
 	ExchangeDataX(	3996	,	99	,	4006	,	20	,	1)
 	ExchangeDataX(	3997	,	99	,	4007	,	20	,	1)
 	ExchangeDataX(	3998	,	99	,	4008	,	20	,	1)
-	--AddNpcMission(3026)
+
 end
 
 function leo_talkbb()
@@ -12031,31 +11876,31 @@ function el_talk05 ()
 
 	
 	Talk( 3, "°ЧС©Ж®Ж®,В№БеПцПц,МрГЫµДЖЅ°ІТ№УЦАґµЅ,РЎКЦ°Ъ°Ъ,ОиЧЛВьВь,їмАЦµДКҐµ®ЅЪИХ¶аГАєГ.")
-	Text(3,"Подтвердить транслировать это благословениеПодтвердить транслировать это благословение",  GetChaName_0, 1)
+	Text(3,"Confirm to broadcast this blessing",  GetChaName_0, 1)
 	Text( 3, "Return",JumpPage, 2  )
 
 	Talk( 4, "ГїТ»¶дС©»ЁЖ®ПВ,ГїТ»ёцСМ»рИјЖр,ГїТ»ГлК±јдБч¶Ї,ГїТ»·ЭЛјДоґ«ЛН,¶јґъ±нЧЕОТПлТЄЛНДгµДГїТ»ёцЧЈёЈ,КҐµ®їмАЦ!")
-	Text(4,"Подтвердить транслировать это благословениеПодтвердить транслировать это благословение",  GetChaName_1, 1)
+	Text(4,"Confirm to broadcast this blessing",  GetChaName_1, 1)
 	Text( 4, "Return",JumpPage, 2  )
 
 	Talk( 5, "ОТУРТ»ёцГААцµДФёНы:ТФЗ°µДКҐµ®ЅЪ,ЧЬКЗИПОЄКҐµ®АПИЛІ»»бЅ«ЧоєГµДАсОпЅµБЩёшОТ,µ«ЅсДкµДКҐµ®ЅЪІ»Н¬,УРДгµДµЅАґ,ИГОТУАФ¶јЗЧЎЅсМм.")
-	Text(5,"Подтвердить транслировать это благословениеПодтвердить транслировать это благословение",  GetChaName_2, 1)
+	Text(5,"Confirm to broadcast this blessing",  GetChaName_2, 1)
 	Text( 5, "Return",JumpPage, 2  )
 
 	Talk( 6, "КҐµ®ЅЪµЅБЛ,ПтЦ§іЦОТµДЕуУСєНОТЛщ°®µДЕуУСЛµЙщёРР»,ёРР»ДгЧЯЅшОТµДЙъ»о,ОТ»бѕЎОТЧоґуµДЕ¬Б¦ёшДгОЮПЮµДїмАЦ!")
-	Text(6,"Подтвердить транслировать это благословениеПодтвердить транслировать это благословение",  GetChaName_3, 1)
+	Text(6,"Confirm to broadcast this blessing",  GetChaName_3, 1)
 	Text( 6, "Return",JumpPage, 2 )
 
 	Talk( 7, "КҐµ®ЅЪ¶јµЅБЛ,ДЬІ»ДЬФЪПВёцКҐµ®ЅЪЦ®З°±рФЩИГОТµ±ВТ¶·Ц®Нх,№¤»бХЅІ»ТЄґОґО¶јУ®,ЙПМм,ґНУиОТТ»ёцЗїѕўµД¶ФКЦ°Й,°ўГЕЎ­Ў­")
-	Text(7,"Подтвердить транслировать это благословениеПодтвердить транслировать это благословение",  GetChaName_26, 1)
+	Text(7,"Confirm to broadcast this blessing",  GetChaName_26, 1)
 	Text( 7, "Return",JumpPage, 2 )
 
 	Talk( 8, "№юАпВ·СЗ,ВиВиЯдСЅ,Цч°ЎЎ­Ў­ґНОТТ»ёцж¤°Й")
-	Text(8,"Подтвердить транслировать это благословениеПодтвердить транслировать это благословение",  GetChaName_27, 1)
+	Text(8,"Confirm to broadcast this blessing",  GetChaName_27, 1)
 	Text( 8, "Return",JumpPage, 2 )
 
 	Talk( 9, "КҐµ®ЅЪµЅБЛ,ЧЈёЈЧФјєєГФЛМмМмЅ»Ј¬Йъ»оІЅІЅёЯЈ¬ІКЖ±ЖЪЖЪЦРЈ¬ґтЕЖґОґОУ®Ј¬їЪО¶¶Щ¶ЩєГЈ¬ИфёТ°СОТНьЈ¬РЎРД°¤№ч°ф ")
-	Text(9,"Подтвердить транслировать это благословениеПодтвердить транслировать это благословение",  GetChaName_28, 1)
+	Text(9,"Confirm to broadcast this blessing",  GetChaName_28, 1)
 	Text( 9, "Return",JumpPage, 2 )
 ---------------------------------------------------------------------------------------------------------------	
 end
@@ -12082,38 +11927,38 @@ function el_talk07 ()
 	Talk( 2, "Хаскинсон: Чтобы получить фрагменты вы должны ответить на несколько вопросов!Кто послал тебя ко мне?" )
 	Text( 2, "Бабушка",JumpPage, 32  )
 	Text( 2, "Ашот",JumpPage, 32  )
-	Text( 2, "Богиня",JumpPage, 3  )				--Правильный ответ
+	Text( 2, "Богиня",JumpPage, 3  )				--Правельный ответ
 	Text( 2, "Свинокрыл",JumpPage, 32  )
 
 	Talk( 3, "Хаскинсон: Не будьте так высокомерны! Дальше...Чем из этого можно кормить фею?" )
-	Text( 3, "Питание феи",JumpPage, 4  )-------------Правильный ответ
+	Text( 3, "Питание феи",JumpPage, 4  )-------------Правельный ответ
 	Text( 3, "Монета фей",JumpPage, 32  )
-	Text( 3, "Огромный фрукт снежного дракона",JumpPage,5  )-------------Правильный ответ
+	Text( 3, "Огромный фрукт снежного дракона",JumpPage,5  )-------------Правельный ответ
 	Text( 3, "Яблоко",JumpPage, 2  )
-	Text( 3, "Шайтанский Бисквит",JumpPage, 4  )				--Правильный ответ
-	Text( 3, "Пища феи",JumpPage, 12  )-------------Правильный ответ
+	Text( 3, "Шайтанский Бисквит",JumpPage, 4  )				--Правельный ответ
+	Text( 3, "Пища феи",JumpPage, 12  )-------------Правельный ответ
 
 	Talk( 4, "Хаскинсон: Где достать великие самоцветы?" )
-	Text( 4, "Командир мертвых душ",JumpPage, 5  )-------------Правильный ответ
+	Text( 4, "Командир мертвых душ",JumpPage, 5  )-------------Правельный ответ
 	Text( 4, "Интернет Магазин",JumpPage, 2  )
 	Text( 4, "Монстры на Базе Флота",JumpPage, 32)
-	Text( 4, "Кракен",JumpPage, 6  )-------------Правильный ответ
-	Text( 4, "Барбороса",JumpPage, 19  )				--Правильный ответ
-	Text( 4, "Черная Жемчужина",JumpPage, 5  )-------------Правильный ответ
+	Text( 4, "Кракен",JumpPage, 6  )-------------Правельный ответ
+	Text( 4, "Барбороса",JumpPage, 19  )				--Правельный ответ
+	Text( 4, "Черная Жемчужина",JumpPage, 5  )-------------Правельный ответ
 
 	Talk( 5, "Хаскинсон: Чем из перечисленного нельзя восстановить здоровье?" )
 	Text( 5, "Фруктовый коктейль",JumpPage, 32  )
-	Text( 5, "Каска крота рудокопа",JumpPage, 6  )-------------Правильный ответ
+	Text( 5, "Каска крота рудокопа",JumpPage, 6  )-------------Правельный ответ
 	Text( 5, "Кекс",JumpPage, 3  )
-	Text( 5, "Комок грязи",JumpPage, 22  )				--Правильный ответ
-	Text( 5, "Камень клятвы",JumpPage, 7  )-------------Правильный ответ
-	Text( 5, "Медаль отваги",JumpPage, 7  )-------------Правильный ответ
+	Text( 5, "Комок грязи",JumpPage, 22  )				--Правельный ответ
+	Text( 5, "Камень клятвы",JumpPage, 7  )-------------Правельный ответ
+	Text( 5, "Медаль отваги",JumpPage, 7  )-------------Правельный ответ
 	Text( 5, "Питание Феи",JumpPage, 32  )
 
 	Talk( 6, "Хаскинсон: Когда открывается портал в Снежную Войну?" )
 	Text( 6, "Круглосуточно",JumpPage, 4  )
-	Text( 6, "6:00, 13:00, 22:00",JumpPage, 8  )-------------Правильный ответ
-	Text( 6, "Утром, Днем и Вечером",JumpPage, 7  )-------------Правильный ответ
+	Text( 6, "6:00, 13:00, 22:00",JumpPage, 8  )-------------Правельный ответ
+	Text( 6, "Утром, Днем и Вечером",JumpPage, 7  )-------------Правельный ответ
 	Text( 6, "5:00 и 12:00",JumpPage, 32  )
 	Text( 6, "Тут есть Снежная война?",JumpPage, 32  )
 	Text( 6, "Надо спросить у ГМ",JumpPage, 32  )
@@ -12121,8 +11966,8 @@ function el_talk07 ()
 
 	Talk( 7, "Хаскинсон: Для чего используют Демонический фрукт?" )
 	Text( 7, "Как Яблоко",JumpPage, 32  )
-	Text( 7, "Для свадьбы фей",JumpPage, 8  )				--Правильный ответ
-	Text( 7, "Для получения феи следующего поколения",JumpPage, 9  )-------------Правильный ответ
+	Text( 7, "Для свадьбы фей",JumpPage, 8  )				--Правельный ответ
+	Text( 7, "Для получения феи следующего поколения",JumpPage, 9  )-------------Правельный ответ
 	Text( 7, "Для управления фруктами демонов",JumpPage, 5  )
 	Text( 7, "Для закалки",JumpPage, 32  )
 
@@ -12130,13 +11975,13 @@ function el_talk07 ()
 	Text( 8, "Куст",JumpPage, 3  )
 	Text( 8, "Крот Рудокоп",JumpPage, 32  )
 	Text( 8, "Сонная Улитка",JumpPage, 32  )
-	Text( 8, "Устрица",JumpPage, 9  )				--Правильный ответ
+	Text( 8, "Устрица",JumpPage, 9  )				--Правельный ответ
 	Text( 8, "Контрабандист",JumpPage, 7  )
-	Text( 8, "Лесной дух",JumpPage, 9  )-------------Правильный ответ
+	Text( 8, "Лесной дух",JumpPage, 9  )-------------Правельный ответ
 
 	Talk( 9, "Хаскинсон: Что дают за выживание в Снежной Войне?" )
 	Text( 9, "Медаль отваги",JumpPage, 4  )
-	Text( 9, "Золото",JumpPage, 10)				--Правильный ответ
+	Text( 9, "Золото",JumpPage, 10)				--Правельный ответ
 	Text( 9, "Хаос экипировку",JumpPage, 32  )
 	Text( 9, "Честь и репутацию",JumpPage, 23)
 	Text( 9, "Все вместе",JumpPage, 6  )
@@ -12144,17 +11989,17 @@ function el_talk07 ()
 	Talk( 10, "Хаскинсон: Что Торговец черного рынка не берет за свои вещи?" )
 	Text( 10, "Руна Кэль",JumpPage, 5  )
 	Text( 10, "Изменчивая руна",JumpPage, 8  )
-	Text( 10, "Каменное Яйцо",JumpPage, 11  )				--Правильный ответ
+	Text( 10, "Каменное Яйцо",JumpPage, 11  )				--Правельный ответ
 	Text( 10, "Монеты феи",JumpPage, 32  )
-	Text( 10, "Чешуйку дракона",JumpPage, 11  )--Правильный ответ
+	Text( 10, "Чешуйку дракона",JumpPage, 11  )--Правельный ответ
 
 
 	Talk( 11, "Хаскинсон: Какой НПС не понимает обычной речи?" )
 	Text( 11, "Барыга - Ашот",JumpPage, 32)
 	Text( 11, "Билетер - Кристина",JumpPage, 30  )
-	Text( 11, "Странствующий торговец",JumpPage, 13  )-------------Правильный ответ
+	Text( 11, "Странствующий торговец",JumpPage, 13  )-------------Правельный ответ
 	Text( 11, "Пингвинчик Пэп",JumpPage, 2  )
-	Text( 11, "Портальщик Веснограда",JumpPage, 13  )				--Правильный ответ
+	Text( 11, "Портальщик Веснограда",JumpPage, 13  )				--Правельный ответ
 	Text( 11, "Кузнец - Баш",JumpPage, 32  )
 	Text( 11, "Нет правильных ответов.",JumpPage, 28  )
 
@@ -12168,9 +12013,9 @@ function el_talk07 ()
 	Text( 13, "Клещи кузнеца необходимы для извлечения",JumpPage, 5)
 	Text( 13, "Каждый самоцвет извлекается поочередно",JumpPage, 3)
 	Text( 13, "Число слотов не изменяется после извлечения самоцвета",JumpPage, 32)
-	Text( 13, "Стоимость извлечения - уровень предмета*1000 золота",JumpPage, 14)-------------Правильный ответ
+	Text( 13, "Стоимость извлечения - уровень предмета*1000 золота",JumpPage, 14)-------------Правельный ответ
 	Text( 13, "Вы можете начать извлекать только из 1 слота",JumpPage, 10)
-	Text( 13, "Уровень извлеченного самоцвета ниже чем вставленного в слот",JumpPage, 14)				--Правильный ответ
+	Text( 13, "Уровень извлеченного самоцвета ниже чем вставленного в слот",JumpPage, 14)				--Правельный ответ
 	Text( 13, "Все вышеназванное неверно",JumpPage, 8)
 
 	Talk( 14, "Хаскинсон: Какая фея больше всех повышает шанс на выпадение предметов?" )
@@ -12178,31 +12023,31 @@ function el_talk07 ()
 	Text( 14, "Фея Точности",JumpPage, 32)
 	Text( 14, "Фея Телосложения",JumpPage, 7)
 	Text( 14, "Фея Зла",JumpPage, 32)
-	Text( 14, "Все одинаково",JumpPage, 15)				--Правильный ответ
+	Text( 14, "Все одинаково",JumpPage, 15)				--Правельный ответ
 	Text( 14, "Фея Удачи",JumpPage, 8)
 	Text( 14, "Фея ловкости",JumpPage, 7)
 
 	Talk( 15, "Хаскинсон: Какой самоцвет увеличивает физическую атаку героя?" )
 	Text( 15, "Самоцвет Души",JumpPage,13)
 	Text( 15, "Самоцвет Ветра",JumpPage, 32)
-	Text( 15, "Самоцвет Ярости",JumpPage, 16)				--Правильный ответ
+	Text( 15, "Самоцвет Ярости",JumpPage, 16)				--Правельный ответ
 	Text( 15, "Самоцвет Колосса",JumpPage, 5)
 	Text( 15, "Танец Азраила",JumpPage, 4)
-	Text( 15, "Самоцвет Удара",JumpPage, 16)-------------Правильный ответ
+	Text( 15, "Самоцвет Удара",JumpPage, 16)-------------Правельный ответ
 
 	Talk( 16, "Хаскинсон: Что правильно?" )
 	Text( 16, "Последняя цифра числа Pi - 5",JumpPage, 32)
-	Text( 16, "Секретарь аргента - Сальвьер",JumpPage, 17)				--Правильный ответ
+	Text( 16, "Секретарь аргента - Сальвьер",JumpPage, 17)				--Правельный ответ
 	Text( 16, "СНВ находится в Ледыни",JumpPage, 5)
 	Text( 16, "У Шапки Ковбоя Ланса есть хозяин",JumpPage, 10)
 	Text( 16, "У всех Стрелков есть инвиз",JumpPage, 15)
 
-	Talk( 17, "Хаскинсон: Вы любите играть?" )
+	Talk( 17, "Хаскинсон: Вы любите играть в Пиратию?" )
 	Text( 17, "Люблю играть на Mordo Online",JumpPage, 32)
 	Text( 17, "Мне нравятся разные проекты",JumpPage, 32)
 	Text( 17, "Я очень сильно люблю играть в Пиратию",JumpPage, 32)
 	Text( 17, "Все из-за игры!",JumpPage, 32)
-	Text( 17, "Я люблю играть  - International",JumpPage, 18)				--Правильный ответ
+	Text( 17, "Я люблю играть на сервере Тортуга - International",JumpPage, 18)				--Правельный ответ
 	Text( 17, "Вроде бы люблю!!!" ,JumpPage, 5)
 	Text( 17, "Пока еще люблю...",JumpPage, 15)
 
@@ -12210,7 +12055,7 @@ function el_talk07 ()
 	Text( 18, "Кулинария",JumpPage, 5)
 	Text( 18, "Форженная экипировка",JumpPage, 14)
 	Text( 18, "Бегать одному",JumpPage, 2)
-	Text( 18, "Командная игра",JumpPage, 12)				--Правильный ответ
+	Text( 18, "Командная игра",JumpPage, 12)				--Правельный ответ
 	Text( 18, "Высокий уровень",JumpPage, 10)
 	Text( 18, "Спать",JumpPage, 4)
 
@@ -12426,13 +12271,13 @@ end
 --	TriggerAction( 1, JumpPage, 3)
 --	TriggerFailure( 1, JumpPage, 4 )
 --	Talk(2, "Mulida: Holy and Sacred church is a place of where happiness begins, and where love gets witnessed. You're welcome to take a tour with a ticket, one ticket only costs 5000 gold.")
---	Text( 2, "Подтвердить buying",  MultiTrigger, GetMultiTrigger(), 1)
+--	Text( 2, "confirm buying",  MultiTrigger, GetMultiTrigger(), 1)
 --
 --	Talk(3, "Mulida: Welcome you to take a tour on time anytime")
 --	Talk(4, "Mulida: You don't seem to have enough money on you! Or you bag is already locked, please make you have 1 empty space inside your inventory")
 --	
 --	Talk( 5, "Meridar: Church permit will allow you to purchase invitation cards, each stack of 10 cost 50000G. Invite your friends now!" )
---	Text( 5, "Подтвердить buying", ChangeItem, 1  )
+--	Text( 5, "confirm buying", ChangeItem, 1  )
 --	
 --	
 --end 
@@ -12520,7 +12365,7 @@ function el_talk11 ()
 --	Text( 2,"Thank you, I'm just passing by.",CloseTalk)
 --
 --	Talk(3, "Lurie: Brave warrior, my friend Anita at the 15th floor of Abaddon have a bigger surprise for you, don't miss it!")
---	Talk(4, "Lurie: Please Подтвердить your bag is not locked, and make sure you have one space in your inventory. Present can only be claimed once!")
+--	Talk(4, "Lurie: Please confirm your bag is not locked, and make sure you have one space in your inventory. Present can only be claimed once!")
 --	
 end 
 
@@ -12553,7 +12398,7 @@ function el_talk12 ()
 --	Text( 2,"Thank you, I'm just passing by.",CloseTalk)
 --
 --	Talk(3, "Anita: Friend, when on the road to exploring Abaddon, there's no loser. Going forward is a hero's destiny.")
---	Talk(4, "Anita: Please Подтвердить your inventory is not locked or you have one free space inside your inventory. You can only claim the present once!")
+--	Talk(4, "Anita: Please confirm your inventory is not locked or you have one free space inside your inventory. You can only claim the present once!")
 	
 end 
 
@@ -12609,7 +12454,17 @@ end
 --							--
 --		2232,2781			--
 ----------------------------------------------------------
+function dina_talk01 ()
+	Talk( 1, "РЈі¤АЧЕµ: КојЩТСѕ­№эИҐЈ¬БЅёцФВµДі¤јЩЦ®єуЈ¬У­АґБЛРВµДС§ЖЪЎЈ")
 
+	AddNpcMission	(6127 )
+	AddNpcMission	(6128 )
+	AddNpcMission	(6129 )
+	AddNpcMission	(6130 )
+	AddNpcMission	(6131 )
+
+		
+end
 -----------------------------------------------------------
 ----							--
 ----							--
@@ -12991,13 +12846,13 @@ function el_talk09 ()
 	TriggerAction( 1, JumpPage, 3)
 	TriggerFailure( 1, JumpPage, 4 )
 	Talk(2, "Г·А­ґп:ЙсКҐµдСЕµДЅММГКЗРТёЈїЄКјµДµШ·Ѕ,КЗ°®ЗйЧЇСПµДјыЦ¤.ГїЦЬТ»Нн17:00~17:10»¶У­іЦЖ±ІО№Ы,ГїХЕІО№ЫГЕЖ±Ц»Ри5000УОП·±Т")
-	Text( 2, "Подтвердить buying",  MultiTrigger, GetMultiTrigger(), 1)
+	Text( 2, "confirm buying",  MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk(3, "Mulida: Welcome you to take a tour on time anytime")
 	Talk(4, "Г·А­ґп:ДъЙнЙПЛЖєхГ»УРЧг№»µДЅр±Т°Ў!»тХЯДъµД±і°ьТСЛш¶Ё,Зл±ЈЦ¤±і°ьДЪБфУРТ»ёцїХёс")
 	
 	Talk( 5, "Г·А­ґп:УГЅММГК№УГЦ¤КйѕНїЙТФ№єВт¶ФУ¦ЅММГµДЗлјн,Гї10Г¶ЗлјнОЄ1Чй,ГїЧй5НтУОП·±Т.СыЗлДъµДЕуУСІОјУѕЫ»б°Й!" )
-	Text( 5, "Подтвердить buying", ChangeItem, 1  )
+	Text( 5, "confirm buying", ChangeItem, 1  )
 	
 	Talk( 6, "Г·А­ґп:ДгПлБЛЅвДЗТ»Ії·Ц?" )
 	Text( 6, "№ШУЪІО№Ы", JumpPage, 7)
@@ -13006,19 +12861,19 @@ function el_talk09 ()
 	Text( 6, "№ШУЪЅММГК№УГЦ¤Кй", JumpPage, 10)
 
 	Talk( 7, "Г·А­ґп:№єВтІО№ЫГЕЖ±µДЕуУСУЪГїЦЬТ»Нн17:00~17:10ІО№ЫЅММГ.")
-	Text( 7, "Подтвердить", CloseTalk)
+	Text( 7, "Comfirm", CloseTalk)
 	Text( 7, "Return", JumpPage, 6)
 
 	Talk( 8, "Г·А­ґп:ѕєЕДК±јд:УЪГїЦЬТ»НнЙП18:00~20:30Ц®јдФЪОТХвАпЅшРРЅММГѕєЕД.ѕєЕДМхјю:РЇґшЅММГѕє±кїЁ1·Э.ѕєЕДіЎґО:ЅММГГїРЗЖЪіцЧвБЅИХ,їЙіР°мЛДіЎµдАс.РЗЖЪБщБЅіЎ,Ас°ЭМмБЅіЎ.ГїіЎ2ёцРЎК±,іЎґОУЙѕєЕДК±¶Оѕц¶Ё.")
-	Text( 8, "Подтвердить", CloseTalk)
+	Text( 8, "Comfirm", CloseTalk)
 	Text( 8, "Return", JumpPage, 6)
 
 	Talk( 9, "Г·А­ґп:№І·Ц4ёцК±¶ОѕєЕД,¶ФУ¦К±¶ОДЪіцјЫЧоёЯµДЕуУСЅ«»сµГЅММГК№УГИЁ,ОЄѕє±кіЙ№¦ХЯ°д·ўЅММГК№УГЦ¤Кй,»№Ѕ«ФщЛН10Г¶Злјн.")
-	Text( 9, "Подтвердить", CloseTalk)
+	Text( 9, "Comfirm", CloseTalk)
 	Text( 9, "Return", JumpPage, 6)
 
 	Talk( 10, "Г·А­ґп:Ц¤КйЧчУГ:ЖѕёГЦ¤Кй·ЅїЙ№єВтЗлјн;µдАсК±¶ОДЪЛ«»чёГЦ¤КйЅшИлЅММГ.ФЪЅММГК№УГЦ¤КйЙП±кКѕµДК±јдєуБЅРЎК±,ЧФ¶ЇЅ«ЛщУРФЪіЎИЛФ±ґ«ЛН»ШЙіб°іЗ.")
-	Text( 10, "Подтвердить", CloseTalk)
+	Text( 10, "Comfirm", CloseTalk)
 	Text( 10, "Return", JumpPage, 6)
 end 
 
@@ -13053,7 +12908,7 @@ function el_talk14 ()
 	TriggerAction(1, TakeItem, 3457, 1)
 	TriggerAction(1, GiveItem, 0146, 1, 4)              ----------°ФНх±¦Пд
 	TriggerFailure(1, JumpPage, 3)
-	Text(2,"Подтвердить to redeem", MultiTrigger, GetMultiTrigger(), 1) 	
+	Text(2,"Confirm to redeem", MultiTrigger, GetMultiTrigger(), 1) 	
 
 	Talk( 3, "°ҐСЅ°ҐСЅ,Дгѕ№И»»№Г»КХјЇµЅѕЮИЛКЧБмПоБґєНДЙїЁ·ыКЇ»тКЗДг±і°ьМ«ВъБЛ!ДЗёПЅфМУ°Й!!!Д¦¶ыїЛЧеѕЮИЛ·ўЖр»рАґїЙКЗК®·ЦРЧє·аё!")
 
@@ -13353,7 +13208,7 @@ function el_talk29 ()
 	TriggerAction( 1, JumpPage, 3 )
 	TriggerFailure( 1, JumpPage, 4)
 	Talk( 2, "міР»МШ:ОТРиТЄФ­ІДБП10ёц»рј¦Ив,µ±И»Дг»№ТЄЦ§ё¶ёшОТ10000єЈµБ±ТµДРБїа·С")
-	Text(2, "Подтвердить to cook",  MultiTrigger, GetMultiTrigger(), 1)
+	Text(2, "Confirm to cook",  MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk(3, "міР»МШ:ХвКЗОТѕ«РДЕлµчµДГАО¶»рј¦Ив,ёПїміўіў,О¶µАФхГґСщ?" )
 
@@ -13377,7 +13232,7 @@ function el_talk29 ()
 	TriggerAction( 1, JumpPage, 12 )
 	TriggerFailure( 1, JumpPage, 9 )
 	Talk( 6, "To make a good Christmas Dinner is not simple. I required 10 slices of Tasty Turkey Meat and 1 Christmas Rose. Christmas Rose seems to be found in the Item Mall. Beside paying me 10000G for the troublle, you can only make the Christmas Dinner 3 times.")
-	Text( 6, "Подтвердить to cook",  MultiTrigger, GetMultiTrigger(), 1)
+	Text( 6, "Confirm to cook",  MultiTrigger, GetMultiTrigger(), 1)
 
 	
 
@@ -13398,7 +13253,7 @@ function el_talk29 ()
 	TriggerAction( 1, JumpPage, 12 )
 	TriggerFailure( 1, JumpPage, 10 )
 	Talk(7, "Making Christmas Dinner again? I required 10 slices of Tasty Turkey Meat and 1 Christmas Rose. Christmas Rose seems to be found in the Item Mall. Beside paying me 1000000G for the troublle, you can only make the Christmas Dinner 3 times.")
-	Text( 7, "Подтвердить to cook",  MultiTrigger, GetMultiTrigger(), 1)
+	Text( 7, "Confirm to cook",  MultiTrigger, GetMultiTrigger(), 1)
 
 	---------------------ЕлµчКҐµ®ґуІН
 	InitTrigger()
@@ -13417,7 +13272,7 @@ function el_talk29 ()
 	TriggerAction( 1, JumpPage, 12 )
 	TriggerFailure( 1, JumpPage,11 )
 	Talk(8, "Making Christmas Dinner again? I required 10 slices of Tasty Turkey Meat and 1 Christmas Rose. Christmas Rose seems to be found in the Item Mall. Besides paying me 10000G for the troublle, you can only make the Christmas Dinner 3 times.")
-	Text( 8, "Подтвердить to cook",  MultiTrigger, GetMultiTrigger(), 1)
+	Text( 8, "Confirm to cook",  MultiTrigger, GetMultiTrigger(), 1)
 	Talk( 9, "міР»МШ:ДъЙнЙПЛЖєхГ»УРЧг№»УГАґЕлЦЖµДОпЖ·»тЅрЗ®°Ў!ДъµД±і°ьЦБЙЩТЄУРТ»ёцїХёсЕ¶.ДгИ·¶ЁКЗµЪТ»ґОЧцКҐµ®ґуІНВр?Ц»ДЬЧц3ґО.")
 	Talk( 10, "міР»МШ:ДъЙнЙПЛЖєхГ»УРЧг№»УГАґЕлЦЖµДОпЖ·»тЅрЗ®°Ў!ДъµД±і°ьЦБЙЩТЄУРТ»ёцїХёсЕ¶.ДгИ·¶ЁКЗµЪ¶юґОЧцКҐµ®ґуІНВр?Ц»ДЬЧц3ґОЕ¶.")
 	Talk( 11, "міР»МШ:ДъЙнЙПЛЖєхГ»УРЧг№»УГАґЕлЦЖµДОпЖ·»тЅрЗ®°Ў!ДъµД±і°ьЦБЙЩТЄУРТ»ёцїХёсЕ¶.ДгИ·¶ЁКЗµЪИэґОЧцКҐµ®ґуІНВр?Ц»ДЬЧц3ґОЕ¶.")
@@ -13531,7 +13386,7 @@ function el_talk30()
 	TriggerAction( 1, JumpPage, 4)
 	TriggerFailure( 1, JumpPage, 2 )
 	Talk( 3, "Woah! What a dirty box! You need to pay 10000G to clean such a dirty box." )
-	Text( 3, "Подтвердить to clean", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 3, "Comfirm to clean", MultiTrigger, GetMultiTrigger(), 1)
 	Talk( 4, "What a beautiful chest! Open it for some surprises" )
 	Talk( 2, "Failed to clean the item. Insufficient gold or does not possess the required item" )
 	AddNpcMission	(6195 )
@@ -13607,7 +13462,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 270, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 3, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 3, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 	
 	Talk( 4, "¶Т»»АЧЦ®Б¦µД»°ЧЬ№ІРиТЄГж¶о250WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13618,7 +13473,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 269, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 4, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 4, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 5, "¶Т»»·зЦ®Б¦µД»°ЧЬ№ІРиТЄГж¶о250WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13629,7 +13484,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 268, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 5, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 5, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 6, "¶Т»»СЧЦ®Б¦µД»°ЧЬ№ІРиТЄГж¶о250WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13640,7 +13495,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 267, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 6, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 6, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 7, "¶Т»»РЫКЁТ©јБµД»°ЧЬ№ІРиТЄГж¶о50WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13651,7 +13506,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 897, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 7, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 7, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 8, "¶Т»»УҐСЫТ©јБµД»°ЧЬ№ІРиТЄГж¶о50WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13662,7 +13517,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 894, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 8, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 8, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 9, "¶Т»»БйєпТ©јБµД»°ЧЬ№ІРиТЄГж¶о50WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13673,7 +13528,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 893, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 9, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 9, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 11, "¶Т»»ВщЕЈТ©јБµД»°ЧЬ№ІРиТЄГж¶о50WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13684,7 +13539,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 895, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 11, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 11, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 12, "¶Т»»КҐБйТ©јБµД»°ЧЬ№ІРиТЄГж¶о50WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13695,7 +13550,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 896, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 12, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 12, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 13, "¶Т»»28ёс±і°ьµД»°ЧЬ№ІРиТЄГж¶о1000WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13706,7 +13561,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 3088, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 13, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 13, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 14, "¶Т»»Д¦¶№РЎЧУµД»°ЧЬ№ІРиТЄГж¶о1000WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13717,7 +13572,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 680, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 14, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 14, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 15, "¶Т»»Чй¶Уѕ­Сй№ыµД»°ЧЬ№ІРиТЄГж¶о80WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13728,7 +13583,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 849, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 15, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 15, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 16, "¶Т»»МжЙн±¦±¦µД»°ЧЬ№ІРиТЄГж¶о55WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13739,7 +13594,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 3047, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 16, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 16, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 18, "¶Т»»іхј¶ѕ«БйЧФ±¬µД»°ЧЬ№ІРиТЄГж¶о500WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13750,7 +13605,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 610, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 18, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 18, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 	
 	Talk( 19, "¶Т»»јУЛЩіЙі¤№ыµД»°ЧЬ№ІРиТЄГж¶о20WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13761,7 +13616,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 578, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 19, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 19, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 20, "¶Т»»КҐµ®АПИЛµДАЎФщµД»°ЧЬ№ІРиТЄГж¶о2000WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13772,7 +13627,7 @@ function Xmas_talk01 ()
 	TriggerAction( 1, GiveItem, 2877, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 20, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 20, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 25, "Р»Р»ДгµД№в№Л,ЧЈДгКҐµ®Удїм!")
 
@@ -13814,7 +13669,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 207, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 3, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 3, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 4, "¶Т»»ёЯј¶їуёдµД»°ЧЬ№ІРиТЄГж¶о50WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13825,7 +13680,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 208, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 4, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 4, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 5, "¶Т»»ёЯј¶ПоБґ¶Т»»ИЇµД»°ЧЬ№ІРиТЄГж¶о1000WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13836,7 +13691,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 581, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 5, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 5, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 6, "¶Т»»ёЯј¶±ґїЗ¶Т»»ИЇµД»°ЧЬ№ІРиТЄГж¶о1000WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13847,7 +13702,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 582, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 6, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 6, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 7, "¶Т»»ГФЦ®ЛшµД»°ЧЬ№ІРиТЄГж¶о15WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13858,7 +13713,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 2440, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 7, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 7, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 8, "¶Т»»ёЯј¶ідµзµзіШµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13869,7 +13724,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 1024, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 8, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 8, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 9, "¶Т»»ЖшЗтУОП·ИЇµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13880,7 +13735,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 3083, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 9, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 9, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 11, "¶Т»»єА»ЄАс»ЁµД»°ЧЬ№ІРиТЄГж¶о9WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13891,7 +13746,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 3082, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 11, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 11, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 12, "¶Т»»ѕХРНАс»ЁµД»°ЧЬ№ІРиТЄГж¶о9WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13902,7 +13757,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 3081, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 12, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 12, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 13, "¶Т»»»ЁЗтµД»°ЧЬ№ІРиТЄГж¶о15WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13913,7 +13768,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 3080, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 13, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 13, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 14, "¶Т»»ЅрЖ»№ыµД»°ЧЬ№ІРиТЄГж¶о50WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13924,7 +13779,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 3291, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 14, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 14, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 15, "¶Т»»ЦЗ»Ы№ыµД»°ЧЬ№ІРиТЄГж¶о20WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13935,7 +13790,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 3290, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 15, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 15, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 16, "¶Т»»ЙсЛгІЭµД»°ЧЬ№ІРиТЄГж¶о100WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13946,7 +13801,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 3336, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 16, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 16, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 17, "¶Т»»Р°¶сµДНБЦшЗхі¤ХЩ»ЅИЇµД»°ЧЬ№ІРиТЄГж¶о2000WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -13957,7 +13812,7 @@ function Xmas_talk02 ()
 	TriggerAction( 1, GiveItem, 3013, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 17, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 17, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 25, "Р»Р»ДгµД№в№Л,ЧЈДгКҐµ®Удїм!")
 
@@ -14000,7 +13855,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 3014, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 3, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 3, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 4, "¶Т»»тбтжХЅКїНіБмХЩ»ЅИЇµД»°ЧЬ№ІРиТЄГж¶о2000WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14011,7 +13866,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 3012, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 4, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 4, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 5, "¶Т»»Чй¶Уѕ­Сй№ыµД»°ЧЬ№ІРиТЄГж¶о80WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14022,7 +13877,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 849, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 5, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 5, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 6, "¶Т»»МжЙн±¦±¦µД»°ЧЬ№ІРиТЄГж¶о55WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14033,7 +13888,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 3047, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 6, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 6, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 7, "¶Т»»ёЯј¶№ЦОпЖхФјµД»°ЧЬ№ІРиТЄГж¶о100WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14044,7 +13899,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2607, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 7, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 7, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 8, "¶Т»»ЦРј¶№ЦОпЖхФјµД»°ЧЬ№ІРиТЄГж¶о200WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14055,7 +13910,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2606, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 8, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 8, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 9, "¶Т»»іхј¶№ЦОпЖхФјµД»°ЧЬ№ІРиТЄГж¶о60WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14066,7 +13921,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2605, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 9, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 9, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 11, "¶Т»»КЇІДґЯ»ЇјБµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14077,7 +13932,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2625, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 11, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 11, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 12, "¶Т»»ТєМеґЯ»ЇјБµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14088,7 +13943,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2638, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 12, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 12, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 13, "¶Т»»КіІДґЯ»ЇјБµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14099,7 +13954,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2630, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 13, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 13, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 14, "¶Т»»МШКвґЯ»ЇјБµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14110,7 +13965,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2634, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 14, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 14, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 15, "¶Т»»№ЗН·ґЯ»ЇјБµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14121,7 +13976,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2635, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 15, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 15, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 16, "¶Т»»ЦІОпґЯ»ЇјБµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14132,7 +13987,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2636, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 16, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 16, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 17, "¶Т»»Г«Ж¤ґЯ»ЇјБµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14143,7 +13998,7 @@ function Xmas_talk03 ()
 	TriggerAction( 1, GiveItem, 2637, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 17, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 17, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 25, "Р»Р»ДгµД№в№Л,ЧЈДгКҐµ®Удїм!")
 
@@ -14181,7 +14036,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 2870, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 3, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 3, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 4, "¶Т»»КҐµ®їс»¶СМ»ЁµД»°ЧЬ№ІРиТЄГж¶о1000WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14192,7 +14047,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 2871, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 4, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 4, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 5, "¶Т»»РДРНIµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14203,7 +14058,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 3354, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 5, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 5, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 6, "¶Т»»РДРНLOVEµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14214,7 +14069,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 3355, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 6, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 6, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 7, "¶Т»»РДРНUµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14225,7 +14080,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 3356, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 7, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 7, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 8, "¶Т»»РДРНОТµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14236,7 +14091,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 3359, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 8, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 8, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 9, "¶Т»»РДРН°®µД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14247,7 +14102,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 3357, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 9, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 9, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 11, "¶Т»»РДРНДгµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14258,7 +14113,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 3358, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 11, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 11, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 12, "¶Т»»Гµ№е»ЁµД»°ЧЬ№ІРиТЄГж¶о20WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14269,7 +14124,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 3343, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 12, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 12, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 13, "¶Т»»єЪД§іб°тµД»°ЧЬ№ІРиТЄГж¶о100WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14280,7 +14135,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 906, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 13, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 13, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 14, "¶Т»»МрГЫЗЙїЛБ¦µД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14291,7 +14146,7 @@ function Xmas_talk04 ()
 	TriggerAction( 1, GiveItem, 3077, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 14, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 14, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 25, "Р»Р»ДгµД№в№Л,ЧЈДгКҐµ®Удїм!")
 
@@ -14331,7 +14186,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 904, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 3, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 3, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 4, "¶Т»»ѕ«БйЦ®ТнµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14342,7 +14197,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 935, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 4, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 4, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 5, "¶Т»»ємБъіб°тµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14353,7 +14208,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 905, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 5, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 5, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 6, "¶Т»»<јјЎ¤°ЧіХ>јјДЬКйµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14364,7 +14219,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 1130, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 6, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 6, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 7, "¶Т»»<јјЎ¤±ЙКУ>јјДЬКйµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14375,7 +14230,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 1131, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 7, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 7, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 8, "¶Т»»<јјЎ¤ґу±г>јјДЬКйµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14386,7 +14241,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 1037, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 8, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 8, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 9, "¶Т»»<јјЎ¤ЅрЗ®Ук>јјДЬКйµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14397,7 +14252,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 1129, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 9, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 9, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 11, "¶Т»»<јјЎ¤ДЪїг>јјДЬКйµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14408,7 +14263,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 1038, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 11, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 11, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 12, "¶Т»»<јјЎ¤Ж­ЧУ>јјДЬКйµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14419,7 +14274,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 1132, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 12, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 12, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 13, "¶Т»»<јјЎ¤ЙµЧУ>јјДЬКйµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14430,7 +14285,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 1133, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 13, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 13, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 14, "¶Т»»<јјЎ¤РШХЦ>јјДЬКйµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14441,7 +14296,7 @@ function Xmas_talk05 ()
 	TriggerAction( 1, GiveItem, 1039, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 14, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 14, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 25, "Р»Р»ДгµД№в№Л,ЧЈДгКҐµ®Удїм!")
 
@@ -14491,7 +14346,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3272, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 3, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 3, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 4, "¶Т»»·вУЎК¦ёЯј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о120WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14502,7 +14357,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3271, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 4, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 4, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 5, "¶Т»»КҐЦ°ХЯёЯј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о120WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14513,7 +14368,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3270, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 5, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 5, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 6, "¶Т»»ѕС»чКЦёЯј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о120WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14524,7 +14379,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3269, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 6, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 6, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 7, "¶Т»»ѕЮЅЈКїёЯј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о120WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14535,7 +14390,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3268, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 7, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 7, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 8, "¶Т»»Л«ЅЈКїёЯј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о120WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14546,7 +14401,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3267, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 8, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 8, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 9, "¶Т»»єЅєЈКїЦРј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о100WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14557,7 +14412,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3266, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 9, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 9, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 11, "¶Т»»·вУЎК¦ЦРј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о100WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14568,7 +14423,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3265, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 11, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 11, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 12, "¶Т»»КҐЦ°ХЯЦРј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о100WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14579,7 +14434,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3264, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 12, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 12, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 13, "¶Т»»ѕС»чКЦЦРј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о100WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14590,7 +14445,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3263, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 13, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 13, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 14, "¶Т»»ѕЮЅЈКїЦРј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о100WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14601,7 +14456,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3262, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 14, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 14, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 15, "¶Т»»Л«ЅЈКїЦРј¶¶БОпµД»°ЧЬ№ІРиТЄГж¶о100WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14612,7 +14467,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3261, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 15, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 15, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 16, "¶Т»»Д§Б¦ґЯ»ЇµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14623,7 +14478,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3300, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 16, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 16, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 18, "¶Т»»єЈІЭЗеіэјБµД»°ЧЬ№ІРиТЄГж¶о25WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14634,7 +14489,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3114, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 18, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 18, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 19, "¶Т»»є®±щЛ®ѕ§µД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14645,7 +14500,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3463, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 19, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 19, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 20, "¶Т»»¶ЇБ¦·«µД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14656,7 +14511,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3046, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 20, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 20, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 21, "¶Т»»±щБй»¤УУµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14667,7 +14522,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3301, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 21, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 21, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 22, "¶Т»»Д§·ЁІЭµД»°ЧЬ№ІРиТЄГж¶о10WµДКҐµ®УІ±ТЕ¶")
 	InitTrigger()
@@ -14678,7 +14533,7 @@ function Xmas_talk06 ()
 	TriggerAction( 1, GiveItem, 3462, 1, 4 )
 	TriggerAction( 1, JumpPage, 25 )
 	TriggerFailure( 1, JumpPage, 26 )
-	Text( 22, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 22, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk( 25, "Р»Р»ДгµД№в№Л,ЧЈДгКҐµ®Удїм!")
 
@@ -14704,7 +14559,7 @@ function Xmas_talk07 ()
 --	TriggerAction( 1, CpHuojiNum )
 --	TriggerAction( 1, JumpPage, 6 )
 --	TriggerFailure( 1, JumpPage, 7 )
---	Text ( 2, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+--	Text ( 2, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 --
 --	Talk ( 3, "ДгИ·¶ЁТЄУГХвТ»°ЩёцчзВ№µДјвЅЗёъОТ»»Т»ёцКҐµ®АсєРВр?")
 --	InitTrigger()
@@ -14716,7 +14571,7 @@ function Xmas_talk07 ()
 --	TriggerAction( 1, CpMiluNum )
 --	TriggerAction( 1, JumpPage, 6 )
 --	TriggerFailure( 1, JumpPage, 7 )
---	Text ( 3, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+--	Text ( 3, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 --
 --	Talk ( 4, "ДгИ·¶ЁТЄУГХвТ»°ЩёцС©ИЛµДСЫЗтОТ»»Т»ёцКҐµ®АсєРВр?")
 --	InitTrigger()
@@ -14728,7 +14583,7 @@ function Xmas_talk07 ()
 --	TriggerAction( 1, CpXuerenNum )
 --	TriggerAction( 1, JumpPage, 6 )
 --	TriggerFailure( 1, JumpPage, 7 )
---	Text ( 4, "Подтвердить to exchange", MultiTrigger, GetMultiTrigger(), 1)
+--	Text ( 4, "Confirm to exchange", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk ( 5, "ОТГЗТ»№ІУР5ёцѕєјјіЎ,ДгПлИҐДДТ»ёцДШ?")
 	Text ( 5, "КҐµ®ѕєјјіЎA", GoTosdBoss, 1 )
@@ -14769,7 +14624,7 @@ function Xmas_talk08 ()
 	TriggerAction( 1, GiveItem, 2962, 1, 4 )
 	TriggerAction( 1, JumpPage, 9 )
 	TriggerFailure( 1, JumpPage, 10 )
-	Text ( 2, "Подтвердить to redeem", MultiTrigger, GetMultiTrigger(), 1)
+	Text ( 2, "Confirm to redeem", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk ( 3, "¶Т»»Т»ёцКҐµ®°ЩНтФЄУІ±ТРиТЄ100WµДєЈµБ±Т,ДгИ·ИПТЄ¶Т»»Вр?")
 	InitTrigger()
@@ -14780,7 +14635,7 @@ function Xmas_talk08 ()
 	TriggerAction( 1, GiveItem, 2963, 1, 4 )
 	TriggerAction( 1, JumpPage, 9 )
 	TriggerFailure( 1, JumpPage, 10 )
-	Text ( 3, "Подтвердить to redeem", MultiTrigger, GetMultiTrigger(), 1)
+	Text ( 3, "Confirm to redeem", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk ( 4, "ДгИ·¶ЁТЄ°СКҐµ®НтФЄУІ±Т»»іЙ10000єЈµБ±ТВр?")
 	InitTrigger()
@@ -14789,7 +14644,7 @@ function Xmas_talk08 ()
 	TriggerAction( 1, TakeItem, 2962,1 )
 	TriggerAction( 1, AddMoney, 10000 )
 	TriggerFailure( 1, JumpPage, 11 )
-	Text ( 4, "Подтвердить to redeem", MultiTrigger, GetMultiTrigger(), 1)
+	Text ( 4, "Confirm to redeem", MultiTrigger, GetMultiTrigger(), 1)
 
 	Talk ( 5, "ДгИ·¶ЁТЄ°СКҐµ®°ЩНтФЄУІ±Т»»іЙ100WєЈµБ±ТВр?")
 	InitTrigger()
@@ -14798,7 +14653,7 @@ function Xmas_talk08 ()
 	TriggerAction( 1, TakeItem, 2963,1 )
 	TriggerAction( 1, AddMoney, 1000000 )
 	TriggerFailure( 1, JumpPage, 11 )
-	Text ( 5, "Подтвердить to redeem", MultiTrigger, GetMultiTrigger(), 1)
+	Text ( 5, "Confirm to redeem", MultiTrigger, GetMultiTrigger(), 1)
 
 	InitTrigger()
 	TriggerAction( 1, GoTo, 1318,510, "darkblue")
@@ -15501,22 +15356,20 @@ function med_chaos ()
 
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, "<", 6 )
-	TriggerCondition( 1, HasRecord, 5000 )
+	TriggerCondition( 1, HasRecord, 500 )
 	TriggerAction( 1, ReAll )
-	TriggerCondition( 2, HasMoney, 50000 )
-	TriggerAction( 2, TakeMoney, 50000 )
+	TriggerCondition( 2, HasMoney, 200 )
+	TriggerAction( 2, TakeMoney, 200 )
 	TriggerAction( 2, ReAll )
 	TriggerFailure( 2, JumpPage, 3 )
 	Text( 1, 'Великое исцеление', MultiTrigger,GetMultiTrigger(), 2 )
 
-	
-	
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, "<", 6 )
-	TriggerCondition( 1, HasRecord, 5000 )
+	TriggerCondition( 1, HasRecord, 500 )
 	TriggerAction( 1, ReHp, 50 )
-	TriggerCondition( 2, HasMoney, 20000 )
-	TriggerAction( 2, TakeMoney, 20000 )
+	TriggerCondition( 2, HasMoney, 50 )
+	TriggerAction( 2, TakeMoney, 50 )
 	TriggerAction( 2, ReHp,50 )
 	TriggerFailure( 2, JumpPage, 4 )
 	Text( 1, 'Исцеление', MultiTrigger,GetMultiTrigger(), 2 )
@@ -15526,9 +15379,9 @@ function med_chaos ()
 	Text( 2, 'Да, пожалуйста запиши.', SetSpawnPos, 'Портал Хаоса' )
 	Text( 2, 'Нет, спасибо',CloseTalk )
 
-	Talk( 3, 'Помпи: Великое Исцеление стоит 50000 золотых, которых у тебя нет' )
+	Talk( 3, 'Помпи: Великое Исцеление стоит 200 золотых, которых у тебя нет' )
 
-	Talk( 4, 'Помпи: Исцеление стоит 20000 золотых, которых у тебя нет' )
+	Talk( 4, 'Помпи: Исцеление стоит 50 золотых, которых у тебя нет' )
 
 end
 
@@ -15540,8 +15393,8 @@ function med_snv ()
 	TriggerCondition( 1, LvCheck, "<", 6 )
 	TriggerCondition( 1, HasRecord, 500 )
 	TriggerAction( 1, ReAll )
-	TriggerCondition( 2, HasMoney, 50000 )
-	TriggerAction( 2, TakeMoney, 50000 )
+	TriggerCondition( 2, HasMoney, 200 )
+	TriggerAction( 2, TakeMoney, 200 )
 	TriggerAction( 2, ReAll )
 	TriggerFailure( 2, JumpPage, 3 )
 	Text( 1, 'Великое исцеление', MultiTrigger,GetMultiTrigger(), 2 )
@@ -15550,8 +15403,8 @@ function med_snv ()
 	TriggerCondition( 1, LvCheck, "<", 6 )
 	TriggerCondition( 1, HasRecord, 500 )
 	TriggerAction( 1, ReHp, 50 )
-	TriggerCondition( 2, HasMoney, 20000 )
-	TriggerAction( 2, TakeMoney, 20000 )
+	TriggerCondition( 2, HasMoney, 50 )
+	TriggerAction( 2, TakeMoney, 50 )
 	TriggerAction( 2, ReHp,50 )
 	TriggerFailure( 2, JumpPage, 4 )
 	Text( 1, 'Исцеление', MultiTrigger,GetMultiTrigger(), 2 )
@@ -15561,9 +15414,9 @@ function med_snv ()
 	Text( 2, 'Да, пожалуйста запиши.', SetSpawnPos, 'Портал СНВ' )
 	Text( 2, 'Нет, спасибо',CloseTalk )
 
-	Talk( 3, 'Лори: Великое Исцеление стоит 50000 золотых, которых у тебя нет' )
+	Talk( 3, 'Лори: Великое Исцеление стоит 200 золотых, которых у тебя нет' )
 
-	Talk( 4, 'Лори: Исцеление стоит 20000 золотых, которых у тебя нет' )
+	Talk( 4, 'Лори: Исцеление стоит 50 золотых, которых у тебя нет' )
 
 end
 
@@ -15584,328 +15437,35 @@ function test_dialog ()
 	--Weapon(	0932	)	--Модная книга причесок(Карциз)
 	--Weapon(	0933	)	--Модная книга причесок(Филлис)
 	--Weapon(	0934	)	--Модная книга причесок(Ами)
-	-- --Ингридиенты
-	-- Weapon(	1804	)	--Половинка ножниц
-	-- Weapon(	1805	)	--Гребень
-	-- Weapon(	1806	)	--Гель для волос
-	-- Weapon(	1807	)	--Расписка
-	-- --Краска
-	-- Defence(	4608	)	--Коричневая краска 
-	-- Defence(	4606	)	--Черная краска 
-	-- Defence(		)
-	-- Defence(		)
-	-- Defence(	1793	)	--Пурпурная краска 
-	-- Defence(	1792	)	--Синяя краска
-	-- Defence(	1791	)	--Голубая краска 
-	-- Defence(	1790	)	--Зеленая краска 
-	-- Defence(	1789	)	--Желтая краска 
-	-- Defence(	1788	)	--Оранжевая краска
-	-- Defence(	1787	)	--Красная краска
-	-- --Красители
-	-- Other(	4610	)	--Обесцвечивающее средство
-	-- Other(	4609	)	--Коричневый краситель  
-	-- Other(	4607	)	--Черный краситель
-	-- Other(		)
-	-- Other(	1803	)	--Пурпурный краситель 
-	-- Other(	1801	)	--Голубой краситель 
-	-- Other(	1800	)	--Зеленый краситель
-	-- Other(	1798	)	--Оранжевый краситель 
-	-- Other(	1797	)	--Красный краситель
-	-- Other(	1802	)	--Синий краситель
-	-- Other(	1799	)	--Желтый краситель
-
-end
-
-function roico_talk()
-
-    Talk( 1, "Администратор Священной войны: Для того, чтобы войти в священную войну, пожалуйста, получите [Знак жизни и смерти] от меня, он представляет вашу решимость и дух! Еще у меня есть нечто, в чем Вы могли бы быть заинтересованы, но я могу это дать только Героям войны!" )
-    Text( 1, "Получить [70 ур.] Снаряжение Босса",JumpPage, 2 )
-	--Text( 1, "Получить Титул",JumpPage, 16 )
-	Text( 1, "Получить [Знак Кровавого альянса]",JumpPage, 28 )
-	Text( 1, "Обменять Честь на [Знак жизни и смерти]",JumpPage, 29 )
-
-	Talk( 2, "Выберите Босс камень который вы хотите!" )
-        Text( 2, "Каменная нога Гефеста (Чемпион)", JumpPage, 3)
-	Text( 2, "Каменная нога Гермеса (Воитель)", JumpPage, 4)
-	Text( 2, "Каменная нога Аполлона (Стрелок)", JumpPage, 5)
-	Text( 2, "Каменная нога Посейдона (Покоритель Морей)", JumpPage, 6)
-	Text( 2, "Каменная нога Гестии (Целитель)", JumpPage, 7)
-	Text( 2, "Каменная нога Афины (Колдунья)", JumpPage, 8)
-	Text( 2, "Вперед", JumpPage, 9)
-	Talk( 9, "Выберите Босс камень который вы хотите!" )
-	Text( 9, "Каменная рука Гефеста (Чемпион)", JumpPage, 10)
-	Text( 9, "Каменная рука Гермеса (Воитель)", JumpPage, 11)
-	Text( 9, "Каменная рука Аполлона (Стрелок)", JumpPage, 12)
-	Text( 9, "Каменная рука Посейдона (Покоритель Морей)", JumpPage, 13)
-	Text( 9, "Каменная рука Гестии (Целитель)", JumpPage, 14)
-	Text( 9, "Каменная рука Афины (Колдунья)", JumpPage, 15)
-	Text( 9, "Назад", JumpPage, 2) 
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2532, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 3, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 3, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2535, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 4, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 4, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2538, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 5, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 5, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2541, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 6, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 6, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2544, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 7, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 7, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2547, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 8, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 8, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2531, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 10, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 10, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-
-	
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2534, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 11, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 11, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2537, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 12, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 12, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2540, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 13, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 13, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2543, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 14, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 14, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 300 )
-	TriggerCondition( 1, LvCheck, ">", 64 )
-	TriggerAction( 1, TakeItem, 2383, 300 )
-	TriggerAction( 1, GiveItem, 2546, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 15, "Администратор Священной войны: Если ваш уровень выше 65, и вы принесете мне 300 кровавых контрактов, я могу дать вам этот камень." )
-	Text( 15, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	Talk( 16, "Администратор Священной войны: Пожалуйста, выберите Звание, которое вы хотите!" )
-        Text( 16, "Матрос", JumpPage, 17)
-	Text( 16, "Старшина", JumpPage, 18)
-	Text( 16, "Мичман", JumpPage, 19)
-	Text( 16, "Лейтенант", JumpPage, 20)
-	Text( 16, "Капитан 3 ранга", JumpPage, 21)
-	Text( 16, "Дальше", JumpPage, 30)
-
-	Talk( 30, "Администратор Священной войны: Пожалуйста, выберите Звание, которое вы хотите!" )
-	Text( 30, "Капитан 2 ранга", JumpPage, 22)
-	Text( 30, "Капитан 1 ранга", JumpPage, 23)
-	Text( 30, "Контр-Адмирал", JumpPage, 24)
-	Text( 30, "Адмирал Флота", JumpPage, 25)
-	Text( 30, "Главнокомандующий", JumpPage, 26)
-	Text( 30, "Назад", JumpPage, 16)
-
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 20 )
-	TriggerCondition( 1, HasLeaveBagGrid, 1 )
-	TriggerAction( 1, TakeItem, 2383, 20 )
-	TriggerAction( 1, GiveItem, 5331, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 17, "Администратор Священной войны: Если вы дадите мне 20 кровавых контрактов, я могу дать вам такое звание!" )
-	Text( 17, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-
-	
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 50 )
-	TriggerCondition( 1, HasItem, 5331, 1 )
-	TriggerAction( 1, TakeItem, 2383, 50 )
-	TriggerAction( 1, TakeItem, 5331, 1 )
-	TriggerAction( 1, GiveItem, 5332, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 18, "Администратор Священной войны: Если вы дадите мне 50 кровавых контрактов и Медаль чести 1 уровня, я могу дать вам такое звание!" )
-	Text( 18, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 100 )
-	TriggerCondition( 1, HasItem, 5332, 1 )
-	TriggerAction( 1, TakeItem, 2383, 100 )
-	TriggerAction( 1, TakeItem, 5332, 1 )
-	TriggerAction( 1, GiveItem, 5333, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 19, "Администратор Священной войны: Если вы дадите мне 100 кровавых контрактов и Медаль чести 2 уровня, я могу дать вам такое звание!" )
-	Text( 19, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 250 )
-	TriggerCondition( 1, HasItem, 5333, 1 )
-	TriggerAction( 1, TakeItem, 2383, 250 )
-	TriggerAction( 1, TakeItem, 5333, 1 )
-	TriggerAction( 1, GiveItem, 5334, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 20, "Администратор Священной войны: Если вы дадите мне 250 кровавых контрактов и Медаль чести 3 уровня, я могу дать вам такое звание!" )
-	Text( 20, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 400 )
-	TriggerCondition( 1, HasItem, 5334, 1 )
-	TriggerAction( 1, TakeItem, 2383, 400 )
-	TriggerAction( 1, TakeItem, 5334, 1 )
-	TriggerAction( 1, GiveItem, 5335, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 21, "Администратор Священной войны: Если вы дадите мне 400 кровавых контрактов и Медаль чести 4 уровня, я могу дать вам такое звание!" )
-	Text( 21, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 650 )
-	TriggerCondition( 1, HasItem, 5335, 1 )
-	TriggerAction( 1, TakeItem, 2383, 650 )
-	TriggerAction( 1, TakeItem, 5335, 1 )
-	TriggerAction( 1, GiveItem, 5336, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 22, "Администратор Священной войны: Если вы дадите мне 650 кровавых контрактов и Медаль чести 5 уровня, я могу дать вам такое звание!" )
-	Text( 22, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2865, 55 )
-	TriggerCondition( 1, HasItem, 5336, 1 )
-	TriggerAction( 1, TakeItem, 2865, 55 )
-	TriggerAction( 1, TakeItem, 5336, 1 )
-	TriggerAction( 1, GiveItem, 5337, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 23, "Администратор Священной войны: Если вы дадите мне 55 Знаков кровавого альянса и Медаль чести 6 уровня, я могу дать вам такое звание!" )
-	Text( 23, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2865, 80 )
-        TriggerCondition( 1, HasItem, 5337, 1)
-	TriggerAction( 1, TakeItem, 2865, 80 )
-	TriggerAction( 1, TakeItem, 5337, 1 )
-	TriggerAction( 1, GiveItem, 5338, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 24, "Администратор Священной войны: Если вы дадите мне 80 Знаков кровавого альянса и Медаль чести 7 уровня, я могу дать вам такое звание!" )
-	Text( 24, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2865, 110 )
-	TriggerCondition( 1, HasItem, 5338, 1)
-	TriggerAction( 1, TakeItem, 2865, 110 )
-	TriggerAction( 1, TakeItem, 5338, 1 )
-	TriggerAction( 1, GiveItem, 5339, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 25, "Администратор Священной войны: Если вы дадите мне 110 Знаков кровавого альянса и Медаль чести 8 уровня, я могу дать вам такое звание!" )
-	Text( 25, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2865, 155 )
-	TriggerCondition( 1, HasItem, 5339, 1)
-	TriggerAction( 1, TakeItem, 2865, 155 )
-	TriggerAction( 1, TakeItem, 5339, 1 )
-	TriggerAction( 1, GiveItem, 5340, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 26, "Администратор Священной войны: Если вы дадите мне 155 Знаков кровавого альянса и Медаль чести 9 уровня, я могу дать вам такое звание!" )
-	Text( 26, "Получить", MultiTrigger, GetMultiTrigger(), 1)
-        Talk( 27, "Администратор Священной войны: Пожалуйста, проверьте, если ваш инвентарь имеет достаточно места или у вас есть все нужные предметы для обмена. Я не могу обмениваться с вами!" )
-
-
-
-
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 2383, 20 )
-	TriggerCondition( 1, HasLeaveBagGrid, 1 )
-	TriggerAction( 1, TakeItem, 2383, 20 )
-	TriggerAction( 1, GiveItem, 2865, 1, 4 )
-	TriggerFailure( 1, JumpPage, 27 )
-	Talk( 28, "Администратор Священной войны: 20 Кровавых контрактов можно поменять на 1 Знак Кровавого Альянса" )
-	Text( 28, "Подтвердить обмен", MultiTrigger, GetMultiTrigger(), 1)
-
-
-	
-	Talk( 29, "Администратор Священной войны: 15 чести можно обменять в однин Знак жизни и смерти. Знак жизни и смерти исчезнет только тогда, когда вы умерли внутри Священной войны!")
-	Text( 29, "Подтвердить обмен", GetChaName45_guildwar, 1)
+	--Ингридиенты
+	Weapon(	1804	)	--Половинка ножниц
+	Weapon(	1805	)	--Гребень
+	Weapon(	1806	)	--Гель для волос
+	Weapon(	1807	)	--Расписка
+	--Краска
+	Defence(	4608	)	--Коричневая краска 
+	Defence(	4606	)	--Черная краска 
+	Defence(		)
+	Defence(		)
+	Defence(	1793	)	--Пурпурная краска 
+	Defence(	1792	)	--Синяя краска
+	Defence(	1791	)	--Голубая краска 
+	Defence(	1790	)	--Зеленая краска 
+	Defence(	1789	)	--Желтая краска 
+	Defence(	1788	)	--Оранжевая краска
+	Defence(	1787	)	--Красная краска
+	--Красители
+	Other(	4610	)	--Обесцвечивающее средство
+	Other(	4609	)	--Коричневый краситель  
+	Other(	4607	)	--Черный краситель
+	Other(		)
+	Other(	1803	)	--Пурпурный краситель 
+	Other(	1801	)	--Голубой краситель 
+	Other(	1800	)	--Зеленый краситель
+	Other(	1798	)	--Оранжевый краситель 
+	Other(	1797	)	--Красный краситель
+	Other(	1802	)	--Синий краситель
+	Other(	1799	)	--Желтый краситель
 
 end
 

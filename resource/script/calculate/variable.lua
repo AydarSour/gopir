@@ -2,31 +2,16 @@
 print( "Loading Variable.lua" )
 -----------------------------------------
 
-EXP_RAID = 				 1		--Рейты соло, GM - &lua EXP_RAID=...
-MF_RAID = 				 3		--Рейты на дроп, GM - &lua MF_RAID=...
-STAR_RAID = 			 2		--Рейты на опыт для звезды единства
-EXP_BOAT_RAID = 		10		--Рейты коробля
-EXP_QUEST_RAID = 		 2		--Рейты на квесты
-AUTO_RAID_MF_START = 	 0		--Авто рейты на выходные(1 вкл\0 выкл)
-ELEEXP_GETRAD = 		10		--Рейты на кач феи
-BOGEXP_GETRAD = 		10		--Рейты на кач феи бога
-TeamExp_RAID =			 1		--Рейты на кач в отряде
-MENTOR_ITEMID =			 0 		--Дополнительный итем ученику к мини-усилителям натиска
-
-Raid_Exp_Ev = 1
-Raid_Money = 1
---Рейт на хп мп и деф скорость
-RAID_MX_HP	=	3
-RAID_MX_SP	=	2
-RAID_MX_DEF	=	1.2
-RAID_MX_MVS = 	1.3
-
---Урон по людям 
-Damage_for_players = 1 -- Урон по героям
-Damage_for_mobs = 1 -- Урон по Мобам
-
---Лимит уровня
-LV_LIMIT = 100
+EXP_RAID = 1--1.5	--1			--Рейты соло, GM - &lua EXP_RAID=...
+MF_RAID = 3--3		--2			--Рейты на дроп, GM - &lua MF_RAID=...
+STAR_RAID = 2				--Рейты на опыт для звезды единства
+EXP_BOAT_RAID = 20			--Рейты коробля
+EXP_QUEST_RAID = 2--4	--2		--Рейты на квесты
+AUTO_RAID_MF_START = 0		--Авто рейты на выходные(1 вкл\0 выкл)
+ELEEXP_GETRAD = 30			--Рейты на кач феи
+BOGEXP_GETRAD = 10			--Рейты на кач феи бога
+TeamExp_RAID = 1--0.5	--1		--Рейты на кач в отряде
+MENTOR_ITEMID = 0 -- Дополнительный итем ученику к мини-усилителям натиска
 
 --Уровень феи
 JLMAXLV = 51
@@ -37,8 +22,17 @@ JLMAXLV_UP_3_GEN = 51
 JLMAXLV_UP_4_GEN = 25
 JLMAXLV_UP_5_GEN = 12
 
+--Рейт на хп мп и деф
+RAID_MX_HP=2.75
+RAID_MX_SP=1.25
+RAID_MX_DEF=1
 
+--Урон по людям 
+Damage_for_players=0.48 -- Урон по героям
+Damage_for_mobs =1.56 -- Урон по Мобам
 
+--Лимит уровня
+LV_LIMIT = 95
 
 --Массив с подарками за онлайн
 RAZMER_PRIZE = 19
@@ -67,13 +61,17 @@ Prize = {}
  
  
 --Реклама
-RAZMER_NOTICE = 5
 notices = {}
-notices[1] = "Сайт нашего проекта - https://go-piratia.ru/ "
-notices[2] = "Посетите нашу группу - vk.com/go_piratia  "
+notices[1] = "Сайт нашего проекта - https://morfeos.ru/ "
+notices[2] = "Посетите нашу группу - vk.com/morfeos  "
 notices[3] = "Приятной игры, хорошего фарма и быстрой прокачки! "
 notices[4] = "Проблемы с игрой? Обратитесь в нашу техподдержку! "
 notices[5] = "Не играй слишком много, следи за своим здоровьем! "
+notices[6] = "Приятной игры, хорошего фарма и быстрой прокачки!"
+notices[7] = "Какие-то проблемы? Обратись в тех раздел форума http://morfeos.ru/talk/! "
+notices[8] = "Приятной игры, хорошего фарма и быстрой прокачки! "
+notices[9] = "Сайт нашего проекта - http://morfeos.ru/!"
+notices[10] = "Следите за новостями в группе и участвуйте в конкурсах! "
 
 
 ModuleMentorSystem = 1
@@ -95,6 +93,11 @@ monster2 = 0
 monster3 = 0
 monster4 = 0
 monster5 = 0
+--GiveItemPlayerName = ""
+--GiveItemPlayerID = 0
+--GiveItemPlayerNumber = 0
+--GiveItemPlayerParametr = 0
+----ѕ«БйУІ±ТјЖКэ
 PlayUseBox1 = {}
 PlayUseBox2 = {}
 PlayUseBox3 = {}
@@ -112,136 +115,17 @@ ReadyToFight = 0
 ATTR_RADIX = 1000
 AREA_SAFE = 2
 
-
-	--Свадьба
-	WD_GOLD = 10000000			--Золото, которое требуется для получения Свадебного сертификата
-	WD_FIREWORK_COUNT = 5		--Количество видов фейерверков
-	WD_FIREWORK = {}			--Массив с ID фейерверков
+WD_GOLD = 10000000			--Золото, которое требуется для получения Свадебного сертификата
+WD_FIREWORK_COUNT = 5		--Количество видов фейерверков
+WD_FIREWORK = {}			--Массив с ID фейерверков
 	WD_FIREWORK[1] = 839
 	WD_FIREWORK[2] = 838
 	WD_FIREWORK[3] = 366
 	WD_FIREWORK[4] = 369
 	WD_FIREWORK[5] = 363
-	
-	--Карты данжей
-	MGPK_MapNameNum = 10
-	MGPK_MapName = {}
-	MGPK_MapName[0]  = "puzzleworld"
-	MGPK_MapName[1]  = "puzzleworld2"
-	MGPK_MapName[2]  = "abandonedcity"
-	MGPK_MapName[3]  = "abandonedcity2"
-	MGPK_MapName[4]  = "abandonedcity3"
-	MGPK_MapName[5]  = "darkswamp"
-	MGPK_MapName[6]  = "hell"
-	MGPK_MapName[7]  = "hell2"
-	MGPK_MapName[8]  = "hell3"
-	MGPK_MapName[9]  = "hell4"
-	MGPK_MapName[10] = "hell5"
-	
-	--Репутация для менторства
-	PlayerCredit = {}
-	PlayerCredit[	2	]=	1
-	PlayerCredit[	3	]=	2
-	PlayerCredit[	4	]=	3
-	PlayerCredit[	5	]=	4
-	PlayerCredit[	6	]=	5
-	PlayerCredit[	7	]=	6
-	PlayerCredit[	8	]=	7
-	PlayerCredit[	9	]=	8
-	PlayerCredit[	10	]=	9
-	PlayerCredit[	11	]=	10
-	PlayerCredit[	12	]=	12
-	PlayerCredit[	13	]=	14
-	PlayerCredit[	14	]=	16
-	PlayerCredit[	15	]=	18
-	PlayerCredit[	16	]=	20
-	PlayerCredit[	17	]=	22
-	PlayerCredit[	18	]=	24
-	PlayerCredit[	19	]=	26
-	PlayerCredit[	20	]=	28
-	PlayerCredit[	21	]=	30
-	PlayerCredit[	22	]=	32
-	PlayerCredit[	23	]=	34
-	PlayerCredit[	24	]=	36
-	PlayerCredit[	25	]=	38
-	PlayerCredit[	26	]=	40
-	PlayerCredit[	27	]=	42
-	PlayerCredit[	28	]=	44
-	PlayerCredit[	29	]=	46
-	PlayerCredit[	30	]=	48
-	PlayerCredit[	31	]=	50
-	PlayerCredit[	32	]=	52
-	PlayerCredit[	33	]=	54
-	PlayerCredit[	34	]=	56
-	PlayerCredit[	35	]=	58
-	PlayerCredit[	36	]=	60
-	PlayerCredit[	37	]=	62
-	PlayerCredit[	38	]=	64
-	PlayerCredit[	39	]=	66
-	PlayerCredit[	40	]=	68
-	PlayerCredit[	41	]=	71
-	PlayerCredit[	42	]=	75
-	PlayerCredit[	43	]=	80
-	PlayerCredit[	44	]=	86
-	PlayerCredit[	45	]=	93
-	PlayerCredit[	46	]=	101
-	PlayerCredit[	47	]=	110
-	PlayerCredit[	48	]=	120
-	PlayerCredit[	49	]=	131
-	PlayerCredit[	50	]=	143
-	PlayerCredit[	51	]=	156
-	PlayerCredit[	52	]=	170
-	PlayerCredit[	53	]=	185
-	PlayerCredit[	54	]=	201
-	PlayerCredit[	55	]=	218
-	PlayerCredit[	56	]=	236
-	PlayerCredit[	57	]=	255
-	PlayerCredit[	58	]=	275
-	PlayerCredit[	59	]=	296
-	PlayerCredit[	60	]=	318
-	PlayerCredit[	61	]=	341
-	PlayerCredit[	62	]=	365
-	PlayerCredit[	63	]=	390
-	PlayerCredit[	64	]=	416
-	PlayerCredit[	65	]=	443
-	PlayerCredit[	66	]=	471
-	PlayerCredit[	67	]=	500
-	PlayerCredit[	68	]=	530
-	PlayerCredit[	69	]=	561
-	PlayerCredit[	70	]=	593
-	PlayerCredit[	71	]=	626
-	PlayerCredit[	72	]=	660
-	PlayerCredit[	73	]=	695
-	PlayerCredit[	74	]=	731
-	PlayerCredit[	75	]=	768
-	PlayerCredit[	76	]=	806
-	PlayerCredit[	77	]=	845
-	PlayerCredit[	78	]=	885
-	PlayerCredit[	79	]=	926
-	PlayerCredit[	80	]=	968
-	PlayerCredit[	81	]=	1011
-	PlayerCredit[	82	]=	1055
-	PlayerCredit[	83	]=	1100
-	PlayerCredit[	84	]=	1146
-	PlayerCredit[	85	]=	1193
-	PlayerCredit[	86	]=	1241
-	PlayerCredit[	87	]=	1290
-	PlayerCredit[	88	]=	1340
-	PlayerCredit[	89	]=	1391
-	PlayerCredit[	90	]=	1443
-	PlayerCredit[	91	]=	1496
-	PlayerCredit[	92	]=	1550
-	PlayerCredit[	93	]=	1605
-	PlayerCredit[	94	]=	1661
-	PlayerCredit[	95	]=	1718
-	PlayerCredit[	96	]=	1776
-	PlayerCredit[	97	]=	1835
-	PlayerCredit[	98	]=	1895
-	PlayerCredit[	99	]=	1956
-	PlayerCredit[	100	]=	1956
---Все билеты
-	ITEM_BILET_COUNT = 61
-	ITEM_BILET = {}
+
+ITEM_BILET_COUNT = 61
+ITEM_BILET = {}
 	ITEM_BILET[1] = 332
 	ITEM_BILET[2] = 563
 	ITEM_BILET[3] = 583
@@ -322,7 +206,7 @@ AntiBotLine = {}
 VilkaBarb = {}
 RybkaDouble = {}
 
-
+LV_LIMIT = 50
 A_B_C = 8
 Money_all = 1000000
 How_Many_Active = 0
@@ -617,73 +501,6 @@ Item_CanJinglian_ID [11] =		9	--·ЁХИ
 Item_CanJinglian_ID [12] =		25	--Бижутерия
 Item_CanJinglian_ID [13] =		26	--Кольцо
 
-
-
-
---массивы боссов
-BOSSXYSJ = {}
-BOSSXYSJ[979] = 1
-BOSSXYSJ[980] = 12
-BOSSXYSJ[981] = 6
-BOSSXYSJ[982] = 4
-BOSSXYSJ[983] = 12
-BOSSXYSJ[984] = 16
-BOSSXYSJ[985] = 16
-BOSSXYSJ[986] = 12
-BOSSXYSJ[987] = 4
-BOSSXYSJ[988] = 4
-
-BOSSSJSJ = {}
-BOSSSJSJ[979] = 8
-BOSSSJSJ[980] = 1
-BOSSSJSJ[981] = 6
-BOSSSJSJ[982] = 4
-BOSSSJSJ[983] = 12
-BOSSSJSJ[984] = 16
-BOSSSJSJ[985] = 16
-BOSSSJSJ[986] = 12
-BOSSSJSJ[987] = 4
-BOSSSJSJ[988] = 4
-
-BOSSTJSJ = {}
-BOSSTJSJ[979] = 8
-BOSSTJSJ[980] = 1
-BOSSTJSJ[981] = 6
-BOSSTJSJ[982] = 4
-BOSSTJSJ[983] = 12
-BOSSTJSJ[984] = 16
-BOSSTJSJ[985] = 16
-BOSSTJSJ[986] = 12
-BOSSTJSJ[987] = 4
-BOSSTJSJ[988] = 4
-
-BOSSXZSJ = {}
-BOSSXZSJ[979] = 12
-BOSSXZSJ[980] = 12
-BOSSXZSJ[981] = 16
-BOSSXZSJ[982] = 16
-BOSSXZSJ[983] = 12
-BOSSXZSJ[984] = 4
-BOSSXZSJ[985] = 1
-BOSSXZSJ[986] = 6
-BOSSXZSJ[987] = 4
-BOSSXZSJ[988] = 4
-
-BOSSAYSJ = {}
-BOSSAYSJ[979] = 12
-BOSSAYSJ[980] = 12
-BOSSAYSJ[981] = 16
-BOSSAYSJ[982] = 16
-BOSSAYSJ[983] = 12
-BOSSAYSJ[984] = 4
-BOSSAYSJ[985] = 1
-BOSSAYSJ[986] = 6
-BOSSAYSJ[987] = 4
-BOSSAYSJ[988] = 4
-
-
-
-
 -------------------------------------------------------------------
 JNSTime_Flag_Num=13
 JNSTime_Flag={}
@@ -803,110 +620,6 @@ DEXP[97]=1759083882
 DEXP[98]=1853189134
 DEXP[99]=1962163016
 DEXP[100]=2088354770
-
-
---------±±ГАМъИЛБщПо»о¶Ї---------bragi-----
-GetExp	=	{}
-GetExp[1]	=	2
-GetExp[2]	=	3
-GetExp[3]	=	7
-GetExp[4]	=	17
-GetExp[5]	=	50
-GetExp[6]	=	125
-GetExp[7]	=	250
-GetExp[8]	=	500
-GetExp[9]	=	987
-GetExp[10]	=	1604
-GetExp[11]	=	2493
-GetExp[12]	=	3734
-GetExp[13]	=	5422
-GetExp[14]	=	7669
-GetExp[15]	=	10605
-GetExp[16]	=	14383
-GetExp[17]	=	19178
-GetExp[18]	=	25191
-GetExp[19]	=	32653
-GetExp[20]	=	41828
-GetExp[21]	=	53016
-GetExp[22]	=	66556
-GetExp[23]	=	82834
-GetExp[24]	=	102282
-GetExp[25]	=	125390
-GetExp[26]	=	152706
-GetExp[27]	=	184846
-GetExp[28]	=	222499
-GetExp[29]	=	266435
-GetExp[30]	=	317513
-GetExp[31]	=	376689
-GetExp[32]	=	445031
-GetExp[33]	=	523719
-GetExp[34]	=	614069
-GetExp[35]	=	717537
-GetExp[36]	=	835735
-GetExp[37]	=	970446
-GetExp[38]	=	1123644
-GetExp[39]	=	1297505
-GetExp[40]	=	1494430
-GetExp[41]	=	1717066
-GetExp[42]	=	1968329
-GetExp[43]	=	2251428
-GetExp[44]	=	2569889
-GetExp[45]	=	2927590
-GetExp[46]	=	3328788
-GetExp[47]	=	3778155
-GetExp[48]	=	4280815
-GetExp[49]	=	4842382
-GetExp[50]	=	5469008
-GetExp[51]	=	6167428
-GetExp[52]	=	6945010
-GetExp[53]	=	7809811
-GetExp[54]	=	8770641
-GetExp[55]	=	9837120
-GetExp[56]	=	11019758
-GetExp[57]	=	12330022
-GetExp[58]	=	13780426
-GetExp[59]	=	15384615
-GetExp[60]	=	18873209
-GetExp[61]	=	22938213
-GetExp[62]	=	29785576
-GetExp[63]	=	37851819
-GetExp[64]	=	47307639
-GetExp[65]	=	58344152
-GetExp[66]	=	77645529
-GetExp[67]	=	93209006
-GetExp[68]	=	119079807
-GetExp[69]	=	149311139
-GetExp[70]	=	184487925
-GetExp[71]	=	225262774
-GetExp[72]	=	284204889
-GetExp[73]	=	339662372
-GetExp[74]	=	403272284
-GetExp[75]	=	476045862
-GetExp[76]	=	594049618
-GetExp[77]	=	740214605
-GetExp[78]	=	888062792
-GetExp[79]	=	1045817451
-GetExp[80]	=	1212674905
-GetExp[81]	=	1220447543
-GetExp[82]	=	1229448257
-GetExp[83]	=	1239871084
-GetExp[84]	=	1251940718
-GetExp[85]	=	1265917353
-GetExp[86]	=	1282102297
-GetExp[87]	=	1300844461
-GetExp[88]	=	1322547887
-GetExp[89]	=	1347680454
-GetExp[90]	=	1376783967
-GetExp[91]	=	1410485834
-GetExp[92]	=	1449512595
-GetExp[93]	=	1494705585
-GetExp[94]	=	1547039066
-GetExp[95]	=	1607641238
-GetExp[96]	=	1677818552
-GetExp[97]	=	1759083882
-GetExp[98]	=	1853189134
-GetExp[99]	=	1962163016
-GetExp[100]	=	2088354770
 
 
 
@@ -4800,7 +4513,7 @@ sk_bjkr [10]			=		612575
 
 
 
---Создание ги
+--ґґЅЁєЈѕь№¤»бЛщРиОпЖ·
 Guild1_ItemMax		=	1
 
 Guild1_item = {}
@@ -4813,7 +4526,7 @@ Guild1_item[3]	=	-1				Guild1_count[3]	=	-1
 Guild1_item[4]	=	-1				Guild1_count[4]	=	-1
 Guild1_item[5]	=	-1				Guild1_count[5]	=	-1
 
---Создание ги
+--ґґЅЁєЈµБ№¤»бЛщРиОпЖ·
 Guild2_ItemMax		=	1
 
 Guild2_item = {}

@@ -1,5 +1,4 @@
 function config(map)
-	MapType ( map , 1 )
 end
 
 function get_map_entry_pos_darkblue()
@@ -9,7 +8,6 @@ function init_entry(map)
 end
 
 function after_enter_darkblue(role,map_copy)
---AfterEnter(role)
 end
 
 function before_leave_darkblue(role)
@@ -19,11 +17,9 @@ function map_copy_first_run_darkblue(map_copy)
 end
 
 function map_copy_run_darkblue(map_copy)
-
 end
 
 function map_copy_run_special_darkblue(map_copy)
-
 end
 
 function map_run_darkblue(map)

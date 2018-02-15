@@ -6,8 +6,6 @@ function after_create_entry(entry)
 	local copy_mgr = GetMapEntryCopyObj(entry, 0)
 	map_name, posx, posy, tmap_name = GetMapEntryPosInfo(entry)
 	Notice("Объявление: В окресностях Аскарона ["..posx..","..posy.."] обнаружен портал, ведущий в [Мираж Громограда].")
-	local EntryName = "Мираж Громограда 70-90"
-		SetMapEntryEventName( entry, EntryName )
 end
 
 function after_destroy_entry_leiting2(entry)

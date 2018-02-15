@@ -1,11 +1,11 @@
 -------------------------------------------------------------------
 --									--
 --									--
---npcscripts05.lua Created by knight.gong 2005.7.12.				--
+--NPCScript05.lua Created by knight.gong 2005.7.12.				--
 --									--
 --									--
 --------------------------------------------------------------------------
-print( "Загрузка npcscripts05.lua" )
+print( "loading NPCScript05.lua" )
 
 bgtalk1_1 = "I am Event NPC - Pappa. You can check out available events here. If you are interested, select the event for more detail or visit our website at: http://www.piratekingonline.com/"
 bganswer1_13 = "Pirate King Online New Year Race"

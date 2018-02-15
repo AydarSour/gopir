@@ -1,4 +1,4 @@
-print( "‡ Јаг§Є  npcscripts04.lua" )
+print( "Loading NPCScript04.lua" )
 
 jp= JumpPage
 amp=AutoMissionPage
@@ -54,10 +54,11 @@ function b_talk1()
 	AddNpcMission	(393)	--1
 	AddNpcMission	(567)	--2
 
-	--AddNpcMission	(5817)	--3
+	AddNpcMission	(5817)	--3
 	AddNpcMission	(5818)	--4
 
 end
+
 
 
 function b_talk2()
@@ -172,7 +173,7 @@ function b_talk5()
 	local GoTo04Y = 510
 	local GoTo04M = CurMapName5
 
-	Talk( 1, "Чун Ли: Я горда тем, что хорошо делаю своё дело. Любое перемещение стоит 50000 золотых, для новичков ниже 40 уровня это бесплатно. Ах да, деньги вперёд!" )
+	Talk( 1, "Чун Ли: Я горда тем, что хорошо делаю своё дело. Любое перемещение стоит 500 золотых, для новичков ниже 40 уровня это бесплатно. Ах да, деньги вперёд!" )
 	Text( 1, "Отправиться в Аргент!", JumpPage, 2 )
 	Text( 1, "Отправиться в Шайтан!", JumpPage, 3 )
 	Text( 1, "Отправиться в Ледынь!", JumpPage, 4 )
@@ -181,11 +182,11 @@ function b_talk5()
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, "<", 40 )
 	TriggerAction( 1, GoTo, GoTo01X, GoTo01Y, GoTo01M )
-	TriggerCondition( 2, HasMoney, 50000 )
-	TriggerAction( 2, TakeMoney, 50000 )
+	TriggerCondition( 2, HasMoney, 500 )
+	TriggerAction( 2, TakeMoney, 500 )
 	TriggerAction( 2, GoTo, GoTo01X, GoTo01Y, GoTo01M )
 	TriggerFailure( 2, JumpPage, 6 )
-	Talk( 2, "Переместиться в Аргент? Без проблем! Заплати, пожалуйста, 50000 золотых. Для персонажей 40 уровня и ниже – бесплатно!" )
+	Talk( 2, "Переместиться в Аргент? Без проблем! Заплати, пожалуйста, 500 золотых. Для персонажей 40 уровня и ниже – бесплатно!" )
 	Text( 2, "Перемещение",MultiTrigger, GetMultiTrigger(), 2 ) 
 	Text( 2, CancelSelectTalk, JumpPage , CancelSelectPage )
 
@@ -193,11 +194,11 @@ function b_talk5()
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, "<", 39 )
 	TriggerAction( 1, GoTo, GoTo02X, GoTo02Y, GoTo02M )
-	TriggerCondition( 2, HasMoney, 50000 )
-	TriggerAction( 2, TakeMoney, 50000 )
+	TriggerCondition( 2, HasMoney, 500 )
+	TriggerAction( 2, TakeMoney, 500 )
 	TriggerAction( 2,  GoTo, GoTo02X, GoTo02Y, GoTo02M )
 	TriggerFailure( 2, JumpPage, 6 )
-	Talk( 3, "Чун Ли: Обожаю Шайтан! Пожалуйста, заплати 50000 золотых! Для игроков 40 и ниже уровней бесплатно!" )
+	Talk( 3, "Чун Ли: Обожаю Шайтан! Пожалуйста, заплати 500 золотых! Для игроков 40 и ниже уровней бесплатно!" )
 	Text( 3, "Перемещение",MultiTrigger, GetMultiTrigger(), 2)
 	Text( 3, CancelSelectTalk, JumpPage , CancelSelectPage )
 
@@ -205,11 +206,11 @@ function b_talk5()
 	InitTrigger()
 	TriggerCondition( 1, LvCheck, "<", 40 )
 	TriggerAction( 1, GoTo, GoTo04X, GoTo04Y, GoTo04M )
-	TriggerCondition( 2, HasMoney, 50000 )
-	TriggerAction( 2, TakeMoney, 50000 )
+	TriggerCondition( 2, HasMoney, 500 )
+	TriggerAction( 2, TakeMoney, 500 )
 	TriggerAction( 2, GoTo, GoTo04X, GoTo04Y, GoTo04M )
 	TriggerFailure( 2, JumpPage, 6 )
-	Talk( 4, "Чун Ли: Переместиться в Ледынь? Без проблем! Заплати, пожалуйста 50000 золотых! Для игроков 40 уровня и ниже перемещение бесплатно!" )
+	Talk( 4, "Чун Ли: Переместиться в Ледынь? Без проблем! Заплати, пожалуйста 500 золотых! Для игроков 40 уровня и ниже перемещение бесплатно!" )
 	Text( 4, "Перемещение",MultiTrigger, GetMultiTrigger(), 2)
 	Text( 4, CancelSelectTalk, JumpPage , CancelSelectPage )
 
@@ -315,8 +316,8 @@ function b_talk6()
 	TriggerAction( 1, TakeMoney, 5000)
 	TriggerAction( 1, GiveItem, 3086,1, 4 )
 	TriggerFailure( 1, JumpPage, 5 )
-	Talk( 2, "Фокус Покус: Счастливый жребий? Пожалуйста, 50000 золотых!" )
-	Text( 2, "Хорошо, я дам тебе 50000 золотых...",MultiTrigger, GetMultiTrigger(), 1 ) 
+	Talk( 2, "Фокус Покус: Счастливый жребий? Пожалуйста, 5000 золотых!" )
+	Text( 2, "Хорошо, я дам тебе 5000 золотых...",MultiTrigger, GetMultiTrigger(), 1 ) 
 
 	InitTrigger()
 	TriggerCondition( 1, HasMoney, 50000 )
@@ -580,8 +581,8 @@ function b_talk13()
 	TriggerAction( 2, JumpPage, 2 )
 	Start( GetMultiTrigger(), 2 )
 
-	--AddNpcMission	(5843)	--1-Посол мира 14(Завершение)
-	--AddNpcMission	(5844)	--2-Посол мира 15
+	AddNpcMission	(5843)	--1-Посол мира 14(Завершение)
+	AddNpcMission	(5844)	--2-Посол мира 15
 
 	AddNpcMission	(6318)	--3-Путь в Весноград(Завершение)
 	AddNpcMission	(6319)	--4-Юность - Зависть Тумана
@@ -601,17 +602,6 @@ function b_talk14()
 	TriggerAction( 2, JumpPage, 2 )
 	Start( GetMultiTrigger(), 2 )
 
-	Text( 1, "Торговать ", SendExchangeXData)
-	InitExchangeX()
-ExchangeDataX(	465	,	99	,	8141	,	10	)
-ExchangeDataX(	4545	,	99	,	8141	,	15	)
-ExchangeDataX(	4896	,	80	,	8141	,	65	)
-ExchangeDataX(	4763	,	25	,	8142	,	2	)
-ExchangeDataX(	1237	,	99	,	8141	,	20	)
-ExchangeDataX(	1327	,	99	,	8141	,	17	)
-
-	
-	
 	AddNpcMission	(568)	--1
 
 --	AddNpcMission	(6262)	--2
@@ -674,41 +664,40 @@ function b_talk17()
 	Weapon(	1809	)	--Обычная книга причесок(Карциз)
 	Weapon(	1810	)	--Обычная книга причесок(Филлис)
 	Weapon(	1811	)	--Обычная книга причесок(Ами)
-	-- [--
-	-- Weapon(	0931	)	--Модная книга причесок(Ланс)
-	-- Weapon(	0932	)	--Модная книга причесок(Карциз)
-	-- Weapon(	0933	)	--Модная книга причесок(Филлис)
-	-- Weapon(	0934	)	--Модная книга причесок(Ами)
-	-- --Ингридиенты
-	-- Weapon(	1804	)	--Половинка ножниц
-	-- Weapon(	1805	)	--Гребень
-	-- Weapon(	1806	)	--Гель для волос
-	-- Weapon(	1807	)	--Расписка
-	-- --Краска
-	-- Defence(	4608	)	--Коричневая краска 
-	-- Defence(	4606	)	--Черная краска 
-	-- Defence(		)
-	-- Defence(		)
-	-- Defence(	1793	)	--Пурпурная краска 
-	-- Defence(	1792	)	--Синяя краска
-	-- Defence(	1791	)	--Голубая краска 
-	-- Defence(	1790	)	--Зеленая краска 
-	-- Defence(	1789	)	--Желтая краска 
-	-- Defence(	1788	)	--Оранжевая краска
-	-- Defence(	1787	)	--Красная краска
-	-- --Красители
-	-- Other(	4610	)	--Обесцвечивающее средство
-	-- Other(	4609	)	--Коричневый краситель  
-	-- Other(	4607	)	--Черный краситель
-	-- Other(		)
-	-- Other(	1803	)	--Пурпурный краситель 
-	-- Other(	1801	)	--Голубой краситель 
-	-- Other(	1800	)	--Зеленый краситель
-	-- Other(	1798	)	--Оранжевый краситель 
-	-- Other(	1797	)	--Красный краситель
-	-- Other(	1802	)	--Синий краситель
-	-- Other(	1799	)	--Желтый краситель
--- ]--
+	Weapon(	0931	)	--Модная книга причесок(Ланс)
+	Weapon(	0932	)	--Модная книга причесок(Карциз)
+	Weapon(	0933	)	--Модная книга причесок(Филлис)
+	Weapon(	0934	)	--Модная книга причесок(Ами)
+	--Ингридиенты
+	Weapon(	1804	)	--Половинка ножниц
+	Weapon(	1805	)	--Гребень
+	Weapon(	1806	)	--Гель для волос
+	Weapon(	1807	)	--Расписка
+	--Краска
+	Defence(	4608	)	--Коричневая краска 
+	Defence(	4606	)	--Черная краска 
+	Defence(		)
+	Defence(		)
+	Defence(	1793	)	--Пурпурная краска 
+	Defence(	1792	)	--Синяя краска
+	Defence(	1791	)	--Голубая краска 
+	Defence(	1790	)	--Зеленая краска 
+	Defence(	1789	)	--Желтая краска 
+	Defence(	1788	)	--Оранжевая краска
+	Defence(	1787	)	--Красная краска
+	--Красители
+	Other(	4610	)	--Обесцвечивающее средство
+	Other(	4609	)	--Коричневый краситель  
+	Other(	4607	)	--Черный краситель
+	Other(		)
+	Other(	1803	)	--Пурпурный краситель 
+	Other(	1801	)	--Голубой краситель 
+	Other(	1800	)	--Зеленый краситель
+	Other(	1798	)	--Оранжевый краситель 
+	Other(	1797	)	--Красный краситель
+	Other(	1802	)	--Синий краситель
+	Other(	1799	)	--Желтый краситель
+
 	Talk( 2, "Парикмахер: Привет! Хочешь поменять прическу? Позволь взглянуть на твою Парикмахерскую расписку!")
 
 	InitTrigger()
@@ -837,15 +826,6 @@ function b_talk30()
 	TriggerCondition( 2, NoRecord, 330 )
 	TriggerAction( 2, JumpPage, 5 )
 	Start( GetMultiTrigger(), 2 )
-	
-	Text( 1, "Купить корабельные навыки ", SendExchangeXData)
-	InitExchangeX()
-	ExchangeDataX	(	8142	,	5	,	8865	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8866	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8867	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8868	,	1	)
-	ExchangeDataX	(	8142	,	5	,	8869	,	1	)
-
 end
 ------------------------------------------------------------
 -- Сторожевая статуя БД 1 > БД 2 (Восточный завал)
@@ -954,8 +934,8 @@ function b_talk24()
 	TriggerCondition( 1, HasItem, 182, 1 )
 	TriggerAction( 1, TakeItem, 182, 1 )
 	TriggerAction( 1, AddMoney, 100000000 )
-	TriggerAction(1, GiveItem, 0266, 1, 4 )
-	--TriggerAction( 1, GiveItem, 8238, 1, 4 )
+	--TriggerAction(1, GiveItem, 0266, 1, 4 )
+	TriggerAction( 1, GiveItem, 8238, 1, 4 )
 	TriggerFailure( 1, JumpPage, 2 )
 	Talk( 1, "Это таинственый судндук. Выглядит, как-будто он закрыт." )
 	Text( 1, "Тайные слова", MultiTrigger, GetMultiTrigger(), 1 )
@@ -2644,13 +2624,6 @@ function dysr_talk ()
 	Other(	1848	)
 	Other(	1849	)
 	Other(	3143	)
-		Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
 	Other(	637	)
 	Other(	819	)
 	Other(	869	)
@@ -2802,13 +2775,6 @@ function d_talk3()
 	Other(	6203	)
 	Other(	6204	)
 	Other(	1847	)
-	Other(	8290	)
-	Other(	8291	)
-	Other(	8292	)
-	Other(	8294	)
-	Other(	8295	)
-	Other(	8296	)
-	Other(	8297	)
 	Other(	1848	)
 	Other(	1849	)
 	Other(	3143	)
@@ -3630,8 +3596,8 @@ function d_talk16()
 
 	Talk (1, "Вилль: Привет я Вилль с Севера. Я охраняю проход в другие земли. Ты хочешь куда то отправиться?") 
 	Text (1, "Отправиться на ледниковый остров", JumpPage, 2) 
-	--Text (1, "Отправиться в Край Авроры", JumpPage, 3) 
-	--Text (1, "Отправиться в Край Тьмы", JumpPage, 4) 
+	Text (1, "Отправиться в Край Авроры", JumpPage, 3) 
+	Text (1, "Отправиться в Край Тьмы", JumpPage, 4) 
 	Text (1, "Получить 95 вещи", JumpPage, 5) 
 	Text (1, "Спасибо, мне ничего не нужно", CloseTalk) 
 
@@ -3853,15 +3819,15 @@ function d_talk28 ()
 	TriggerCondition( 1, LvCheck, "<", 40 )
 	TriggerAction( 1, ReAll )
 	TriggerCondition( 2, LvCheck, ">", 39 )
-	TriggerCondition( 2, HasMoney, 20000 )
-	TriggerAction( 2, TakeMoney, 20000 )
+	TriggerCondition( 2, HasMoney, 1000 )
+	TriggerAction( 2, TakeMoney, 1000 )
 	TriggerAction( 2, ReAll )
 	TriggerFailure( 2, JumpPage, 2 )
 
 	Talk( 1, "Цукино: Нужны услуги? Принцесса Цукино позаботится об излечении всех твоих болезней." )
 	Text( 1, "Великое исцеление", MultiTrigger,GetMultiTrigger(),2)
  
-	Talk( 2,  "Цукино: Прошу прощения, но Великое исцеление стоит 20000 золотых. У вас недостаточно денег!" )
+	Talk( 2,  "Цукино: Прошу прощения, но Великое исцеление стоит 1000 золотых. У вас недостаточно денег!" )
 
 --	AddNpcMission	(6424)	--1
 --	AddNpcMission	(6427)	--2
@@ -3924,8 +3890,8 @@ function d_talk29()
 	Text( 2, "Построить Богиню", MultiTrigger, GetMultiTrigger(), 1 )
 
 	Talk (3, "Эндимион: Чтобы улучшить судно вы должны поставить его в эту гавань. Кроме того у вас должно быть необходимое количество опыта корабля. Опыт можно заработать убивая морских монстров.") 
-	
-	--	AddNpcMission	(6425)	--1
+
+--	AddNpcMission	(6425)	--1
 --	AddNpcMission	(6426)	--2
 --	AddNpcMission	(6429)	--3
 --	AddNpcMission	(6430)	--4

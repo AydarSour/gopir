@@ -26,18 +26,17 @@ end
 
 
 function get_map_entry_pos_guildwar2()  
-	local POS_X=909
-	local POS_Y=3573
+	local POS_X=1450
+	local POS_Y=612
 	return POS_X , POS_Y
 end
 
 function init_entry(map)
-	SetMapEntryMapName(map, "magicsea") 
+	SetMapEntryMapName(map, "darkblue") 
 	SetMapEntryTime(map, "2005/8/30/19/00", "0/4/0", "0/3/0", "0/3/0")
 end
 
 function after_enter_guildwar2( role , map_copy )
---AfterEnter(role)
 --Принадлежность к сторонам
 	--Флот
 	if GetChaGuildID(role) <= 100 and GetChaGuildID(role) > 0 then

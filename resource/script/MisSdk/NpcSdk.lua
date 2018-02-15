@@ -1,42 +1,42 @@
 ------------------------------------------------------------
 --NpcSdk.lua Created by knight 2004.11.18.
-print( "-------------------------------------------------------------------------------" )
-print( "á†£‡„ß™  Fails†:" )
-print( "-------------------------------------------------------------------------------" )
-print( "á†£‡„ß™† npcsdk.lua" )
+--
+--npc∂‘ª∞œµÕ≥∫Ø ˝Ω”ø⁄∂®“Â
+print( "loading npcsdk.lua" )
 ------------------------------------------------------------
 --dofile(GetResPath("script/help/hook.lua"))
-
+--∑˛ŒÒ∆˜∂À∑¢ÀÕ√¸¡Óœ˚œ¢–≠“È∂®“Â
 CMD_MC_BASE				= 500
 CMD_MC_ROLEBASE 			= CMD_MC_BASE + 300
 CMD_MC_TALKPAGE 			= CMD_MC_ROLEBASE + 1
 CMD_MC_FUNCPAGE 		= CMD_MC_ROLEBASE + 2
 CMD_MC_CLOSETALK 		= CMD_MC_ROLEBASE + 3
-CMD_MC_HELPINFO			= CMD_MC_ROLEBASE + 4  
+CMD_MC_HELPINFO			= CMD_MC_ROLEBASE + 4  -- ∞Ô÷˙–≈œ¢
 CMD_MC_TRADEPAGE		= CMD_MC_ROLEBASE + 5
 CMD_MC_TRADERESULT	= CMD_MC_ROLEBASE + 6
-CMD_MC_TRADE_DATA		= CMD_MC_ROLEBASE + 7 
-CMD_MC_TRADE_ALLDATA	= CMD_MC_ROLEBASE + 8 
+CMD_MC_TRADE_DATA		= CMD_MC_ROLEBASE + 7 -- NPCΩª“◊ ˝æ›–≈œ¢∏¸–¬
+CMD_MC_TRADE_ALLDATA	= CMD_MC_ROLEBASE + 8 -- NPCΩª“◊À˘”– ˝æ›–≈œ¢∏¸–¬
 
 CMD_MC_MISSION			= CMD_MC_ROLEBASE + 22
 CMD_MC_MISSIONLIST		= CMD_MC_ROLEBASE + 23
 CMD_MC_MISSIONTALK		= CMD_MC_ROLEBASE + 24
-CMD_MC_MISPAGE			= CMD_MC_ROLEBASE + 27 -- 
-CMD_MC_MISLOG				= CMD_MC_ROLEBASE + 28 -- 
-CMD_MC_MISLOGINFO		= CMD_MC_ROLEBASE + 29 -- 
-CMD_MC_BEGIN_ITEM_FORGE   = CMD_MC_ROLEBASE + 35 -- 
-CMD_MC_BEGIN_ITEM_UNITE   = CMD_MC_ROLEBASE + 36 -- 
+CMD_MC_MISPAGE			= CMD_MC_ROLEBASE + 27 -- »ŒŒÒ“≥–≈œ¢
+CMD_MC_MISLOG				= CMD_MC_ROLEBASE + 28 -- »ŒŒÒ»’÷æ
+CMD_MC_MISLOGINFO		= CMD_MC_ROLEBASE + 29 -- µ•∏ˆ»ŒŒÒœÍœ∏–≈œ¢
+CMD_MC_BEGIN_ITEM_FORGE   = CMD_MC_ROLEBASE + 35 -- æ´¡∑µ¿æﬂ
+CMD_MC_BEGIN_ITEM_UNITE   = CMD_MC_ROLEBASE + 36 -- µ¿æﬂ∫œ≥…
 
-CMD_MC_CREATEBOAT		= CMD_MC_ROLEBASE + 38 -- 
-CMD_MC_UPDATEBOAT		= CMD_MC_ROLEBASE + 39 -- 
-CMD_MC_UPDATEBOAT_PART	= CMD_MC_ROLEBASE + 40 -- 
-CMD_MC_BERTH_LIST		= CMD_MC_ROLEBASE + 41 -- 
-CMD_MC_BOAT_LIST		= CMD_MC_ROLEBASE + 42 -- 
-CMD_MC_BOAT_ADD			= CMD_MC_ROLEBASE + 43 -- 
-CMD_MC_BOAT_CLEAR		= CMD_MC_ROLEBASE + 44 -- 
-CMD_MC_BOATINFO			= CMD_MC_ROLEBASE + 45 -- 
-CMD_MC_BOAT_BAGLIST	= CMD_MC_ROLEBASE + 46 -- 
+CMD_MC_CREATEBOAT		= CMD_MC_ROLEBASE + 38 -- ¥¥Ω®¥¨÷ª
+CMD_MC_UPDATEBOAT		= CMD_MC_ROLEBASE + 39 -- ∏ƒ‘Ï¥¨÷ª
+CMD_MC_UPDATEBOAT_PART	= CMD_MC_ROLEBASE + 40 -- ∏ƒ‘Ï¥¨÷ªµƒ≤øº˛
+CMD_MC_BERTH_LIST		= CMD_MC_ROLEBASE + 41 -- ¥¨÷ªÕ£≤¥¡–±Ì
+CMD_MC_BOAT_LIST		= CMD_MC_ROLEBASE + 42 -- Õ¨≤ΩΩ«…´”µ”–µƒÀ˘”–¥¨÷ª Ù–‘
+CMD_MC_BOAT_ADD			= CMD_MC_ROLEBASE + 43 -- ÃÌº”“ªÀ“¥¨
+CMD_MC_BOAT_CLEAR		= CMD_MC_ROLEBASE + 44 -- «Â≥˝“ªÀ“¥¨
+CMD_MC_BOATINFO			= CMD_MC_ROLEBASE + 45 -- Õ¨≤Ω¥¨÷ª Ù–‘–≈œ¢
+CMD_MC_BOAT_BAGLIST	= CMD_MC_ROLEBASE + 46 -- œ‘ æø…“‘¥Ú∞¸µƒ¥¨÷ª¡–±Ì
 
+--øÕªß∂À∑¢ÀÕ√¸¡Óœ˚œ¢–≠“È∂®“Â
 CMD_CM_BASE				= 0
 CMD_CM_ROLEBASE 			= CMD_CM_BASE + 300
 CMD_CM_REQUESTTALK 	= CMD_CM_ROLEBASE + 1
@@ -48,1273 +48,73 @@ CMD_CM_REQUESTAGENCY= CMD_CM_ROLEBASE + 10
 CMD_CM_MISSION			= CMD_CM_ROLEBASE + 22
 CMD_CM_MISSIONLIST		= CMD_CM_ROLEBASE + 23
 CMD_CM_MISSIONTALK		= CMD_CM_ROLEBASE + 24
-CMD_CM_MISLOG				= CMD_CM_ROLEBASE + 25 -- 
+CMD_CM_MISLOG				= CMD_CM_ROLEBASE + 25 -- »ŒŒÒ»’÷æ
 
-CMD_MC_BLACKMARKET_EXCHANGEDATA	= CMD_MC_BASE + 71	-- 
-CMD_MC_BLACKMARKET_EXCHANGEUPDATE = CMD_MC_BASE + 73	-- 
-CMD_MC_BLACKMARKET_TRADEUPDATE = CMD_MC_BASE + 74	-- 
+--∫⁄ –Ωª“◊
+CMD_MC_BLACKMARKET_EXCHANGEDATA	= CMD_MC_BASE + 71	-- ∫⁄ –∂“ªª ˝æ›
+CMD_MC_BLACKMARKET_EXCHANGEUPDATE = CMD_MC_BASE + 73	-- ∫⁄ –∂“ªª∏¸–¬
+CMD_MC_BLACKMARKET_TRADEUPDATE = CMD_MC_BASE + 74	-- ∫⁄ –Ωª“◊∏¸–¬
 CMD_MC_EXCHANGEDATA = CMD_MC_BASE + 75
 CMD_CM_BLACKMARKET_EXCHANGE_REQ = CMD_CM_BASE + 51
 
-ROLE_FIRSTPAGE				= 0		-- 
-ROLE_CLOSEPAGE			= -1		-- 
 
-ROLE_MAXNUM_TRADEITEM = 60	--
-ROLE_INVALID_ID				= -1		--
+--∂‘ª∞“≥√¸¡Ó–≈œ¢
+ROLE_FIRSTPAGE				= 0		-- «Î«Û≥ı¥Œ∂‘ª∞–≈œ¢
+ROLE_CLOSEPAGE			= -1		-- «Î«Ûπÿ±’∂‘ª∞“≥√¸¡Ó
 
-WEAPON 						= 0		--
-DEFENCE 						= 1 		--
-OTHER    						= 2		--
-SYNTHESIS 					= 3		--
+--Ωª“◊∫Í–≈œ¢∂®“Â
+ROLE_MAXNUM_TRADEITEM = 60	--√ø∏ˆΩª“◊“≥◊Ó¥Û∞⁄∑≈ŒÔ∆∑ ˝¡ø
+ROLE_INVALID_ID				= -1		--Œﬁ–ßµƒÀ˜“˝
 
-TRADE_SALE					= 0       --
-TRADE_BUY						= 1       --
-TRADE_GOODS				= 2 		--
+--Ωª“◊ŒÔ∆∑¿‡–Õ∂®“Â
+WEAPON 						= 0		--Œ‰∆˜¿‡–Õ
+DEFENCE 						= 1 		--∑¿æﬂ¿‡–Õ
+OTHER    						= 2		--‘”œÓ¿‡–Õ
+SYNTHESIS 					= 3		--∫œ≥…ŒÔ∆∑¿‡–Õ
 
-ROLE_TRADE_SALE				= 0	--
-ROLE_TRADE_BUY				= 1	--
-ROLE_TRADE_SALE_GOODS 	= 2	--
-ROLE_TRADE_BUY_GOODS		= 3	--
-ROLE_TRADE_SELECT_BOAT   = 4   --
+TRADE_SALE					= 0       --≥ˆ €ŒÔ∆∑≤Ÿ◊˜
+TRADE_BUY						= 1       --π∫¬ÚŒÔ∆∑≤Ÿ◊˜
+TRADE_GOODS				= 2 		--Ωª“◊¥¨≤’ªıŒÔ
 
---
-BERTH_TRADE_LIST				= 0	-- 
-BERTH_LUANCH_LIST			= 1	-- 
-BERTH_REPAIR_LIST				= 3	-- 
-BERTH_SALVAGE_LIST			= 4	-- 
-BERTH_SUPPLY_LIST			= 5	-- 
-BERTH_BOATLEVEL_LIST		= 6	-- 
+ROLE_TRADE_SALE				= 0	--«Î«Û≥ˆ €ŒÔ∆∑
+ROLE_TRADE_BUY				= 1	--«Î«Ûπ∫¬ÚŒÔ∆∑
+ROLE_TRADE_SALE_GOODS 	= 2	--«Î«Û≥ˆ €ªı≤’ŒÔ∆∑
+ROLE_TRADE_BUY_GOODS		= 3	--«Î«Ûπ∫¬Úªı≤’ŒÔ∆∑
+ROLE_TRADE_SELECT_BOAT   = 4   --—°‘ÒΩª“◊µƒ¥¨÷ª
 
---
-RES_WOOD							= 0	--
-RES_MINE							= 1	--
+--¥¨÷ªœ‘ æ¡–±Ì¿‡–Õ
+BERTH_TRADE_LIST				= 0	-- Ωª“◊¥¨÷ª¡–±Ì
+BERTH_LUANCH_LIST			= 1	-- ≥ˆ∫£¥¨÷ª¡–±Ì
+BERTH_REPAIR_LIST				= 3	-- ¥¨÷ª–ﬁ¿Ì¡–±Ì
+BERTH_SALVAGE_LIST			= 4	-- ¥¨÷ª¥Ú¿Ã¡–±Ì
+BERTH_SUPPLY_LIST			= 5	-- ¥¨÷ª≤π∏¯¡–±Ì
+BERTH_BOATLEVEL_LIST		= 6	-- ¥¨÷ª…˝º∂¡–±Ì
 
---
+--◊ ‘¥¿‡–Õ
+RES_WOOD							= 0	--ƒæ≤ƒ◊ ‘¥
+RES_MINE							= 1	--øÛ Ø◊ ‘¥
+
+--∂‘ª∞∫Í∂®“Â
 ROLE_MAXNUM_PAGEITEM	= 9
 
---
-MIS_HELP_DESP				= 0		--
-MIS_HELP_IMAGE				= 1		--
-MIS_HELP_SOUND			= 2		--
-MIS_HELP_BICKER			= 3		--
---“Ó„Ó‚Îˇ
-function SendExchangeData2( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange2.count ~= nil then
-		WriteWord( packet, Exchange2.count )
-		
-		for n = 1, Exchange2.count, 1 do
-			WriteWord( packet, Exchange2.srcid[n] )
-			WriteWord( packet, Exchange2.srcnum[n] )
-			WriteWord( packet, Exchange2.tarid[n] )
-			WriteWord( packet, Exchange2.tarnum[n] )
-			WriteWord( packet, Exchange2.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
+--∞Ô÷˙–≈œ¢¿‡–Õ
+MIS_HELP_DESP				= 0		--Œƒ◊÷∞Ô÷˙–≈œ¢
+MIS_HELP_IMAGE				= 1		--Õº–Œ∞Ô÷˙–≈œ¢
+MIS_HELP_SOUND			= 2		--…˘“Ù∞Ô÷˙–≈œ¢
+MIS_HELP_BICKER			= 3		--…¡∂Ø◊÷ÃÂ–≈œ¢
+
+--∑¢ÀÕ∂‘ª∞“≥∫Ø ˝
+function SendTalkPage( character, npc, pageid, desp )
+	local packet = GetPacket();
+	WriteCmd( packet, CMD_MC_TALKPAGE );
+	local npcid = GetCharID( npc );
+	WriteDword( packet, npcid );
+	WriteByte( packet, pageid );
+	WriteString( packet, desp );
 	SendPacket( character, packet );
 end
 
-function SendExchangeData3( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange3.count ~= nil then
-		WriteWord( packet, Exchange3.count )
-		
-		for n = 1, Exchange3.count, 1 do
-			WriteWord( packet, Exchange3.srcid[n] )
-			WriteWord( packet, Exchange3.srcnum[n] )
-			WriteWord( packet, Exchange3.tarid[n] )
-			WriteWord( packet, Exchange3.tarnum[n] )
-			WriteWord( packet, Exchange3.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData4( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange4.count ~= nil then
-		WriteWord( packet, Exchange4.count )
-		
-		for n = 1, Exchange4.count, 1 do
-			WriteWord( packet, Exchange4.srcid[n] )
-			WriteWord( packet, Exchange4.srcnum[n] )
-			WriteWord( packet, Exchange4.tarid[n] )
-			WriteWord( packet, Exchange4.tarnum[n] )
-			WriteWord( packet, Exchange4.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData5( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange5.count ~= nil then
-		WriteWord( packet, Exchange5.count )
-		
-		for n = 1, Exchange5.count, 1 do
-			WriteWord( packet, Exchange5.srcid[n] )
-			WriteWord( packet, Exchange5.srcnum[n] )
-			WriteWord( packet, Exchange5.tarid[n] )
-			WriteWord( packet, Exchange5.tarnum[n] )
-			WriteWord( packet, Exchange5.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData6( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange6.count ~= nil then
-		WriteWord( packet, Exchange6.count )
-		
-		for n = 1, Exchange6.count, 1 do
-			WriteWord( packet, Exchange6.srcid[n] )
-			WriteWord( packet, Exchange6.srcnum[n] )
-			WriteWord( packet, Exchange6.tarid[n] )
-			WriteWord( packet, Exchange6.tarnum[n] )
-			WriteWord( packet, Exchange6.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData7( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange7.count ~= nil then
-		WriteWord( packet, Exchange7.count )
-		
-		for n = 1, Exchange7.count, 1 do
-			WriteWord( packet, Exchange7.srcid[n] )
-			WriteWord( packet, Exchange7.srcnum[n] )
-			WriteWord( packet, Exchange7.tarid[n] )
-			WriteWord( packet, Exchange7.tarnum[n] )
-			WriteWord( packet, Exchange7.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData8( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange8.count ~= nil then
-		WriteWord( packet, Exchange8.count )
-		
-		for n = 1, Exchange8.count, 1 do
-			WriteWord( packet, Exchange8.srcid[n] )
-			WriteWord( packet, Exchange8.srcnum[n] )
-			WriteWord( packet, Exchange8.tarid[n] )
-			WriteWord( packet, Exchange8.tarnum[n] )
-			WriteWord( packet, Exchange8.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData9( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange9.count ~= nil then
-		WriteWord( packet, Exchange9.count )
-		
-		for n = 1, Exchange9.count, 1 do
-			WriteWord( packet, Exchange9.srcid[n] )
-			WriteWord( packet, Exchange9.srcnum[n] )
-			WriteWord( packet, Exchange9.tarid[n] )
-			WriteWord( packet, Exchange9.tarnum[n] )
-			WriteWord( packet, Exchange9.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData10( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange10.count ~= nil then
-		WriteWord( packet, Exchange10.count )
-		
-		for n = 1, Exchange10.count, 1 do
-			WriteWord( packet, Exchange10.srcid[n] )
-			WriteWord( packet, Exchange10.srcnum[n] )
-			WriteWord( packet, Exchange10.tarid[n] )
-			WriteWord( packet, Exchange10.tarnum[n] )
-			WriteWord( packet, Exchange10.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData11( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange11.count ~= nil then
-		WriteWord( packet, Exchange11.count )
-		
-		for n = 1, Exchange11.count, 1 do
-			WriteWord( packet, Exchange11.srcid[n] )
-			WriteWord( packet, Exchange11.srcnum[n] )
-			WriteWord( packet, Exchange11.tarid[n] )
-			WriteWord( packet, Exchange11.tarnum[n] )
-			WriteWord( packet, Exchange11.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData12( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange12.count ~= nil then
-		WriteWord( packet, Exchange12.count )
-		
-		for n = 1, Exchange12.count, 1 do
-			WriteWord( packet, Exchange12.srcid[n] )
-			WriteWord( packet, Exchange12.srcnum[n] )
-			WriteWord( packet, Exchange12.tarid[n] )
-			WriteWord( packet, Exchange12.tarnum[n] )
-			WriteWord( packet, Exchange12.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData13( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange13.count ~= nil then
-		WriteWord( packet, Exchange13.count )
-		
-		for n = 1, Exchange13.count, 1 do
-			WriteWord( packet, Exchange13.srcid[n] )
-			WriteWord( packet, Exchange13.srcnum[n] )
-			WriteWord( packet, Exchange13.tarid[n] )
-			WriteWord( packet, Exchange13.tarnum[n] )
-			WriteWord( packet, Exchange13.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData14( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange14.count ~= nil then
-		WriteWord( packet, Exchange14.count )
-		
-		for n = 1, Exchange14.count, 1 do
-			WriteWord( packet, Exchange14.srcid[n] )
-			WriteWord( packet, Exchange14.srcnum[n] )
-			WriteWord( packet, Exchange14.tarid[n] )
-			WriteWord( packet, Exchange14.tarnum[n] )
-			WriteWord( packet, Exchange14.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData15( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange15.count ~= nil then
-		WriteWord( packet, Exchange15.count )
-		
-		for n = 1, Exchange15.count, 1 do
-			WriteWord( packet, Exchange15.srcid[n] )
-			WriteWord( packet, Exchange15.srcnum[n] )
-			WriteWord( packet, Exchange15.tarid[n] )
-			WriteWord( packet, Exchange15.tarnum[n] )
-			WriteWord( packet, Exchange15.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData16( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange16.count ~= nil then
-		WriteWord( packet, Exchange16.count )
-		
-		for n = 1, Exchange16.count, 1 do
-			WriteWord( packet, Exchange16.srcid[n] )
-			WriteWord( packet, Exchange16.srcnum[n] )
-			WriteWord( packet, Exchange16.tarid[n] )
-			WriteWord( packet, Exchange16.tarnum[n] )
-			WriteWord( packet, Exchange16.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData17( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange17.count ~= nil then
-		WriteWord( packet, Exchange17.count )
-		
-		for n = 1, Exchange17.count, 1 do
-			WriteWord( packet, Exchange17.srcid[n] )
-			WriteWord( packet, Exchange17.srcnum[n] )
-			WriteWord( packet, Exchange17.tarid[n] )
-			WriteWord( packet, Exchange17.tarnum[n] )
-			WriteWord( packet, Exchange17.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData18( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange18.count ~= nil then
-		WriteWord( packet, Exchange18.count )
-		
-		for n = 1, Exchange18.count, 1 do
-			WriteWord( packet, Exchange18.srcid[n] )
-			WriteWord( packet, Exchange18.srcnum[n] )
-			WriteWord( packet, Exchange18.tarid[n] )
-			WriteWord( packet, Exchange18.tarnum[n] )
-			WriteWord( packet, Exchange18.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData19( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange19.count ~= nil then
-		WriteWord( packet, Exchange19.count )
-		
-		for n = 1, Exchange19.count, 1 do
-			WriteWord( packet, Exchange19.srcid[n] )
-			WriteWord( packet, Exchange19.srcnum[n] )
-			WriteWord( packet, Exchange19.tarid[n] )
-			WriteWord( packet, Exchange19.tarnum[n] )
-			WriteWord( packet, Exchange19.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData20( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange20.count ~= nil then
-		WriteWord( packet, Exchange20.count )
-		
-		for n = 1, Exchange20.count, 1 do
-			WriteWord( packet, Exchange20.srcid[n] )
-			WriteWord( packet, Exchange20.srcnum[n] )
-			WriteWord( packet, Exchange20.tarid[n] )
-			WriteWord( packet, Exchange20.tarnum[n] )
-			WriteWord( packet, Exchange20.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData21( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange21.count ~= nil then
-		WriteWord( packet, Exchange21.count )
-		
-		for n = 1, Exchange21.count, 1 do
-			WriteWord( packet, Exchange21.srcid[n] )
-			WriteWord( packet, Exchange21.srcnum[n] )
-			WriteWord( packet, Exchange21.tarid[n] )
-			WriteWord( packet, Exchange21.tarnum[n] )
-			WriteWord( packet, Exchange21.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData22( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange22.count ~= nil then
-		WriteWord( packet, Exchange22.count )
-		
-		for n = 1, Exchange22.count, 1 do
-			WriteWord( packet, Exchange22.srcid[n] )
-			WriteWord( packet, Exchange22.srcnum[n] )
-			WriteWord( packet, Exchange22.tarid[n] )
-			WriteWord( packet, Exchange22.tarnum[n] )
-			WriteWord( packet, Exchange22.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData23( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange23.count ~= nil then
-		WriteWord( packet, Exchange23.count )
-		
-		for n = 1, Exchange23.count, 1 do
-			WriteWord( packet, Exchange23.srcid[n] )
-			WriteWord( packet, Exchange23.srcnum[n] )
-			WriteWord( packet, Exchange23.tarid[n] )
-			WriteWord( packet, Exchange23.tarnum[n] )
-			WriteWord( packet, Exchange23.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData24( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange24.count ~= nil then
-		WriteWord( packet, Exchange24.count )
-		
-		for n = 1, Exchange24.count, 1 do
-			WriteWord( packet, Exchange24.srcid[n] )
-			WriteWord( packet, Exchange24.srcnum[n] )
-			WriteWord( packet, Exchange24.tarid[n] )
-			WriteWord( packet, Exchange24.tarnum[n] )
-			WriteWord( packet, Exchange24.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData25( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange25.count ~= nil then
-		WriteWord( packet, Exchange25.count )
-		
-		for n = 1, Exchange25.count, 1 do
-			WriteWord( packet, Exchange25.srcid[n] )
-			WriteWord( packet, Exchange25.srcnum[n] )
-			WriteWord( packet, Exchange25.tarid[n] )
-			WriteWord( packet, Exchange25.tarnum[n] )
-			WriteWord( packet, Exchange25.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData26( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange26.count ~= nil then
-		WriteWord( packet, Exchange26.count )
-		
-		for n = 1, Exchange26.count, 1 do
-			WriteWord( packet, Exchange26.srcid[n] )
-			WriteWord( packet, Exchange26.srcnum[n] )
-			WriteWord( packet, Exchange26.tarid[n] )
-			WriteWord( packet, Exchange26.tarnum[n] )
-			WriteWord( packet, Exchange26.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-function SendExchangeData27( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange27.count ~= nil then
-		WriteWord( packet, Exchange27.count )
-		
-		for n = 1, Exchange27.count, 1 do
-			WriteWord( packet, Exchange27.srcid[n] )
-			WriteWord( packet, Exchange27.srcnum[n] )
-			WriteWord( packet, Exchange27.tarid[n] )
-			WriteWord( packet, Exchange27.tarnum[n] )
-			WriteWord( packet, Exchange27.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SendPacket( character, packet );
-end
-
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 2
-function SendExchangeUpdateData2( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange2.count ~= nil then
-		WriteWord( packet, Exchange2.count )
-		
-		for n = 1, Exchange2.count, 1 do
-			WriteWord( packet, Exchange2.srcid[n] )
-			WriteWord( packet, Exchange2.srcnum[n] )
-			WriteWord( packet, Exchange2.tarid[n] )
-			WriteWord( packet, Exchange2.tarnum[n] )
-			WriteWord( packet, Exchange2.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 3
-function SendExchangeUpdateData3( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange3.count ~= nil then
-		WriteWord( packet, Exchange3.count )
-		
-		for n = 1, Exchange3.count, 1 do
-			WriteWord( packet, Exchange3.srcid[n] )
-			WriteWord( packet, Exchange3.srcnum[n] )
-			WriteWord( packet, Exchange3.tarid[n] )
-			WriteWord( packet, Exchange3.tarnum[n] )
-			WriteWord( packet, Exchange3.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 4 
-function SendExchangeUpdateData4( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange4.count ~= nil then
-		WriteWord( packet, Exchange4.count )
-		
-		for n = 1, Exchange4.count, 1 do
-			WriteWord( packet, Exchange4.srcid[n] )
-			WriteWord( packet, Exchange4.srcnum[n] )
-			WriteWord( packet, Exchange4.tarid[n] )
-			WriteWord( packet, Exchange4.tarnum[n] )
-			WriteWord( packet, Exchange4.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 5 
-function SendExchangeUpdateData5( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange5.count ~= nil then
-		WriteWord( packet, Exchange5.count )
-		
-		for n = 1, Exchange5.count, 1 do
-			WriteWord( packet, Exchange5.srcid[n] )
-			WriteWord( packet, Exchange5.srcnum[n] )
-			WriteWord( packet, Exchange5.tarid[n] )
-			WriteWord( packet, Exchange5.tarnum[n] )
-			WriteWord( packet, Exchange5.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 6
-function SendExchangeUpdateData6( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange6.count ~= nil then
-		WriteWord( packet, Exchange6.count )
-		
-		for n = 1, Exchange6.count, 1 do
-			WriteWord( packet, Exchange6.srcid[n] )
-			WriteWord( packet, Exchange6.srcnum[n] )
-			WriteWord( packet, Exchange6.tarid[n] )
-			WriteWord( packet, Exchange6.tarnum[n] )
-			WriteWord( packet, Exchange6.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 7
-function SendExchangeUpdateData7( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange7.count ~= nil then
-		WriteWord( packet, Exchange7.count )
-		
-		for n = 1, Exchange7.count, 1 do
-			WriteWord( packet, Exchange7.srcid[n] )
-			WriteWord( packet, Exchange7.srcnum[n] )
-			WriteWord( packet, Exchange7.tarid[n] )
-			WriteWord( packet, Exchange7.tarnum[n] )
-			WriteWord( packet, Exchange7.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 8
-function SendExchangeUpdateData8( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange8.count ~= nil then
-		WriteWord( packet, Exchange8.count )
-		
-		for n = 1, Exchange8.count, 1 do
-			WriteWord( packet, Exchange8.srcid[n] )
-			WriteWord( packet, Exchange8.srcnum[n] )
-			WriteWord( packet, Exchange8.tarid[n] )
-			WriteWord( packet, Exchange8.tarnum[n] )
-			WriteWord( packet, Exchange8.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 9
-function SendExchangeUpdateData9( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange9.count ~= nil then
-		WriteWord( packet, Exchange9.count )
-		
-		for n = 1, Exchange9.count, 1 do
-			WriteWord( packet, Exchange9.srcid[n] )
-			WriteWord( packet, Exchange9.srcnum[n] )
-			WriteWord( packet, Exchange9.tarid[n] )
-			WriteWord( packet, Exchange9.tarnum[n] )
-			WriteWord( packet, Exchange9.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 10
-function SendExchangeUpdateData10( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange10.count ~= nil then
-		WriteWord( packet, Exchange10.count )
-		
-		for n = 1, Exchange10.count, 1 do
-			WriteWord( packet, Exchange10.srcid[n] )
-			WriteWord( packet, Exchange10.srcnum[n] )
-			WriteWord( packet, Exchange10.tarid[n] )
-			WriteWord( packet, Exchange10.tarnum[n] )
-			WriteWord( packet, Exchange10.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË 11
-function SendExchangeUpdateData11( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange11.count ~= nil then
-		WriteWord( packet, Exchange11.count )
-		
-		for n = 1, Exchange11.count, 1 do
-			WriteWord( packet, Exchange11.srcid[n] )
-			WriteWord( packet, Exchange11.srcnum[n] )
-			WriteWord( packet, Exchange11.tarid[n] )
-			WriteWord( packet, Exchange11.tarnum[n] )
-			WriteWord( packet, Exchange11.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData12( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange12.count ~= nil then
-		WriteWord( packet, Exchange12.count )
-		
-		for n = 1, Exchange12.count, 1 do
-			WriteWord( packet, Exchange12.srcid[n] )
-			WriteWord( packet, Exchange12.srcnum[n] )
-			WriteWord( packet, Exchange12.tarid[n] )
-			WriteWord( packet, Exchange12.tarnum[n] )
-			WriteWord( packet, Exchange12.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData13( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange13.count ~= nil then
-		WriteWord( packet, Exchange13.count )
-		
-		for n = 1, Exchange13.count, 1 do
-			WriteWord( packet, Exchange13.srcid[n] )
-			WriteWord( packet, Exchange13.srcnum[n] )
-			WriteWord( packet, Exchange13.tarid[n] )
-			WriteWord( packet, Exchange13.tarnum[n] )
-			WriteWord( packet, Exchange13.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData14( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange14.count ~= nil then
-		WriteWord( packet, Exchange14.count )
-		
-		for n = 1, Exchange14.count, 1 do
-			WriteWord( packet, Exchange14.srcid[n] )
-			WriteWord( packet, Exchange14.srcnum[n] )
-			WriteWord( packet, Exchange14.tarid[n] )
-			WriteWord( packet, Exchange14.tarnum[n] )
-			WriteWord( packet, Exchange14.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData15( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange15.count ~= nil then
-		WriteWord( packet, Exchange15.count )
-		
-		for n = 1, Exchange15.count, 1 do
-			WriteWord( packet, Exchange15.srcid[n] )
-			WriteWord( packet, Exchange15.srcnum[n] )
-			WriteWord( packet, Exchange15.tarid[n] )
-			WriteWord( packet, Exchange15.tarnum[n] )
-			WriteWord( packet, Exchange15.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData16( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange16.count ~= nil then
-		WriteWord( packet, Exchange16.count )
-		
-		for n = 1, Exchange16.count, 1 do
-			WriteWord( packet, Exchange16.srcid[n] )
-			WriteWord( packet, Exchange16.srcnum[n] )
-			WriteWord( packet, Exchange16.tarid[n] )
-			WriteWord( packet, Exchange16.tarnum[n] )
-			WriteWord( packet, Exchange16.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData17( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange17.count ~= nil then
-		WriteWord( packet, Exchange17.count )
-		
-		for n = 1, Exchange17.count, 1 do
-			WriteWord( packet, Exchange17.srcid[n] )
-			WriteWord( packet, Exchange17.srcnum[n] )
-			WriteWord( packet, Exchange17.tarid[n] )
-			WriteWord( packet, Exchange17.tarnum[n] )
-			WriteWord( packet, Exchange17.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData18( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange18.count ~= nil then
-		WriteWord( packet, Exchange18.count )
-		
-		for n = 1, Exchange18.count, 1 do
-			WriteWord( packet, Exchange18.srcid[n] )
-			WriteWord( packet, Exchange18.srcnum[n] )
-			WriteWord( packet, Exchange18.tarid[n] )
-			WriteWord( packet, Exchange18.tarnum[n] )
-			WriteWord( packet, Exchange18.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData19( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange19.count ~= nil then
-		WriteWord( packet, Exchange19.count )
-		
-		for n = 1, Exchange19.count, 1 do
-			WriteWord( packet, Exchange19.srcid[n] )
-			WriteWord( packet, Exchange19.srcnum[n] )
-			WriteWord( packet, Exchange19.tarid[n] )
-			WriteWord( packet, Exchange19.tarnum[n] )
-			WriteWord( packet, Exchange19.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData20( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange20.count ~= nil then
-		WriteWord( packet, Exchange20.count )
-		
-		for n = 1, Exchange20.count, 1 do
-			WriteWord( packet, Exchange20.srcid[n] )
-			WriteWord( packet, Exchange20.srcnum[n] )
-			WriteWord( packet, Exchange20.tarid[n] )
-			WriteWord( packet, Exchange20.tarnum[n] )
-			WriteWord( packet, Exchange20.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData21( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange21.count ~= nil then
-		WriteWord( packet, Exchange21.count )
-		
-		for n = 1, Exchange21.count, 1 do
-			WriteWord( packet, Exchange21.srcid[n] )
-			WriteWord( packet, Exchange21.srcnum[n] )
-			WriteWord( packet, Exchange21.tarid[n] )
-			WriteWord( packet, Exchange21.tarnum[n] )
-			WriteWord( packet, Exchange21.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData22( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange22.count ~= nil then
-		WriteWord( packet, Exchange22.count )
-		
-		for n = 1, Exchange22.count, 1 do
-			WriteWord( packet, Exchange22.srcid[n] )
-			WriteWord( packet, Exchange22.srcnum[n] )
-			WriteWord( packet, Exchange22.tarid[n] )
-			WriteWord( packet, Exchange22.tarnum[n] )
-			WriteWord( packet, Exchange22.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData23( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange23.count ~= nil then
-		WriteWord( packet, Exchange23.count )
-		
-		for n = 1, Exchange23.count, 1 do
-			WriteWord( packet, Exchange23.srcid[n] )
-			WriteWord( packet, Exchange23.srcnum[n] )
-			WriteWord( packet, Exchange23.tarid[n] )
-			WriteWord( packet, Exchange23.tarnum[n] )
-			WriteWord( packet, Exchange23.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData24( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange24.count ~= nil then
-		WriteWord( packet, Exchange24.count )
-		
-		for n = 1, Exchange24.count, 1 do
-			WriteWord( packet, Exchange24.srcid[n] )
-			WriteWord( packet, Exchange24.srcnum[n] )
-			WriteWord( packet, Exchange24.tarid[n] )
-			WriteWord( packet, Exchange24.tarnum[n] )
-			WriteWord( packet, Exchange24.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData25( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange25.count ~= nil then
-		WriteWord( packet, Exchange25.count )
-		
-		for n = 1, Exchange25.count, 1 do
-			WriteWord( packet, Exchange25.srcid[n] )
-			WriteWord( packet, Exchange25.srcnum[n] )
-			WriteWord( packet, Exchange25.tarid[n] )
-			WriteWord( packet, Exchange25.tarnum[n] )
-			WriteWord( packet, Exchange25.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData26( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange26.count ~= nil then
-		WriteWord( packet, Exchange26.count )
-		
-		for n = 1, Exchange26.count, 1 do
-			WriteWord( packet, Exchange26.srcid[n] )
-			WriteWord( packet, Exchange26.srcnum[n] )
-			WriteWord( packet, Exchange26.tarid[n] )
-			WriteWord( packet, Exchange26.tarnum[n] )
-			WriteWord( packet, Exchange26.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
---Œ·ÌÓ‚ÎÂÌËÂ ÚÓ„Ó‚ÎË
-function SendExchangeUpdateData27( character, npc )
-	local packet = GetPacket()
-	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
-	local npcid = GetCharID( npc )
-	WriteDword( packet, npcid )
-	
-	if Exchange27.count ~= nil then
-		WriteWord( packet, Exchange27.count )
-		
-		for n = 1, Exchange27.count, 1 do
-			WriteWord( packet, Exchange27.srcid[n] )
-			WriteWord( packet, Exchange27.srcnum[n] )
-			WriteWord( packet, Exchange27.tarid[n] )
-			WriteWord( packet, Exchange27.tarnum[n] )
-			WriteWord( packet, Exchange27.timenum[n] )
-		end
-	else
-		WriteWord( packet, 0 )
-	end
-	
-	SynPacket( npc, packet )
-end
-
-
-
---◊– 1
+--œÚøÕªß∂À∑¢ÀÕ∂“ªª ˝æ›
 function SendExchangeData( character, npc )
 	local packet = GetPacket()
 	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEDATA )
@@ -1337,7 +137,7 @@ function SendExchangeData( character, npc )
 	
 	SendPacket( character, packet );
 end
---Œ·ÏÂÌ
+
 function SendExchangeXData( character, npc, exchangeData )
 	local packet = GetPacket()
 	WriteCmd( packet, CMD_MC_EXCHANGEDATA )
@@ -1360,7 +160,7 @@ function SendExchangeXData( character, npc, exchangeData )
 	SendPacket( character, packet );
 end
 
---Œ·ÌÓ‚ÎÂÌËÂ ◊–1
+--œÚøÕªß∂À∑¢ÀÕ∂“ªª∏¸–¬ ˝æ›
 function SendExchangeUpdateData( character, npc )
 	local packet = GetPacket()
 	WriteCmd( packet, CMD_MC_BLACKMARKET_EXCHANGEUPDATE )
@@ -1427,16 +227,6 @@ function SendFuncPage( character, npc, pageid, item, count )
 			WriteString( packet, "Incorrect notice option!" )
 		end
 	end
-	SendPacket( character, packet );
-end
---∑¢ÀÕ∂‘ª∞“≥∫Ø ˝
-function SendTalkPage( character, npc, pageid, desp )
-	local packet = GetPacket();
-	WriteCmd( packet, CMD_MC_TALKPAGE );
-	local npcid = GetCharID( npc );
-	WriteDword( packet, npcid );
-	WriteByte( packet, pageid );
-	WriteString( packet, desp );
 	SendPacket( character, packet );
 end
 
@@ -1850,10 +640,6 @@ function MultiFunc( character, npc, page, funclist, count )
 			OpenHair( character, npc )
 		elseif funclist[id].func == CreditExchange then
 			CreditExchange( character, npc, funclist[id].p1 )
-		elseif funclist[id].func == enter_songwar then
-            return enter_songwar(character)			
-        elseif funclist[id].func == revive_songwar then
-            return revive_songwar(character)
 		else
 			return SystemNotice( character, "MultiFunc:unknown functionerror!" )
 		end
@@ -2125,12 +911,15 @@ end
 
 --Ω«…´¥¨÷ªÕ£≤¥¡–±Ì
 function LuanchBerthList( character, npc, berth, xpos, ypos, dir )
-    PRINT( "LuanchBerthList: show docked ship list!" )
-    local npcid = GetCharID( npc )
-    Rem_State_NOSEA ( character )
-    Rem_State_Unnormal ( character )
-    Rem_State_StarUnnormal ( character )
-    return BoatBerthList( character, npcid, BERTH_LUANCH_LIST, berth, xpos, ypos, dir )
+	PRINT( "LuanchBerthList: show docked ship list!" )
+	local npcid = GetCharID( npc )
+	--local ret1 = RemoveYS( character )
+	--if ret1 ~= 1 then
+	--	PRINT( "LuanchBerthList: RemoveYS failed!" )
+	--	SystemNotice( character, "LuanchBerthList: RemoveYS failed!" )
+	--	return --LUA_FALSE
+	--end
+	return BoatBerthList( character, npcid, BERTH_LUANCH_LIST, berth, xpos, ypos, dir )
 end
 
 --–ﬁ¿Ì¥¨÷ª¡–±Ì
@@ -2377,13 +1166,13 @@ function PackBagGoods( character, boat, tp, level )
 	--¥Ú∞¸∏˜÷÷µ»º∂◊ ‘¥¿‡–Õ
 	if tp == RES_WOOD	then			-- ƒæ≤ƒ◊ ‘¥
 		if ResourceList == nil or ResourceList.wood == nil or ResourceList.wood[level] == nil then
-			PRINT( "PackBagGoods: invalid resource Loading notice!" )
+			PRINT( "PackBagGoods: invalid resource loading notice!" )
 			return LUA_FALSE
 		end
 		PRINT( "PackBagGoods: 1" )
 		if ResourceList.wood[level].itemid == nil or ResourceList.wood[level].count == nil or ResourceList.wood[level].pileid == nil then
-			PRINT( "PackBagGoods: Invalid wood resource Loading notice!level, Itemid, count, pileid", level, ResourceList.wood[level].itemid, ResourceList.wood[level].count, ResourceList.wood[level].pileid )
-			LG( "goods_error", "PackBagGoods: Invalid wood resource Loading notice!level, Itemid, count, pileid", ResourceList.wood[level].itemid, ResourceList.wood[level].count, ResourceList.wood[level].pileid )
+			PRINT( "PackBagGoods: Invalid wood resource loading notice!level, Itemid, count, pileid", level, ResourceList.wood[level].itemid, ResourceList.wood[level].count, ResourceList.wood[level].pileid )
+			LG( "goods_error", "PackBagGoods: Invalid wood resource loading notice!level, Itemid, count, pileid", ResourceList.wood[level].itemid, ResourceList.wood[level].count, ResourceList.wood[level].pileid )
 			return LUA_FALSE
 		end
 
@@ -2399,8 +1188,8 @@ function PackBagGoods( character, boat, tp, level )
 		end
 	elseif tp == RES_MINE	then		-- øÛ Ø◊ ‘¥
 		if ResourceList.mine[level].itemid == nil or ResourceList.mine[level].count == nil or ResourceList.mine[level].pileid == nil then
-			PRINT( "PackBagGoods: Invalid ore resource Loading notice! level, Itemid, count, pileid", ResourceList.mine[level].itemid, ResourceList.mine[level].count, ResourceList.mine[level].pileid )
-			LG( "goods_error", "PackBagGoods: Invalid ore resource Loading notice! level, Itemid, count, pileid", ResourceList.mine[level].itemid, ResourceList.mine[level].count, ResourceList.mine[level].pileid )
+			PRINT( "PackBagGoods: Invalid ore resource loading notice! level, Itemid, count, pileid", ResourceList.mine[level].itemid, ResourceList.mine[level].count, ResourceList.mine[level].pileid )
+			LG( "goods_error", "PackBagGoods: Invalid ore resource loading notice! level, Itemid, count, pileid", ResourceList.mine[level].itemid, ResourceList.mine[level].count, ResourceList.mine[level].pileid )
 			return LUA_FALSE
 		end
 
@@ -2415,8 +1204,8 @@ function PackBagGoods( character, boat, tp, level )
 			BickerNotice( character, "Successfully loaded"..numpack.."pile"..level.."level Ore!" )
 		end
 	else
-		PRINT( "PackBagGoods: Invalid resource Loading type, character, boat, tp, level ", character, boat, tp, level )
-		LG( "goods_error", "PackBagGoods: Invalid resource Loading type, character, boat, tp, level ", character, boat, tp, level )
+		PRINT( "PackBagGoods: Invalid resource loading type, character, boat, tp, level ", character, boat, tp, level )
+		LG( "goods_error", "PackBagGoods: Invalid resource loading type, character, boat, tp, level ", character, boat, tp, level )
 		return LUA_FALSE
 	end
 	PRINT( "PackBagGoods: return true" )
@@ -2649,66 +1438,6 @@ function MsgProc( character, npc, rpk, page, trade, missionlist, exchangeData )
 			return ListChallenge( character, npc )
 		--elseif item.func == ListAuction then
 			--return ListAuction( character, npc )
-			--“Œ„
-		elseif item.func == enter_songwar then
-            return enter_songwar(character)		
-		elseif item.func == revive_songwar then
-            return revive_songwar(character)
-		elseif item.func == SendExchangeData3 then
-			return SendExchangeData3( character, npc )
-		elseif item.func == SendExchangeData2 then
-			return SendExchangeData2( character, npc )
-		elseif item.func == SendExchangeData4 then
-			return SendExchangeData4( character, npc )
-		elseif item.func == SendExchangeData5 then
-			return SendExchangeData5( character, npc )
-		elseif item.func == SendExchangeData6 then
-			return SendExchangeData6( character, npc )
-		elseif item.func == SendExchangeData7 then
-			return SendExchangeData7( character, npc )
-		elseif item.func == SendExchangeData8 then
-			return SendExchangeData8( character, npc )
-		elseif item.func == SendExchangeData9 then
-			return SendExchangeData9( character, npc )
-		elseif item.func == SendExchangeData10 then
-			return SendExchangeData10( character, npc )
-		elseif item.func == SendExchangeData11 then
-			return SendExchangeData11( character, npc )
-		elseif item.func == SendExchangeData12 then
-			return SendExchangeData12( character, npc )
-		elseif item.func == SendExchangeData13 then
-			return SendExchangeData13( character, npc )
-		elseif item.func == SendExchangeData14 then
-			return SendExchangeData14( character, npc )
-		elseif item.func == SendExchangeData15 then
-			return SendExchangeData15( character, npc )
-		elseif item.func == SendExchangeData16 then
-			return SendExchangeData16( character, npc )
-		elseif item.func == SendExchangeData17 then
-			return SendExchangeData17( character, npc )
-		elseif item.func == SendExchangeData18 then
-			return SendExchangeData18( character, npc )
-		elseif item.func == SendExchangeData19 then
-			return SendExchangeData19( character, npc )
-		elseif item.func == SendExchangeData20 then
-			return SendExchangeData20( character, npc )
-		elseif item.func == SendExchangeData21 then
-			return SendExchangeData21( character, npc )
-		elseif item.func == SendExchangeData22 then
-			return SendExchangeData22( character, npc )
-		elseif item.func == SendExchangeData23 then
-			return SendExchangeData23( character, npc )
-		elseif item.func == SendExchangeData24 then
-			return SendExchangeData24( character, npc )
-		elseif item.func == SendExchangeData25 then
-			return SendExchangeData25( character, npc )
-		elseif item.func == SendExchangeData26 then
-			return SendExchangeData26( character, npc )
-		elseif item.func == SendExchangeData27 then
-			return SendExchangeData27( character, npc )
-		
-		
-			--“Ó„ ÍÓÌÂˆ
 		elseif item.func == SendExchangeData then
 			return SendExchangeData( character, npc )
 		elseif item.func == SendExchangeXData then
@@ -2863,14 +1592,10 @@ function MsgProc( character, npc, rpk, page, trade, missionlist, exchangeData )
 			return GetChaName6_born(character,npc )
 		elseif item.func == GiveHoe then
 			return GiveHoe(character,npc)
-		elseif item.func == AddSkillNPC then
-            return AddSkillNPC(character)
 		elseif item.func == CheckMetal then
 			return CheckMetal(character,npc )
 		elseif item.func == PKPointToZero then
 			return PKPointToZero(character,npc)
-		elseif item.func == FastCombiner then
-			return FastCombiner(character,item.p1,item.p2)
 		elseif item.func == PlayEffect then
 			return PlayEffect( npc, 361 )
 		elseif item.func == GetChaName1_guildwar then

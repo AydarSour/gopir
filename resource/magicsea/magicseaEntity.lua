@@ -2,7 +2,7 @@
 --EventEntity.lua Created by knight 2005.5.16.
 --
 --Ресурсы
-print( "Loading EventEntity.lua" )
+print( "loading EventEntity.lua" )
 -------------------------------------------------------------
 
 function InitGarnerEntity()

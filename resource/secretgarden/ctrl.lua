@@ -22,7 +22,6 @@ function init_entry(map)
 end
 
 function after_enter_secretgarden( role , map_copy )
---AfterEnter(role)
 	local map_copy = GetChaMapCopy(role)
 	local RedSide_GuildID, BlueSide_GuildID
 	RedSide_GuildID = GetMapCopyParam2(map_copy, 3 )
@@ -135,7 +134,7 @@ function map_copy_run_secretgarden( map_copy )
 		
 		local Count = PK_Win_CountNum / 5
 		if Count == math.floor ( Count ) then
-			local Notice_all = "Поздравляем! Гильдия \"["..PK_JJHY_Winner.."]\" победила \"["..PK_JJHY_Loser.."]\", [Сад Эдель] закроется через - "..PK_Win_CountNum.." сек. "
+			local Notice_all = "Поздравляем! Гильдия \"["..PK_JJHY_Winner.."]\" победала \"["..PK_JJHY_Loser.."]\", [Сад Эдель] закроется через - "..PK_Win_CountNum.." сек. "
 			Notice ( Notice_all )
 		end
 		PK_Win_CountNum = PK_Win_CountNum - 1

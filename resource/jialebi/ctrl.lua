@@ -15,7 +15,6 @@ function init_entry(map)
 end
 
 function after_enter_jialebi( role , map_copy )
---AfterEnter(role)
 end
 
 function before_leave_jialebi( role )

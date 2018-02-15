@@ -1,5 +1,4 @@
 function config_entry(entry)
-	SetMapEntryEntiID(entry, 2492,1)
 end
 
 function after_create_entry(entry) 
@@ -18,9 +17,3 @@ function after_player_login_mjing1(entry, player_name)
 	map_name, posx, posy, tmap_name = GetMapEntryPosInfo(entry)
 	ChaNotice(player_name, "Объявление: Ворота в край Авроры открыты. Поговорите с Виллем для получения большей информации. Удачи!")
 end
-
-
-function begin_enter_mjing1(role, copy_mgr) 
-	SystemNotice(role,"‚ы вошли в [Љрай Ђвроры]") 
-	MoveCity(role, "mjing1")
-end 

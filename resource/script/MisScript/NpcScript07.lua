@@ -1,9 +1,9 @@
 -------------------------------------------------------------------
 --									--
 --									--
---npcscripts07.lua Created by knight.gong 2005.7.12.				--
+--NPCScript07.lua Created by knight.gong 2005.7.12.				--
 --									--
 --									--
 --------------------------------------------------------------------------
-print( "Загрузка npcscripts07.lua" )
+print( "loading NPCScript07.lua" )
 

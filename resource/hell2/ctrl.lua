@@ -16,17 +16,12 @@ end
 
 function init_entry(map)
     SetMapEntryMapName(map, "hell")
-	-- Карта работает 55 минут 
-    -- Портал открыт 30 минут
-    -- Сервер пытается открыть портал каждый час
-    SetMapEntryTime(map, "2007/1/19/0/0", "0/2/0", "0/0/30", "0/5/30")
+    SetMapEntryTime(map, "2007/1/19/21/30", "1/0/0", "0/0/30", "0/5/30")
 end
 
 function after_enter_hell2( role , map_copy )
 	local cha_name=GetChaDefaultName(role)
 	SystemNotice ( role, "Таинственный голос: Неплохо, <"..cha_name..">.Теперь перед тобой водная преграда и следующий мой слуга точно покончит с тобой." ) 
-end
-function map_copy_run_special_hell2()
 end
 
 function before_leave_hell2 ( role )
@@ -87,7 +82,7 @@ function can_open_entry_hell2( map )
 
 --	local time = GetTickCount ( ) 
 	local Now_Week = GetNowWeek()
-	if Now_Week == 6 or Now_Week == 0  or Now_Week == 5 or  Now_Week == 4  or  Now_Week == 3 or  Now_Week == 2  then
+	if Now_Week == 6 or Now_Week == 0 then
 		return 1
 	end
 

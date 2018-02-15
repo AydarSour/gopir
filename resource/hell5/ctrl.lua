@@ -27,7 +27,6 @@ function init_entry(map)
 end
 
 function after_enter_hell5( role , map_copy )
---AfterEnter(role)
 	local cha_name=GetChaDefaultName(role)
 	SystemNotice ( role, "Таинственный голос: Да как ты смеешь, <"..cha_name..">. Я лично с тобой расправлюсь!" ) 
 end
@@ -174,5 +173,3 @@ function can_open_entry_hell5( map )
 
 	return 1
 end 
-function map_copy_run_special_hell5()
-end

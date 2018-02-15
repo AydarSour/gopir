@@ -1,75 +1,24 @@
-
+print( "-------------------------------------------------------------------------------" )
+print( "‡ Јаг§Є  Birth, Help Ё Ai д ©«®ў:" )
+print( "-------------------------------------------------------------------------------" )
 print( "‡ Јаг§Є  Birth_Conf.lua" )
 
 ClearAllBirthPoint()
--- Ущелье песни войны
-AddBirthPoint("Song War Green", "songwar", 178,52)
-AddBirthPoint("Song War Green", "songwar", 178,60)
-AddBirthPoint("Song War Green", "songwar", 173,57)
-AddBirthPoint("Song War Green", "songwar", 174,63)
 
-AddBirthPoint("Song War Red", "songwar", 30,51)
-AddBirthPoint("Song War Red", "songwar", 32,54)
-AddBirthPoint("Song War Red", "songwar", 27,59)
-AddBirthPoint("Song War Red", "songwar", 35,59)
-
---Обитель падших
-AddBirthPoint("crhell", "crhell", 28,28)
-AddBirthPoint("crhell", "crhell", 108,28)
-AddBirthPoint("crhell", "crhell", 108,108)
-AddBirthPoint("crhell", "crhell", 28,108)
---Лабиринт
-AddBirthPoint("leteria1", "leteria", 62,392)
-AddBirthPoint("leteria1", "leteria", 61,394)
---Остров новичков
-AddBirthPoint("noobsland1", "flois", 61,65)
-AddBirthPoint("noobsland2", "flois", 63,68)
-AddBirthPoint("noobsland3", "flois", 69,73)
 --Города
 --Рус.
 AddBirthPoint("Аргент", "garner", 2232, 2787)
 AddBirthPoint("Аргент", "garner", 2194, 2779)
 AddBirthPoint("Аргент", "garner", 2245, 2703)
-AddBirthPoint("Аргент", "garner", 2231, 2809)
-AddBirthPoint("Аргент", "garner", 2205, 2887)
-AddBirthPoint("Аргент", "garner", 2166, 2782)
-AddBirthPoint("Аргент", "garner", 2200, 2707)
-AddBirthPoint("Аргент", "garner", 2296, 2823)
-
 AddBirthPoint("Громоград", "garner", 736, 1592)
 AddBirthPoint("Громоград", "garner", 768, 1539)
 AddBirthPoint("Громоград", "garner", 738, 1454)
-AddBirthPoint("Громоград", "garner", 753, 1639)
-AddBirthPoint("Громоград", "garner", 660, 1553)
-AddBirthPoint("Громоград", "garner", 736, 1534)
-AddBirthPoint("Громоград", "garner", 816, 1500)
-
-AddBirthPoint("Шайтан", "magicsea", 898, 3650)
-AddBirthPoint("Шайтан", "magicsea", 864, 3660)
-AddBirthPoint("Шайтан", "magicsea", 820, 3668)
 AddBirthPoint("Шайтан", "magicsea", 891, 3575)
 AddBirthPoint("Шайтан", "magicsea", 824, 3648)
 AddBirthPoint("Шайтан", "magicsea", 845, 3502)
-AddBirthPoint("Шайтан", "magicsea", 905, 3544)
-AddBirthPoint("Шайтан", "magicsea", 899, 3503)
-
-
 AddBirthPoint("Ледынь", "darkblue", 1316, 536)
 AddBirthPoint("Ледынь", "darkblue", 1342, 481)
 AddBirthPoint("Ледынь", "darkblue", 1305, 503)
-AddBirthPoint("Ледынь", "darkblue", 1352, 524)
-AddBirthPoint("Ледынь", "darkblue", 1354, 564)
-AddBirthPoint("Ледынь", "darkblue", 1378, 575)
-AddBirthPoint("Ледынь", "darkblue", 1243, 611)
-AddBirthPoint("Ледынь", "darkblue", 1275, 526)
-AddBirthPoint("Ледынь", "darkblue", 1301, 505)
-
-AddBirthPoint("Портал СНВ", "magicsea", 814, 3646)
-AddBirthPoint("Портал СНВ", "magicsea", 817, 3649)
-AddBirthPoint("Портал СНВ", "magicsea", 819, 3647)
-
-
-
 AddBirthPoint("Остров Арены", "darkblue",  471,  3407)
 AddBirthPoint("Остров Арены", "darkblue",  401,  3464)
 AddBirthPoint("Остров Арены", "darkblue",  463,  3461)
@@ -78,7 +27,9 @@ AddBirthPoint("Остров Арены", "darkblue",  426,  3435)
 AddBirthPoint("Портал Хаоса", "darkblue", 1352, 528)
 AddBirthPoint("Портал Хаоса", "darkblue", 1354, 529)
 AddBirthPoint("Портал Хаоса", "darkblue", 1350, 529)
-
+AddBirthPoint("Портал СНВ", "magicsea", 814, 3646)
+AddBirthPoint("Портал СНВ", "magicsea", 817, 3649)
+AddBirthPoint("Портал СНВ", "magicsea", 819, 3647)
 --Англ.
 AddBirthPoint("Argent City", "garner",  2232, 2787)
 AddBirthPoint("Argent City", "garner",  2194, 2779)
@@ -266,46 +217,15 @@ AddBirthPoint("Chaos Argent", "garner2", 136,133	)
 --Данжи
 --Рус.
 --Темная топь
--- AddBirthPoint("Темная топь", "darkswamp", 48, 56)
--- AddBirthPoint("Темная топь", "darkswamp", 55, 65)
--- AddBirthPoint("Темная топь", "darkswamp", 85, 81)
--- AddBirthPoint("Темная топь", "darkswamp", 79, 61)
--- AddBirthPoint("Темная топь", "darkswamp", 46, 72)
--- AddBirthPoint("Темная топь", "darkswamp", 68, 61)
--- AddBirthPoint("Темная топь", "darkswamp", 87, 60)
--- AddBirthPoint("Темная топь", "darkswamp", 57, 45)
--- AddBirthPoint("Темная топь", "darkswamp", 66, 70)
--- AddBirthPoint("Затерянный Город", "abandonedcity", 37, 43)
--- AddBirthPoint("Затерянный Город", "abandonedcity", 45, 28)
--- AddBirthPoint("Затерянный Город", "abandonedcity", 27, 38)
--- AddBirthPoint("Затерянный Город", "abandonedcity", 43, 41)
--- AddBirthPoint("Затерянный Город", "abandonedcity", 68, 29)
--- AddBirthPoint("Затерянный Город", "abandonedcity", 23, 60)
--- AddBirthPoint("Затерянный Город", "abandonedcity", 38, 39)
-
+AddBirthPoint("Темная топь", "darkswamp", 55, 65)
 AddBirthPoint("Темная топь высадка", "darkswamp", 304, 334)
-AddBirthPoint("Темная топь высадка", "darkswamp", 325, 339)
-AddBirthPoint("Темная топь высадка", "darkswamp", 318, 329)
-AddBirthPoint("Темная топь высадка", "darkswamp", 284, 344)
-AddBirthPoint("Темная топь высадка", "darkswamp", 313, 345)
-AddBirthPoint("Темная топь высадка", "darkswamp", 277, 339)
-AddBirthPoint("Темная топь высадка", "darkswamp", 330, 331)
-AddBirthPoint("Темная топь высадка", "darkswamp", 307, 333)
 --Затерянный Город
-
-
-AddBirthPoint("Затерянный Город высадка", "abandonedcity",  305, 309)
-AddBirthPoint("Затерянный Город высадка", "abandonedcity",  284, 310)
-AddBirthPoint("Затерянный Город высадка", "abandonedcity",  300, 291)
-AddBirthPoint("Затерянный Город высадка", "abandonedcity",  307, 301)
-AddBirthPoint("Затерянный Город высадка", "abandonedcity",  305, 309)
-AddBirthPoint("Затерянный Город высадка", "abandonedcity",  292, 299)
-
+AddBirthPoint("Затерянный Город", "abandonedcity", 37, 43)
+--AddBirthPoint("Затерянный Город высадка", "abandonedcity",  305, 309)
 AddBirthPoint("Затерянный Город 2", "abandonedcity2", 25, 24)
 AddBirthPoint("Затерянный Город 2", "abandonedcity2", 26, 469)
 AddBirthPoint("Затерянный Город 2", "abandonedcity2", 456, 466)
 AddBirthPoint("Затерянный Город 2", "abandonedcity2", 462, 25)
-
 AddBirthPoint("Затерянный Город 3", "abandonedcity3", 244, 224)
 --Мир Демонов
 AddBirthPoint("Мир Демонов", "puzzleworld", 36, 20)
@@ -319,7 +239,7 @@ AddBirthPoint("Мир Демонов 2", "puzzleworld2", 518, 28)
 --Данжи
 --Англ.
 --Темная топь
---AddBirthPoint("Dark Swamp", "darkswamp",  55, 65)
+AddBirthPoint("Dark Swamp", "darkswamp",  55, 65)
 --Затерянный Город
 AddBirthPoint("Forsaken City", "abandonedcity",  37, 43)
 AddBirthPoint("Forsaken City 2", "abandonedcity2",  25, 24)
@@ -433,52 +353,3 @@ AddBirthPoint("Arena Island", "PKmap", 93,85)
 AddBirthPoint("Arena Island", "PKmap", 26,85)
 
 AddBirthPoint("Test", "07xmas",  250, 250)
---Премиум
-AddBirthPoint("Premium", "premium",  36, 20)
-
---Захват Флага Барбароссы
-AddBirthPoint("Arena 3A", "starena33", 63,47)
-AddBirthPoint("Arena 3A", "starena33", 63,80)
-AddBirthPoint("Arena 3A", "starena33", 81,63)
-AddBirthPoint("Arena 3A", "starena33", 44,63)
-
---Баунти
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  90, 85)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  90, 61)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  90, 45)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  45, 72)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  45, 85)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  45, 61)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  45, 45)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  90, 101)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  33, 35)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  29, 51)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  22, 95)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  98, 38)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  102, 51)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  70, 86)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  66, 38)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  104, 81)
-AddBirthPoint("\193\224\243\237\242\232", "bountypk",  58, 21)
-
-
-
-
-
-
----Хаос Ледыни
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 154,85)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 67,164)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 215,235)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 120,140)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 98,110)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 66,66)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 68,233)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 124,180)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 172,133)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 136,145)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 131,102)
-AddBirthPoint("\213\224\238\241 \203\229\228\251\237\232", "darkblue2", 67,71)
-
-
-AddBirthPoint("Zodiac Palace","zodiac",299,267)

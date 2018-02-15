@@ -13,6 +13,6 @@ function after_destroy_entry_abandonedcity3(entry)
 end
 
 function begin_enter_abandonedcity3(role, copy_mgr) 
-    SystemNotice(role,"Вы вошли в  [Затерянный Город 3]") 
-    MoveCity(role, "Затерянный Город 3")
+    SystemNotice(role,"Entering [Forsaken City 3]") 
+    MoveCity(role, "Forsaken City 3")
 end 

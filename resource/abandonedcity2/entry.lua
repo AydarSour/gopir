@@ -12,5 +12,5 @@ function after_destroy_entry_abandonedcity2(entry)
 end
 
 function begin_enter_abandonedcity2(role, copy_mgr) 
-    MoveCity(role, "Затерянный Город 2")
+    MoveCity(role, "Forsaken City 2")
 end 

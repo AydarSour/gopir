@@ -1,11 +1,11 @@
 -------------------------------------------------------------------
 --									--
 --									--
---npcscripts07.lua Created by knight.gong 2005.7.12.				--
+--NPCScript07.lua Created by knight.gong 2005.7.12.				--
 --									--
 --									--
 --------------------------------------------------------------------------
-print( "‡ Јаг§Є  npcscripts07.lua")
+print( "loading NPCScript07.lua")
 
  ---------------------------------------------іиіиЧЬ¶ЇФ±(1)
 
@@ -29,7 +29,6 @@ print( "‡ Јаг§Є  npcscripts07.lua")
 	MisResultCondition(HasItem,0844,1)
 	MisResultAction(TakeItem, 0844,1)
 	MisResultAction(ClearMission,900)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1852, 1, 4)
 	MisResultBagNeed(1)
 		
@@ -74,7 +73,6 @@ print( "‡ Јаг§Є  npcscripts07.lua")
 	MisResultCondition(HasItem, 0844, 1)
 	MisResultAction(TakeItem, 0844, 1)
 	MisResultAction(ClearMission, 901)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1852, 1, 4)
 	MisResultBagNeed(1) 
 
@@ -222,11 +220,8 @@ print( "‡ Јаг§Є  npcscripts07.lua")
 	MisResultCondition(HasItem, 1681, 5 )
 	MisResultAction(TakeItem, 3129, 5 )
 	MisResultAction(TakeItem, 1681, 5 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 263, 3, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 264, 3, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 265, 3 ,4)
 	MisResultAction(ClearMission, 904)
 	MisResultAction(SetRecord,  904 )
@@ -249,7 +244,7 @@ print( "‡ Јаг§Є  npcscripts07.lua")
 	MisBeginCondition(HasItem, 1097, 1 )
 	MisBeginCondition(NoRecord,905)
 	MisBeginAction(AddMission,905)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "Найдите Бабушку Белди")
 	MisHelpTalk("<t>Если ты не поторопишься, кто-нибудь съест весь торт!")
@@ -266,10 +261,9 @@ print( "‡ Јаг§Є  npcscripts07.lua")
 	MisResultCondition(HasItem, 1097, 1 )
 	MisResultAction(ClearMission, 905 )
 	MisResultAction(TakeItem, 1097, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3338, 1, 4 )
 	MisResultAction(SetRecord, 905 )
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)	
 
 	-------------------------------С°ХТТЕК§µД°®ЗйЦ®Уг¶щС°ХТ»Ё°к
@@ -360,7 +354,6 @@ print( "‡ Јаг§Є  npcscripts07.lua")
 	MisResultCondition(NoRecord,908)
 	MisResultCondition(HasItem, 1005, 1)
 	MisResultAction(TakeItem, 1005, 1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1006, 1, 4)
 	MisResultAction(ClearMission, 908)
 	MisResultAction(SetRecord, 908)
@@ -521,7 +514,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(NoRecord,912)
 	MisResultCondition(HasItem, 1008, 1)
 	MisResultAction(TakeItem, 1008, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1009, 1 ,4)
 	MisResultAction(ClearMission, 912)
 	MisResultAction(SetRecord, 912 )
@@ -560,7 +552,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasItem, 1010, 1)------------УРїЭЅЯЦ®РД
 	MisResultAction(TakeItem, 1008, 1 )
 	MisResultAction(TakeItem, 1010, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1013,1,4)------------ёшЦШЙъЦ®РД
 	MisResultAction(ClearMission, 914)
 	MisResultAction(SetRecord, 914)
@@ -728,7 +719,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 2233, 1 )
 	
 	
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2235,1,4)------------ёшФЩЙъЦ®КЇ
 	MisResultAction(ClearMission, 1300)
 	MisResultAction(SetRecord, 1300)
@@ -795,7 +785,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(ClearMission, 818)
 	MisResultAction(SetRecord,  818 )
 	MisResultAction(ClearRecord, 818)---------------їЙТФ·ґёґЅУ
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2896, 10, 4)
 	MisResultBagNeed(1)
 	
@@ -828,7 +817,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(ClearMission, 819)
 	MisResultAction(SetRecord,  819 )
 	MisResultAction(ClearRecord, 819)---------------їЙТФ·ґёґЅУ
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2896, 10, 4)
 	MisResultBagNeed(1)
 	
@@ -861,7 +849,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(ClearMission, 820)
 	MisResultAction(SetRecord,  820 )
 	MisResultAction(ClearRecord, 820)---------------їЙТФ·ґёґЅУ
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2896, 10, 4)
 	MisResultBagNeed(1)
 	
@@ -908,8 +895,7 @@ DefineMission(916,"Любовь в Прошлом",912)
       MisResultCondition(HasFlag, 1302, 84)
       MisResultCondition(HasFlag, 1302, 104)
       MisResultCondition(HasFlag, 1302, 124)
-      MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 2228, 1, 4 )
+      MisResultAction(GiveItem, 2228, 1, 4 )
       MisResultAction(ClearMission, 1302 )
       MisResultAction(SetRecord, 1302)
       MisResultBagNeed(1)
@@ -1231,7 +1217,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission,  1012)
 	MisResultCondition(HasFlag, 1012, 10)
 	MisResultCondition(NoRecord , 1012)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2226, 1, 4 )
 	MisResultAction(ClearMission,  1012)
 	MisResultAction(SetRecord,  1012 )
@@ -1289,7 +1274,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4418, 10 )
 	MisResultAction(ClearMission, 825)
 	MisResultAction(SetRecord,  825 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2904, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -1335,7 +1319,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4418, 10 )
 	MisResultAction(ClearMission, 826)
 	MisResultAction(SetRecord,  826 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2905, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -1379,7 +1362,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 
       MisHelpTalk("<t>С новым Годом. ")  
-      MisResultTalk("<t>Молодец,!")
+      MisResultTalk("<t>Молодец!")
       MisResultCondition(HasMission,827 )
       MisResultCondition(NoRecord,827)
       MisResultCondition(HasFlag, 827, 10)
@@ -1389,8 +1372,7 @@ DefineMission(916,"Любовь в Прошлом",912)
       MisResultCondition(HasFlag, 827, 50)
       MisResultCondition(HasFlag, 827, 60)
       MisResultCondition(HasFlag, 827, 70)
-      MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 855, 10, 4 )
+      MisResultAction(GiveItem, 855, 10, 4 )
       MisResultAction(ClearMission, 827 )
       MisResultAction(SetRecord, 827)
       MisResultBagNeed(1)
@@ -1451,7 +1433,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeMoney,30000 )
 	MisResultAction(ClearMission, 828)
 	MisResultAction(SetRecord,  828 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2909, 1, 4)
 	MisResultAction(ClearRecord, 828)---------------їЙТФ·ґёґЅУ
 	MisResultBagNeed(1)
@@ -1482,8 +1463,7 @@ DefineMission(916,"Любовь в Прошлом",912)
       MisResultCondition(HasMission,829 )
       MisResultCondition(NoRecord,829)
       MisResultCondition(HasFlag, 829, 29)
-      MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 2910, 1, 4 )
+      MisResultAction(GiveItem, 2910, 1, 4 )
       MisResultAction(ClearMission, 829 )
       MisResultAction(SetRecord, 829)
       MisResultBagNeed(1)
@@ -1509,7 +1489,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	
 
 	MisHelpTalk("t>Не заставляйте свою любовь ждать!")
-	MisResultTalk("<t>О! Ну что же, Вы Молодец,, откройте этот Сундук судьбы и Вы не будите больше одиноки!")
+	MisResultTalk("<t>О! Ну что же, Вы молодец, откройте этот Сундук судьбы и Вы не будите больше одиноки!")
 
 	MisResultCondition(HasMission, 830)
 	MisResultCondition(NoRecord,830)
@@ -1517,7 +1497,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4418, 10 )
 	MisResultAction(ClearMission, 830)
 	MisResultAction(SetRecord,  830 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2916, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -1564,7 +1543,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 2845, 1 )
 	MisResultAction(ClearMission, 831)
 	MisResultAction(SetRecord,  831 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2915, 2, 4)
 	MisResultAction(Starteffect,  370 )
 	MisResultBagNeed(2)
@@ -1615,7 +1593,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 2845, 1 )
 	MisResultAction(ClearMission, 832)
 	MisResultAction(SetRecord,  832 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2915, 2, 4)
 	MisResultAction(Starteffect,  370 )
 	MisResultBagNeed(2)
@@ -1643,7 +1620,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(CheckBagEmp,0)
 	MisBeginAction(AddMission,743)
 	MisBeginAction(AddChaItem1, 2911)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 	
 	MisNeed(MIS_NEED_DESP, "Начинайте испытания с Оператора гавани Витнейя.")
@@ -1676,7 +1653,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,744)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,744)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Ищите Оператора Гавани в (136, 3432)")
 	
@@ -1708,7 +1685,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,745)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,745)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Отправляйтесь в (1544, 3712)")
 	
@@ -1740,7 +1717,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,746)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,746)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Ищите Оператора Сок в (3194, 3507)")
 	
@@ -1772,7 +1749,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,747)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,747)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Ищите Оператора Гавани Одия в точке(738, 3803)")
 	
@@ -1804,7 +1781,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,748)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,748)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Ищите Оператора Гавани Григория в точке(194, 1715).")
 	
@@ -1836,7 +1813,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,749)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,749)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Отправляйтесь не медленно в Бухту Лаху и отыщите Оператора Гавани Домору в точке (3498, 923).")
 	
@@ -1868,7 +1845,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,750)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,750)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Ищите в Магическом Океане Оператора Гавани Бани в точке (2042, 635)")
 	
@@ -1900,7 +1877,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,751)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,751)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Плывите в точку(464, 468) и поговорите с местным оператором.")
 	
@@ -1933,7 +1910,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,752)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,752)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Ищите Оператора Фардела в точке (3153, 674).")
 	
@@ -1965,7 +1942,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,753)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,753)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Поторопитесь и отыщите оператора гавани - Виткома в точке(2041, 1355).")
 	
@@ -1998,7 +1975,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,754)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,754)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Ищите Оператора Гавани Дарука в точке(1497, 1707).")
 	
@@ -2032,7 +2009,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,755)
 	MisBeginCondition(CheckBag, 2911,0,1)
 	MisBeginAction(AddMission,755)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed(MIS_NEED_DESP, "Отправляйтесь в Громоград и поговорите с Дио в точке(1083, 1285).")
 	
@@ -2088,7 +2065,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 10 )
 	MisResultAction(ClearMission, 1060)
 	MisResultAction(SetRecord,  1060 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2944, 1, 4)
 	MisResultBagNeed(1)
 
@@ -2112,7 +2088,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(DelRoleCredit, 500 )
 	MisResultAction(ClearMission, 1061)
 	MisResultAction(SetRecord,  1061 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2945, 1, 4)
 	MisResultBagNeed(1)
 
@@ -2136,7 +2111,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 39 )
 	MisResultAction(ClearMission, 1062)
 	MisResultAction(SetRecord,  1062 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2946, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -2153,7 +2127,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisCancelAction(ClearMission, 1063)
 	
 	MisHelpTalk("<t>Заработайте себе честь!")
-	MisResultTalk("<t>Вы Молодец,, Так бы и расцеловала бы Вас!")
+	MisResultTalk("<t>Вы молодец, Так бы и расцеловала бы Вас!")
 
 	MisResultCondition(HasMission, 1063)
 	MisResultCondition(NoRecord,1063)
@@ -2161,7 +2135,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 100 )
 	MisResultAction(ClearMission, 1063)
 	MisResultAction(SetRecord,  1063 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2947, 1, 4)
 	MisResultBagNeed(1)
 
@@ -2210,9 +2183,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 1848, 50 )
 	MisResultAction(ClearMission, 1064)
 	MisResultAction(SetRecord,  1064 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2948, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2990, 1, 4)
 	MisResultBagNeed(2)
 
@@ -2267,7 +2238,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission,  1065)
 	MisResultCondition(HasFlag, 1065, 10)
 	MisResultCondition(NoRecord , 1065)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2950, 1, 4 )
 	MisResultAction(ClearMission,  1065)
 	MisResultAction(SetRecord,  1065 )
@@ -2303,7 +2273,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 20 )
 	MisResultAction(ClearMission, 1066)
 	MisResultAction(SetRecord,  1066 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2944, 1, 4)
 	MisResultBagNeed(1)
 
@@ -2327,7 +2296,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(DelRoleCredit, 1000 )
 	MisResultAction(ClearMission, 1067)
 	MisResultAction(SetRecord,  1067 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2945, 1, 4)
 	MisResultBagNeed(1)
 
@@ -2351,7 +2319,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 44 )
 	MisResultAction(ClearMission, 1068)
 	MisResultAction(SetRecord,  1068 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2946, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -2376,7 +2343,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 200 )
 	MisResultAction(ClearMission, 1069)
 	MisResultAction(SetRecord,  1069 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2947, 1, 4)
 	MisResultBagNeed(1)
 
@@ -2429,9 +2395,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 2673, 10 )
 	MisResultAction(ClearMission, 1070)
 	MisResultAction(SetRecord,  1070 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2948, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2990, 1, 4)
 	MisResultBagNeed(2)
 
@@ -2494,7 +2458,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 50 )
 	MisResultAction(ClearMission, 1071)
 	MisResultAction(SetRecord,  1071 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2944, 1, 4)
 	MisResultBagNeed(1)
 
@@ -2518,7 +2481,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(DelRoleCredit, 3000 )
 	MisResultAction(ClearMission, 1072)
 	MisResultAction(SetRecord,  1072 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2945, 1, 4)
 	MisResultBagNeed(1)
 
@@ -2542,7 +2504,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 49 )
 	MisResultAction(ClearMission, 1073)
 	MisResultAction(SetRecord,  1073 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2946, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -2567,7 +2528,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 500 )
 	MisResultAction(ClearMission, 1074)
 	MisResultAction(SetRecord,  1074 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2947, 1, 4)
 	MisResultBagNeed(1)
 
@@ -2624,9 +2584,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 0227, 4 )
 	MisResultAction(ClearMission, 1075)
 	MisResultAction(SetRecord,  1075 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2948, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2990, 1, 4)
 	MisResultBagNeed(2)
 
@@ -3234,7 +3192,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission,1098)
 	MisResultAction(ClearMission,1098)
 	MisResultAction(SetRecord, 1098)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2949, 1, 4)
 	MisResultBagNeed(1)
 
@@ -3276,7 +3233,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(AddChaItem4, 2952)----МШ±рРР¶ЇїЁ
 	MisResultAction(ClearMission, 1101)
 	MisResultAction(SetRecord,  1101 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2955, 1, 4)------------°ЧСтґ¬і¤їбЧ°±¦Пд
 	MisResultBagNeed(1)
 	
@@ -3309,7 +3265,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 3116, 100 )
 	MisResultAction(ClearMission, 1102)
 	MisResultAction(SetRecord, 1102 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2953, 1, 4)------------УЮИЛЅЪµДАсОп
 	MisResultBagNeed(1)
 	
@@ -3358,7 +3313,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission, 1104)
 	MisResultCondition(CheckPoint, 2954 )
 	MisResultAction(TakeItem, 2954,1,4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 0853,1,4)
 	MisResultAction(ClearMission, 1104)
 	MisResultAction(SetRecord, 1104 )
@@ -3456,15 +3410,10 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(SetRecord,1018)
 	MisResultAction(SetRecord,1056)
 	MisResultAction(ClearMission,1018)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2229, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2230, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2231, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2232, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2233, 1, 4)
 	MisResultBagNeed(5)
 
@@ -4210,7 +4159,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisNeed(MIS_NEED_DESP, "Убейте 110 Заснеженных Волшебных кустов")
 	MisNeed(MIS_NEED_KILL, 216, 110, 10, 110)
 
-	MisResultTalk("<t>Вы Молодец,!")
+	MisResultTalk("<t>Вы молодец!")
 	MisHelpTalk("<t>Вы их сможете найти в окраинах Ледыни.")
 	MisResultCondition( NoRecord, 1047)
 	MisResultCondition( HasMission, 1047)
@@ -4328,15 +4277,10 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction( SetRecord, 1051)
 	MisResultAction( SetRecord, 1056)
 	MisResultAction( ClearMission, 1051)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2229, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2230, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2231, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2232, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2233, 1, 4)
 	MisResultBagNeed(5)
 
@@ -4416,7 +4360,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(NoRecord,1108)
 	MisResultCondition(HasItem, 1097, 2 )
 	MisResultAction(TakeItem, 1097, 2 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2989,1,4)-------і¬ј¶КЩЛѕ
 	MisResultAction(ClearMission, 1108)
 	MisResultAction(SetRecord,  1108 )
@@ -4477,7 +4420,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(NoRecord,1110)
 	MisResultCondition(HasItem, 1097, 1 )
 	MisResultAction(TakeItem, 1097, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2988,1,4)------Ж·ЕЖµ°ёв
 	MisResultAction(ClearMission, 1110)
 	MisResultAction(SetRecord,  1110 )
@@ -5553,7 +5495,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 30 )
 	MisResultAction(ClearMission, 1114)
 	MisResultAction(SetRecord,  1114 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3028, 1, 4)
 	MisResultBagNeed(1)
 
@@ -5578,7 +5519,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeCredit, 1000 )
 	MisResultAction(ClearMission, 1115)
 	MisResultAction(SetRecord,  1115 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3029, 1, 4)
 	MisResultBagNeed(1)
 
@@ -5603,7 +5543,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 54 )
 	MisResultAction(ClearMission, 1116)
 	MisResultAction(SetRecord,  1116 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3030, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -5629,7 +5568,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 300 )
 	MisResultAction(ClearMission, 1117)
 	MisResultAction(SetRecord,  1117 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3031, 1, 4)
 	MisResultBagNeed(1)
 
@@ -5686,9 +5624,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 0227, 1 )
 	MisResultAction(ClearMission, 1118)
 	MisResultAction(SetRecord,  1118 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3032, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3036, 1, 4)
 	MisResultBagNeed(2)
 
@@ -5754,7 +5690,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission,  1119)
 	MisResultCondition(HasFlag, 1119, 10)
 	MisResultCondition(NoRecord , 1119)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3034, 1, 4 )
 	MisResultAction(ClearMission,  1119)
 	MisResultAction(SetRecord,  1119 )
@@ -5791,7 +5726,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 60 )
 	MisResultAction(ClearMission, 1120)
 	MisResultAction(SetRecord,  1120 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3028, 1, 4)
 	MisResultBagNeed(1)
 
@@ -5816,7 +5750,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeCredit,3000  )
 	MisResultAction(ClearMission, 1121)
 	MisResultAction(SetRecord,  1121 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3029, 1, 4)
 	MisResultBagNeed(1)
 
@@ -5841,7 +5774,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 59 )
 	MisResultAction(ClearMission, 1122)
 	MisResultAction(SetRecord,  1122 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3030, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -5867,7 +5799,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 500 )
 	MisResultAction(ClearMission, 1123)
 	MisResultAction(SetRecord,  1123 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3031, 1, 4)
 	MisResultBagNeed(1)
 
@@ -5924,9 +5855,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 0227, 3 )
 	MisResultAction(ClearMission, 1124)
 	MisResultAction(SetRecord,  1124 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3032, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3036, 1, 4)
 	MisResultBagNeed(2)
 
@@ -5995,7 +5924,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 100 )
 	MisResultAction(ClearMission, 1125)
 	MisResultAction(SetRecord,  1125 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3028, 1, 4)
 	MisResultBagNeed(1)
 
@@ -6020,7 +5948,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeCredit, 5000 )
 	MisResultAction(ClearMission, 1126)
 	MisResultAction(SetRecord,  1126 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3029, 1, 4)
 	MisResultBagNeed(1)
 
@@ -6045,7 +5972,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 64 )
 	MisResultAction(ClearMission, 1127)
 	MisResultAction(SetRecord,  1127 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3030, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -6071,7 +5997,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 800 )
 	MisResultAction(ClearMission, 1128)
 	MisResultAction(SetRecord,  1128 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3031, 1, 4)
 	MisResultBagNeed(1)
 
@@ -6128,9 +6053,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 0227, 5 )
 	MisResultAction(ClearMission, 1129)
 	MisResultAction(SetRecord,  1129 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3032, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3036, 1, 4)
 	MisResultBagNeed(2)
 
@@ -6714,7 +6637,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission,1150)
 	MisResultAction(ClearMission,1150)
 	MisResultAction(SetRecord, 1150)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3033, 1, 4)
 	MisResultBagNeed(1)
 
@@ -6755,8 +6677,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 --	MisResultAction(AddChaItem5, 2952)----МШ±рРР¶ЇїЁ
 --	MisResultAction(ClearMission, 1153)
 --	MisResultAction(SetRecord,  1153 )
---	MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 3035, 1, 4)------------ЅрЕЈґ¬і¤їбЧ°±¦Пд
+--	MisResultAction(GiveItem, 3035, 1, 4)------------ЅрЕЈґ¬і¤їбЧ°±¦Пд
 --	MisResultBagNeed(1)
 	
 ---------------------------------------------------МШ±рИООс	--------°Е°ЕА­
@@ -6796,8 +6717,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 --	MisResultAction(AddChaItem5, 2952)----МШ±рРР¶ЇїЁ
 --	MisResultAction(ClearMission, 1159)
 --	MisResultAction(SetRecord,  1159 )
---	MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 3035, 1, 4)------------ЅрЕЈґ¬і¤їбЧ°±¦Пд
+--	MisResultAction(GiveItem, 3035, 1, 4)------------ЅрЕЈґ¬і¤їбЧ°±¦Пд
 --	MisResultBagNeed(1)
 --	
 -------------------------------------------------МШ±рИООс	--------°Е°ЕА­
@@ -6837,7 +6757,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(AddChaItem5, 2952)----МШ±рРР¶ЇїЁ
 	MisResultAction(ClearMission, 1160)
 	MisResultAction(SetRecord,  1160 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3035, 1, 4)------------ЅрЕЈґ¬і¤їбЧ°±¦Пд
 	MisResultBagNeed(1)
 	
@@ -6899,11 +6818,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1156)
 	MisResultAction(SetRecord,  1156 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3026, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3027, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 0227, 10, 4)
 	MisResultAction(AddMoney,100000,100000)
 	MisResultAction(JINNiuSS)
@@ -6999,11 +6915,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1157)
 	MisResultAction(SetRecord,  1157 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3026, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3027, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 0227, 20, 4)
 	MisResultAction(AddMoney,200000,200000)
 	MisResultAction(JINNiuHD)
@@ -7100,11 +7013,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1158)
 	MisResultAction(SetRecord,  1158 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3026, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3027, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 0227, 30, 4)
 	MisResultAction(AddMoney,300000,300000)
 	MisResultAction(JINNiuCZ)
@@ -7196,8 +7106,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 --
 --	
 --	
---	MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 2909,1,4)------------ёшРТФЛЦн±¦Пд
+--	MisResultAction(GiveItem, 2909,1,4)------------ёшРТФЛЦн±¦Пд
 --	MisResultAction(ClearMission, 1452)
 --	MisResultAction(SetRecord, 1452)
 --	MisResultAction(ClearRecord, 1452)---------------їЙТФ·ґёґЅУ
@@ -7256,7 +7165,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 5 )
 	MisResultAction(ClearMission, 1163)
 	MisResultAction(SetRecord,  1163 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1874, 1, 4)
 	MisResultBagNeed(1)
 
@@ -7281,7 +7189,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeCredit, 2000 )
 	MisResultAction(ClearMission, 1164)
 	MisResultAction(SetRecord,  1164 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1875, 1, 4)
 	MisResultBagNeed(1)
 
@@ -7306,7 +7213,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 59 )
 	MisResultAction(ClearMission, 1165)
 	MisResultAction(SetRecord,  1165 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1876, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -7332,7 +7238,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 500 )
 	MisResultAction(ClearMission, 1166)
 	MisResultAction(SetRecord,  1166 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1877, 1, 4)
 	MisResultBagNeed(1)
 
@@ -7388,9 +7293,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	
 	MisResultAction(ClearMission, 1167)
 	MisResultAction(SetRecord,  1167 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1878, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1882, 1, 4)
 	MisResultBagNeed(2)
 
@@ -7451,7 +7354,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission,  1168)
 	MisResultCondition(HasFlag, 1168, 10)
 	MisResultCondition(NoRecord , 1168)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1880, 1, 4 )
 	MisResultAction(ClearMission,  1168)
 	MisResultAction(SetRecord,  1168 )
@@ -7483,7 +7385,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 10 )
 	MisResultAction(ClearMission, 1169)
 	MisResultAction(SetRecord,  1169 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1874, 1, 4)
 	MisResultBagNeed(1)
 
@@ -7508,7 +7409,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeCredit,5000  )
 	MisResultAction(ClearMission, 1170)
 	MisResultAction(SetRecord,  1170 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1875, 1, 4)
 	MisResultBagNeed(1)
 
@@ -7533,7 +7433,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 64 )
 	MisResultAction(ClearMission, 1171)
 	MisResultAction(SetRecord,  1171 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1876, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -7559,7 +7458,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 700 )
 	MisResultAction(ClearMission, 1172)
 	MisResultAction(SetRecord,  1172 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1877, 1, 4)
 	MisResultBagNeed(1)
 
@@ -7615,9 +7513,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1173)
 	MisResultAction(SetRecord,  1173 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1878, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1882, 1, 4)
 	MisResultBagNeed(2)
 
@@ -7678,7 +7574,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 15 )
 	MisResultAction(ClearMission, 1174)
 	MisResultAction(SetRecord,  1174 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1874, 1, 4)
 	MisResultBagNeed(1)
 
@@ -7703,7 +7598,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeCredit, 8000 )
 	MisResultAction(ClearMission, 1175)
 	MisResultAction(SetRecord,  1175 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1875, 1, 4)
 	MisResultBagNeed(1)
 
@@ -7728,7 +7622,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 69 )
 	MisResultAction(ClearMission, 1176)
 	MisResultAction(SetRecord,  1176 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1876, 1, 4)
 	MisResultBagNeed(1)
 	
@@ -7754,7 +7647,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 1000 )
 	MisResultAction(ClearMission, 1177)
 	MisResultAction(SetRecord,  1177 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1877, 1, 4)
 	MisResultBagNeed(1)
 
@@ -7806,9 +7698,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1178)
 	MisResultAction(SetRecord,  1178 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1878, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1882, 1, 4)
 	MisResultBagNeed(2)
 
@@ -8378,7 +8268,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission,1199)
 	MisResultAction(ClearMission,1199)
 	MisResultAction(SetRecord, 1199)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1879, 1, 4)
 	MisResultBagNeed(1)
 
@@ -8412,7 +8301,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(NoRecord,1200)
 	MisResultCondition(HasItem, 0854, 1 )
 	MisResultAction(TakeItem, 0854, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1881, 1, 4)
 	MisResultAction(ClearMission, 1200)
 	MisResultAction(SetRecord,  1200 )
@@ -8481,11 +8369,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1201)
 	MisResultAction(SetRecord,  1201 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1865, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1866, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1002, 30, 4)
 	MisResultAction(AddMoney,500000,500000)
 	MisResultAction(ShuangZiSS)
@@ -8581,11 +8466,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1202)
 	MisResultAction(SetRecord,  1202 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1865, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1866, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1002, 60, 4)
 	MisResultAction(AddMoney,700000,700000)
 	MisResultAction(ShuangZiHD)
@@ -8682,11 +8564,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1203)
 	MisResultAction(SetRecord,  1203 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1865, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1866, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 1002, 90, 4)
 	MisResultAction(AddMoney,900000,900000)
 	MisResultAction(ShuangZiCZ)
@@ -8812,7 +8691,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord, 1207)
 	MisResultCondition(HasItem,2669,1)---------ЕЈАЙµДЗйКй
 	MisResultAction(TakeItem, 2669,1)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2670, 1, 4)----------МмТВ±¦Пд
 	MisResultAction(ClearMission, 1207)
 	MisResultAction(SetRecord, 1207)
@@ -9054,7 +8932,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 80 )
 	MisResultAction(ClearMission, 1470)
 	MisResultAction(SetRecord,  1470 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2568, 1, 4)
 	MisResultBagNeed(1)
 
@@ -9080,7 +8957,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeCredit, 3000 )
 	MisResultAction(ClearMission, 1471)
 	MisResultAction(SetRecord,  1471 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2569, 1, 4)
 	MisResultBagNeed(1)
 
@@ -9104,7 +8980,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 64 )
 	MisResultAction(ClearMission, 1472)
 	MisResultAction(SetRecord,  1472 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2570, 1, 4)
 	MisResultBagNeed(1)
 
@@ -9130,7 +9005,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 600 )
 	MisResultAction(ClearMission, 1473)
 	MisResultAction(SetRecord,  1473 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2571, 1, 4)
 	MisResultBagNeed(1)	
 
@@ -9182,9 +9056,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1474)
 	MisResultAction(SetRecord,  1474 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2572, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2576, 1, 4)
 	MisResultBagNeed(2)
 
@@ -9239,7 +9111,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission,  1475)
 	MisResultCondition(HasFlag, 1475, 10)
 	MisResultCondition(NoRecord , 1475)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2574, 1, 4 )
 	MisResultAction(ClearMission,  1475)
 	MisResultAction(SetRecord,  1475 )
@@ -9272,7 +9143,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 150 )
 	MisResultAction(ClearMission, 1476)
 	MisResultAction(SetRecord,  1476 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2568, 1, 4)
 	MisResultBagNeed(1)
 
@@ -9298,7 +9168,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeCredit, 6000 )
 	MisResultAction(ClearMission, 1477)
 	MisResultAction(SetRecord,  1477 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2569, 1, 4)
 	MisResultBagNeed(1)
 
@@ -9323,7 +9192,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 69 )
 	MisResultAction(ClearMission, 1600)
 	MisResultAction(SetRecord,  1600 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2570, 1, 4)
 	MisResultBagNeed(1)
 
@@ -9348,7 +9216,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 900 )
 	MisResultAction(ClearMission, 1479)
 	MisResultAction(SetRecord,  1479 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2571, 1, 4)
 	MisResultBagNeed(1)	
 
@@ -9402,9 +9269,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1480)
 	MisResultAction(SetRecord,  1480 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2572, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2576, 1, 4)
 	MisResultBagNeed(2)
 
@@ -9465,7 +9330,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeFightingPoint, 200 )
 	MisResultAction(ClearMission, 1481)
 	MisResultAction(SetRecord,  1481 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2568, 1, 4)
 	MisResultBagNeed(1)
 
@@ -9490,7 +9354,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeCredit, 10000 )
 	MisResultAction(ClearMission, 1482)
 	MisResultAction(SetRecord,  1482 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2569, 1, 4)
 	MisResultBagNeed(1)
 
@@ -9515,7 +9378,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(LvCheck, ">", 74 )
 	MisResultAction(ClearMission, 1483)
 	MisResultAction(SetRecord,  1483 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2570, 1, 4)
 	MisResultBagNeed(1)
 
@@ -9540,7 +9402,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeHonorPoint, 1200 )
 	MisResultAction(ClearMission, 1484)
 	MisResultAction(SetRecord,  1484 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2571, 1, 4)
 	MisResultBagNeed(1)	
 
@@ -9595,9 +9456,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1485)
 	MisResultAction(SetRecord,  1485 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2572, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2576, 1, 4)
 	MisResultBagNeed(2)
 
@@ -10172,7 +10031,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasMission,1606)
 	MisResultAction(ClearMission,1606)
 	MisResultAction(SetRecord, 1606)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2573, 1, 4)
 	MisResultBagNeed(1)
 
@@ -10245,7 +10103,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(AddChaItem4, 2952)----МШ±рРР¶ЇїЁ
 	MisResultAction(ClearMission, 1608)
 	MisResultAction(SetRecord,  1608 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2575, 1, 4)------------ѕЮР·ґ¬і¤їбЧ°±¦Пд
 	MisResultBagNeed(1)
 
@@ -10305,11 +10162,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1609)
 	MisResultAction(SetRecord,  1609 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2273, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2274, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3877, 1, 4)
 	MisResultAction(AddMoney,1000000,1000000)
 	MisResultAction(ShuangZiSS)
@@ -10405,11 +10259,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1610)
 	MisResultAction(SetRecord,  1610 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2273, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2274, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3877, 2, 4)
 	MisResultAction(AddMoney,2000000,2000000)
 	MisResultAction(ShuangZiHD)
@@ -10506,11 +10357,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultAction(ClearMission, 1611)
 	MisResultAction(SetRecord,  1611 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2273, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 2274, 1, 4)
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3877, 3, 4)
 	MisResultAction(AddMoney,3000000,3000000)
 	MisResultAction(ShuangZiCZ)
@@ -10585,7 +10433,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4426, 2)
 	MisResultAction(TakeItem, 4393, 8)
 
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 0048, 1, 4)                          ---------Г«Р·
 	MisResultAction(ClearMission, 1208)                        
 	MisResultAction(SetRecord, 1208)
@@ -10652,7 +10499,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4500, 1)
 	MisResultAction(TakeItem, 0057, 1)
 
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 0056, 1, 4)                                   ---------ґуХўР·
 	MisResultAction(ClearMission, 1209)
 	MisResultAction(SetRecord, 1209)
@@ -10794,7 +10640,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction(AddTrigger, 12125, TE_GETITEM, 3862, 1)
 	MisBeginAction(AddTrigger, 12126, TE_GETITEM, 3856, 1)
 	
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТ»Шґъ±нПДМмЕуУСБй»кµД<bЖЯёцЧЦДёP-E-I-M-E-N-G>.ИҐХТТ»ПВФЪ<bјЕДЇЦ®ЛюёЅЅьµДВеїЛµДКШГЕИЛ(271,1775)>СЇОКТ»ПВѕЯМеµДЗйїц.јЗµГ»ШАґХТ°ЧТшіЗµДД§·ЁК¦ПДМм(2229,2782)Ѕ»Іо")
 	MisNeed(MIS_NEED_ITEM, 3854, 2, 10, 2)
@@ -10824,7 +10670,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 3856, 1 )
 
 	
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3673,1,4)------------ПДМмµДД§·ЁєР
 	MisResultAction(ClearMission, 1212)
 	--MisResultAction(ZSSTOP)
@@ -10872,7 +10717,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(HasMission, 1212)
 	MisBeginCondition(NoRecord, 1212)
 	MisBeginAction(AddMission,1213)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТјЕДЇЦ®Лю1Іг(263,260)ВеїЛјТµДДРУ¶БДБД")
 	
@@ -10903,7 +10748,7 @@ DefineMission(916,"Любовь в Прошлом",912)
       MisBeginAction(AddTrigger, 12142, TE_GETITEM, 4740, 25 )          
       MisBeginAction(AddTrigger, 12143, TE_GETITEM, 4741, 25 )               
       MisBeginAction(AddTrigger, 12144, TE_GETITEM, 1486, 25 )               
-      MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+      MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
       MisNeed(MIS_NEED_DESP, "јвИсµДНБЦші¤Г¬Ўўјб№МµДтбтжИЛСьґшЎўГфЅЭµДКҐБЦЦ®РДЎўЛр»µµД°ЧЙ«БйГЁіб°тёч25ёц!")
       MisNeed(MIS_NEED_ITEM, 4739, 25,  1, 25 )
@@ -10925,8 +10770,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4741, 25 )
 	MisResultAction(TakeItem, 1486, 25 )
 
-      MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 3865, 1, 4 )
+      MisResultAction(GiveItem, 3865, 1, 4 )
       MisResultAction(ClearMission, 1214 )
       MisResultAction(SetRecord, 1214)
       MisResultBagNeed(1)
@@ -10959,7 +10803,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,1215)
 	MisBeginCondition(HasRecord, 1214)
 	MisBeginAction(AddMission,1215)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТјЕДЇЦ®Лю2Іг(151,134)µДВеїЛјТµДЕ®У¶БДБД")
 	
@@ -10988,7 +10832,7 @@ DefineMission(916,"Любовь в Прошлом",912)
       MisBeginAction(AddTrigger, 12161, TE_GETITEM, 4742, 35 )
       MisBeginAction(AddTrigger, 12162, TE_GETITEM, 4743, 35 )          
       MisBeginAction(AddTrigger, 12163, TE_GETITEM, 4745, 35 )                           
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
       MisNeed(MIS_NEED_DESP, "КХјЇ°µСЄчјчГЎўµШѕ«МъёдЎўіБЦШµДµШѕ«ХЅё«ёч35ёц!")
       MisNeed(MIS_NEED_ITEM, 4742, 35,  1, 35 )
@@ -11008,8 +10852,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4745, 35 )
 
 
-      MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 3854, 1, 4 )
+      MisResultAction(GiveItem, 3854, 1, 4 )
       MisResultAction(ClearMission, 1216 )
       MisResultAction(SetRecord, 1216)
       MisResultBagNeed(1)
@@ -11036,7 +10879,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,1217)
 	MisBeginCondition(HasRecord, 1216)
 	MisBeginAction(AddMission,1217)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТјЕДЇЦ®Лю3Іг(63,311)µДВеїЛјТµДРЎГШБДБД")
 	
@@ -11067,7 +10910,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction(AddTrigger, 12184, TE_GETITEM, 4749, 20)
 	MisBeginAction(AddTrigger, 12185, TE_GETITEM, 4725, 20)
 	MisBeginAction(AddTrigger, 12186, TE_GETITEM, 4747, 20)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "КХјЇЖЖЛрµДєЪЙ«ГЁБеохЎўЛр»µµДєЪЙ«БйГЁіб°тЎўЖЖБСµДµШѕ«¶ъ»·ЎўґуєЕµШѕ«°вКЦЎўЖЖѕЙµДБФКЦЦ®№­Ўў°ЧЙ«БйГЁіб°тёч20ёц.")
 	MisNeed(MIS_NEED_ITEM, 1501, 20, 1, 20)
@@ -11097,7 +10940,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4747, 20 )
 
 	
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3858,1,4)------------i
 	MisResultAction(ClearMission, 1218)
 	MisResultAction(SetRecord, 1218)
@@ -11143,7 +10985,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,1219)
 	MisBeginCondition(HasRecord, 1218)
 	MisBeginAction(AddMission,1219)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТјЕДЇЦ®Лю4(261,70)ІгµДВеїЛјТµДКШ»¤ХЯБДБД")
 	
@@ -11170,7 +11012,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction(AddMission,1220)
 	MisBeginAction(AddTrigger, 12201, TE_GETITEM, 4750,50)
 	MisBeginAction(AddTrigger, 12202, TE_GETITEM, 4763, 50)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "КХјЇєЪЙ«БйГЁіб°тЎў±»ОЫИѕµДМмК№№в»·ёч50ёц.")
 	MisNeed(MIS_NEED_ITEM, 4750, 50, 1, 50)
@@ -11187,7 +11029,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4750, 50 )
 	MisResultAction(TakeItem, 4763, 50 )
 	
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3862,1,4)----------m
 	MisResultAction(ClearMission, 1220)
 	MisResultAction(SetRecord, 1220)
@@ -11211,7 +11052,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,1221)
 	MisBeginCondition(HasRecord, 1220)
 	MisBeginAction(AddMission,1221)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТјЕДЇЦ®Лю5Іг(542,54)µДВеїЛјТµД№ЬјТБДБД")
 	
@@ -11240,7 +11081,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction(AddTrigger, 12221, TE_GETITEM, 4770, 35)
 	MisBeginAction(AddTrigger, 12222, TE_GETITEM, 4766, 35)
 	MisBeginAction(AddTrigger, 12223, TE_GETITEM, 4772, 35)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "КХјЇ±»ЧзЦдµД°ЧЙ«БйГЁіб°тЎў єЪ°µµДКҐБЦЦ®РДЎў±»ЧзЦдµДєЪЙ«БйГЁіб°тёч35ёц.")
 	MisNeed(MIS_NEED_ITEM, 4770, 35, 1, 35)
@@ -11260,7 +11101,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 4766, 35 )
 	MisResultAction(TakeItem, 4772, 35 )
 	
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3863,1,4)----------n
 	MisResultAction(ClearMission, 1222)
 	MisResultAction(SetRecord, 1222)
@@ -11289,7 +11129,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,1223)
 	MisBeginCondition(HasRecord, 1222)
 	MisBeginAction(AddMission,1223)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТјЕДЇЦ®Лю6Іг(541,268)µДВеїЛµДЗйИЛБДБД")
 	
@@ -11314,7 +11154,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(HasRecord, 1223)
 	MisBeginAction(AddMission,1224)
 	MisBeginAction(AddTrigger, 12241, TE_GETITEM, 1503, 110)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "КХјЇЅрКфСМґС110ёц.")
 	MisNeed(MIS_NEED_ITEM, 1503, 110, 1, 110)
@@ -11327,7 +11167,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasItem, 1503, 110)
 	MisResultAction(TakeItem, 1503, 110 )
 
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3856,1,4)----------G
 	MisResultAction(ClearMission, 1224)
 	MisResultAction(SetRecord, 1224)
@@ -11346,7 +11185,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,1225)
 	MisBeginCondition(HasRecord, 1224)
 	MisBeginAction(AddMission,1225)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТµШУьЛДІг(154,912)µДВеїЛјТµДНъІЖТЄЧЦДёїЁЖ¬")
 	
@@ -11373,7 +11212,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(HasRecord, 1225)
 	MisBeginAction(AddMission,1226)
 	MisBeginAction(AddTrigger, 12261, TE_GETITEM, 4884, 99)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "КХјЇЅ©К¬Н··ў99ёц.")
 	MisNeed(MIS_NEED_ITEM, 4884, 99, 1, 99)
@@ -11386,7 +11225,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasItem, 4884, 99)
 	MisResultAction(TakeItem, 4884, 99 )
 
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3854,1,4)----------E
 	MisResultAction(ClearMission, 1226)
 	MisResultAction(SetRecord, 1226)
@@ -11406,7 +11244,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,1227)
 	MisBeginCondition(HasRecord, 1212)
 	MisBeginAction(AddMission,1227)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТЗпµєµјУОРЎЅг(2423,3186)ТЄ»ШїЄЖфД§·ЁєРµДФїіЧЎЈ")
 	
@@ -11436,7 +11274,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction(AddTrigger, 12281, TE_GETITEM, 0154, 20)
 	MisBeginAction(AddTrigger, 12282, TE_GETITEM, 0156, 20)
 	MisBeginAction(AddTrigger, 12283, TE_GETITEM, 0158, 20)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "КХјЇ¶«·ЅєЈµБЛ®КЦ»ХјЗЎў¶«·ЅєЈµБХЅ¶·Ф±»ХјЗЎў¶«·ЅєЈµБН»»чКЦ»ХјЗёч20ёц.")
 	MisNeed(MIS_NEED_ITEM, 0154, 20, 1, 20)
@@ -11486,7 +11324,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction(AddMission,1229)
 	MisBeginAction(AddTrigger, 12291, TE_GETITEM, 3436, 50)
 	MisBeginAction(AddTrigger, 12292, TE_GETITEM, 3434, 50)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "КХјЇЖьБйОдКїєЎ№ЗЎў·ПБйОдКїєЎ№Зёч50ёц.")
 	MisNeed(MIS_NEED_ITEM, 3436, 50, 1, 50)
@@ -11504,7 +11342,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultAction(TakeItem, 3436, 50 )
 	MisResultAction(TakeItem, 3434, 50 )
 
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3674,1,4)----------ФїіЧ
 	MisResultAction(ClearMission, 1229)
 	MisResultAction(SetRecord, 1229)
@@ -11528,7 +11365,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition(NoRecord,1230)
 	MisBeginCondition(HasRecord, 1229)
 	MisBeginAction(AddMission,1230)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed(MIS_NEED_DESP, "ХТ°ЧТшіЗД§·ЁК¦ПДМм(2229,2782)ґтїЄД§·ЁєР.")
 	
@@ -11546,7 +11383,6 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultCondition(HasItem, 3674, 1)
 	MisResultAction(TakeItem, 3673, 1 )
 	MisResultAction(TakeItem, 3674, 1 )
-	MisResultAction(GiveItem, 8288 , 1 , 4) 
 	MisResultAction(GiveItem, 3672,1,4)----------єЪП»ЧУ
 	MisResultAction(ClearMission,1230)
 	MisResultAction(SetRecord, 1230)
@@ -11613,7 +11449,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisNeed( MIS_NEED_KILL, 284, 50, 10, 50)
 
-	MisResultTalk( "<t>Ну Молодец,! Ну просто нет слов Малыш!")
+	MisResultTalk( "<t>Ну молодец! Ну просто нет слов Малыш!")
 	MisHelpTalk( "<t>Ищите Ангелов в точке(904,1280).")
 	MisResultCondition( HasMission, 1232)
 	MisResultCondition( NoRecord, 1232)
@@ -11762,7 +11598,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction( AddTrigger, 12362, TE_GETITEM, 2970, 1)
 	MisBeginAction( AddTrigger, 12363, TE_GETITEM, 2971, 1)
 	MisBeginAction( AddTrigger, 12364, TE_GETITEM, 2972, 1)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed( MIS_NEED_DESP, "ґУЗпПгДЗАп¶б»ШВйЅ«ЕЖ(ґє),ВйЅ«ЕЖ(ПД),ВйЅ«ЕЖ(Зп),ВйЅ«ЕЖ(¶¬)ёшБъЕ®(ґєµє3302,2501),ЗпПгѕНФЪЗпµє(2722,3137)")
 	MisNeed( MIS_NEED_ITEM, 2969, 1, 10, 1)
@@ -11818,7 +11654,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction( AddTrigger, 12376, TE_GETITEM, 2974, 1)
 	MisBeginAction( AddTrigger, 12377, TE_GETITEM, 2975, 1)
 	MisBeginAction( AddTrigger, 12378, TE_GETITEM, 2976, 1)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed( MIS_NEED_DESP, "ФЪПДµєµДОчГЕЗм(3734,2661)µДЙнЙП,ХТЖлґєПДЗп¶¬Г·АјЦсѕХ8ХЕВйЅ«ЕЖёшБъЕ®(ґєµє3302,2501)")
 	MisNeed( MIS_NEED_ITEM, 2969, 1, 10, 1)
@@ -11906,7 +11742,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition( HasMission, 1237)
 	MisBeginAction( AddMission, 1238)
 	MisBeginAction( AddTrigger, 12381, TE_GETITEM, 2965, 1)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed( MIS_NEED_DESP,"ИҐХТЙіб°іЗґуК№Ў¤ПЇ°Н(јУДЙ2256,2707)ДГИзТвФїіЧ,Іўґш»ШёшПДµєОчГЕЗм(3734,2661).")
 	MisNeed( MIS_NEED_ITEM, 2965, 1, 10, 1)
@@ -11936,7 +11772,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition( NoMission, 1239)
 	MisBeginAction( AddMission, 1239)
 	MisBeginAction( AddTrigger, 12391, TE_GETITEM, 3362, 2)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed( MIS_NEED_DESP, "ФЪґєµєµДДЗР©єьАкЙнЙПХТ2ёцєЪХдЦйёшПЇ°Н")
 	MisNeed( MIS_NEED_ITEM, 3362, 2, 10, 2)
@@ -11966,7 +11802,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition( HasRecord, 1238)
 	MisBeginAction( AddMission, 1240)
 	MisBeginAction( AddTrigger, 12401, TE_GETITEM, 2977, 1)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed( MIS_NEED_DESP, "ФЪ±щАЗµДВГµкАП°еЎ¤ФјЙЄ·т(1291,541)ДЗ°пОчГЕЗм(3734,2661)ИЎАґТ»ЖїіВДкµДємѕЖ")
 	MisNeed( MIS_NEED_ITEM, 2977, 1, 10, 1)
@@ -11999,7 +11835,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction( AddTrigger, 12412, TE_GETITEM, 0173, 3)
 	MisBeginAction( AddTrigger, 12413, TE_GETITEM, 0174, 3)
 	MisBeginAction( AddTrigger, 12414, TE_GETITEM, 3916, 70)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed( MIS_NEED_DESP, "ХТАґФјЙЄ·тРиТЄµДµАѕЯ,ДЗР©ВйЅ«ЕЖФЪПВЛ®µАµДЅ©К¬ЙнЙПУР,Т¬№ыѕЖФЪ°ЧТшіЗУРВфЕ¶")
 	
@@ -12052,7 +11888,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition( HasRecord, 1241)
 	MisBeginAction( AddMission, 1242)
 	MisBeginAction( AddChaHJ )--------ДНѕГОЄ1440
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	MisBeginBagNeed(1)
 
 	MisNeed( MIS_NEED_DESP, "Ѕ«ФјЙЄ·тёшµДємѕЖ·ЕФЪ±і°ьµЪ¶юёс,µИДНѕГГ»БЛТФєуФЩИҐ»№ёшФјЙЄ·т.")
@@ -12078,7 +11914,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition( HasRecord, 1240)
 	MisBeginAction( AddMission, 1243)
 	MisBeginAction( AddTrigger, 12431, TE_GETITEM, 2968, 1)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed( MIS_NEED_DESP, "ИҐ°пОчГЕЗмґУ±щАЗµДГЧРЄ¶ыГ·БЦ·Т(1280,478)ДЗАпИЎАґГµ№е»Ё°к")
 	MisNeed( MIS_NEED_ITEM, 2968, 1, 10, 1)
@@ -12109,7 +11945,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction( AddTrigger, 12441, TE_GETITEM, 4259, 3)
 	MisBeginAction( AddTrigger, 12442, TE_GETITEM, 1774, 3)
 	MisBeginAction( AddTrigger, 12443, TE_GETITEM, 1632, 3)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed( MIS_NEED_DESP, "ґш3ёц»рИЮ,3ёцБъБЫ,3ёцЙъГьѕ§КЇёшГЧРЄ¶ыГ·БЦ·Т")
 	MisNeed( MIS_NEED_ITEM, 4259, 3, 10, 3)
@@ -12157,7 +11993,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginCondition( HasRecord, 1243)
 	MisBeginAction( AddMission, 1245)
 	MisBeginAction( AddTrigger, 12451, TE_GETITEM, 2966, 1)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 	
 	MisNeed( MIS_NEED_DESP, "ХТРЎСтЎ¤НюБ¦(Д§Е®897,3683)ДГАґѕ«ГАµДАЇЦтёшПДµєµДОчГЕЗм(3734,2661)")
 	MisNeed( MIS_NEED_ITEM, 2966, 1, 10, 1)
@@ -12187,7 +12023,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisBeginAction( AddMission, 1246)
 	MisBeginAction( AddTrigger, 12461, TE_GETITEM, 3367,2)
 	MisBeginAction( AddTrigger, 12462, TE_GETITEM, 3380,2)
-	MisCancelAction(SystemNotice, "Этот квест не может быть отменен")
+	MisCancelAction(SystemNotice, "This quest cannot be abandoned")
 
 	MisNeed( MIS_NEED_DESP, "°пРЎСтЎ¤НюБ¦(Д§Е®897,3683)ФЪПДµєµДтбтжХЅКїєН·иїсµДтбтжИЛЙнЙПХТµЅ2ёц»ЖЙ«Л®ѕ§,2ёцВкДЗКЇЅбѕ§.<rјЗµГ»ШИҐХТОчГЕЗм(3734,2661)>")
 	MisNeed( MIS_NEED_ITEM, 3367, 2, 10, 2)
@@ -12531,7 +12367,7 @@ DefineMission(916,"Любовь в Прошлом",912)
 
 	MisResultCondition( AlwaysFailure )
 	
-	-----------ХЕКСАЛОН
+	----------------------------МъИЛБщПоЦ®Т»------------bragiЈЁfor ±±ГА)----
 	DefineMission( 6114, "Первое задание", 1000)
 
 	MisBeginTalk( "<t>Вы не смогли бы ещё помочь мне? Пожалуйста отнесите это письмо в Шайтан  (873, 3545) . Вас ждёт большая награда!")
@@ -12547,8 +12383,8 @@ DefineMission(916,"Любовь в Прошлом",912)
 	
 	MisHelpTalk( "<t>Отправляйтесь в Шайтан.")
 	MisResultCondition( AlwaysFailure )
--------------------------------------------
 
+----------------------------МъИЛБщПоЦ®Т»
 	DefineMission( 6115, "Первое задание", 1000, COMPLETE_SHOW)
 
 	MisBeginCondition( AlwaysFailure )
@@ -12787,1029 +12623,9 @@ DefineMission(916,"Любовь в Прошлом",912)
 	MisResultTalk( "<t> Великолепная работа! Мои поздравления! Я с нетерпением жду момента, когда увижу тебя снова.")
 	MisResultCondition( HasMission, 1007)
 	MisResultCondition( NoRecord, 1007)
-	MisResultCondition( CheckTeam)
+	MisResultCondition( CheckTeam )
 	MisResultAction( SetRecord, 1007)
 	MisResultAction( ClearMission, 1007)
 	MisResultAction( AddExp_6)
 
-	
 -----------------------------------МъИЛБщПоЅбКш
-
-
-
-
-
-
-
----Аргент:---
-
---- Диспетчер порта - Люфань ---- (3254,3301)
-
-
-
-DefineMission( 3001, "Зефирный Сад", 3001 )
-
-MisBeginTalk( "<t>Я начал выращивать ягоды, но для этого климата мне нужно удобрение, оно делается с Хряща большой рыбы, ты сможешь достать его из <rРыбы-меча> ")
-
---MisBeginCondition(NoRecord, 3001)
-MisBeginCondition(NoMission, 3001)
-MisBeginAction(AddMission, 3001)
-
-MisBeginAction(AddTrigger, 30011, TE_GETITEM, 1361, 10 )
- 
-MisCancelAction(ClearMission, 3001)
-
-MisNeed(MIS_NEED_DESP, "Ты можешь достать его в Аргент 3260,3350. ")
-MisNeed(MIS_NEED_ITEM, 1361, 10, 10, 10)
-
-MisResultTalk("<t>Теперь я могу вырастить настоящий сад, спасибо, попробуй <pягодку!>")
-MisHelpTalk("<t>Поспеши, растения гибнут.")
-
-MisResultCondition(HasMission, 3001 )
-MisResultCondition(HasItem, 1361, 10 )
-
-MisResultAction(TakeItem, 1361, 10 )
-
-MisResultAction(AddExp, 50000, 50000)
-MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 3845, 1, 4)
-
-MisResultBagNeed(1)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 1361 )
-TriggerAction( 1, AddNextFlag, 3001, 10, 10 )
-RegCurTrigger( 30011 )
- 
-
-
---- Диспетчер порта - Люцци --- (3620,743)
-
-
-
-DefineMission( 3002, "Сад Отверженных", 3002 )
-
-MisBeginTalk( "<t>Будь проклят тот день, когда я послушал <rЛюфаня>. Эти ягоды совсем не растут в этих краях, у меня вообще вышел другой сорт. Мне так скучно, ром есть а вот закуски нету, слушай, достань мне <rсоус ужасной рыбы> и я дам тебе одну ягоду?")
-
---MisBeginCondition(NoRecord, 3002)
-MisBeginCondition(HasMission, 3002)
-MisBeginAction(AddMission, 3002)
-
-MisBeginAction(AddTrigger, 30021, TE_GETITEM, 1342, 10 )
-
-MisCancelAction(ClearMission, 3002)
-
-MisNeed(MIS_NEED_DESP, "Принести Люцию <rСоус ужасной рыбы>. ")
-MisNeed(MIS_NEED_ITEM, 1342, 10, 10, 10)
-
-MisResultTalk("<t>Вау, этот рыбный соус такой вкусный, идеален под ром, вот, держи ягоду как и обещал друг! ")
-MisHelpTalk("<t>Сколько мне ждать друг? я бутылку уже открыл.")
-
-MisResultCondition(HasMission, 3002 )
-MisResultCondition(HasItem, 1342, 10 )
-
-MisResultAction(TakeItem, 1342, 10 )
-
-MisResultAction(AddExp, 50000, 50000)
-MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 3844, 1, 4)
-
-MisResultBagNeed(1)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 1342 )
-TriggerAction( 1, AddNextFlag, 3002, 10, 10 )
-RegCurTrigger( 30021 )
-
-
-
----Диспетчер порта - Уитни--- (3098,3531)
-
-
-
-DefineMission( 3003, "Пиратский рейд.", 3003 )
-
-MisBeginTalk( "<t>Неделю назад на нашу бухту был набег пиратов, они похители наши припасы, их знамя - Сакура XIII. Верни наши припасы и я тебя щедро отблагодарю!")
-
---MisBeginCondition(NoRecord, 3003)
-MisBeginCondition(HasMission, 3003)
-MisBeginAction(AddMission, 3003)
-MisBeginCondition(LvCheck, ">", 50 )
-
-MisBeginAction(AddTrigger, 30031, TE_GETITEM, 4238, 15 )
-
-MisCancelAction(ClearMission, 3003)
-
-MisNeed(MIS_NEED_DESP, "Найди пиратов со знаменем <rСакура XIII> найди их и принеси припасы. ")
-MisNeed(MIS_NEED_ITEM, 4238, 15, 10, 15)
-
-MisResultTalk("<t>Ты вернул припасы? не верю, они же такие страшные пираты... Ну за твою храбрость вот держи медаль!")
-MisHelpTalk("<t>Поторопись, скоро нам нечем будит и свечку зажечь.")
-
-MisResultCondition(HasMission, 3003 )
-MisResultCondition(HasItem, 4238, 15 )
-
-MisResultAction(TakeItem, 4238, 15 )
-MisResultAction(ClearMission, 3003 )
-MisResultAction(SetRecord, 3003)
-
-MisResultAction(AddExp, 100000, 100000)
-MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 8142, 1, 4)
-
-MisResultBagNeed(1)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4238 )
-TriggerAction( 1, AddNextFlag, 3003, 10, 15 )
-RegCurTrigger( 30031 )
-
-
---- Шайтан: ---
-
---- Диспетчер порта - Данний --- (136,3432)
-
-
-DefineMission( 3004, "Метаморфоза", 3004 )
-
-MisBeginTalk( "<t>Я слышал сказания о великом алхимике, которого зовут Августин, в одной книге он описал как можно используя два клевера создать новый, приносящий удачу.  ")
-
---MisBeginCondition(NoMission, 3004)
-MisBeginAction(AddMission, 3004)
-
-MisBeginAction(AddTrigger, 30041, TE_GETITEM, 3143, 1 )
-MisBeginAction(AddTrigger, 30042, TE_GETITEM, 1578, 5 )
-
-MisCancelAction(ClearMission, 3004)
-
-MisNeed(MIS_NEED_DESP, "Принеси Даннию <pклевера>. ")
-MisNeed(MIS_NEED_ITEM, 3143, 1, 10, 1)
-MisNeed(MIS_NEED_ITEM, 1578, 5, 20, 5)
-
-MisResultTalk("<t>Так ты всеже решился на это? Отлично! ")
-MisHelpTalk("<t>Все в твоих руках, обдумай хорошенько.")
-
-MisResultCondition(HasMission, 3004 )
-MisResultCondition(HasItem, 3143, 1 )
-MisResultCondition(HasItem, 1578, 5 )
-
-MisResultAction(TakeItem, 3143, 1 )
-MisResultAction(TakeItem, 1578, 5 )
-MisResultAction(ClearMission, 3004 )
-MisResultAction(SetRecord, 3004)
-
-MisResultAction(AddExp, 20000, 20000)
-MisResultAction(GiveItem, 8288 , 1 , 4) 
-	MisResultAction(GiveItem, 3336, 1, 4)
-
-MisResultBagNeed(1)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 3143)   
-TriggerAction( 1, AddNextFlag, 3004, 10, 1 )
-RegCurTrigger( 30041 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 1578)   
-TriggerAction( 1, AddNextFlag, 3004, 20, 5 )
-RegCurTrigger( 30042 )
-
-
----Диспетчер порта - Ксад --- (2529,2393)
-
-DefineMission( 3005, "Бессонница", 3005 )
-
-MisBeginTalk( "<t>Псс, парнишка, не хочешь немного подзаработать? У меня бессонница а мои лекарства закончились, принеси мне <r20 Лепестков многоцвета> и я тебе заплачу. ")
-
-MisBeginCondition(NoMission, 3005)
-MisBeginAction(AddMission, 3005)
-
-MisBeginAction(AddTrigger, 30051, TE_GETITEM, 3130, 20 )
-
-MisCancelAction(ClearMission, 3005)
-
-MisNeed(MIS_NEED_DESP, "Ксад попросил принести ему <rлепестки многоцвета>, думаю легкая задача. ")
-MisNeed(MIS_NEED_ITEM, 3130, 20, 10, 20)
-
-MisResultTalk("<t>Теперь я могу спать спокойно, держи свою награду. ")
-MisHelpTalk("<t>Время - деньги.")
-
-MisResultCondition(HasMission, 3005 )
-MisResultCondition(HasItem, 3130, 20 )
-
-MisResultAction(TakeItem, 3130, 20 )
-MisResultAction(ClearMission, 3005 )
-MisResultAction(SetRecord, 3005)
-
-MisResultAction(AddExp, 70000, 70000)
-MisResultAction(AddMoney, 30000, 30000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 3130)   
-TriggerAction( 1, AddNextFlag, 3005, 10, 20 )
-RegCurTrigger( 30051 )
-
-
---- Диспетчер порта - Дидан --- (1544,3712)
-
-
-DefineMission( 3006, "Мясник", 3006 )
-
-MisBeginTalk( "<t>Привет, меня зовут Дидан, я лутший повар в этих краях. Для моих шедевров я исползую только морепродукты, принеси мне свежее мясо, говорят у <rрыбы скелета> оно свежее. ")
-
-MisBeginCondition(NoMission, 3006)
-MisBeginAction(AddMission, 3006)
-
-MisBeginAction(AddTrigger, 30061, TE_GETITEM, 4529, 15 )
-
-MisCancelAction(ClearMission, 3006)
-
-MisNeed(MIS_NEED_DESP, "Дидан лутший повар в бухте, он хочет накормить своих друзей но для этого ему нужно <rсвежее мясо>. ")
-MisNeed(MIS_NEED_ITEM, 4529, 15, 10, 15)
-
-MisResultTalk("<t>Быстрая доставка заслуживает похвал, спасибо. ")
-MisHelpTalk("<t>Скоро рыба закончится, ты скоро? ")
-
-MisResultCondition(HasMission, 3006 )
-MisResultCondition(HasItem, 4529, 15 )
-
-MisResultAction(TakeItem, 4529, 15 )
-MisResultAction(ClearMission, 3006 )
-MisResultAction(SetRecord, 3006)
-
-MisResultAction(AddExp, 200000, 200000)
-MisResultAction(AddMoney, 15000, 15000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4529)   
-TriggerAction( 1, AddNextFlag, 3006, 10, 15 )
-RegCurTrigger( 30061 )
-
-
---- Диспетчер порта - Тиба --- (3081,2136)
-
-
-DefineMission( 3007, "Дефицит", 3007 )
-
-MisBeginTalk( "<t>Привет путник, на днях я обнаружил что мои запасы дерева иссякли, достань мне <r20 ясеневых бревен>. ")
-
-MisBeginCondition(NoMission, 3007)
-MisBeginAction(AddMission, 3007)
-MisBeginAction(AddTrigger, 30071, TE_GETITEM, 3989, 20 )
-
-MisCancelAction(ClearMission, 3007)
-
-MisNeed(MIS_NEED_DESP, "Тиба из бухты просит доставить ему ясеневых бревен, так чего я жду? ")
-MisNeed(MIS_NEED_ITEM, 3989, 20, 10, 20)
-
-MisResultTalk("<t>Теперь починка не остановится, рад что ты помог мне. ")
-MisHelpTalk("<t>Я жду свое дерево, поторопись! ")
-
-MisResultCondition(HasMission, 3007 )
-MisResultCondition(HasItem, 3989, 20 )
-
-MisResultAction(TakeItem, 3989, 20 )
-MisResultAction(ClearMission, 3007 )
-MisResultAction(SetRecord, 3007)
-
-MisResultAction(AddExp, 300000, 300000)
-MisResultAction(AddMoney, 40000, 40000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 3989)   
-TriggerAction( 1, AddNextFlag, 3007, 10, 20 )
-RegCurTrigger( 30071 )
-
-
---- Диспетчер порта - Барос --- (2024,2753)
-
-
-DefineMission( 3008, "Корабль мечты Бароса", 3008 )
-
-MisBeginTalk( "<t>Ого, настоящий пират! Я тоже хочу стать пиратом, по правде я мечтал об этом с 12 лет но корабля так и не купил. Теперь когда я заработал денег я могу сам построить его, доставишь мне <rдерево>? я щедро тебе заплачу. ")
-
-MisBeginCondition(NoMission, 3008)
-MisBeginAction(AddMission, 3008)
-
-MisBeginAction(AddTrigger, 30081, TE_GETITEM, 4543, 20 )
-
-MisCancelAction(ClearMission, 3008)
-
-MisNeed(MIS_NEED_DESP, "Барос - тайный любитель пиратского дела, он мечтает о своем судне но у него нет дерева. ")
-MisNeed(MIS_NEED_ITEM, 4543, 20, 10, 20)
-
-MisResultTalk("<t>Я все ближе к своей мечте. Спасибо за доставку! ")
-MisHelpTalk("<t>Еще не доставил? Поищи в аргенте, там много деревьев! ")
-
-MisResultCondition(HasMission, 3008 )
-MisResultCondition(HasItem, 4543, 20 )
-
-MisResultAction(TakeItem, 4543, 20 )
-MisResultAction(ClearMission, 3008 )
-MisResultAction(SetRecord, 3008)
-
-MisResultAction(AddExp, 300000, 300000)
-MisResultAction(AddMoney, 60000, 60000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4543)   
-TriggerAction( 1, AddNextFlag, 3008, 10, 20 )
-RegCurTrigger( 30081 )
-
-
---- Диспетчер порта - Сок --- (3194,3508)
-
-
-DefineMission( 3009, "Мистика", 3009 )
-
-MisBeginTalk( "<t>Я был в шайтане и в лавке я нашел интересный свиток, я целый год изучал эти символы и теперь я знаю что с помощью этого свитка я смогу видеть будущее, принеси мне <rсердца наяды> и <rгрибковые споры> для ритуала. ")
-
-MisBeginCondition(NoMission, 3009)
-MisBeginAction(AddMission, 3009)
-
-MisBeginAction(AddTrigger, 30091, TE_GETITEM, 4406, 10 )
-MisBeginAction(AddTrigger, 30092, TE_GETITEM, 4418, 5 )
-
-MisCancelAction(ClearMission, 3009)
-
-MisNeed(MIS_NEED_DESP, "В своих странствиях по Шайтану Сок нашел в одной лавке странный свиток, после долгих исследований он обнаружил что этот свиток может показывать будущее. ")
-MisNeed(MIS_NEED_ITEM, 4406, 10, 10, 10)
-MisNeed(MIS_NEED_ITEM, 4418, 5, 20, 5)
-
-MisResultTalk("<t>Я и правда видел будущее, это страшное будушее но зато у меня теперь будут деньги. ")
-MisHelpTalk("<t>Скорее, я не могу больше терпеть. ")
-
-MisResultCondition(HasMission, 3009 )
-MisResultCondition(HasItem, 4406, 10 )
-MisResultCondition(HasItem, 4418, 5 )
-
-MisResultAction(TakeItem, 4406, 10 )
-MisResultAction(TakeItem, 4418, 5 )
-MisResultAction(ClearMission, 3009 )
-MisResultAction(SetRecord, 3009)
-
-MisResultAction(AddExp, 150000, 150000)
-MisResultAction(AddMoney, 20000, 20000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4406)   
-TriggerAction( 1, AddNextFlag, 3009, 10, 10 )
-RegCurTrigger( 30091 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4418)   
-TriggerAction( 1, AddNextFlag, 3009, 20, 5 )
-RegCurTrigger( 30092 )
-
-
---- Диспетчер порта - Домору --- (3498,923)
---3010
-
-
-DefineMission( 3010, "Золотая лихорадка", 3010 )
-
-MisBeginTalk( "<t>Сейчас такое время что деньги нужно хранить в твердой валюте, золото для слабаков, я вот буду хранить свой капитал в алмазах. ")
-
-MisBeginCondition(NoMission, 3010)
-MisBeginAction(AddMission, 3010)
-
-MisBeginAction(AddTrigger, 30101, TE_GETITEM, 3360, 10 )
-
-MisCancelAction(ClearMission, 3010)
-
-MisNeed(MIS_NEED_DESP, "Похоже что у Домору началась золотая лихорадка, он хочет забить свой склад алмазами.  ")
-MisNeed(MIS_NEED_ITEM, 3360, 10, 10, 10)
-
-MisResultTalk("<t>Мой склад будет сиять как дворец, спасибо! ")
-MisHelpTalk("<t>Ну что ты медлишь? скорее дай мне алмазы. ")
-
-MisResultCondition(HasMission, 3010 )
-MisResultCondition(HasItem, 3360, 10 )
-
-MisResultAction(TakeItem, 3360, 10 )
-MisResultAction(ClearMission, 3010 )
-MisResultAction(SetRecord, 3010)
-
-MisResultAction(AddExp, 200000, 200000)
-MisResultAction(AddMoney, 150000, 150000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 3360)   
-TriggerAction( 1, AddNextFlag, 3010, 10, 10 )
-RegCurTrigger( 30101 )
-
-
-
---- Диспетчер порта - Луиджи --- (464,468)
-
-
-DefineMission( 3011, "Чистое золото", 3011 )
-
-MisBeginTalk( "<t>Чтобы получить Терранский золотой нужно провести две степени очистки, действительно это самое чистое золото в Шайтане! ")
-
-MisBeginCondition(NoMission, 3011)
-MisBeginAction(AddMission, 3011)
-
-MisBeginAction(AddTrigger, 30111, TE_GETITEM, 1783, 1 )
-
-MisCancelAction(ClearMission, 3011)
-
-MisNeed(MIS_NEED_DESP, "Луиджи предприимчивый человек, он знает цену простому золоту и чистому терранскому золоту, за один <rтерранский золотой> он готов хорошо заплатить. ")
-MisNeed(MIS_NEED_ITEM, 1783, 1, 10, 1)
-
-MisResultTalk("<t>Я знаю что достать его сложно, награда тоже достойная. ")
-MisHelpTalk("<t>Золото, золото, золото, золото. . . мне нужно только стопроцентное золото! ")
-
-MisResultCondition(HasMission, 3011 )
-MisResultCondition(HasItem, 1783, 1 )
-
-MisResultAction(TakeItem, 1783, 1 )
-MisResultAction(ClearMission, 3011 )
-MisResultAction(SetRecord, 3011)
-
-MisResultAction(AddExp, 300000, 300000)
-MisResultAction(AddMoney, 70000, 70000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 1783)   
-TriggerAction( 1, AddNextFlag, 3011, 10, 1 )
-RegCurTrigger( 30111 )
-
-
-
-
---- Диспетчер порта - Буни --- (2042,636)
-
-
-DefineMission( 3012, "Коллекционер", 3012 )
-
-MisBeginTalk( "<t>В былые времена я был отличным охоником но трофеи я подарил друзьям, теперь я хочу собрать новую коллекцию, поможешь? ")
-
-MisBeginCondition(NoMission, 3012)
-MisBeginAction(AddMission, 3012)
-
-MisBeginAction(AddTrigger, 30121, TE_GETITEM, 2663, 1 )
-MisBeginAction(AddTrigger, 30122, TE_GETITEM, 2662, 1 )
-MisBeginAction(AddTrigger, 30123, TE_GETITEM, 2661, 1 )
-MisBeginAction(AddTrigger, 30124, TE_GETITEM, 2660, 1 )
-MisBeginAction(AddTrigger, 30125, TE_GETITEM, 2658, 1 )
-MisBeginAction(AddTrigger, 30126, TE_GETITEM, 2656, 1 )
-MisBeginAction(AddTrigger, 30127, TE_GETITEM, 2654, 1 )
-
-MisCancelAction(ClearMission, 3012)
-
-MisNeed(MIS_NEED_DESP, "Буни до своего назначения в бухту Айрис был отличным охотником, на старость он хочет несколько <pтвофеев>. ")
-MisNeed(MIS_NEED_ITEM, 2663, 1, 10, 1)
-MisNeed(MIS_NEED_ITEM, 2662, 1, 20, 1)
-MisNeed(MIS_NEED_ITEM, 2661, 1, 30, 1)
-MisNeed(MIS_NEED_ITEM, 2660, 1, 40, 1)
-MisNeed(MIS_NEED_ITEM, 2658, 1, 50, 1)
-MisNeed(MIS_NEED_ITEM, 2656, 1, 60, 1)
-MisNeed(MIS_NEED_ITEM, 2654, 1, 70, 1)
-
-MisResultTalk("<t>Это хоть и вся коллекция но тоже хорошо! ")
-MisHelpTalk("<t>Неужели так трудно выполнить просьбу старика? ")
-
-MisResultCondition(HasMission, 3012 )
-MisResultCondition(HasItem, 2663, 1 )
-MisResultCondition(HasItem, 2662, 1 )
-MisResultCondition(HasItem, 2661, 1 )
-MisResultCondition(HasItem, 2660, 1 )
-MisResultCondition(HasItem, 2658, 1 )
-MisResultCondition(HasItem, 2656, 1 )
-MisResultCondition(HasItem, 2654, 1 )
-
-MisResultAction(TakeItem, 2663, 1 )
-MisResultAction(TakeItem, 2662, 1 )
-MisResultAction(TakeItem, 2661, 1 )
-MisResultAction(TakeItem, 2660, 1 )
-MisResultAction(TakeItem, 2658, 1 )
-MisResultAction(TakeItem, 2656, 1 )
-MisResultAction(TakeItem, 2654, 1 )
-MisResultAction(ClearMission, 3012 )
-MisResultAction(SetRecord, 3012)
-
-MisResultAction(AddExp, 1000000, 1000000)
-MisResultAction(AddMoney, 150000, 150000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 2663)   
-TriggerAction( 1, AddNextFlag, 3012, 10, 1 )
-RegCurTrigger( 30121 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 2662)   
-TriggerAction( 1, AddNextFlag, 3012, 20, 1 )
-RegCurTrigger( 30122 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 2661)   
-TriggerAction( 1, AddNextFlag, 3012, 30, 1 )
-RegCurTrigger( 30123 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 2660)   
-TriggerAction( 1, AddNextFlag, 3012, 40, 1 )
-RegCurTrigger( 30124 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 2658)   
-TriggerAction( 1, AddNextFlag, 3012, 50, 1 )
-RegCurTrigger( 30125 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 2656)   
-TriggerAction( 1, AddNextFlag, 3012, 60, 1 )
-RegCurTrigger( 30126 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 2654)   
-TriggerAction( 1, AddNextFlag, 3012, 70, 1 )
-RegCurTrigger( 30127 )
-
-
-
- --- Диспетчер порта - Пол --- (2372,738)
-
-
-
-DefineMission( 3013, "Чертеж робота", 3013 )
-
-MisBeginTalk( "<t>Я хороший механик и могу создать даже робота, мне нужен только чертеж и материалы!  ")
-
-MisBeginCondition(NoMission, 3013)
-MisBeginAction(AddMission, 3013)
-
-MisBeginAction(AddTrigger, 30131, TE_GETITEM, 1002, 1 )
-MisBeginAction(AddTrigger, 30132, TE_GETITEM, 3368, 10 )
-MisBeginAction(AddTrigger, 30133, TE_GETITEM, 1662, 15 )
-MisBeginAction(AddTrigger, 30134, TE_GETITEM, 4543, 30 )
-MisBeginAction(AddTrigger, 30135, TE_GETITEM, 3933, 5 )
-
-MisCancelAction(ClearMission, 3013)
-
-MisNeed(MIS_NEED_DESP, "Пол из острова Стужи хочет создать робота, для этого ему нужно: ")
-MisNeed(MIS_NEED_ITEM, 1002, 1, 10, 1)
-MisNeed(MIS_NEED_ITEM, 3368, 10, 20, 10)
-MisNeed(MIS_NEED_ITEM, 1662, 15, 30, 15)
-MisNeed(MIS_NEED_ITEM, 4543, 30, 40, 30)
-MisNeed(MIS_NEED_ITEM, 3933, 5, 50, 5)
-
-MisResultTalk("<t>Чертеж, сталь, дерево, железо и детали. Приступаю к созданию робота! ")
-MisHelpTalk("<t>Странно, я думал ты из любопытных. ")
-
-MisResultCondition(HasMission, 3013 )
-MisResultCondition(HasItem, 1002, 1 )
-MisResultCondition(HasItem, 3368, 10 )
-MisResultCondition(HasItem, 1662, 15 )
-MisResultCondition(HasItem, 4543, 30 )
-MisResultCondition(HasItem, 3933, 5 )
-
-MisResultAction(TakeItem, 1002, 1 )
-MisResultAction(TakeItem, 3368, 10 )
-MisResultAction(TakeItem, 1662, 15 )
-MisResultAction(TakeItem, 4543, 30 )
-MisResultAction(TakeItem, 3933, 5 )
-MisResultAction(ClearMission, 3013 )
-MisResultAction(SetRecord, 3013)
-
-MisResultAction(AddExp, 1200000, 1200000)
-MisResultAction(AddMoney, 100000, 100000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 1002)   
-TriggerAction( 1, AddNextFlag, 3013, 10, 1 )
-RegCurTrigger( 30131 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 3368)   
-TriggerAction( 1, AddNextFlag, 3013, 20, 10 )
-RegCurTrigger( 30132 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 1662)   
-TriggerAction( 1, AddNextFlag, 3013, 30, 15 )
-RegCurTrigger( 30133 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4543)   
-TriggerAction( 1, AddNextFlag, 3013, 40, 30 )
-RegCurTrigger( 30134 )
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 3933)   
-TriggerAction( 1, AddNextFlag, 3013, 50, 5 )
-RegCurTrigger( 30135 )
-
-
--------------
-
-
-
-
-
-
-
-
-
-
-
-
-
---3101,  "Чистка Океана Аскарон ", 3101)
-DefineMission(  3101,  "Чистка Океана Аскарон ", 3101)
-
-MisBeginTalk(  "<t>В округах Аргента обитает Водоросль, Убей 20шт и принеси Искрящийся куст 10шт и получишь Зачарованную ягоду 1шт  " )
-
-
-MisBeginCondition(NoMission, 3101)
-MisBeginCondition(LvCheck, "<", 40)
-MisBeginCondition(LvCheck, ">", 30)
-MisBeginAction(AddMission, 3101)
-MisBeginAction(AddTrigger, 31011, TE_GETITEM, 4511, 10 )
-MisCancelAction(ClearMission, 3101)
-
-MisNeed(MIS_NEED_DESP, "Чистка Океана Аскарон ")
-MisNeed(MIS_NEED_ITEM,  4511, 10, 10, 10)
-
-MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-MisPrize(MIS_PRIZE_ITEM, 3845, 1, 4)
-MisPrizeSelAll()
-
-MisResultTalk( "<t>Молодец, ты справился с Заданием, получи свою награду!  ")
-MisHelpTalk( "<t>Извини, но ты не справился с Заданием! =(  ")
-
-MisResultCondition(HasMission, 3101)
-MisResultCondition(HasItem, 4511, 10)
-MisResultAction(TakeItem, 4511, 10)
-MisResultAction(ClearMission, 3101)
-MisResultAction(SetRecord, 3101)
-MisResultAction(AddMoney, 28500, 28500)
-MisResultAction(AddExp, 55254, 55254)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4511)
-TriggerAction( 1, AddNextFlag, 3101, 10, 10)
-RegCurTrigger( 31011)
-
--------------Конец квеста
-
----------3102,  "Чистка Океана Аскарон ", 3102)
-DefineMission(  3102,  "Чистка Океана Аскарон ", 3102)
-
-MisBeginTalk(  "<t>В округах Аргента Кальмар-хамелеон травит своим ядом косяки рыб, Убей 15шт и и получишь Небесную ягоду 1шт  " )
-
-MisBeginCondition(NoMission, 3101)
-MisBeginCondition(LvCheck, "<", 45)
-MisBeginCondition(LvCheck, ">", 35)
-MisBeginAction(AddMission, 3102)
-MisBeginAction(AddTrigger, 31021, TE_KILL, 610, 15 )
-MisCancelAction(ClearMission, 3102)
-
-MisNeed(MIS_NEED_DESP, "Чистка Океана Аскарон ")
-MisNeed(MIS_NEED_KILL,  610, 15, 10, 15)
-
-MisPrize(MIS_PRIZE_ITEM, 3844, 1, 4)
-MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-MisPrizeSelAll()
-
-MisResultTalk( "<t>Молодец, ты справился с Заданием, получи свою награду!  ")
-MisHelpTalk( "<t>Извини, но ты не справился с Заданием! =(  ")
-
-MisResultCondition(HasMission, 3102)
-MisResultCondition(HasFlag, 3102, 24 )
-MisResultAction(ClearMission, 3102)
-MisResultAction(SetRecord, 3102)
-MisResultAction(AddMoney, 34000, 34000)
-MisResultAction(AddExp, 51300, 51300)
-
-InitTrigger()
-TriggerCondition( 1, IsMonster, 610)
-TriggerAction( 1, AddNextFlag, 3102, 10, 15)
-RegCurTrigger( 31021)
-
--------------Конец квеста
-
-
----------3103,  "Чистка Океана Аскарон ", 3103)
-DefineMission(  3103,  "Чистка Океана Аскарон ", 3103)
-
-MisBeginTalk(  "<t>Рыбаки с аргента жалуются что не возмоно окунутся Медузи не дают покая, Убей 30шт и и получишь Супер Усилитель стремлений 1шт  " )
-
-MisBeginCondition(NoMission, 3103)
-MisBeginCondition(LvCheck, "<", 45)
-MisBeginCondition(LvCheck, ">", 40)
-MisBeginAction(AddMission, 3103)
-MisBeginAction(AddTrigger, 31031, TE_KILL, 1012, 30 )
-MisCancelAction(ClearMission, 3103)
-
-MisNeed(MIS_NEED_DESP, "Чистка Океана Аскарон ")
-MisNeed(MIS_NEED_KILL,  1012, 30, 10, 30)
-MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-MisPrize(MIS_PRIZE_ITEM, 3095, 1, 4)
-MisPrizeSelAll()
-
-MisResultTalk( "<t>Молодец, ты справился с Заданием, получи свою награду!  ")
-MisHelpTalk( "<t>Извини, но ты не справился с Заданием! =(  ")
-
-MisResultCondition(HasMission, 3103)
-MisResultCondition(HasFlag, 3103, 39 )
-MisResultAction(ClearMission, 3103)
-MisResultAction(SetRecord, 3103)
-MisResultAction(AddMoney, 40000, 40000)
-MisResultAction(AddExp, 73350, 73350)
-
-InitTrigger()
-TriggerCondition( 1, IsMonster, 1012)
-TriggerAction( 1, AddNextFlag, 3103, 10, 30)
-RegCurTrigger( 31031)
-
--------------Конец квеста
-
----------3104,  "Чистка Океана Аскарон ", 3104)
-DefineMission(  3104,  "Чистка Океана Аскарон ", 3104)
-
-MisBeginTalk(  "<t>Сина рыбака Сарно ужалила Ядовитая Медуза, Убей 15шт и  забери у нее ядовитые покрови 10шт для изготовления противоядия и получишь Свиток благославления и Зачарованную ягоду по 1шт  " )
-
-MisBeginCondition(NoMission, 3104)
-MisBeginCondition(LvCheck, "<", 60)
-MisBeginCondition(LvCheck, ">", 45)
-MisBeginAction(AddMission, 3104)
-MisBeginAction(AddTrigger, 31041, TE_KILL, 614, 15 )
-MisCancelAction(ClearMission, 3104)
-
-MisNeed(MIS_NEED_DESP, "Чистка Океана Аскарон ")
-MisNeed(MIS_NEED_KILL,  614, 15, 10, 15)
-MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-MisPrize(MIS_PRIZE_ITEM, 3845, 1, 4)
-MisPrize(MIS_PRIZE_ITEM, 8529, 1, 4)
-MisPrizeSelAll()
-
-MisResultTalk( "<t>Молодец, ты справился с Заданием, получи свою награду!  ")
-MisHelpTalk( "<t>Извини, но ты не справился с Заданием! =(  ")
-
-MisResultCondition(HasMission, 3104)
-MisResultCondition(HasFlag, 3104, 24 )
-MisResultAction(ClearMission, 3104)
-MisResultAction(SetRecord, 3104)
-MisResultAction(AddMoney, 49000, 49000)
-MisResultAction(AddExp, 65050, 65050)
-
-InitTrigger()
-TriggerCondition( 1, IsMonster, 614)
-TriggerAction( 1, AddNextFlag, 3104, 10, 15)
-RegCurTrigger( 31041)
-
--------------Конец квеста
-
-
----------3105,  "Чистка Океана Аскарон ", 3105)
-DefineMission(  3105,  "Чистка Океана Аскарон ", 3105)
-
-MisBeginTalk(  "<t>  Спрут потопил торговое судно с едой ступай по координатам (3465/1963 – 4056/2187) и Убей 10шт и  получи 20 Медных Жетонов  " )
-
-MisBeginCondition(NoMission, 3105)
-MisBeginCondition(LvCheck, "<", 55)
-MisBeginCondition(LvCheck, ">", 45)
-MisBeginAction(AddMission, 3105)
-MisBeginAction(AddTrigger, 31051, TE_KILL, 592, 10 )
-MisCancelAction(ClearMission, 3105)
-
-MisNeed(MIS_NEED_DESP, "Чистка Океана Аскарон ")
-MisNeed(MIS_NEED_KILL,  592, 10, 10, 10)
-MisPrize(MIS_PRIZE_ITEM, 8288, 1, 4)
-MisPrize(MIS_PRIZE_ITEM, 8141, 20, 4)
-MisPrizeSelAll()
-
-MisResultTalk( "<t>Молодец, ты справился с Заданием, получи свою награду!  ")
-MisHelpTalk( "<t>Извини, но ты не справился с Заданием! =(  ")
-
-MisResultCondition(HasMission, 3105)
-MisResultCondition(HasFlag, 3105, 19 )
-MisResultAction(ClearMission, 3105)
-MisResultAction(SetRecord, 3105)
-MisResultAction(AddMoney, 55000, 55000)
-MisResultAction(AddExp, 68400, 68400)
-
-InitTrigger()
-TriggerCondition( 1, IsMonster, 592)
-TriggerAction( 1, AddNextFlag, 3105, 10, 10)
-RegCurTrigger( 31051)
-
--------------Конец квеста
-
--------------Убить кротов
-
-DefineMission(  3025,  "\211\225\232\242\252 \234\240\238\242\238\226! ", 3025)
-
-MisBeginTalk(  "<t>\223 \228\238\235\227\238 \241\242\240\224\237\241\242\226\238\226\224\235 \239\238 \236\232\240\243 \232 \241\238\225\232\240\224\235 \241\224\236\238\246\226\229\242\251, \237\238 \237\229\228\224\226\237\238 \234\240\238\242\251-\237\232\237\228\231\255 \239\238\245\232\242\232\235\232 \225\238\235\252\248\243\254 \247\224\241\242\252 \236\238\232\245 \241\238\234\240\238\226\232\249! \194\240\229\236\255 \225\229\231\239\238\249\224\228\237\238, \255 \241\242\224\240,\237\238 \242\251 \236\238\230\229\248\252 \238\242\238\236\241\242\232\242\252 \232\236 \231\224 \236\229\237\255.   " )
---\207\224\240\224\236\229\242\240 "\205\224\235\232\247\232\229 \226\251\239\238\235\237\229\237\237\238\227\238 \234\226\229\241\242\224" \237\229 \231\224\228\224\237
---MisBeginCondition(NoRecord, 3025)
---MisBeginCondition(NoMission, 3025)
---\207\224\240\224\236\229\242\240 "\210\240\229\225\243\229\236\251\233 \211\240\238\226\229\237\252 \239\229\240\241\238\237\224\230\224" \237\229 \231\224\228\224\237
-MisBeginAction(AddMission, 3025)
-MisBeginAction(AddTrigger, 30251, TE_KILL, 243, 20 )
-MisCancelAction(ClearMission, 3025)
-
-MisNeed(MIS_NEED_DESP, "\211\225\232\242\252 \234\240\238\242\238\226! ")
-MisNeed(MIS_NEED_KILL,  243, 20, 10, 20)
-
---
-
-MisResultTalk( "<t>\193\235\224\238\228\224\240\254 \242\229\225\255, \242\229\239\229\240\252 \236\238\255 \228\243\248\224 \241\239\238\234\238\233\237\224  ")
-MisHelpTalk( "<t>\204\238\184 \226\240\229\236\255 \237\224 \232\241\245\238\228\229. \207\238\242\238\240\238\239\232\241\252,\247\242\238\225\251 \255 \236\238\227 \228\238\230\232\226\224\242\252 \241\226\238\232 \227\238\228\251 \241\239\238\234\238\233\237\238  ")
-
-MisResultCondition(HasMission, 3025)
-MisResultCondition(HasFlag, 3025, 29 )
-MisResultAction(ClearMission, 3025)
-MisResultAction(SetRecord, 3025)
-MisResultAction(AddMoney, 55000, 55000)
-MisResultAction(AddExp, 7500, 7500)
-
-InitTrigger()
-TriggerCondition( 1, IsMonster, 243)
-TriggerAction( 1, AddNextFlag, 3025, 10, 20)
-RegCurTrigger( 30251)
-
--------------\202\238\237\229\246 \234\226\229\241\242\224
-
-
----------3024,  "Рецепт кекса ", 3024)
-DefineMission(  3024,  "\208\229\246\229\239\242 \234\229\234\241\224 ", 3024)
-
-MisBeginTalk(  "<t>\223 \245\238\247\243 \243\231\237\224\242\252 \237\238\226\251\229 \240\229\246\229\239\242\251, \228\235\255 \253\242\238\227\238 \236\237\229 \237\243\230\237\238 \239\240\238\225\238\226\224\242\252 \237\238\226\251\229 \225\235\254\228\224. \209\229\233\247\224\241 \241\242\224\235 \239\238\239\243\235\255\240\229\237 \227\240\255\231\237\251\233 \235\232\239\234\232\233 \234\229\234\241. \196\238\241\242\224\237\252 \236\237\229 \229\227\238, \247\242\238\225\251 \255 \237\224\243\247\232\235\224\241\252 \227\238\242\238\226\232\242\252 \242\224\234\238\233 \230\229  " )
---\207\224\240\224\236\229\242\240 "\205\224\235\232\247\232\229 \226\251\239\238\235\237\229\237\237\238\227\238 \234\226\229\241\242\224" \237\229 \231\224\228\224\237
---MisBeginCondition(NoRecord, 3024)
-MisBeginCondition(NoMission, 3024)
---\207\224\240\224\236\229\242\240 "\210\240\229\225\243\229\236\251\233 \211\240\238\226\229\237\252 \239\229\240\241\238\237\224\230\224" \237\229 \231\224\228\224\237
-MisBeginAction(AddMission, 3024)
-MisBeginAction(AddTrigger, 30241, TE_GETITEM, 4363, 1 )
-MisCancelAction(ClearMission, 3024)
-
-MisNeed(MIS_NEED_DESP, "\208\229\246\229\239\242 \234\229\234\241\224 ")
-MisNeed(MIS_NEED_ITEM,  4363, 1, 10, 1)
-
---
-
-MisResultTalk( "<t>\204\236\236,\226\234\243\241\237\255\242\232\237\224! \199\224\245\238\228\232, \243\227\238\249\243!  ")
-MisHelpTalk( "<t>\210\251 \226\241\184 \229\249\229 \237\229 \228\238\241\242\224\235 \236\237\229 \234\229\234\241? \192\245, \238\237 \237\224\225\232\240\224\229\242 \225\238\235\252\248\243\254 \239\238\239\243\235\255\240\237\238\241\242\252, \236\237\229 \241\240\238\247\237\238 \237\243\230\229\237 \240\229\246\229\239\242!  ")
-
-MisResultCondition(HasMission, 3024)
-MisResultCondition(HasItem, 4363, 1)
-MisResultAction(TakeItem, 4363, 1)
-MisResultAction(ClearMission, 3024)
-MisResultAction(SetRecord, 3024)
-MisResultAction(AddMoney, 35000, 35000)
-MisResultAction(AddExp, 7000, 7000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4363)
-TriggerAction( 1, AddNextFlag, 3024, 10, 1)
-RegCurTrigger( 30241)
-
--------------\202\238\237\229\246 \234\226\229\241\242\224
-
----------3021,  "\202\238\235\252\247\243\227\224 \232\231 \247\229\248\243\232 ", 3021)
-DefineMission(  3021,  "\202\238\235\252\247\243\227\224 \232\231 \247\229\248\243\232 ", 3021)
-
-MisBeginTalk(  "<t>\204\237\229 \237\243\230\237\224 \242\226\238\255 \239\238\236\238\249\252! \223 \228\238\235\230\237\224 \241\240\238\247\237\238 \231\224\234\238\237\247\232\242\252 \236\238\240\241\234\243\254 \234\238\235\252\247\243\227\243, \237\238 \243 \236\229\237\255, \234\224\234 \237\224\231\235\238, \231\224\234\238\237\247\232\235\224\241\252 \247\229\248\243\255! \196\238\225\243\228\252 \228\235\255 \236\229\237\255 \247\229\248\243\254 \243\230\224\241\237\238\233 \240\251\225\251 \232 \247\229\240\237\243\254 \247\229\248\243\254, \247\242\238\225\251 \255 \241\236\238\227\235\224 \231\224\234\238\237\247\232\242\252 \240\224\225\238\242\243 \226 \241\240\238\234  " )
---\207\224\240\224\236\229\242\240 "\205\224\235\232\247\232\229 \226\251\239\238\235\237\229\237\237\238\227\238 \234\226\229\241\242\224" \237\229 \231\224\228\224\237
---MisBeginCondition(NoRecord, 3021)
-MisBeginCondition(NoMission, 3021)
---\207\224\240\224\236\229\242\240 "\210\240\229\225\243\229\236\251\233 \211\240\238\226\229\237\252 \239\229\240\241\238\237\224\230\224" \237\229 \231\224\228\224\237
-MisBeginAction(AddMission, 3021)
-MisBeginAction(AddTrigger, 30211, TE_GETITEM, 4950, 10 )
-MisBeginAction(AddTrigger, 30212, TE_GETITEM, 4987, 10 )
-MisCancelAction(ClearMission, 3021)
-
-MisNeed(MIS_NEED_DESP, "\202\238\235\252\247\243\227\224 \232\231 \247\229\248\243\232 ")
-MisNeed(MIS_NEED_ITEM,  4950, 10, 10, 10)
-MisNeed(MIS_NEED_ITEM, 4987, 10, 20, 10)
-
-MisResultTalk( "<t>\209\239\224\241\232\225\238 \225\238\235\252\248\238\229! \193\235\224\227\238\228\224\240\255 \242\229\225\229 \255 \241\236\238\227\243 \231\224\234\238\237\247\232\242\252 \226\241\184 \226\238-\226\240\229\236\255  ")
-MisHelpTalk( "<t>\210\251 \243\230\229 \239\240\232\237\229\241 \236\237\229 \247\229\248\243\254? \207\238\242\238\240\238\239\232\242\252,\226\240\229\236\255 \232\228\184\242 \225\251\241\242\240\238!  ")
-
-MisResultCondition(HasMission, 3021)
-MisResultCondition(HasItem, 4950, 10)
-MisResultAction(TakeItem, 4950, 10)
-MisResultCondition(HasItem, 4987, 10)
-MisResultAction(TakeItem, 4987, 10)
-MisResultCondition(HasFlag, 3021, 29 )
-MisResultAction(ClearMission, 3021)
-MisResultAction(SetRecord, 3021)
-MisResultAction(AddMoney, 25000, 25000)
-MisResultAction(AddExp, 35000, 35000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4950)
-TriggerAction( 1, AddNextFlag, 3021, 10, 10)
-RegCurTrigger( 30211)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 4987)
-TriggerAction( 1, AddNextFlag, 3021, 20, 10)
-RegCurTrigger( 30212)
-
--------------\202\238\237\229\246 \234\226\229\241\242\224
-
-------------3026, Борьба с кровавой медузой
----------3026,  "\193\238\240\252\225\224 \241 \234\240\238\226\224\226\238\233 \236\229\228\243\231\238\233 ", 3026)
-DefineMission(  3026,  "\193\238\240\252\225\224 \241 \234\240\238\226\224\226\238\233 \236\229\228\243\231\238\233 ", 3026)
-
-MisBeginTalk(  "<t>\210\251 \231\237\224\229\248\252, \247\242\238 \232\231 \249\243\239\224\235\229\246 \234\240\238\226\224\226\251\245 \236\229\228\243\231 \239\238\235\243\247\224\254\242\241\255 \238\242\235\232\247\237\251\229 \226\229\240\229\226\234\232? \204\237\229 \237\243\230\237\238 \232\231\227\238\242\238\226\232\242\252 \239\224\240\238\247\234\243 \242\224\234\232\245.\207\238\236\238\230\229\248\252 \236\237\229 \228\238\225\251\242\252 \237\229\241\234\238\235\252\234\238 \249\243\239\224\235\229\246 ?  " )
---\207\224\240\224\236\229\242\240 "\205\224\235\232\247\232\229 \226\251\239\238\235\237\229\237\237\238\227\238 \234\226\229\241\242\224" \237\229 \231\224\228\224\237
-
-MisBeginCondition(NoMission, 3026)
---\207\224\240\224\236\229\242\240 "\210\240\229\225\243\229\236\251\233 \211\240\238\226\229\237\252 \239\229\240\241\238\237\224\230\224" \237\229 \231\224\228\224\237
-MisBeginAction(AddMission, 3026)
-MisBeginAction(AddTrigger, 30261, TE_GETITEM, 1213, 7 )
-MisCancelAction(ClearMission, 3026)
-
-MisNeed(MIS_NEED_DESP, "\193\238\240\252\225\224 \241 \234\240\238\226\224\226\238\233 \236\229\228\243\231\238\233 ")
-MisNeed(MIS_NEED_ITEM,  1213, 7, 10, 7)
-
---
-
-MisResultTalk( "<t>\209\239\224\241\232\225\238! \200\231 \253\242\238\227\238 \239\238\235\243\247\224\242\241\255 \238\242\235\232\247\237\251\229 \226\229\240\229\226\234\232!  ")
-MisHelpTalk( "<t>\221\245,\241\235\232\248\234\238\236 \236\224\235\238 \249\243\239\224\235\229\246 \228\235\255 \226\229\240\229\226\234\232  ")
-
-MisResultCondition(HasMission, 3026)
-MisResultCondition(HasItem, 1213, 7)
-MisResultAction(TakeItem, 1213, 7)
-MisResultAction(ClearMission, 3026)
-MisResultAction(SetRecord, 3026)
-MisResultAction(AddMoney, 65000, 65000)
-MisResultAction(AddExp, 8000, 8000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 1213)
-TriggerAction( 1, AddNextFlag, 3026, 10, 7)
-RegCurTrigger( 30261)
-
--------------\202\238\237\229\246 \234\226\229\241\242\224
-
---Месть русалке
----------3023,  "\204\229\241\242\252 \208\243\241\224\235\234\229 ", 3023)
-DefineMission(  3023,  "\204\229\241\242\252 \208\243\241\224\235\234\229 ", 3023)
-
-MisBeginTalk(  "<t>\199\237\224\229\248\252 \208\243\241\224\235\234\243-\239\240\232\231\240\224\234\224? \206\237\224 \243\234\240\224\235\224 \243 \236\229\237\255 \236\243\230\224! \206\234\238\235\228\238\226\224\235\224 \229\227\238 \232 \239\240\238\241\242\238 \231\224\225\240\224\235\224 \243 \236\229\237\255! \192\245, \242\238\235\252\234\238 \225\251 \255 \236\238\227\235\224 \229\233 \238\242\238\236\241\242\232\242\252...\205\238 \255 \242\224\234 \241\235\224\225\224, \236\238\230\229\242 \225\251\242\252, \242\251 \241\236\238\230\229\248\252 \239\238\236\238\247\252 \236\237\229?  " )
---\207\224\240\224\236\229\242\240 "\205\224\235\232\247\232\229 \226\251\239\238\235\237\229\237\237\238\227\238 \234\226\229\241\242\224" \237\229 \231\224\228\224\237
-
-MisBeginCondition(NoMission, 3023)
---\207\224\240\224\236\229\242\240 "\210\240\229\225\243\229\236\251\233 \211\240\238\226\229\237\252 \239\229\240\241\238\237\224\230\224" \237\229 \231\224\228\224\237
-MisBeginAction(AddMission, 3023)
-MisBeginAction(AddTrigger, 30231, TE_KILL, 620, 1 )
-MisCancelAction(ClearMission, 3023)
-
-MisNeed(MIS_NEED_DESP, "\204\229\241\242\252 \208\243\241\224\235\234\229 ")
-MisNeed(MIS_NEED_KILL,  620, 1, 10, 1)
-
---
-
-MisResultTalk( "<t>\205\224\234\238\237\229\246-\242\238 \238\237\224 \238\249\243\242\232\235\224 \242\243 \230\229 \225\238\235\252,\247\242\238 \232 \255!  ")
-MisHelpTalk( "<t>\192\245, \236\238\184 \241\229\240\228\246\229 \226\241\184 \229\249\229 \225\238\235\232\242! \207\238\234\224 \208\243\241\224\235\234\224 \230\232\226\224,\255 \237\229 \241\236\238\227\243 \230\232\242\252 \241\239\238\234\238\233\237\238!  ")
-
-MisResultCondition(HasMission, 3023)
-MisResultCondition(HasFlag, 3023, 10 )
-MisResultAction(ClearMission, 3023)
-MisResultAction(SetRecord, 3023)
-MisResultAction(AddMoney, 75000, 75000)
-MisResultAction(AddExp, 10000, 10000)
-
-InitTrigger()
-TriggerCondition( 1, IsMonster, 620)
-TriggerAction( 1, AddNextFlag, 3023, 10, 1)
-RegCurTrigger( 30231)
-
----------3020,  "Сломанный сейф", 3020)
-DefineMission(  3020,  "\209\235\238\236\224\237\237\251\233 \241\229\233\244 ", 3020)
-
-MisBeginTalk(  "<t>\211 \236\229\237\255 \234 \242\229\225\229 \239\240\238\241\252\225\224 - \237\224\228\238 \239\238\247\232\237\232\242\252 \241\229\233\244, \255 \241\235\243\247\224\233\237\238 \241\235\238\236\224\235\224 \231\224\236\238\234. \205\224\247\224\235\252\237\232\234 \236\229\237\255 \243\225\252\229\242 \229\241\235\232 \243\231\237\224\229\242. \204\224\235\251\248 \196\224\237\232\253\235\252 \227\238\226\238\240\232\235 \236\237\229 \247\242\238 \239\238\245\238\230\232\229 \236\229\245\224\237\232\231\236\251 \236\238\230\237\238 \241\228\229\235\224\242\252 \232\231 \228\229\242\224\235\229\233 \240\238\225\238\242\224.  " )
---\207\224\240\224\236\229\242\240 "\205\224\235\232\247\232\229 \226\251\239\238\235\237\229\237\237\238\227\238 \234\226\229\241\242\224" \237\229 \231\224\228\224\237
---\193\229\241\234\238\237\229\247\237\251\233 \240\229\230\232\236 \234\226\229\241\242\224
-MisBeginCondition(LvCheck, ">", 20)
-MisBeginAction(AddMission, 3020)
-MisBeginAction(AddTrigger, 30201, TE_GETITEM, 3933, 10 )
-MisCancelAction(ClearMission, 3020)
-
-MisNeed(MIS_NEED_DESP, "\209\235\238\236\224\237\237\251\233 \241\229\233\244 ")
-MisNeed(MIS_NEED_ITEM,  3933, 10, 10, 10)
-
---
-
-MisResultTalk( "<t>\206\233, \209\239\224\241\232\225\238 \242\251 \236\237\229 \238\247\229\237\252 \239\238\236\238\227, \229\241\235\232 \225\251 \237\224\247\224\235\252\237\232\234 \243\231\237\224\235, \238\237 \225\251 \236\229\237\255 \243\226\238\235\232\235  ")
-MisHelpTalk( "<t>\210\251 \229\249\229 \237\229 \237\224\248\229\235? \210\238\240\238\239\232\241\252, \224 \242\238 \236\229\237\255 \236\238\227\243\242 \243\226\238\235\232\242\252  ")
-
-MisResultCondition(HasMission, 3020)
-MisResultCondition(HasItem, 3933, 10)
-MisResultAction(TakeItem, 3933, 10)
-MisResultAction(ClearMission, 3020)
-MisResultAction(SetRecord, 3020)
-MisResultAction(AddMoney, 4000, 4000)
-MisResultAction(AddExp, 5000, 5000)
-
-InitTrigger()
-TriggerCondition( 1, IsItem, 3933)
-TriggerAction( 1, AddNextFlag, 3020, 10, 10)
-RegCurTrigger( 30201)
-
