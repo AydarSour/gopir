@@ -18,7 +18,71 @@ function new_talk002 ()
 	--AddNpcMission	(3105 )
 end
 
+function talk_fei()
+	Talk( 1, "Марго: Привет, я фея, хочешь вырастить себе питомца? Я могу тебе в этом помочь." )
+	Text( 1, "Приобрести", BuyPage )
+InitTrade()
+	--1 строчка
+	Weapon(	0222	)--Фрукт снежного дракона
+	Weapon(	276	)--огромный фрукт снежного дракона
+	Weapon(	0259	)--Начальная Медитация
+	Weapon(	0260	)--Стандартная Медитация
+	--2 строчка
+	Weapon(	0223	)--Ледяная слива
+	Weapon(	277	)--Огромная Ледяная слива
+	Weapon(	0246	)--Начальный Берсерк
+	Weapon(	0247	)--Стандартный Берсерк
+	--3 строчка
+	Weapon(	0224	)--Фишфлос с Зефира
+	Weapon(	278	)--Огромный Фишфлос с Зефира
+	Weapon(	0252	)--Начальное Восстановление
+	Weapon(	0253	)--Стандартное Восстановление
+	--4 строчка
+	Weapon(	0225	)--Серебряное манго
+	Weapon(	279	)--Огромное Серебряное манго
+	Weapon(	0243	)--Начальная Защита
+	Weapon(	0244	)--Стандартная Защита
+	--5 строчка
+	Weapon(	0226	)--Шайтанский бисквит
+	Weapon(	280	)--Большой шайтанский бисквит
+	Weapon(	0249	)--Начальная Магия
+	Weapon(	0250	)--Стандартная Магия
+	--6 строчка
+--	Weapon(	2312	)--Стандартный паек
+	Weapon(	0227	)--Питание феи
+	Weapon(	5644	)--Большое Питание Феи
+	Weapon(		)
+	--новая вкладка
+	Defence(	3918	)--Адский фрукт кислоты
+	Defence(		)
+	Defence(		)
+	Defence(		)
+	Defence(	3919	)--Адский фрукт отваги
+	Defence(		)
+	Defence(		)
+	Defence(		)
+	Defence(	3920	)--Адский фрукт силы
+	Defence(		)
+	Defence(		)
+	Defence(		)
+	Defence(	3921	)--Адский фрукт интеллекта
+	Defence(		)
+	Defence(		)
+	Defence(		)
+	Defence(	3922	)--Адский фрукт энергии
+	Defence(		)
+	Defence(		)
+	Defence(		)
+	Defence(	3924	)--Адский фрукт Ловкости
+	Defence(		)
+	Defence(		)
+	Defence(		)
+	Defence(	3925	)--Адский фрукт тайны
+	Defence(		)
+	Defence(		)
+	Defence(		)
 
+end
 
 --Админы ФС ДС СНВ ДВ
 function talk_fs ()
@@ -121,6 +185,741 @@ function xmas_0705 ()
 	
 end
 
+
+--Аппарели Ланс
+function new_talk02 ()
+	Talk( 1, "Торговец: Привет, я продаю различные костюмы, ты хочешь выглядить красиво и модно? Так и чего ты тогда ждешь?" )
+	Text( 1, "Приобрести", BuyPage )
+
+	InitTrade()
+	--Ланс
+	--[[
+--Катакомбный доспех
+	Weapon(		)
+	Weapon(	5041	)
+	Weapon(	5045	)
+	Weapon(	5049	)
+--Аппарель Корсара
+	Weapon(		)
+	Weapon(	5057	)
+	Weapon(	5061	)
+	Weapon(	5065	)
+--Королевский камзол майора
+	Weapon(	5205	)
+	Weapon(	5206	)
+	Weapon(	5207	)
+	Weapon(	5220	)
+--Кожаный Костюм2
+	Weapon(		)
+	Weapon(	5075	)
+	Weapon(	5076	)
+	Weapon(	5077	)
+--Костюм Кошмара3 Netu texturi
+	--Weapon(		)
+	--Weapon(	5081	)
+	--Weapon(	5082	)
+	--Weapon(	5083	)
+--Костюм воина4
+	Weapon(		)
+	Weapon(	5078	)
+	Weapon(	5079	)
+	Weapon(	5080	)
+--Соломенный Костюм5
+	Weapon(	5118	)
+	Weapon(	5119	)
+	Weapon(	5120	)
+	Weapon(	5121	)
+--Трехлезвийный Костюм6
+	Weapon(	5122	)
+	Weapon(	5123	)
+	Weapon(	5124	)
+	Weapon(	5125	)
+--Брутальный Костюм7
+	Weapon(		)
+	Weapon(	5127	)
+	Weapon(	5128	)
+	Weapon(	5129	)
+--Тигровый доспех8
+	Weapon(		)
+	Weapon(	5154	)
+	Weapon(	5155	)
+	Weapon(	5156	)
+--Мерцающий Костюм Цезаря9
+	Weapon(		)
+	Weapon(	5160	)
+	Weapon(	5161	)
+	Weapon(	5162	)
+--Темный Королевский доспех10
+	Weapon(		)
+	Weapon(	5221	)
+	Weapon(	5222	)
+	Weapon(	5223	)
+--Костюм Жреца11
+	Weapon(		)
+	Weapon(	5224	)
+	Weapon(	5225	)
+	Weapon(	5226	)
+--Костюм Брюса12
+	Weapon(		)
+	Weapon(	5227	)
+	Weapon(	5228	)
+	Weapon(	5229	)
+--Костюм Овна13
+	Weapon(		)
+	Weapon(	5341	)
+	Weapon(	5342	)
+	Weapon(	5343	)
+--Изменчивый доспех14
+	Weapon(		)
+	Weapon(	5157	)
+	Weapon(	5158	)
+	Weapon(	5159	)
+--Костюм Кровопийцы17
+	Weapon(	5521	)
+	Weapon(	5522	)
+	Weapon(	5523	)
+	Weapon(	5524	)
+--Карибское одеяние18
+	Weapon(	5593	)
+	Weapon(	5594	)
+	Weapon(	5595	)
+	Weapon(	5596	)
+--Костюм Марио19 NO_TARGET
+	--Weapon(	6463	)
+	--Weapon(	6464	)
+	--Weapon(	6465	)
+	--Weapon(	6466	)
+--Костюм Большого Краба20
+	Weapon(	5456	)
+	Weapon(	5457	)
+	Weapon(	5458	)
+	Weapon(	5459	)
+--Костюм Черного Драконора21
+	Weapon(		)
+	Weapon(	5488	)
+	Weapon(	5489	)
+	Weapon(	5490	)
+--Костюм Хакера22
+	Weapon(	5537	)
+	Weapon(	5538	)
+	Weapon(	5539	)
+	Weapon(	5540	)
+--Костюм Азраила23
+	Weapon(	5553	)
+	Weapon(	5554	)
+	Weapon(	5555	)
+	Weapon(	5556	)
+--Костюм Сверхчеловека24
+	Weapon(	5569	)
+	Weapon(	5570	)
+	Weapon(	5571	)
+	Weapon(	5572	)
+--Костюм Огненной Тени25
+	Weapon(	5577	)
+	Weapon(	5578	)
+	Weapon(	5579	)
+	Weapon(	5580	)
+--Костюм Тельца26
+	Weapon(	5356	)
+	Weapon(	5357	)
+	Weapon(	5358	)
+	Weapon(	5359	)
+--Костюм Близнецов27
+	Weapon(	5372	)
+	Weapon(	5373	)
+	Weapon(	5374	)
+	Weapon(	5375	)
+--Прогулочный Костюм28
+	Weapon(	5388	)
+	Weapon(	5389	)
+	Weapon(	5390	)
+	Weapon(	5391	)
+--Костюм Ночного Божества29
+	Weapon(		)
+	Weapon(	5432	)
+	Weapon(	5433	)
+	Weapon(	5444	)
+--Костюм Романтических Танцев30
+	Weapon(		)
+	Weapon(	5422	)
+	Weapon(	5423	)
+	Weapon(	5440	)
+	--]]
+--Удачливая Аппарель1
+	Defence(	5287	)
+	Defence(	5288	)
+	Defence(	5289	)
+	Defence(	5290	)
+	--[[
+--Романтическая Аппарель2
+	Defence(		)
+	Defence(	5303	)
+	Defence(	5304	)
+	Defence(	5305	)
+--Костюм Хрюшки3
+	Defence(	5315	)
+	Defence(	5316	)
+	Defence(	5317	)
+	Defence(	5318	)
+--Карибский Костюм4
+	Defence(	5593	)
+	Defence(	5594	)
+	Defence(	5595	)
+	Defence(	5596	)
+--Костюм Рилаккума5
+	Defence(	5632	)
+	Defence(	5633	)
+	Defence(	5634	)
+	Defence(	5635	)
+--Новогодний Костюм6
+	Defence(	5651	)
+	Defence(	5652	)
+	Defence(	5653	)
+	Defence(	5654	)
+--Костюм Кровавой Луны7
+	Defence(	5661	)
+	Defence(	5662	)
+	Defence(	5663	)
+	Defence(	5664	)
+--Ковбойский Костюм8
+	Defence(	5677	)
+	Defence(	5678	)
+	Defence(	5679	)
+	Defence(	5680	)
+--Костюм Странника9
+	Defence(	5726	)
+	Defence(	5727	)
+	Defence(	5728	)
+	Defence(	5729	)
+--Костюм Короля Битв10
+	Defence(	5742	)
+	Defence(	5743	)
+	Defence(	5744	)
+	Defence(	5745	)
+--Грандиозный Костюм11
+	Defence(	5898	)
+	Defence(	5899	)
+	Defence(	5900	)
+	Defence(	5901	)
+--Костюм Магической Рощи12
+	Defence(	6503	)
+	Defence(	6504	)
+	Defence(	6505	)
+	Defence(	6506	)
+--Серебрянный Костюм Императора13
+	Defence(	5905	)
+	Defence(	5906	)
+	Defence(	5907	)
+	Defence(	5908	)
+--Костюм Императора14
+	Defence(	5918	)
+	Defence(	5919	)
+	Defence(	5920	)
+	Defence(	5921	)
+--Золотой Костюм Императора15
+	Defence(	5922	)
+	Defence(	5923	)
+	Defence(	5924	)
+	Defence(	5925	)
+--Костюм Человека-Паука16
+	Defence(	5926	)
+	Defence(	5927	)
+	Defence(	5928	)
+	Defence(	5929	)
+--Зимний Костюм17
+	Defence(	5934	)
+	Defence(	5935	)
+	Defence(	5936	)
+	Defence(	5937	)
+--Заколдованный Лесной Костюм18
+	Defence(	5945	)
+	Defence(	5946	)
+	Defence(	5947	)
+	Defence(	5948	)
+--Костюм Удачливого Быка19
+	Defence(	5965	)
+	Defence(	5966	)
+	Defence(	5967	)
+	Defence(	5968	)
+--Костюм Белого Демона20
+	Defence(	5970	)
+	Defence(	5971	)
+	Defence(	5972	)
+	Defence(	5973	)
+--Костюм Храмовника21
+	Defence(		)
+	Defence(	5992	)
+	Defence(	5993	)
+	Defence(	5994	)
+--Костюм Самурая22
+	Defence(	6350	)
+	Defence(	6351	)
+	Defence(	6352	)
+	Defence(	6353	)
+--Костюм Дартмола23
+	Defence(	6386	)
+	Defence(	6387	)
+	Defence(	6388	)
+	Defence(	6389	)
+--Костюм Панка24
+	Defence(	6362	)
+	Defence(	6363	)
+	Defence(	6364	)
+	Defence(	6365	)
+--Летний Костюм25
+	Defence(		)
+	Defence(	6395	)
+	Defence(	6396	)
+	Defence(	6397	)
+--Костюм Девы26
+	Defence(	6398	)
+	Defence(	6399	)
+	Defence(	6400	)
+	Defence(	6401	)
+--Костюм Весов27
+	Defence(	6403	)
+	Defence(	6404	)
+	Defence(	6405	)
+	Defence(	6406	)
+--Костюм Скорпиона28
+	Defence(	6408	)
+	Defence(	6409	)
+	Defence(	6410	)
+	Defence(	6487	)
+--Костюм Стрельца29
+	Defence(	6412	)
+	Defence(	6413	)
+	Defence(	6414	)
+	Defence(	6415	)
+--Костюм Козерога30
+	Defence(	6417	)
+	Defence(	6418	)
+	Defence(	6419	)
+	Defence(	6420	)
+--Костюм Бакалавра1
+	Other(	5404	)
+	Other(	5405	)
+	Other(	5406	)
+	Other(	5436	)
+--Костюм Кайлинора2
+	Other(		)
+	Other(	5501	)
+	Other(	5502	)
+	Other(	5503	)
+--Лесная Аппарель3
+	Other(	5945	)
+	Other(	5946	)
+	Other(	5947	)
+	Other(	5948	)
+--Костюм Водолея4
+	Other(	6422	)
+	Other(	6423	)
+	Other(	6424	)
+	Other(	6425	)
+--Костюм Рыб5
+	Other(	6427	)
+	Other(	6428	)
+	Other(	6429	)
+	Other(	6430	)
+--Костюм Льва6
+	Other(	6432	)
+	Other(	6433	)
+	Other(	6434	)
+	Other(	6435	)
+--Костюм Железного Человека7
+	Other(	6437	)
+	Other(	6438	)
+	Other(	6439	)
+	Other(	6440	)
+--Маскарадный Костюм8
+	Other(	6442	)
+	Other(	6443	)
+	Other(	6444	)
+	Other(	6445	)
+--Костюм Рокера9
+	Other(	6447	)
+	Other(	6448	)
+	Other(	6449	)
+	Other(	6450	)
+--Костюм Рукопашника10
+	Other(	6451	)
+	Other(	6452	)
+	Other(	6453	)
+	Other(	6454	)
+--Костюм Циклопа11
+	Other(	6475	)
+	Other(	6476	)
+	Other(	6477	)
+	Other(	6478	)
+--Костюм Маршала12
+	Other(	6499	)
+	Other(	6500	)
+	Other(	6501	)
+	Other(		)
+--Костюм Выстуженного сердца
+	Other(	5013	)
+	Other(	5021	)
+	Other(	5029	)
+	Other(		)
+--Костюм Замороженного сердца
+	Other(	5017	)
+	Other(	5025	)
+	Other(	5033	)
+	Other(		)
+--Шапка невидимка
+	Other(	6488	)
+--]]
+end
+
+--Аппарели Карцыз
+function new_talk03 ()
+	Talk( 1, "Торговец: Привет, я продаю различные костюмы, ты хочешь выглядить красиво и модно? Так и чего ты тогда ждешь?" )
+	Text( 1, "Приобрести", BuyPage )
+
+	InitTrade()
+	--Карциз
+	--[[
+--Катакомбный доспех
+	Weapon(		)
+	Weapon(	5042	)
+	Weapon(	5046	)
+	Weapon(	5050	)
+--Аппарель Корсара
+	Weapon(		)
+	Weapon(	5058	)
+	Weapon(	5062	)
+	Weapon(	5066	)
+--Королевский камзол майора
+	Weapon(	5195	)
+	Weapon(	5196	)
+	Weapon(	5197	)
+	Weapon(	5218	)
+--Костюм Кровопийцы
+	Weapon(	5525	)
+	Weapon(	5526	)
+	Weapon(	5527	)
+	Weapon(	5528	)
+--Карибское одеяние
+	Weapon(	5597	)
+	Weapon(	5598	)
+	Weapon(	5599	)
+	Weapon(	5600	)
+--Костюм Марио
+	Weapon(	6467	)
+	Weapon(	6468	)
+	Weapon(	6469	)
+	Weapon(	6470	)
+--Рождественский Костюм
+	Weapon(		)
+	Weapon(	5267	)
+	Weapon(	5268	)
+	Weapon(	5269	)
+--Костюм Овна
+	Weapon(		)
+	Weapon(	5345	)
+	Weapon(	5346	)
+	Weapon(	5347	)
+--Костюм Тельца
+	Weapon(	5360	)
+	Weapon(	5361	)
+	Weapon(	5362	)
+	Weapon(	5363	)
+--Костюм Близнецов
+	Weapon(	5376	)
+	Weapon(	5377	)
+	Weapon(	5378	)
+	Weapon(	5379	)
+--Костюм Романтических танцев
+	Weapon(		)
+	Weapon(	5424	)
+	Weapon(	5425	)
+	Weapon(	5441	)
+--Костюм Ночного божества
+	Weapon(	5434	)
+	Weapon(	5435	)
+	Weapon(	5445	)
+	Weapon(		)
+--Костюм Большого Краба
+	Weapon(	5463	)
+	Weapon(	5460	)
+	Weapon(	5461	)
+	Weapon(	5462	)
+--Костюм Черного Драконора
+	Weapon(		)
+	Weapon(	5491	)
+	Weapon(	5492	)
+	Weapon(	5493	)
+--Костюм Хакера
+	Weapon(	5541	)
+	Weapon(	5542	)
+	Weapon(	5543	)
+	Weapon(	5544	)
+--Костюм Азраила
+	Weapon(	5557	)
+	Weapon(	5558	)
+	Weapon(	5559	)
+	Weapon(	5560	)
+--Костюм Сверхчеловека
+	Weapon(	5573	)
+	Weapon(	5574	)
+	Weapon(	5575	)
+	Weapon(	5576	)
+--Костюм Огненной тени NO_TARGET
+	--Weapon(	5581	)
+	--Weapon(	5582	)
+	--Weapon(	5583	)
+	--Weapon(	5584	)
+--Костюм Рилаккума
+	Weapon(	5628	)
+	Weapon(	5629	)
+	Weapon(	5630	)
+	Weapon(	5631	)
+--Новогодний Костюм
+	Weapon(	5655	)
+	Weapon(	5656	)
+	Weapon(	5657	)
+	Weapon(	5658	)
+--Костюм Кровавой луны
+	Weapon(	5665	)
+	Weapon(	5666	)
+	Weapon(	5667	)
+	Weapon(	5668	)
+--Ковбойский Костюм
+	Weapon(	5681	)
+	Weapon(	5682	)
+	Weapon(	5683	)
+	Weapon(	5684	)
+--Костюм Странника
+	Weapon(	5730	)
+	Weapon(	5731	)
+	Weapon(	5732	)
+	Weapon(	5733	)
+--Костюм Короля Битв
+	Weapon(	5746	)
+	Weapon(	5747	)
+	Weapon(	5748	)
+	Weapon(	5749	)
+--Костюм Магической Рощи
+	Weapon(	6503	)
+	Weapon(	6507	)
+	Weapon(	6505	)
+	Weapon(	6506	)
+--Серебреный Костюм Императора
+	Weapon(	5905	)
+	Weapon(	5902	)
+	Weapon(	5907	)
+	Weapon(	5908	)
+--Костюм Императора
+	Weapon(	5918	)
+	Weapon(	5903	)
+	Weapon(	5920	)
+	Weapon(	5921	)
+--Золотой Костюм Императора
+	Weapon(	5922	)
+	Weapon(	5904	)
+	Weapon(	5924	)
+	Weapon(	5925	)
+--Костюм Человека-Паука
+	Weapon(	5930	)
+	Weapon(	5931	)
+	Weapon(	5932	)
+	Weapon(	5933	)
+--Зимний Костюм
+	Weapon(		)
+	Weapon(	5938	)
+	Weapon(	5939	)
+	Weapon(	5940	)
+	--]]
+--Удачливая Аппарель
+	Defence(	5291	)
+	Defence(	5292	)
+	Defence(	5293	)
+	Defence(	5294	)
+	--[[
+--Романтическая Аппарель
+	Defence(		)
+	Defence(	5306	)
+	Defence(	5307	)
+	Defence(	5308	)
+--Костюм Хрюшки
+	Defence(	5319	)
+	Defence(	5320	)
+	Defence(	5321	)
+	Defence(	5322	)
+--Заколдованный лесной Костюм
+	Defence(	5949	)
+	Defence(	5950	)
+	Defence(	5951	)
+	Defence(	5952	)
+--Костюм Удачливого Быка
+	Defence(	5965	)
+	Defence(	5969	)
+	Defence(	5967	)
+	Defence(	5968	)
+--Костюм Самурая
+	Defence(	6354	)
+	Defence(	6355	)
+	Defence(	6356	)
+	Defence(	6357	)
+--Костюм Панка
+	Defence(		)
+	Defence(	6366	)
+	Defence(	6364	)
+	Defence(	6365	)
+-- Костюм Девы
+	Defence(	6398	)
+	Defence(	6400	)
+	Defence(	6401	)
+	Defence(	6402	)
+--Костюм Весов
+	Defence(	6403	)
+	Defence(	6407	)
+	Defence(	6405	)
+	Defence(	6406	)
+--Костюм Стрельца
+	Defence(	6412	)
+	Defence(	6416	)
+	Defence(	6414	)
+	Defence(	6415	)
+--Костюм Скорпиона
+	Defence(	6411	)
+	Defence(	6409	)
+	Defence(	6410	)
+	Defence(	6487	)
+--Костюм Козерога
+	Defence(	6417	)
+	Defence(	6421	)
+	Defence(	6419	)
+	Defence(	6420	)
+--Костюм Водолея
+	Defence(	6422	)
+	Defence(	6426	)
+	Defence(	6424	)
+	Defence(	6425	)
+--Костюм Рыб
+	Defence(	6427	)
+	Defence(	6431	)
+	Defence(	6429	)
+	Defence(	6430	)
+--Костюм Льва
+	Defence(	6432	)
+	Defence(	6436	)
+	Defence(	6434	)
+	Defence(	6435	)
+--Костюм Железного человека
+	Defence(	6437	)
+	Defence(	6441	)
+	Defence(	6439	)
+	Defence(	6440	)
+--Маскарадный Костюм
+	Defence(	6442	)
+	Defence(	6446	)
+	Defence(	6444	)
+	Defence(	6445	)
+--Костюм Дракона
+	Defence(		)
+	Defence(	5514	)
+	Defence(	5515	)
+	Defence(	5516	)
+--Костюм Черного Демона
+	Defence(	5974	)
+	Defence(	5975	)
+	Defence(	5976	)
+	Defence(	5977	)
+--Костюм Современного пещерника
+	Defence(		)
+	Defence(	5014	)
+	Defence(	5022	)
+	Defence(	5030	)
+--Костюм Дикого пещерника
+	Defence(		)
+	Defence(	5018	)
+	Defence(	5026	)
+	Defence(	5032	)
+--Костюм Кровавого Капитана
+	Defence(		)
+	Defence(	5107	)
+	Defence(	5108	)
+	Defence(	5109	)
+--Крокодиловый Костюм Сахары
+	Defence(	5110	)
+	Defence(	5111	)
+	Defence(	5112	)
+	Defence(	5113	)
+--Флотский Костюм Курильщика
+	Defence(		)
+	Defence(	5115	)
+	Defence(	5116	)
+	Defence(	5117	)
+--Новый Костюм
+--	Defence(		)
+--	Defence(	5163	)
+--	Defence(	5164	)
+--	Defence(	5165	)
+--Костюм Епископа
+	Defence(	5230	)
+	Defence(	5231	)
+	Defence(	5232	)
+	Defence(	5233	)
+--Костюм Следопыта
+	Defence(	5234	)
+	Defence(	5235	)
+	Defence(	5236	)
+	Defence(	5237	)
+--Черный Костюм
+	Defence(		)
+	Defence(	5238	)
+	Defence(	5239	)
+	Defence(	5240	)
+--Костюм Бродяги
+	Defence(	5392	)
+	Defence(	5393	)
+	Defence(	5394	)
+	Defence(	5395	)
+--Костюм Бакалавра
+	Other(	5407	)
+	Other(	5408	)
+	Other(	5409	)
+	Other(	5437	)
+--Костюм Кайлинора
+	Other(	5504	)
+	Other(	5505	)
+	Other(	5506	)
+	Other(		)
+--Лесная Аппарель
+	Other(	5949	)
+	Other(	5950	)
+	Other(	5951	)
+	Other(	5952	)
+--Костюм Дартвейдера NO_TARGET
+	--Other(	6390	)
+	--Other(	6391	)
+	--Other(	6392	)
+	--Other(	6393	)
+--Бойцовский Костюм NO_TARGET
+	--Other(	6459	)
+	--Other(	6460	)
+	--Other(	6461	)
+	--Other(	6462	)
+--Костюм Росомахи
+	Other(	6479	)
+	Other(	6480	)
+	Other(	6481	)
+	Other(	6482	)
+--Костюм Аладдина
+	Other(	6491	)
+	Other(	6492	)
+	Other(	6493	)
+	Other(	6494	)
+--Костюм Геркулеса
+	Other(		)
+	Other(	6509	)
+	Other(	6510	)
+	Other(	6511	)
+--Шапка невидимка
+	Other(	6488	)
+	--]]
+end
 
 --Аппарели Филлис
 function new_talk04 ()
@@ -875,46 +1674,7 @@ end
 function new_talk06 ()
 	Talk( 1, "Торговец: Привет, ты хочешь выглядить красиво и модно? Так и чего ты тогда ждешь?" )
 	Text( 1, "Приобрести", BuyPage )
---	Talk( 1, "Аппарели: Заебали блять, суки ебаные НПС!")
---	Text( 1, "Приобрести", BuyPage )
 
-	InitTrade()
-	Weapon(	5230	)
-	Weapon(	5231	)
-	Weapon(	5232	)
-	Weapon(	5233	)
-	Weapon(	5234	)
-	Weapon(	5235	)
-	Weapon(	5236	)
-	Weapon(	5237	)
-	Weapon(	5238	)
-	Weapon(	5239	)
-	Weapon(	5240	)
-	Weapon(		)
-	Weapon(	5392	)
-	Weapon(	5393	)
-	Weapon(	5394	)
-	Weapon(	5395	)
-	Weapon(	6390	)
-	Weapon(	6391	)
-	Weapon(	6392	)
-	Weapon(	6393	)
-	Weapon(	6459	)
-	Weapon(	6460	)
-	Weapon(	6461	)
-	Weapon(	6462	)
-	Weapon(	6479	)
-	Weapon(	6480	)
-	Weapon(	6481	)
-	Weapon(	6482	)
-	Weapon(	6491	)
-	Weapon(	6492	)
-	Weapon(	6493	)
-	Weapon(	6494	)
-	Weapon(	6509	)
-	Weapon(	6510	)
-	Weapon(	6511	)
-	Weapon(		)
 --	Weapon(	5615	)	--Покровительство Богов
 	Weapon(	5001	)	--Меч лазурного пламени
 --	Weapon(	5002	)	--Меч малинового грома
@@ -1000,6 +1760,8 @@ function new_talk06 ()
 	Weapon(	5895	)	--Веер--]]
 end
 
+
+
 --Билеты
 function new_talk07 ()
 	Talk( 1, "Кристина: Привет, я продаю билеты во все концы света. Куда хочешь отправиться?" )
@@ -1019,24 +1781,24 @@ function new_talk07 ()
 	InitTrade()
 	Weapon(	4604	)--Билет до Ледыни
 	Weapon(	4603	)--Билет до Шайтана
-	Weapon(	4602	)--Билет до Аргента
+	Weapon(	4602	)--Билет до Серебряного
 	Weapon(	3141	)--Обратный билет
---	Weapon(	3076	)--Пропуск в Весноград
---	Weapon(	3048	)--Пропуск в Громоград
---	Weapon(	0563	)--Пропуск на остров Лета
---	Weapon(	0583	)--Пропуск на остров Осени
---	Weapon(	3049	)--Следуй в порт Громограда
---	Weapon(	3050	)--Пропуск к Священной Снежной горе
---	Weapon(	3051	)--Пропуск в Андийский лес
---	Weapon(	3052	)--Пропуск в Оазис
---	Weapon(	3053	)--Пропуск к Ледяному шипу
---	Weapon(	2445	)--Билет в карибское путешествие
---	Weapon(	3054	)--Пропуск в Одинокую башню
---	Weapon(	3059	)--Билет в Одинокую башню 2
---	Weapon(	3060	)--Пропуск в Одинокую башню 3
---	Weapon(	3070	)--Пропуск в Одинокую башню 4
---	Weapon(	3071	)--Пропуск в Одинокую башню 5
---	Weapon(	3072	)--Пропуск в Одинокую башню 6
+	Weapon(	3076	)--Пропуск в Весноград
+	Weapon(	3048	)--Пропуск в Громоград
+	Weapon(	0563	)--Пропуск на остров Лета
+	Weapon(	0583	)--Пропуск на остров Осени
+	Weapon(	3049	)--Следуй в порт Громограда
+	Weapon(	3050	)--Пропуск к Священной Снежной горе
+	Weapon(	3051	)--Пропуск в Андийский лес
+	Weapon(	3052	)--Пропуск в Оазис
+	Weapon(	3053	)--Пропуск к Ледяному шипу
+	Weapon(	2445	)--Билет в карибское путешествие
+	Weapon(	3054	)--Пропуск в Одинокую башню
+	Weapon(	3059	)--Билет в Одинокую башню 2
+	Weapon(	3060	)--Пропуск в Одинокую башню 3
+	Weapon(	3070	)--Пропуск в Одинокую башню 4
+	Weapon(	3071	)--Пропуск в Одинокую башню 5
+	Weapon(	3072	)--Пропуск в Одинокую башню 6
 
 end
 
@@ -2436,6 +3198,38 @@ function r_leter1()
 Talk( 1, "Румоко: Привет! У меня есть множество различных трав. Обрати внимание!" )
 Text( 1, "Торг", BuyPage)
 	InitTrade()
+	InitTrade()
+	--1 строчка
+	Weapon(	849	)--Фрукт опыта отряда
+	Weapon(	3097	)--усилитель удачи
+	Weapon(	3096	)-- Усилитель удачи
+	Weapon(	3095	)--усилитель стремлений
+	--2 строчка
+	Weapon(	3844	)-- ня
+	Weapon(	3845	)-- зя
+	Weapon(	3846	) -- Кукла вуду
+	Weapon(	3105	)--Зелье скольжения
+	--3 строчка
+	Weapon(	3088	)--Рюкзак с 30 ячейками
+	Weapon(	3090	)--Рюкзак
+	Weapon(	3091	)--Рюкзак
+	Weapon(	3093	)--Рюкзак
+	--4 строчка
+	--для скилов
+	Weapon(	3462	) -- Магический клевер
+	Weapon(	3463	) -- Ледяной кристалл
+	Weapon(	3300	) -- Сильная магия
+	Weapon(	3301	) -- Кристальное благословение
+	--сбросы
+	Weapon(	3109	) -- сбросы статов
+	Weapon(	3110	) -- сбросы статов
+	Weapon(	3111	) -- сбросы статов
+	Weapon(	3112	) -- сбросы статов
+	Weapon(	3113	) -- сбросы статов
+	--
+	Weapon(	1024	)--Перезаряжаемая супербатарея
+	
+	
 	Other(	8292	)
 	Other(	8297	)
 	Other(	4602	)
@@ -2452,10 +3246,10 @@ Text( 1, "Торг", BuyPage)
 	Other(	1152	)	-- Трупная пуля 1 ур.
 	Other(	2673	)	-- Генератор миража 1 ур.
 	Other(	2674	)	-- Генератор иллюзий 1 ур.
-	--Other(	2675	)	-- Скрытность, 1 ур.
-	--Other(	2676	)	-- Радар, 1 ур.
+	Other(	2675	)	-- Скрытность, 1 ур.
+	Other(	2676	)	-- Радар, 1 ур.
 	Other(	2677	)	-- Сцепленные пули 1 ур.
-	--Other(	2678	)	-- Водяная мина, 1 ур.
+	Other(	2678	)	-- Водяная мина, 1 ур.
 
 end
 --Глава лагеря(рассказ о лагере) + банк
@@ -2777,10 +3571,10 @@ function new_talk10 ()
 	Other(	1152	)	-- Трупная пуля 1 ур.
 	Other(	2673	)	-- Генератор миража 1 ур.
 	Other(	2674	)	-- Генератор иллюзий 1 ур.
-	--Other(	2675	)	-- Скрытность, 1 ур.
-	--Other(	2676	)	-- Радар, 1 ур.
+	Other(	2675	)	-- Скрытность, 1 ур.
+	Other(	2676	)	-- Радар, 1 ур.
 	Other(	2677	)	-- Сцепленные пули 1 ур.
-	--Other(	2678	)	-- Водяная мина, 1 ур.
+	Other(	2678	)	-- Водяная мина, 1 ур.
 
 
 
@@ -2964,8 +3758,8 @@ function qqqwe()
 end
 
 function xmas_0706()
---	Talk( 1, "Аппарели: Заебали блять, суки ебаные НПС!")
---	Text( 1, "Приобрести", BuyPage )
+	Talk( 1, "Аппарели: Заебали блять, суки ебаные НПС!")
+	Text( 1, "Приобрести", BuyPage )
 
 	InitTrade()
 	Weapon(	6417	)
@@ -3267,8 +4061,8 @@ function xmas_0706()
 end
 
 function xmas_0707()
---	Talk( 1, "Аппарели: Заебали блять, суки ебаные НПС!")
---	Text( 1, "Приобрести", BuyPage )
+    Talk( 1, "Аппарели: Заебали блять, суки ебаные НПС!")
+	Text( 1, "Приобрести", BuyPage )
 
 	InitTrade()
 	Weapon(	5521	)
@@ -3561,8 +4355,8 @@ function xmas_0707()
 end
 
 function xmas_0708()
---	Talk( 1, "Аппарели: Заебали блять, суки ебаные НПС!")
---	Text( 1, "Приобрести", BuyPage )
+	Talk( 1, "Аппарели: Заебали блять, суки ебаные НПС!")
+	Text( 1, "Приобрести", BuyPage )
 
 	InitTrade()
 	Weapon(	5041	)
