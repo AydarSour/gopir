@@ -27,7 +27,7 @@ MSPD_RAID = 5
 
 
 
-
+StateTimeHPPOTS = {}
 AntiBot = {}
 AntiBotLine = {}
 VilkaBarb = {}
@@ -4671,6 +4671,8 @@ STATE_ILOVEDAD		= 197
 STATE_HPHMHF		= 198
 STATE_SPHMHF		= 199
 
+
+STATE_HPPOTS 		= 144
 ITEM_RELIFE			= 3143 -- ќживл€ющий клевер
 
 dmg		= 0

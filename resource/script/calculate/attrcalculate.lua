@@ -1543,6 +1543,23 @@ function Shengji_Shuxingchengzhang( role )
 		LG ( lgname , Cha_name.." "..lv ) 
 	end
 	
+	if lv == 10 then
+		AddMoney ( role , 0 , 10000 )
+	end
+	
+	if lv == 15 then
+		AddMoney ( role , 0 , 15000 )
+	end
+	
+	if lv == 20 then
+		AddMoney ( role , 0 , 20000 )
+	end
+	
+	if lv == 25 then
+		AddMoney ( role , 0 , 25000 )
+	end
+	
+	
 	BsAttrUpgrade( role ) 
 	AttrRecheck(role) 
 	hp = Mxhp_final(role) 
