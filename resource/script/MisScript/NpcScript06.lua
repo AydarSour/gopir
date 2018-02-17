@@ -1,23 +1,402 @@
 print( "╪ ?агЄ  npcscripts06.lua" )
 
---Капитан корабля - Адрэн
-function new_talk002 ()
-	Talk( 1, "Капитан корабля: Нужна работа? Ты по адресу, у нас есть работа для тебя и твоей гильдии, так что зови сюда своих друзей " )
 
-	Text( 1, "Обменять Монеты за задание ", SendExchangeXData)
-	InitExchangeX()
-	--ExchangeDataX	(	8288	,	2	,	8548	,	1	)--Неизвестное умение
-	ExchangeDataX	(	8288	,	5	,	8142	,	3	)--Жетон
-	ExchangeDataX	(	8288	,	2	,	7792	,	1	)--Часть тумана
-	ExchangeDataX	(	8288	,	25	,	7793	,	1	)--Часть волнолома
-	
-	--AddNpcMission	(112 )
-    --AddNpcMission	(3102 )
-    --AddNpcMission	(3103 )
-	--AddNpcMission	(3104 )
-	--AddNpcMission	(3105 )
+--Торговец вкусностями
+function r_leter1()
+Talk( 1, "Румоко: Привет! У меня есть множество различных трав. Обрати внимание!" )
+Text( 1, "Торг", BuyPage)
+	InitTrade()
+	InitTrade()
+	--1 строчка
+	Weapon(	849	)--Фрукт опыта отряда
+	Weapon(	3097	)--усилитель удачи
+	Weapon(	3096	)-- Усилитель удачи
+	Weapon(	3095	)--усилитель стремлений
+	--2 строчка
+	Weapon(	3844	)-- ня
+	Weapon(	3845	)-- зя
+	Weapon(	3846	) -- Кукла вуду
+	Weapon(	3105	)--Зелье скольжения
+	--3 строчка
+	Weapon(	3088	)--Рюкзак с 30 ячейками
+	Weapon(	3090	)--Рюкзак
+	Weapon(	3091	)--Рюкзак
+	Weapon(	3093	)--Рюкзак
+	--4 строчка
+	--для скилов
+	Weapon(	3462	) -- Магический клевер
+	Weapon(	3463	) -- Ледяной кристалл
+	Weapon(	3300	) -- Сильная магия
+	Weapon(	3301	) -- Кристальное благословение
+	--сбросы
+	Weapon(	3109	) -- сбросы статов
+	Weapon(	3110	) -- сбросы статов
+	Weapon(	3111	) -- сбросы статов
+	Weapon(	3112	) -- сбросы статов
+	Weapon(	3113	) -- сбросы статов
+	Other(	3090	)
+	Other(	3091	)
+	Other(	3093	)
+	Other(	3844	) -- ня
+	Other(	3845	) -- зя
+	Other(	3094	) -- Amp of strive
+	Other(	3096	) -- amp of luck
+	Other(	3095	) -- Hi Amp of strive
+	Other(	5694	)
+	Other(	5695	)
+	Other(	3097	) -- hi amp of luck
+	Other(	0849	) -- bananas
+	Other(	3846	) -- voodoo doll
+	Other(	3462	) -- magical clover
+	Other(	3463	) -- Icy Crystal
+	Other(	3300	) -- intense magic
+	Other(	3301	) -- crystalline blessing
+	Other(	3109	) -- str reset
+	Other(	3110	) -- con reset
+	Other(	3111	) -- agi reset
+	Other(	3112	) -- acc reset
+	Other(	3113	) -- spr reset
+	Other(	3105	)
+	Other(	1024	)
+	Other(	8292	)
+	Other(	8297	)
+	Other(	4602	)
+	Other(	4604	)
+	Other(	4603	)
+	Other(	3141	)
+	Other(	1139	)	-- Корабельный ускоритель, 1 ур.
+	Other(	1140	)	-- Распылитель кораблей 1 ур.
+	Other(	1141	)	-- Корабельный пробойник 1 ур.
+	Other(	1142	)	-- Таран 1 ур.
+	Other(	1143	)	-- Корабельный огнемет 1 ур.
+	Other(	1150	)	-- Ремонт корпуса 1 ур.
+	Other(	1151	)	-- Создание еды 1 ур.
+	Other(	1152	)	-- Трупная пуля 1 ур.
+	Other(	2673	)	-- Генератор миража 1 ур.
+	Other(	2674	)	-- Генератор иллюзий 1 ур.
+	Other(	2675	)	-- Скрытность, 1 ур.
+	Other(	2676	)	-- Радар, 1 ур.
+	Other(	2677	)	-- Сцепленные пули 1 ур.
+	Other(	2678	)	-- Водяная мина, 1 ур.
+
 end
 
+--Получение профессий
+function new_talk09()
+Talk( 1, "Профессор: Привет! Я учу профессиям. " )
+Text( 1, " Первая профессия ", JumpPage, 2)
+Text( 1, " Вторая профессия ", JumpPage, 3)
+Text( 1, " Купиь навыки ",  BuyPage)
+Text( 1, " Пока ",  CloseTalk)
+
+Talk( 2, "Для получения требуется 9 лвл и 1к золота! " )
+Text( 2, " Мечник ", JumpPage, 4 )
+Text( 2, " Охотник ", JumpPage, 5 )
+Text( 2, " Знахарка ", JumpPage, 6 )
+Text( 2, " Путешественник ", JumpPage, 7 )
+Text( 2, " Назад ", JumpPage, 1 )
+
+Talk( 3, "Для получения требуется 40 лвл и 50к золота! " )
+Text( 3, "Хочу быть Воителем!", JumpPage, 8 )
+Text( 3, "Хочу быть Чемпионом!", JumpPage, 9 )
+Text( 3, "Хочу быть Стрелком!", JumpPage, 10 )
+Text( 3, "Хочу быть Целителем!", JumpPage, 11 )
+Text( 3, "Хочу быть Ведьмой!", JumpPage, 12 )
+Text( 3, "Хочу быть Покорителем Морей!", JumpPage, 13 )
+Text( 3, "Пока", JumpPage, 1 )
+
+Talk( 4, "У тебя уже есть 9 лвл и 1к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 8 )
+TriggerCondition( 1, IsCategory, 1 )
+TriggerCondition( 1, PfEqual, 0 )
+TriggerCondition( 1, HasMoney, 1000,1000 )
+TriggerAction( 1, TakeMoney, 1000,1000 )
+TriggerAction( 1, SetProfession, 1 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerCondition( 2, LvCheck, ">", 8 )
+TriggerCondition( 2, IsCategory, 2 )
+TriggerCondition( 2, PfEqual, 0 )
+TriggerCondition( 2, HasMoney, 1000,1000 )
+TriggerAction( 2, TakeMoney, 1000,1000 )
+TriggerAction( 2, SetProfession, 1 )
+TriggerAction( 2, JumpPage, 14 )
+TriggerCondition( 3, LvCheck, ">", 8 )
+TriggerCondition( 3, IsCategory, 3 )
+TriggerCondition( 3, PfEqual, 0 )
+TriggerCondition( 3, HasMoney, 1000,1000 )
+TriggerAction( 3, TakeMoney, 1000,1000 )
+TriggerAction( 3, SetProfession, 1 )
+TriggerAction( 3, JumpPage, 14 )
+TriggerFailure( 3, JumpPage, 15 )
+Text( 4, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 3)
+Text( 4, "Перейти к выбору профессий ", JumpPage, 2 )
+
+Talk( 5, "У тебя уже есть 9 лвл и 1к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 8 )
+TriggerCondition( 1, IsCategory, 1 )
+TriggerCondition( 1, PfEqual, 0 )
+TriggerCondition( 1, HasMoney, 1000,1000 )
+TriggerAction( 1, TakeMoney, 1000,1000 )
+TriggerAction( 1, SetProfession, 2 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerCondition( 2, LvCheck, ">", 8 )
+TriggerCondition( 2, IsCategory, 3 )
+TriggerCondition( 2, PfEqual, 0 )
+TriggerCondition( 2, HasMoney, 1000,1000 )
+TriggerAction( 2, TakeMoney, 1000,1000 )
+TriggerAction( 2, SetProfession, 2 )
+TriggerAction( 2, JumpPage, 14 )
+TriggerFailure( 2, JumpPage, 15 )
+Text( 5, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
+Text( 5, "Перейти к выбору профессий ", JumpPage, 2 )
+
+Talk( 6, "У тебя уже есть 9 лвл и 1к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 8 )
+TriggerCondition( 1, IsCategory, 3 )
+TriggerCondition( 1, PfEqual, 0 )
+TriggerCondition( 1, HasMoney, 1000,1000 )
+TriggerAction( 1, TakeMoney, 1000,1000 )
+TriggerAction( 1, SetProfession, 5 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerCondition( 2, LvCheck, ">", 8 )
+TriggerCondition( 2, IsCategory, 4 )
+TriggerCondition( 2, PfEqual, 0 )
+TriggerCondition( 2, HasMoney, 1000,1000 )
+TriggerAction( 2, TakeMoney, 1000,1000 )
+TriggerAction( 2, SetProfession, 5 )
+TriggerAction( 2, JumpPage, 14 )
+TriggerFailure( 2, JumpPage, 15 )
+Text( 6, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
+Text( 6, "Перейти к выбору профессий ", JumpPage, 2 )
+
+Talk( 7, "У тебя уже есть 9 лвл и 1к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 8 )
+TriggerCondition( 1, IsCategory, 1 )
+TriggerCondition( 1, PfEqual, 0 )
+TriggerCondition( 1, HasMoney, 1000,1000 )
+TriggerAction( 1, TakeMoney, 1000,1000 )
+TriggerAction( 1, SetProfession, 4 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerCondition( 2, LvCheck, ">", 8 )
+TriggerCondition( 2, IsCategory, 3 )
+TriggerCondition( 2, PfEqual, 0 )
+TriggerCondition( 2, HasMoney, 1000,1000 )
+TriggerAction( 2, TakeMoney, 1000,1000 )
+TriggerAction( 2, SetProfession, 4 )
+TriggerAction( 2, JumpPage, 14 )
+TriggerCondition( 3, LvCheck, ">", 8 )
+TriggerCondition( 3, IsCategory, 4 )
+TriggerCondition( 3, PfEqual, 0 )
+TriggerCondition( 3, HasMoney, 1000,1000 )
+TriggerAction( 3, TakeMoney, 1000,1000 )
+TriggerAction( 3, SetProfession, 4 )
+TriggerAction( 3, JumpPage, 14 )
+TriggerFailure( 3, JumpPage, 15 )
+Text( 7, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 3)
+Text( 7, "Перейти к выбору профессий ", JumpPage, 2 )
+
+Talk( 8, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 39 )
+TriggerCondition( 1, IsCategory, 1 )
+TriggerCondition( 1, PfEqual, 1 )
+TriggerCondition( 1, HasMoney, 50000,50000 )
+TriggerAction( 1, TakeMoney, 50000,50000 )
+TriggerAction( 1, SetProfession, 9 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerCondition( 2, LvCheck, ">", 39 )
+TriggerCondition( 2, IsCategory, 3 )
+TriggerCondition( 2, PfEqual, 1 )
+TriggerCondition( 2, HasMoney, 50000,50000 )
+TriggerAction( 2, TakeMoney, 50000,50000 )
+TriggerAction( 2, SetProfession, 9 )
+TriggerAction( 2, JumpPage, 14 )
+TriggerFailure( 2, JumpPage, 15 )
+Text( 8, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
+Text( 8, "Перейти к выбору профессий", JumpPage, 2 )
+
+Talk( 9, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 39 )
+TriggerCondition( 1, IsCategory, 2 )
+TriggerCondition( 1, PfEqual, 1 )
+TriggerCondition( 1, HasMoney, 50000, 50000)
+TriggerAction( 1, SetProfession, 8 )
+TriggerAction( 1, TakeMoney, 50000, 50000 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerFailure( 1, JumpPage, 15 )
+Text( 9, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 1)
+Text( 9, "Перейти к выбору профессий ", JumpPage, 2 )
+
+Talk( 10, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 39 )
+TriggerCondition( 1, IsCategory, 1 )
+TriggerCondition( 1, PfEqual, 2 )
+TriggerCondition( 1, HasMoney, 50000,50000 )
+TriggerAction( 1, TakeMoney, 50000,50000 )
+TriggerAction( 1, SetProfession, 12 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerCondition( 2, LvCheck, ">", 39 )
+TriggerCondition( 2, IsCategory, 3 )
+TriggerCondition( 2, PfEqual, 2 )
+TriggerCondition( 2, HasMoney, 50000,50000 )
+TriggerAction( 2, TakeMoney, 50000,50000 )
+TriggerAction( 2, SetProfession, 12 )
+TriggerAction( 2, JumpPage, 14 )
+TriggerFailure( 2, JumpPage, 15 )
+Text( 10, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
+Text( 10, "Перейти к выбору профессий ", JumpPage, 2 )
+
+Talk( 11, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 39 )
+TriggerCondition( 1, IsCategory, 3 )
+TriggerCondition( 1, PfEqual, 5 )
+TriggerCondition( 1, HasMoney, 50000,50000 )
+TriggerAction( 1, TakeMoney, 50000,50000 )
+TriggerAction( 1, SetProfession, 13 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerCondition( 2, LvCheck, ">", 39 )
+TriggerCondition( 2, IsCategory, 4 )
+TriggerCondition( 2, PfEqual, 5 )
+TriggerCondition( 2, HasMoney, 50000,50000 )
+TriggerAction( 2, TakeMoney, 50000,50000 )
+TriggerAction( 2, SetProfession, 13 )
+TriggerAction( 2, JumpPage, 14 )
+TriggerFailure( 2, JumpPage, 15 )
+Text( 11, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
+Text( 11, "Перейти к выбору профессий ", JumpPage, 2 )
+
+Talk( 12, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 39 )
+TriggerCondition( 1, IsCategory, 3 )
+TriggerCondition( 1, PfEqual, 5 )
+TriggerCondition( 1, HasMoney, 50000,50000 )
+TriggerAction( 1, TakeMoney, 50000,50000 )
+TriggerAction( 1, SetProfession, 14 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerCondition( 2, LvCheck, ">", 39 )
+TriggerCondition( 2, IsCategory, 4 )
+TriggerCondition( 2, PfEqual, 5 )
+TriggerCondition( 2, HasMoney, 50000,50000 )
+TriggerAction( 2, TakeMoney, 50000,50000 )
+TriggerAction( 2, SetProfession, 14 )
+TriggerAction( 2, JumpPage, 14 )
+TriggerFailure( 2, JumpPage, 15 )
+Text( 12, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
+Text( 12, "Перейти к выбору профессий ", JumpPage, 2 )
+
+Talk( 13, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
+InitTrigger()
+TriggerCondition( 1, LvCheck, ">", 39 )
+TriggerCondition( 1, IsCategory, 1 )
+TriggerCondition( 1, PfEqual, 4 )
+TriggerCondition( 1, HasMoney, 50000,50000 )
+TriggerAction( 1, TakeMoney, 50000,50000 )
+TriggerAction( 1, SetProfession, 16 )
+TriggerAction( 1, JumpPage, 14 )
+TriggerCondition( 2, LvCheck, ">", 39 )
+TriggerCondition( 2, IsCategory, 3 )
+TriggerCondition( 2, PfEqual, 4 )
+TriggerCondition( 2, HasMoney, 50000,50000 )
+TriggerAction( 2, TakeMoney, 50000,50000 )
+TriggerAction( 2, SetProfession, 16 )
+TriggerAction( 2, JumpPage, 14 )
+TriggerCondition( 3, LvCheck, ">", 39 )
+TriggerCondition( 3, IsCategory, 4 )
+TriggerCondition( 3, PfEqual, 4 )
+TriggerCondition( 3, HasMoney, 50000,50000 )
+TriggerAction( 3, TakeMoney, 50000,50000 )
+TriggerAction( 3, SetProfession, 16 )
+TriggerAction( 3, JumpPage, 14 )
+TriggerFailure( 3, JumpPage, 15 )
+Text( 13, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 3)
+Text( 13, "Перейти к выбору профессий ", JumpPage, 2 )
+
+Talk( 14, "Профессор: Поздравляю тебя с получением профессии ")
+Text( 14, "Спасибо ",  CloseTalk)
+
+Talk( 15, "Профессор: Ты не подходишь под требования!")
+Text( 15, "Я понял ",  CloseTalk) 
+	
+	
+	
+	
+	InitTrade()
+	Other(	3297	)
+	Other(	3298	)
+	Other(	3164	)
+	Other(	3160	)
+	Other(	3161	)
+	Other(	3165	)
+	Other(	3238	)
+	Other(	3170	)
+	Other(	3293	)
+	Other(	3174	)
+	Other(	3163	)
+	Other(	3176	)
+	Other(	3180	)
+	Other(	3179	)
+	Other(	3177	)
+	Other(	3168	)
+	Other(	3162	)
+	Other(	3166	)
+	Other(	3167	)
+	Other(	3172	)
+	Other(	3173	)
+	Other(	3227	)
+	Other(	3231	)
+	Other(	3228	)
+	Other(	3229	)
+	Other(	3230	)
+	Other(	3232	)
+	Other(	3233	)
+	Other(	3234	)
+	Other(	3235	)
+	Other(	3236	)
+	Other(	3237	)
+	
+	Other(	3187	)
+	Other(	3188	)
+	Other(	3190	)
+	Other(	3239	)
+	Other(	3197	)
+	Other(	3193	)
+	Other(	3241	)
+	Other(	3192	)
+	Other(	3198	)
+	Other(	3202	)
+	Other(	3203	)
+	Other(	3204	)
+	
+	Other(	3206	)
+	Other(	3208	)
+	Other(	3205	)
+	Other(	3242	)
+	Other(	3210	)
+	Other(	3207	)
+	Other(	3211	)
+	Other(	3215	)
+	Other(	3212	)
+	Other(	3209	)
+	Other(	3220	)
+	Other(	3222	)
+	Other(	3219	)
+	Other(	3218	)
+	Other(	3216	)
+	Other(	3223	)
+	Other(	3217	)
+	Other(	3224	)
+
+end
+
+--Феи
 function talk_fei()
 	Talk( 1, "Марго: Привет, я фея, хочешь вырастить себе питомца? Я могу тебе в этом помочь." )
 	Text( 1, "Приобрести", BuyPage )
@@ -84,106 +463,53 @@ InitTrade()
 
 end
 
---Админы ФС ДС СНВ ДВ
-function talk_fs ()
-	Talk( 1, "Администратор : Привет! Я администратор Заброшенного города! Я могу поведать тебе об этом месте _Заброшенный город - PvP локация для новичков, в которой ты сможешь получить начальное снаряение и попробовать себя в боевых действиях. Забытый город состоит из 3х уровней. _1 уровень - существа у которых одна жизнь, они сильные, и весьма ценные. _2 уровень - существа более сильные, но они воскрешаются как обычные существа. _3 уровень - самые сильные существа и главный босс Рыцарь смерти!. _На каждом уровне находятся мини боссы и сундуки с которых выпадают очень ценные предметы. _Время работы портала - 1 час. _Время работы локации - 2 часа с момента закрытия портала. _ " )
-
+--Билеты
+function new_talk07 ()
+	Talk( 1, "Кристина: Привет, я продаю билеты во все концы света. Куда хочешь отправиться?" )
+	Text( 1, "Приобрести", BuyPage )
+--[[	InitTrigger()
+	TriggerCondition( 1, KitbagLock, 0 )
+	TriggerCondition( 1, HasLeaveBagGrid, 1 )
+	TriggerCondition( 1, HasMoney, 25000000 )--25кк
+	TriggerAction( 1, TakeMoney, 25000000 )
+	TriggerAction( 1, GiveItem, 6205, 1, 4 )--Билет на Остров Зимы
+	TriggerAction( 1, JumpPage, 2 )
+	TriggerFailure( 1, JumpPage, 3 )
+	Text( 1, "Билет на зиму за 25кк ", MultiTrigger, GetMultiTrigger(), 1)
+	Text( 1, "Передумал ", JumpPage, 1 )
+	Talk( 2, "Кристина: Желаю удачи, будь внимательнее, Зимние острова очень опасные места." )
+	Talk( 3, "Кристина: Ты пытаешься меня обмануть, это плохо, я не хочу с тобой больше разговаривать!" )--]]
+	InitTrade()
+	Weapon(	4604	)--Билет до Ледыни
+	Weapon(	4603	)--Билет до Шайтана
+	Weapon(	4602	)--Билет до Серебряного
+	Weapon(	3141	)--Обратный билет
+	Weapon(	3076	)--Пропуск в Весноград
+	Weapon(	3048	)--Пропуск в Громоград
+	Weapon(	0563	)--Пропуск на остров Лета
+	Weapon(	0583	)--Пропуск на остров Осени
+	Weapon(	3049	)--Следуй в порт Громограда
+	Weapon(	3050	)--Пропуск к Священной Снежной горе
+	Weapon(	3051	)--Пропуск в Андийский лес
+	Weapon(	3052	)--Пропуск в Оазис
+	Weapon(	3053	)--Пропуск к Ледяному шипу
+	Weapon(	2445	)--Билет в карибское путешествие
+	Weapon(	3054	)--Пропуск в Одинокую башню
+	Weapon(	3059	)--Билет в Одинокую башню 2
+	Weapon(	3060	)--Пропуск в Одинокую башню 3
+	Weapon(	3070	)--Пропуск в Одинокую башню 4
+	Weapon(	3071	)--Пропуск в Одинокую башню 5
+	Weapon(	3072	)--Пропуск в Одинокую башню 6
+	--Острова
+	Weapon(	8605	)--Пропуск в Одинокую башню 6
+	Weapon(	8606	)--Пропуск в Одинокую башню 6
+	Weapon(	8607	)--Пропуск в Одинокую башню 6
+	Weapon(	8608	)--Пропуск в Одинокую башню 6
+	Weapon(	8609	)--Пропуск в Одинокую башню 6
+	Weapon(	8610	)--Пропуск в Одинокую башню 6
+	Weapon(	8611	)--Пропуск в Одинокую башню 6
 end
-function talk_snv ()
-	Talk( 1, "Администратор : Привет! Я администратор Снежной войны! Я могу поведать тебе об этом месте. _Сняжная война  - PvP локация для игроков от 45 уровня и выше, в которой ты сможешь получить ценные предметы и боевой опыт._Каждые 5 минут на карте появляются существа, с каждой волной существа становятся сильнее и ценнее. _Снежная война открываетсяв 6,13,19,22 часа по Московскому времени. _Время работы карты - 1 час _Время работы портала 30 минут _ " )
-end
-function talk_dw ()
-	Talk( 1, "Администратор : Привет! Я администратор Мира демонов! Я могу поведать тебе об этом месте. _Мир Демонов  - PvP локация для игроков 55 уровня и выше, в которой ты сможешь добыть снаряжение на 55-65 уровни и получиь боевой опыт. _Мир демонов состоит из двух уровней: _На первом уровне находятся слабые существа, босс - Снегурка и портал на второй уровень, портал на второй уровень появляется случайно в одной из 4 точек на карте. _На втором уровне сильные существа и босс Мердель в центре подземелья, второй уровень состоит из 3х контуров, для перемещения между которыми, существуют порталы. _ Время работы портала - 40 минут. _Время работы локациии - 2 часа. _ Портал открывается каждые 3 часа _" )
-end
-function talk_ds ()
-	Talk( 1, "Администратор : Привет! Я администратор Темной топи! Я могу поведать тебе об этом месте _Темная топь - PvP локация для средних игроков, в которой ты сможешь получить начальное снаряение и попробовать себя в боевых действиях. Темная топь состоит из 3х уровней. _1 уровень - слабые существа с постоянным воскрешением. _2 уровень - существа более сильные, но они воскрешаются как обычные существа. _3 уровень - самые сильные существа и главный босс Грязедемон!. _На каждом уровне находятся мини боссы и сундуки с которых выпадают очень ценные предметы. _Время работы портала - 1 час. _Время работы локации -2 часа с момента закрытия портала. _ " )
 
-end
-
---Диспетчер острова - Уилл
-function new_talk03 ()
-	Talk( 1, "Диспетчер: Извини, я сейчас не могу говорить." )
-
-
-	
-end
-
---Мао Костюмы
-function xmas_0705 ()
-	Talk( 1, "Mao: Привет, я продаю различные костюмы, ты хочешь выглядить красиво и модно? Так и чего ты тогда ждешь? __Костюм Льва: 99 ОЧ  _Костюм Девы: 150 ОЧ  _Костюм Весов: 200 ОЧ  _Костюм Скорпиона: 250 ОЧ  _Костюм Стрельца: 3000 репутации и 250 ОЧ _Костюм Водолея: 3000 репутации и 250 ОЧ _Костюм Рыб: 5000 репутации и 250 ОЧ " )
-	
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
-    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
-    TriggerCondition( 1, HasHonorPoint,99 )     --Проверка чести на медали
-    TriggerAction( 1, TakeHonorPoint, 99 )     --Отнятие чести с медали
-    TriggerAction( 1, GiveItem, 7563, 1 , 4 )    --Выдача золота
-    TriggerFailure( 1, JumpPage, 9)
-    Text( 1, "Получить костюм Льва ", MultiTrigger, GetMultiTrigger(), 1)
-	
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
-    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
-    TriggerCondition( 1, HasHonorPoint,150 )     --Проверка чести на медали
-    TriggerAction( 1, TakeHonorPoint, 150 )     --Отнятие чести с медали
-    TriggerAction( 1, GiveItem, 7556, 1 , 4 )    --Выдача золота
-    TriggerFailure( 1, JumpPage, 9)
-    Text( 1, "Получить костюм Девы ", MultiTrigger, GetMultiTrigger(), 1)
-	
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
-    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
-    TriggerCondition( 1, HasHonorPoint,200 )     --Проверка чести на медали
-    TriggerAction( 1, TakeHonorPoint, 200 )     --Отнятие чести с медали
-    TriggerAction( 1, GiveItem, 7557, 1 , 4 )    --Выдача золота
-    TriggerFailure( 1, JumpPage, 9)
-    Text( 1, "Получить костюм Весов", MultiTrigger, GetMultiTrigger(), 1)
-	
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
-    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
-    TriggerCondition( 1, HasHonorPoint,250 )     --Проверка чести на медали
-    TriggerAction( 1, TakeHonorPoint, 250 )     --Отнятие чести с медали
-    TriggerAction( 1, GiveItem, 7558, 1 , 4 )    --Выдача золота
-    TriggerFailure( 1, JumpPage, 9)
-    Text( 1, "Получить костюм Скорпиона", MultiTrigger, GetMultiTrigger(), 1)
-	
-	InitTrigger()
-	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
-    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
-    TriggerCondition( 1, HasHonorPoint,250 )     --Проверка чести на медали
-	TriggerCondition( 1, HasCredit, 3000 )
-	TriggerAction( 1, DelRoleCredit, 3000 )     --Отнятие чести с медали
-    TriggerAction( 1, TakeHonorPoint, 250 )     --Отнятие чести с медали
-    TriggerAction( 1, GiveItem, 7559, 1 , 4 )    --Выдача золота
-    TriggerFailure( 1, JumpPage, 9)
-    Text( 1, "Получить костюм Стрельца", MultiTrigger, GetMultiTrigger(), 1)
-	
-		InitTrigger()
-	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
-    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
-    TriggerCondition( 1, HasHonorPoint,250 )     --Проверка чести на медали
-	TriggerCondition( 1, HasCredit, 3000 )
-	TriggerAction( 1, DelRoleCredit, 3000 )     --Отнятие чести с медали
-    TriggerAction( 1, TakeHonorPoint, 250 )     --Отнятие чести с медали
-    TriggerAction( 1, GiveItem, 7561, 1 , 4 )    --Выдача золота
-    TriggerFailure( 1, JumpPage, 9)
-    Text( 1, "Получить костюм Водолея", MultiTrigger, GetMultiTrigger(), 1)
-	
-		InitTrigger()
-	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
-    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
-    TriggerCondition( 1, HasHonorPoint,250 )     --Проверка чести на медали
-	TriggerCondition( 1, HasCredit, 5000 )
-	TriggerAction( 1, DelRoleCredit, 5000 )     --Отнятие чести с медали
-    TriggerAction( 1, TakeHonorPoint, 250 )     --Отнятие чести с медали
-    TriggerAction( 1, GiveItem, 7562, 1 , 4 )    --Выдача золота
-    TriggerFailure( 1, JumpPage, 9)
-    Text( 1, "Получить костюм Рыб", MultiTrigger, GetMultiTrigger(), 1)
-
-	Talk( 9, "Mao:  Извини, у тебя чего-то не хватает" )
-	
-end
 
 
 --Аппарели Ланс
@@ -1762,320 +2088,123 @@ end
 
 
 
---Билеты
-function new_talk07 ()
-	Talk( 1, "Кристина: Привет, я продаю билеты во все концы света. Куда хочешь отправиться?" )
-	Text( 1, "Приобрести", BuyPage )
---[[	InitTrigger()
-	TriggerCondition( 1, KitbagLock, 0 )
-	TriggerCondition( 1, HasLeaveBagGrid, 1 )
-	TriggerCondition( 1, HasMoney, 25000000 )--25кк
-	TriggerAction( 1, TakeMoney, 25000000 )
-	TriggerAction( 1, GiveItem, 6205, 1, 4 )--Билет на Остров Зимы
-	TriggerAction( 1, JumpPage, 2 )
-	TriggerFailure( 1, JumpPage, 3 )
-	Text( 1, "Билет на зиму за 25кк ", MultiTrigger, GetMultiTrigger(), 1)
-	Text( 1, "Передумал ", JumpPage, 1 )
-	Talk( 2, "Кристина: Желаю удачи, будь внимательнее, Зимние острова очень опасные места." )
-	Talk( 3, "Кристина: Ты пытаешься меня обмануть, это плохо, я не хочу с тобой больше разговаривать!" )--]]
-	InitTrade()
-	Weapon(	4604	)--Билет до Ледыни
-	Weapon(	4603	)--Билет до Шайтана
-	Weapon(	4602	)--Билет до Серебряного
-	Weapon(	3141	)--Обратный билет
-	Weapon(	3076	)--Пропуск в Весноград
-	Weapon(	3048	)--Пропуск в Громоград
-	Weapon(	0563	)--Пропуск на остров Лета
-	Weapon(	0583	)--Пропуск на остров Осени
-	Weapon(	3049	)--Следуй в порт Громограда
-	Weapon(	3050	)--Пропуск к Священной Снежной горе
-	Weapon(	3051	)--Пропуск в Андийский лес
-	Weapon(	3052	)--Пропуск в Оазис
-	Weapon(	3053	)--Пропуск к Ледяному шипу
-	Weapon(	2445	)--Билет в карибское путешествие
-	Weapon(	3054	)--Пропуск в Одинокую башню
-	Weapon(	3059	)--Билет в Одинокую башню 2
-	Weapon(	3060	)--Пропуск в Одинокую башню 3
-	Weapon(	3070	)--Пропуск в Одинокую башню 4
-	Weapon(	3071	)--Пропуск в Одинокую башню 5
-	Weapon(	3072	)--Пропуск в Одинокую башню 6
+--Диспетчер острова - Уилл
+function new_talk03 ()
+	Talk( 1, "Диспетчер: Извини, я сейчас не могу говорить." )
 
+
+	
+end
+
+--Мао Костюмы
+function xmas_0705 ()
+	Talk( 1, "Mao: Привет, я продаю различные костюмы, ты хочешь выглядить красиво и модно? Так и чего ты тогда ждешь? __Костюм Льва: 99 ОЧ  _Костюм Девы: 150 ОЧ  _Костюм Весов: 200 ОЧ  _Костюм Скорпиона: 250 ОЧ  _Костюм Стрельца: 3000 репутации и 250 ОЧ _Костюм Водолея: 3000 репутации и 250 ОЧ _Костюм Рыб: 5000 репутации и 250 ОЧ " )
+	
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
+    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
+    TriggerCondition( 1, HasHonorPoint,99 )     --Проверка чести на медали
+    TriggerAction( 1, TakeHonorPoint, 99 )     --Отнятие чести с медали
+    TriggerAction( 1, GiveItem, 7563, 1 , 4 )    --Выдача золота
+    TriggerFailure( 1, JumpPage, 9)
+    Text( 1, "Получить костюм Льва ", MultiTrigger, GetMultiTrigger(), 1)
+	
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
+    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
+    TriggerCondition( 1, HasHonorPoint,150 )     --Проверка чести на медали
+    TriggerAction( 1, TakeHonorPoint, 150 )     --Отнятие чести с медали
+    TriggerAction( 1, GiveItem, 7556, 1 , 4 )    --Выдача золота
+    TriggerFailure( 1, JumpPage, 9)
+    Text( 1, "Получить костюм Девы ", MultiTrigger, GetMultiTrigger(), 1)
+	
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
+    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
+    TriggerCondition( 1, HasHonorPoint,200 )     --Проверка чести на медали
+    TriggerAction( 1, TakeHonorPoint, 200 )     --Отнятие чести с медали
+    TriggerAction( 1, GiveItem, 7557, 1 , 4 )    --Выдача золота
+    TriggerFailure( 1, JumpPage, 9)
+    Text( 1, "Получить костюм Весов", MultiTrigger, GetMultiTrigger(), 1)
+	
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
+    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
+    TriggerCondition( 1, HasHonorPoint,250 )     --Проверка чести на медали
+    TriggerAction( 1, TakeHonorPoint, 250 )     --Отнятие чести с медали
+    TriggerAction( 1, GiveItem, 7558, 1 , 4 )    --Выдача золота
+    TriggerFailure( 1, JumpPage, 9)
+    Text( 1, "Получить костюм Скорпиона", MultiTrigger, GetMultiTrigger(), 1)
+	
+	InitTrigger()
+	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
+    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
+    TriggerCondition( 1, HasHonorPoint,250 )     --Проверка чести на медали
+	TriggerCondition( 1, HasCredit, 3000 )
+	TriggerAction( 1, DelRoleCredit, 3000 )     --Отнятие чести с медали
+    TriggerAction( 1, TakeHonorPoint, 250 )     --Отнятие чести с медали
+    TriggerAction( 1, GiveItem, 7559, 1 , 4 )    --Выдача золота
+    TriggerFailure( 1, JumpPage, 9)
+    Text( 1, "Получить костюм Стрельца", MultiTrigger, GetMultiTrigger(), 1)
+	
+		InitTrigger()
+	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
+    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
+    TriggerCondition( 1, HasHonorPoint,250 )     --Проверка чести на медали
+	TriggerCondition( 1, HasCredit, 3000 )
+	TriggerAction( 1, DelRoleCredit, 3000 )     --Отнятие чести с медали
+    TriggerAction( 1, TakeHonorPoint, 250 )     --Отнятие чести с медали
+    TriggerAction( 1, GiveItem, 7561, 1 , 4 )    --Выдача золота
+    TriggerFailure( 1, JumpPage, 9)
+    Text( 1, "Получить костюм Водолея", MultiTrigger, GetMultiTrigger(), 1)
+	
+		InitTrigger()
+	TriggerCondition( 1, HasItem, 3849, 1, 4 ) --Медаль отваги
+    TriggerCondition( 1, HasLeaveBagGrid, 1 )--Свободные ячейки
+    TriggerCondition( 1, HasHonorPoint,250 )     --Проверка чести на медали
+	TriggerCondition( 1, HasCredit, 5000 )
+	TriggerAction( 1, DelRoleCredit, 5000 )     --Отнятие чести с медали
+    TriggerAction( 1, TakeHonorPoint, 250 )     --Отнятие чести с медали
+    TriggerAction( 1, GiveItem, 7562, 1 , 4 )    --Выдача золота
+    TriggerFailure( 1, JumpPage, 9)
+    Text( 1, "Получить костюм Рыб", MultiTrigger, GetMultiTrigger(), 1)
+
+	Talk( 9, "Mao:  Извини, у тебя чего-то не хватает" )
+	
 end
 
 
+--Капитан корабля - Адрэн
+function new_talk002 ()
+	Talk( 1, "Капитан корабля: Нужна работа? Ты по адресу, у нас есть работа для тебя и твоей гильдии, так что зови сюда своих друзей " )
 
---Получение профессий
-function new_talk09()
-Talk( 1, "Профессор: Привет! Я учу профессиям. " )
-Text( 1, " Первая профессия ", JumpPage, 2)
-Text( 1, " Вторая профессия ", JumpPage, 3)
-Text( 1, " Пока.... ",  CloseTalk)
-
-Talk( 2, "Для получения требуется 9 лвл и 1к голда! " )
-Text( 2, " Мечник ", JumpPage, 4 )
-Text( 2, " Хантер ", JumpPage, 5 )
-Text( 2, " Знахарка ", JumpPage, 6 )
-Text( 2, " Путешественник ", JumpPage, 7 )
-Text( 2, " Назад ", JumpPage, 1 )
-
-Talk( 3, "Для получения требуется 40 лвл и 50к голда! " )
-Text( 3, "Хочу быть крузом!", JumpPage, 8 )
-Text( 3, "Хочу быть чампом!", JumpPage, 9 )
-Text( 3, "Хочу быть шарпом!", JumpPage, 10 )
-Text( 3, "Хочу быть клером!", JumpPage, 11 )
-Text( 3, "Хочу быть ведьмой!", JumpPage, 12 )
-Text( 3, "Хочу быть воем!", JumpPage, 13 )
-Text( 3, "Не Хочу никем быть...", JumpPage, 1 )
-
-Talk( 4, "У тебя уже есть 9 лвл и 1к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 8 )
-TriggerCondition( 1, IsCategory, 1 )
-TriggerCondition( 1, PfEqual, 0 )
-TriggerCondition( 1, HasMoney, 1000,1000 )
-TriggerAction( 1, TakeMoney, 1000,1000 )
-TriggerAction( 1, SetProfession, 1 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerCondition( 2, LvCheck, ">", 8 )
-TriggerCondition( 2, IsCategory, 2 )
-TriggerCondition( 2, PfEqual, 0 )
-TriggerCondition( 2, HasMoney, 1000,1000 )
-TriggerAction( 2, TakeMoney, 1000,1000 )
-TriggerAction( 2, SetProfession, 1 )
-TriggerAction( 2, JumpPage, 14 )
-TriggerCondition( 3, LvCheck, ">", 8 )
-TriggerCondition( 3, IsCategory, 3 )
-TriggerCondition( 3, PfEqual, 0 )
-TriggerCondition( 3, HasMoney, 1000,1000 )
-TriggerAction( 3, TakeMoney, 1000,1000 )
-TriggerAction( 3, SetProfession, 1 )
-TriggerAction( 3, JumpPage, 14 )
-TriggerFailure( 3, JumpPage, 15 )
-Text( 4, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 3)
-Text( 4, "Перейти к выбору проф ", JumpPage, 2 )
-
-Talk( 5, "У тебя уже есть 9 лвл и 1к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 8 )
-TriggerCondition( 1, IsCategory, 1 )
-TriggerCondition( 1, PfEqual, 0 )
-TriggerCondition( 1, HasMoney, 1000,1000 )
-TriggerAction( 1, TakeMoney, 1000,1000 )
-TriggerAction( 1, SetProfession, 2 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerCondition( 2, LvCheck, ">", 8 )
-TriggerCondition( 2, IsCategory, 3 )
-TriggerCondition( 2, PfEqual, 0 )
-TriggerCondition( 2, HasMoney, 1000,1000 )
-TriggerAction( 2, TakeMoney, 1000,1000 )
-TriggerAction( 2, SetProfession, 2 )
-TriggerAction( 2, JumpPage, 14 )
-TriggerFailure( 2, JumpPage, 15 )
-Text( 5, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
-Text( 5, "Перейти к выбору проф ", JumpPage, 2 )
-
-Talk( 6, "У тебя уже есть 9 лвл и 1к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 8 )
-TriggerCondition( 1, IsCategory, 3 )
-TriggerCondition( 1, PfEqual, 0 )
-TriggerCondition( 1, HasMoney, 1000,1000 )
-TriggerAction( 1, TakeMoney, 1000,1000 )
-TriggerAction( 1, SetProfession, 5 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerCondition( 2, LvCheck, ">", 8 )
-TriggerCondition( 2, IsCategory, 4 )
-TriggerCondition( 2, PfEqual, 0 )
-TriggerCondition( 2, HasMoney, 1000,1000 )
-TriggerAction( 2, TakeMoney, 1000,1000 )
-TriggerAction( 2, SetProfession, 5 )
-TriggerAction( 2, JumpPage, 14 )
-TriggerFailure( 2, JumpPage, 15 )
-Text( 6, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
-Text( 6, "Перейти к выбору проф ", JumpPage, 2 )
-
-Talk( 7, "У тебя уже есть 9 лвл и 1к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 8 )
-TriggerCondition( 1, IsCategory, 1 )
-TriggerCondition( 1, PfEqual, 0 )
-TriggerCondition( 1, HasMoney, 1000,1000 )
-TriggerAction( 1, TakeMoney, 1000,1000 )
-TriggerAction( 1, SetProfession, 4 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerCondition( 2, LvCheck, ">", 8 )
-TriggerCondition( 2, IsCategory, 3 )
-TriggerCondition( 2, PfEqual, 0 )
-TriggerCondition( 2, HasMoney, 1000,1000 )
-TriggerAction( 2, TakeMoney, 1000,1000 )
-TriggerAction( 2, SetProfession, 4 )
-TriggerAction( 2, JumpPage, 14 )
-TriggerCondition( 3, LvCheck, ">", 8 )
-TriggerCondition( 3, IsCategory, 4 )
-TriggerCondition( 3, PfEqual, 0 )
-TriggerCondition( 3, HasMoney, 1000,1000 )
-TriggerAction( 3, TakeMoney, 1000,1000 )
-TriggerAction( 3, SetProfession, 4 )
-TriggerAction( 3, JumpPage, 14 )
-TriggerFailure( 3, JumpPage, 15 )
-Text( 7, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 3)
-Text( 7, "Перейти к выбору проф ", JumpPage, 2 )
-
-Talk( 8, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 39 )
-TriggerCondition( 1, IsCategory, 1 )
-TriggerCondition( 1, PfEqual, 1 )
-TriggerCondition( 1, HasMoney, 50000,50000 )
-TriggerAction( 1, TakeMoney, 50000,50000 )
-TriggerAction( 1, SetProfession, 9 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerCondition( 2, LvCheck, ">", 39 )
-TriggerCondition( 2, IsCategory, 3 )
-TriggerCondition( 2, PfEqual, 1 )
-TriggerCondition( 2, HasMoney, 50000,50000 )
-TriggerAction( 2, TakeMoney, 50000,50000 )
-TriggerAction( 2, SetProfession, 9 )
-TriggerAction( 2, JumpPage, 14 )
-TriggerFailure( 2, JumpPage, 15 )
-Text( 8, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
-Text( 8, "Перейти к выбору проф", JumpPage, 2 )
-
-Talk( 9, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 39 )
-TriggerCondition( 1, IsCategory, 2 )
-TriggerCondition( 1, PfEqual, 1 )
-TriggerCondition( 1, HasMoney, 50000, 50000)
-TriggerAction( 1, SetProfession, 8 )
-TriggerAction( 1, TakeMoney, 50000, 50000 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerFailure( 1, JumpPage, 15 )
-Text( 9, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 1)
-Text( 9, "Перейти к выбору проф ", JumpPage, 2 )
-
-Talk( 10, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 39 )
-TriggerCondition( 1, IsCategory, 1 )
-TriggerCondition( 1, PfEqual, 2 )
-TriggerCondition( 1, HasMoney, 50000,50000 )
-TriggerAction( 1, TakeMoney, 50000,50000 )
-TriggerAction( 1, SetProfession, 12 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerCondition( 2, LvCheck, ">", 39 )
-TriggerCondition( 2, IsCategory, 3 )
-TriggerCondition( 2, PfEqual, 2 )
-TriggerCondition( 2, HasMoney, 50000,50000 )
-TriggerAction( 2, TakeMoney, 50000,50000 )
-TriggerAction( 2, SetProfession, 12 )
-TriggerAction( 2, JumpPage, 14 )
-TriggerFailure( 2, JumpPage, 15 )
-Text( 10, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
-Text( 10, "Перейти к выбору проф ", JumpPage, 2 )
-
-Talk( 11, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 39 )
-TriggerCondition( 1, IsCategory, 3 )
-TriggerCondition( 1, PfEqual, 5 )
-TriggerCondition( 1, HasMoney, 50000,50000 )
-TriggerAction( 1, TakeMoney, 50000,50000 )
-TriggerAction( 1, SetProfession, 13 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerCondition( 2, LvCheck, ">", 39 )
-TriggerCondition( 2, IsCategory, 4 )
-TriggerCondition( 2, PfEqual, 5 )
-TriggerCondition( 2, HasMoney, 50000,50000 )
-TriggerAction( 2, TakeMoney, 50000,50000 )
-TriggerAction( 2, SetProfession, 13 )
-TriggerAction( 2, JumpPage, 14 )
-TriggerFailure( 2, JumpPage, 15 )
-Text( 11, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
-Text( 11, "Перейти к выбору проф ", JumpPage, 2 )
-
-Talk( 12, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 39 )
-TriggerCondition( 1, IsCategory, 3 )
-TriggerCondition( 1, PfEqual, 5 )
-TriggerCondition( 1, HasMoney, 50000,50000 )
-TriggerAction( 1, TakeMoney, 50000,50000 )
-TriggerAction( 1, SetProfession, 14 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerCondition( 2, LvCheck, ">", 39 )
-TriggerCondition( 2, IsCategory, 4 )
-TriggerCondition( 2, PfEqual, 5 )
-TriggerCondition( 2, HasMoney, 50000,50000 )
-TriggerAction( 2, TakeMoney, 50000,50000 )
-TriggerAction( 2, SetProfession, 14 )
-TriggerAction( 2, JumpPage, 14 )
-TriggerFailure( 2, JumpPage, 15 )
-Text( 12, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 2)
-Text( 12, "Перейти к выбору проф ", JumpPage, 2 )
-
-Talk( 13, "У тебя уже есть 40 лвл и 50к золота? тогда выбирай. " )
-InitTrigger()
-TriggerCondition( 1, LvCheck, ">", 39 )
-TriggerCondition( 1, IsCategory, 1 )
-TriggerCondition( 1, PfEqual, 4 )
-TriggerCondition( 1, HasMoney, 50000,50000 )
-TriggerAction( 1, TakeMoney, 50000,50000 )
-TriggerAction( 1, SetProfession, 16 )
-TriggerAction( 1, JumpPage, 14 )
-TriggerCondition( 2, LvCheck, ">", 39 )
-TriggerCondition( 2, IsCategory, 3 )
-TriggerCondition( 2, PfEqual, 4 )
-TriggerCondition( 2, HasMoney, 50000,50000 )
-TriggerAction( 2, TakeMoney, 50000,50000 )
-TriggerAction( 2, SetProfession, 16 )
-TriggerAction( 2, JumpPage, 14 )
-TriggerCondition( 3, LvCheck, ">", 39 )
-TriggerCondition( 3, IsCategory, 4 )
-TriggerCondition( 3, PfEqual, 4 )
-TriggerCondition( 3, HasMoney, 50000,50000 )
-TriggerAction( 3, TakeMoney, 50000,50000 )
-TriggerAction( 3, SetProfession, 16 )
-TriggerAction( 3, JumpPage, 14 )
-TriggerFailure( 3, JumpPage, 15 )
-Text( 13, "Точно хочу ", MultiTrigger, GetMultiTrigger(), 3)
-Text( 13, "Перейти к выбору проф ", JumpPage, 2 )
-
-Talk( 14, "Профессор: Поздравляю тебя с получением профессии ")
-Text( 14, "Спасибо ",  CloseTalk)
-
-Talk( 15, "Профессор: Ты не подходишь под требования!")
-Text( 15, "Я понял ",  CloseTalk) 
+	Text( 1, "Обменять Монеты за задание ", SendExchangeXData)
+	InitExchangeX()
+	--ExchangeDataX	(	8288	,	2	,	8548	,	1	)--Неизвестное умение
+	ExchangeDataX	(	8288	,	5	,	8142	,	3	)--Жетон
+	ExchangeDataX	(	8288	,	2	,	7792	,	1	)--Часть тумана
+	ExchangeDataX	(	8288	,	25	,	7793	,	1	)--Часть волнолома
 	
-	--Other(	3089	)
-	Other(	3090	)
-	Other(	3091	)
-	--Other(	3092	)
-	Other(	3093	)
-	--Other(	1024	) -- Super Rechargable battery
-	Other(	3844	) -- ня
-	Other(	3845	) -- зя
-	Other(	3094	) -- Amp of strive
+	--AddNpcMission	(112 )
+    --AddNpcMission	(3102 )
+    --AddNpcMission	(3103 )
+	--AddNpcMission	(3104 )
+	--AddNpcMission	(3105 )
+end
+--Админы ФС ДС СНВ ДВ
+function talk_fs ()
+	Talk( 1, "Администратор : Привет! Я администратор Заброшенного города! Я могу поведать тебе об этом месте _Заброшенный город - PvP локация для новичков, в которой ты сможешь получить начальное снаряение и попробовать себя в боевых действиях. Забытый город состоит из 3х уровней. _1 уровень - существа у которых одна жизнь, они сильные, и весьма ценные. _2 уровень - существа более сильные, но они воскрешаются как обычные существа. _3 уровень - самые сильные существа и главный босс Рыцарь смерти!. _На каждом уровне находятся мини боссы и сундуки с которых выпадают очень ценные предметы. _Время работы портала - 1 час. _Время работы локации - 2 часа с момента закрытия портала. _ " )
 
-	Other(	3096	) -- amp of luck
-	Other(	3095	) -- Hi Amp of strive
-	Other(	5694	)
-	Other(	5695	)
-	Other(	3097	) -- hi amp of luck
-	Other(	0849	) -- bananas
-	Other(	3846	) -- voodoo doll
-	Other(	3462	) -- magical clover
-	Other(	3463	) -- Icy Crystal
-	Other(	3300	) -- intense magic
-	Other(	3301	) -- crystalline blessing
-	Other(	3109	) -- str reset
-	Other(	3110	) -- con reset
-	Other(	3111	) -- agi reset
-	Other(	3112	) -- acc reset
-	Other(	3113	) -- spr reset
-	Other(	3105	)
-	Other(	1024	)
---]]
+end
+function talk_snv ()
+	Talk( 1, "Администратор : Привет! Я администратор Снежной войны! Я могу поведать тебе об этом месте. _Сняжная война  - PvP локация для игроков от 45 уровня и выше, в которой ты сможешь получить ценные предметы и боевой опыт._Каждые 5 минут на карте появляются существа, с каждой волной существа становятся сильнее и ценнее. _Снежная война открываетсяв 6,13,19,22 часа по Московскому времени. _Время работы карты - 1 час _Время работы портала 30 минут _ " )
+end
+function talk_dw ()
+	Talk( 1, "Администратор : Привет! Я администратор Мира демонов! Я могу поведать тебе об этом месте. _Мир Демонов  - PvP локация для игроков 55 уровня и выше, в которой ты сможешь добыть снаряжение на 55-65 уровни и получиь боевой опыт. _Мир демонов состоит из двух уровней: _На первом уровне находятся слабые существа, босс - Снегурка и портал на второй уровень, портал на второй уровень появляется случайно в одной из 4 точек на карте. _На втором уровне сильные существа и босс Мердель в центре подземелья, второй уровень состоит из 3х контуров, для перемещения между которыми, существуют порталы. _ Время работы портала - 40 минут. _Время работы локациии - 2 часа. _ Портал открывается каждые 3 часа _" )
+end
+function talk_ds ()
+	Talk( 1, "Администратор : Привет! Я администратор Темной топи! Я могу поведать тебе об этом месте _Темная топь - PvP локация для средних игроков, в которой ты сможешь получить начальное снаряение и попробовать себя в боевых действиях. Темная топь состоит из 3х уровней. _1 уровень - слабые существа с постоянным воскрешением. _2 уровень - существа более сильные, но они воскрешаются как обычные существа. _3 уровень - самые сильные существа и главный босс Грязедемон!. _На каждом уровне находятся мини боссы и сундуки с которых выпадают очень ценные предметы. _Время работы портала - 1 час. _Время работы локации -2 часа с момента закрытия портала. _ " )
+
 end
 
 --Чародейка
@@ -3193,65 +3322,6 @@ ExchangeDataX	(	8142	,	1	,	8141	,	99	)--Серебро->Медь
 	
 end
 
---Торговец вкусностями
-function r_leter1()
-Talk( 1, "Румоко: Привет! У меня есть множество различных трав. Обрати внимание!" )
-Text( 1, "Торг", BuyPage)
-	InitTrade()
-	InitTrade()
-	--1 строчка
-	Weapon(	849	)--Фрукт опыта отряда
-	Weapon(	3097	)--усилитель удачи
-	Weapon(	3096	)-- Усилитель удачи
-	Weapon(	3095	)--усилитель стремлений
-	--2 строчка
-	Weapon(	3844	)-- ня
-	Weapon(	3845	)-- зя
-	Weapon(	3846	) -- Кукла вуду
-	Weapon(	3105	)--Зелье скольжения
-	--3 строчка
-	Weapon(	3088	)--Рюкзак с 30 ячейками
-	Weapon(	3090	)--Рюкзак
-	Weapon(	3091	)--Рюкзак
-	Weapon(	3093	)--Рюкзак
-	--4 строчка
-	--для скилов
-	Weapon(	3462	) -- Магический клевер
-	Weapon(	3463	) -- Ледяной кристалл
-	Weapon(	3300	) -- Сильная магия
-	Weapon(	3301	) -- Кристальное благословение
-	--сбросы
-	Weapon(	3109	) -- сбросы статов
-	Weapon(	3110	) -- сбросы статов
-	Weapon(	3111	) -- сбросы статов
-	Weapon(	3112	) -- сбросы статов
-	Weapon(	3113	) -- сбросы статов
-	--
-	Weapon(	1024	)--Перезаряжаемая супербатарея
-	
-	
-	Other(	8292	)
-	Other(	8297	)
-	Other(	4602	)
-	Other(	4604	)
-	Other(	4603	)
-	Other(	3141	)
-	Other(	1139	)	-- Корабельный ускоритель, 1 ур.
-	Other(	1140	)	-- Распылитель кораблей 1 ур.
-	Other(	1141	)	-- Корабельный пробойник 1 ур.
-	Other(	1142	)	-- Таран 1 ур.
-	Other(	1143	)	-- Корабельный огнемет 1 ур.
-	Other(	1150	)	-- Ремонт корпуса 1 ур.
-	Other(	1151	)	-- Создание еды 1 ур.
-	Other(	1152	)	-- Трупная пуля 1 ур.
-	Other(	2673	)	-- Генератор миража 1 ур.
-	Other(	2674	)	-- Генератор иллюзий 1 ур.
-	Other(	2675	)	-- Скрытность, 1 ур.
-	Other(	2676	)	-- Радар, 1 ур.
-	Other(	2677	)	-- Сцепленные пули 1 ур.
-	Other(	2678	)	-- Водяная мина, 1 ур.
-
-end
 --Глава лагеря(рассказ о лагере) + банк
 function r_leter2()
 Talk( 1, "Грифин: Я тут главный, если будут какие-то вопросы - обращайся. У нас последнее время не так уж и много гостей, расскажешь нам о новостя" )
