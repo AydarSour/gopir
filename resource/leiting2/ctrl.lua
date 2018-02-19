@@ -27,3 +27,20 @@ function can_open_entry_leiting2( map )
 		return 0
 	end
 end 
+
+function map_copy_run_leiting2()
+
+end
+
+function map_run_leiting2(map)
+
+end
+
+function after_enter_leiting2( role , map_copy )
+
+end
+
+function before_leave_leiting2( role )
+
+end
+

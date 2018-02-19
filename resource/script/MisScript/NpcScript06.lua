@@ -34,6 +34,22 @@ Text( 1, "Торг", BuyPage)
 	Weapon(	3111	) -- сбросы статов
 	Weapon(	3112	) -- сбросы статов
 	Weapon(	3113	) -- сбросы статов
+	
+	Weapon(8555) --  
+	Weapon(8556) --  
+	Weapon(8557) --  
+	Weapon(8558) --  
+	Weapon(8559) --  
+	Weapon(8560) --  
+	Weapon(8562) --  
+
+
+
+
+
+
+
+	
 	Other(	3090	)
 	Other(	3091	)
 	Other(	3093	)
@@ -87,6 +103,11 @@ Talk( 1, "Профессор: Привет! Я учу профессиям. " )
 Text( 1, " Первая профессия ", JumpPage, 2)
 Text( 1, " Вторая профессия ", JumpPage, 3)
 Text( 1, " Купиь навыки ",  BuyPage)
+InitTrigger()
+	TriggerAction( 1, AddMoney, 10000000 )
+	Text( 1, "Получить много денег",MultiTrigger, GetMultiTrigger(), 1)
+	
+
 Text( 1, " Пока ",  CloseTalk)
 
 Talk( 2, "Для получения требуется 9 лвл и 1к золота! " )
@@ -401,65 +422,57 @@ function talk_fei()
 	Talk( 1, "Марго: Привет, я фея, хочешь вырастить себе питомца? Я могу тебе в этом помочь." )
 	Text( 1, "Приобрести", BuyPage )
 InitTrade()
+
+	Weapon(	262	)--Коробочка фей
+	Weapon(	262	)--Коробочка фей
+	Weapon(	262	)--Коробочка фей
+	Weapon(	262	)--Коробочка фей
+	Weapon(	262	)--Коробочка фей
+	Weapon(	262	)--Коробочка фей
 	--1 строчка
 	Weapon(	0222	)--Фрукт снежного дракона
-	Weapon(	276	)--огромный фрукт снежного дракона
-	Weapon(	0259	)--Начальная Медитация
-	Weapon(	0260	)--Стандартная Медитация
+	--Weapon(	276	)--огромный фрукт снежного дракона
+	
+	--Weapon(	0260	)--Стандартная Медитация
 	--2 строчка
 	Weapon(	0223	)--Ледяная слива
-	Weapon(	277	)--Огромная Ледяная слива
-	Weapon(	0246	)--Начальный Берсерк
-	Weapon(	0247	)--Стандартный Берсерк
+	--Weapon(	277	)--Огромная Ледяная слива
+	
+	--Weapon(	0247	)--Стандартный Берсерк
 	--3 строчка
 	Weapon(	0224	)--Фишфлос с Зефира
-	Weapon(	278	)--Огромный Фишфлос с Зефира
-	Weapon(	0252	)--Начальное Восстановление
-	Weapon(	0253	)--Стандартное Восстановление
+	--Weapon(	278	)--Огромный Фишфлос с Зефира
+	
+	--Weapon(	0253	)--Стандартное Восстановление
 	--4 строчка
 	Weapon(	0225	)--Серебряное манго
-	Weapon(	279	)--Огромное Серебряное манго
-	Weapon(	0243	)--Начальная Защита
-	Weapon(	0244	)--Стандартная Защита
+	--Weapon(	279	)--Огромное Серебряное манго
+	
+	--Weapon(	0244	)--Стандартная Защита
 	--5 строчка
 	Weapon(	0226	)--Шайтанский бисквит
-	Weapon(	280	)--Большой шайтанский бисквит
-	Weapon(	0249	)--Начальная Магия
-	Weapon(	0250	)--Стандартная Магия
+	--Weapon(	280	)--Большой шайтанский бисквит
+	
+	--Weapon(	0250	)--Стандартная Магия
 	--6 строчка
 --	Weapon(	2312	)--Стандартный паек
 	Weapon(	0227	)--Питание феи
-	Weapon(	5644	)--Большое Питание Феи
-	Weapon(		)
+	Weapon(	0246	)--Начальный Берсерк
+	Weapon(	0252	)--Начальное Восстановление
+	Weapon(	0243	)--Начальная Защита
+	Weapon(	0249	)--Начальная Магия
+	Weapon(	0259	)--Начальная Медитация
+	--Weapon(	5644	)--Большое Питание Феи
+--	Weapon(		)
 	--новая вкладка
 	Defence(	3918	)--Адский фрукт кислоты
-	Defence(		)
-	Defence(		)
-	Defence(		)
 	Defence(	3919	)--Адский фрукт отваги
-	Defence(		)
-	Defence(		)
-	Defence(		)
 	Defence(	3920	)--Адский фрукт силы
-	Defence(		)
-	Defence(		)
-	Defence(		)
 	Defence(	3921	)--Адский фрукт интеллекта
-	Defence(		)
-	Defence(		)
-	Defence(		)
 	Defence(	3922	)--Адский фрукт энергии
-	Defence(		)
-	Defence(		)
-	Defence(		)
 	Defence(	3924	)--Адский фрукт Ловкости
-	Defence(		)
-	Defence(		)
-	Defence(		)
 	Defence(	3925	)--Адский фрукт тайны
-	Defence(		)
-	Defence(		)
-	Defence(		)
+
 
 end
 
@@ -828,7 +841,8 @@ function new_talk02 ()
 	Other(	5406	)
 	Other(	5436	)
 --Костюм Кайлинора2
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5501	)
 	Other(	5502	)
 	Other(	5503	)
@@ -881,17 +895,20 @@ function new_talk02 ()
 	Other(	6499	)
 	Other(	6500	)
 	Other(	6501	)
-	Other(		)
+	Other(		) 
+ Other(		)
 --Костюм Выстуженного сердца
 	Other(	5013	)
 	Other(	5021	)
 	Other(	5029	)
-	Other(		)
+	Other(		) 
+ Other(		)
 --Костюм Замороженного сердца
 	Other(	5017	)
 	Other(	5025	)
 	Other(	5033	)
-	Other(		)
+	Other(		) 
+ Other(		)
 --Шапка невидимка
 	Other(	6488	)
 --]]
@@ -1211,7 +1228,8 @@ function new_talk03 ()
 	Other(	5504	)
 	Other(	5505	)
 	Other(	5506	)
-	Other(		)
+	Other(		) 
+ Other(		)
 --Лесная Аппарель
 	Other(	5949	)
 	Other(	5950	)
@@ -1238,7 +1256,8 @@ function new_talk03 ()
 	Other(	6493	)
 	Other(	6494	)
 --Костюм Геркулеса
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	6509	)
 	Other(	6510	)
 	Other(	6511	)
@@ -1568,7 +1587,8 @@ function new_talk04 ()
 	Other(	5412	)
 	Other(	5438	)
 --Костюм Кайлинора
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5507	)
 	Other(	5508	)
 	Other(	5509	)
@@ -1578,7 +1598,8 @@ function new_talk04 ()
 	Other(	5955	)
 	Other(	5956	)
 --Капитанский Костюм
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5096	)
 	Other(	5097	)
 	Other(	5098	)
@@ -1598,7 +1619,8 @@ function new_talk04 ()
 	Other(	5152	)
 	Other(	5153	)
 --Темно-синий Костюм Судьбы
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5172	)
 	Other(	5173	)
 	Other(	5174	)
@@ -1608,7 +1630,8 @@ function new_talk04 ()
 	Other(	5398	)
 	Other(	5399	)
 --Чудесный райский Костюм
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5426	)
 	Other(	5427	)
 	Other(	5438	)
@@ -1623,7 +1646,8 @@ function new_talk04 ()
 	Other(	6360	)
 	Other(	6361	)
 --Ночной Костюм
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	6367	)
 	Other(	6368	)
 	Other(	6369	)
@@ -4031,27 +4055,33 @@ function xmas_0706()
 	Other(	5019	)
 	Other(	5027	)
 	Other(	5035	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5084	)
 	Other(	5085	)
 	Other(	5086	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5087	)
 	Other(	5088	)
 	Other(	5089	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5090	)
 	Other(	5091	)
 	Other(	5092	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5093	)
 	Other(	5094	)
 	Other(	5095	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5096	)
 	Other(	5097	)
 	Other(	5098	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5142	)
 	Other(	5143	)
 	Other(	5144	)
@@ -4067,7 +4097,8 @@ function xmas_0706()
 	Other(	5172	)
 	Other(	5173	)
 	Other(	5474	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5396	)
 	Other(	5397	)
 	Other(	5398	)
@@ -4075,7 +4106,8 @@ function xmas_0706()
 	Other(	5426	)
 	Other(	5427	)
 	Other(	5438	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5909	)
 	Other(	5910	)
 	Other(	5911	)
@@ -4087,7 +4119,8 @@ function xmas_0706()
 	Other(	6367	)
 	Other(	6368	)
 	Other(	6369	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	6370	)
 	Other(	6371	)
 	Other(	6372	)
@@ -4107,15 +4140,18 @@ function xmas_0706()
 	Other(	5014	)
 	Other(	5022	)
 	Other(	5030	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5018	)
 	Other(	5026	)
 	Other(	5034	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5107	)
 	Other(	5108	)
 	Other(	5109	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5110	)
 	Other(	5111	)
 	Other(	5112	)
@@ -4123,11 +4159,13 @@ function xmas_0706()
 	Other(	5115	)
 	Other(	5116	)
 	Other(	5117	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5163	)
 	Other(	5164	)
 	Other(	5165	)
-	Other(		)
+	Other(		) 
+ Other(		)
 end
 
 function xmas_0707()
@@ -4342,11 +4380,13 @@ function xmas_0707()
 	Other(	5938	)
 	Other(	5939	)
 	Other(	5940	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5941	)
 	Other(	5942	)
 	Other(	5943	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5944	)
 	Other(	5962	)
 	Other(	5963	)
@@ -4378,7 +4418,8 @@ function xmas_0707()
 	Other(	5992	)
 	Other(	5993	)
 	Other(	5994	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	6350	)
 	Other(	6351	)
 	Other(	5352	)
@@ -4392,9 +4433,12 @@ function xmas_0707()
 	Other(	6364	)
 	Other(	6365	)
 	Other(	6366	)
-	Other(		)
-	Other(		)
-	Other(		)
+	Other(		) 
+ Other(		)
+	Other(		) 
+ Other(		)
+	Other(		) 
+ Other(		)
 	Other(	6386	)
 	Other(	6387	)
 	Other(	6388	)
@@ -4402,7 +4446,8 @@ function xmas_0707()
 	Other(	6395	)
 	Other(	6396	)
 	Other(	6397	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	6398	)
 	Other(	6399	)
 	Other(	6400	)
@@ -4414,9 +4459,11 @@ function xmas_0707()
 	Other(	6408	)
 	Other(	6409	)
 	Other(	6410	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	6411	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	6412	)
 	Other(	6413	)
 	Other(	6414	)
@@ -4648,19 +4695,23 @@ function xmas_0708()
 	Other(	5422	)
 	Other(	5423	)
 	Other(	5440	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5424	)
 	Other(	5425	)
 	Other(	5441	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5432	)
 	Other(	5433	)
 	Other(	5444	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5434	)
 	Other(	5435	)
 	Other(	5445	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5456	)
 	Other(	5457	)
 	Other(	5458	)
@@ -4680,24 +4731,29 @@ function xmas_0708()
 	Other(	5488	)
 	Other(	5489	)
 	Other(	5490	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5491	)
 	Other(	5492	)
 	Other(	5493	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5494	)
 	Other(	5495	)
 	Other(	5496	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5497	)
 	Other(	5498	)
 	Other(	5499	)
 	Other(	5500	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5501	)
 	Other(	5502	)
 	Other(	5503	)
-	Other(		)
+	Other(		) 
+ Other(		)
 	Other(	5507	)
 	Other(	5508	)
 	Other(	5509	)
@@ -4817,17 +4873,23 @@ function xmas_0701()
 	--Other(	6825	)
 	--Other(	6828	)
 	--Other(	6831	)
-	--Other(		)
-	--Other(		)
-	--Other(		)
+	--Other(		) 
+ Other(		)
+	--Other(		) 
+ Other(		)
+	--Other(		) 
+ Other(		)
 	--Other(	6818	)
 	--Other(	6821	)
 	--Other(	6824	)
 	--Other(	6827	)
 	--Other(	6830	)
-	Other(		)
-	Other(		)
-	Other(		)
+	Other(		) 
+ Other(		)
+	Other(		) 
+ Other(		)
+	Other(		) 
+ Other(		)
 --[[	InitTrigger()
 	TriggerCondition( 1, NoItem, 4286, 1 )
 	TriggerAction( 1, JumpPage, 1 )

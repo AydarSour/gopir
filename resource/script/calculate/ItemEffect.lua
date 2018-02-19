@@ -6759,376 +6759,462 @@ function ItemUse_LS_mibing ( role , Item , Item_Traget )
 		end 
 end
 
---Защита нач. ур (ID 0243)
+
+
+
+--Самоуничтожение
+function Sk_Script_CJJLZB( role , Item ) 
+ 	local sk_add = SK_JLZB  
+	local form_sklv = GetSkillLv( role , sk_add ) 
+	if form_sklv >= 1  then 
+		UseItemFailed ( role )  
+		return 
+	end 
+	a = AddChaSkill ( role , sk_add, 1 , 1 , 0 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end 
+--Самоуничтожение
+function Sk_Script_ZJJLZB ( role , Item ) 
+	local sk_add = SK_JLZB
+	local form_sklv = GetSkillLv( role , sk_add ) 
+	if form_sklv >= 2 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+	a = AddChaSkill ( role , sk_add, 2 , 1 , 0 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end 
+ ---Самоуничтожение
+function Sk_Script_GJJLZB( role , Item ) 
+ 	local sk_add = SK_JLZB  
+	local form_sklv = GetSkillLv( role , sk_add ) 
+	if form_sklv >= 3  then 
+		UseItemFailed ( role )  
+		return 
+	end 
+	a = AddChaSkill ( role , sk_add, 3 , 1 , 0 ) 
+	if a== 0 then 
+		UseItemFailed ( role )  
+		return 
+	end 
+end 
+
+--IDНачальная защита
 function ItemUse_HuDun_CJ ( role , Item , Item_Traget )
-
+	if CanUseItem(role) == 0 then return end
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )
-		local SkillType = 1	
-		local SkillNum = 1		
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
-				UseItemFailed ( role )
-			else
-
+	local Item_type =  GetItemType ( Item )
+	local Item_Traget_Type =  GetItemType ( Item_Traget )
+	local Num = GetItemForgeParam ( Item_Traget , 1 )
+	local SkillType = 1
+	local SkillNum = 1
+	if Item_type == 58 and Item_Traget_Type == 59 then
+		local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+		if Check == 1 then
+			SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+			UseItemFailed ( role )
+		else
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-
-			end
+			SystemNotice( role , "Навык феи успешно добавлен!" )
 		end
-
+	end
 end
 
---Обычная защита (ID 0244)
+--IDСтандартная защита
 function ItemUse_HuDun_ZJ ( role , Item , Item_Traget )
-
+	if CanUseItem(role) == 0 then return end
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )
-		local SkillType = 2		
-		local SkillNum = 1	
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
-				UseItemFailed ( role )
-			else
-
+	local Item_type =  GetItemType ( Item )
+	local Item_Traget_Type =  GetItemType ( Item_Traget )
+	local Num = GetItemForgeParam ( Item_Traget , 1 )
+	local SkillType = 2
+	local SkillNum = 1
+	if Item_type == 58 and Item_Traget_Type == 59 then
+		local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+		if Check == 1 then
+			SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+			UseItemFailed ( role )
+		else
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-
-			end
+			SystemNotice( role , "Навык феи успешно добавлен!" )
 		end
-
+	end
 end
 
---Защита выс. ур. (ID 0245)
+--IDродвинутая защита
 function ItemUse_HuDun_GJ ( role , Item , Item_Traget )
-			--SystemNotice( role , "s" )
+	if CanUseItem(role) == 0 then return end
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "Невозможно использовать в море" ) 
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type =  GetItemType ( Item )
+	local Item_Traget_Type =  GetItemType ( Item_Traget )
+	local Num = GetItemForgeParam ( Item_Traget , 1 )
+	local SkillType = 3
+	local SkillNum = 1
+	if Item_type == 58 and Item_Traget_Type == 59 then
+		local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+		if Check == 1 then
+			SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+			UseItemFailed ( role )
+		else
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			SystemNotice( role , "Навык феи успешно добавлен!" )
+		end
+	end
+end
 
+--Начальный берсерк
+function ItemUse_BaoJi_CJ ( role , Item , Item_Traget )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" ) 
 		UseItemFailed ( role ) 
-		return 
+	return 
 	end 
 		local Item_type =  GetItemType ( Item )
 		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )
-		local SkillType = 3
-		local SkillNum = 1
-				SystemNotice( role , SkillType )
-				SystemNotice( role , SkillNum )
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
-				UseItemFailed ( role )
-			else
-		        SystemNotice( role , "AddElfSkill" )
-
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				SystemNotice( role , "\211\236\229\237\232\229 \225\251\235\238 \226\251\243\247\229\237\238" )
-
-			end
-		end
-
-end
-
---Берсерк нач. ур. (ID 0246)
-function ItemUse_BaoJi_CJ ( role , Item , Item_Traget )
-
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	 
 		local SkillType = 1	
 		local SkillNum = 2	
-
 		if Item_type == 58 and Item_Traget_Type == 59 then
 			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
 			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
 				UseItemFailed ( role )
 			else
-
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-				SystemNotice( role , "\211\236\229\237\232\229 \225\251\235\238 \226\251\243\247\229\237\238" )
-
+			SystemNotice( role , "Навык феи успешно добавлен!" )
 			end
 		end
-
 end
 
---Обычный берсерк(ID 0247
-function ItemUse_BaoJi_ZJ ( role , Item , Item_Traget )  
-
+--ID0247Стандартный Берсерк
+function ItemUse_BaoJi_ZJ ( role , Item , Item_Traget )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" ) 
 		UseItemFailed ( role ) 
-		return 
+	return 
 	end 
 		local Item_type =  GetItemType ( Item )
 		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	 
 		local SkillType = 2	
-		local SkillNum = 2		
-
+		local SkillNum = 2	
 		if Item_type == 58 and Item_Traget_Type == 59 then
 			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
 			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
 				UseItemFailed ( role )
 			else
-
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-
+			SystemNotice( role , "Навык феи успешно добавлен!" )
 			end
 		end
-
 end
 
---Берсерк выс. ур. (ID 0248)
-function ItemUse_BaoJi_GJ ( role , Item , Item_Traget ) 
+--ID0248Продвинутый Берсерк
+function ItemUse_BaoJi_GJ ( role , Item , Item_Traget )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "Невозможно использовать в море" ) 
 		UseItemFailed ( role ) 
+	return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	 
+		local SkillType = 3	
+		local SkillNum = 2	
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+				UseItemFailed ( role )
+			else
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			SystemNotice( role , "Навык феи успешно добавлен!" )
+			end
+		end
 end
 
---Магия нач. ур. (ID 0249)
+-- Начальная магия
 function ItemUse_MoLi_CJ ( role , Item , Item_Traget )
-
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
+	local Item_type =  GetItemType ( Item )
+	local Item_Traget_Type =  GetItemType ( Item_Traget )
+	local Num = GetItemForgeParam ( Item_Traget , 1 )
+	local SkillType = 1
+	local SkillNum = 3
+	if Item_type == 58 and Item_Traget_Type == 59 then
+		local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+		if Check == 1 then
+			SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно." ) 
+			UseItemFailed ( role )
+		else
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+		end
+	end
+end
+
+--Стандартная магия
+function ItemUse_MoLi_ZJ ( role , Item , Item_Traget )   
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "Невозможно использовать в море" ) 
+		UseItemFailed ( role ) 
+	return 
+	end 
 		local Item_type =  GetItemType ( Item )
 		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )
-		local SkillType = 1		
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	 
+		local SkillType = 2	
 		local SkillNum = 3	
-
 		if Item_type == 58 and Item_Traget_Type == 59 then
 			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
 			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" )  
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
 				UseItemFailed ( role )
 			else
-
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-
+			SystemNotice( role , "Навык феи успешно добавлен!" )
 			end
 		end
-
 end
 
---Обычная магия (ID 0250)
-function ItemUse_MoLi_ZJ ( role , Item , Item_Traget )
-
+--Продвинутая магия
+function ItemUse_MoLi_GJ ( role , Item , Item_Traget )   
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" ) 
 		UseItemFailed ( role ) 
-		return 
+	return 
 	end 
 		local Item_type =  GetItemType ( Item )
 		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	
-		local SkillType = 2		
-		local SkillNum = 3		
-
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	 
+		local SkillType = 3	
+		local SkillNum = 3	
 		if Item_type == 58 and Item_Traget_Type == 59 then
 			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
 			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
 				UseItemFailed ( role )
 			else
-
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-
+			SystemNotice( role , "Навык феи успешно добавлен!" )
 			end
 		end
-
 end
 
---Магия выс. ур. (ID 0251)
-function ItemUse_MoLi_GJ ( role , Item , Item_Traget ) 
-		UseItemFailed ( role ) 
-end
-
---Восстановление нач. ур.(ID 0252)
-function ItemUse_HuiFu_CJ ( role , Item , Item_Traget )
-
+--Начальное востановление
+function ItemUse_HuiFu_CJ ( role , Item , Item_Traget )   
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
-
+		SystemNotice( role , "Невозможно использовать в море" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
 		local Item_type =  GetItemType ( Item )
 		local Item_Traget_Type =  GetItemType ( Item_Traget )
 		local Num = GetItemForgeParam ( Item_Traget , 1 )
-		local SkillType = 1	
-		local SkillNum = 4	
-
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
-				UseItemFailed ( role )
-			else
-
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-
-			end
-		end
-
-end
-
---Обычное восстановление (ID 0253)
-function ItemUse_HuiFu_ZJ ( role , Item , Item_Traget )   
-
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	
-		local SkillType = 2		
-		local SkillNum = 4	
-
-		if Item_type == 58 and Item_Traget_Type == 59 then
-			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
-			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
-				UseItemFailed ( role )
-			else
-
-			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-
-
-			end
-		end
-
-end
-
---Восстановление выс. ур.(ID 0254)
-function ItemUse_HuiFu_GJ ( role , Item , Item_Traget )  
-		UseItemFailed ( role ) 
-end
-
---Медитация нач. ур. (ID 0259)
-function ItemUse_ChenSi_CJ ( role , Item , Item_Traget )
-
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
-		UseItemFailed ( role ) 
-		return 
-	end 
-		local Item_type =  GetItemType ( Item )
-		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )	
 		local SkillType = 1		
-		local SkillNum = 5		
-
+		local SkillNum = 4		
 		if Item_type == 58 and Item_Traget_Type == 59 then
 			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
-
 			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
 				UseItemFailed ( role )
 			else
-
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
-
 			end
 		end
-
 end
 
---Обычная медитация (ID 0260)
-function ItemUse_ChenSi_ZJ ( role , Item , Item_Traget )
+--Стандартное востановление
+function ItemUse_HuiFu_ZJ ( role , Item , Item_Traget )   
+			--SystemNotice( role , "s" )
 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
 	if Cha_Boat ~= nil then 
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" ) 
 		UseItemFailed ( role ) 
 		return 
 	end 
 		local Item_type =  GetItemType ( Item )
 		local Item_Traget_Type =  GetItemType ( Item_Traget )
-		local Num = GetItemForgeParam ( Item_Traget , 1 )
-		local SkillType = 2
-		local SkillNum = 5	
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	 
+		local SkillType = 2		
+		local SkillNum = 4		
+				--SystemNotice( role , SkillType )
+				--SystemNotice( role , SkillNum )
 
 		if Item_type == 58 and Item_Traget_Type == 59 then
 			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
 
 			if Check == 1 then
-				SystemNotice(role , "\194\251 \243\230\229 \232\231\243\247\224\235\232 \228\224\237\237\238\229 \243\236\229\237\232\229" ) 
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
 				UseItemFailed ( role )
 			else
+				  --SystemNotice( role , "AddElfSkill" )
 
 			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+				  --SystemNotice( role , "Навык феи успешно добавлен!" )
 
 			end
 		end
 
 end
 
---Медитация выс. ур. (ID 0261)
-function ItemUse_ChenSi_GJ ( role , Item , Item_Traget )
-	UseItemFailed ( role )
+--Продвинутое востановление
+function ItemUse_HuiFu_GJ( role , Item , Item_Traget )   
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "Невозможно использовать в море" ) 
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	 
+		local SkillType = 3	
+		local SkillNum = 4	
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+				UseItemFailed ( role )
+			else
+		AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+
 end
+
+--Начальная медитация
+function ItemUse_ChenSi_CJ ( role , Item , Item_Traget )   
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "Невозможно использовать в море" ) 
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	 
+		local SkillType = 1	
+		local SkillNum = 5	
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+				UseItemFailed ( role )
+			else
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+end
+
+--Стандартная Медитация
+function ItemUse_ChenSi_ZJ ( role , Item , Item_Traget )   
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "Невозможно использовать в море" ) 
+		UseItemFailed ( role ) 
+		return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	
+		local SkillType = 2		
+		local SkillNum = 5		
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+
+			if Check == 1 then
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+				UseItemFailed ( role )
+			else
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			end
+		end
+
+end
+
+--Продвинутая Медитация
+function ItemUse_ChenSi_GJ ( role , Item , Item_Traget )   
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "Невозможно использовать в море" ) 
+		UseItemFailed ( role ) 
+	return 
+	end 
+		local Item_type =  GetItemType ( Item )
+		local Item_Traget_Type =  GetItemType ( Item_Traget )
+		local Num = GetItemForgeParam ( Item_Traget , 1 )	 
+		local SkillType = 3	
+		local SkillNum = 5	
+		if Item_type == 58 and Item_Traget_Type == 59 then
+			local Check = CheckElfHaveSkill ( Num , SkillType , SkillNum )
+			if Check == 1 then
+				SystemNotice(role , "Фея уже имеет такой навык. Использование невозможно. " ) 
+				UseItemFailed ( role )
+			else
+			AddElfSkill ( Item_Traget , SkillType , SkillNum )
+			SystemNotice( role , "Навык феи успешно добавлен!" )
+			end
+		end
+end
+
+
 
 --Свиток призыва чудовищ (ID 0319)
 function ItemUse_MonsterSummon ( role , Item , Item_Traget )
@@ -18241,3 +18327,622 @@ function Jz_Script_qj(role, Item)
 		UseItemFailed ( role )
 	end
 end
+
+
+--Свиток на Баф  
+function ItemUse_Buff1( role , Item )
+	local Cha_Boat = 0
+	local statelv = 10
+	local statetime = 900
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "Нельзя использовать в море" ) 
+		UseItemFailed ( role ) 
+		return 
+	end 
+   
+	
+		local StateType = GetChaStateLv (role, STATE_XLZH )--Призрачный огонь
+		local StateType = GetChaStateLv (role, STATE_SHPF )--Закалка
+		local StateType = GetChaStateLv (role, STATE_MLCH )--Сильная магия
+		local StateType = GetChaStateLv (role, STATE_FZLZ )--Мощь бури
+		local StateType = GetChaStateLv (role, STATE_JSFB )--Воронка торнадо
+		local StateType = GetChaStateLv (role, STATE_TSHD )--Ангельский щит
+
+		if StateType <=0   then  
+		
+		
+		AddState ( role, role, STATE_XLZH, statelv, statetime) 
+		AddState ( role, role, STATE_SHPF, statelv, statetime) 
+		AddState ( role, role, STATE_MLCH, statelv, statetime) 
+		AddState ( role, role, STATE_FZLZ, statelv, statetime) 
+		AddState ( role, role, STATE_JSFB, statelv, statetime) 
+		AddState ( role, role, STATE_TSHD, statelv, statetime) 
+		
+
+		SystemNotice (role, "Вам предоставлены все усиления на 15 минут, наслаждайтесь! ")
+	else
+		SystemNotice (role, "На данный момент эффект усиления еще не прошел. Дождись окончания эффекта усиления и снова попробуй использовать свиток")
+		end
+end
+
+
+
+
+function ItemUse_Mor (role , Item)
+	local Cha_Boat = GetCtrlBoat ( role )
+	local sk_add = 0 
+	local Item_ID = GetItemID ( Item )
+	local need_item = 0
+	local need_item2 = 0
+	local count = 1
+		
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!"  )
+		UseItemFailed ( role )
+		return
+	end
+	
+	if Item_ID ==8865 then
+		sk_add=SK_HPSL
+	elseif Item_ID ==8866  then
+		sk_add=SK_JBJG
+	elseif Item_ID ==8867  then
+		sk_add=SK_CFS
+	elseif Item_ID ==8868  then
+		sk_add=SK_CTQH
+	elseif Item_ID ==8869  then
+		sk_add=SK_BJCR
+	end
+	
+	local form_sklv = GetSkillLv( role , sk_add ) 
+	
+	if form_sklv == 0 then
+		a = AddChaSkill ( role , sk_add, 1 , 0 , 0 ) 
+		if a == 0 then 
+			UseItemFailed ( role )  
+			return 
+		end 
+	end
+	
+	if form_sklv == 1 then
+		need_item = 3989
+		need_item2 = 1667
+	elseif form_sklv == 2 then
+		need_item = 3991
+		need_item2 = 1668
+	elseif form_sklv == 3 then
+		need_item = 3992
+		need_item2 = 1670
+	elseif form_sklv == 4 then
+		need_item = 3993
+		need_item2 = 1674
+	elseif form_sklv == 5 then
+		need_item = 3994
+		need_item2 = 1782
+	elseif form_sklv == 6 then
+		need_item = 3995
+		need_item2 = 4544
+	elseif form_sklv == 7 then
+		need_item = 3996
+		need_item2 = 4037
+	elseif form_sklv == 8 then
+		need_item = 3997
+		need_item2 = 4034
+	elseif form_sklv == 9 then
+		need_item = 3998
+		need_item2 = 4546
+	end
+	
+	local itemname1 = GetItemName(need_item)
+	local itemname2 = GetItemName(need_item2) 
+	
+	if form_sklv >= 1 and  form_sklv < 10  then 
+		count = (form_sklv + 1) * 10
+		local check = DelBagItem(role,need_item,count)
+		local check2 = DelBagItem(role,need_item2,count)
+		
+		if check == 1 and check2 == 1  then
+			a = AddChaSkill ( role , sk_add, form_sklv + 1 , 0 , 0 ) 
+		else
+			SystemNotice(role, "Вам  нужно "..count.." шт.  " ..itemname1.. " и " ..count.." шт."..itemname2 )
+			UseItemFailed ( role ) 
+		end
+		
+		if a == 0 then 
+			UseItemFailed ( role )  
+			return 
+		end 
+	end 
+	
+	
+	
+
+
+end
+
+--Билеты на острова
+function Jz_Script_zef(role, Item )
+	local i = CheckBagItem(role,8605)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		UseItemFailed ( role )
+		return
+	end 
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,8605,1)
+			if j == 1 then
+				MoveCity(role,"Zephyr Isle")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+		return
+	end
+		
+end
+function Jz_Script_otv(role, Item )
+	local i = CheckBagItem(role,8606)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		UseItemFailed ( role )
+		return
+	end 
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,8606,1)
+			if j == 1 then
+				MoveCity(role,"Outlaw Isle")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+	end
+		
+end
+function Jz_Script_led(role, Item )
+	local i = CheckBagItem(role,8607)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		UseItemFailed ( role )
+		return
+	end 
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,8607,1)
+			if j == 1 then
+				MoveCity(role,"Glacier Isle")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+	end
+		
+end
+function Jz_Script_yda(role, Item )
+	local i = CheckBagItem(role,8608)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		UseItemFailed ( role )
+		return
+	end 
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,8608,1)
+			if j == 1 then
+				MoveCity(role,"Isle of Fortune")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+	end
+		
+end
+function Jz_Script_kan(role, Item )
+	local i = CheckBagItem(role,8609)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		UseItemFailed ( role )
+		return
+	end 
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,8609,1)
+			if j == 1 then
+				MoveCity(role,"Canary Isle")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+	end
+		
+end
+function Jz_Script_kyp(role, Item )
+
+	local i = CheckBagItem(role,8610)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		UseItemFailed ( role )
+		return
+	end 
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,8610,1)
+			if j == 1 then
+				MoveCity(role,"Cupid Isle")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+	end
+		
+end
+function Jz_Script_stu(role, Item )
+	local i = CheckBagItem(role,8611)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+	if sp < mxsp or hp < mxhp then 
+		SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+		UseItemFailed ( role )
+		return
+	end 
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,8611,1)
+			if j == 1 then
+				MoveCity(role,"Isle of Chill")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+	end
+		
+end
+
+--Мнгновенный в арг
+function Jz_Script_arg(role, Item )
+	local i = CheckBagItem(role,8301)
+	local k = ChaIsBoat(role)
+	local hp = Hp(role)
+	local mxhp = Mxhp(role)
+	local sp = Sp(role)
+	local mxsp = Mxsp(role)
+
+	if k == 0 then
+		if i > 0 then
+			local j = DelBagItem(role,8301,1)
+			if j == 1 then
+				MoveCity(role,"Argent City")
+				return
+			end
+		end
+	else
+		UseItemFailed ( role )
+	end
+		
+end
+
+
+--Желтый Кекс
+function ItemUse_JCAKE ( role , Item )
+	local statelv = 5
+	local statetime = 9
+	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
+	if StateLvNow >= 3 then
+		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
+		UseItemFailed ( role )
+		return
+	else
+		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
+	end
+	local rand = math.random(1,10000000)
+	if rand == 434342 then
+		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
+	end
+	end 
+
+--Оранжевый Кекс
+function ItemUse_OCAKE ( role , Item )
+	local statelv = 7
+	local statetime = 11
+	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
+	if StateLvNow >= 3 then
+		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
+		UseItemFailed ( role )
+		return
+	else
+		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
+	end
+	local rand = math.random(1,10000000)
+	if rand == 434342 then
+		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
+	end
+	end 
+
+--Красный Кекс
+function ItemUse_KCAKE ( role , Item )
+	local statelv = 10
+	local statetime = 12
+	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
+	if StateLvNow >= 3 then
+		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
+		UseItemFailed ( role )
+		return
+	else
+		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
+	end
+	local rand = math.random(1,10000000)
+	if rand == 434342 then
+		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
+	end
+	end 
+
+function ItemUse_DCAKE ( role , Item )
+	local statelv = 13
+	local statetime = 12
+	local StateLvNow = GetChaStateLv(role,STATE_HPPOTS)
+	if StateLvNow >= 3 then
+		SystemNotice(role,"В данный момент вы уже используете бонус Востановления, пожалуйста попробуй позднее.")
+		UseItemFailed ( role )
+		return
+	else
+		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
+	end
+	local rand = math.random(1,10000000)
+	if rand == 434342 then
+		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
+	end
+	end
+--Восполнение маны 1ур
+function ItemUse_SP( role , Item )
+local hp = GetChaAttr(role, ATTR_SP) 
+	local statetime2 = 3
+	local name = GetChaDefaultName(role)
+	
+	if Mana[name] == nil then
+        Mana[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Mana[name].UsedTime - os.time()
+	
+	if Mana[name].UsedTime >  os.time() then
+	local edx = Mana[name].UsedTime -  os.time()
+			SystemNotice ( role , "Вы не можете пользоваться данным предметов еще "..edx.." секунд"  )
+			UseItemFailed ( role )
+			return
+	end
+	if Cha_Boat ==  nil then
+	hp_resume = 25
+
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXSP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_SP)
+	Mana[name].UsedTime = os.time()+statetime2
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
+	
+		local rand = math.random(1,10000000)
+	if rand == 434342 then
+		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
+	end
+end
+
+--Восполнение маны 2ур
+function ItemUse_SPSP( role , Item )
+local hp = GetChaAttr(role, ATTR_SP) 
+	local statetime2 = 3
+	local name = GetChaDefaultName(role)
+	
+	if Mana[name] == nil then
+        Mana[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Mana[name].UsedTime - os.time()
+	
+	if Mana[name].UsedTime >  os.time() then
+	local edx = Mana[name].UsedTime -  os.time()
+			SystemNotice ( role , "Вы не можете пользоваться данным предметов еще "..edx.." секунд"  )
+			UseItemFailed ( role )
+			return
+	end
+	if Cha_Boat ==  nil then
+	hp_resume = 50
+
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXSP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_SP)
+	Mana[name].UsedTime = os.time()+statetime2
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
+
+		local rand = math.random(1,10000000)
+	if rand == 434342 then
+		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
+	end
+	end
+
+--Восполнение маны 3ур
+function ItemUse_SPSPSP( role , Item )
+local hp = GetChaAttr(role, ATTR_SP) 
+	local statetime2 = 3
+	local name = GetChaDefaultName(role)
+	
+	if Mana[name] == nil then
+        Mana[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Mana[name].UsedTime - os.time()
+	
+	if Mana[name].UsedTime >  os.time() then
+	local edx = Mana[name].UsedTime -  os.time()
+			SystemNotice ( role , "Вы не можете пользоваться данным предметов еще "..edx.." секунд"  )
+			UseItemFailed ( role )
+			return
+	end
+	if Cha_Boat ==  nil then
+	hp_resume = 100
+
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXSP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_SP)
+	Mana[name].UsedTime = os.time()+statetime2
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
+	local rand = math.random(1,10000000)
+	if rand == 434342 then
+		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
+	end
+	end
+
+--Восполнение маны 4ур
+function ItemUse_SPSPSP2( role , Item )
+local hp = GetChaAttr(role, ATTR_SP) 
+	local statetime2 = 3
+	local name = GetChaDefaultName(role)
+	local Cha_Boat = GetCtrlBoat ( role )
+	if Mana[name] == nil then
+        Mana[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Mana[name].UsedTime - os.time()
+	
+	if Mana[name].UsedTime >  os.time() then
+	local edx = Mana[name].UsedTime -  os.time()
+			SystemNotice ( role , "Вы не можете пользоваться данным предметов еще "..edx.." секунд"  )
+			UseItemFailed ( role )
+			return
+	end
+	
+	if Cha_Boat ==  nil then
+	hp_resume = 150
+	hp = hp + hp_resume 
+	mxhp = GetChaAttr(role,ATTR_MXSP) 
+	if hp > mxhp then
+		hp = mxhp 
+	end 
+	SetCharaAttr(hp, role, ATTR_SP)
+	
+		Mana[name].UsedTime = os.time()+statetime2
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
+	local rand = math.random(1,10000000)
+	if rand == 434342 then
+		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
+	end
+	end
+
+function ItemUse_YSYS( role , Item )
+local Cha_Boat = GetCtrlBoat ( role )
+	
+	if Cha_Boat ~=  nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море!" )
+		UseItemFailed ( role )
+		return
+	end
+	local statelv = 2
+	local statetime = 5
+	local statetime2 = 10
+	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_YS )
+	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if acc2[name] == nil then
+        acc2[name] = { UsedTime = os.time() }
+    end
+	local cooldown = acc2[name].UsedTime - os.time()
+	
+	if acc2[name].UsedTime >  os.time() then
+	local edx = acc2[name].UsedTime -  os.time()
+			SystemNotice ( role , "Вы не можете пользоваться данным предметов еще "..edx.." секунд"  )
+			UseItemFailed ( role )
+			return
+	end
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_YS , statelv , statetime )
+		acc2[name].UsedTime = os.time()+statetime2
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
+
+end
+
+
+

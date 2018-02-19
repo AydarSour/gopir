@@ -5,15 +5,17 @@ print( "‡ Јаг§Є  Variable.lua" )
 
 
 EXP_RAID				= 100				-- Рейты на опыт
-MF_RAID					= 15				-- Рейты на выпадение предметов
+MF_RAID					= 3				-- Рейты на выпадение предметов
 Resource_RAID_ADJUST	= 3				-- Рейты на ресурсы
 TeamExp_RAID			= 1				-- Рейты в отряде
-ELEEXP_GETRAD			= 60				-- Рейты на рост феи
-LV_LIMIT				= 50			-- Используется в функции Shengji_Shuxingchengzhang (AttrCalculate.lua)
+ELEEXP_GETRAD			= 10				-- Рейты на рост феи
 A_B_C					= 8				-- Неизвестно
+
 Money_all				= 2000000		-- Переменная количества золота выдаваемое в Хаосе
 How_Many_Active			= 0				-- Сколько человек на карте (К примеру в Хаосе Аргента)
 Every_5_minute			= 0				-- Переменная отсчета Every_5_minute (Каждые 5 минут)
+JLMAXLV = 51
+LV_LIMIT				= 50			-- Используется в функции Shengji_Shuxingchengzhang (AttrCalculate.lua)
 
 --Рейты на Скорость\ХП\МП\ДЕФ
 
@@ -22,7 +24,9 @@ HP_RAID = 5
 SP_RAID = 3
 MSPD_RAID = 5
 
-
+T = 0.25 -- порезка в хаосе
+player = 1 -- урон по игрокам
+mob = 1  -- урон по мобам
 
 
 

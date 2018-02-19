@@ -1344,7 +1344,7 @@ end
 function Hp_Dmg(role,dmg)
 	local map_name_DEFER = GetChaMapName ( role )
 	local Can_Pk_Garner2 = Is_NormalMonster (role)
-	local T=0.25
+	
 	-- Хаос
 	if map_name_ATKER == "garner2" or map_name_DEFER == "garner2" then
 		if Can_Pk_Garner2 == 0 then
@@ -1357,13 +1357,26 @@ function Hp_Dmg(role,dmg)
 			dmg = dmg * T
 		end
 	end
+	
+	if Can_Pk_07xmas2 == 0 then
+			dmg = dmg * mob
+	else 
+			dmg = dmg * player
+	end
+	
+	if dmg > 0 then
+		SystemNotice(role,"Вами получено "..dmg.." урона")
+	else
+		SystemNotice(role,"По вам промахнулись")
+	end
 
 	local statelv_mfd = GetChaStateLv ( role , STATE_MFD ) 
 	local hp = Hp(role) 
 	local sp = Sp(role) 
 	if dmg <= 0 then 
 		hp = hp - dmg 
-		SetCharaAttr(hp, role, ATTR_HP )  
+		SetCharaAttr(hp, role, ATTR_HP ) 
+		
 		return 
 	end 
 	local Elf_Item = CheckHaveElf ( role )
@@ -4575,26 +4588,27 @@ function GetElfSkill_Lv ( Num , SkillNum )
 	end
 	return 0
 end
-
+--Берсерк феи
 function ElfSKill_ElfCrt ( role , Elf_Item , Num )
 	local Elf_SkillLv = GetElfSkill_Lv ( Num , 2 )
 	local Item_URE = GetItemAttr( Elf_Item , ITEMATTR_URE )
 	if Item_URE < 50 then
-		SystemNotice ( role , "Фея истощена. В таком состоянии фея не может применить Берсерк " )
+		SystemNotice ( role , "Фея истощена. В таком состоянии фея не может применить Берсерк" )
 		return 0
 	end
-	local b = ( Elf_SkillLv * 2 + 1 )  * 0.01
+	local b = ( Elf_SkillLv * 1.5 + 1 )  * 0.01
+	if Elf_SheildLv==3 then 
+		b = ( Elf_SkillLv * 2 + 1 )  * 0.01
+	end
 	local a = Percentage_Random ( b )
 	if a == 1 then
-		
 		Take_ElfURE ( role , Elf_Item , 2 , Elf_SkillLv )
 		return 1
-		
 	else
 		return 0
 	end
 end
-
+--Магия феи
 function ElfSkill_MagicAtk ( dmg , role )
 	local Elf_Item = CheckHaveElf ( role )
 	if Elf_Item ~= 0 then
@@ -4604,25 +4618,25 @@ function ElfSkill_MagicAtk ( dmg , role )
 			local Elf_SkillLv = GetElfSkill_Lv ( Num , 3 )
 			local Item_URE = GetItemAttr( Elf_Item , ITEMATTR_URE )
 			if Item_URE <= 50 then
-				SystemNotice ( role , "Фея истощена. В таком состоянии фея не может использовать магию " )
+				SystemNotice ( role , "Фея истощена. В таком состоянии фея не может использовать магию" )
 				return 0
 			else
 				if Elf_SkillLv == 1 then	
 					Take_ElfURE ( role , Elf_Item , 2 , 1 )
-					return dmg * 0.05 + 5 
+					return dmg * 0.03 + 3 
 				elseif Elf_SkillLv == 2 then
 					Take_ElfURE ( role , Elf_Item , 2 , 2 )
-					return dmg * 0.08 + 8
+					return dmg * 0.06 + 6
 				elseif Elf_SkillLv == 3 then
 					Take_ElfURE ( role , Elf_Item , 2 , 3 )
-					return dmg * 0.1 + 10
+					return dmg * 0.09 + 9
 				end
 			end
 		end
 	end
 	return 0
 end
-
+--Восстановление феи
 function ElfSkill_HpResume ( role )
 	local Elf_Item = CheckHaveElf ( role )
 	if Elf_Item ~= 0 then
@@ -4632,25 +4646,57 @@ function ElfSkill_HpResume ( role )
 			local Elf_SkillLv = GetElfSkill_Lv ( Num , 4 )
 			local Item_URE = GetItemAttr( Elf_Item , ITEMATTR_URE )
 			if Item_URE <= 50 then
-				SystemNotice ( role , "Фея истощена. В таком состоянии фея не может использовать восстановление " )
+				SystemNotice ( role , "Фея истощена. В таком состоянии фея не может использовать восстановление" )
 				return 0
 			else
 				if Elf_SkillLv == 1 then	
 					Take_ElfURE ( role , Elf_Item , 2 , 2 )
-					return 10
+					return 7
 				elseif Elf_SkillLv == 2 then
 					Take_ElfURE ( role , Elf_Item , 2 , 2 )
-					return 20
+					return 14
 				elseif Elf_SkillLv == 3 then
 					Take_ElfURE ( role , Elf_Item , 2 , 2 )
-					return 35
+					return 23
 				end
 			end
 		end
 	end
 	return 0
 end
+--Защита феи
+function ElfSKill_PowerSheild ( role , Elf_Item , Num , dmg )
+	if dmg <= 0 then
+		return 0
+	end
+	local role_hp = Hp ( role )
+	local role_maxhp = Mxhp ( role )
+	local havehp = role_maxhp / role_hp
+	if havehp < 5 then
+		return 0
+	end
+	local Elf_SheildLv = GetElfSkill_Lv ( Num , 1 )
+	dmg = math.floor ( dmg * ( 0.2 + Elf_SheildLv * 0.10 )  ) 
+	if Elf_SheildLv==3 then 
+	dmg = math.floor ( dmg * ( 0.3 + Elf_SheildLv * 0.15 )  ) 
+	end
+	local Item_URE = GetItemAttr( Elf_Item , ITEMATTR_URE )
+	local Dmg_Take_rad = 10 
+	local Elf_Dmg_CanTake = ( Item_URE - 50 ) / Dmg_Take_rad
+	
+	if Elf_Dmg_CanTake >= dmg then
+		local Elf_URE_Take = math.floor ( dmg * Dmg_Take_rad )
+		local Elf_URE_Notice = math.floor ( Elf_URE_Take / 50 )
+		Take_ElfURE ( role , Elf_Item , 2 , Elf_URE_Take )
+		SystemNotice ( role , "Фея поглотила часть урона: "..dmg)
+		return dmg
+	else
+		SystemNotice ( role , "Фея истощена. В таком состоянии фея не может поглощать урон" )
+		return 0
+	end
+end
 
+--Медитация феи 
 function ElfSkill_SpResume ( role )
 	local Elf_Item = CheckHaveElf ( role )
 	if Elf_Item ~= 0 then
@@ -4660,24 +4706,25 @@ function ElfSkill_SpResume ( role )
 			local Elf_SkillLv = GetElfSkill_Lv ( Num , 5 )
 			local Item_URE = GetItemAttr( Elf_Item , ITEMATTR_URE )
 			if Item_URE <= 50 then
-				SystemNotice ( role , "Фея истощена. В таком состоянии фея не может медитировать " )
+				SystemNotice ( role , "Фея истощена. В таком состоянии фея не может медитировать" )
 				return 0
 			else
 				if Elf_SkillLv == 1 then	
 					Take_ElfURE ( role , Elf_Item , 2 , 2 )
-					return 10
+					return 7
 				elseif Elf_SkillLv == 2 then
 					Take_ElfURE ( role , Elf_Item , 2 , 2 )
-					return 20
+					return 14
 				elseif Elf_SkillLv == 3 then
 					Take_ElfURE ( role , Elf_Item , 2 , 2 )
-					return 35
+					return 23
 				end
 			end
 		end
 	end
 	return 0
 end
+
 
 function CreditExchangeImpl( role, tp )
 	local i = CheckBagItem( role,3849 )
@@ -6812,5 +6859,15 @@ function CheckBotLine(role)
 	else
 		return 0
 	end
+end
+
+function GetElfLV(item)
+	local str = GetItemAttr( item,ITEMATTR_VAL_STR )
+	local con = GetItemAttr( item ,ITEMATTR_VAL_CON )
+	local agi = GetItemAttr( item ,ITEMATTR_VAL_AGI )
+	local dex = GetItemAttr( item ,ITEMATTR_VAL_DEX )
+	local sta = GetItemAttr( item ,ITEMATTR_VAL_STA )
+	local lv = str + agi + dex + con + sta
+	return lv
 end
 

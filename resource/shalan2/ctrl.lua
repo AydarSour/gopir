@@ -28,3 +28,19 @@ function can_open_entry_shalan2( map )
 		return 0
 	end
 end 
+
+function map_copy_run_shalan2()
+
+end
+
+function map_run_shalan2(map)
+
+end
+
+function after_enter_shalan2( role , map_copy )
+
+end
+
+function before_leave_shalan2( role )
+
+end

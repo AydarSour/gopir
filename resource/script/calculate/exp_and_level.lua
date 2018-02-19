@@ -515,22 +515,18 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 			
 						local Lv_character = Lv (TurnToCha(t[i]))
 						local EXP_NEW_LVL = 1
-						if Lv_character >= 1 and Lv_character <= 30 then
+						if Lv_character >= 1 and Lv_character <= 50 then
 							EXP_NEW_LVL = 7
-						elseif Lv_character >= 31 and Lv_character <= 50 then
+						elseif Lv_character >= 51 and Lv_character <= 65 then
 							EXP_NEW_LVL = 6
-						elseif Lv_character >= 51 and Lv_character <= 60 then
+						elseif Lv_character >= 66 and Lv_character <= 75 then
 							EXP_NEW_LVL = 5
-						elseif Lv_character >= 61 and Lv_character <= 70 then
-							EXP_NEW_LVL = 6
-						elseif Lv_character >= 71 and Lv_character <= 80 then
+						elseif Lv_character >= 76 and Lv_character <= 90 then
+							EXP_NEW_LVL = 4
+						elseif Lv_character >= 91 and Lv_character <= 100 then
 							EXP_NEW_LVL = 3
-						elseif Lv_character >= 81 and Lv_character <= 90 then
-							EXP_NEW_LVL = 2
-						elseif Lv_character >= 91 and Lv_character <= 98 then
-							EXP_NEW_LVL = 1.5
 						else
-							EXP_NEW_LVL = 1
+							EXP_NEW_LVL = 3
 						end
 			
 			exp = exp + exp_up  * EXP_NEW_LVL

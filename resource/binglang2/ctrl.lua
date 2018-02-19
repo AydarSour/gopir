@@ -27,3 +27,25 @@ function can_open_entry_binglang2( map )
 		return 0
 	end
 end 
+
+
+
+
+function map_copy_run_binglang2()
+
+end
+function get_map_entry_pos_binglang2()
+	
+end
+
+function map_run_binglang2(map)
+
+end
+
+function after_enter_binglang2( role , map_copy )
+
+end
+
+function before_leave_binglang2( role )
+
+end

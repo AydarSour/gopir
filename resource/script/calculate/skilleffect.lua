@@ -1756,6 +1756,8 @@ function Skill_Pj_End ( ATKER , DEFER , sklv )
 			end
 		end
 		AddState ( ATKER , DEFER , STATE_PJ , statelv , statetime ) 
+		SystemNotice(DEFER, "На вас действует эффект   <Бронелом> "..statelv.."ур. на "..statetime.. " секунд" )		
+	
 		Check_Ys_Rem ( ATKER , DEFER )						
 end 
 
@@ -1922,6 +1924,8 @@ function Skill_Dj_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  11 + sklv * 1    
 	AddState ( ATKER , DEFER , STATE_DJ , statelv , statetime ) 
+	SystemNotice(DEFER, "На вас действует эффект  <Отравление> "..statelv.."ур. на "..statetime.. " секунд" )		
+	
 	Check_Ys_Rem ( ATKER , DEFER )						
 end 
 
@@ -1955,6 +1959,8 @@ function Skill_Db_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  5 + sklv * 4    
 	AddState ( ATKER , DEFER , STATE_ZD , statelv , statetime ) 
+	SystemNotice(DEFER, "На вас действует эффект <Отравление> "..statelv.."ур. на "..statetime.. " секунд" )		
+	
 	Check_Ys_Rem ( ATKER , DEFER )						
 end 
 
@@ -2043,6 +2049,8 @@ function Skill_Jf_End ( ATKER , DEFER , sklv )
 		statelv = 10
 	end
 		AddState ( ATKER , DEFER , STATE_JF , statelv , statetime ) 
+		SystemNotice(DEFER, "На вас действует эффект <Торнадо> "..statelv.."ур. на "..statetime.. " секунд" )		
+	
 	else 
 		SetSus( DEFER , 0 ) 
 	end 
@@ -2487,6 +2495,8 @@ function Skill_Bdj_End ( ATKER , DEFER , sklv )
 		statelv = 10
 	end
 	AddState ( ATKER , DEFER , STATE_BDJ , statelv , statetime ) 
+	SystemNotice(DEFER, "На вас действует эффект <Замедление> "..statelv.."ур. на "..statetime.. " секунд" )		
+
 end 
 
 function State_Bdj_Add ( role , statelv ) 
@@ -2548,6 +2558,8 @@ function Skill_Tj_End ( ATKER , DEFER , sklv )
 		end
 	end
 	AddState( ATKER , DEFER , STATE_TJ, statelv , statetime ) 
+	SystemNotice(DEFER, "На вас действует эффект <Замедление> "..statelv.."ур. на "..statetime.. " секунд" )		
+
 end 
 
 function State_Tj_Add ( role , statelv ) 
@@ -2624,6 +2636,8 @@ function Skill_Sj_End ( ATKER , DEFER , sklv )
 	end
 	AddState( ATKER , DEFER , STATE_SJ, statelv , statetime ) 
 	AddState( ATKER , DEFER , STATE_JNJZ, statelv , statetime ) 
+	SystemNotice(DEFER, "На вас действует эффект <Безмолвие> "..statelv.."ур. на "..statetime.. " секунд" )		
+
 end 
 
 function State_Sj_Add ( role , statelv ) 
@@ -2730,6 +2744,8 @@ function Skill_Tshd_End ( ATKER , DEFER , sklv )
 		statelv = 10
 	end
         AddState( ATKER , DEFER , STATE_TSHD, statelv , statetime )
+		SystemNotice(DEFER, "На вас действует эффект <Ангельский щит> "..statelv.."ур. на "..statetime.. " секунд" )		
+
 end 
 
 function State_Tshd_Add ( role , statelv ) 
@@ -2773,6 +2789,7 @@ function Skill_Xlpz_End ( ATKER , DEFER , sklv )
 		statelv = 10
 	end
         AddState( ATKER , DEFER , STATE_MFD, statelv , statetime )
+		SystemNotice(DEFER, "На вас действует эффект <Магический щит> "..sklv.."ур.")	
 end 
 
 function SkillSp_Ys ( sklv ) 
@@ -2808,6 +2825,8 @@ function Skill_Ys_End ( ATKER , DEFER , sklv )
 		end
 	end
 	AddState ( ATKER , DEFER , STATE_YS , statelv , statetime ) 
+	SystemNotice(DEFER, "На вас действует эффект <Невидимость> "..statelv.."ур. на "..statetime.." секунд" )		
+
 end 
 
 function State_Ys_Add ( role , statelv ) 
@@ -2874,6 +2893,8 @@ function Skill_Hzcr_End ( ATKER , DEFER , sklv )
 		end
 	end 
 	AddState ( ATKER , DEFER , STATE_HZCR , statelv , statetime ) 
+	SystemNotice(DEFER, "На вас действует эффект <Переплетение> "..statelv.."ур. на "..statetime.. " секунд" )		
+
 end 
 
 function State_Hzcr_Add ( role , statelv ) 
@@ -4041,6 +4062,8 @@ function State_Rs_Add ( role , statelv )
 		hpdmg = arealv * 3 + 30  
 	end 
 	Hp_Endure_Dmg ( role , hpdmg ) 
+	SystemNotice(role, "На вас действует эффект <Огонь> "..statelv.."ур. на "..statedttime.. " секунд" )
+	
 end 
 
 function State_Rs_Tran ( statelv ) 
@@ -4205,6 +4228,8 @@ function State_Synz_Add ( role , statelv )
 	local mspdsa_dif = (-1) * ( 0.20 + 0.015 * statelv ) 
 	local mspdsa = math.floor (  (MspdSa(role) + mspdsa_dif ) * ATTR_RADIX ) 
 	SetCharaAttr( mspdsa , role , ATTR_STATEC_MSPD ) 
+	SystemNotice(role, "На вас действует эффект <Бездонное болото> "..statelv.."ур." )		
+
 	ALLExAttrSet(role)  
 end 
 
@@ -4626,6 +4651,8 @@ function Skill_Xn_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  60    
 	AddState ( ATKER , DEFER , STATE_XN , statelv , statetime )
+	SystemNotice(DEFER, "На вас действует эффект <Кровавая ярость> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	Check_Ys_Rem ( ATKER , DEFER )						
 end 
 
@@ -4792,6 +4819,8 @@ end
 function Skill_Biw_End ( ATKER , DEFER , sklv ) 
 	local statelv = sklv 
 	local statetime =  60    
+	SystemNotice(DEFER, "На вас действует эффект <Поцелуй мороза> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	AddState ( ATKER , DEFER , STATE_BIW , statelv , statetime )
 end 
 
@@ -7611,7 +7640,8 @@ function Skill_ShanGD1_End ( ATKER , DEFER , sklv )
 			BOSSXYSJ[GetChaTypeID( DEFER )] = BOSSXYSJ[GetChaTypeID( DEFER )] -1
 		end
 	end
-		
+		SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime ) 
 end 
 
@@ -8028,7 +8058,8 @@ function Skill_ShanGD2_End ( ATKER , DEFER , sklv )
 			BOSSXYSJ[GetChaTypeID( DEFER )] = BOSSXYSJ[GetChaTypeID( DEFER )] -1
 		end
 	end
-		
+		SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime ) 
 end 
 
@@ -8438,7 +8469,8 @@ function Skill_ShanGD3_End ( ATKER , DEFER , sklv )
 			BOSSXYSJ[GetChaTypeID( DEFER )] = BOSSXYSJ[GetChaTypeID( DEFER )] -1
 		end
 	end
-		
+		SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime ) 
 end 
 
@@ -8849,7 +8881,8 @@ function Skill_ShanGD4_End ( ATKER , DEFER , sklv )
 			BOSSXYSJ[GetChaTypeID( DEFER )] = BOSSXYSJ[GetChaTypeID( DEFER )] -1
 		end
 	end
-		
+		SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime ) 
 end 
 
@@ -9246,6 +9279,8 @@ function Skill_ShanGD5_End ( ATKER , DEFER , sklv )
 		SystemNotice ( ATKER , "Эффект от Световой бомбы не нанёс урон цели!" ) 
 		return
 	end 
+	SystemNotice(DEFER, "На вас действует эффект <Оглушение> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	AddState( ATKER , DEFER , STATE_ShanGD, statelv , statetime ) 
 end 
 

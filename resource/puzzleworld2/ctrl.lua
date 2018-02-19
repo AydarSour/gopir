@@ -37,3 +37,19 @@ function init_entry(map)
     SetMapEntryMapName(map, "puzzleworld")
     SetMapEntryTime(map, "2005/8/30/0/0", "0/3/0", "0/0/80", "0/2/0")
 end
+
+function map_copy_run_puzzleworld2()
+
+end
+
+function map_run_puzzleworld2(map)
+
+end
+
+function after_enter_puzzleworld2( role , map_copy )
+
+end
+
+function before_leave_puzzleworld2( role )
+
+end
