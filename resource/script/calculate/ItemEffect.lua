@@ -5350,114 +5350,114 @@ end
 
 --Счастливый мешочек (ID 3901)
 function ItemUse_HYBOX ( role , Item )
-	AddMoney ( role , 0 , 20000 )
+	AddMoney ( role , 0 , 3000 )
 end 
 
 --Счастливый мешочек (ID 3902)
 function ItemUse_FGBOX ( role , Item )
+	AddMoney ( role , 0 , 7000 )
+	-- AddMoney ( role , 0 , 88 )	
+	-- local item_type = BaoXiang_FGBOX 
+	-- local item_type_rad = BaoXiang_FGBOX_Rad 
+	-- local item_type_count = BaoXiang_FGBOX_Count 
+	-- local maxitem = BaoXiang_FGBOX_Mxcount	
+	-- local item_quality = BaoXiang_FGBOX_Qua
+	-- local General = 0  
+	-- local ItemId = 0 
+
+	-- for i = 1 , maxitem , 1 do 
+		-- General = item_type_rad [ i ] + General		
+	-- end 
+	-- local a = math.random ( 1, General )
+	-- local b = 0
+	-- local d = 0 
+	-- local c = -1
+	-- for k = 1 , maxitem , 1 do
+
+		-- d = item_type_rad [ k ] + b
+
+		 -- if a <= d and a > b then
+			-- c = k
+			-- break
+		-- end 
+		-- b = d 
+
+	-- end 
+	-- if c == -1 then 
+		-- ItemId = 3124 
+	-- else 
+		-- ItemId = item_type [c]  
+		-- ItemCount = item_type_count [c] 
+	-- end 
+	-- GiveItem ( role , 0 , ItemId , ItemCount , item_quality )
+	-- GiveItem ( role , 0 , 3904 , 1 , item_quality )
+
 	
-	AddMoney ( role , 0 , 88 )	
-	local item_type = BaoXiang_FGBOX 
-	local item_type_rad = BaoXiang_FGBOX_Rad 
-	local item_type_count = BaoXiang_FGBOX_Count 
-	local maxitem = BaoXiang_FGBOX_Mxcount	
-	local item_quality = BaoXiang_FGBOX_Qua
-	local General = 0  
-	local ItemId = 0 
-
-	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General		
-	end 
-	local a = math.random ( 1, General )
-	local b = 0
-	local d = 0 
-	local c = -1
-	for k = 1 , maxitem , 1 do
-
-		d = item_type_rad [ k ] + b
-
-		 if a <= d and a > b then
-			c = k
-			break
-		end 
-		b = d 
-
-	end 
-	if c == -1 then 
-		ItemId = 3124 
-	else 
-		ItemId = item_type [c]  
-		ItemCount = item_type_count [c] 
-	end 
-	GiveItem ( role , 0 , ItemId , ItemCount , item_quality )
-	GiveItem ( role , 0 , 3904 , 1 , item_quality )
-
-	
-	if ItemId == 878 then
-		local itemname = GetItemName ( ItemId ) 
-		local cha_name = GetChaDefaultName ( role ) 
-		local message = cha_name.." \238\242\234\240\251\226\224\229\242 \209\247\224\241\242\235\232\226\251\233 \236\229\248\238\247\229\234 \232 \239\238\235\243\247\224\229\242  "..itemname 
-		Notice ( message )
-	end
+	-- if ItemId == 878 then
+		-- local itemname = GetItemName ( ItemId ) 
+		-- local cha_name = GetChaDefaultName ( role ) 
+		-- local message = cha_name.." \238\242\234\240\251\226\224\229\242 \209\247\224\241\242\235\232\226\251\233 \236\229\248\238\247\229\234 \232 \239\238\235\243\247\224\229\242  "..itemname 
+		-- Notice ( message )
+	-- end
 end 
 
 --Большой пакет (ID 3903)
 function ItemUse_HYUNBOX ( role , Item )
-	
-	AddMoney ( role , 0 , 888 )
-	local item_type = BaoXiang_HYUNBOX 
-	local item_type_rad = BaoXiang_HYUNBOX_Rad 
-	local item_type_count = BaoXiang_HYUNBOX_Count 
-	local maxitem = BaoXiang_HYUNBOX_Mxcount
-	local item_quality = BaoXiang_HYUNBOX_Qua
-	local General = 0  
-	local ItemId = 0 
+	AddMoney ( role , 0 , 13000 )
+	-- AddMoney ( role , 0 , 888 )
+	-- local item_type = BaoXiang_HYUNBOX 
+	-- local item_type_rad = BaoXiang_HYUNBOX_Rad 
+	-- local item_type_count = BaoXiang_HYUNBOX_Count 
+	-- local maxitem = BaoXiang_HYUNBOX_Mxcount
+	-- local item_quality = BaoXiang_HYUNBOX_Qua
+	-- local General = 0  
+	-- local ItemId = 0 
 
-	for i = 1 , maxitem , 1 do 
-		General = item_type_rad [ i ] + General		
-	end 
-	local a = math.random ( 1, General )
-	local b = 0
-	local d = 0 
-	local c = -1
-	for k = 1 , maxitem , 1 do
+	-- for i = 1 , maxitem , 1 do 
+		-- General = item_type_rad [ i ] + General		
+	-- end 
+	-- local a = math.random ( 1, General )
+	-- local b = 0
+	-- local d = 0 
+	-- local c = -1
+	-- for k = 1 , maxitem , 1 do
 
-		d = item_type_rad [ k ] + b
+		-- d = item_type_rad [ k ] + b
 
-		 if a <= d and a > b then
-			c = k
-			break		
-		end 
-		b = d 
+		 -- if a <= d and a > b then
+			-- c = k
+			-- break		
+		-- end 
+		-- b = d 
 
-	end 
-	if c == -1 then 
-		ItemId = 3124 
-	else 
-		ItemId = item_type [c]  
-		ItemCount = item_type_count [c] 
-	end 
-	GiveItem ( role , 0 , ItemId , ItemCount , item_quality )
-	GiveItem ( role , 0 , 3904 , 1 , item_quality )
+	-- end 
+	-- if c == -1 then 
+		-- ItemId = 3124 
+	-- else 
+		-- ItemId = item_type [c]  
+		-- ItemCount = item_type_count [c] 
+	-- end 
+	-- GiveItem ( role , 0 , ItemId , ItemCount , item_quality )
+	-- GiveItem ( role , 0 , 3904 , 1 , item_quality )
 
-	local GoodItem = {}
-	GoodItem[0] = 3844
-	GoodItem[1] = 3845
-	GoodItem[2] = 899
-	GoodItem[3] = 900
-	GoodItem[4] = 901
-	GoodItem[5] = 902
-	GoodItem[6] = 903
+	-- local GoodItem = {}
+	-- GoodItem[0] = 3844
+	-- GoodItem[1] = 3845
+	-- GoodItem[2] = 899
+	-- GoodItem[3] = 900
+	-- GoodItem[4] = 901
+	-- GoodItem[5] = 902
+	-- GoodItem[6] = 903
 
-	local Good_C = 0
-	for Good_C = 0 , 6 , 1 do
-		if ItemId == GoodItem[Good_C] then
-			local itemname = GetItemName ( ItemId ) 
-			local cha_name = GetChaDefaultName ( role ) 
-			local message = cha_name.." \238\242\234\240\251\226\224\229\242 a \193\238\235\252\248\238\233 \239\224\234\229\242 \232 \239\238\235\243\247\224\229\242 "..itemname
-			Notice ( message )
-		end
-	end
+	-- local Good_C = 0
+	-- for Good_C = 0 , 6 , 1 do
+		-- if ItemId == GoodItem[Good_C] then
+			-- local itemname = GetItemName ( ItemId ) 
+			-- local cha_name = GetChaDefaultName ( role ) 
+			-- local message = cha_name.." \238\242\234\240\251\226\224\229\242 a \193\238\235\252\248\238\233 \239\224\234\229\242 \232 \239\238\235\243\247\224\229\242 "..itemname
+			-- Notice ( message )
+		-- end
+	-- end
 end 
 
 --Темный камень желаний (ID 3905)
