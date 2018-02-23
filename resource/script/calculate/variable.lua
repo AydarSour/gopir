@@ -37,6 +37,54 @@ AntiBotLine = {}
 VilkaBarb = {}
 RybkaDouble = {}
 
+DropEXP1 = {}
+DropEXP2 = {}
+DropEXP3 = {}
+DropEXP4 = {}
+DropEXP5 = {}
+DropEXP6 = {}
+DropEXP7 = {}
+
+Drop1 = {}
+Drop2 = {}
+Drop3 = {}
+Drop4 = {}
+Drop5 = {}
+Drop6 = {}
+Drop7 = {}
+Mana = {}
+Kovka = {}
+Sochet = {}
+Vstavka = {}
+Apparel = {}
+
+Skolz1 = {}
+Skolz2 = {}
+
+leg1 = {}
+leg2 = {}
+
+stroi1 = {}
+stroi2 = {} 
+
+dosp1 = {} 
+dosp2 = {}
+
+bik1 = {}
+bik2 = {}
+
+bers1 = {}
+bers2 = {}
+
+energ1 = {}
+energ2 = {}
+
+ukrep1 = {}
+ukrep2 = {}
+effff = {}
+acc1 = {}
+acc2 = {}
+gr = {}
 
 
 

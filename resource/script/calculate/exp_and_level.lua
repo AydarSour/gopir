@@ -170,6 +170,12 @@ function GetExp_PKM( dead , atk  )
 	elseif map_name == "garner2" then
 			return
 	end
+	
+	if Lv(atk) == 79 then
+		if GetChaID(dead) == 333333333 then
+			return
+		end
+	end
 
 
 	

@@ -4009,40 +4009,206 @@ function ItemUse_PKMNYS ( role , Item )
 	AddState( role , role , STATE_PKMNYS , statelv , statetime )
 end
 
-
---Боевое зелье (ID 1855)
+--ID1855	Боевое зелье
 function ItemUse_PKZDYS ( role , Item )
+local name = GetChaDefaultName(role)
 	local statelv = 10
-	local statetime = 150
-	AddState( role , role , STATE_PKZDYS , statelv , statetime )
+	local statetime = 200
+	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_PKZDYS )
+	Cha_Boat = GetCtrlBoat ( role )
+	
+	if bik1[name] == nil then
+        bik1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = bik1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_PKZDYS , statelv , statetime )
+		bik1[name].UsedTime = os.time()+statetime
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
 end
 
---Зелье берсерка (ID 1856)
+--ID1856	Зелье берсерка
 function ItemUse_PKKBYS ( role , Item )
 	local statelv = 10
 	local statetime = 20
-	AddState( role , role , STATE_PKKBYS , statelv , statetime )
+	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_PKKBYS )
+	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if bers1[name] == nil then
+        bers1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = bers1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_PKKBYS , statelv , statetime )
+		bers1[name].UsedTime = os.time()+statetime
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
 end
 
---Энергозелье (ID 1857)
+--ID1857	Энергозелье
 function ItemUse_PKJSYS ( role , Item )
 	local statelv = 10
 	local statetime = 180
-	AddState( role , role , STATE_PKJSYS , statelv , statetime )
+	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_PKJSYS )
+	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if energ1[name] == nil then
+        energ1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = energ1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_PKJSYS , statelv , statetime )
+		energ1[name].UsedTime = os.time()+statetime
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
 end
 
---Укрепляющее зелье (ID 1858)
+--ID1858	Укрепляющее зелье
 function ItemUse_PKSFYS ( role , Item )
 	local statelv = 10
 	local statetime = 300
-	AddState( role , role , STATE_PKSFYS , statelv , statetime )
+	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_PKSFYS )
+	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if ukrep1[name] == nil then
+        ukrep1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = ukrep1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_PKSFYS , statelv , statetime )
+		ukrep1[name].UsedTime = os.time()+statetime
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
 end
 
---Зелье точности (ID 1859)
+--ID1859	Зелье точности
 function ItemUse_PKJZYS ( role , Item )
-	local statelv = 10
-	local statetime = 900
-	AddState( role , role , STATE_PKJZYS , statelv , statetime )
+
+	local statelv = 3
+	local statetime = 1300
+	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_KUANGZ )
+	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if Drop3[name] == nil then
+        Drop3[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Drop3[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_KUANGZ , statelv , statetime )
+		Drop3[name].UsedTime = os.time()+statetime
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
 end
 
 --Неизвестно (ID n\a)
@@ -4581,23 +4747,43 @@ end
 
 --Слеза без любви (ID 1006)
 function ItemUse_MoreItemGz( role , Item )
+	local name = GetChaDefaultName(role)
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
-	
-	if ChaStateLv > statelv then
-		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
-		UseItemFailed ( role )
-		return
-	end
-	
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+	
+	if Drop1[name] == nil then
+        Drop1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Drop1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+
+	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
+	Drop1[name].UsedTime = os.time()+statetime
+	SystemNotice ( role ,"Почувствуй эффект от Зачарованной ягоды" )
 end
 
 --Особый тайнофрукт (ID 3879)
@@ -4639,26 +4825,45 @@ function ItemUse_MoreItemGzLv2( role , Item )
 		return
 	end
 
-
+local name = GetChaDefaultName(role)
 	local statelv = 2
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
-	
-	if ChaStateLv > statelv then
-		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
-		UseItemFailed ( role )
-		return
-	end
-
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+	
+	if Drop1[name] == nil then
+        Drop1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Drop1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+
+	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"Feels the effect of Special Lucky Fruit" )
-end
+	Drop1[name].UsedTime = os.time()+statetime
+	SystemNotice ( role ,"Почувствуй эффект от Особого счастье-фрукта" )
+
+	end
 
 ------------СУСЫ
 --Супер Усилитель стремлений х2.5 (ID 3095)
@@ -4750,46 +4955,86 @@ function ItemUse_MoreItemGzLv3( role , Item )
 		return
 	end
 
+local name = GetChaDefaultName(role)
 	local statelv = 3
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
-
-	if ChaStateLv > statelv then
-		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
-		UseItemFailed ( role )
-		return
-	end
-
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+	
+	if Drop1[name] == nil then
+        Drop1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Drop1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+
+	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"\207\238\247\243\226\241\242\226\243\233 \253\244\244\229\234\242 \238\242 \193\238\235\252\248\238\227\238 \211\241\232\235\232\242\229\235\255 \211\228\224\247\232" )
+	Drop1[name].UsedTime = os.time()+statetime
+	SystemNotice ( role ,"Почувствуй эффект от Супер счастье-фрукта" )
 end
 
 --Волшебный фрукт (ID 0898)
 function ItemUse_MoreItemAndExpGz( role , Item )
-	local Lv = Lv( role )
-	if Lv < 30 then
-		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 30 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242")
-		UseItemFailed ( role )
-		return
-	end
 
+local name = GetChaDefaultName(role)
 	local statelv = 1
+	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+	
+	if Drop1[name] == nil then
+        Drop1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Drop1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+
+	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
 		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
+	Drop1[name].UsedTime = os.time()+statetime
+	SystemNotice ( role ,"Почувствуй эффект от Супер счастье-фрукта" )
+
 end
 
 --------------------------------------------------------------------------------------------------
@@ -5122,26 +5367,78 @@ function ItemUse_LSDZG ( role , Item )
 	local statelv = 4
 	local statetime = 60
 	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_JLGLJB )
 	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if Kovka[name] == nil then
+        Kovka[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Kovka[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_JLGLJB , statelv , statetime )
+		Kovka[name].UsedTime = os.time()+statetime
 	else
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" )
 		UseItemFailed ( role )
 		return
 	end
-end
+
+	end
+
 
 --Композиционный катализатор (ID 3075)
 function ItemUse_HSDZG ( role , Item )
 	local statelv = 2
 	local statetime = 60
 	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_HCGLJB )
 	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if Sochet[name] == nil then
+        Sochet[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Sochet[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_HCGLJB , statelv , statetime )
+		Sochet[name].UsedTime = os.time()+statetime
 	else
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" )
 		UseItemFailed ( role )
 		return
 	end
@@ -8037,24 +8334,44 @@ end
 
 --Усилитель удачи (ID 3096)
 function ItemUse_MoreItemGzA( role , Item )
+	local name = GetChaDefaultName(role)
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
-	
-	if ChaStateLv > statelv then
-		SystemNotice ( role , "\211\241\232\235\232\242\229\235\252 \243\228\224\247\232 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
-		UseItemFailed ( role )
-		return
-	end
-	
 	local statetime = 1800
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+	
+	if Drop1[name] == nil then
+        Drop1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Drop1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+
+	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-end
+	Drop1[name].UsedTime = os.time()+statetime
+		SystemNotice ( role ,"Почувствуй эффект от Усилителя удачи" )
+	end
 
 --Большой усилитель удачи (ID 3097)
 function ItemUse_MoreItemGzLv3A( role , Item )
@@ -8064,28 +8381,46 @@ function ItemUse_MoreItemGzLv3A( role , Item )
 		UseItemFailed ( role )
 		return
 	end
-
-
-	local statelv = 3	
-	
+local name = GetChaDefaultName(role)
+	local statelv = 3
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
-	
-	if ChaStateLv > statelv then
-		SystemNotice ( role , "\193\238\235\252\248\238\233 \243\241\232\235\232\242\229\235\252 \243\228\224\247\232 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
-		UseItemFailed ( role )
-		return
-	end
-
 	local statetime = 1800
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
+	
+	if Drop1[name] == nil then
+        Drop1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Drop1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+
+	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
 	else
 		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
 	end
-	SystemNotice ( role ,"\207\238\247\243\226\241\242\226\243\233 \253\244\244\229\234\242 \238\242 \193\238\235\252\248\238\227\238 \243\241\232\235\232\242\229\235\255 \243\228\224\247\232" )
-end
+	Drop1[name].UsedTime = os.time()+statetime
+	SystemNotice ( role ,"Почувствуй эффект от Большого усилителя удачи" )
+
+
+	end
 
 --------------------------------------------------------------------------------------------------
 --Зелья\Элексиры
@@ -8321,15 +8656,39 @@ function ItemUse_MspdYSA ( role , Item )
 	local statelv = 1
 	local statetime = 1800
 	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_YSMspd )
 	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if Skolz1[name] == nil then
+        Skolz1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Skolz1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_YSMspd , statelv , statetime )
+		Skolz1[name].UsedTime = os.time()+statetime
 	else
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" )
 		UseItemFailed ( role )
 		return
 	end
-
 end
 
 --Зелье легкости (ID 0850)
@@ -8337,17 +8696,41 @@ function ItemUse_MspdYSB ( role , Item )
 	local statelv = 1
 	local statetime = 900
 	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_QINGZ )
 	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if leg1[name] == nil then
+        leg1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = leg1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
 	if Cha_Boat ==  nil then
-		Rem_State_StarUnnormal ( role )
 		AddState( role , role , STATE_QINGZ , statelv , statetime )
+		leg1[name].UsedTime = os.time()+statetime
 	else
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" )
 		UseItemFailed ( role )
 		return
 	end
 end
-
+ 
 --Корабельная броня (ID3106)
 function ItemUse_GJZhuangJiaA ( role , Item )
 	local statelv = 1
@@ -8370,31 +8753,79 @@ function ItemUse_DenglongA ( role , Item )
 	local statelv = 1
 	local statetime = 900
 	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_DENGLONG )
 	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if stroi1[name] == nil then
+        stroi1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = stroi1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_DENGLONG , statelv , statetime )
+		stroi1[name].UsedTime = os.time()+statetime
 	else
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" )
 		UseItemFailed ( role )
 		return
 	end
 end
-
---Полный доспех (ID 0852)
+--Полный доспех
 function ItemUse_DenglongB ( role , Item )
 	local statelv = 1
 	local statetime = 900
 	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_QUANS )
 	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if dosp1[name] == nil then
+        dosp1[name] = { UsedTime = os.time() }
+    end
+	local cooldown = dosp1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
 	if Cha_Boat ==  nil then
-		Rem_State_StarUnnormal ( role )
 		AddState( role , role , STATE_QUANS , statelv , statetime )
+		dosp1[name].UsedTime = os.time()+statetime
 	else
-		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		SystemNotice( role , "Невозможно использовать в море" )
 		UseItemFailed ( role )
 		return
 	end
-end
+	end
 
 --------------------------------------------------------------------------------------------------
 --Билеты
@@ -10582,22 +11013,42 @@ end
 --Фрукт роста (Id 0578)
 function ItemUse_JLJSGz( role , Item )
 	local statelv = 1
-	local ChaStateLv = GetChaStateLv ( role , STATE_JLJSGZ)
+	local statetime = 900
 	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_JLJSGZ )
 	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ~= nil then 
-		SystemNotice( role , "Cannot use while sailing" ) 
-		UseItemFailed ( role ) 
-		return 
-	end 
+	local name = GetChaDefaultName(role)
+	if Drop2[name] == nil then
+        Drop2[name] = { UsedTime = os.time() }
+    end
+	local cooldown = Drop2[name].UsedTime - os.time()
+	
 	if ChaStateLv >= statelv then
-		SystemNotice ( role , "Эфект от фрукта еще работает. " )
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			local cooldown2 = math.floor(cooldown/60)		 		
+			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_JLJSGZ , statelv , statetime )
+		Drop2[name].UsedTime = os.time()+statetime
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
 		UseItemFailed ( role )
 		return
 	end
-	local statetime = 900
-	AddState( role , role , STATE_JLJSGZ , statelv , statetime )
-end
+	end
 
 --Огромный Фрукт снежного дракона до 100лв (ID 7550)
 function ItemUse_CJ_longguo2( role , Item , Item_Traget ) 
@@ -18463,7 +18914,7 @@ end
 
 --Билеты на острова
 function Jz_Script_zef(role, Item )
-	local i = CheckBagItem(role,8605)
+	local i = CheckBagItem(role,6514)
 	local k = ChaIsBoat(role)
 	local hp = Hp(role)
 	local mxhp = Mxhp(role)
@@ -18489,7 +18940,7 @@ function Jz_Script_zef(role, Item )
 		
 end
 function Jz_Script_otv(role, Item )
-	local i = CheckBagItem(role,8606)
+	local i = CheckBagItem(role,6515)
 	local k = ChaIsBoat(role)
 	local hp = Hp(role)
 	local mxhp = Mxhp(role)
@@ -18514,7 +18965,7 @@ function Jz_Script_otv(role, Item )
 		
 end
 function Jz_Script_led(role, Item )
-	local i = CheckBagItem(role,8607)
+	local i = CheckBagItem(role,6516)
 	local k = ChaIsBoat(role)
 	local hp = Hp(role)
 	local mxhp = Mxhp(role)
@@ -18539,7 +18990,7 @@ function Jz_Script_led(role, Item )
 		
 end
 function Jz_Script_yda(role, Item )
-	local i = CheckBagItem(role,8608)
+	local i = CheckBagItem(role,6517)
 	local k = ChaIsBoat(role)
 	local hp = Hp(role)
 	local mxhp = Mxhp(role)
@@ -18564,7 +19015,7 @@ function Jz_Script_yda(role, Item )
 		
 end
 function Jz_Script_kan(role, Item )
-	local i = CheckBagItem(role,8609)
+	local i = CheckBagItem(role,6518)
 	local k = ChaIsBoat(role)
 	local hp = Hp(role)
 	local mxhp = Mxhp(role)
@@ -18590,7 +19041,7 @@ function Jz_Script_kan(role, Item )
 end
 function Jz_Script_kyp(role, Item )
 
-	local i = CheckBagItem(role,8610)
+	local i = CheckBagItem(role,6519)
 	local k = ChaIsBoat(role)
 	local hp = Hp(role)
 	local mxhp = Mxhp(role)
@@ -18676,10 +19127,7 @@ function ItemUse_JCAKE ( role , Item )
 	else
 		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
 	end
-	local rand = math.random(1,10000000)
-	if rand == 434342 then
-		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
-	end
+	
 	end 
 
 --Оранжевый Кекс
@@ -18694,10 +19142,7 @@ function ItemUse_OCAKE ( role , Item )
 	else
 		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
 	end
-	local rand = math.random(1,10000000)
-	if rand == 434342 then
-		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
-	end
+	
 	end 
 
 --Красный Кекс
@@ -18712,10 +19157,7 @@ function ItemUse_KCAKE ( role , Item )
 	else
 		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
 	end
-	local rand = math.random(1,10000000)
-	if rand == 434342 then
-		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
-	end
+	
 	end 
 
 function ItemUse_DCAKE ( role , Item )
@@ -18729,10 +19171,7 @@ function ItemUse_DCAKE ( role , Item )
 	else
 		AddState ( role , role , STATE_HPPOTS , statelv , statetime ) 
 	end
-	local rand = math.random(1,10000000)
-	if rand == 434342 then
-		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
-	end
+	
 	end
 --Восполнение маны 1ур
 function ItemUse_SP( role , Item )
@@ -18767,10 +19206,7 @@ local hp = GetChaAttr(role, ATTR_SP)
 		return
 	end
 	
-		local rand = math.random(1,10000000)
-	if rand == 434342 then
-		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
-	end
+		
 end
 
 --Восполнение маны 2ур
@@ -18806,10 +19242,7 @@ local hp = GetChaAttr(role, ATTR_SP)
 		return
 	end
 
-		local rand = math.random(1,10000000)
-	if rand == 434342 then
-		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
-	end
+		
 	end
 
 --Восполнение маны 3ур
@@ -18844,10 +19277,7 @@ local hp = GetChaAttr(role, ATTR_SP)
 		UseItemFailed ( role )
 		return
 	end
-	local rand = math.random(1,10000000)
-	if rand == 434342 then
-		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
-	end
+	
 	end
 
 --Восполнение маны 4ур
@@ -18883,10 +19313,7 @@ local hp = GetChaAttr(role, ATTR_SP)
 		UseItemFailed ( role )
 		return
 	end
-	local rand = math.random(1,10000000)
-	if rand == 434342 then
-		HelpInfo(role,0,"Поздравляем! Вы нашли счастливый предмет, сделайте скриншот и покажите его администрации!")
-	end
+	
 	end
 
 function ItemUse_YSYS( role , Item )
@@ -18944,5 +19371,47 @@ local Cha_Boat = GetCtrlBoat ( role )
 
 end
 
+function ItemUse_Buff(role) 
+        local StateType = GetChaStateLv (role, STATE_XLZH) 
+        local StateType = GetChaStateLv (role, STATE_SHPF) 
+        local StateType = GetChaStateLv (role, STATE_MLCH) 
+        local StateType = GetChaStateLv (role, STATE_FZLZ) 
+        local StateType = GetChaStateLv (role, STATE_JSFB) 
+        local StateType = GetChaStateLv (role, STATE_TSHD) 
+        if StateType == 0 or 10   then 
+        AddState (role, role, STATE_XLZH, 10, 1800) 
+        AddState (role, role, STATE_SHPF, 10, 1800) 
+        AddState (role, role, STATE_MLCH, 10, 1800) 
+        AddState (role, role, STATE_FZLZ, 10, 1800)      
+        AddState (role, role, STATE_JSFB, 10, 1800) 
+        AddState (role, role, STATE_TSHD, 10, 1800)       
+        SystemNotice (role, "Вам предоставлены все усиления 10 уровня на 30 минут , приятного фарма! ") 
+else 
+        SystemNotice (role, "Вы находитесь под этим эффектом") 
+        end 
+end
 
+--ID7422	Вина перерождения
+function ItemUse_feniks( role , Item )
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then
+		SystemNotice( role , "Не может быть использовано, когда Вы в море" )
+		UseItemFailed ( role )
+		return
+	end
+	local Item_CanGet = GetChaFreeBagGridNum ( role )
+	 if Item_CanGet < 7 then
+		SystemNotice(role ,"Чтобы использовать сундук необходимо иметь 7 свободных слота в Вашем инвентаре.")
+		UseItemFailed ( role )
+		return
+	end
+	GiveItem ( role , 0 , 1358, 30 , 4 )
+	GiveItem ( role , 0 , 4730, 30 , 4 )
+	GiveItem ( role , 0 , 2619, 30 , 4 )
+	GiveItem ( role , 0 , 1087, 30 , 4 )
+	GiveItem ( role , 0 , 1088, 20 , 4 )
+	GiveItem ( role , 0 , 1087, 20 , 4 )
+	GiveItem ( role , 0 , 1089, 15 , 4 )
+end
 
