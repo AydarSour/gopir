@@ -19414,4 +19414,38 @@ function ItemUse_feniks( role , Item )
 	GiveItem ( role , 0 , 1087, 20 , 4 )
 	GiveItem ( role , 0 , 1089, 15 , 4 )
 end
+-- Мобильный банк 
+function ItemUse_Bank( role, Item ) 
+   OpenBank( role, role ) 
+end 
+
+-- Мобильная ковка 
+function ItemUse_Forge( role, Item ) 
+   OpenForge( role, role ) 
+end 
+
+-- Мобильная заточка 
+function ItemUse_Upgrade( role, Item ) 
+   OpenUpgrade( role, role ) 
+end 
+
+-- Мобильный ремонт 
+function ItemUse_Repair( role, Item ) 
+   OpenRepair( role, role ) 
+end 
+
+-- Мобильная вставка 
+function ItemUse_Fusion( role, Item ) 
+   OpenFusion( role, role ) 
+end 
+
+-- Мобильный дырокол 
+function ItemUse_Milling( role, Item ) 
+   OpenMilling( role, role ) 
+end 
+
+-- Мобильная спарка фей 
+function ItemUse_EidolonMetempsychosis( role, Item ) 
+   OpenEidolonMetempsychosis( role, role ) 
+end 
 
