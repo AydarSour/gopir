@@ -1,0 +1,3 @@
+// [Gemini.Datasets(v = 2.3, t = Gemini.Datasets.SceneEffectInfoD0, s = 208, n = 1)]
+0	Name	a.piratia.info	a.piratia.info	-842150451	-842150451	-842150451,-842150451,-842150451,-842150451,-842150451,-842150451,-842150451,-842150451	1701667150	0	-4,299162E+08	-842150451	-4,316021E+08
+// [Gemini Decompiler] End of data.
