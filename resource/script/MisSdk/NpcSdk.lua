@@ -1329,6 +1329,8 @@ function MsgProc( character, npc, rpk, page, trade, missionlist, exchangeData )
 			return GetChaName_28(character,npc )
 		elseif item.func == GetChaName1_born then
 			return GetChaName1_born(character,npc )
+		elseif item.func == FastCombiner then
+			return FastCombiner(character,item.p1,item.p2)
 		elseif item.func == GetChaName2_born then
 			return GetChaName2_born(character,npc )
 		elseif item.func == GetChaName3_born then

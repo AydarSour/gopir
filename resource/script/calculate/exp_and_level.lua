@@ -90,6 +90,11 @@ function DeductGuildItem(role,Guild_type)
 		SyncChar( role, 4 )
 	else
 	end
+	local file = io.open("guild/"..GetChaGuildID(role)..".txt", "w+")
+    if file ~= nil then
+        file:write (GetRoleID(role))
+        file:close()
+    end
 end
 	
 function AskJoinGuild ( role , guild_type )

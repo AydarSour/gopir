@@ -6871,3 +6871,84 @@ function GetElfLV(item)
 	return lv
 end
 
+--Комбайнер
+function FastCombiner(cha,itemid,lvl)
+	local CombineLvl = {}
+	CombineLvl[2] = {pieces=2,fee=30000}
+	CombineLvl[3] = {pieces=4,fee=60000}
+	CombineLvl[4] = {pieces=8,fee=120000}
+	CombineLvl[5] = {pieces=16,fee=240000}
+	CombineLvl[6] = {pieces=32,fee=500000}
+	CombineLvl[7] = {pieces=64,fee=6000000}
+	CombineLvl[8] = {pieces=128,fee=7000000}
+	CombineLvl[9] = {pieces=256,fee=8000000}
+	--! Check if Bag is locked
+	if(KitbagLock(cha, 0) ~= LUA_TRUE)then 
+		HelpInfo(cha,0,'У тебя нет места!') 
+		return
+	end 
+      
+	--! Check has money required for gem level
+	local m = HasMoney(cha,CombineLvl[lvl].fee)
+	if(m == 0)then
+		HelpInfo(cha,0,'У тебя нет  '..CombineLvl[lvl].fee..'$ для комбинирования!')
+		return
+	end
+	--8273
+	
+	local o = CheckBagItem(cha,8273)
+	if (o==0) then 
+		HelpInfo(cha,0,'Ты не премиум пользователь!')
+		return
+	end
+	--! Scan whole inventory and store gem slots location
+	local bag,gemSlot,gemLv,array = GetKbCap(cha),0,0,{}
+	for i = 0,bag-1 do
+		gemSlot = GetChaItem(cha,2,i)
+		if(GetItemID(gemSlot) == itemid)then
+			gemLv = GetItemAttr(gemSlot,ITEMATTR_VAL_BaoshiLV)
+			if(gemLv == 1)then
+				table.insert(array,i)
+			end
+		end
+	end
+	
+	--! Check if player has correct number of gems (Lv1)
+	if(table.getn(array) < CombineLvl[lvl].pieces)then
+		HelpInfo(cha,0,'У тебя не хватает самоцветов!')
+		return
+	end
+	
+	--! Remove gems
+	local rem = 0
+	for k,j in pairs(array) do
+		if(rem <= CombineLvl[lvl].pieces)then
+			RemoveChaItem(cha,0,1,2,j,2,1)
+			rem = rem + 1
+		else
+			break
+		end
+	end
+	
+	--! Give a message, take the money & the gem combined
+	BickerNotice(cha,'Получено '..GetItemName(itemid)..' '..lvl..'уровня!')
+	TakeMoney(cha,0,CombineLvl[lvl].fee)
+	GiveItem(cha,0,itemid,1,100+lvl)
+
+end
+
+--Получение главы гильдии
+function GetGuildLeaderID(guild_id)
+	
+	local leader_id = 0
+	local file = io.open("guild/" .. guild_id.. ".txt", "r")
+	
+	if (file ~= nil) then
+		leader_id = file:read("*n")
+		file:close()
+	end
+	
+	return leader_id
+
+end
+
