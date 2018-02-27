@@ -4141,7 +4141,7 @@ function cha_timer( role, freq, time )
 				local Part1_JLone = GetNum_Part1( Num_JLone )
 				
 				--Для премиум
-				if GetChaStateLv( role, STATE_JLJSGZ ) > 0 then
+				if GetChaStateLv( role, STATE_JLJSGZ ) == 0 then
 					local k = TakeItem( role, 0, 578, 1 )
 					if k == 0 then
 						SystemNotice( role , "Использован фрукт усиления роста" )

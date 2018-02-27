@@ -19450,25 +19450,7 @@ local Cha_Boat = GetCtrlBoat ( role )
 
 end
 
-function ItemUse_Buff(role) 
-        local StateType = GetChaStateLv (role, STATE_XLZH) 
-        local StateType = GetChaStateLv (role, STATE_SHPF) 
-        local StateType = GetChaStateLv (role, STATE_MLCH) 
-        local StateType = GetChaStateLv (role, STATE_FZLZ) 
-        local StateType = GetChaStateLv (role, STATE_JSFB) 
-        local StateType = GetChaStateLv (role, STATE_TSHD) 
-        if StateType == 0 or 10   then 
-        AddState (role, role, STATE_XLZH, 10, 1800) 
-        AddState (role, role, STATE_SHPF, 10, 1800) 
-        AddState (role, role, STATE_MLCH, 10, 1800) 
-        AddState (role, role, STATE_FZLZ, 10, 1800)      
-        AddState (role, role, STATE_JSFB, 10, 1800) 
-        AddState (role, role, STATE_TSHD, 10, 1800)       
-        SystemNotice (role, "Вам предоставлены все усиления 10 уровня на 30 минут , приятного фарма! ") 
-else 
-        SystemNotice (role, "Вы находитесь под этим эффектом") 
-        end 
-end
+
 
 --ID7422	Вина перерождения
 function ItemUse_feniks( role , Item )
