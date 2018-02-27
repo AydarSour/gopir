@@ -1377,6 +1377,8 @@ function Skill_Fnq_End ( ATKER , DEFER , sklv )
 		statetime = 120
 		statelv = 10
 	end
+	SystemNotice(DEFER, "Получено усиление <Воодушевление> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	AddState( ATKER , DEFER , STATE_FNQ, statelv , statetime ) 
 end 
 
@@ -1417,6 +1419,8 @@ end
 function Skill_Kb_End ( ATKER , DEFER , sklv ) 
 	local statelv = sklv 
 	local statetime = 20  
+	SystemNotice(DEFER, "Получено усиление <Берсерк> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	AddState( ATKER , DEFER , STATE_KB, statelv , statetime ) 
 end 
 
@@ -1583,7 +1587,9 @@ function Skill_BingX_End ( ATKER , DEFER , sklv )
 		
 				end
 			end
-		AddState ( ATKER , DEFER , STATE_BIW , statelv , statetime )	
+		AddState ( ATKER , DEFER , STATE_BIW , statelv , statetime )
+SystemNotice(DEFER, "Получено усиление <Кристальное благославление> "..statelv.."ур. на "..statetime.. " секунд" )
+		
 	else
 		LG("Skill_Item","Delete Icy Crystal failed")
 	end
@@ -1614,6 +1620,8 @@ function Skill_Shpf_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  180    
 	AddState ( ATKER , DEFER , STATE_SHPF , statelv , statetime ) 
+	SystemNotice(DEFER, "Получено усиление <Закалка> "..statelv.."ур. на "..statetime.. " секунд" )
+
 end 
 
 function State_Shpf_Add ( role , statelv ) 
@@ -1669,6 +1677,7 @@ function Skill_Mlch_End ( ATKER , DEFER , sklv )
 		local statelv = sklv 
 		local statetime =  90 + 90 * sklv   
 		AddState ( ATKER , DEFER , STATE_MLCH , statelv , statetime ) 	
+	SystemNotice(DEFER, "Получено усиление <Сильная магия> "..statelv.."ур. на "..statetime.. " секунд" )		
 	else
 		LG("Skill_Item","Delete Magical Clover failed")
 	end
@@ -1703,6 +1712,8 @@ function Skill_Gtyz_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  15    
 	AddState ( ATKER , DEFER , STATE_GTYZ , statelv , statetime ) 
+	SystemNotice(DEFER, "Получено усиление <Стальная воля> "..statelv.."ур. на "..statetime.. " секунд" )		
+		
 	Check_Ys_Rem ( ATKER , DEFER )						
 end 
 
@@ -2386,6 +2397,8 @@ function Skill_Xlzh_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime = 180 + sklv * 20 
 	AddState( ATKER , DEFER , STATE_XLZH, statelv , statetime )
+	SystemNotice(DEFER, "Получено усиление <Призрачный огонь> "..statelv.."ур. на "..statetime.. " секунд" )
+
 end 
 
 function State_Xlzh_Add ( role , statelv ) 
@@ -2435,6 +2448,8 @@ function Skill_Fzlz_End ( ATKER , DEFER , sklv )
 		statetime = 360
 		statelv = 10
 	end
+	SystemNotice(DEFER, "Получено усиление <Мощь бури> "..statelv.."ур. на "..statetime.. " секунд" )
+
 	AddState( ATKER , DEFER , STATE_FZLZ, statelv , statetime )
 end 
 
@@ -2786,7 +2801,7 @@ function Skill_Xlpz_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime = -1  
 	if GetChaTypeID( ATKER ) == 984 then
-		statelv = 10
+		statelv = 12
 	end
         AddState( ATKER , DEFER , STATE_MFD, statelv , statetime )
 		SystemNotice(DEFER, "На вас действует эффект <Магический щит> "..sklv.."ур.")	
@@ -11957,6 +11972,7 @@ function State_HPPOTS_Add ( role , statelv )
 			local hp_resume = 50 * statelv
 			local hp = GetChaAttr(role, ATTR_HP)
 			hp = hp + hp_resume
+			SystemNotice( role , "Получено " ..hp_resume.. " здоровья" )
 			SetCharaAttr(hp, role, ATTR_HP)
 			ALLExAttrSet(role)
 			count = 2
@@ -11966,6 +11982,7 @@ function State_HPPOTS_Add ( role , statelv )
 				local hp_resume = 50 * statelv
 				local hp = GetChaAttr(role, ATTR_HP)
 				hp = hp + hp_resume
+				SystemNotice( role , "Получено " ..hp_resume.. " здоровья" )
 				SetCharaAttr(hp, role, ATTR_HP)
 				ALLExAttrSet(role)
 				count = StateTimeHPPOTS[role].count + 1
@@ -11989,6 +12006,7 @@ function State_HPPOTS_Add ( role , statelv )
 				local hp_resume = 50 * statelv
 				local hp = GetChaAttr(role, ATTR_HP)
 				hp = hp + hp_resume
+				SystemNotice( role , "Получено " ..hp_resume.. " здоровья" )
 				SetCharaAttr(hp, role, ATTR_HP)
 				ALLExAttrSet(role)
 				count = StateTimeHPPOTS[role].count + 1

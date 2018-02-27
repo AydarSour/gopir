@@ -1359,9 +1359,9 @@ function Hp_Dmg(role,dmg)
 	end
 	
 	if Can_Pk_07xmas2 == 0 then
-			dmg = dmg * mob
-	else 
 			dmg = dmg * player
+	else 
+			dmg = dmg * mob
 	end
 	
 	if dmg > 0 then
@@ -4139,6 +4139,14 @@ function cha_timer( role, freq, time )
 				local Elf_URE = GetItemAttr( Item_bg, ITEMATTR_URE )
 				local Num_JLone = GetItemForgeParam( Item_bg, 1 )
 				local Part1_JLone = GetNum_Part1( Num_JLone )
+				
+				--Для премиум
+				if GetChaStateLv( role, STATE_JLJSGZ ) > 0 then
+					local k = TakeItem( role, 0, 578, 1 )
+					if k == 0 then
+						SystemNotice( role , "Использован фрукт усиления роста" )
+					end
+				end
 				if Elf_URE <= 2550 and Item_siliao_ID == 2312 then
 					local j = TakeItem( role, 0, 2312, 1 )
 					if j == 0 then
@@ -4155,22 +4163,22 @@ function cha_timer( role, freq, time )
 				----------------------------------------------------------
 				local star_num = GetItemAttr( Item_bg, ITEMATTR_VAL_FUSIONID )
 				star_num = star_num + 1
-				if math.mod( star_num, 1 ) == 0 and Elf_URE >= 50 and Part1_JLone == 1 then
+				if math.mod( star_num, 1 * TIME_ELF ) == 0 and Elf_URE >= 50 and Part1_JLone == 1 then
 					GiveItemX( role, 0, 855, 1, 4 )
 				end
-				if math.mod( star_num, 2 ) == 0 and Elf_URE >= 50 and Part1_JLone ~= 1 then
+				if math.mod( star_num, 2 * TIME_ELF ) == 0 and Elf_URE >= 50 and Part1_JLone ~= 1 then
 					GiveItemX( role, 0, 855, 1, 4 )
 				end
-				if math.mod( star_num, 30 ) == 0 and Elf_URE >= 50 and Part1_JLone == 1 then
+				if math.mod( star_num, 30 * TIME_ELF) == 0 and Elf_URE >= 50 and Part1_JLone == 1 then
 					GiveItemX( role, 0, 2588, 1, 4 )
 				end
-				if math.mod( star_num, 60 ) == 0 and Elf_URE >= 50 and Part1_JLone ~= 1 then
+				if math.mod( star_num, 60 * TIME_ELF) == 0 and Elf_URE >= 50 and Part1_JLone ~= 1 then
 					GiveItemX( role, 0, 2588, 1, 4 )
 				end
-				if math.mod( star_num, 120 ) == 0 and Elf_URE >= 50 then
+				if math.mod( star_num, 120 * TIME_ELF) == 0 and Elf_URE >= 50 then
 					GiveItemX( role, 0, 2588, 1, 4 )
 				end
-				if math.mod( star_num , 1200 ) == 0  and Elf_URE >= 50 then
+				if math.mod( star_num , 1200 * TIME_ELF) == 0  and Elf_URE >= 50 then
 					GiveItemX( role, 0, 2589, 1, 4 )
 				end
 				if star_num == 1200 then
@@ -6896,11 +6904,11 @@ function FastCombiner(cha,itemid,lvl)
 	end
 	--8273
 	
-	local o = CheckBagItem(cha,8273)
-	if (o==0) then 
-		HelpInfo(cha,0,'Ты не премиум пользователь!')
-		return
-	end
+	-- local o = CheckBagItem(cha,8273)
+	-- if (o==0) then 
+		-- HelpInfo(cha,0,'Ты не премиум пользователь!')
+		-- return
+	-- end
 	--! Scan whole inventory and store gem slots location
 	local bag,gemSlot,gemLv,array = GetKbCap(cha),0,0,{}
 	for i = 0,bag-1 do

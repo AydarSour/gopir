@@ -18868,14 +18868,14 @@ function ItemUse_Buff1( role , Item )
 	end 
    
 	
-		local StateType = GetChaStateLv (role, STATE_XLZH )--Призрачный огонь
-		local StateType = GetChaStateLv (role, STATE_SHPF )--Закалка
-		local StateType = GetChaStateLv (role, STATE_MLCH )--Сильная магия
-		local StateType = GetChaStateLv (role, STATE_FZLZ )--Мощь бури
-		local StateType = GetChaStateLv (role, STATE_JSFB )--Воронка торнадо
-		local StateType = GetChaStateLv (role, STATE_TSHD )--Ангельский щит
+		local StateType1 = GetChaStateLv (role, STATE_XLZH )--Призрачный огонь
+		local StateType2 = GetChaStateLv (role, STATE_SHPF )--Закалка
+		local StateType3 = GetChaStateLv (role, STATE_MLCH )--Сильная магия
+		local StateType4 = GetChaStateLv (role, STATE_FZLZ )--Мощь бури
+		local StateType5 = GetChaStateLv (role, STATE_JSFB )--Воронка торнадо
+		local StateType6 = GetChaStateLv (role, STATE_TSHD )--Ангельский щит
 
-		if StateType <=0   then  
+		if StateType1 > 0	or  StateType2 > 0	or StateType3 > 0	or StateType4 > 0	or StateType5 > 0	or StateType6 > 0 then  
 		
 		
 		AddState ( role, role, STATE_XLZH, statelv, statetime) 
@@ -19274,6 +19274,7 @@ local hp = GetChaAttr(role, ATTR_SP)
 		hp = mxhp 
 	end 
 	SetCharaAttr(hp, role, ATTR_SP)
+	SystemNotice( role , "Получено " ..hp_resume.. " маны" )
 	Mana[name].UsedTime = os.time()+statetime2
 	else
 		SystemNotice( role , "Невозможно использовать в море" )
@@ -19309,6 +19310,7 @@ local hp = GetChaAttr(role, ATTR_SP)
 	if hp > mxhp then
 		hp = mxhp 
 	end 
+	SystemNotice( role , "Получено " ..hp_resume.. " маны" )
 	SetCharaAttr(hp, role, ATTR_SP)
 	Mana[name].UsedTime = os.time()+statetime2
 	else
@@ -19345,6 +19347,7 @@ local hp = GetChaAttr(role, ATTR_SP)
 	if hp > mxhp then
 		hp = mxhp 
 	end 
+	SystemNotice( role , "Получено " ..hp_resume.. " маны" )
 	SetCharaAttr(hp, role, ATTR_SP)
 	Mana[name].UsedTime = os.time()+statetime2
 	else
@@ -19380,6 +19383,7 @@ local hp = GetChaAttr(role, ATTR_SP)
 	if hp > mxhp then
 		hp = mxhp 
 	end 
+	SystemNotice( role , "Получено " ..hp_resume.. " маны" )
 	SetCharaAttr(hp, role, ATTR_SP)
 	
 		Mana[name].UsedTime = os.time()+statetime2
