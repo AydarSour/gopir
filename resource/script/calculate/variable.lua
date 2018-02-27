@@ -4,11 +4,11 @@ print( "‡ Јаг§Є  Variable.lua" )
 
 
 
-EXP_RAID				= 100				-- Рейты на опыт
+EXP_RAID				= 1				-- Рейты на опыт
 MF_RAID					= 3				-- Рейты на выпадение предметов
 Resource_RAID_ADJUST	= 3				-- Рейты на ресурсы
 TeamExp_RAID			= 1				-- Рейты в отряде
-ELEEXP_GETRAD			= 10				-- Рейты на рост феи
+ELEEXP_GETRAD			= 10			-- Рейты на рост феи
 A_B_C					= 8				-- Неизвестно
 
 Money_all				= 2000000		-- Переменная количества золота выдаваемое в Хаосе
@@ -407,7 +407,21 @@ ChangeItemList[	245	]	= {	855		,	600		,	785		,	1	}
 ChangeItemList[	246	]	= {	855		,	600		,	789		,	1	}
 ChangeItemList[	247	]	= {	855		,	600		,	799		,	1	}
 ChangeItemList[	248	]	= {	855		,	600		,	803		,	1	}
-
+--Расписки\Гемы
+	ChangeItemList[	249	]	= {	921	,	1	,	863	,	1	,	1}
+	ChangeItemList[	250	]	= {	918	,	1	,	860	,	1	,	1}
+	ChangeItemList[	251	]	= {	920	,	1	,	862	,	1	,	1}
+	ChangeItemList[	252	]	= {	333	,	1	,	1012	,	1	,	1}
+	ChangeItemList[	253	]	= {	919	,	1	,	861	,	1	,	1}
+	ChangeItemList[	254	]	= {	859	,	1	,	881	,	1	,	1}
+	ChangeItemList[	255	]	= {	858	,	1	,	880	,	1	,	1}
+	ChangeItemList[	256	]	= {	857	,	1	,	879	,	1	,	1}
+	ChangeItemList[	257	]	= {	856	,	1	,	878	,	1	,	1}
+	ChangeItemList[	258	]	= {	916	,	1	,	884	,	1	,	1}
+	ChangeItemList[	259	]	= {	915	,	1	,	883	,	1	,	1}
+	ChangeItemList[	260	]	= {	914	,	1	,	882	,	1	,	1}
+	ChangeItemList[	261	]	= {	911	,	1	,	887	,	1	,	1}
+	ChangeItemList[	262	]	= {	3877	,	1	,	885	,	1	,	1}
 ------------------------------------------
 -- Типы предметов, которые можно чинить --
 ------------------------------------------
