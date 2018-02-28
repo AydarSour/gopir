@@ -2036,8 +2036,8 @@ function SkillCooldown_Jf( sklv )
 end
 
 function SkillEnergy_Jf ( sklv )										
-	local energy_reduce = math.floor ( 1 + sklv * 0.25 )    
-	return energy_reduce 
+	--local energy_reduce = math.floor ( 1 + sklv * 0.25 )    
+	--return energy_reduce 
 end 
 
 function Skill_Jf_Begin ( role , sklv ) 
@@ -2088,8 +2088,8 @@ function SkillCooldown_Lj( sklv )
 end
 
 function SkillEnergy_Lj ( sklv )										
-	local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
-	return energy_reduce 
+	--local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
+	--return energy_reduce 
 end 
 
 function Skill_Lj_Begin ( role , sklv ) 
@@ -3964,8 +3964,8 @@ function SkillSp_Bkcj ( sklv )
 end
 
 function SkillEnergy_Bkcj ( sklv )										
-	local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
-	return energy_reduce 
+	--local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
+	--return energy_reduce 
 end 
 
 function Skill_Bkcj_Begin ( role , sklv ) 
@@ -4022,8 +4022,8 @@ function SkillSp_Sf ( sklv )
 end
 
 function SkillEnergy_Sf ( sklv )										
-	local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
-	return energy_reduce 
+--	local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
+	--return energy_reduce 
 end 
 
 function Skill_Sf_Begin ( role , sklv ) 
@@ -4435,8 +4435,8 @@ function SkillArea_State_Mw ( sklv )
 end 
 
 function SkillEnergy_Mw ( sklv )										
-	local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
-	return energy_reduce 
+	--local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
+	--return energy_reduce 
 end
 
 function Skill_Mw_Begin ( role , sklv ) 
@@ -4489,8 +4489,8 @@ function SkillSp_Lm ( sklv )
 end
 
 function SkillEnergy_Lm ( sklv )										
-	local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
-	return energy_reduce 
+	--local energy_reduce = math.floor ( 3 + sklv * 0.5 )    
+	--return energy_reduce 
 end 
 
 function SkillArea_State_Lm ( sklv )										
@@ -4500,6 +4500,8 @@ function SkillArea_State_Lm ( sklv )
 end 
 
 function Skill_Lm_Begin ( role , sklv ) 
+	local AntiBotSystemLine = AntiBotSystemLine(role)
+	if AntiBotSystemLine == 0 then SkillUnable(role) return end
 	local sp = Sp(role) 
 	local sp_reduce  = SkillSp_Lm ( sklv )  
 	if sp - sp_reduce < 0 then 
