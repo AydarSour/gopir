@@ -6737,12 +6737,101 @@ end
 ----------------------------
 function HandleChat( role, message )
 -- Проверка GM уровня персонажа
-	
-	if ( message == "/гмуровень" ) then
-		SystemNotice( role, "Ваш GM-уровень равен " ..GetGmLv( role ))
-		return 0
-	end
+if CheckBagItem( role, 6699 ) == 0 then
 	return 1
+else
+		if ( message == "/баф" ) then
+			local statelv = 10
+			local statetime = 900
+			AddState ( role, role, STATE_XLZH, statelv, statetime) 
+			AddState ( role, role, STATE_SHPF, statelv, statetime) 
+			AddState ( role, role, STATE_MLCH, statelv, statetime) 
+			AddState ( role, role, STATE_FZLZ, statelv, statetime) 
+			AddState ( role, role, STATE_JSFB, statelv, statetime) 
+			AddState ( role, role, STATE_TSHD, statelv, statetime) 
+			return 0
+		end
+		if ( message == "/обратно" ) then
+			local hp = Hp(role)
+			local mxhp = Mxhp(role)
+			local sp = Sp(role)
+			local mxsp = Mxsp(role)
+			if sp < mxsp or hp < mxhp then 
+				SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+				return 0
+			end 
+			MoveCity(role,"")
+			return 0
+		end
+		if ( message == "/аргент" ) then
+			local hp = Hp(role)
+			local mxhp = Mxhp(role)
+			local sp = Sp(role)
+			local mxsp = Mxsp(role)
+			if sp < mxsp or hp < mxhp then 
+				SystemNotice (role, "Телепортация - утомительный процесс. Пожалуйста, восстанови полностью ЖЗ и МН")
+				return 0 
+			end 
+			MoveCity(role,"Argent City")
+			return 0
+		end
+		if ( message == "/банк" ) then
+			OpenBank( role, role ) 
+			return 0
+		end
+		if ( message == "/ремонт" ) then
+			OpenRepair( role, role ) 
+			return 0
+		end
+		if ( message == "/ковка" ) then
+			OpenForge( role, role ) 
+			return 0
+		end
+		if ( message == "/вставка" ) then
+			OpenFusion( role, role ) 
+			return 0
+		end
+		if ( message == "/дырокол" ) then
+			OpenMilling( role, role ) 
+			return 0
+		end
+		if ( message == "/спарка" ) then
+			OpenEidolonMetempsychosis( role, role ) 
+			return 0
+		end
+		if ( message == "/стоп" ) then
+			AddState ( role, role, STATE_SBJYGZ, 7, 5000)
+			SystemNotice(role,"Опыт выключен")
+			return 0
+		end
+		if ( message == "/старт" ) then
+			AddState ( role, role, STATE_SBJYGZ, 8, 5000) 
+			SystemNotice(role,"Опыт включен")
+			return 0
+		end
+		if ( message == "/жз" ) then
+			if HasMoney(role,500000)== 1 then
+				TakeMoney(role,0,500000)
+				GiveItem ( role , 0 , 6502  , 99 , 4 )
+			else
+				SystemNotice(role,"Вам нужно 500.000 золотых")
+			end
+			
+			return 0
+		end
+		if ( message == "/мн" ) then
+			if HasMoney(role,500000)==1 then
+				TakeMoney(role,0,500000)
+				GiveItem ( role , 0 , 6505  , 99 , 4 )
+			else
+				SystemNotice(role,"Вам нужно 500.000 золотых")
+			end
+			return 0
+end
+	
+		return 1
+end
+return 1	
 end
 
 --------------------------------------------------------------------------

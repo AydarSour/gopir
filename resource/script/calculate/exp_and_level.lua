@@ -359,7 +359,10 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 					EXP_RAID_STATE = 10
 				end
 				if StateLv == 7 then
-					EXP_RAID_STATE = 20
+					EXP_RAID_STATE = 0
+				end
+				if StateLv == 8 then
+					EXP_RAID_STATE = 1
 				end
 			end
 			if StateLv > 1 then
@@ -540,7 +543,7 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 							EXP_NEW_LVL = 3
 						end
 			
-			if CheckBagItem( TurnToCha(t[i]), 6698 )==1 or GetChaStateLv( t[i], STATE_SBJYGZ )==999	then
+			if CheckBagItem( TurnToCha(t[i]), 6698 )==1 or GetChaStateLv( TurnToCha(t[i]), STATE_SBJYGZ )> 10	then
 				exp_up = 0
 			end
 			exp = exp + exp_up  * EXP_NEW_LVL
