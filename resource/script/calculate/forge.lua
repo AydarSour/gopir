@@ -1267,10 +1267,10 @@ function Check_CG_damo ( Item_damo , Sklv )
 		a = 1				-- 100% = 1
 	end
 	if Hole_Num == 1 then
-		a = 0.5				-- 50% = 0.5
+		a = 0.75				-- 50% = 0.5
 	end
 	if Hole_Num == 2 then
-		a = 0.01			-- 1% = 0.01
+		a = 0.4		-- 1% = 0.01
 	end
 	local b = Percentage_Random ( a )
 	return b
