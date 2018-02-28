@@ -4144,10 +4144,10 @@ function cha_timer( role, freq, time )
 				local Part1_JLone = GetNum_Part1( Num_JLone )
 				
 				--Для премиум
-				if GetChaStateLv( role, STATE_JLJSGZ ) == 0 then
+				if GetChaStateLv( role, STATE_JLJSGZ ) <= 0 then
 					local k = TakeItem( role, 0, 578, 1 )
 					if k == 0 then
-						AddState( role , role , STATE_JLJSGZ , statelv , statetime )
+						AddState( role , role , STATE_JLJSGZ , 1 , 600 )
 						SystemNotice( role , "Использован фрукт усиления роста" )
 					end
 				end
@@ -6967,6 +6967,8 @@ end
 		if GetCtrlBoat ( ATKER ) == 0 and  GetCtrlBoat ( DEFER )== 1 then
 			Hp_Endure_Dmg( DEFER , 0 ) 
 		elseif GetCtrlBoat ( ATKER ) == 1 and  GetCtrlBoat ( DEFER )== 0 then
-			Hp_Endure_Dmg( DEFER , hpdmg )	
+			Hp_Endure_Dmg( DEFER , 0 )
+		else 
+			Hp_Endure_Dmg( DEFER , hpdmg )
 		end
  end
