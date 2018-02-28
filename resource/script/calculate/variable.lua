@@ -40,7 +40,7 @@ AntiBot = {}
 AntiBotLine = {}
 VilkaBarb = {}
 RybkaDouble = {}
-
+NAN ={}
 DropEXP1 = {}
 DropEXP2 = {}
 DropEXP3 = {}

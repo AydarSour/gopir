@@ -4021,7 +4021,10 @@ local name = GetChaDefaultName(role)
 	if bik1[name] == nil then
         bik1[name] = { UsedTime = os.time() }
     end
-	local cooldown = bik1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = bik1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4031,8 +4034,8 @@ local name = GetChaDefaultName(role)
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4061,7 +4064,10 @@ function ItemUse_PKKBYS ( role , Item )
 	if bers1[name] == nil then
         bers1[name] = { UsedTime = os.time() }
     end
-	local cooldown = bers1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = bers1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4071,8 +4077,8 @@ function ItemUse_PKKBYS ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4101,7 +4107,10 @@ function ItemUse_PKJSYS ( role , Item )
 	if energ1[name] == nil then
         energ1[name] = { UsedTime = os.time() }
     end
-	local cooldown = energ1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = energ1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4111,8 +4120,8 @@ function ItemUse_PKJSYS ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4141,7 +4150,10 @@ function ItemUse_PKSFYS ( role , Item )
 	if ukrep1[name] == nil then
         ukrep1[name] = { UsedTime = os.time() }
     end
-	local cooldown = ukrep1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = ukrep1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4151,8 +4163,8 @@ function ItemUse_PKSFYS ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4182,7 +4194,10 @@ function ItemUse_PKJZYS ( role , Item )
 	if Drop3[name] == nil then
         Drop3[name] = { UsedTime = os.time() }
     end
-	local cooldown = Drop3[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Drop3[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4192,8 +4207,8 @@ function ItemUse_PKJZYS ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4715,7 +4730,10 @@ function ItemUse_MoreExpGz( role, Item )
 	if DropEXP1[name] == nil then
         DropEXP1[name] = { UsedTime = os.time() }
     end
-	local cooldown = DropEXP1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4725,8 +4743,8 @@ function ItemUse_MoreExpGz( role, Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4736,32 +4754,58 @@ function ItemUse_MoreExpGz( role, Item )
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
+		AddState( role , role , STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	end
 	DropEXP1[name].UsedTime = os.time()+statetime
 end
 
 -- Фрукт опыта отряда ( ID 0849 ) STATE_ZDSBJYGZ local statelv = 1
 function ItemUse_ZD_MoreExpGz( role , Item )
+	local name = GetChaDefaultName(role)
 	local statelv = 1
-	local ChaStateLv = GetChaStateLv ( role , STATE_ZDSBJYGZ )
-
-	if ChaStateLv > statelv then
-		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
-		UseItemFailed ( role )
-		return
-	end
-
+	local ChaStateLv = GetChaStateLv ( role , STATE_SBBLGZ )
 	local statetime = 900
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_ZDSBJYGZ , statelv , statetime )
-	else
-		AddState( Cha_Boat , Cha_Boat , STATE_ZDSBJYGZ , statelv , statetime )
+	
+	if NAN[name] == nil then
+        NAN[name] = { UsedTime = os.time() }
+    end
+	
+ local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = NAN[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
 	end
+
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_SBBLGZ , statelv , statetime ) 
+		SystemNotice(role, "Получен эффект стремления отряда на "..cooldown2.." минут")
+	else
+		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime ) 
+		SystemNotice(role, "Получен эффект усиления стремления отряда на "..cooldown2.." минут")
+	end
+	NAN[name].UsedTime = os.time()+statetime
 end
 
 --Слеза без любви (ID 1006) statelv = 1
@@ -4776,7 +4820,10 @@ function ItemUse_MoreItemGz( role , Item )
 	if Drop1[name] == nil then
         Drop1[name] = { UsedTime = os.time() }
     end
-	local cooldown = Drop1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4786,8 +4833,8 @@ function ItemUse_MoreItemGz( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4797,12 +4844,13 @@ function ItemUse_MoreItemGz( role , Item )
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
+		AddState( role , role , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
+		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	end
 	Drop1[name].UsedTime = os.time()+statetime
-	SystemNotice ( role ,"Почувствуй эффект от Зачарованной ягоды" )
 end
 
 --Особый тайнофрукт (ID 3879)
@@ -4815,24 +4863,42 @@ function ItemUse_MoreExpGzLv2( role , Item )
 	end
 
 	local statelv = 2
-	
-	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-	
-	if ChaStateLv > statelv then
-		SystemNotice ( role , "\207\240\229\228\236\229\242 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
-		UseItemFailed ( role )
-		return
-	end
-	
 	local statetime = 900
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
-	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
+	if DropEXP1[name] == nil then
+        DropEXP1[name] = { UsedTime = os.time() }
+    end
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = DropEXP1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
 	end
-	SystemNotice ( role ,"Feel the effect of Special Mystic Fruit" )
+
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
+	else
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
+	end
+	DropEXP1[name].UsedTime = os.time()+statetime
+	
 end
 
 --Особый счастье-фрукт (ID 3881)
@@ -4854,7 +4920,10 @@ local name = GetChaDefaultName(role)
 	if Drop1[name] == nil then
         Drop1[name] = { UsedTime = os.time() }
     end
-	local cooldown = Drop1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4864,8 +4933,8 @@ local name = GetChaDefaultName(role)
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4875,12 +4944,13 @@ local name = GetChaDefaultName(role)
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
+		AddState( role , role , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
+		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	end
 	Drop1[name].UsedTime = os.time()+statetime
-	SystemNotice ( role ,"Почувствуй эффект от Особого счастье-фрукта" )
 
 	end
 
@@ -4897,7 +4967,10 @@ function ItemUse_MoreExpGzLv3( role, Item )
 	if DropEXP1[name] == nil then
         DropEXP1[name] = { UsedTime = os.time() }
     end
-	local cooldown = DropEXP1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4907,8 +4980,8 @@ function ItemUse_MoreExpGzLv3( role, Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4918,9 +4991,11 @@ function ItemUse_MoreExpGzLv3( role, Item )
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
+		AddState( role , role , STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	end
 	DropEXP1[name].UsedTime = os.time()+statetime
 end
@@ -4944,7 +5019,10 @@ function ItemUse_MoreExpGzLv3x5A( role , Item )
 	if DropEXP1[name] == nil then
         DropEXP1[name] = { UsedTime = os.time() }
     end
-	local cooldown = DropEXP1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -4954,8 +5032,8 @@ function ItemUse_MoreExpGzLv3x5A( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -4965,9 +5043,11 @@ function ItemUse_MoreExpGzLv3x5A( role , Item )
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
+		AddState( role , role , STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	end
 	DropEXP1[name].UsedTime = os.time()+statetime
 end
@@ -4991,7 +5071,10 @@ function ItemUse_MoreExpGzLv4A( role , Item )
 	if DropEXP1[name] == nil then
         DropEXP1[name] = { UsedTime = os.time() }
     end
-	local cooldown = DropEXP1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -5001,8 +5084,8 @@ function ItemUse_MoreExpGzLv4A( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -5012,9 +5095,11 @@ function ItemUse_MoreExpGzLv4A( role , Item )
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
+		AddState( role , role , STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	end
 	DropEXP1[name].UsedTime = os.time()+statetime
 	end
@@ -5040,7 +5125,10 @@ local name = GetChaDefaultName(role)
 	if Drop1[name] == nil then
         Drop1[name] = { UsedTime = os.time() }
     end
-	local cooldown = Drop1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -5050,8 +5138,8 @@ local name = GetChaDefaultName(role)
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -5061,12 +5149,13 @@ local name = GetChaDefaultName(role)
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
+		AddState( role , role , STATE_SBBLGZ , statelv , statetime ) 
+		SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
+		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime ) 
+		SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	end
 	Drop1[name].UsedTime = os.time()+statetime
-	SystemNotice ( role ,"Почувствуй эффект от Супер счастье-фрукта" )
 end
 
 --Волшебный фрукт (ID 0898)
@@ -5082,7 +5171,10 @@ local name = GetChaDefaultName(role)
 	if Drop1[name] == nil then
         Drop1[name] = { UsedTime = os.time() }
     end
-	local cooldown = Drop1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -5092,8 +5184,8 @@ local name = GetChaDefaultName(role)
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -5103,12 +5195,13 @@ local name = GetChaDefaultName(role)
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
+		AddState( role , role , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
+		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	end
 	Drop1[name].UsedTime = os.time()+statetime
-	SystemNotice ( role ,"Почувствуй эффект от Супер счастье-фрукта" )
 
 end
 
@@ -5448,7 +5541,10 @@ function ItemUse_LSDZG ( role , Item )
 	if Kovka[name] == nil then
         Kovka[name] = { UsedTime = os.time() }
     end
-	local cooldown = Kovka[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Kovka[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -5458,8 +5554,8 @@ function ItemUse_LSDZG ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -5490,7 +5586,10 @@ function ItemUse_HSDZG ( role , Item )
 	if Sochet[name] == nil then
         Sochet[name] = { UsedTime = os.time() }
     end
-	local cooldown = Sochet[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Sochet[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -5500,8 +5599,8 @@ function ItemUse_HSDZG ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -8361,20 +8460,44 @@ function ItemUse_MoreExpGzA( role , Item )
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
 	
-	if ChaStateLv > statelv then
-		SystemNotice ( role , "\211\241\232\235\232\242\229\235\252 \241\242\240\229\236\235\229\237\232\233 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
-		UseItemFailed ( role )
-		return
-	end
+
 
 	local statetime = 1800
 	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
-	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
-	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
+	if DropEXP1[name] == nil then
+        DropEXP1[name] = { UsedTime = os.time() }
+    end
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = DropEXP1[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
 	end
+
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
+	else
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
+	end
+	DropEXP1[name].UsedTime = os.time()+statetime
 end
 
 --Супер Усилитель стремлений (ID 3095)
@@ -8387,24 +8510,41 @@ function ItemUse_MoreExpGzLv3A( role , Item )
 	end
 
 	local statelv = 3
+	local statetime = 900
+	if DropEXP1[name] == nil then
+        DropEXP1[name] = { UsedTime = os.time() }
+    end
 	
-	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = DropEXP1[name].UsedTime - os.time()
 	
-	if ChaStateLv > statelv then
-		SystemNotice ( role , "\209\243\239\229\240 \211\241\232\235\232\242\229\235\252 \241\242\240\229\236\235\229\237\232\233 \243\230\229 \232\241\239\238\235\252\231\243\229\242\241\255. \207\238\239\240\238\225\243\233\242\229 \239\238\231\230\229" )
-		UseItemFailed ( role )
-		return
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
 	end
+
 	
-	local statetime = 1800
-	local Cha_Boat = 0
-	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
+		AddState( role , role , STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	end
-	SystemNotice ( role ,"\207\238\247\243\226\241\242\226\243\233 \253\244\244\229\234\242 \238\242 \209\243\239\229\240 \211\241\232\235\232\242\229\235\255 \241\242\240\229\236\235\229\237\232\233" )
+	DropEXP1[name].UsedTime = os.time()+statetime
 end
 
 --Усилитель удачи (ID 3096)
@@ -8419,7 +8559,10 @@ function ItemUse_MoreItemGzA( role , Item )
 	if Drop1[name] == nil then
         Drop1[name] = { UsedTime = os.time() }
     end
-	local cooldown = Drop1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -8429,8 +8572,8 @@ function ItemUse_MoreItemGzA( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -8440,12 +8583,13 @@ function ItemUse_MoreItemGzA( role , Item )
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
+		AddState( role , role , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
+		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	end
 	Drop1[name].UsedTime = os.time()+statetime
-		SystemNotice ( role ,"Почувствуй эффект от Усилителя удачи" )
 	end
 
 --Большой усилитель удачи (ID 3097)
@@ -8466,7 +8610,10 @@ local name = GetChaDefaultName(role)
 	if Drop1[name] == nil then
         Drop1[name] = { UsedTime = os.time() }
     end
-	local cooldown = Drop1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -8476,8 +8623,8 @@ local name = GetChaDefaultName(role)
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -8487,12 +8634,13 @@ local name = GetChaDefaultName(role)
 
 	
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBBLGZ , statelv , statetime )
+		AddState( role , role , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime )
+		AddState( Cha_Boat , Cha_Boat , STATE_SBBLGZ , statelv , statetime ) 
+ SystemNotice(role, "Получен эффект усиления удачи на "..cooldown2.." минут")
 	end
 	Drop1[name].UsedTime = os.time()+statetime
-	SystemNotice ( role ,"Почувствуй эффект от Большого усилителя удачи" )
 
 
 	end
@@ -8737,7 +8885,10 @@ function ItemUse_MspdYSA ( role , Item )
 	if Skolz1[name] == nil then
         Skolz1[name] = { UsedTime = os.time() }
     end
-	local cooldown = Skolz1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Skolz1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -8747,8 +8898,8 @@ function ItemUse_MspdYSA ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -8777,7 +8928,10 @@ function ItemUse_MspdYSB ( role , Item )
 	if leg1[name] == nil then
         leg1[name] = { UsedTime = os.time() }
     end
-	local cooldown = leg1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = leg1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -8787,8 +8941,8 @@ function ItemUse_MspdYSB ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -8834,7 +8988,10 @@ function ItemUse_DenglongA ( role , Item )
 	if stroi1[name] == nil then
         stroi1[name] = { UsedTime = os.time() }
     end
-	local cooldown = stroi1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = stroi1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -8844,8 +9001,8 @@ function ItemUse_DenglongA ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -8873,7 +9030,10 @@ function ItemUse_DenglongB ( role , Item )
 	if dosp1[name] == nil then
         dosp1[name] = { UsedTime = os.time() }
     end
-	local cooldown = dosp1[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = dosp1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -8883,8 +9043,8 @@ function ItemUse_DenglongB ( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -11096,7 +11256,10 @@ function ItemUse_JLJSGz( role , Item )
 	if Drop2[name] == nil then
         Drop2[name] = { UsedTime = os.time() }
     end
-	local cooldown = Drop2[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Drop2[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
@@ -11106,8 +11269,8 @@ function ItemUse_JLJSGz( role , Item )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return
@@ -13292,9 +13455,11 @@ function ItemUse_WeiXing( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
+		AddState( role , role , STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	else
-		AddState( Cha_Boat , Cha_Boat , STATE_SBJYGZ , statelv , statetime )
+		AddState( Cha_Boat, Cha_Boat, STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	end
 end
 
@@ -16915,7 +17080,8 @@ function ItemUse_TJQ ( role , Item )
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ==  nil then
-		AddState( role , role , STATE_SBJYGZ , statelv , statetime )
+		AddState( role , role , STATE_SBJYGZ , statelv , statetime ) 
+ 		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	else
 		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
 		UseItemFailed ( role )
@@ -18875,7 +19041,7 @@ function ItemUse_Buff1( role , Item )
 		local StateType5 = GetChaStateLv (role, STATE_JSFB )--Воронка торнадо
 		local StateType6 = GetChaStateLv (role, STATE_TSHD )--Ангельский щит
 
-		if StateType1 > 0	or  StateType2 > 0	or StateType3 > 0	or StateType4 > 0	or StateType5 > 0	or StateType6 > 0 then  
+		if StateType1 <= 0	and  StateType2 <= 0	and StateType3 <= 0	and StateType4 <= 0	and StateType5 <= 0	and StateType6 <= 0 then  
 		
 		
 		AddState ( role, role, STATE_XLZH, statelv, statetime) 
@@ -19257,7 +19423,10 @@ local hp = GetChaAttr(role, ATTR_SP)
 	if Mana[name] == nil then
         Mana[name] = { UsedTime = os.time() }
     end
-	local cooldown = Mana[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
 	local edx = Mana[name].UsedTime -  os.time()
@@ -19294,7 +19463,10 @@ local hp = GetChaAttr(role, ATTR_SP)
 	if Mana[name] == nil then
         Mana[name] = { UsedTime = os.time() }
     end
-	local cooldown = Mana[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
 	local edx = Mana[name].UsedTime -  os.time()
@@ -19331,7 +19503,10 @@ local hp = GetChaAttr(role, ATTR_SP)
 	if Mana[name] == nil then
         Mana[name] = { UsedTime = os.time() }
     end
-	local cooldown = Mana[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
 	local edx = Mana[name].UsedTime -  os.time()
@@ -19367,7 +19542,10 @@ local hp = GetChaAttr(role, ATTR_SP)
 	if Mana[name] == nil then
         Mana[name] = { UsedTime = os.time() }
     end
-	local cooldown = Mana[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
 	local edx = Mana[name].UsedTime -  os.time()
@@ -19413,7 +19591,10 @@ local Cha_Boat = GetCtrlBoat ( role )
 	if acc2[name] == nil then
         acc2[name] = { UsedTime = os.time() }
     end
-	local cooldown = acc2[name].UsedTime - os.time()
+	
+  local cooldown1=0 
+ local cooldown2=0   
+ local cooldown = acc2[name].UsedTime - os.time()
 	
 	if acc2[name].UsedTime >  os.time() then
 	local edx = acc2[name].UsedTime -  os.time()
@@ -19430,8 +19611,8 @@ local Cha_Boat = GetCtrlBoat ( role )
 		end
 		if ChaStateLv == statelv then
 		 if cooldown > 0 then
-			local cooldown2 = math.floor(cooldown/60)		 		
-			local cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
 			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
 			UseItemFailed ( role )
 			return

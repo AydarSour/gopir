@@ -287,8 +287,11 @@ function Skill_Melee_End ( ATKER , DEFER , sklv )
 				end
 			end
 		end
-		hpdmg = math.floor( dmg*dmgsa )				
-		Hp_Endure_Dmg( DEFER , hpdmg )				
+		hpdmg = math.floor( dmg*dmgsa )	
+		
+			--Hp_Endure_Dmg( DEFER , hpdmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg)	
+		
 		Take_Atk_ItemURE ( ATKER )						
 		Take_Def_ItemURE ( DEFER )						
 		local Check_Nianshou = CheckItem_Nianshou ( ATKER )
@@ -345,7 +348,8 @@ function Skill_Range_End ( ATKER , DEFER , sklv )
 		end
 		
 		hpdmg = math.floor( dmg*dmgsa ) 			
-		Hp_Endure_Dmg( DEFER , hpdmg )					
+		--Hp_Endure_Dmg( DEFER , hpdmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg)					
 		
 		Take_Atk_ItemURE ( ATKER )						
 		Take_Def_ItemURE ( DEFER )						
@@ -489,7 +493,8 @@ function Skill_Paodan_End ( ATKER , DEFER , sklv )
 		local dis = Dis ( skr_posx, skr_posy, role_posx, role_posy  )		
 		local dis_eff = dis/100 * 0.1  
 		dmg = math.floor ( dmg * (1 - math.min ( dis_eff, 1 ) ) ) 
-		Hp_Endure_Dmg ( DEFER, dmg )							
+		--Hp_Endure_Dmg( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg )							
 end 
 
 function Skill_Huoqiang_Begin ( role , sklv ) 
@@ -501,7 +506,8 @@ function Skill_Huoqiang_End ( ATKER , DEFER , sklv )
 		sus,dmgsa = Check_MisorCrt( ATKER, DEFER )			
 		SetSus(DEFER , sus)								
 		hpdmg = math.floor( dmg*dmgsa )				
-		Hp_Endure_Dmg( DEFER , hpdmg )						
+		--Hp_Endure_Dmg( DEFER , hpdmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg)						
 end 
 
 function SkillArea_Circle_Hx ( sklv )									
@@ -838,7 +844,8 @@ end
 function Skill_Hyps_End ( ATKER , DEFER , sklv ) 
 	local hpdmg = sklv * 100 
 	local hp = GetChaAttr(DEFER) 
-	Hp_Endure_Dmg( DEFER , hpdmg ) 
+	--Hp_Endure_Dmg( DEFER , hpdmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg) 
 end 
 
 function State_Hyps_Add ( role , statelv ) 
@@ -1275,7 +1282,8 @@ function Skill_Hxqj_End ( ATKER , DEFER , sklv )
 	defer_def = Def ( DEFER ) 
 	defer_resist = Resist ( DEFER ) 
 	dmg = Phy_Dmg ( atk, defer_def , defer_resist ) 
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	BeatBack ( ATKER , DEFER , back_dis )
 end 
 
@@ -1319,7 +1327,8 @@ function Skill_Hyz_End ( ATKER , DEFER , sklv )
 				dmg = ( ( 1 + 0.1 * sklv ) ) * (math.min(3,( math.max ( 1, math.floor( aspd / 70  ) )  ))) * Atk_Dmg ( ATKER , DEFER )
 			end
 		end
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	Check_Ys_Rem ( ATKER , DEFER )						
 end 
 
@@ -1502,7 +1511,8 @@ function Skill_Swzq_End ( ATKER , DEFER , sklv )
 				SystemNotice ( ATKER , "ѕервобытна€ ярость не попала по цели. " )
 			end
 	end
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 		
 	local statelv = sklv 
 	local statetime = 1    
@@ -2124,7 +2134,8 @@ function Skill_Lj_End ( ATKER , DEFER , sklv )
 	local dmg_ElfSkill = ElfSkill_MagicAtk ( dmg , ATKER )
 	dmg_fin = dmg_fin + dmg_ElfSkill
 	AddState ( ATKER , DEFER , STATE_MB , statelv , statetime ) 
-	Hp_Endure_Dmg ( DEFER , dmg_fin ) 
+	--Hp_Endure_Dmg ( DEFER , dmg_fin ) 
+	fix_dupe_mob(ATKER,DEFER,dmg )
 end 
 
 function SkillSp_Ldc ( sklv )										
@@ -2157,7 +2168,8 @@ function Skill_Ldc_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 		dmg = ( 2 +  sklv * 0.2 ) * Atk_Dmg ( ATKER ,DEFER ) 
-		Hp_Endure_Dmg ( DEFER , dmg )  
+		--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 end 
 
 function SkillSp_Xzy ( sklv )							
@@ -2298,7 +2310,8 @@ function Skill_Xlcz_End ( ATKER , DEFER , sklv )
 	local dmg_fin = Cuihua_Mofa ( hpdmg ,AddStateLv )
 	local dmg_ElfSkill = ElfSkill_MagicAtk ( hpdmg , ATKER )
 	dmg_fin = dmg_fin + dmg_ElfSkill
-	Hp_Endure_Dmg ( DEFER, dmg_fin )  
+	--Hp_Endure_Dmg ( DEFER, dmg_fin ) 
+fix_dupe_mob(ATKER,DEFER,dmg_fin )	
 end 
 
 function MAGIC_Atk_Dmg(a,b) 
@@ -2560,7 +2573,8 @@ function Skill_Tj_End ( ATKER , DEFER , sklv )
 		statetime = math.floor ( statetime / 3 ) + 1 
 	end 
  	dmg = ( 1 + sklv * 0.05 ) * Atk_Dmg ( ATKER , DEFER )  
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	if GetChaTypeID( ATKER ) == 980 then
 		statetime = 5
 	end
@@ -2626,7 +2640,8 @@ function Skill_Sj_End ( ATKER , DEFER , sklv )
 	local Can_Pk_Garner2 = Is_NormalMonster (DEFER)
 	local a = 1 
  	local dmg = math.floor( 100 + sklv * 10  )  
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	local hp_defer = Mxhp ( DEFER ) 
 	if hp_defer >= 100000 then 
 		local a = Percentage_Random (1)
@@ -3750,7 +3765,8 @@ function Skill_Lxjy_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 	local dmg = ( 0.5 +sklv * 0.1 ) * Atk_Dmg ( ATKER , DEFER )  
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 end 
 
 function SkillArea_Circle_Lh ( sklv )										
@@ -3792,7 +3808,8 @@ function Skill_Lh_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 	dmg = ( 1+sklv*0.05 ) * Atk_Dmg ( ATKER , DEFER ) 
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	Check_Ys_Rem ( ATKER , DEFER)						
 end 
 
@@ -3827,7 +3844,8 @@ function Skill_Hxdj_End ( ATKER , DEFER , sklv )
 	local statetime = 5  
 	local back_dis = 500 
 	dmg = math.floor(150 + sklv * 20 )  
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	AddState ( ATKER , DEFER , STATE_XY , statelv , statetime ) 
 	BeatBack(ATKER , DEFER , back_dis) 
 end 
@@ -3891,7 +3909,8 @@ end
 
 function Skill_Dzy_End ( ATKER , DEFER , sklv ) 
 	local dmg = ( -1 ) * math.floor(10 + 15 * sklv + math.floor ( Sta(ATKER)*0.5     )  )
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 end 
 
 function SkillArea_Circle_Dhfs ( sklv )									
@@ -3921,7 +3940,9 @@ end
 
 function Skill_Dhfs_End ( ATKER , DEFER , sklv ) 
 		dmg = ( -1 ) * ( 5 + sklv * 3  ) 
-		Hp_Endure_Dmg ( DEFER , dmg )  
+		----Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
+		
 		Rem_State_Unnormal ( DEFER ) 
 		
 end 
@@ -4489,6 +4510,11 @@ function Skill_Lm_Begin ( role , sklv )
 end 
 
 function State_Lm_Add ( role , statelv ) 
+
+	if GetCtrlBoat ( role ) == nil or GetCtrlBoat ( role ) == 0	then 
+		return
+	end
+	
 	local dmg = 160 + statelv * 20 
 	Hp_Endure_Dmg ( role , dmg ) 
 end 
@@ -4534,7 +4560,8 @@ function Skill_Ctd_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 	dmg = ( 1+sklv * 0.2  ) * Atk_Dmg ( ATKER , DEFER ) 
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 end 
 
 function SkillArea_Sector_Ssd ( sklv )										
@@ -4567,7 +4594,8 @@ end
 function Skill_Ssd_End ( ATKER , DEFER , sklv ) 
 		atk_rad = 1.2 + sklv * 0.15 
 		dmg = Atk_Raise ( atk_rad , ATKER , DEFER ) 
-		Hp_Endure_Dmg ( DEFER, dmg )
+		--Hp_Endure_Dmg( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg )
 end 
 
 function State_Larea_Tran ( statelv ) 
@@ -4636,7 +4664,8 @@ function Skill_Swzq_Begin ( role , sklv )
 end 
 
 function Skill_Swcx_End ( ATKER , DEFER , sklv ) 
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	local statelv = sklv 
 	local statetime = 30    
 	AddState ( ATKER , DEFER , STATE_SWCX , statelv , statetime )
@@ -4807,7 +4836,8 @@ end
 function Skill_Xik_End ( ATKER , DEFER , sklv ) 
 	local aspd = Aspd ( ATKER )
 	local dmg = 20 * Atk_Dmg ( ATKER , DEFER )   
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	Check_Ys_Rem ( ATKER , DEFER )						
 end 
 
@@ -4876,7 +4906,8 @@ end
 function Skill_Fer_End ( ATKER , DEFER , sklv ) 
 	local hp = Hp( DEFER ) 
 	dmg = 2 * Atk_Dmg ( ATKER , DEFER ) 
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	Check_Ys_Rem ( ATKER , DEFER)						
 end 
 
@@ -4993,7 +5024,8 @@ end
 function Skill_Wzxf_End ( ATKER , DEFER , sklv ) 
 	local hp = Hp( DEFER ) 
 	dmg = 3 * Atk_Dmg ( ATKER , DEFER ) 
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 end 
 
 function SkillSp_Syzm ( sklv )										
@@ -5019,7 +5051,8 @@ end
 function Skill_Syzm_End ( ATKER , DEFER , sklv ) 
 	local Mxhp = Mxhp ( DEFER )
 	local dmg = math.floor ( Mxhp / 2 )
-	Hp_Endure_Dmg ( DEFER , dmg ) 
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 end
 
 function SkillArea_Circle_Kdzb ( sklv )										
@@ -5050,7 +5083,8 @@ end
 function Skill_Kdzb_End ( ATKER , DEFER , sklv ) 
 	local hp = Hp( DEFER ) 
 	dmg = 3 * Atk_Dmg ( ATKER , DEFER ) 
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 end 
 
 function SkillCooldown_Sgjn1( sklv )
@@ -5110,7 +5144,8 @@ function Skill_Slzb_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 	dmg = 1500 
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	SetCharaAttr ( -1 , ATKER , ATTR_HP ) 
 end 
 
@@ -5583,7 +5618,8 @@ function Skill_JSDD_End ( ATKER , DEFER , sklv )
 	sus,dmgsa = Check_MisorCrt( ATKER, DEFER )		
 	SetSus(DEFER , sus)							
 	hpdmg = math.floor( dmg*dmgsa ) 			
-	Hp_Endure_Dmg( DEFER , hpdmg )					
+	--Hp_Endure_Dmg( DEFER , hpdmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg)					
 	local StateLv = GetChaStateLv ( DEFER , STATE_TTISW )
 	if StateLv ~= 4 then	
 		AddState ( ATKER , DEFER , STATE_JSDD , statelv , statetime )
@@ -5632,7 +5668,8 @@ end
 function Skill_JSMF_End ( ATKER , DEFER , sklv ) 
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =  math.max ( 1 ,math.max ( 30 , math.floor ( ( 150 - Sta_role ) ) * 2.8 ) ) 
-	Hp_Endure_Dmg ( DEFER, hpdmg )  
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )  
 end 
 
 function SkillSp_HDSMF ( sklv )
@@ -5658,7 +5695,8 @@ end
 function Skill_HDSMF_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =  math.max ( 1 , math.max ( 30 , ( 150 - Sta_role ) ) * 4 ) 
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillSp_HYMF ( sklv )
@@ -5684,7 +5722,8 @@ end
 function Skill_HYMF_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg = math.max ( 1 ,  math.floor (  math.max ( 50 , ( 150 - Sta_role ) ) * 3.5 ) ) 
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillSp_HYMH ( sklv )
@@ -5746,7 +5785,8 @@ end
 function Skill_FoxMagic_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =   math.max ( 50 , ( 150 - Sta_role ) )  * 10
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillArea_Circle_FoxSquareMagic ( sklv )										
@@ -5777,7 +5817,8 @@ end
 function Skill_FoxSquareMagic_End ( ATKER , DEFER , sklv ) 
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =  math.max( 30 , ( 150 - math.floor ( Sta_role / 2  ) ) ) * 5 + 300 
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end
 
 function SkillSp_TZJSMagic ( sklv )
@@ -5803,7 +5844,8 @@ end
 function Skill_TZJSMagic_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =  math.max ( 50 , ( 150 - Sta_role ) ) * 5
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillArea_Circle_TZQZMagic ( sklv )										
@@ -5836,7 +5878,8 @@ function Skill_TZQZMagic_End ( ATKER , DEFER , sklv )
 	local statelv = 4
 	local statetime = 15
 	hpdmg =   math.max ( 50 , ( 150 - Sta_role ) )  * 5
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 	AddState ( ATKER , DEFER , STATE_JSDD , statelv , statetime ) 
 end
 
@@ -5871,7 +5914,8 @@ function Skill_QuanX_End ( ATKER , DEFER , sklv )
 	local statelv = 10
 	AddState ( ATKER , DEFER , STATE_XY , statelv , statetime )
 	local hpdmg =   200 
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillSp_SD ( sklv )										
@@ -5898,7 +5942,8 @@ function Skill_SD_End ( ATKER , DEFER , sklv )
 	local statelv = 3
 	local statetime =  60   
 	local hpdmg =   300
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 	AddState ( ATKER , DEFER , STATE_JSDD , statelv , statetime ) 
 	Check_Ys_Rem ( ATKER , DEFER )						
 end 
@@ -5931,7 +5976,8 @@ end
 
 function Skill_JXJBFW_End ( ATKER , DEFER , sklv ) 
 	local dmg = 150
-	Hp_Endure_Dmg ( DEFER , dmg ) 
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 end 
 
 function SkillArea_Circle_JBXZSB ( sklv )
@@ -5962,7 +6008,8 @@ end
 function Skill_JBXZSB_End ( ATKER , DEFER , sklv ) 
 	local hp = Hp( DEFER ) 
 	dmg =  Atk_Dmg ( ATKER , DEFER ) 
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
 	Check_Ys_Rem ( ATKER , DEFER)										
 end 
 
@@ -6256,7 +6303,8 @@ end
 function Skill_BlackDrgWing_End ( ATKER , DEFER , sklv ) 
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =  math.max ( 100 , ( 150 - Sta_role ) ) * 15
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillSp_BlackHeal ( sklv )							
@@ -6356,7 +6404,8 @@ function Skill_BlackLj_End( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	local statelv = 4
 	hpdmg =1000 +  math.max ( 50 , ( 150 - Sta_role ) )  * 10
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 	AddState ( ATKER , DEFER , STATE_HLKJ , statelv , statetime ) 
 end 
 
@@ -6384,7 +6433,8 @@ end
 function Skill_BlackYq_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg = 2500 +  math.max ( 50 , ( 150 - Sta_role ) )  * 20
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillCooldown_BlackZh( sklv )
@@ -6514,7 +6564,8 @@ function Skill_wljy_End ( ATKER , DEFER , sklv )
 	local statelv = 4
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =400 +  math.max ( 50 , ( 150 - Sta_role ) )  * 8
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 	AddState ( ATKER , DEFER , STATE_WLJY , statelv , statetime ) 
  end
 
@@ -6542,7 +6593,8 @@ function Skill_wldb_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local statetime =  10  
 	local	defer_def = Def ( DEFER )
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 	AddState ( ATKER , DEFER , STATE_WLDB , statelv , statetime ) 
 	Check_Ys_Rem ( ATKER , DEFER )						
 end 
@@ -6561,7 +6613,8 @@ end
 function Skill_ycbp_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg = 1000 +  math.max ( 50 , ( 150 - Sta_role ) )  * 20
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillArea_Circle_ywgj ( sklv )										
@@ -6666,7 +6719,8 @@ function Skill_xegj_End ( ATKER , DEFER , sklv )
 	local statelv = sklv 
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =400 +  math.max ( 50 , ( 150 - Sta_role ) )  * 5
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
  end
 
 function SkillCooldown_wllk ( ATKER , DEFER , sklv )
@@ -6691,7 +6745,8 @@ end
 function Skill_zdtz_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =500 +  math.max ( 50 , ( 100 - Sta_role ) )  * 8
-		Hp_Endure_Dmg ( DEFER, hpdmg )
+		--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillCooldown_wlnh ( ATKER , DEFER , sklv )
@@ -6939,7 +6994,8 @@ end
 function Skill_jsfd_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =500 +  math.max ( 50 , ( 100 - Sta_role ) )  * 8
-		Hp_Endure_Dmg ( DEFER, hpdmg )
+		--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillCooldown_JLFT( sklv )
@@ -7469,7 +7525,8 @@ end
 
 function Skill_xzlw_End( ATKER , DEFER , sklv )
 	local dmg =math.random(15,35)
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 end 
 
 function SkillCooldown_HyzHX( sklv )
@@ -7489,7 +7546,8 @@ function Skill_HyzHX_End ( ATKER , DEFER , sklv )
 	local aspd = Aspd ( ATKER )
 	local  sklv = 10
 	local dmg = ( ( 1.5 + 0.1 * sklv ) ) * (math.min(3,( math.max ( 1, math.floor( aspd / 70  ) )  ))) * Atk_Dmg ( ATKER , DEFER )   
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	Check_Ys_Rem ( ATKER , DEFER )						
 end 
 
@@ -7602,7 +7660,8 @@ function Skill_Shoulei1_End ( ATKER , DEFER , sklv )
 	if dmg > 1000 then
 		dmg = 1000
 	end
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
 end
 
 function SkillArea_Circle_ShanGD1( sklv )
@@ -8021,7 +8080,8 @@ function Skill_Shoulei2_End ( ATKER , DEFER , sklv )
 	if dmg > 2000 then
 		dmg = 2000
 	end
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
 end
 
 function SkillArea_Circle_ShanGD2( sklv )
@@ -8431,7 +8491,8 @@ function Skill_Shoulei3_End ( ATKER , DEFER , sklv )
 	if dmg > 3000 then
 		dmg = 3000
 	end
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
 end
 
 function SkillArea_Circle_ShanGD3( sklv )									
@@ -8843,7 +8904,8 @@ function Skill_Shoulei4_End ( ATKER , DEFER , sklv )
 	if dmg > 4000 then
 		dmg = 4000
 	end
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
 end
 
 function SkillArea_Circle_ShanGD4( sklv )									
@@ -9253,7 +9315,8 @@ function Skill_Shoulei5_End ( ATKER , DEFER , sklv )
 	if dmg > 5000 then
 		dmg = 5000
 	end
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
 end
 
 function SkillArea_Circle_ShanGD5( sklv )
@@ -11372,7 +11435,8 @@ function Skill_Czsl1_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 	local dmg = 20 
-	Hp_Endure_Dmg ( DEFER , dmg ) 
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 	SetCharaAttr ( 4 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Slrs , statelv , statetime ) 
 	AddState ( ATKER , DEFER , STATE_Slrs , statelv , statetime )
@@ -11410,7 +11474,8 @@ function Skill_Czsl2_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 	local dmg = 40
-	Hp_Endure_Dmg ( DEFER , dmg ) 
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 	SetCharaAttr ( 8 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Slrs , statelv , statetime ) 
 	AddState ( ATKER , DEFER , STATE_Slrs , statelv , statetime ) 
@@ -11438,7 +11503,8 @@ function Skill_Czsl3_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 	local dmg = 60 
-	Hp_Endure_Dmg ( DEFER , dmg ) 
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 	SetCharaAttr ( 12 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Slrs , statelv , statetime ) 
 	AddState ( ATKER , DEFER , STATE_Slrs , statelv , statetime ) 
@@ -11466,7 +11532,8 @@ function Skill_Czsl4_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 	local dmg = 80
-	Hp_Endure_Dmg ( DEFER , dmg ) 
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 	SetCharaAttr ( 16 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Slrs , statelv , statetime ) 
 	AddState ( ATKER , DEFER , STATE_Slrs , statelv , statetime )
@@ -11494,7 +11561,8 @@ function Skill_Czsl5_End ( ATKER , DEFER , sklv )
 		return 
 	end 
 	local dmg = 100
-	Hp_Endure_Dmg ( DEFER , dmg ) 
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 	SetCharaAttr ( 20 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Slrs , statelv , statetime ) 
 	AddState ( ATKER , DEFER , STATE_Slrs , statelv , statetime ) 
@@ -11533,7 +11601,8 @@ function Skill_Myzb1_End ( ATKER , DEFER , sklv )
 	local statetime = sklv + 3
 	local statelv = sklv  
 	local dmg = 20 
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
         SetCharaAttr ( 2 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Myrs , statelv , statetime )
 	AddState ( ATKER , DEFER , STATE_Myrs , statelv , statetime )
@@ -11586,7 +11655,8 @@ function Skill_Myzb2_End ( ATKER , DEFER , sklv )
 	local statetime = sklv + 3
 	local statelv = sklv  
 	local dmg = 40 
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
         SetCharaAttr ( 8 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Myrs , statelv , statetime )
 	AddState ( ATKER , DEFER , STATE_Myrs , statelv , statetime )
@@ -11625,7 +11695,8 @@ function Skill_Myzb3_End ( ATKER , DEFER , sklv )
 	local statetime = sklv + 3
 	local statelv = sklv  
 	local dmg = 60
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
         SetCharaAttr ( 12 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Myrs , statelv , statetime )
 	AddState ( ATKER , DEFER , STATE_Myrs , statelv , statetime )
@@ -11664,7 +11735,8 @@ function Skill_Myzb4_End ( ATKER , DEFER , sklv )
 	local statetime = sklv + 3
 	local statelv = sklv  
 	local dmg = 80
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
         SetCharaAttr ( 16 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Myrs , statelv , statetime )
 	AddState ( ATKER , DEFER , STATE_Myrs , statelv , statetime )
@@ -11701,7 +11773,8 @@ function Skill_Myzb5_End ( ATKER , DEFER , sklv )
 	local statetime = sklv + 3
 	local statelv = sklv  
 	local dmg = 100
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
         SetCharaAttr ( 20 , ATKER , ATTR_HP ) 
 	AddState ( ATKER , ATKER , STATE_Myrs , statelv , statetime )
 	AddState ( ATKER , DEFER , STATE_Myrs , statelv , statetime )
@@ -11710,7 +11783,8 @@ end
 function Skill_JSBT_End ( ATKER , DEFER , sklv )
 	local Sta_role = Sta ( DEFER ) 
 	hpdmg =300 +  math.max ( 50 , ( 150 - Sta_role ) )  * 10
-	Hp_Endure_Dmg ( DEFER, hpdmg )
+	--Hp_Endure_Dmg( DEFER , hpdmg  ) 
+ 		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
 
 function SkillSp_EmoYuYan ( sklv )										
@@ -11743,7 +11817,8 @@ function Skill_EmoYuYan_End ( ATKER , DEFER , sklv )
 	local statetime = 25
 	local statelv = sklv 
 	local dmg = 150 
-	Hp_Endure_Dmg ( DEFER , dmg )
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )
 	AddState ( ATKER , DEFER , STATE_EMYY , statelv , statetime )
 	 
 end 
@@ -11832,7 +11907,8 @@ end
 
 function Skill_ShouWangS_End ( ATKER , DEFER , sklv ) 
         local dmg = math.random ( 350 , 650 )
-	Hp_Endure_Dmg ( DEFER , dmg ) 
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 end 
 
 function SkillArea_Line_ArfGX ( sklv )										
@@ -11863,7 +11939,8 @@ end
 
 function Skill_ArfGX_End ( ATKER , DEFER , sklv ) 
         local dmg = math.random ( 350 , 650 ) 
-        Hp_Endure_Dmg ( DEFER , dmg ) 
+        --Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 end 
 
 function SkillArea_Circle_WuYin( sklv )							
@@ -11893,7 +11970,8 @@ end
 
 function Skill_WuYin_End ( ATKER , DEFER , sklv ) 
         local dmg = math.random ( 350 , 650 )
-	Hp_Endure_Dmg ( DEFER , dmg ) 
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   ) 
 end 
 
 function SkillSp_XYSYF ( sklv )										
@@ -11959,7 +12037,8 @@ function Skill_Lh_End( ATKER , DEFER , sklv )
 		return 
 	end
 	dmg = ( 1+sklv*0.05 ) * Atk_Dmg ( ATKER , DEFER ) 
-	Hp_Endure_Dmg ( DEFER , dmg )  
+	--Hp_Endure_Dmg ( DEFER , dmg ) 
+ 		 fix_dupe_mob(ATKER,DEFER,dmg   )  
 	Check_Ys_Rem ( ATKER , DEFER)
 end
 

@@ -1369,7 +1369,10 @@ function Hp_Dmg(role,dmg)
 	else
 		SystemNotice(role,"По вам промахнулись")
 	end
-
+	
+	
+	
+	
 	local statelv_mfd = GetChaStateLv ( role , STATE_MFD ) 
 	local hp = Hp(role) 
 	local sp = Sp(role) 
@@ -6959,4 +6962,10 @@ function GetGuildLeaderID(guild_id)
 	return leader_id
 
 end
-
+ function fix_dupe_mob (ATKER,DEFER,hpdmg)
+		if GetCtrlBoat ( ATKER ) == 0 and  GetCtrlBoat ( DEFER )== 1 then
+			Hp_Endure_Dmg( DEFER , 0 ) 
+		elseif GetCtrlBoat ( ATKER ) == 1 and  GetCtrlBoat ( DEFER )== 0 then
+			Hp_Endure_Dmg( DEFER , hpdmg )	
+		end
+ end
