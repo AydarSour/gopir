@@ -6739,8 +6739,8 @@ function HandleChat( role, message )
 -- Проверка GM уровня персонажа
 	if CheckBagItem( TurnToCha(t[i]), 6699 ) == 1 then
 		if ( message == "/баф" ) then
-			local statelv == 10
-			local statetime == 900
+			local statelv = 10
+			local statetime = 900
 			AddState ( role, role, STATE_XLZH, statelv, statetime) 
 			AddState ( role, role, STATE_SHPF, statelv, statetime) 
 			AddState ( role, role, STATE_MLCH, statelv, statetime) 
