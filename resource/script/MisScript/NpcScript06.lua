@@ -14,6 +14,220 @@ function big_bruck()
 Talk( 1, "Меняла: Привет! Я меняю различные вещи на ансилы! _Для обмена ансилов " )
 
 end
+
+
+function r_talk242()
+	Talk( 1,  "Бинго: Дайте мне расписку для получения самоцвета. " )
+	Text( 1,  "Посмотреть самоцветы ", SendExchangeXData)
+	Text( 1, "Комбинировать самоцветы! ", JumpPage, 2 )
+	InitExchangeX()
+	ExchangeDataX(	921	,	1	,	863	,	1	,	1)
+	ExchangeDataX(	918	,	1	,	860	,	1	,	1)
+	ExchangeDataX(	920	,	1	,	862	,	1	,	1)
+	ExchangeDataX(	333	,	1	,	1012	,	1	,	1)
+	ExchangeDataX(	919	,	1	,	861	,	1	,	1)
+	ExchangeDataX(	859	,	1	,	881	,	1	,	1)
+	ExchangeDataX(	858	,	1	,	880	,	1	,	1)
+	ExchangeDataX(	857	,	1	,	879	,	1	,	1)
+	ExchangeDataX(	856	,	1	,	878	,	1	,	1)
+	ExchangeDataX(	916	,	1	,	884	,	1	,	1)
+	ExchangeDataX(	915	,	1	,	883	,	1	,	1)
+	ExchangeDataX(	914	,	1	,	882	,	1	,	1)
+	ExchangeDataX(	911	,	1	,	887	,	1	,	1)
+	ExchangeDataX(	3877	,	1	,	885	,	1	,	1)
+	
+	
+		ExchangeDataX(	6701	,	1	,	6817	,	1	,	1)
+		ExchangeDataX(	6701	,	1	,	6820	,	1	,	1)
+		ExchangeDataX(	6701	,	1	,	6823	,	1	,	1)
+		ExchangeDataX(	6701	,	1	,	6826	,	1	,	1)
+		ExchangeDataX(	6701	,	1	,	6829	,	1	,	1)
+		
+		ExchangeDataX(	6702	,	1	,	6818	,	1	,	1)
+		ExchangeDataX(	6702	,	1	,	6821	,	1	,	1)
+		ExchangeDataX(	6702	,	1	,	6824	,	1	,	1)
+		ExchangeDataX(	6702	,	1	,	6827	,	1	,	1)
+		ExchangeDataX(	6702	,	1	,	6830	,	1	,	1)
+		
+		ExchangeDataX(	6703	,	1	,	6819	,	1	,	1)
+		ExchangeDataX(	6703	,	1	,	6822	,	1	,	1)
+		ExchangeDataX(	6703	,	1	,	6825	,	1	,	1)
+		ExchangeDataX(	6703	,	1	,	6828	,	1	,	1)
+		ExchangeDataX(	6703	,	1	,	6831	,	1	,	1)
+		
+		ExchangeDataX(	6704	,	1	,	7108	,	1	,	1)
+		ExchangeDataX(	6704	,	1	,	7109	,	1	,	1)
+		ExchangeDataX(	6704	,	1	,	7110	,	1	,	1)
+		ExchangeDataX(	6704	,	1	,	7111	,	1	,	1)
+		ExchangeDataX(	6704	,	1	,	7112	,	1	,	1)
+	
+
+	
+	
+	
+		--Комбинировать
+	
+	
+	Talk( 2, "Выбери самоцвет для комбинирования! Чтобы комбинировать тебе нужен Премиум камень и немного денег и самоцветы - для 2 ур 2шт. для 3 ур 4 шт. для 4 ур 8шт. для 5 ур 16шт. ")
+	Text( 2, "Очищаюший самоцвет! ", JumpPage, 3 )
+	Text( 2, "Сломанный самоцвет силы! ", JumpPage, 4 )
+	Text( 2, "Сломанный самоцвет ловкости! ", JumpPage, 5 )
+	Text( 2, "Сломанный самоцвет телосложения! ", JumpPage, 6 )
+	Text( 2, "Сломанный самоцвет духа! ", JumpPage, 7 )
+	Text( 2, "Сломанный самоцвет точности! ", JumpPage, 8 )
+	Text( 2, "Еще ", JumpPage, 9 )
+	
+	Talk( 9, "Выбери самоцвет для комбинирования! Чтобы комбинировать тебе нужен Премиум камень и немного денег и самоцветы - для 2 ур 2шт. для 3 ур 4 шт. для 4 ур 8шт. для 5 ур 16шт.")
+	--Text( 9, "Очищаюший самоцвет! ", JumpPage, 3 )
+	Text( 9, "Треснутый самоцвет силы! ", JumpPage, 11 )
+	Text( 9, "Треснутый самоцвет ловкости! ", JumpPage, 12 )
+	Text( 9, "Треснутый самоцвет телосложения! ", JumpPage, 13 )
+	Text( 9, "Треснутый самоцвет духа! ", JumpPage, 13 )
+	Text( 9, "Треснутый самоцвет точности! ", JumpPage, 14 )
+	Text( 9, "Еще ", JumpPage, 15 )
+	
+	Talk( 15, "Выбери самоцвет для комбинирования! Чтобы комбинировать тебе нужен Премиум камень и немного денег и самоцветы - для 2 ур 2шт. для 3 ур 4 шт. для 4 ур 8шт. для 5 ур 16шт.")
+	--Text( 15, "Очищаюший самоцвет! ", JumpPage, 3 )
+	Text( 15, "Неограненный самоцвет силы! ", JumpPage, 17 )
+	Text( 15, "Неограненный самоцвет ловкости! ", JumpPage, 18 )
+	Text( 15, "Неограненный самоцвет телосложения! ", JumpPage, 19 )
+	Text( 15, "Неограненный самоцвет духа! ", JumpPage, 20 )
+	Text( 15, "Неограненный самоцвет точности! ", JumpPage, 21 )
+	Text( 15, "Еще ", JumpPage, 22 )
+	
+	Talk( 22, "Выбери самоцвет для комбинирования! Чтобы комбинировать тебе нужен Премиум камень и немного денег и самоцветы - для 2 ур 2шт. для 3 ур 4 шт. для 4 ур 8шт. для 5 ур 16шт.")
+--Text( 22, "Очищаюший самоцвет! ", JumpPage, 3 )
+	Text( 22, "Самоцвет силы! ", JumpPage, 23 )
+	Text( 22, "Самоцвет ловкости! ", JumpPage, 24 )
+	Text( 22, "Самоцвет телосложения! ", JumpPage, 25 )
+	Text( 22, "Самоцвет духа! ", JumpPage, 26 )
+	Text( 22, "Самоцвет точности! ", JumpPage, 27 )
+	Text( 22, "Еще ", JumpPage, 28 )
+	
+	Talk( 28, "Выбери самоцвет для комбинирования! Чтобы комбинировать тебе нужен Премиум камень и немного денег и самоцветы - для 2 ур 2шт. для 3 ур 4 шт. для 4 ур 8шт. для 5 ур 16шт.")
+	--Text( 28, "Очищаюший самоцвет! ", JumpPage, 3 )
+	Text( 28, "Великий самоцвет силы! ", JumpPage, 29 )
+	Text( 28, "Великий самоцвет ловкости! ", JumpPage, 30 )
+	Text( 28, "Великий самоцвет телосложения! ", JumpPage, 31 )
+	Text( 28, "Великий самоцвет духа! ", JumpPage, 32 )
+	Text( 28, "Великий самоцвет точности! ", JumpPage, 33 )
+	
+	
+	--Сломанные
+	Text( 3, "2 уровень",FastCombiner,885,2)	-- Gem item id, level to combine
+	Text( 3, "3 уровень",FastCombiner,885,3)	-- Gem item id, level to combine
+	Text( 3, "4 уровень",FastCombiner,885,4)	-- Gem item id, level to combine
+	Text( 3, "5 уровень",FastCombiner,885,5)	-- Gem item id, level to combine
+
+	Text( 4, "2 уровень",FastCombiner,6826,2)	-- Gem item id, level to combine
+	Text( 4, "3 уровень",FastCombiner,6826,3)	-- Gem item id, level to combine
+	Text( 4, "4 уровень",FastCombiner,6826,4)	-- Gem item id, level to combine
+	Text( 4, "5 уровень",FastCombiner,6826,5)	-- Gem item id, level to combine
+	
+	Text( 5, "2 уровень",FastCombiner,6817,2)	-- Gem item id, level to combine
+	Text( 5, "3 уровень",FastCombiner,6817,3)	-- Gem item id, level to combine
+	Text( 5, "4 уровень",FastCombiner,6817,4)	-- Gem item id, level to combine
+	Text( 5, "5 уровень",FastCombiner,6817,5)	-- Gem item id, level to combine
+	
+	Text( 6, "2 уровень",FastCombiner,6823,2)	-- Gem item id, level to combine
+	Text( 6, "3 уровень",FastCombiner,6823,3)	-- Gem item id, level to combine
+	Text( 6, "4 уровень",FastCombiner,6823,4)	-- Gem item id, level to combine
+	Text( 6, "5 уровень",FastCombiner,6823,5)	-- Gem item id, level to combine
+	
+	Text( 7, "2 уровень",FastCombiner,6829,2)	-- Gem item id, level to combine
+	Text( 7, "3 уровень",FastCombiner,6829,3)	-- Gem item id, level to combine
+	Text( 7, "4 уровень",FastCombiner,6829,4)	-- Gem item id, level to combine
+	Text( 7, "5 уровень",FastCombiner,6829,5)	-- Gem item id, level to combine
+	
+	Text( 8, "2 уровень",FastCombiner,6820,2)	-- Gem item id, level to combine
+	Text( 8, "3 уровень",FastCombiner,6820,3)	-- Gem item id, level to combine
+	Text( 8, "4 уровень",FastCombiner,6820,4)	-- Gem item id, level to combine
+	Text( 8, "5 уровень",FastCombiner,6820,5)	-- Gem item id, level to combine
+	
+	--Треснутые
+	Text( 10, "2 уровень",FastCombiner,6827,2)	-- Gem item id, level to combine
+	Text( 10, "3 уровень",FastCombiner,6827,3)	-- Gem item id, level to combine
+	Text( 10, "4 уровень",FastCombiner,6827,4)	-- Gem item id, level to combine
+	Text( 10, "5 уровень",FastCombiner,6827,5)	-- Gem item id, level to combine
+	
+	Text( 11, "2 уровень",FastCombiner,6818,2)	-- Gem item id, level to combine
+	Text( 11, "3 уровень",FastCombiner,6818,3)	-- Gem item id, level to combine
+	Text( 11, "4 уровень",FastCombiner,6818,4)	-- Gem item id, level to combine
+	Text( 11, "5 уровень",FastCombiner,6818,5)	-- Gem item id, level to combine
+	
+	Text( 12, "2 уровень",FastCombiner,6824,2)	-- Gem item id, level to combine
+	Text( 12, "3 уровень",FastCombiner,6824,3)	-- Gem item id, level to combine
+	Text( 12, "4 уровень",FastCombiner,6824,4)	-- Gem item id, level to combine
+	Text( 12, "5 уровень",FastCombiner,6824,5)	-- Gem item id, level to combine
+	
+	Text( 13, "2 уровень",FastCombiner,6830,2)	-- Gem item id, level to combine
+	Text( 13, "3 уровень",FastCombiner,6830,3)	-- Gem item id, level to combine
+	Text( 13, "4 уровень",FastCombiner,6830,4)	-- Gem item id, level to combine
+	Text( 13, "5 уровень",FastCombiner,6830,5)	-- Gem item id, level to combine
+	
+	Text( 14, "2 уровень",FastCombiner,6821,2)	-- Gem item id, level to combine
+	Text( 14, "3 уровень",FastCombiner,6821,3)	-- Gem item id, level to combine
+	Text( 14, "4 уровень",FastCombiner,6821,4)	-- Gem item id, level to combine
+	Text( 14, "5 уровень",FastCombiner,6821,5)	-- Gem item id, level to combine
+	
+	--Неограненные
+	Text( 16, "2 уровень",FastCombiner,6828,2)	-- Gem item id, level to combine
+	Text( 16, "3 уровень",FastCombiner,6828,3)	-- Gem item id, level to combine
+	Text( 16, "4 уровень",FastCombiner,6828,4)	-- Gem item id, level to combine
+	Text( 16, "5 уровень",FastCombiner,6828,5)	-- Gem item id, level to combine
+	
+	Text( 17, "2 уровень",FastCombiner,6819,2)	-- Gem item id, level to combine
+	Text( 17, "3 уровень",FastCombiner,6819,3)	-- Gem item id, level to combine
+	Text( 17, "4 уровень",FastCombiner,6819,4)	-- Gem item id, level to combine
+	Text( 17, "5 уровень",FastCombiner,6819,5)	-- Gem item id, level to combine
+	
+	Text( 18, "2 уровень",FastCombiner,6825,2)	-- Gem item id, level to combine
+	Text( 18, "3 уровень",FastCombiner,6825,3)	-- Gem item id, level to combine
+	Text( 18, "4 уровень",FastCombiner,6825,4)	-- Gem item id, level to combine
+	Text( 18, "5 уровень",FastCombiner,6825,5)	-- Gem item id, level to combine
+	
+	Text( 19, "2 уровень",FastCombiner,6831,2)	-- Gem item id, level to combine
+	Text( 19, "3 уровень",FastCombiner,6831,3)	-- Gem item id, level to combine
+	Text( 19, "4 уровень",FastCombiner,6831,4)	-- Gem item id, level to combine
+	Text( 19, "5 уровень",FastCombiner,6831,5)	-- Gem item id, level to combine
+	
+	Text( 20, "2 уровень",FastCombiner,6822,2)	-- Gem item id, level to combine
+	Text( 20, "3 уровень",FastCombiner,6822,3)	-- Gem item id, level to combine
+	Text( 20, "4 уровень",FastCombiner,6822,4)	-- Gem item id, level to combine
+	Text( 20, "5 уровень",FastCombiner,6822,5)	-- Gem item id, level to combine
+	
+	--+5
+		--Неограненные
+	Text( 23, "2 уровень",FastCombiner,0863,2)	-- Gem item id, level to combine
+	Text( 23, "3 уровень",FastCombiner,0863,3)	-- Gem item id, level to combine
+	Text( 23, "4 уровень",FastCombiner,0863,4)	-- Gem item id, level to combine
+	Text( 23, "5 уровень",FastCombiner,0863,5)	-- Gem item id, level to combine
+	
+	Text( 24, "2 уровень",FastCombiner,0860,2)	-- Gem item id, level to combine
+	Text( 24, "3 уровень",FastCombiner,0860,3)	-- Gem item id, level to combine
+	Text( 24, "4 уровень",FastCombiner,0860,4)	-- Gem item id, level to combine
+	Text( 24, "5 уровень",FastCombiner,0860,5)	-- Gem item id, level to combine
+	
+	Text( 25, "2 уровень",FastCombiner,0862,2)	-- Gem item id, level to combine
+	Text( 25, "3 уровень",FastCombiner,0862,3)	-- Gem item id, level to combine
+	Text( 25, "4 уровень",FastCombiner,0862,4)	-- Gem item id, level to combine
+	Text( 25, "5 уровень",FastCombiner,0862,5)	-- Gem item id, level to combine
+	
+	Text( 26, "2 уровень",FastCombiner,1012,2)	-- Gem item id, level to combine
+	Text( 26, "3 уровень",FastCombiner,1012,3)	-- Gem item id, level to combine
+	Text( 26, "4 уровень",FastCombiner,1012,4)	-- Gem item id, level to combine
+	Text( 26, "5 уровень",FastCombiner,1012,5)	-- Gem item id, level to combine
+	
+	Text( 27, "2 уровень",FastCombiner,0861,2)	-- Gem item id, level to combine
+	Text( 27, "3 уровень",FastCombiner,0861,3)	-- Gem item id, level to combine
+	Text( 27, "4 уровень",FastCombiner,0861,4)	-- Gem item id, level to combine
+	Text( 27, "5 уровень",FastCombiner,0861,5)	-- Gem item id, level to combine
+
+
+end
+
+
+
 --Торговец вкусностями
 function r_leter1()
 Talk( 1, "Румоко: Привет! У меня есть множество различных трав. Обрати внимание!" )

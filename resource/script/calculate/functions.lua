@@ -4147,6 +4147,7 @@ function cha_timer( role, freq, time )
 				if GetChaStateLv( role, STATE_JLJSGZ ) == 0 then
 					local k = TakeItem( role, 0, 578, 1 )
 					if k == 0 then
+						AddState( role , role , STATE_JLJSGZ , statelv , statetime )
 						SystemNotice( role , "Использован фрукт усиления роста" )
 					end
 				end

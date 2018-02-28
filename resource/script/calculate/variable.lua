@@ -426,6 +426,30 @@ ChangeItemList[	248	]	= {	855		,	600		,	803		,	1	}
 	ChangeItemList[	260	]	= {	914	,	1	,	882	,	1	,	1}
 	ChangeItemList[	261	]	= {	911	,	1	,	887	,	1	,	1}
 	ChangeItemList[	262	]	= {	3877	,	1	,	885	,	1	,	1}
+	
+	ChangeItemList[	263	]	= {	6701	,	1	,	6817	,	1	,	1}
+	ChangeItemList[	264	]	= {	6701	,	1	,	6820	,	1	,	1}
+	ChangeItemList[	265	]	= {	6701	,	1	,	6823	,	1	,	1}
+	ChangeItemList[	266	]	= {	6701	,	1	,	6826	,	1	,	1}
+	ChangeItemList[	267	]	= {	6701	,	1	,	6829	,	1	,	1}
+		
+	ChangeItemList[	268	]	= {	6702	,	1	,	6818	,	1	,	1}
+	ChangeItemList[	269	]	= {	6702	,	1	,	6821	,	1	,	1}
+	ChangeItemList[	270	]	= {	6702	,	1	,	6824	,	1	,	1}
+	ChangeItemList[	271	]	= {	6702	,	1	,	6827	,	1	,	1}
+	ChangeItemList[	272	]	= {	6702	,	1	,	6830	,	1	,	1}
+		
+	ChangeItemList[	273	]	= {	6703	,	1	,	6819	,	1	,	1}
+	ChangeItemList[	274	]	= {	6703	,	1	,	6822	,	1	,	1}
+	ChangeItemList[	275	]	= {	6703	,	1	,	6825	,	1	,	1}
+	ChangeItemList[	276	]	= {	6703	,	1	,	6828	,	1	,	1}
+	ChangeItemList[	277	]	= {	6703	,	1	,	6831	,	1	,	1}
+		
+	ChangeItemList[	278	]	= {	6704	,	1	,	7108	,	1	,	1}
+	ChangeItemList[	279	]	= {	6704	,	1	,	7109	,	1	,	1}
+	ChangeItemList[	280	]	= {	6704	,	1	,	7110	,	1	,	1}
+	ChangeItemList[	281	]	= {	6704	,	1	,	7111	,	1	,	1}
+	ChangeItemList[	282	]	= {	6704	,	1	,	7112	,	1	,	1}
 ------------------------------------------
 -- Типы предметов, которые можно чинить --
 ------------------------------------------

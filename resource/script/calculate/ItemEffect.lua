@@ -4023,7 +4023,7 @@ local name = GetChaDefaultName(role)
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = bik1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -4066,7 +4066,7 @@ function ItemUse_PKKBYS ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = bers1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -4109,7 +4109,7 @@ function ItemUse_PKJSYS ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = energ1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -4152,7 +4152,7 @@ function ItemUse_PKSFYS ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = ukrep1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -4196,7 +4196,7 @@ function ItemUse_PKJZYS ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Drop3[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -4732,7 +4732,7 @@ function ItemUse_MoreExpGz( role, Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -4777,12 +4777,12 @@ function ItemUse_ZD_MoreExpGz( role , Item )
     end
 	
  local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = NAN[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
-			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			SystemNotice ( role , "Более мощный усилитель удачи еще не окончился " )
 			UseItemFailed ( role )
 			return
 		end
@@ -4822,12 +4822,12 @@ function ItemUse_MoreItemGz( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
-			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			SystemNotice ( role , "Более мощный усилитель удачи еще не окончился " )
 			UseItemFailed ( role )
 			return
 		end
@@ -4869,7 +4869,7 @@ function ItemUse_MoreExpGzLv2( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -4922,12 +4922,12 @@ local name = GetChaDefaultName(role)
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
-			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			SystemNotice ( role , "Более мощный усилитель удачи еще не окончился " )
 			UseItemFailed ( role )
 			return
 		end
@@ -4969,7 +4969,7 @@ function ItemUse_MoreExpGzLv3( role, Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -5021,7 +5021,7 @@ function ItemUse_MoreExpGzLv3x5A( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -5073,7 +5073,7 @@ function ItemUse_MoreExpGzLv4A( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -5127,12 +5127,12 @@ local name = GetChaDefaultName(role)
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
-			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			SystemNotice ( role , "Более мощный усилитель удачи еще не окончился " )
 			UseItemFailed ( role )
 			return
 		end
@@ -5172,13 +5172,13 @@ local name = GetChaDefaultName(role)
         Drop1[name] = { UsedTime = os.time() }
     end
 	
-  local cooldown1=0 
- local cooldown2=0   
+ local cooldown1=0 
+ local cooldown2=   math.floor(statetime/60)
  local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
-			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			SystemNotice ( role , "Более мощный усилитель удачи еще не окончился " )
 			UseItemFailed ( role )
 			return
 		end
@@ -5543,7 +5543,7 @@ function ItemUse_LSDZG ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Kovka[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -5588,7 +5588,7 @@ function ItemUse_HSDZG ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Sochet[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -8469,7 +8469,7 @@ function ItemUse_MoreExpGzA( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -8516,7 +8516,7 @@ function ItemUse_MoreExpGzLv3A( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = DropEXP1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -8561,12 +8561,12 @@ function ItemUse_MoreItemGzA( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
-			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			SystemNotice ( role , "Более мощный усилитель удачи еще не окончился " )
 			UseItemFailed ( role )
 			return
 		end
@@ -8612,12 +8612,12 @@ local name = GetChaDefaultName(role)
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Drop1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
 		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
-			SystemNotice ( role , "Более мощный усилитель опыта еще не окончился " )
+			SystemNotice ( role , "Более мощный усилитель удачи еще не окончился " )
 			UseItemFailed ( role )
 			return
 		end
@@ -8887,7 +8887,7 @@ function ItemUse_MspdYSA ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Skolz1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -8930,7 +8930,7 @@ function ItemUse_MspdYSB ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = leg1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -8990,7 +8990,7 @@ function ItemUse_DenglongA ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = stroi1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -9032,7 +9032,7 @@ function ItemUse_DenglongB ( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = dosp1[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -11258,7 +11258,7 @@ function ItemUse_JLJSGz( role , Item )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Drop2[name].UsedTime - os.time()
 	
 	if ChaStateLv >= statelv then
@@ -19425,7 +19425,7 @@ local hp = GetChaAttr(role, ATTR_SP)
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
@@ -19465,7 +19465,7 @@ local hp = GetChaAttr(role, ATTR_SP)
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
@@ -19505,7 +19505,7 @@ local hp = GetChaAttr(role, ATTR_SP)
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
@@ -19544,7 +19544,7 @@ local hp = GetChaAttr(role, ATTR_SP)
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
@@ -19593,7 +19593,7 @@ local Cha_Boat = GetCtrlBoat ( role )
     end
 	
   local cooldown1=0 
- local cooldown2=0   
+ local cooldown2= math.floor(statetime/60)   
  local cooldown = acc2[name].UsedTime - os.time()
 	
 	if acc2[name].UsedTime >  os.time() then
