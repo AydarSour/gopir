@@ -154,6 +154,24 @@ function Check_Baoliao(ATKER, DEFER, ... )
 						if Item_ID == 681 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
 							flag = 1
 						end
+						if Item_ID == 232 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 233 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 234 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 235 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 236 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 237 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
 						if flag == 1 then											--Если флаг равен 1, то запищем дроп дающийся во время пасешена
 							if StateLv1 ~= 0 then									--Если используются анжела, то
 								DROP_FAIRY = lv_JL * 0.03 + 1						--DROP_FAIRY равен сумме 1 и уровня феи умноженого на 0.04

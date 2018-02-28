@@ -44,6 +44,24 @@ AddBirthPoint("Solace Haven", "garner",  535,2433)
 AddBirthPoint("Oasis Haven", "magicsea",  787,3121)
 AddBirthPoint("Babul Haven", "magicsea",  1214,3203)
 
+AddBirthPoint("Темная топь высадка", "darkswamp", 304, 334)
+AddBirthPoint("Темная топь высадка", "darkswamp", 325, 339)
+AddBirthPoint("Темная топь высадка", "darkswamp", 318, 329)
+AddBirthPoint("Темная топь высадка", "darkswamp", 284, 344)
+AddBirthPoint("Темная топь высадка", "darkswamp", 313, 345)
+AddBirthPoint("Темная топь высадка", "darkswamp", 277, 339)
+AddBirthPoint("Темная топь высадка", "darkswamp", 330, 331)
+AddBirthPoint("Темная топь высадка", "darkswamp", 307, 333)
+--Затерянный Город
+
+
+AddBirthPoint("Затерянный Город высадка", "abandonedcity",  305, 309)
+AddBirthPoint("Затерянный Город высадка", "abandonedcity",  284, 310)
+AddBirthPoint("Затерянный Город высадка", "abandonedcity",  300, 291)
+AddBirthPoint("Затерянный Город высадка", "abandonedcity",  307, 301)
+AddBirthPoint("Затерянный Город высадка", "abandonedcity",  305, 309)
+AddBirthPoint("Затерянный Город высадка", "abandonedcity",  292, 299)
+
 -- Прилегающие к Ледыни селения
 AddBirthPoint("Icicle Haven", "darkblue",  807,360)
 AddBirthPoint("Atlantis Haven", "darkblue",  1050,656)
@@ -292,10 +310,10 @@ AddBirthPoint("Остров Удачи", "darkblue", 1631, 1974)
 --Данжи
 --Рус.
 --Темная топь
-AddBirthPoint("Темная топь", "darkswamp", 55, 65)
+--AddBirthPoint("Темная топь", "darkswamp", 55, 65)
 AddBirthPoint("Темная топь высадка", "darkswamp", 304, 334)
 --Затерянный Город
-AddBirthPoint("Затерянный Город", "abandonedcity", 37, 43)
+--AddBirthPoint("Затерянный Город", "abandonedcity", 37, 43)
 --AddBirthPoint("Затерянный Город высадка", "abandonedcity",  305, 309)
 AddBirthPoint("Затерянный Город 2", "abandonedcity2", 25, 24)
 AddBirthPoint("Затерянный Город 2", "abandonedcity2", 26, 469)
