@@ -4855,16 +4855,20 @@ end
 
 --Особый тайнофрукт (ID 3879)
 function ItemUse_MoreExpGzLv2( role , Item )
-local name = GetChaDefaultName(role)
+
 	local Lv = Lv( role )
 	if Lv < 40 then
 		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 40 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return
 	end
-
+local name = GetChaDefaultName(role)
 	local statelv = 2
+	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
 	local statetime = 900
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	
 	if DropEXP1[name] == nil then
         DropEXP1[name] = { UsedTime = os.time() }
     end
@@ -4899,7 +4903,6 @@ local name = GetChaDefaultName(role)
  		 SystemNotice(role, "Получен эффект усиления стремления  на "..cooldown2.." минут")
 	end
 	DropEXP1[name].UsedTime = os.time()+statetime
-	
 end
 
 --Особый счастье-фрукт (ID 3881)
@@ -4958,7 +4961,7 @@ local name = GetChaDefaultName(role)
 ------------СУСЫ
 --Супер Усилитель стремлений х2.5 (ID 3095)
 function ItemUse_MoreExpGzLv3( role, Item )
-	local name = GetChaDefaultName(role)
+local name = GetChaDefaultName(role)
 	local statelv = 3
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
 	local statetime = 1800
@@ -5003,15 +5006,14 @@ end
 
 --Супер Усилитель стремлений х3.5 (ID 5794)
 function ItemUse_MoreExpGzLv3x5A( role , Item )
-local name = GetChaDefaultName(role)
+
 	local Lv = Lv( role )
 	if Lv < 75 then
 		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 75 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \253\242\238\242 \239\240\229\228\236\229\242")
 		UseItemFailed ( role )
 		return
 	end
-
-		local name = GetChaDefaultName(role)
+local name = GetChaDefaultName(role)
 	local statelv = 4
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
 	local statetime = 1800
@@ -5062,8 +5064,7 @@ function ItemUse_MoreExpGzLv4A( role , Item )
 		UseItemFailed( role )
 		return
 	end
-
-	local name = GetChaDefaultName(role)
+local name = GetChaDefaultName(role)
 	local statelv = 5
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
 	local statetime = 1800
@@ -8462,11 +8463,10 @@ function ItemUse_MoreExpGzA( role , Item )
 local name = GetChaDefaultName(role)
 	local statelv = 1
 	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
-	
-
-
 	local statetime = 1800
 	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	
 	if DropEXP1[name] == nil then
         DropEXP1[name] = { UsedTime = os.time() }
     end
@@ -8505,7 +8505,6 @@ end
 
 --Супер Усилитель стремлений (ID 3095)
 function ItemUse_MoreExpGzLv3A( role , Item )
-local name = GetChaDefaultName(role)
 	local Lv = Lv( role )
 	if Lv < 60 then
 		SystemNotice(role ,"\210\238\235\252\234\238 \232\227\240\238\234\232 \243\240\238\226\237\255 60 \232 \226\251\248\229 \236\238\227\243\242 \232\241\239\238\235\252\231\238\226\224\242\252 \209\243\239\229\240 \211\241\232\235\232\242\229\235\252 \241\242\240\229\236\235\229\237\232\233")
@@ -8513,8 +8512,13 @@ local name = GetChaDefaultName(role)
 		return
 	end
 
+	local name = GetChaDefaultName(role)
 	local statelv = 3
+	local ChaStateLv = GetChaStateLv ( role , STATE_SBJYGZ )
 	local statetime = 900
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	
 	if DropEXP1[name] == nil then
         DropEXP1[name] = { UsedTime = os.time() }
     end
@@ -19429,7 +19433,7 @@ local hp = GetChaAttr(role, ATTR_SP)
     end
 	
   local cooldown1=0 
- local cooldown2= math.floor(statetime/60)   
+ local cooldown2= math.floor(statetime2/60)   
  local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
@@ -19469,7 +19473,7 @@ local hp = GetChaAttr(role, ATTR_SP)
     end
 	
   local cooldown1=0 
- local cooldown2= math.floor(statetime/60)   
+ local cooldown2= math.floor(statetime2/60)   
  local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
@@ -19509,7 +19513,7 @@ local hp = GetChaAttr(role, ATTR_SP)
     end
 	
   local cooldown1=0 
- local cooldown2= math.floor(statetime/60)   
+ local cooldown2= math.floor(statetime2/60)   
  local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
@@ -19548,7 +19552,7 @@ local hp = GetChaAttr(role, ATTR_SP)
     end
 	
   local cooldown1=0 
- local cooldown2= math.floor(statetime/60)   
+ local cooldown2= math.floor(statetime2/60)   
  local cooldown = Mana[name].UsedTime - os.time()
 	
 	if Mana[name].UsedTime >  os.time() then
@@ -19585,9 +19589,9 @@ local Cha_Boat = GetCtrlBoat ( role )
 		UseItemFailed ( role )
 		return
 	end
-	local statelv = 2
-	local statetime = 5
-	local statetime2 = 10
+	local statelv = 1
+	local statetime = 5 -- на сколько даем
+	local statetime2 = 10 -- через сколько юзать
 	local Cha_Boat = 0
 	local ChaStateLv = GetChaStateLv ( role , STATE_YS )
 	Cha_Boat = GetCtrlBoat ( role )
@@ -19626,6 +19630,7 @@ local Cha_Boat = GetCtrlBoat ( role )
 	
 	if Cha_Boat ==  nil then
 		AddState( role , role , STATE_YS , statelv , statetime )
+		SystemNotice( role , "Получена невидимость на " ..statetime.." секунд" )
 		acc2[name].UsedTime = os.time()+statetime2
 	else
 		SystemNotice( role , "Невозможно использовать в море" )

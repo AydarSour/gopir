@@ -14,7 +14,8 @@ function init_entry(map)
     SetMapEntryMapName(map, "garner")
     SetMapEntryTime(map, "2005/8/30/13/0", "0/0/0", "0/0/0", "0/0/0")
 end
-
+function map_run_teampk(map) 
+end
 function map_copy_run_teampk(map_copy) 
 	local ply_num = GetMapCopyPlayerNum(map_copy) 
 	if ply_num == 0 then 

@@ -10,18 +10,18 @@ function config(map)
     MapCanTeam(map , 1)
     MapType ( map , 1 )
 end
-function map_copy_run_leiting2()
+function map_copy_run_lonetower()
 
 end
 
-function map_run_leiting2(map)
+function map_run_lonetower(map)
 
 end
 
-function after_enter_leiting2( role , map_copy )
+function after_enter_lonetower( role , map_copy )
 
 end
 
-function before_leave_leiting2( role )
+function before_leave_lonetower( role )
 
 end
