@@ -3596,25 +3596,8 @@ function Npc_Danji()
 	Text( 1, "Покажи что у тебя есть. ", SendExchangeXData)
 
 	InitExchangeX()
---ExchangeDataX	(	8141	,	25	,	8548	,	1	)--Умения
-ExchangeDataX	(	8141	,	25	,	8549	,	1	)--Фрукты
-ExchangeDataX	(	8141	,	170	,	8574	,	1	)--Украшения
-ExchangeDataX	(	8141	,	10	,	578	,	1	)	 --Фрукт роста фей
-ExchangeDataX	(	8141	,	25	,	3152	,	10	)--Пища фей
-ExchangeDataX	(	8141	,	10	,	453	,	1	)--Свиток плавки
-ExchangeDataX	(	8141	,	10	,	455	,	1	)--Свиток Усиления
-ExchangeDataX	(	8141	,	70	,	454	,	1	)--Катализатор
-ExchangeDataX	(	8141	,	70	,	456	,	1	)--Кристалл
-ExchangeDataX	(	8141	,	70	,	890	,	1	)--Стабилизатор
-ExchangeDataX	(	8141	,	70	,	891	,	1	)--Катализатор
-ExchangeDataX	(	8141	,	70	,	1001	,	10	)--Чертежи
-ExchangeDataX	(	8141	,	60	,	1002	,	5	)
-ExchangeDataX	(	8141	,	90	,	1003	,	1	)
-ExchangeDataX	(	8141	,	120	,	1807	,	1	)--Парикм расп
-ExchangeDataX	(	8141	,	10	,	3389	,	1	)--Искрящийся камень
-ExchangeDataX	(	8141	,	10	,	3135	,	1	)--Чудомазь
-ExchangeDataX	(	8141	,	99	,	8142	,	1	)--Медью->Серебро
-ExchangeDataX	(	8142	,	1	,	8141	,	99	)--Серебро->Медь
+ExchangeDataX	(	8141	,	25	,	8548	,	1	)--Умения
+
 	
 end
 

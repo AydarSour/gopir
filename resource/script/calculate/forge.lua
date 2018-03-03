@@ -1905,7 +1905,7 @@ function can_jlborn_item_main ( Table )
 		return 0
 	end	
 	local  Item_EMstone_ID = GetItemID ( Item_EMstone )
-	if Item_EMstone_ID ~= 3918 and Item_EMstone_ID ~= 3919 and Item_EMstone_ID ~= 3920 and Item_EMstone_ID ~= 3921 and Item_EMstone_ID ~= 3922 and Item_EMstone_ID ~= 3924 and Item_EMstone_ID ~= 3925 then
+	if Item_EMstone_ID ~= 3918  and Item_EMstone_ID ~= 7013 and Item_EMstone_ID ~= 3919 and Item_EMstone_ID ~= 3920 and Item_EMstone_ID ~= 3921 and Item_EMstone_ID ~= 3922 and Item_EMstone_ID ~= 3924 and Item_EMstone_ID ~= 3925 then
 		SystemNotice( role ,"Поместите Демонический Фрукт ")
 		return 0
 	end
@@ -2135,7 +2135,7 @@ function jlborn_item ( Table )
 	
 	
 	--Если используется Адский фрукт АНЖЕЛЫ, то
-	if Item_EMstone_ID == 7013
+	if Item_EMstone_ID >= 3918 and Item_EMstone_ID<3925
 	then
 		local rad = math.random ( 1, 100 )			--Введём переменную rad, которая будет отвечать за проценты от 1% до 100%
 		local r1 = 0								--Введём переменную r1 и прировняем к нулю

@@ -186,9 +186,9 @@ function Check_Baoliao(ATKER, DEFER, ... )
 					end
 --Конец фикса дропа
 
-local PREM = 0
-if  CheckBagItem( role, 6699 )==1 then 
-	PREM= 1.5
+local PREM = 1
+if  CheckBagItem( role, 6699 )>=1 then 
+	PREM= 1.2
 end
 		for i = 1 , diaoliao_count , 1 do 
 			if arg[i] >= 100 then 
@@ -7121,165 +7121,41 @@ function Skill_JLFT_End( ATKER , DEFER , sklv )
 	end
 end
 
-function State_JLFT_Add ( role , sklv )
 
-	local Item_bg = GetChaItem ( role , 2 , 1 ) 
-	local Get_Item_Type = GetItemType ( Item_bg ) 
+function Skill_JLFT_End( ATKER , DEFER , sklv )
+	local statelv = sklv 			-- узнаём уровень пасехи
+	local statetime = 170 + sklv * 5 -- время использования - 190 в секундах.
+	local item_elf = GetChaItem(ATKER , 2, 1) 		-- проверяем одета фея или нет
+	local item_elf_type = GetItemType ( item_elf ) 	-- тип феи
+	local Item_ID = GetItemID ( item_elf ) 			-- ИД феи
 
-	if Get_Item_Type == 59 then 
-		local Item_ID = GetItemID ( Item_bg ) 
-		local str = GetItemAttr( Item_bg ,ITEMATTR_VAL_STR )
-		local con = GetItemAttr( Item_bg ,ITEMATTR_VAL_CON )
-		local agi = GetItemAttr( Item_bg ,ITEMATTR_VAL_AGI )
-		local dex = GetItemAttr( Item_bg ,ITEMATTR_VAL_DEX )
-		local sta = GetItemAttr( Item_bg ,ITEMATTR_VAL_STA )
-		local URE = GetItemAttr( Item_bg ,ITEMATTR_URE )
-		local MAXURE = GetItemAttr( Item_bg ,ITEMATTR_MAXURE )
-
-		local lv_JL = str + con + agi + dex + sta
-		local Num_JL = GetItemForgeParam ( Item_bg , 1 )
-
--- No idea Wtf these are for
-		local Part1 = 1 --GetNum_Part1 ( Num_JL )
-		local Part2 = GetNum_Part2 ( Num_JL ) 
-		local Part3 = GetNum_Part3 ( Num_JL )
-		local Part4 = GetNum_Part4 ( Num_JL )
-		local Part5 = GetNum_Part5 ( Num_JL )
-		local Part6 = GetNum_Part6 ( Num_JL )
-		local Part7 = GetNum_Part7 ( Num_JL)
- 
-		if Part1 == 1 then 
-			local star = 0
 --Феи 2 поколения
-			if Item_ID == 0231
-			or Item_ID == 0232
-			or Item_ID == 0233
-			or Item_ID == 0234
-			or Item_ID == 0235
-			or Item_ID == 0236
-			or Item_ID == 0237
-			or Item_ID == 0681
-			then
-local star = 1 + lv_JL/1000 
-SetCharaAttr(star ,role , ATTR_STATEV_MF)
-SetCharaAttr(star ,role , ATTR_STATEV_COL)
-if str~=nil and str~=0 then
-	local star = str
-	SetCharaAttr(star ,role , ATTR_STATEV_STR)
-	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." силы")
-end
-if con~=nil and con~=0 then
-	local star = con
-	SetCharaAttr(star ,role , ATTR_STATEV_CON)
-	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." телосложения")
-end
-if sta~=nil and sta~=0 then
-	local star = sta
-	SetCharaAttr(star ,role , ATTR_STATEV_STA)
-	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." духа")
-end
-if dex~=nil and dex~=0 then
-	local star = dex
-	SetCharaAttr(star ,role , ATTR_STATEV_DEX)
-	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." точности")
-end
-if agi~=nil and agi~=0 then
-	local star = agi
-	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
-	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." ловкости")
+	if Item_ID == 0231 or Item_ID == 0232 or Item_ID == 0233 or Item_ID == 0234 or Item_ID == 0235 or Item_ID == 0236 or Item_ID == 0237 or Item_ID == 0681 then
+		AddState( ATKER , ATKER , STATE_JLFT1, statelv , statetime )
+--Феи 3 поколения
+	elseif Item_ID == 7014
+	then
+		AddState( ATKER , ATKER , STATE_JLFT2, statelv , statetime )
+--Феи 4 поколения
+	elseif Item_ID == 7015
+	then
+		AddState( ATKER , ATKER , STATE_JLFT3, statelv , statetime )
+	elseif Item_ID == 0131
+	then
+		AddState( ATKER , ATKER , STATE_JLFT4, statelv , statetime )
+	elseif Item_ID == 0132
+	then
+		AddState( ATKER , ATKER , STATE_JLFT5, statelv , statetime )
+	elseif Item_ID == 0133
+	then
+		AddState( ATKER , ATKER , STATE_JLFT6, statelv , statetime )
+--Феи 5 поколения
+	elseif Item_ID == 0134
+	then
+		AddState( ATKER , ATKER , STATE_JLFT7, statelv , statetime ) 
+	end
 end
 
-			end
---Феи 3 поколения
-			if Item_ID == 7014
-			then
-local star = 1 + lv_JL/750 
-SetCharaAttr(star ,role , ATTR_STATEV_MF)
-SetCharaAttr(star ,role , ATTR_STATEV_COL)
-if str~=nil and str~=0 then
-	local star = str * 1.2
-	SetCharaAttr(star ,role , ATTR_STATEV_STR)
-end
-if con~=nil and con~=0 then
-	local star = con * 1.2
-	SetCharaAttr(star ,role , ATTR_STATEV_CON)
-end
-if sta~=nil and sta~=0 then
-	local star = sta * 1.2
-	SetCharaAttr(star ,role , ATTR_STATEV_STA)
-end
-if dex~=nil and dex~=0 then
-	local star = dex * 1.2
-	SetCharaAttr(star ,role , ATTR_STATEV_DEX)
-end
-if agi~=nil and agi~=0 then
-	local star = agi * 1.2
-	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
-end
-			end
---Феи 4 поколения
-			if Item_ID == 7015
-			or Item_ID == 0131
-			or Item_ID == 0132
-			or Item_ID == 0133
-			then
-local star =1 + lv_JL/500
-SetCharaAttr(star ,role , ATTR_STATEV_MF)
-SetCharaAttr(star ,role , ATTR_STATEV_COL)
-if str~=nil and str~=0 then
-	local star = str * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_STR)
-end
-if con~=nil and con~=0 then
-	local star = con * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_CON)
-end
-if sta~=nil and sta~=0 then
-	local star = sta * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_STA)
-end
-if dex~=nil and dex~=0 then
-	local star = dex * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_DEX)
-end
-if agi~=nil and agi~=0 then
-	local star = agi * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
-end
-			end
---Феи 5 поколения
-			if Item_ID == 0134
-			then
-local star = 1 + lv_JL/400
-local pdef = GetChaAttr( role, ATTR_STATEV_PDEF ) + 5
-SetCharaAttr(star ,role , ATTR_STATEV_MF)
-SetCharaAttr(star ,role , ATTR_STATEV_COL)
-SetCharaAttr(pdef ,role , ATTR_STATEV_PDEF)
-if str~=nil and str~=0 then
-	local star = str * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_STR)
-end
-if con~=nil and con~=0 then
-	local star = con * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_CON)
-end
-if sta~=nil and sta~=0 then
-	local star = sta * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_STA)
-end
-if dex~=nil and dex~=0 then
-	local star = dex * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_DEX)
-end
-if agi~=nil and agi~=0 then
-	local star = agi * 1.6
-	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
-end
-			end
-		end
-	end
-	ALLExAttrSet(role)
-end
 
 function State_JLFT_Rem ( role , sklv )
 	SetCharaAttr(0 ,role , ATTR_STATEV_STR)
