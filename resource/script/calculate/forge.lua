@@ -1754,7 +1754,7 @@ function begin_upgrade_item (...)
 			LG( "beuplv" , "Удалить предмет не удалось " )
 		end
 		local cha_name = GetChaDefaultName ( role )
-		LG( "JingLian_ShiBai" , "Игрок "..cha_name.." не смог улучшить предмет " )
+		LG( "Заточка аппарелей" , "Игрок "..cha_name.." не смог улучшить предмет " )
 		SystemNotice( role , "Извините, заточить аппарель неудалось ")
 		return 
 	end
@@ -1764,9 +1764,9 @@ function begin_upgrade_item (...)
 	SynChaKitbag( role, 4 )
 	local LvD = GetItemAttr( Item_beuplv , ITEMATTR_VAL_LEVEL )
 	SynChaKitbag(role,13)
-	SystemNotice( role , "Вы заточили шмотку ")
+	SystemNotice( role , "Вы улучшили снаряжение ")
 	local cha_name = GetChaDefaultName ( role )
-	LG( "JingLian_ShiBai" , "Игрок "..cha_name.." успешно провел усиление " )
+	LG( "Заточка аппарелей" , "Игрок "..cha_name.." успешно провел усиление " )
 	return 1
 end
 
@@ -1794,16 +1794,16 @@ function Check_CG_beuplv ( Item_Lv )
 	end
 	if Item_Lv>10 and Item_Lv <= 15 then			
 		if ran <= 50 then		-- 50%
-		return 1
+			return 1
 		else
-		return 0
+			return 0
 		end
 	end
 	if Item_Lv>15 and Item_Lv <= 20 then			
 		if ran <= 10 then		--10%
-		return 1
+			return 1
 		else
-		return 0
+			return 0
 		end
 	end
 end
@@ -2122,6 +2122,86 @@ function jlborn_item ( Table )
 	if new_MAXURE > 32000 then
 		new_MAXURE = 32000
 	end	
+	
+	
+	--Если используется Адский фрукт АНЖЕЛЫ, то
+	if Item_EMstone_ID == 7013
+	then
+		local rad = math.random ( 1, 100 )			--Введём переменную rad, которая будет отвечать за проценты от 1% до 100%
+		local r1 = 0								--Введём переменную r1 и прировняем к нулю
+		local r2 = 0								--Введём переменную r2 и прировняем к нулю
+		
+		if ((Item_JLone_ID >= 231 and Item_JLone_ID <= 237) or Item_JLone_ID == 681 )
+		and ((Item_JLother_ID >= 231 and Item_JLother_ID <= 237) or Item_JLother_ID == 681 )
+			r1,r2 = MakeItem ( role , 7014  , 1 , 4 )
+		else
+			 return 0 
+		end
+		local Item_newJL = GetChaItem ( role , 2 , r2 )
+		local Item_newJL_ID = GetItemID ( Item_newJL )
+		local Num_newJL = GetItemForgeParam ( Item_newJL , 1 )
+		local Part1_newJL = GetNum_Part1 ( Num_newJL )
+		local Part2_newJL = GetNum_Part2 ( Num_newJL )
+		local Part3_newJL = GetNum_Part3 ( Num_newJL )
+		local Part4_newJL = GetNum_Part4 ( Num_newJL )
+		local Part5_newJL = GetNum_Part5 ( Num_newJL )
+		local Part6_newJL = GetNum_Part6 ( Num_newJL )
+		local Part7_newJL = GetNum_Part7 ( Num_newJL )
+		--
+		if lv_JLone >= 20 and lv_JLother >= 20 then
+			Part2_newJL = 6
+			Part3_newJL = 1
+		end
+		if lv_JLone >= 25 and lv_JLother >= 25 then
+			Part2_newJL = 6
+			Part3_newJL = 2
+		end
+		if lv_JLone >= 35 and lv_JLother >= 35 then
+			Part2_newJL = 6
+			Part3_newJL = 3
+		end
+		--
+		local rad1 = math.random ( 1, 100 )
+		if Part3_newJL == 1 then
+			if rad1 <= 85 then
+				GiveItem ( role , 0 , 239  , 1 , 4 )
+			elseif rad1 > 85 and rad1 <= 95 then
+				GiveItem ( role , 0 , 608  , 1 , 4 )
+			elseif rad1 > 95 and rad1 <= 100 then
+				GiveItem ( role , 0 , 609  , 1 , 4 )
+			end
+		end
+		if Part3_newJL == 2 then
+			if rad1 <= 90 then
+				GiveItem ( role , 0 , 608 , 1 , 4 )
+			elseif rad1 > 90 and rad1 <= 100 then
+				GiveItem ( role , 0 , 609 , 1 , 4 )
+			end
+		end
+		if Part3_newJL == 3 then
+			GiveItem ( role , 0 , 609  , 1 , 4 )
+		end
+		--Если Part3_newJL будет равен 1, то
+		Num_newJL = SetNum_Part1 ( Num_newJL , 1 )
+		Num_newJL = SetNum_Part2 ( Num_newJL , Part2_newJL )
+		Num_newJL = SetNum_Part3 ( Num_newJL , Part3_newJL )
+		Num_newJL = SetNum_Part4 ( Num_newJL , Part4_newJL )
+		Num_newJL = SetNum_Part5 ( Num_newJL , Part5_newJL )
+		Num_newJL = SetNum_Part6 ( Num_newJL , Part6_newJL )
+		Num_newJL = SetNum_Part7 ( Num_newJL , Part7_newJL )
+		SetItemForgeParam ( Item_newJL , 1 , Num_newJL )
+		--Присвоим статы фее
+		SetItemAttr ( Item_newJL , ITEMATTR_VAL_STR , new_str )
+		SetItemAttr( Item_newJL , ITEMATTR_VAL_DEX , new_dex )
+		SetItemAttr ( Item_newJL , ITEMATTR_VAL_STA , new_sta )
+		SetItemAttr( Item_newJL , ITEMATTR_VAL_AGI , new_agi )
+		SetItemAttr ( Item_newJL , ITEMATTR_VAL_CON , new_con ) 
+		SetItemAttr ( Item_newJL , ITEMATTR_MAXENERGY , new_MAXENERGY )
+		SetItemAttr ( Item_newJL , ITEMATTR_MAXURE , new_MAXURE )
+	end
+
+	
+	
 	if Item_EMstone_ID ==3918 then 
 		local j1 =TakeItem( role, 0, 4530, 10 )			
 		local j2 = TakeItem( role, 0,3434, 10  )			

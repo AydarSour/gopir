@@ -4144,11 +4144,13 @@ function cha_timer( role, freq, time )
 				local Part1_JLone = GetNum_Part1( Num_JLone )
 				
 				--Для премиум
-				if GetChaStateLv( role, STATE_JLJSGZ ) <= 0 then
-					local k = TakeItem( role, 0, 578, 1 )
-					if k == 0 then
-						AddState( role , role , STATE_JLJSGZ , 1 , 600 )
-						SystemNotice( role , "Использован фрукт усиления роста" )
+				if GetChaStateLv( role, STATE_JLJSGZ ) <= 0  and  CheckBagItem( role, 6699 )==1then
+					if CheckBagItem( role, 578 )==1 then
+						local k = TakeItem( role, 0, 578, 1 )
+						if k == 0 then
+							AddState( role , role , STATE_JLJSGZ , 1 , 600 )
+							SystemNotice( role , "Использован фрукт усиления роста" )
+						end
 					end
 				end
 				if Elf_URE <= 2550 and Item_siliao_ID == 2312 then
@@ -6828,7 +6830,10 @@ else
 			end
 			return 0
 end
-	
+		if ( message == "/справка" ) then
+			HelpInfo(role,0,"Перечень команд: _/баф _/обратно _/аргент _/банк _/ремонт _/дырокол _/справка _/старт _/стоп _/жз _/хп ")
+			return 0
+		end
 		return 1
 end
 return 1	

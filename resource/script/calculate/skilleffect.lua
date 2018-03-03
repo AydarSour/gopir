@@ -185,9 +185,14 @@ function Check_Baoliao(ATKER, DEFER, ... )
 						SetItemAttr ( Item_bg , ITEMATTR_URE , URE )
 					end
 --Конец фикса дропа
+
+local PREM = 0
+if  CheckBagItem( role, 6699 )==1 then 
+	PREM= 1.5
+end
 		for i = 1 , diaoliao_count , 1 do 
 			if arg[i] >= 100 then 
-				mf = math.min ( 1, 100 / arg[i] * bsmf ) * MF_RAID * MF_RAID_STATE * DROP_FAIRY
+				mf = math.min ( 1, 100 / arg[i] * bsmf ) * MF_RAID * MF_RAID_STATE * DROP_FAIRY * PREM
 				--Notice (mf)															--Проверка дропа у персонажа
 				a = Percentage_Random(mf) 
 				if a == 1 then 

@@ -7050,6 +7050,12 @@ end
 
 --Фрукт снежного дракона (ID - 0222)
 function ItemUse_LS_longguo ( role , Item , Item_Traget ) 
+		local ID=GetItemID(Item_Traget)
+	-- if (ID >= 231 and ID<=237 )or ID ==681  then
+		-- SystemNotice( role , "Эту фею нельзя кормить этим фруктом")
+		-- UseItemFailed ( role ) 
+		-- return 
+	-- end
 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
@@ -7069,11 +7075,17 @@ function ItemUse_LS_longguo ( role , Item , Item_Traget )
 		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
 		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
 		local elf_lvl = str + con + agi + dex + sta
-		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+		if (elf_lvl >= 51 and elf_lvl <= 99999999999) then
 			SystemNotice(role , "После 51 лвл невозможно использовать фрукт. " )
 			UseItemFailed ( role )
 			return
 		end
+		if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+		end 
+		
 		if Item_type == 58 and Item_Traget_Type == 59 then
 				Check_Exp = CheckElf_EXP ( role , Item_Traget ) 
 				if Check_Exp == 0 then
@@ -7087,7 +7099,7 @@ end
 
 --Ледяная слива (ID 0223)
 function ItemUse_LS_koumei ( role , Item , Item_Traget ) 
-
+	
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
@@ -7106,11 +7118,11 @@ function ItemUse_LS_koumei ( role , Item , Item_Traget )
 		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
 		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
 		local elf_lvl = str + con + agi + dex + sta
-		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
-			SystemNotice(role , "После 51 лвл невозможно использовать фрукт. " )
+		if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
 			UseItemFailed ( role )
 			return
-		end
+		end 
 		if Item_type == 58 and Item_Traget_Type == 59 then
 				Check_Exp = CheckElf_EXP ( role , Item_Traget )
 				if Check_Exp == 0 then
@@ -7124,7 +7136,7 @@ end
 
 --Фишфлос с Зефира (ID 0224)
 function ItemUse_LS_yusi ( role , Item , Item_Traget ) 
-
+	
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
 	if Cha_Boat ~= nil then 
@@ -7148,6 +7160,11 @@ function ItemUse_LS_yusi ( role , Item , Item_Traget )
 			UseItemFailed ( role )
 			return
 		end
+		if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+		end 
 		if Item_type == 58 and Item_Traget_Type == 59  then
 				Check_Exp = CheckElf_EXP ( role , Item_Traget )
 				if Check_Exp == 0 then
@@ -7161,6 +7178,7 @@ end
 
 --Серебряное манго (ID 0225)
 function ItemUse_LS_guopu ( role , Item , Item_Traget ) 
+	
 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
@@ -7185,6 +7203,11 @@ function ItemUse_LS_guopu ( role , Item , Item_Traget )
 			UseItemFailed ( role )
 			return
 		end
+		if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+		end 
 		if Item_type == 58 and Item_Traget_Type == 59 then
 				Check_Exp = CheckElf_EXP ( role , Item_Traget )
 				if Check_Exp == 0 then
@@ -7198,6 +7221,7 @@ end
 
 --Шайтанский бисквит (ID 0226)
 function ItemUse_LS_mibing ( role , Item , Item_Traget ) 
+	
 
 	local Cha_Boat = 0
 	Cha_Boat = GetCtrlBoat ( role )
@@ -7222,6 +7246,11 @@ function ItemUse_LS_mibing ( role , Item , Item_Traget )
 			UseItemFailed ( role )
 			return
 		end
+		if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+		end 
 		if Item_type == 58 and Item_Traget_Type == 59  then
 				Check_Exp = CheckElf_EXP ( role , Item_Traget ) 
 				if Check_Exp == 0 then
@@ -7233,6 +7262,534 @@ function ItemUse_LS_mibing ( role , Item , Item_Traget )
 		end 
 end
 
+
+
+--------------------------------------------------------------------------------------------------
+--Большие фрукты фей
+--------------------------------------------------------------------------------------------------
+
+--Большой Фрукт снежного дракона (ID 0276)
+function ItemUse_CJ_longguo( role , Item , Item_Traget ) 
+		
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY)
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+	if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+	end
+	
+	local ID=GetItemID(Item_Traget)
+	if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+		end 
+
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \212\240\243\234\242\238\236 \209\237\229\230\237\238\227\238 \196\240\224\234\238\237\224" ) 
+				UseItemFailed ( role )
+			else
+			Lvup_Str_1 ( role , Item_Num , Item_Traget )
+			end 
+	end 
+end
+
+--Большой Ледяная слива (ID 0277)
+function ItemUse_CJ_koumei ( role , Item , Item_Traget ) 
+
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+		local ID=GetItemID(Item_Traget)
+	if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+		end 
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\238\233 \203\229\228\255\237\238\233 \241\235\232\226\238\233" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Agi_1 ( role , Item_Num , Item_Traget ) 
+			end 
+	end 
+end
+
+--Большой Фишфлос с Зефира (ID 0278)
+function ItemUse_CJ_yusi ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )  
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+		
+		local ID=GetItemID(Item_Traget)
+	if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+		end 
+	if Item_type == 58 and Item_Traget_Type == 59  then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\251\236 \212\232\248\244\235\238\241\238\236 \241 \199\229\244\232\240\224" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Dex_1 ( role , Item_Num , Item_Traget ) 
+			end 
+	end 
+end
+
+--Большой Серебряное манго (ID 0279)
+function ItemUse_CJ_guopu ( role , Item , Item_Traget ) 
+
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )  
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+		local ID=GetItemID(Item_Traget)
+	if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+		end 
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\251\236 \209\229\240\229\225\240\255\237\251\236 \236\224\237\227\238" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Con_1 ( role , Item_Num , Item_Traget )
+			end 
+	end 
+end
+
+--Большой шайтанский бисквит (ID 0280)
+function ItemUse_CJ_mibing ( role , Item , Item_Traget ) 
+
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )  
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+		local ID=GetItemID(Item_Traget)
+	if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
+			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+		end 
+	if Item_type == 58 and Item_Traget_Type == 59  then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \193\238\235\252\248\232\236 \216\224\233\242\224\237\241\234\232\236 \225\232\241\234\226\232\242\238\236" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Sta_1 ( role , Item_Num , Item_Traget )
+			end  			
+	end 
+end
+
+--Фрукт роста (Id 0578)
+function ItemUse_JLJSGz( role , Item )
+	local ID=GetItemID(Item_Traget)
+	if (ID >= 231 and ID<=237 )or ID ==681  then
+		SystemNotice( role , "Эту фею нельзя кормить этим фруктом")
+		UseItemFailed ( role ) 
+		return 
+	end
+
+	local statelv = 1
+	local statetime = 900
+	local Cha_Boat = 0
+	local ChaStateLv = GetChaStateLv ( role , STATE_JLJSGZ )
+	Cha_Boat = GetCtrlBoat ( role )
+	local name = GetChaDefaultName(role)
+	if Drop2[name] == nil then
+        Drop2[name] = { UsedTime = os.time() }
+    end
+	
+  local cooldown1=0 
+ local cooldown2= math.floor(statetime/60)   
+ local cooldown = Drop2[name].UsedTime - os.time()
+	
+	if ChaStateLv >= statelv then
+		if ChaStateLv > statelv then --если уровень этого фрукта меньше уже работающего
+			SystemNotice ( role , "Более мощный усилитель еще не окончился " )
+			UseItemFailed ( role )
+			return
+		end
+		if ChaStateLv == statelv then
+		 if cooldown > 0 then
+			cooldown2 = math.floor(cooldown/60)		 		
+			cooldown1 = (cooldown - math.floor(cooldown/60)*60)		 
+			SystemNotice(role,"Этот усилитель уже активен, повторно активировать можно через "..cooldown2.." минут "..cooldown1.." сек.!")
+			UseItemFailed ( role )
+			return
+		end
+	 end
+	end
+	
+	if Cha_Boat ==  nil then
+		AddState( role , role , STATE_JLJSGZ , statelv , statetime )
+		Drop2[name].UsedTime = os.time()+statetime
+	else
+		SystemNotice( role , "Невозможно использовать в море" )
+		UseItemFailed ( role )
+		return
+	end
+	end
+
+	
+---ОГРОМНЫЕ ФРУКТЫ
+--Огромный Фрукт снежного дракона до 100лв (ID 7550)
+function ItemUse_CJ_longguo2( role , Item , Item_Traget ) 
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
+
+
+
+
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY)
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+	if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+	end
+	
+	local ID=GetItemID(Item_Traget)
+	if ((ID >= 183 and ID<=189 )or ID == 680) then
+		SystemNotice(role , "Феи нужен другой фрукт, она такое не любит" )
+		UseItemFailed ( role )
+		return
+	end 
+	if  ((ID >= 231 and ID<=237 )or ID == 681) and elf_lvl<=40 then
+			SystemNotice(role , "До 40ур. фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+	end 
+	
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \212\240\243\234\242\238\236 \209\237\229\230\237\238\227\238 \196\240\224\234\238\237\224" ) 
+				UseItemFailed ( role )
+			else
+			Lvup_Str( role , Item_Num , Item_Traget )
+			end 
+	end 
+end
+
+--Огромная Ледяная слива до 100лв (ID 7551)
+function ItemUse_CJ_koumei2 ( role , Item , Item_Traget ) 
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+	
+	local ID=GetItemID(Item_Traget)
+	if ((ID >= 183 and ID<=189 )or ID == 680) then
+		SystemNotice(role , "Феи нужен другой фрукт, она такое не любит" )
+		UseItemFailed ( role )
+		return
+	end 
+	if  ((ID >= 231 and ID<=237 )or ID == 681) and elf_lvl<=40 then
+			SystemNotice(role , "До 40ур. фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+	end 
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\238\233 \203\229\228\255\237\238\233 \241\235\232\226\238\233" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Agi ( role , Item_Num , Item_Traget ) 
+			end 
+	end 
+end
+
+--Огромный Фишфлос с Зефира до 100лв (ID 7552)
+function ItemUse_CJ_yusi2 ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+		local ID=GetItemID(Item_Traget)
+	if ((ID >= 183 and ID<=189 )or ID == 680) then
+		SystemNotice(role , "Феи нужен другой фрукт, она такое не любит" )
+		UseItemFailed ( role )
+		return
+	end 
+	if  ((ID >= 231 and ID<=237 )or ID == 681) and elf_lvl<=40 then
+			SystemNotice(role , "До 40ур. фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+	end 
+	if Item_type == 58 and Item_Traget_Type == 59  then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\251\236 \212\232\248\244\235\238\241\238\236 \241 \199\229\244\232\240\224" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Dex ( role , Item_Num , Item_Traget ) 
+			end 
+	end 
+end
+
+--Огромное Серебряное манго до 100лв (ID 7553)
+function ItemUse_CJ_guopu2 ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+		local ID=GetItemID(Item_Traget)
+	if ((ID >= 183 and ID<=189 )or ID == 680) then
+		SystemNotice(role , "Феи нужен другой фрукт, она такое не любит" )
+		UseItemFailed ( role )
+		return
+	end 
+	if  ((ID >= 231 and ID<=237 )or ID == 681) and elf_lvl<=40 then
+			SystemNotice(role , "До 40ур. фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+	end 
+	if Item_type == 58 and Item_Traget_Type == 59 then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \206\227\240\238\236\237\251\236 \209\229\240\229\225\240\255\237\251\236 \236\224\237\227\238" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Con ( role , Item_Num , Item_Traget )
+			end 
+	end 
+end
+
+--Большой шайтанский бисквит до 100лв (ID 7554)
+function ItemUse_CJ_mibing2 ( role , Item , Item_Traget ) 
+
+	local Cha_Boat = 0
+	Cha_Boat = GetCtrlBoat ( role )
+--	SystemNotice( role , Cha_Boat )
+	if Cha_Boat ~= nil then 
+		SystemNotice( role , "\205\229 \236\238\230\229\242 \225\251\242\252 \232\241\239\238\235\252\231\238\226\224\237\238, \234\238\227\228\224 \194\251 \226 \236\238\240\229" )
+		UseItemFailed ( role ) 
+		return 
+	end 
+	local Item_type = GetItemType ( Item )
+	local Item_Traget_Type = GetItemType ( Item_Traget )
+	local Item_Num = GetItemID ( Item )
+	local Check_Exp = 0
+	local Elf_MaxEXP = GetItemAttr(Item_Traget,ITEMATTR_MAXENERGY) 
+		local str = GetItemAttr(Item_Traget,ITEMATTR_VAL_STR)
+		local con = GetItemAttr(Item_Traget,ITEMATTR_VAL_CON)
+		local dex = GetItemAttr(Item_Traget,ITEMATTR_VAL_DEX)
+		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
+		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
+		local elf_lvl = str + con + agi + dex + sta
+		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
+			SystemNotice(role , "\221\242\238\242 \244\240\243\234\242 \236\238\230\237\238 \232\241\239\238\235\252\231\238\226\224\242\252 \242\238\235\252\234\238 \228\235\255 \244\229\233 \236\229\237\252\248\229 51 \243\240\238\226\237\255." )
+			UseItemFailed ( role )
+			return
+		end
+		local ID=GetItemID(Item_Traget)
+	if ((ID >= 183 and ID<=189 )or ID == 680) then
+		SystemNotice(role , "Феи нужен другой фрукт, она такое не любит" )
+		UseItemFailed ( role )
+		return
+	end 
+	if  ((ID >= 231 and ID<=237 )or ID == 681) and elf_lvl<=40 then
+			SystemNotice(role , "До 40ур. фею нельзя кормить этим фруктом " )
+			UseItemFailed ( role )
+			return
+	end 
+	if Item_type == 58 and Item_Traget_Type == 59  then
+			Check_Exp = CheckElf_EXP ( role , Item_Traget )
+			if Check_Exp == 0 then
+				SystemNotice(role , "\208\238\241\242 \244\229\232 \237\229 \228\238\241\242\232\227 \236\224\234\241\232\236\243\236\224. \205\229\226\238\231\236\238\230\237\238 \239\238\234\238\240\236\232\242\252 \244\229\254 \193\238\235\252\248\232\236 \216\224\233\242\224\237\241\234\232\236 \225\232\241\234\226\232\242\238\236" ) 
+				UseItemFailed ( role )
+			else
+			   Lvup_Sta ( role , Item_Num , Item_Traget )
+			end			
+	end 
+end
 
 
 

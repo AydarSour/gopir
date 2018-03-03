@@ -1574,29 +1574,30 @@ function Shengji_Shuxingchengzhang( role )
         AddMasterCredit(role, PlayerCredit[lv])        
         
         if lv <= 40 then
+			HelpInfo(role,0,"Вы достигли 40 уровня! Получи подарки и репутацию! ")
             AddCreditX(role, 10)					-- Дает 10 репутации
             GiveItemX( role , 0 , 1128  , 1 , 4 )	-- Дает Мини-Усилители натикса
             AddMasterCredit(role, 10)				-- Дает 10 репутации ментору
         end
 
         if lv == 41 then
-            SystemNotice(role,"Вы достигли 41 уровня! ") -- Сис. Сообщение
+            HelpInfo(role,0,"Вы достигли 41 уровня!Получи подарки и репутацию! ") -- Сис. Сообщение
             AddCreditX(role, 300)					-- Дает 300 репутации
             AddMasterCredit(role, 300)				-- Дает 300 репутации
             AddMoney(role , 0, 200000)				-- Дает 200к       
         end
         if lv == 60 then
-            SystemNotice(role,"Вы достигли 60 уровня! ") -- Сис. Сообщение
+            HelpInfo(role,0,"Вы достигли 60 уровня!Получи подарки и репутацию! ") -- Сис. Сообщение
             AddCreditX(role, 500)					-- Дает 500 репутации
             AddMasterCredit(role, 500)				-- Дает 500 репутации
         end
         if lv == 70 then                
-            SystemNotice(role,"Вы достигли 70 уровня! ") -- Сис. Сообщение
+            HelpInfo(role,0,"Вы достигли 70 уровня!Получи подарки и репутацию! ") -- Сис. Сообщение
             AddCreditX(role, 800)					-- Дает 800 репутации
             AddMasterCredit(role, 800)				-- Дает 800 репутации
         end
         if lv == 80 then                
-            SystemNotice(role,"Вы достигли 80 уровня! ") -- Сис. Сообщение
+            HelpInfo(role,0,"Вы достигли 80 уровня!Получи подарки и репутацию! ") -- Сис. Сообщение
             AddCreditX(role, 1300)					-- Дает 1300 репутации
             AddMasterCredit(role, 1300)				-- Дает 1300 репутации
         end

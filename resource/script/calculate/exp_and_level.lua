@@ -546,6 +546,7 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 			if CheckBagItem( TurnToCha(t[i]), 6698 )==1 or GetChaStateLv( TurnToCha(t[i]), STATE_SBJYGZ )> 10	then
 				exp_up = 0
 			end
+			
 			exp = exp + exp_up  * EXP_NEW_LVL
 			SetChaAttrI ( TurnToCha(t[i]) , ATTR_CEXP, exp ) 
 			LG("exp" , "exp_now = " , exp ) 
