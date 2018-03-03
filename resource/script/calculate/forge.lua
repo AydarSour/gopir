@@ -2132,7 +2132,7 @@ function jlborn_item ( Table )
 		local r2 = 0								--¬ведЄм переменную r2 и прировн€ем к нулю
 		
 		if ((Item_JLone_ID >= 231 and Item_JLone_ID <= 237) or Item_JLone_ID == 681 )
-		and ((Item_JLother_ID >= 231 and Item_JLother_ID <= 237) or Item_JLother_ID == 681 )
+		and ((Item_JLother_ID >= 231 and Item_JLother_ID <= 237) or Item_JLother_ID == 681 ) then
 			r1,r2 = MakeItem ( role , 7014  , 1 , 4 )
 		else
 			 return 0 
