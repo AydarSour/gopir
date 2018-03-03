@@ -710,6 +710,7 @@ function Check_StoneItemType ( Item , Stone1 , Stone2 )
 		end
 	end
 	for i = 0 , 15 , 1 do
+	
 		if ItemType == StoneItemType[Baoshi_TypeID][i] then
 			return 1
 		end

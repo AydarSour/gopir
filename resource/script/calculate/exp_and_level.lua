@@ -524,7 +524,7 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 			end 
 
 			if exp_up == 0 and retExpState ~= 0 then 
-				SystemNotice ( TurnToCha(t[i]) , "Ваш уровень слишком высок, что бы получать опыт!" )
+				--SystemNotice ( TurnToCha(t[i]) , "Ваш уровень слишком высок, что бы получать опыт!" )
 			end 
 			
 						local Lv_character = Lv (TurnToCha(t[i]))

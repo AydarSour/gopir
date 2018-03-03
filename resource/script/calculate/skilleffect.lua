@@ -7022,9 +7022,9 @@ function Skill_jsfd_End ( ATKER , DEFER , sklv )
 		--Hp_Endure_Dmg( DEFER , hpdmg  ) 
  		 fix_dupe_mob(ATKER,DEFER,hpdmg  )
 end 
-
+--Тело феи
 function SkillCooldown_JLFT( sklv )
-	local Cooldown = 180000
+	local Cooldown = 18000
 	return Cooldown
 end
 
@@ -7032,7 +7032,263 @@ function SkillSp_JLFT ( sklv )
 	local sp_reduce = 20 
 	return sp_reduce 
 end 
+function CheckState_JLFT ( role, sklv )
+	local i = 0
+	local state_num = 8
+	local state = {}
+	state[1] = GetChaStateLv ( role , STATE_JLFT1 )
+	state[2] = GetChaStateLv ( role , STATE_JLFT2 )
+	state[3] = GetChaStateLv ( role , STATE_JLFT3 )
+	state[4] = GetChaStateLv ( role , STATE_JLFT4 )
+	state[5] = GetChaStateLv ( role , STATE_JLFT5 )
+	state[6] = GetChaStateLv ( role , STATE_JLFT6 )
+	state[7] = GetChaStateLv ( role , STATE_JLFT7 )
+	state[8] = GetChaStateLv ( role , STATE_JLFT8 )
+	for i = 1 , state_num , 1 do
+		if state[i] == sklv then
+			SystemNotice ( role , 'Невозможно применить Владение феей, умение уже используется!' )
+			return 0
+		end
+	end
+	return 1
+end
 
+function Skill_JLFT_BEGIN( role , sklv )
+	if CheckState_JLFT ( role, sklv ) == 0 then
+		SkillUnable ( role )
+		return
+	end
+	local item_elf = GetChaItem(role , 2, 1) -- Слот, где должен находиться питомец
+	local item_elf_type = GetItemType ( item_elf ) -- Тип питомца
+	local item_elf_maxhp = GetItemAttr(item_elf,ITEMATTR_MAXURE) -- Максимальная стамина
+	local item_elf_hp = GetItemAttr(item_elf,ITEMATTR_URE) -- Текущая стамина
+	local role_mxhp = GetChaAttr(role, ATTR_MXHP)
+	local Num_JL = GetItemForgeParam ( item_elf , 1 )
+
+	if item_elf_type ~= 59 then
+		SkillUnable(role) 
+		SystemNotice ( role , "В слоте для феи нет феи" ) 
+	return 
+	end
+
+	local str = GetItemAttr( item_elf ,ITEMATTR_VAL_STR ) 	-- Сила
+	local con = GetItemAttr( item_elf ,ITEMATTR_VAL_CON ) 	-- Телосложение
+	local agi = GetItemAttr( item_elf ,ITEMATTR_VAL_AGI ) 	-- Ловкость
+	local dex = GetItemAttr( item_elf ,ITEMATTR_VAL_DEX ) 	-- Дух
+	local sta = GetItemAttr( item_elf ,ITEMATTR_VAL_STA ) 	-- Точность
+	local lv_JL = str + con + agi + dex + sta-- итого уровень феи
+
+	if item_elf_hp < 5000 then			-- если ЖЗ феи < 5000 то
+		SkillUnable ( role ) 			-- послать игрока нахер и выводить системку:
+		SystemNotice ( role , "Чтобы использовать этот навык, у феи должно быть 100+ стамины!" ) -- и вывести системку
+	return 
+	end
+	item_elf_hp = item_elf_hp - (2 * lv_JL / sklv) * 50 -- item_elf_hp = 4500 т.е. 95 хп < 100 => пройдёт
+	SetItemAttr ( item_elf , ITEMATTR_URE , item_elf_hp ) -- убиваем фее ХП за использование пасехи
+end
+
+function Skill_JLFT_End( ATKER , DEFER , sklv )
+	local statelv = sklv 			-- узнаём уровень пасехи
+	local statetime = 170 + sklv * 5 -- время использования - 190 в секундах.
+	local item_elf = GetChaItem(ATKER , 2, 1) 		-- проверяем одета фея или нет
+	local item_elf_type = GetItemType ( item_elf ) 	-- тип феи
+	local Item_ID = GetItemID ( item_elf ) 			-- ИД феи
+
+--Феи 2 поколения
+	if Item_ID == 0231 or Item_ID == 0232 or Item_ID == 0233 or Item_ID == 0234 or Item_ID == 0235 or Item_ID == 0236 or Item_ID == 0237 or Item_ID == 0681 then
+		AddState( ATKER , ATKER , STATE_JLFT1, statelv , statetime )
+--Феи 3 поколения
+	elseif Item_ID == 0129
+	then
+		AddState( ATKER , ATKER , STATE_JLFT2, statelv , statetime )
+--Феи 4 поколения
+	elseif Item_ID == 0130
+	then
+		AddState( ATKER , ATKER , STATE_JLFT3, statelv , statetime )
+	elseif Item_ID == 0131
+	then
+		AddState( ATKER , ATKER , STATE_JLFT4, statelv , statetime )
+	elseif Item_ID == 0132
+	then
+		AddState( ATKER , ATKER , STATE_JLFT5, statelv , statetime )
+	elseif Item_ID == 0133
+	then
+		AddState( ATKER , ATKER , STATE_JLFT6, statelv , statetime )
+--Феи 5 поколения
+	elseif Item_ID == 0134
+	then
+		AddState( ATKER , ATKER , STATE_JLFT7, statelv , statetime ) 
+	end
+end
+
+function State_JLFT_Add ( role , sklv )
+
+	local Item_bg = GetChaItem ( role , 2 , 1 ) 
+	local Get_Item_Type = GetItemType ( Item_bg ) 
+
+	if Get_Item_Type == 59 then 
+		local Item_ID = GetItemID ( Item_bg ) 
+		local str = GetItemAttr( Item_bg ,ITEMATTR_VAL_STR )
+		local con = GetItemAttr( Item_bg ,ITEMATTR_VAL_CON )
+		local agi = GetItemAttr( Item_bg ,ITEMATTR_VAL_AGI )
+		local dex = GetItemAttr( Item_bg ,ITEMATTR_VAL_DEX )
+		local sta = GetItemAttr( Item_bg ,ITEMATTR_VAL_STA )
+		local URE = GetItemAttr( Item_bg ,ITEMATTR_URE )
+		local MAXURE = GetItemAttr( Item_bg ,ITEMATTR_MAXURE )
+
+		local lv_JL = str + con + agi + dex + sta
+		local Num_JL = GetItemForgeParam ( Item_bg , 1 )
+
+-- No idea Wtf these are for
+		local Part1 = 1 --GetNum_Part1 ( Num_JL )
+		local Part2 = GetNum_Part2 ( Num_JL ) 
+		local Part3 = GetNum_Part3 ( Num_JL )
+		local Part4 = GetNum_Part4 ( Num_JL )
+		local Part5 = GetNum_Part5 ( Num_JL )
+		local Part6 = GetNum_Part6 ( Num_JL )
+		local Part7 = GetNum_Part7 ( Num_JL)
+ 
+		if Part1 == 1 then 
+			local star = 0
+--Феи 2 поколения
+			if Item_ID == 0231
+			or Item_ID == 0232
+			or Item_ID == 0233
+			or Item_ID == 0234
+			or Item_ID == 0235
+			or Item_ID == 0236
+			or Item_ID == 0237
+			or Item_ID == 0681
+			then
+local star = 1 + lv_JL/1000 
+SetCharaAttr(star ,role , ATTR_STATEV_MF)
+SetCharaAttr(star ,role , ATTR_STATEV_COL)
+if str~=nil and str~=0 then
+	local star = str
+	SetCharaAttr(star ,role , ATTR_STATEV_STR)
+end
+if con~=nil and con~=0 then
+	local star = con
+	SetCharaAttr(star ,role , ATTR_STATEV_CON)
+end
+if sta~=nil and sta~=0 then
+	local star = sta
+	SetCharaAttr(star ,role , ATTR_STATEV_STA)
+end
+if dex~=nil and dex~=0 then
+	local star = dex
+	SetCharaAttr(star ,role , ATTR_STATEV_DEX)
+end
+if agi~=nil and agi~=0 then
+	local star = agi
+	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
+end
+			end
+--Феи 3 поколения
+			if Item_ID == 0129
+			then
+local star = 1 + lv_JL/750 
+SetCharaAttr(star ,role , ATTR_STATEV_MF)
+SetCharaAttr(star ,role , ATTR_STATEV_COL)
+if str~=nil and str~=0 then
+	local star = str * 1.2
+	SetCharaAttr(star ,role , ATTR_STATEV_STR)
+end
+if con~=nil and con~=0 then
+	local star = con * 1.2
+	SetCharaAttr(star ,role , ATTR_STATEV_CON)
+end
+if sta~=nil and sta~=0 then
+	local star = sta * 1.2
+	SetCharaAttr(star ,role , ATTR_STATEV_STA)
+end
+if dex~=nil and dex~=0 then
+	local star = dex * 1.2
+	SetCharaAttr(star ,role , ATTR_STATEV_DEX)
+end
+if agi~=nil and agi~=0 then
+	local star = agi * 1.2
+	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
+end
+			end
+--Феи 4 поколения
+			if Item_ID == 0130
+			or Item_ID == 0131
+			or Item_ID == 0132
+			or Item_ID == 0133
+			then
+local star =1 + lv_JL/500
+SetCharaAttr(star ,role , ATTR_STATEV_MF)
+SetCharaAttr(star ,role , ATTR_STATEV_COL)
+if str~=nil and str~=0 then
+	local star = str * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_STR)
+end
+if con~=nil and con~=0 then
+	local star = con * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_CON)
+end
+if sta~=nil and sta~=0 then
+	local star = sta * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_STA)
+end
+if dex~=nil and dex~=0 then
+	local star = dex * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_DEX)
+end
+if agi~=nil and agi~=0 then
+	local star = agi * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
+end
+			end
+--Феи 5 поколения
+			if Item_ID == 0134
+			then
+local star = 1 + lv_JL/400
+local pdef = GetChaAttr( role, ATTR_STATEV_PDEF ) + 5
+SetCharaAttr(star ,role , ATTR_STATEV_MF)
+SetCharaAttr(star ,role , ATTR_STATEV_COL)
+SetCharaAttr(pdef ,role , ATTR_STATEV_PDEF)
+if str~=nil and str~=0 then
+	local star = str * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_STR)
+end
+if con~=nil and con~=0 then
+	local star = con * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_CON)
+end
+if sta~=nil and sta~=0 then
+	local star = sta * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_STA)
+end
+if dex~=nil and dex~=0 then
+	local star = dex * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_DEX)
+end
+if agi~=nil and agi~=0 then
+	local star = agi * 1.6
+	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
+end
+			end
+		end
+	end
+	ALLExAttrSet(role)
+end
+
+function State_JLFT_Rem ( role , sklv )
+	SetCharaAttr(0 ,role , ATTR_STATEV_STR)
+	SetCharaAttr(0 ,role , ATTR_STATEV_CON)
+	SetCharaAttr(0 ,role , ATTR_STATEV_STA)
+	SetCharaAttr(0 ,role , ATTR_STATEV_DEX)
+	SetCharaAttr(0 ,role , ATTR_STATEV_AGI)
+	SetCharaAttr(100 ,role , ATTR_STATEV_MF)
+	SetCharaAttr(100 ,role , ATTR_STATEV_COL)
+	ALLExAttrSet(role)
+end
+
+
+
+--[[
 function Skill_JLFT_BEGIN( role , sklv ) 
 local item_elf = GetChaItem(role , 2, 1) -- Слот, где должен находиться питомец
 local item_elf_type = GetItemType ( item_elf ) -- Тип питомца
@@ -7217,7 +7473,7 @@ function State_JLFT_Rem ( role , sklv )
 	SetCharaAttr(0 ,role , ATTR_STATEV_PDEF)
 	ALLExAttrSet(role)
 end
-
+]]--
 function SkillCooldown_jlzb ( sklv )
 	local Cooldown = 180000
 	return Cooldown

@@ -4144,8 +4144,8 @@ function cha_timer( role, freq, time )
 				local Part1_JLone = GetNum_Part1( Num_JLone )
 				
 				--Для премиум
-				if GetChaStateLv( role, STATE_JLJSGZ ) <= 0  and  CheckBagItem( role, 6699 )==1then
-					if CheckBagItem( role, 578 )==1 then
+				if (GetChaStateLv( role, STATE_JLJSGZ ) <= 0 or GetChaStateLv( role, STATE_JLJSGZ ) == nil )  and  CheckBagItem( role, 6699 )==1 then
+					if CheckBagItem( role, 578 ) == 1 then
 						local k = TakeItem( role, 0, 578, 1 )
 						if k == 0 then
 							AddState( role , role , STATE_JLJSGZ , 1 , 600 )
