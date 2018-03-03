@@ -174,11 +174,11 @@ function Check_Baoliao(ATKER, DEFER, ... )
 						end
 						if flag == 1 then											--Если флаг равен 1, то запищем дроп дающийся во время пасешена
 							if StateLv1 ~= 0 then									--Если используются анжела, то
-								DROP_FAIRY = lv_JL * 0.03 + 1						--DROP_FAIRY равен сумме 1 и уровня феи умноженого на 0.04
-								--Notice(  "Дроп полученный от пасешена равен:"..DROP_FAIRY)			--Проверка дропа при использование StateLv1
+								DROP_FAIRY = lv_JL * 0,02  + 1						--DROP_FAIRY равен сумме 1 и уровня феи умноженого на 0.04
+								--Notice(  "Дроп полученный от тела феи равен:"..DROP_FAIRY)			--Проверка дропа при использование StateLv1
 							end
 							if StateLv2 ~= 0 then 
-								DROP_FAIRY = lv_JL * 0.02 + 1						--DROP_FAIRY равен сумме 1 и уровня феи умноженого на 0.02
+								DROP_FAIRY = lv_JL * 0,02  + 1						--DROP_FAIRY равен сумме 1 и уровня феи умноженого на 0.02
 								--Notice(  "Дроп полученный от пасешена равен:"..DROP_FAIRY)			--Проверка дропа при использование StateLv2
 							end
 						end
@@ -7166,23 +7166,29 @@ SetCharaAttr(star ,role , ATTR_STATEV_COL)
 if str~=nil and str~=0 then
 	local star = str
 	SetCharaAttr(star ,role , ATTR_STATEV_STR)
+	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." силы")
 end
 if con~=nil and con~=0 then
 	local star = con
 	SetCharaAttr(star ,role , ATTR_STATEV_CON)
+	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." телосложения")
 end
 if sta~=nil and sta~=0 then
 	local star = sta
 	SetCharaAttr(star ,role , ATTR_STATEV_STA)
+	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." духа")
 end
 if dex~=nil and dex~=0 then
 	local star = dex
 	SetCharaAttr(star ,role , ATTR_STATEV_DEX)
+	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." точности")
 end
 if agi~=nil and agi~=0 then
 	local star = agi
 	SetCharaAttr(star ,role , ATTR_STATEV_AGI)
+	SystemNotice(role," Использовано Тело феи, вам добавлено "..star.." ловкости")
 end
+
 			end
 --Феи 3 поколения
 			if Item_ID == 7014

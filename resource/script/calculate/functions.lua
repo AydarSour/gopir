@@ -4145,7 +4145,7 @@ function cha_timer( role, freq, time )
 				
 				--Для премиум
 				if (GetChaStateLv( role, STATE_JLJSGZ ) == 0 or GetChaStateLv( role, STATE_JLJSGZ ) == nil )  and  CheckBagItem( role, 6699 )>=1 then
-					if CheckBagItem( role, 578 ) == 1 then
+					if CheckBagItem( role, 578 ) >= 1 then
 						local k = TakeItem( role, 0, 578, 1 )
 						if k == 0 then
 							AddState( role , role , STATE_JLJSGZ , 1 , 600 )
@@ -7067,3 +7067,13 @@ end
 			Hp_Endure_Dmg( DEFER , hpdmg )
 		end
  end
+
+ 
+function vilka_barb(role)
+	local hand_weapon = GetChaItem ( role , 1 , 6 )
+	local hand_weapon_ID = GetItemID ( hand_weapon )
+	if hand_weapon_ID ~= 5284 then
+		return 0
+	end
+	return 1
+end

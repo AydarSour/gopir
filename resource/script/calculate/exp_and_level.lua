@@ -547,7 +547,70 @@ function ShareTeamExp ( dead , team_atker , dead_exp , The_Killer)
 				exp_up = 0
 			end
 			
-			exp = exp + exp_up  * EXP_NEW_LVL
+			local EXP_FEI = 1 
+			local Item_bg = GetChaItem (ATKER , 2 , 1  )					--Введём переменную Item_bg, что бы присвоить ей то что находится во 2 ячейке 1 ряда
+					local Get_Item_Type = GetItemType ( Item_bg )					--Введём переменную Get_Item_Type, что бы узнать тип предмета у переменной Item_bg
+					if Get_Item_Type==59 then										--Есом тип предмета 59(или просто что это фея), то
+						local Item_ID = GetItemID ( Item_bg )						--Введём перенную Item_ID, что бы узнать ID феи
+						local str = GetItemAttr( Item_bg ,ITEMATTR_VAL_STR )		--Введём перенную str, что бы узнать количество силы у феи
+						local con = GetItemAttr( Item_bg ,ITEMATTR_VAL_CON )		--Введём перенную con, что бы узнать количество телосложения у феи
+						local agi = GetItemAttr( Item_bg ,ITEMATTR_VAL_AGI )		--Введём перенную agi, что бы узнать количество ловкости у феи
+						local dex = GetItemAttr( Item_bg ,ITEMATTR_VAL_DEX )		--Введём перенную dex, что бы узнать количество точности у феи
+						local sta = GetItemAttr( Item_bg ,ITEMATTR_VAL_STA )		--Введём перенную sta, что бы узнать количество духа у феи
+						local URE = GetItemAttr( Item_bg ,ITEMATTR_URE )			--Введём перенную URE, что бы узнать количество энергии у феи
+						local MAXURE = GetItemAttr( Item_bg ,ITEMATTR_MAXURE )		--Введём перенную MAXURE, что бы узнать максимальное количество энергии у феи
+						local lv_JL = str + con + agi + dex + sta					--Введём перенную lv_JL и узнаем уровень феи найдя сумму всех переменных str, con, agi, dex, sta
+						local Num_JL = GetItemForgeParam ( Item_bg , 1 )
+						local Part1 = GetNum_Part1 ( Num_JL )
+						local Part2 = GetNum_Part2 ( Num_JL )
+						local Part3 = GetNum_Part3 ( Num_JL )
+						local StateLv1 = GetChaStateLv (ATKER , STATE_JLFT7 )		--Введём переменную StateLv1 и присвоим тип пасешена STATE_JLFT7
+						local StateLv2 = GetChaStateLv (ATKER , STATE_JLFT8 )		--Введём переменную StateLv2 и присвоим тип пасешена STATE_JLFT8
+						local flag=0												--Введём переменную flag и присвоем значение 0
+--[[						if Item_ID == XXXX and StateLv1 ~= 0 then					--Если фея анжела мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end]]--
+						if Item_ID == 231 and StateLv1 ~= 0 then					--Если фея удачи и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 681 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 232 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 233 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 234 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 235 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 236 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if Item_ID == 237 and StateLv2 ~= 0 then					--Если фея мордо мл и используется посешен от неё, то поставим flag равный 1
+							flag = 1
+						end
+						if flag == 1 then											--Если флаг равен 1, то запищем дроп дающийся во время пасешена
+							if StateLv1 ~= 0 then									--Если используются анжела, то
+								EXP_FEI = lv_JL *  0.015 + 1						--DROP_FAIRY равен сумме 1 и уровня феи умноженого на 0.04
+							--	Notice(  "Дроп полученный от тела феи равен:"..DROP_FAIRY)			--Проверка дропа при использование StateLv1
+							end
+							if StateLv2 ~= 0 then 
+								EXP_FEI = lv_JL *  0.015 + 1						--DROP_FAIRY равен сумме 1 и уровня феи умноженого на 0.02
+						--Notice(  "Дроп полученный от пасешена равен:"..DROP_FAIRY)			--Проверка дропа при использование StateLv2
+							end
+						end
+						--SetItemAttr ( Item_bg , ITEMATTR_URE , URE )
+					end
+
+			
+			
+			
+			exp = exp + exp_up  * EXP_NEW_LVL * EXP_FEI
 			SetChaAttrI ( TurnToCha(t[i]) , ATTR_CEXP, exp ) 
 			LG("exp" , "exp_now = " , exp ) 
 		else 

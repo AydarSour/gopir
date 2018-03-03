@@ -1965,6 +1965,15 @@ function can_jlborn_item_main ( Table )
 			return 0
 		end
 	end
+	if Item_EMstone_ID == 7013 then
+	local i1 = CheckBagItem( role, 1743 )			
+	local i2 = CheckBagItem( role, 1660 )			
+		if i1 < 10 or i2 < 10 then
+			SystemNotice( role ,"У тебя нету нужных предметов, для свадьбы фей ")
+			return 0
+		end
+	end
+	
 	local ItemType_JLone = GetItemType (Item_JLone)
 	local ItemType_JLother = GetItemType (Item_JLother)
 	if  ItemType_JLone ~=59 or ItemType_JLother ~=59  then

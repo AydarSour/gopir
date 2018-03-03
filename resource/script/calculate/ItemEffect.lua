@@ -7075,6 +7075,7 @@ function ItemUse_LS_longguo ( role , Item , Item_Traget )
 		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
 		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
 		local elf_lvl = str + con + agi + dex + sta
+		local ID=GetItemID(Item_Traget)
 		if (elf_lvl >= 51 and elf_lvl <= 99999999999) then
 			SystemNotice(role , "После 51 лвл невозможно использовать фрукт. " )
 			UseItemFailed ( role )
@@ -7118,6 +7119,7 @@ function ItemUse_LS_koumei ( role , Item , Item_Traget )
 		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
 		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
 		local elf_lvl = str + con + agi + dex + sta
+		local ID=GetItemID(Item_Traget)
 		if  ((ID >= 231 and ID<=237 )or ID ==681) and elf_lvl>=40 then
 			SystemNotice(role , "После 40ур фею нельзя кормить этим фруктом " )
 			UseItemFailed ( role )
@@ -7155,6 +7157,7 @@ function ItemUse_LS_yusi ( role , Item , Item_Traget )
 		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
 		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
 		local elf_lvl = str + con + agi + dex + sta
+		local ID=GetItemID(Item_Traget)
 		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
 			SystemNotice(role , "После 51 лвл невозможно использовать фрукт.  " )
 			UseItemFailed ( role )
@@ -7198,6 +7201,7 @@ function ItemUse_LS_guopu ( role , Item , Item_Traget )
 		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
 		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
 		local elf_lvl = str + con + agi + dex + sta
+		local ID=GetItemID(Item_Traget)
 		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
 			SystemNotice(role , "После 51 лвл невозможно использовать фрукт. " )
 			UseItemFailed ( role )
@@ -7241,6 +7245,7 @@ function ItemUse_LS_mibing ( role , Item , Item_Traget )
 		local agi = GetItemAttr(Item_Traget,ITEMATTR_VAL_AGI)
 		local sta = GetItemAttr(Item_Traget,ITEMATTR_VAL_STA)
 		local elf_lvl = str + con + agi + dex + sta
+		local ID=GetItemID(Item_Traget)
 		if elf_lvl >= 51 and elf_lvl <= 99999999999 then
 			SystemNotice(role , "После 51 лвл невозможно использовать фрукт.  " )
 			UseItemFailed ( role )

@@ -18,3 +18,6 @@ end
 function before_leave_garner( role )
 
 end
+
+function map_copy_run_special_garner(map)
+end
