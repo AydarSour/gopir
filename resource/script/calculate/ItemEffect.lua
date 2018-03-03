@@ -7493,12 +7493,7 @@ end
 
 --Фрукт роста (Id 0578)
 function ItemUse_JLJSGz( role , Item )
-	local ID=GetItemID(Item_Traget)
-	if (ID >= 231 and ID<=237 )or ID ==681  then
-		SystemNotice( role , "Эту фею нельзя кормить этим фруктом")
-		UseItemFailed ( role ) 
-		return 
-	end
+	
 
 	local statelv = 1
 	local statetime = 900

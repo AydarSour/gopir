@@ -7098,11 +7098,11 @@ function Skill_JLFT_End( ATKER , DEFER , sklv )
 	if Item_ID == 0231 or Item_ID == 0232 or Item_ID == 0233 or Item_ID == 0234 or Item_ID == 0235 or Item_ID == 0236 or Item_ID == 0237 or Item_ID == 0681 then
 		AddState( ATKER , ATKER , STATE_JLFT1, statelv , statetime )
 --Феи 3 поколения
-	elseif Item_ID == 0129
+	elseif Item_ID == 7014
 	then
 		AddState( ATKER , ATKER , STATE_JLFT2, statelv , statetime )
 --Феи 4 поколения
-	elseif Item_ID == 0130
+	elseif Item_ID == 7015
 	then
 		AddState( ATKER , ATKER , STATE_JLFT3, statelv , statetime )
 	elseif Item_ID == 0131
@@ -7185,7 +7185,7 @@ if agi~=nil and agi~=0 then
 end
 			end
 --Феи 3 поколения
-			if Item_ID == 0129
+			if Item_ID == 7014
 			then
 local star = 1 + lv_JL/750 
 SetCharaAttr(star ,role , ATTR_STATEV_MF)
@@ -7212,7 +7212,7 @@ if agi~=nil and agi~=0 then
 end
 			end
 --Феи 4 поколения
-			if Item_ID == 0130
+			if Item_ID == 7015
 			or Item_ID == 0131
 			or Item_ID == 0132
 			or Item_ID == 0133
