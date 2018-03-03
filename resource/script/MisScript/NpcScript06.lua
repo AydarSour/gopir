@@ -18,8 +18,15 @@ end
 
 function r_talk242()
 	Talk( 1,  "Бинго: Дайте мне расписку для получения самоцвета. " )
-	Text( 1,  "Посмотреть самоцветы ", SendExchangeXData)
+	Text( 1,  "Купить самоцветы ", BuyPage)
+	Text( 1,  "Выменять самоцветы ", SendExchangeXData)
 	Text( 1, "Комбинировать самоцветы! ", JumpPage, 2 )
+	InitTrade()
+	Weapon(6817)--  
+	Weapon(6820)-- 
+	Weapon(6823)--  
+	Weapon(6826)-- 
+	Weapon(6829)-- 
 	InitExchangeX()
 	ExchangeDataX(	921	,	1	,	863	,	1	,	1)
 	ExchangeDataX(	918	,	1	,	860	,	1	,	1)
@@ -233,7 +240,7 @@ function r_leter1()
 Talk( 1, "Румоко: Привет! У меня есть множество различных трав. Обрати внимание!" )
 Text( 1, "Торг", BuyPage)
 	InitTrade()
-	InitTrade()
+	
 	--1 строчка
 	Weapon(	849	)--Фрукт опыта отряда
 	Weapon(	3097	)--усилитель удачи
